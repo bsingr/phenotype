@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>2.4</ptversion>
+		<ptsubversion>0</ptsubversion>
+		<con_id>1101</con_id>
+		<con_bez>Quickfinderbegriff</con_bez>		
+		<con_rubrik>System</con_rubrik>
+		<con_description></con_description>
+		<con_anlegen>1</con_anlegen>
+		<con_bearbeiten>1</con_bearbeiten>
+		<con_loeschen>1</con_loeschen>
+	</meta>
+	<script>&#60;?
+
+
+// -------------------------------------------------------
+// Copyright (c) 2003,2004 Phenotype Hagemann &#38; Sellinger
+// -------------------------------------------------------
+// Kontakt: 
+// phenotype@nilshagemann.de
+// Nils Hagemann, Lothringer Str. 31, 65195 Wiesbaden
+// -------------------------------------------------------
+// Das Phenotype CMS Framework unterliegt dem Urheberrecht
+// und ist Eigentum von Hagemann &#38; Sellinger. Ohne schriftliche 
+// Genehmigung darf kein Teil dieser Software reproduziert, ver-
+// vielfältigt oder verbreitet werden.
+// -------------------------------------------------------
+// Version 2.1 vom 20.10.2004
+// -------------------------------------------------------
+
+class PhenotypeContent_1101 extends PhenotypeContent
+{
+	// Quickfinderbegriff
+	var $content_type = 1101;
+	var $skins = Array (); // erlaubte Skins
+
+	function setDefaultProperties()
+	{
+		$this-&#62;set(&#34;bez&#34;, &#34;Neuer Quickfinderbegriff&#34;);
+	}
+
+	function init($row, $block_nr = 0)
+	{
+		parent :: init($row, $block_nr);
+
+		// Hier das Formular und damit auch die Updatefunktion initialisieren
+
+		$this-&#62;form_textfield(&#34;Bezeichnung&#34;, &#34;bez&#34;, 250);
+		$this-&#62;form_link(&#34;Link&#34;, &#34;link&#34;);
+	}
+
+	function attachKeyFields()
+	{
+		$this-&#62;setThumbnail(7);
+		$this-&#62;setKey1($this-&#62;get(&#34;bez&#34;));
+		$this-&#62;setKey2($this-&#62;get(&#34;link_url&#34;));
+	}
+
+}
+?&#62;</script>
+	<templates>
+   	</templates>
+</phenotype>

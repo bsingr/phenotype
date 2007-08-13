@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<com_id>1601</com_id>
+		<com_bez>Galerie</com_bez>		
+		<com_rubrik>Demonstration</com_rubrik>
+		<com_description></com_description>
+	</meta>
+	<script>&#60;?
+class PhenotypeComponent_1601 extends PhenotypeComponent
+{
+  public $tool_type = 1601;
+
+  public $bez = &#34;Galerie&#34;; &#47;&#47; erscheint im Arbeitsbereich im Redaktionsmodus
+
+
+  function setDefaultProperties()
+  {
+	  $this-&#62;set(&#34;variable&#34;,&#34;Wert&#34;);
+  }
+  
+ function edit()
+    {
+        global $myAdm;
+        $sql = &#34;SELECT dat_id AS K , dat_bez AS V FROM content_data WHERE con_id = 1601 AND dat_status=1 ORDER BY dat_bez&#34;;
+        $options = $myAdm-&#62;buildOptionsBySQL($sql,$this-&#62;get(&#34;dat_id&#34;));
+        $options = &#39;&#60;option value=&#34;0&#34;&#62;...&#60;&#47;option&#62;&#39;.$options;
+        $this-&#62;form_select(&#34;&#34;,&#34;dat_id&#34;,$options,$x=200,$br=1);
+
+    }
+
+    function update()
+    {
+        &#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools
+        $this-&#62;fset(&#34;dat_id&#34;);
+
+
+
+    }
+ 
+  function render($context)
+  {
+  	global $myPT;
+  	global $myPage;
+  	global $myApp;
+  	
+  	
+    &#47;&#47; Die Variable $context kommt aus dem Layoutblock
+	&#47;&#47; und kann genutzt werden, um die Bausteine in unterschiedlichen
+	&#47;&#47; Contexten anders reagieren zu lassen
+	
+	$dat_id = $this-&#62;getI(&#34;dat_id&#34;);
+	if ($dat_id==0)
+	{
+		return;
+	}
+	
+	$myCO = new CO_Gallery($dat_id);
+	global $myPT;
+	$myPT-&#62;startBuffer();
+	
+	
+	?&#62;
+	&#60;div class=&#34;gallery&#34;&#62;
+	&#60;h1&#62;&#60;?=$myCO-&#62;getH(&#34;bez&#34;)?&#62;&#60;&#47;h1&#62;
+	&#60;?
+	
+	$_images = $myCO-&#62;get(&#34;precalc&#34;);
+	$i=0;
+	foreach ($_images AS $_image)
+	{
+		$i++;
+		?&#62;
+		&#60;div class=&#34;thumbnail&#34;&#62;&#60;a href=&#34;index.php?id=&#60;?=$myApp-&#62;pag_id_galleryview?&#62;&#38;amp;gal_id=&#60;?=$dat_id?&#62;&#38;amp;nr=&#60;?=$i?&#62;&#38;amp;pag_id_mik=&#60;?=$myPage-&#62;id?&#62;&#34;&#62;&#60;img src=&#34;&#60;?=MEDIABASEURL.$_image[2]?&#62;&#34; alt=&#34;&#34; border=&#34;0&#34; &#47;&#62;&#60;&#47;a&#62;
+		
+		&#60;&#47;div&#62;
+		&#60;?
+		if ($i%4==0)
+		{
+		?&#62;
+		&#60;div class=&#34;clear&#34;&#62;&#60;&#47;div&#62;
+		&#60;?
+		}
+	}
+	?&#62;
+	&#60;&#47;div&#62;
+	&#60;?
+	if ($myCO-&#62;get(&#34;desc&#34;)!=&#34;&#34;)
+	{
+	?&#62;
+	&#60;p&#62;
+	&#60;?=$myCO-&#62;get(&#34;desc&#34;)?&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;
+	&#60;&#47;p&#62;
+	&#60;?
+	}
+	?&#62;	
+	&#60;div class=&#34;clear&#34;&#62;&#60;&#47;div&#62;
+	&#60;br&#47;&#62;
+	&#60;?
+	return $myPT-&#62;stopBuffer();
+  }
+  
+}
+?&#62;</script>
+	<templates>
+   	</templates>
+	<componentgroups><group>
+			<cog_id>1</cog_id>
+			<cog_bez>Default</cog_bez>
+			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_pos>0</cog_pos>
+		  </group></componentgroups>
+</phenotype>

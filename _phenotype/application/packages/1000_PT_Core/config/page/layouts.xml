@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>
+	</meta>
+	<layouts>
+		<layout>
+			<lay_id>1</lay_id>
+			<lay_bez>Standard</lay_bez>
+			<lay_description></lay_description>
+			<blocks>
+				<block>
+					<lay_blocknr>1</lay_blocknr>
+					<lay_blockbez>Content</lay_blockbez>
+					<cog_id>1</cog_id>
+					<lay_context>1</lay_context>
+				</block>
+			</blocks>				
+			<includes>
+			</includes>
+			<templates>
+				<page>&#60;!DOCTYPE HTML PUBLIC &#34;-&#47;&#47;W3C&#47;&#47;DTD HTML 4.01 Transitional&#47;&#47;EN&#34;&#62;&#10;&#10;&#60;html&#62;&#10;&#60;head&#62;&#10;    &#60;title&#62;{$title|escape}&#60;&#47;title&#62;&#10;&#60;&#47;head&#62;&#10;&#10;&#60;body&#62;&#10;{$pt_block1}&#10;&#60;&#47;body&#62;&#10;&#60;&#47;html&#62;</page>
+				<print>&#60;!DOCTYPE HTML PUBLIC &#34;-&#47;&#47;W3C&#47;&#47;DTD HTML 4.01 Transitional&#47;&#47;EN&#34;&#62;&#10;&#10;&#60;html&#62;&#10;&#60;head&#62;&#10;    &#60;title&#62;{$title|escape}&#60;&#47;title&#62;&#10;&#60;&#47;head&#62;&#10;&#10;&#60;body&#62;&#10;{$pt_block1}&#10;&#60;&#47;body&#62;&#10;&#60;&#47;html&#62;</print>
+			</templates>
+		</layout>
+	</layouts>
+</phenotype>

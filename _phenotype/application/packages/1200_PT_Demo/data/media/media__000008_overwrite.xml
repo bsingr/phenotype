@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<med_id>8</med_id>
+		<med_type>1</med_type>
+		<med_mimetype></med_mimetype>
+		<med_id_local>8</med_id_local>
+		<importmethod>overwrite</importmethod>
+		<grp_id>1</grp_id>		
+	</meta>
+	<content>
+		<med_bez>news.jpg</med_bez>
+		<med_bez_original>news.jpg</med_bez_original>
+		<med_keywords></med_keywords>
+		<med_comment>Thumbnails für Contentobjekte</med_comment>		
+		<med_physical_folder>I0610420</med_physical_folder>   	 
+		<med_logical_folder1>_system</med_logical_folder1>
+		<med_logical_folder2></med_logical_folder2>
+		<med_logical_folder3></med_logical_folder3>
+		<usr_id_creator>0</usr_id_creator>
+		<med_creationdate>0</med_creationdate>
+		<usr_id>1</usr_id>
+		<med_date>1098390582</med_date>
+		<binary>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwMEAwODxAPDgwTExQUExMcGxsbHCAgICAgICAgICD/2wBDAQcHBw0MDRgQEBgaFREVGiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD/wAARCAAoADwDAREAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAABQcDBAYACP/EADMQAAEDAgMFBwIGAwAAAAAAAAECAwQFBgAREgcTFCExIjRBUXFzslRhCDJicpKhFjOB/8QAGgEBAQEAAwEAAAAAAAAAAAAAAgABAwQFBv/EACARAQADAAICAgMAAAAAAAAAAAABAhEDBBIhBUETMWH/2gAMAwEAAhEDEQA/AHLDhxFRGFKYbJLaSSUjyxyONLwUHPLcNZ/tTi1rLVy+rPo9Q4B9gvPJ/wBpZaQpKPsokp/rHW5O5Wk49Xq/C83NTzjIj+/bQwTR50RuXFQ05HdGpCwlPTHPW2xsPN5OOaW8bephYMOCBmWGsv2pwgUpUu34unfblOpSUDsg81nIdBjfbFaBU6TLrUulmOww8wjWwy6UIlPIQstOvpikBwRw4AhDp/Oc8hp0KWdagrrTTctCW0BA3YOSRl4nyw4GR2D3KP7aPjgyRC3TdFRt/wDEEp2VMdZpb3DICCtW63TkdCD2emW8BPrgl9Dl32DW3a29MgI4mJNVvUOJI5avA48vn6dptsfb6/ofNcNeKIv6mqC+a1Esqy6dSKhrkvy3dbkJp0sqLaeZJUntBOoj1x6HDTwrj5ru9j8/LN/1rX2mZlVtqHLYjusMqR2IzqypaR6knPPrjsRLpTCpdUCcqGy2hCkucQ34eeYH9kY1g5SBJkXjU34z8xunoePENNpgJiLkNsNsFuQlTDdRS9kA4g6lIU3oUHNKggcZLdw99R7Y+Rw6jI1B7lH9tHxwZIrtvto21UKEmtT5iKdUYY0Rnlc99nz3Okcz9vLBkoJGhbW9oFGgcDCqSlRkDJtLqQ7oH6SrMjGa3F+wIDN93ohy56sXJKiFIafPafI56AegH6RiUvWMSK1FjoYaGSEDIAYQJiAeuJI0xo6ZC5KWkCS6hDbj4SNakNlRQkq6kJLiiB4ZnzxICuHvqPbHyOHUZGoPco/to+ODJPO217j7r2vs2tvCmJDDLSE+A3raXnF+uSwMCSg57d2dWtR6a3EagtK7PbKkhRPqT1wmaUG3jZzTreTEumgp4LN8NyGm+QS5zUhxHl+U54MtiTe2Y3Q9c1mU+qvjKQtKkPfdTay2T/3TnhMlqsTHYkz1w99R7Y+Rw6jIrDmRExGEqfbBDaQQVDywWgT1n2Y7dP8AlBS0KyQErkb3rpSEDs6tOekAZ5YzG60XGwvqG/5pxuIMuOkWzcdLXS6vupMNwhRQXNJCk9CFJIIPocWLXW7S7et+mIptMW0zEbz0N6wcszmep8zixaJ8dC+ob/mnFidx0L6hv+acWICrrrTktCm1hY3YGaTn4nywoGX/2Q==</binary>
+		<versions></versions>
+	</content>
+</phenotype>

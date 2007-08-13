@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<com_id>1102</com_id>
+		<com_bez>Bild</com_bez>		
+		<com_rubrik>Media</com_rubrik>
+		<com_description>## Baustein 1102 - Bild</com_description>
+	</meta>
+	<script>&#60;?
+class PhenotypeComponent_1102 extends PhenotypeComponent
+{
+	var $tool_type = 1102;
+	var $bez  =&#34;Bild&#34;;
+
+	function setDefaultProperties()
+	{
+		$this-&#62;set(&#34;img_id&#34;,0);
+		$this-&#62;set(&#34;alt&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;bildausrichtung&#34;,&#34;links&#34;);
+	}
+
+	function edit()
+	{
+
+		$this-&#62;form_image(&#34;&#34;,$this-&#62;get(&#34;img_id&#34;),-1,1,0,0,$this-&#62;get(&#34;alt&#34;),$this-&#62;get(&#34;bildausrichtung&#34;),2);
+
+	}
+
+	function update()
+	{
+		&#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools
+		$this-&#62;fset(&#34;img_id&#34;,&#34;img_id&#34;);
+		$this-&#62;fset(&#34;bildausrichtung&#34;,&#34;img_align&#34;);
+		if ($this-&#62;get(&#34;img_id&#34;)!=0)
+		{
+			$this-&#62;fset(&#34;alt&#34;,&#34;img_alt&#34;);
+		}
+		else
+		{
+			$this-&#62;set(&#34;alt&#34;,&#34;&#34;);
+			$this-&#62;set(&#34;bildausrichtung&#34;,&#34;links&#34;);
+		}
+		if ($this-&#62;get(&#34;bildausrichtung&#34;)==&#34;&#34;)
+		{
+			$this-&#62;set(&#34;bildausrichtung&#34;,&#34;links&#34;);
+		}
+
+
+	}
+
+
+	function render($style)
+	{
+		&#47;&#47; Notwendig, um die Smartyengine richtig zu initalisieren
+		eval ($this-&#62;initRendering());
+		$image=&#34;&#34;;
+		switch ($this-&#62;get(&#34;bildausrichtung&#34;))
+		{
+			case &#34;links&#34;:
+				$style = &#34;float:left&#34;;
+				break;
+
+			case &#34;rechts&#34;:
+				$style = &#34;float:right&#34;;
+				break;
+
+			case &#34;mittig&#34;:
+				$style = &#34;&#34;;
+				break;
+		}
+
+		if ($this-&#62;get(&#34;img_id&#34;)!=0)
+		{
+			$alt = $this-&#62;get(&#34;alt&#34;);
+			$myImg = new PhenotypeImage($this-&#62;get(&#34;img_id&#34;));
+			$myImg-&#62;style = $style;
+			$image = $myImg-&#62;render($alt);
+			if ($this-&#62;get(&#34;bildausrichtung&#34;)==&#34;mittig&#34;)
+			{
+				$image = &#34;&#60;center&#62;&#34;. $image .&#34;&#60;&#47;center&#62;&#34;;
+			}
+			$mySmarty-&#62;assign(&#34;image&#34;,$image);
+		}
+
+		return $mySmarty-&#62;fetch($TPL_1);
+	}
+
+}
+?&#62;</script>
+	<templates>
+<template access="TPL_1">&#60;div&#62;{$image}&#60;br clear=&#34;all&#34;&#47;&#62;&#60;&#47;div&#62;</template>
+   	</templates>
+	<componentgroups><group>
+			<cog_id>1</cog_id>
+			<cog_bez>Default</cog_bez>
+			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_pos>0</cog_pos>
+		  </group></componentgroups>
+</phenotype>

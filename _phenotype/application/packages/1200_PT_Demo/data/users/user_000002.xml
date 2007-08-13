@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>
+		<usr_id>2</usr_id>
+		<importmethod>overwrite</importmethod>		
+	</meta>
+	<content>
+	<usr_vorname>Importer</usr_vorname>
+<usr_nachname></usr_nachname>
+<usr_login></usr_login>
+<usr_pass></usr_pass>
+<usr_email></usr_email>
+<usr_createdate>1128535744</usr_createdate>
+<usr_lastlogin>0</usr_lastlogin>
+<usr_su>0</usr_su>
+<usr_status>0</usr_status>
+<med_id_thumb>0</med_id_thumb>
+<usr_rights>YTowOnt9</usr_rights><usr_preferences>YTowOnt9</usr_preferences>
+	</content>
+</phenotype>

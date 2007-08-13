@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<com_id>1103</com_id>
+		<com_bez>Aufzählung</com_bez>		
+		<com_rubrik>Sonstige</com_rubrik>
+		<com_description>## Baustein 1103 - Aufzählung</com_description>
+	</meta>
+	<script>&#60;? 
+class PhenotypeComponent_1103 extends PhenotypeComponent
+{
+	var $tool_type = 1103;
+	var $bez = &#34;Aufzählung&#34;;
+
+	function setDefaultProperties()
+	{
+		$this-&#62;set(&#34;anzahl&#34;,3);
+		$this-&#62;set(&#34;text1&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;text2&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;text3&#34;,&#34;&#34;);     }
+
+		function edit()
+		{
+			$this-&#62;form_textfield(&#34;Überschrift&#34;,&#34;headline&#34;,$this-&#62;get(&#34;headline&#34;));
+			echo &#34;&#60;br&#62;&#34;;
+			?&#62; 
+  			&#60;input type=&#34;hidden&#34; name=&#34;&#60;?=$this-&#62;id?&#62;_anzahl&#34; value=&#34;&#60;?=$this-&#62;get(&#34;anzahl&#34;)?&#62;&#34;&#62; 
+		    &#60;table width=&#34;408&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&#62; 
+		    &#60;tr&#62; 
+		    &#60;td nowrap class=&#34;tableBausteineBackground&#34;&#62; 
+		    &#60;? 
+		    for ($i=1;$i&#60;=$this-&#62;get(&#34;anzahl&#34;);$i++)
+		    {
+		    ?&#62; 
+			&#60;input name=&#34;&#60;?=$this-&#62;formid?&#62;_text&#60;?=$i?&#62;&#34; type=&#34;text&#34; class=&#34;input&#34; style=&#34;width: 355px&#34; value=&#34;&#60;?=$this-&#62;getQ(&#34;text&#34;.$i)?&#62;&#34;&#62;&#38;nbsp;
+		    &#60;?if ($this-&#62;get(&#34;anzahl&#34;)&#62;1){?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_minus_z&#60;?=$i?&#62;&#34;&#62;&#60;?}?&#62; &#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_plus_z&#60;?=$i?&#62;&#34;&#62;&#60;br&#62; 
+      		&#60;? 
+		    }
+      		?&#62; 
+      		&#60;&#47;td&#62; 
+      		&#60;&#47;tr&#62; 
+      		&#60;&#47;table&#62; 
+      		&#60;? 
+		}
+
+		function update()
+		{
+			&#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools
+			$this-&#62;fset(&#34;headline&#34;);
+			$anzahl = $this-&#62;get(&#34;anzahl&#34;);
+			$put=1;
+			for ($i=1;$i&#60;=$anzahl;$i++)
+			{
+				$fname = &#34;_text&#34; . $i;
+				$this-&#62;fset(&#34;text&#34;.$put,$fname);
+				$put++;
+
+				&#47;&#47; Wurde eine Zeile hinzugefuegt ?
+				$fname = $this-&#62;formid . &#34;_plus_z&#34; . $i . &#34;_x&#34;;
+				if (isset($_REQUEST[$fname]))
+				{
+					$this-&#62;set(&#34;anzahl&#34;,$anzahl+1);
+					$this-&#62;set(&#34;text&#34;.$put,&#34;&#34;);
+					$put++;
+				}
+				&#47;&#47; -- Wurde eine Zeile hinzugefuegt ?
+
+				&#47;&#47; Wurde eine Zeile geloescht ?
+				$fname = $this-&#62;formid . &#34;_minus_z&#34; . $i . &#34;_x&#34;;
+				if (isset($_REQUEST[$fname]))
+				{
+					$this-&#62;set(&#34;anzahl&#34;,$anzahl-1);
+					$put--;
+				}
+				&#47;&#47; -- Wurde eine Zeile geloescht ?
+			}
+		}
+
+
+		function setFullSearch()
+		{
+			$s=&#34;&#34;;
+			for ($i=1;$i&#60;=$this-&#62;get(&#34;anzahl&#34;);$i++)
+			{
+				$s .= $this-&#62;get(&#34;text&#34;.$i) . &#34;|&#34;;
+			}
+			return ($s);
+		}
+
+		function render($context)
+		{
+			&#47;&#47; Notwendig, um die Smartyengine richtig zu initialisieren
+			eval ($this-&#62;initRendering());
+			global $myPT;
+			
+			$html =&#39;&#39;; 
+        	if ($this-&#62;get(&#34;headline&#34;)!=&#34;&#34;)
+        	{
+       			$html .=&#39;&#60;h1&#62;&#39;.$this-&#62;getH(&#34;headline&#34;).&#39;&#60;&#47;h1&#62;&#39;;
+        	}
+        
+        
+			$html .= &#39;&#60;ul&#62;&#39;;
+			for ($i=1;$i&#60;=$this-&#62;get(&#34;anzahl&#34;);$i++)
+			{
+				$text = $this-&#62;getH(&#34;text&#34;.$i);
+				if ($text !=&#34;&#34;)
+				{
+					$html .= &#39;&#60;li&#62;&#39;.$text.&#39;&#60;&#47;li&#62;&#39;;
+				}
+			}
+			$html .=&#39;&#60;&#47;ul&#62;&#39;;
+			return $html;
+		}
+}
+?&#62;</script>
+	<templates>
+   	</templates>
+	<componentgroups><group>
+			<cog_id>1</cog_id>
+			<cog_bez>Default</cog_bez>
+			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_pos>0</cog_pos>
+		  </group></componentgroups>
+</phenotype>

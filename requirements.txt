@@ -1,0 +1,33 @@
+Phenotype System Requirements, Version 2.5
+
+Apache Webserver, Version 1.3 or 2.x
+	mod_rewrite
+	php5_module
+
+MySQL >= Version 4.0, either local or on remote machine
+	The mysql user used by phenotype needs the permission to create, use and drop temporary tables.
+
+PHP 5, at least Version >= 5.0.5 recommended
+	php sessions enabled
+	php module gd_lib enabled
+	php module mysql enabled
+	php module SimpleXML enabled
+	pcre module enabled
+	zlib module enabled
+	register globals off
+	memory_limit >= 16M
+
+If you intend to have the phenotype php files not owned by the user of the webserver, you have to set "safe_mode off".
+
+The phenotype directories must be writeable by the webserver for caching and media uploads.
+
+####
+If you prepare a system to install a phenotype application (website) somebody developed for you, these further steps could be helpful:
+
+For convenience at the installation procecure, there should be this software on the target system:
+	GNU tar
+	gzip
+	less
+	vi
+
+Additionally, it's a good idea to have the pear program installed and configured for the case that your phenotype application brings in some more dependencies, like e.g. NetSMTP etc.

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<pag_id>34</pag_id>
+		<importmethod>overwrite</importmethod>
+		<grp_id>1</grp_id>				
+	</meta>
+	<content>
+	<pag_uid>8727ca834614b5edcb466f3f95ebf806</pag_uid>
+<pag_bez>Seite 1</pag_bez>
+<pag_titel>Seite 1</pag_titel>
+<pag_alttitel></pag_alttitel>
+<pag_comment></pag_comment>
+<pag_quickfinder></pag_quickfinder>
+<pag_searchtext></pag_searchtext>
+<pag_url></pag_url>
+<pag_id_mimikry>34</pag_id_mimikry>
+<pag_id_top>5</pag_id_top>
+<pag_pos>1</pag_pos>
+<pag_cache>86400</pag_cache>
+<pag_status>1</pag_status>
+<usr_id_creator>10</usr_id_creator>
+<pag_creationdate>1153068388</pag_creationdate>
+<usr_id>10</usr_id>
+<pag_date>1153068388</pag_date>
+<pag_props></pag_props>
+		<pageversions>  			<version>
+				<ver_id>34</ver_id>
+				<ver_nr>1</ver_nr>
+				<lay_id>1</lay_id>
+				<ver_bez>Version 1</ver_bez>
+				<pag_fullsearch></pag_fullsearch>
+				<script></script>
+				<inc_id1>0</inc_id1>
+				<inc_id2>0</inc_id2>
+				<ver_status>1</ver_status>
+			</version>
+
+		</pageversions>
+		<languages>			<language>
+				<lng_id>0</lng_id>
+				<pag_titel></pag_titel>
+			</language>
+		</languages>
+		<sequence_data>
+		</sequence_data>
+	</content>
+</phenotype>

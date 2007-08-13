@@ -1,0 +1,12 @@
+<?
+class PhenotypePackage extends PhenotypePackageStandard
+{
+	public $bez = "Corepaket";
+	public $packagefolder = "1000_PT_Core";
+	
+	function getDescription()
+	{
+		return ("Grundpaket - Phenotype wird standardmäßig mit diesem Paket installiert.");
+	}
+}
+?>

@@ -1,0 +1,49 @@
+Attention - This beta has a Mysql dump which need a MySQL 4.1 or higher, MySQL 4.0 currently not supported
+
+
+Installation:
+=============
+
+1. rename the containing folder (e.g. "phenotype_##!PT_VERSION!## _##!BUILD_NO!##") to whatever name you like
+2. copy that folder to your webserver
+3. point your webroot to the htdocs folder within that folder
+4. create an empty database
+5. access the webroot in your browser and follow the instructions on the screen
+
+Problems? Please post your questions and problems in the forum on the phenotype project page at sourceforge.
+
+
+
+First Login:
+============
+
+Login with user "starter" and password "deleteme" and please delete it afterwards ... ;) backend is normally installed
+in folder "_phenotype/admin".
+
+
+
+First Demonstration:
+====================
+
+To get a first impression we recommend to install the package PT_DEMO:
+
+1. Choose menu item "Konfiguration" 
+2. Then click "Paket installieren"
+3. Select the  package "1200_PT_Demo"
+4. Push button "Installieren".
+
+
+
+Development:
+============
+
+To grant your user the right to access the configuration mode you must access the database, find your user
+in the table users and enter the value "1" in the field usr_su. The user "starter" is already a superuser.
+
+
+
+If you like Phenotype support us by telling the world and/or joining the community and help us with the development.
+
+Have fun
+
+Nils, Michel

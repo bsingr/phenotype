@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<phrases>
+	<section name="content">
+	<phrase name="newrecord">
+		<de>Neuen Datensatz hinzufügen</de>
+		<en>Add new record</en>
+	</phrase>
+	<phrase name="">
+		<de></de>
+		<en></en>
+	</phrase>	
+	</section>
+	</phrases>
+</phenotype>

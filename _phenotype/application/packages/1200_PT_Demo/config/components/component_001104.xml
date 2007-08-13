@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<com_id>1104</com_id>
+		<com_bez>Trennlinie</com_bez>		
+		<com_rubrik>Sonstige</com_rubrik>
+		<com_description>## Baustein 1104 - Trennlinie</com_description>
+	</meta>
+	<script>&#60;?  
+
+class PhenotypeComponent_1104 extends PhenotypeComponent  
+{  
+  var $tool_type = 1104;  
+  var $bez = &#34;Trennlinie&#34;;  
+ 
+  function render($context)  
+  {  
+     return &#39;&#60;div class=&#34;hr&#34;&#62;&#60;hr&#47;&#62;&#60;&#47;div&#62;&#39;;  
+  }  
+    
+}  
+?&#62;</script>
+	<templates>
+   	</templates>
+	<componentgroups><group>
+			<cog_id>1</cog_id>
+			<cog_bez>Default</cog_bez>
+			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_pos>0</cog_pos>
+		  </group></componentgroups>
+</phenotype>

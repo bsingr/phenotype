@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>
+	</meta>
+	<mediagroups>
+		<group>
+			<grp_id>1</grp_id>
+			<grp_bez>System</grp_bez>
+			<grp_description></grp_description>
+			<grp_type>1</grp_type>
+		 </group>
+		<group>
+			<grp_id>2</grp_id>
+			<grp_bez>Standard</grp_bez>
+			<grp_description></grp_description>
+			<grp_type>2</grp_type>
+		 </group>
+		<group>
+			<grp_id>3</grp_id>
+			<grp_bez>Aufgaben</grp_bez>
+			<grp_description></grp_description>
+			<grp_type>3</grp_type>
+		 </group>
+	</mediagroups>
+</phenotype>

@@ -1,0 +1,79 @@
+/* Stylesheet phenotype, Design Sellinger */
+
+.padding10 {
+	padding: 5px 10px 5px 10px;
+	}
+.padding30 {
+	padding: 10px 5px 10px 30px;
+	}
+.datearea {
+	padding: 10px 10px 10px 10px;
+	}
+.textarea {
+	padding: 10px 5px 10px 0px;
+	}
+.tablearea {
+	padding: 7px 5px 10px 0px;
+	}
+.tableHline {
+	background:  url(img/white_border.gif) repeat-x;
+	}
+.windowTabTypeOnly {
+	padding-left: 10px;
+	border: 3px solid #FFFFFF;
+	background-color: #FFFFFF;
+	}
+.windowTask {
+	padding: 10px;
+	border: 3px solid #FFFFFF;
+	background-color: #D1D6DB;
+	}
+.tableBodySubtable {
+	padding: 0px 5px 5px 5px;
+	}
+/* Neu eingestelltes Ticket */
+.taskTopCorner {
+	background-color: #FFFFFF;
+	}
+.taskClass {
+	background-color: #FFFFFF;
+	border-bottom: 3px solid #FFFFFF;
+	}
+.taskHeaderGrey {
+	padding: 3px 5px 3px 5px;
+	background-color: #FFFFFF;
+	color: #686F78;
+	}
+.taskData {
+	padding: 3px 5px 3px 5px;
+	background-color: #E9ECEE;
+	color: #000000;
+	border-bottom: 3px solid #FFFFFF;
+	}
+.taskDataLastCell {
+	padding: 3px 5px 3px 5px;
+	background-color: #E9ECEE;
+	color: #000000;
+	border-bottom: 3px solid #FFFFFF;
+	border-right: 3px solid #FFFFFF;
+	}
+.taskProgress {
+	padding: 1px 1px 1px 1px;
+	background-color: #FFFFFF;
+	border: 1px solid #686F78;
+	}
+.orange {
+	color: #FF7800;
+	}
+.blue2 {
+	color: #124591;
+	}
+.grey {
+	color: #686F78;
+	}
+.red {
+	color: #BF2627;
+	}
+	
+
+

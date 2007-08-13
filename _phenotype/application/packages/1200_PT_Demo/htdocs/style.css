@@ -1,0 +1,108 @@
+/* -- general -- */
+body {margin:0px; padding:0px;background:#E3EAD0;font-family:Georgia, "Times New Roman", Times, serif}
+
+a img{border:none;}
+a {color:#A01102;text-decoration:none;}
+a:hover {color:#f500ee;}
+
+.clear {clear:both;}
+
+div.hr {
+  height: 15px;
+  background: #fff url(img/nav-linie-stark.png) repeat-x 0px 10px;padding:5px;margin:0px;height:10px;;
+}
+div.hr hr {
+  display: none;
+}
+/* -- // general -- */
+
+/* -- frames -- */
+#container1 {padding:0px 0px 20px 10px;background:#fff;}
+#container2 {margin:0px,0px,0px,0px;width:770px;padding-top:20px;}
+/* -- frames -- */
+
+/* -- header -- */
+#header {background: url(img/thegreenhead.jpg) center repeat-x;height:111px;}
+#logo{padding-left:20px;}
+#header {padding-left: 200px;}
+#header li {list-style:none;display:inline;padding-right:40px;font-size:25px;background-color:#EEEEEE;}
+#header li.active {font-weight:bold}
+#phenotype {position:absolute;top:111px;left:20px;}
+
+/* -- // header -- */
+
+/* -- main navigation menu -- */
+#menu {background: url(img/menu-hg.png) repeat-x;padding-left:200px;}
+#menu .container{margin:0px auto; height:55px;}
+#menu ul{margin:0;padding-top:10px;list-style-type: none;}
+#menu ul li{display: inline;padding: 10px 20px 30px 10px;background: url(img/menu-reiter.png) no-repeat right;}
+#menu ul li.active{display: inline;padding: 10px 20px 30px 10px;background: url(img/menu-reiter-aktiv.png) no-repeat right;}
+#menu ul li a{color:#4A4A4A;font-weight:bold;font-size:13px;}
+#menu ul li a:hover {color:#f500ee;}
+#menu .active {color:#c100b6;}
+/* -- // main navigation menu -- */
+
+/* -- left navigation -- */
+#navigation {width:200px;float:left;padding-right:40px;font-family:"Trebuchet MS", "Lucida Sans Unicode";}
+#navigation {margin-left:10px;padding:0px;margin-right:20px;list-style: none;font-size:14px;margin-top:5px}
+#navigation a{color:#4A4A4A}
+#navigation a:hover {color:#f500ee;}
+#navigation ul {list-style: none;padding:0px;margin:0px;}
+#navigation li {margin:5px 0px;padding:5px 0px;}
+
+#navigation li.active {font-weight:bold}
+#navigation li.level1 {padding: 1px 0px 1px 30px;background: url(img/icon-blume01-def.png) no-repeat 0px 0px;}
+#navigation li.level2 {padding: 1px 0px 1px 50px;background: url(img/icon-blume02-def.png) no-repeat 30px 0px;}
+#navigation li.level3 {padding: 1px 0px 1px 60px;background: url(img/icon-blume03-def.png) no-repeat 40px 0px;}
+#navigation li.level4 {padding: 1px 0px 1px 60px;}
+#navigation li.level1active {padding: 1px 0px 1px 30px;background: url(img/icon-blume01.png) no-repeat 0px 0px;}
+#navigation li.level2active {padding: 1px 0px 1px 50px;background: url(img/icon-blume02.png) no-repeat 30px 0px;}
+#navigation li.level3active {padding: 1px 0px 1px 60px;background: url(img/icon-blume03.png) no-repeat 40px 0px;}
+#navigation li.level4active {padding: 1px 0px 1px 60px;}
+/* -- // left navigation -- */
+
+/* -- content -- */
+#content {width:460px;float:left;}
+#content ul {}
+#content li {font-size:13px;padding:5px;list-style-type:circle;}
+
+#content p {font-size:13px;margin:0;}
+#content .richtext {font-size:13px;margin:0;}
+#content h1 {font-size:17px;color:#82A700;font-weight:normal;margin-bottom:5px;}
+#content h2 {font-size:15px;color:#82A700;font-weight:normal;margin-bottom:5px;}
+
+#content .imageleft {float:left;padding-right:20px;}
+#content .imageright {float:right;padding-left:20px;}
+#content .imagecenter {padding-bottom:10px;}
+
+
+#content .box {background:#EDF2DF;border: 1px solid #CCE200;margin:0px auto;width:460px;padding:10px;padding-bottom:20px;margin-bottom:5px;}
+#content .box h1 {margin:0px 0px 10px 0px;}
+#content .box h1 a{color:#82A700;}
+#content .box p {font-size:13px;margin:0;}
+
+
+#display .Tabelle {padding:3px 0px;margin:5px 0px}
+#display .Tabelle h1{font-size:17px;color:#82A700;font-weight:normal;margin:0px;}
+
+#content .table {padding:3px 0px;margin:10px 0px}
+#content table {background:#CCE200;padding:3px 0px;}
+#content th {background:#FFFFFF;text-align:left;font-size:13px;padding:5px;}
+#content td {background:#EDF2DF;font-size:13px;padding:5px;}
+/* -- // content -- */
+
+/* -- gallery -- */
+
+#content .gallery {padding:10px 0px;}
+#content .gallery h1{font-size:17px;color:#82A700;font-weight:normal;margin:0;margin-bottom:10px}
+#content .thumbnail{float:left;width:100px;height:100px;padding:2px;margin-right:5px;background:#EDF2DF;border: 1px solid #CCE200;margin-bottom:10px}
+#content .thumbnail p{font-size:11px;}
+/* -- // gallery -- */
+
+/* -- breadcrumb -- */	
+#breadcrumb {font-size:10px;margin:0;}
+/* -- // breadcrumb -- */	
+
+/* -- footer -- */	
+#footer {background: url(img/footer-hg.png) top repeat-x;text-align:center;padding-top:10px;color:#717568;font-size:11px;}
+/* -- // footer -- */

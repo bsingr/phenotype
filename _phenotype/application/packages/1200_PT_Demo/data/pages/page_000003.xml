@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<pag_id>3</pag_id>
+		<importmethod>overwrite</importmethod>
+		<grp_id>1</grp_id>				
+	</meta>
+	<content>
+	<pag_uid>1f1484506e3b33635c11f70dfc245837</pag_uid>
+<pag_bez>Rubrik 2</pag_bez>
+<pag_titel>Rubrik 2</pag_titel>
+<pag_alttitel></pag_alttitel>
+<pag_comment></pag_comment>
+<pag_quickfinder></pag_quickfinder>
+<pag_searchtext></pag_searchtext>
+<pag_url></pag_url>
+<pag_id_mimikry>3</pag_id_mimikry>
+<pag_id_top>1</pag_id_top>
+<pag_pos>2</pag_pos>
+<pag_cache>86400</pag_cache>
+<pag_status>1</pag_status>
+<usr_id_creator>10</usr_id_creator>
+<pag_creationdate>1153068248</pag_creationdate>
+<usr_id>10</usr_id>
+<pag_date>1162665672</pag_date>
+<pag_props>YToxOntzOjg6ImNhdGVnb3J5IjtzOjE6IjMiO30=</pag_props>
+		<pageversions>  			<version>
+				<ver_id>3</ver_id>
+				<ver_nr>1</ver_nr>
+				<lay_id>1</lay_id>
+				<ver_bez>Version 1</ver_bez>
+				<pag_fullsearch>Rubrik 2|Rubrik 2|Rubrik 2||||
+Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
+
+|Richtextabsatz|Sie k&#38;ouml;nnen nat&#38;uuml;rlich f&#38;uuml;r Ihre Anwendung komplett andere Bausteine entwicklen.||Demonstration aller Bausteine|||Richtextabsatz|Diese Seite listet alle Bausteine dieser Demonstration.|Punkt 1|Punkt 2|Punkt 3|||</pag_fullsearch>
+				<script></script>
+				<inc_id1>0</inc_id1>
+				<inc_id2>0</inc_id2>
+				<ver_status>1</ver_status>
+			</version>
+
+		</pageversions>
+		<languages>			<language>
+				<lng_id>0</lng_id>
+				<pag_titel></pag_titel>
+			</language>
+		</languages>
+		<sequence_data>
+			<component>
+				<com_id>1101</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>1</dat_pos>
+				<dat_comdata>YToyOntzOjM6ImJleiI7czoyOToiRGVtb25zdHJhdGlvbiBhbGxlciBCYXVzdGVpbmUiO3M6Nzoic3VibGluZSI7czowOiIiO30=</dat_comdata>
+				<dat_fullsearch>Demonstration aller Bausteine|</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1001</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>2</dat_pos>
+				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjE0OiJSaWNodGV4dGFic2F0eiI7czo0OiJ0ZXh0IjtzOjU1OiJEaWVzZSBTZWl0ZSBsaXN0ZXQgYWxsZSBCYXVzdGVpbmUgZGllc2VyIERlbW9uc3RyYXRpb24uIjtzOjY6ImltZ19pZCI7czoxOiIwIjtzOjM6ImFsdCI7czowOiIiO3M6MTU6ImJpbGRhdXNyaWNodHVuZyI7czo2OiJyZWNodHMiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMCI7fQ==</dat_comdata>
+				<dat_fullsearch>Richtextabsatz|Diese Seite listet alle Bausteine dieser Demonstration.</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1001</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>3</dat_pos>
+				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjE0OiJSaWNodGV4dGFic2F0eiI7czo0OiJ0ZXh0IjtzOjkyOiJTaWUgayZvdW1sO25uZW4gbmF0JnV1bWw7cmxpY2ggZiZ1dW1sO3IgSWhyZSBBbndlbmR1bmcga29tcGxldHQgYW5kZXJlIEJhdXN0ZWluZSBlbnR3aWNrbGVuLiI7czo2OiJpbWdfaWQiO3M6MToiNiI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMiI7fQ==</dat_comdata>
+				<dat_fullsearch>Richtextabsatz|Sie k&#38;ouml;nnen nat&#38;uuml;rlich f&#38;uuml;r Ihre Anwendung komplett andere Bausteine entwicklen.</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1103</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>4</dat_pos>
+				<dat_comdata>YTo1OntzOjY6ImFuemFobCI7aTozO3M6NToidGV4dDEiO3M6NzoiUHVua3QgMSI7czo1OiJ0ZXh0MiI7czo3OiJQdW5rdCAyIjtzOjU6InRleHQzIjtzOjc6IlB1bmt0IDMiO3M6ODoiaGVhZGxpbmUiO3M6MTA6IkF1ZnrkaGx1bmciO30=</dat_comdata>
+				<dat_fullsearch>Punkt 1|Punkt 2|Punkt 3|</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1104</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>5</dat_pos>
+				<dat_comdata>YTowOnt9</dat_comdata>
+				<dat_fullsearch></dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1002</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>6</dat_pos>
+				<dat_comdata>YToxOntzOjQ6Imh0bWwiO3M6MTA2OiI8YnIvPgo8Ymxpbms+PG1hcnF1ZWU+RGllc2VyIFRhZyBpc3QgbmF0/HJsaWNoIG5pY2h0IHZhbGlkZS4gKEhUTUwtQmF1c3RlaW4pPC9tYXJxdWVlPjwvYmxpbms+Cjxici8+Cjxici8+Ijt9</dat_comdata>
+				<dat_fullsearch>
+Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
+
+</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1102</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>7</dat_pos>
+				<dat_comdata>YTozOntzOjY6ImltZ19pZCI7czoxOiI1IjtzOjM6ImFsdCI7czoxNjoiRWluZmFjaCBlaW4gQmlsZCI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjY6Im1pdHRpZyI7fQ==</dat_comdata>
+				<dat_fullsearch></dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1601</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>8</dat_pos>
+				<dat_comdata>YToyOntzOjg6InZhcmlhYmxlIjtzOjQ6IldlcnQiO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
+				<dat_fullsearch></dat_fullsearch>
+			</component>
+		</sequence_data>
+	</content>
+</phenotype>
