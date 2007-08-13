@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<pag_id>43</pag_id>
+		<importmethod>overwrite</importmethod>
+		<grp_id>2</grp_id>				
+	</meta>
+	<content>
+	<pag_uid>81609c16bb5632e80fd7f369d9611597</pag_uid>
+<pag_bez>Impressum</pag_bez>
+<pag_titel>Impressum</pag_titel>
+<pag_alttitel></pag_alttitel>
+<pag_comment></pag_comment>
+<pag_quickfinder></pag_quickfinder>
+<pag_searchtext></pag_searchtext>
+<pag_url>Impressum.html</pag_url>
+<pag_id_mimikry>1</pag_id_mimikry>
+<pag_id_top>0</pag_id_top>
+<pag_pos>1</pag_pos>
+<pag_cache>86400</pag_cache>
+<pag_status>1</pag_status>
+<usr_id_creator>10</usr_id_creator>
+<pag_creationdate>1162651603</pag_creationdate>
+<usr_id>13</usr_id>
+<pag_date>1162718858</pag_date>
+<pag_props>YTowOnt9</pag_props>
+		<pageversions>  			<version>
+				<ver_id>43</ver_id>
+				<ver_nr>1</ver_nr>
+				<lay_id>1</lay_id>
+				<ver_bez>Version 1</ver_bez>
+				<pag_fullsearch>Impressum|Impressum|Impressum||||Impressum|Zu jeder Website geh&#38;ouml;rt ein Impressum. &#60;br &#47;&#62;
+&#60;br &#47;&#62;
+Dieses hier dient nur dazu zu demonstrieren, wie Phenotype beliebige URIs mit smartUrl aufl&#38;ouml;sen kann, in diesem Fall die URL &#38;quot;Impressum.html&#38;quot; - wenn ihre .htaccess-Datei richtig konfiguriert ist ...&#60;br &#47;&#62;
+&#60;br &#47;&#62;
+Au&#38;szlig;erdem sehen Sie, dass das Men&#38;uuml; links den gleichen Baum zeigt, wie beim Aufruf der Startseite. Diese liegt&#38;nbsp; am Navigations-Mimikry. Diese Seite ist so konfiguriert, dass sie sich, wie die Startseite verh&#38;auml;lt. Das Navigationsinclude muss das nat&#38;uuml;rlich ber&#38;uuml;cksichtigen.|</pag_fullsearch>
+				<script></script>
+				<inc_id1>0</inc_id1>
+				<inc_id2>0</inc_id2>
+				<ver_status>1</ver_status>
+			</version>
+
+		</pageversions>
+		<languages>
+		</languages>
+		<sequence_data>
+			<component>
+				<com_id>1001</com_id>
+				<ver_id>43</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>1</dat_pos>
+				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjk6IkltcHJlc3N1bSI7czo0OiJ0ZXh0IjtzOjU4ODoiWnUgamVkZXIgV2Vic2l0ZSBnZWgmb3VtbDtydCBlaW4gSW1wcmVzc3VtLiA8YnIgLz4NCjxiciAvPg0KRGllc2VzIGhpZXIgZGllbnQgbnVyIGRhenUgenUgZGVtb25zdHJpZXJlbiwgd2llIFBoZW5vdHlwZSBiZWxpZWJpZ2UgVVJJcyBtaXQgc21hcnRVcmwgYXVmbCZvdW1sO3NlbiBrYW5uLCBpbiBkaWVzZW0gRmFsbCBkaWUgVVJMICZxdW90O0ltcHJlc3N1bS5odG1sJnF1b3Q7IC0gd2VubiBpaHJlIC5odGFjY2Vzcy1EYXRlaSByaWNodGlnIGtvbmZpZ3VyaWVydCBpc3QgLi4uPGJyIC8+DQo8YnIgLz4NCkF1JnN6bGlnO2VyZGVtIHNlaGVuIFNpZSwgZGFzcyBkYXMgTWVuJnV1bWw7IGxpbmtzIGRlbiBnbGVpY2hlbiBCYXVtIHplaWd0LCB3aWUgYmVpbSBBdWZydWYgZGVyIFN0YXJ0c2VpdGUuIERpZXNlIGxpZWd0Jm5ic3A7IGFtIE5hdmlnYXRpb25zLU1pbWlrcnkuIERpZXNlIFNlaXRlIGlzdCBzbyBrb25maWd1cmllcnQsIGRhc3Mgc2llIHNpY2gsIHdpZSBkaWUgU3RhcnRzZWl0ZSB2ZXJoJmF1bWw7bHQuIERhcyBOYXZpZ2F0aW9uc2luY2x1ZGUgbXVzcyBkYXMgbmF0JnV1bWw7cmxpY2ggYmVyJnV1bWw7Y2tzaWNodGlnZW4uIjtzOjY6ImltZ19pZCI7czoxOiIwIjtzOjM6ImFsdCI7czowOiIiO3M6MTU6ImJpbGRhdXNyaWNodHVuZyI7czo1OiJsaW5rcyI7czo3OiJsaW5rYmV6IjtzOjA6IiI7czo3OiJsaW5rdXJsIjtzOjA6IiI7czoxMDoibGlua3RhcmdldCI7czo1OiJfc2VsZiI7czo1OiJzdHlsZSI7czoxOiIwIjt9</dat_comdata>
+				<dat_fullsearch>Impressum|Zu jeder Website geh&#38;ouml;rt ein Impressum. &#60;br &#47;&#62;
+&#60;br &#47;&#62;
+Dieses hier dient nur dazu zu demonstrieren, wie Phenotype beliebige URIs mit smartUrl aufl&#38;ouml;sen kann, in diesem Fall die URL &#38;quot;Impressum.html&#38;quot; - wenn ihre .htaccess-Datei richtig konfiguriert ist ...&#60;br &#47;&#62;
+&#60;br &#47;&#62;
+Au&#38;szlig;erdem sehen Sie, dass das Men&#38;uuml; links den gleichen Baum zeigt, wie beim Aufruf der Startseite. Diese liegt&#38;nbsp; am Navigations-Mimikry. Diese Seite ist so konfiguriert, dass sie sich, wie die Startseite verh&#38;auml;lt. Das Navigationsinclude muss das nat&#38;uuml;rlich ber&#38;uuml;cksichtigen.</dat_fullsearch>
+			</component>
+		</sequence_data>
+	</content>
+</phenotype>

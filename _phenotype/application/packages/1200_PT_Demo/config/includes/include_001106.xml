@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>
+		<inc_id>1106</inc_id>
+		<inc_bez>Galeriedetailanzeige</inc_bez>		
+		<inc_rubrik>Galerie</inc_rubrik>
+		<inc_description></inc_description>
+		<inc_usage_layout>0</inc_usage_layout>
+		<inc_usage_includecomponent>1</inc_usage_includecomponent>
+		<inc_usage_page>0</inc_usage_page>
+	</meta>
+	<script>&#60;?
+class PhenotypeInclude_1106 extends PhenotypeInclude
+{
+	&#47;&#47; Galerie Detailansicht
+
+	public $id = 1106;
+
+	function display()
+	{
+		global $myDB;
+		global $myApp;
+		global $myPage;
+		global $myRequest;
+		
+		$pag_id = $myPage-&#62;id;
+		$pag_id_mik = $myRequest-&#62;getI(&#34;pag_id_mik&#34;);
+
+		&#47;&#47; Initialisieren des Smartyzugriffs
+		eval ($this-&#62;initRendering());
+
+		$gal_id = (int)$_REQUEST[&#34;gal_id&#34;];
+		$sql = &#34;SELECT * FROM content_data WHERE dat_id=&#34; . $gal_id . &#34; AND con_id = &#34; .$myApp-&#62;con_id_gallery . &#34; AND dat_status = 1&#34;;
+		$rs = $myDB-&#62;query($sql);
+		if (mysql_num_rows($rs)!=0)
+		{
+			$row = mysql_fetch_array($rs);
+			$myCO = new CO_Gallery();
+			$myCO-&#62;init($row);
+
+			$anzahl = $myCO-&#62;get(&#34;anzahl&#34;);
+			$_images = $myCO-&#62;get(&#34;precalc&#34;);
+
+			$page = 1;
+			if (isset($_REQUEST[&#34;page&#34;]))
+			{
+				$page = (int)$_REQUEST[&#34;page&#34;];
+			}
+
+			$nr = (int)$_REQUEST[&#34;nr&#34;];
+			if ($nr&#62;$anzahl){$nr=$anzahl;}
+			if ($nr&#60;1){$nr=1;}
+			$_images = $myCO-&#62;get(&#34;precalc&#34;);
+			$_image = $_images[$nr];
+	
+			?&#62;
+&#60;div &#62;
+&#60;h1&#62;&#60;?=$myCO-&#62;getH(&#34;bez&#34;)?&#62;&#60;&#47;h1&#62;
+&#60;h2&#62;&#60;?=$_image[0]?&#62;&#60;&#47;h2&#62;
+
+&#60;br &#47;&#62;        
+&#60;div class=&#34;center&#34;&#62;&#60;?if ($nr&#60;$anzahl){?&#62;&#60;a href=&#34;index.php?id=&#60;?=$pag_id?&#62;&#38;amp;&#38;amp;gal_id=&#60;?=$gal_id?&#62;&#38;page=&#60;?=$page?&#62;&#38;nr=&#60;?=$nr+1?&#62;&#38;pag_id_mik=&#60;?=$pag_id_mik?&#62;&#34;&#62;&#60;?}?&#62;&#60;img src=&#34;&#60;?=MEDIABASEURL.&#34;&#47;&#34;.$_image[3]?&#62;&#34; alt=&#34;&#60;?=$_image[0]?&#62;&#34; title=&#34;&#60;?=$_image[0]?&#62;&#34; class=&#34;GalImg&#34;&#47;&#62;&#60;?if ($nr&#60;$anzahl){?&#62;&#60;&#47;a&#62;&#60;?}?&#62;&#60;&#47;div&#62;
+
+&#60;&#47;div&#62;
+
+&#60;div&#62;
+&#60;br&#47;&#62;
+&#60;?=$_image[1]?&#62;
+&#60;br&#47;&#62;
+&#60;br&#47;&#62;
+    &#60;table cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; width=&#34;&#60;?=$_image[4]?&#62;&#34; class=&#34;tableBausteineBackground&#34;&#62;
+        &#60;tr&#62;
+            &#60;td &#62;&#60;?if ($nr&#62;1){?&#62;&#60;a href=&#34;index.php?id=&#60;?=$pag_id?&#62;&#38;amp;&#38;amp;gal_id=&#60;?=$gal_id?&#62;&#38;page=&#60;?=$page?&#62;&#38;nr=&#60;?=$nr-1?&#62;&#38;pag_id_mik=&#60;?=$pag_id_mik?&#62;&#34;&#62;Bild zur&#38;uuml;ck&#60;&#47;a&#62;&#60;?}else{?&#62;&#38;nbsp;&#60;?}?&#62;&#60;&#47;td&#62;
+            &#60;td &#62;&#38;nbsp;&#60;&#47;td&#62;
+&#60;td align=&#34;right&#34;&#62;&#60;?if ($nr&#60;$anzahl){?&#62;&#60;a href=&#34;index.php?id=&#60;?=$pag_id?&#62;&#38;amp;&#38;amp;gal_id=&#60;?=$gal_id?&#62;&#38;page=&#60;?=$page?&#62;&#38;nr=&#60;?=$nr+1?&#62;&#38;pag_id_mik=&#60;?=$pag_id_mik?&#62;&#34;&#62;Bild vor&#60;&#47;a&#62;&#60;?}else{?&#62;&#38;nbsp;&#60;?}?&#62;&#60;&#47;td&#62;
+        &#60;&#47;tr&#62;
+    &#60;&#47;table&#62;
+    
+
+	&#60;p&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;
+&#60;a href=&#34;index.php?id=&#60;?=$pag_id_mik?&#62;&#34;&#62;zur&#38;uuml;ck zur &#38;Uuml;bersicht&#60;&#47;a&#62;
+&#60;&#47;p&#62;
+&#60;&#47;div&#62;      
+			&#60;?
+			}
+		}
+}
+?&#62;</script>
+	<templates>
+   	</templates>
+</phenotype>

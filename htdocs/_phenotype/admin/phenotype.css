@@ -1,0 +1,183 @@
+/* Stylesheet phenotype, Design Sellinger */
+/* Basics */
+body {
+	font-family: sans-serif;
+	background-color: #D3D8DD;
+	margin: 0px 0px 0px 0px;
+	scrollbar-3dlight-color:#B9BBBE;
+    scrollbar-arrow-color: #000000;
+    scrollbar-base-color:#EBEBEE;
+    scrollbar-darkshadow-color:#B9BBBE;
+    scrollbar-face-color:#EBEBEE;
+    scrollbar-highlight-color:#FFFFFF;
+    scrollbar-shadow-color:#EBEBEE;
+	}
+p, td, form {
+	font-size: 11px;
+	font-family: sans-serif;
+	color: #2C1B08;
+	line-height: 16px;
+	padding:0;margin:0;
+	}
+h1	{
+	font-size: 15px;
+	margin:  0px 0px 10px 0px;
+	}
+h3	{
+	font-size: 20px;
+	margin:  0px 0px 10px 0px;
+	}
+.listmenu	{
+	font-family: sans-serif;
+	font-size: 11px;
+	color: #0056C2;
+}
+.input {
+	font-size: 11px;
+	font-family: sans-serif;
+	color: #0056C2;
+	background-color: #FFFFFF;
+	border-top: 1px solid #686F78;
+	border-left: 1px solid #686F78;
+	border-right: 1px solid #D1D6DB;
+	border-bottom: 1px solid #D1D6DB;
+	padding: 2px;
+	}
+
+.input_multiselectbox
+{
+	font-size: 11px;
+	font-family: sans-serif;
+	color: #0056C2;
+	border-top: 1px solid #686F78;
+	border-left: 1px solid #686F78;
+	border-right: 1px solid #D1D6DB;
+	border-bottom: 1px solid #D1D6DB;
+	padding: 2px;
+}
+.buttonGrey2	{
+	background:url(img/b_ongrey2.gif) no-repeat top right;
+	border-width: 0px 0px 0px 0px;
+	font-family: ms trebuchet;
+	font-size: 11px;
+	padding: 3px 5px 7px 0px;
+	margin:  0px 10px 0px 0px;
+	color: #000000;
+}
+.buttonWhite	{
+	background:url(img/b_onwhite.gif) no-repeat top right;
+	border-width: 0px 0px 0px 0px;
+	font-family: ms trebuchet;
+	font-size: 11px;
+	padding: 3px 5px 7px 0px;
+	margin:  0px 10px 0px 0px;
+	color: #000000;
+}
+/* Colors */
+.alert {
+	padding: 10px 10px 10px 20px;
+	color: #FFFFFF;
+	font-weight: bold;
+	}
+.login {
+	
+	margin: 10px 10px 10px 20px;
+	color: #FFFFFF;
+	}
+.coolgrey2 {
+	background-color: #D1D6DB;
+	}
+	
+/* TopRow */
+.top {
+	background-color: #000000;
+	color: #FFFFFF;
+	}
+.topShadow {
+	background: url(img/shadow_head.gif) repeat-x;
+	}
+
+/* Desktop */
+.col01 {
+	padding: 0px 0px 0px 30px;
+}
+
+/* windows */
+.window {
+	border-left: 3px solid #FFFFFF;
+	border-right: 3px solid #FFFFFF;
+	background-color: #E9ECEE;
+	}
+.windowMenu {
+	padding: 5px 0px 5px 0px;
+	border-left: 3px solid #FFFFFF;
+	border-right: 3px solid #FFFFFF;
+	background-color: #FFFFFF;
+	}
+.windowTitle {
+	padding: 2px 10px 2px 10px;
+	font-size: 14px;
+	color: #0056C2;
+	}
+
+.windowError {color: #0056C2;}
+.windowError h1{font-size: 14px;color: #fff;padding:3px 10px 3px 10px;margin:0px 0px 5px 0px;background-color:#ca0000;}
+.windowError ul{padding:0;margin:0px 10px 5px 30px;}
+.windowError p, li{padding: 2px 10px 2px 10px;font-size: 11px;color: #000;}
+
+.windowAlert {color: #0056C2;}
+.windowAlert h1{font-size: 14px;color: #fff;padding:3px 10px 3px 10px;margin:0px 0px 5px 0px;background-color:#EBEB41;}
+.windowAlert ul{padding:0;margin:0px 10px 5px 30px;}
+.windowAlert p, li{padding: 2px 10px 2px 10px;font-size: 11px;color: #000;}
+
+.windowInfo {color: #0056C2;}
+.windowInfo h1{font-size: 14px;color: #fff;padding:3px 10px 3px 10px;margin:0px 0px 5px 0px;background-color:#00ca00;}
+.windowInfo ul{padding:0;margin:0px 10px 5px 30px;}
+.windowInfo p, li{padding: 2px 10px 2px 10px;font-size: 11px;color: #000;}
+
+.windowFeedback {color: #0056C2;}
+.windowFeedback h1{font-size: 14px;color: #fff;padding:3px 10px 3px 10px;margin:0px 0px 5px 0px;background-color:#D1D6DB;}
+.windowFeedback ul{padding:0;margin:0px 10px 5px 30px;}
+.windowFeedback p, li{padding: 2px 10px 2px 10px;font-size: 11px;color: #000;}
+
+.windowTab {
+	border: 3px solid #FFFFFF;
+	background-color: #FFFFFF;
+	}
+.windowHeaderGrey2 {
+	padding: 3px 0px 3px 0px;
+	border: 3px solid #FFFFFF;
+	background-color: #D1D6DB;
+	}
+.windowFooterWhite {
+	border: 3px solid #FFFFFF;
+	background-color: #FFFFFF;
+	}
+.windowFooterGrey2 {
+	border: 3px solid #FFFFFF;
+	background-color: #D1D6DB;
+	}
+.windowBottomShadow {
+	background: url(img/win_sh_bo_mi.gif) repeat-x;
+	}
+.windowRightShadow {
+	background: url(img/win_sh_ri_mi.gif) repeat-y;
+	}
+.padding20 {
+	padding: 5px 10px 5px 20px;
+	}
+
+/* Textcolor */
+.blue {
+	color: #0056C2;
+	}
+.grey3 {
+	color: #A5AEB9;
+	}
+.grey4 {
+	color: #686F78;
+	}
+	
+	
+	
+	

@@ -1,0 +1,17 @@
+	body
+	{
+		background-color: #ffffff;
+		padding: 5px 5px 5px 5px;
+		margin: 0px;
+	}
+
+	body, td
+	{
+		font-family: Arial, Verdana, Sans-Serif;
+		font-size: 12px;
+	}
+
+	a
+	{
+		color: #0000FF !important;	/* For Firefox... mark as important, otherwise it becomes black */
+	}

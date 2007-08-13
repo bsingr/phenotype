@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<com_id>1003</com_id>
+		<com_bez>Include</com_bez>		
+		<com_rubrik>System</com_rubrik>
+		<com_description>## Baustein 1003 - Include</com_description>
+	</meta>
+	<script>&#60;? 
+class PhenotypeComponent_1003 extends PhenotypeComponent 
+{ 
+  var $tool_type = 1003; 
+  var $bez=&#34;Include&#34;;
+
+
+  function setDefaultProperties() 
+  { 
+      $this-&#62;set(&#34;inc_id&#34;,&#34;0&#34;); 
+	  $this-&#62;set(&#34;cache&#34;,&#34;1&#34;);
+  } 
+    
+  function edit() 
+  { 
+    global $myDB; 
+
+  ?&#62;       &#60;select name=&#34;&#60;?=$this-&#62;formid?&#62;inc_id&#34; class=&#34;input&#34; style=&#34;width:300px&#34;&#62; 
+      &#60;option value=&#34;0&#34;&#62;...&#60;&#47;option&#62; 
+      &#60;? 
+      $sql = &#34;SELECT * FROM include WHERE inc_usage_includecomponent = 1 ORDER BY inc_rubrik,inc_bez&#34;; 
+      $rs = $myDB-&#62;query($sql); 
+      while ($row=mysql_fetch_array($rs)) 
+      { 
+        $selected = &#34;&#34;; 
+        if ($row[&#34;inc_id&#34;]==$this-&#62;get(&#34;inc_id&#34;)){$selected = &#34;selected&#34;;} 
+      ?&#62; 
+      &#60;option &#60;?=$selected?&#62; value=&#34;&#60;?=$row[&#34;inc_id&#34;]?&#62;&#34;&#62;&#60;?=$row[&#34;inc_rubrik&#34;].&#34;: &#34;.$row[&#34;inc_bez&#34;]?&#62;&#60;&#47;option&#62; 
+      &#60;? 
+      } 
+      ?&#62; 
+      &#60;&#47;select&#62;&#60;br&#62;Cache&#60;br&#62;
+	  &#60;select name=&#34;&#60;?=$this-&#62;formid?&#62;cache&#34; class=&#34;input&#34; style=&#34;width:80px&#34;&#62; 
+      &#60;option value=&#34;1&#34; &#62;wie Seite&#60;&#47;option&#62;
+	  &#60;option value=&#34;0&#34; &#60;?if ($this-&#62;get(&#34;cache&#34;)==&#34;0&#34;){echo &#34;selected&#34;;}?&#62;&#62;nie&#60;&#47;option&#62;
+	  &#60;?
+  } 
+
+  function update() 
+  { 
+    &#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools 
+    $this-&#62;fset(&#34;inc_id&#34;); 
+	$this-&#62;fset(&#34;cache&#34;); 
+  } 
+    
+
+  function render($context) 
+  { 
+    &#47;&#47; Notwendig, um die Smartyengine richtig zu initialisieren 
+    eval ($this-&#62;initRendering()); 
+    
+    global $myPage;  
+
+    $html = &#34;&#34;; 
+    $inc_id = $this-&#62;get(&#34;inc_id&#34;); 
+    if ($inc_id!=&#34;0&#34;) 
+    { 
+      if ($myPage-&#62;buildingcache==0)
+	  {
+	    $cname = &#34;PhenotypeInclude_&#34; . $inc_id;
+		$myInc = new $cname();
+	    $html = $myInc-&#62;execute();
+	  }
+	  else
+	  {
+	    if ($this-&#62;get(&#34;cache&#34;)==1)
+		{
+		  $cname = &#34;PhenotypeInclude_&#34; . $inc_id;
+		  $myInc = new $cname();
+	      $html = $myInc-&#62;execute();
+		}
+		else
+		{
+		  $html = &#39;&#60;?$myPage-&#62;includenocache=1?&#62;&#39;;&#47;&#47; Notwendig fuer Content-Statistik
+		  $html .= &#39;&#60;?$myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;execute()?&#62;&#39;;
+          $html .= &#39;&#60;?$myPage-&#62;includenocache=0?&#62;&#39;;
+		}
+      } 
+	}  
+    return $html;    
+  }
+  
+  function displayXML($style=1)
+  {
+  	 global $myPage;  
+  	 ?&#62;
+  	 &#60;component com_id=&#34;1003&#34; type=&#34;Include&#34;&#62;
+     &#60;content&#62;
+  	 &#60;?
+  	 $inc_id = $this-&#62;get(&#34;inc_id&#34;); 
+     if ($inc_id!=&#34;0&#34;) 
+     { 
+	  	  if ($myPage-&#62;buildingcache==0)
+		  {
+		    &#47;&#47;$myInc = new PhenotypeInclude($inc_id);
+			$cname = &#34;PhenotypeInclude_&#34; . $inc_id;
+  		    $myInc = new $cname();
+	   		$xml = $myInc-&#62;renderXML();
+	   		echo $xml;
+		  }
+		  else
+		  {
+		    if ($this-&#62;get(&#34;cache&#34;)==1)
+			{
+			   $cname = &#34;PhenotypeInclude_&#34; . $inc_id;
+		       $myInc = new $cname();
+			   $xml = $myInc-&#62;renderXML();
+			   echo $xml;
+			}
+			else
+			{
+			   echo  &#39;&#60;?$myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;renderXML()?&#62;&#39;;
+  
+			}
+      } 
+  	  
+
+     }
+     ?&#62;
+     &#60;&#47;content&#62;
+     &#60;&#47;component&#62;
+     &#60;?
+     return true;
+  }  
+} 
+?&#62;</script>
+	<templates>
+   	</templates>
+	<componentgroups><group>
+			<cog_id>1</cog_id>
+			<cog_bez>Default</cog_bez>
+			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_pos>0</cog_pos>
+		  </group></componentgroups>
+</phenotype>

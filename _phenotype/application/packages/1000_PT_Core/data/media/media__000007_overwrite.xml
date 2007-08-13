@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<med_id>7</med_id>
+		<med_type>1</med_type>
+		<med_mimetype></med_mimetype>
+		<med_id_local>7</med_id_local>
+		<importmethod>overwrite</importmethod>
+		<grp_id>1</grp_id>		
+	</meta>
+	<content>
+		<med_bez>konfiguration.jpg</med_bez>
+		<med_bez_original>konfiguration.jpg</med_bez_original>
+		<med_keywords></med_keywords>
+		<med_comment>Thumbnails für Contentobjekte</med_comment>		
+		<med_physical_folder>I0610420</med_physical_folder>   	 
+		<med_logical_folder1>_system</med_logical_folder1>
+		<med_logical_folder2></med_logical_folder2>
+		<med_logical_folder3></med_logical_folder3>
+		<usr_id_creator>0</usr_id_creator>
+		<med_creationdate>0</med_creationdate>
+		<usr_id>1</usr_id>
+		<med_date>1098390582</med_date>
+		<binary>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAYEBAQFBAYFBQYJBgUGCQsIBgYICwwKCgsKCgwQDAwMDAwMEAwODxAPDgwTExQUExMcGxsbHCAgICAgICAgICD/2wBDAQcHBw0MDRgQEBgaFREVGiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICD/wAARCAAoADwDAREAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAUDBwIEBgH/xAA2EAABAgQEAgkDAQkAAAAAAAABAgMABAURBhIUIROSIjE0QVFUYXOyBxVTFiMlMkJxgZHB0f/EABgBAQEBAQEAAAAAAAAAAAAAAAABAgME/8QAHBEBAQADAAMBAAAAAAAAAAAAAAECAxEEEiEx/9oADAMBAAIRAxEAPwC5ZOTlFSjClMNkltJJKR4R0cxkpOp0uRjU5c/BsnNlva9vCAl0Ml5dvkTDqjQyXl2+RMOg0Ml5dvkTDoR1rEuE6Q1Mqf4brsottqYlmUIU6lbqc6AU7Wujpb90c9u6YTterw/Cz8jP1xbNMq+GKkphuVUwZiYY1TcsUpDvBzZSvJ12CjaNYZ+07HHdpuvK45fsatdaabm0JbQEDhg2SLd58I6RxpjN/cf0/wDu0gTvBQGVK6gdrn+wjKq+w7MKpeM5j7vNftstnXnD1qNlRR3D+Jg0ouCVLkle2qQtJB9QB/2Ip024lxAWndKhcRBlAUl9RHZynfUOaFBkkV96rSzK65R1g2aUwAhh3i7BBUnqEYzxl+X67ad2Wu+2N5Wf0k1VSxvUJ+s2p9akpdMq1RAhSOBKZs4KSr+MKVveLIxnlb9v21ZOIe2o9sfIx1xcqdSPYpf20fGM1pWs59uTjyqPz6QtlkZsh/mVkSAB6mKiems2orjhmgkJcuJPNsTttl64DrGKs44iUDAyNbBZ8TbcD0ERTOXni6q2QAd/S/1EC+SwpISmJKlXm1LVM1Tg6hC7FI4DYaTk226I39YDxzCdPVi1vE6VLRPoldEtItkU3n4lyLXzA994CLEPbUe2PkY3izTqR7FL+2j4xmtOZxZQqvUZ9lyXbaVLs7pBJuVd5Vt/iAnpFEmXFOfdZRlO3QU0Lf1v6wG+7QmkcIS+yEnpJJPV6QHrza+I0Et8IJJzq8YBiy4ChIOxPVEGfERYG/XsIBBiHtqPbHyMbxZprJzkomUYSp9sENpBBUPCMql10l5hvnTDijXSXmG+dMOA10l5hvnTDgNbJfnb50w4DWSP52+dMOA1kj+dvnTDgRV11pybQptYWnhgXSb958I1Ga//2Q==</binary>
+		<versions></versions>
+	</content>
+</phenotype>

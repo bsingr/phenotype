@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>2.4</ptversion>
+		<ptsubversion>0</ptsubversion>
+		<con_id>1102</con_id>
+		<con_bez>Kontakteintrag</con_bez>		
+		<con_rubrik>Examples</con_rubrik>
+		<con_description></con_description>
+		<con_anlegen>0</con_anlegen>
+		<con_bearbeiten>1</con_bearbeiten>
+		<con_loeschen>1</con_loeschen>
+	</meta>
+	<script>&#60;?
+class PhenotypeContent_1102 extends PhenotypeContent
+{
+  // Kontakteintrag
+  var $content_type = 1102;
+  var $skins = Array(); // erlaubte Skins
+  
+  function setDefaultProperties()
+  {
+      $this-&#62;set(&#34;bez&#34;,&#34;Neuer Eintrag&#34;);
+      $this-&#62;set(&#34;datum&#34;,time());    
+  }
+  
+  function init($row,$block_nr=0) 
+  { 
+    parent::init($row,$block_nr); 
+     
+    $this-&#62;form_textarea(&#34;Mail&#34;,&#34;mail&#34;,400,20);
+ 
+  }
+  
+  function attachKeyFields()
+  {
+    $this-&#62;setKey1($this-&#62;get(&#34;datum&#34;));
+  }
+  
+  function buildFullText()
+  {
+  	return ($this-&#62;get(&#34;mail&#34;));
+  }
+  
+
+}
+?&#62;</script>
+	<templates>
+   	</templates>
+</phenotype>

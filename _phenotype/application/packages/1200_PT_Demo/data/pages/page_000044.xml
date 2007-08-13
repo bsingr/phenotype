@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<pag_id>44</pag_id>
+		<importmethod>overwrite</importmethod>
+		<grp_id>3</grp_id>				
+	</meta>
+	<content>
+	<pag_uid>f6cf1a80368a0ab5d453be709af320c2</pag_uid>
+<pag_bez>Galerie</pag_bez>
+<pag_titel>Galerie</pag_titel>
+<pag_alttitel></pag_alttitel>
+<pag_comment></pag_comment>
+<pag_quickfinder></pag_quickfinder>
+<pag_searchtext></pag_searchtext>
+<pag_url>Galerie.html</pag_url>
+<pag_id_mimikry>44</pag_id_mimikry>
+<pag_id_top>0</pag_id_top>
+<pag_pos>1</pag_pos>
+<pag_cache>0</pag_cache>
+<pag_status>1</pag_status>
+<usr_id_creator>10</usr_id_creator>
+<pag_creationdate>1162651643</pag_creationdate>
+<usr_id>13</usr_id>
+<pag_date>1162718627</pag_date>
+<pag_props>YTowOnt9</pag_props>
+		<pageversions>  			<version>
+				<ver_id>44</ver_id>
+				<ver_nr>1</ver_nr>
+				<lay_id>1</lay_id>
+				<ver_bez>Version 1</ver_bez>
+				<pag_fullsearch>Galerie|Galerie|Galerie|||||</pag_fullsearch>
+				<script></script>
+				<inc_id1>0</inc_id1>
+				<inc_id2>0</inc_id2>
+				<ver_status>1</ver_status>
+			</version>
+
+		</pageversions>
+		<languages>
+		</languages>
+		<sequence_data>
+			<component>
+				<com_id>1003</com_id>
+				<ver_id>44</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>1</dat_pos>
+				<dat_comdata>YToyOntzOjY6ImluY19pZCI7czo0OiIxMTA2IjtzOjU6ImNhY2hlIjtzOjE6IjAiO30=</dat_comdata>
+				<dat_fullsearch></dat_fullsearch>
+			</component>
+		</sequence_data>
+	</content>
+</phenotype>

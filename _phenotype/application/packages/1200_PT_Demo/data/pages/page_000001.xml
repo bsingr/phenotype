@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<pag_id>1</pag_id>
+		<importmethod>overwrite</importmethod>
+		<grp_id>1</grp_id>				
+	</meta>
+	<content>
+	<pag_uid>d3d760aea54607fe836ce16207354cac</pag_uid>
+<pag_bez>Startseite</pag_bez>
+<pag_titel>Startseite</pag_titel>
+<pag_alttitel></pag_alttitel>
+<pag_comment></pag_comment>
+<pag_quickfinder></pag_quickfinder>
+<pag_searchtext></pag_searchtext>
+<pag_url>Startseite.html</pag_url>
+<pag_id_mimikry>1</pag_id_mimikry>
+<pag_id_top>0</pag_id_top>
+<pag_pos>1</pag_pos>
+<pag_cache>86400</pag_cache>
+<pag_status>1</pag_status>
+<usr_id_creator>10</usr_id_creator>
+<pag_creationdate>1153067027</pag_creationdate>
+<usr_id>10</usr_id>
+<pag_date>1162664748</pag_date>
+<pag_props>YTowOnt9</pag_props>
+		<pageversions>  			<version>
+				<ver_id>1</ver_id>
+				<ver_nr>1</ver_nr>
+				<lay_id>1</lay_id>
+				<ver_bez>Version 1</ver_bez>
+				<pag_fullsearch>Startseite|Startseite|Startseite|||||Ausführliche Dokumentation|Ausf&#38;uuml;hrliche Info zu Phenotype finden Sie unter&#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62; www.phenotype-cms.de&#60;&#47;a&#62;.|Herzlich Willkommen|auf der Phenotype Demonstrations Website||Phenotype arbeitet seiten- und inhaltorientiert. &#60;br &#47;&#62;
+&#60;br &#47;&#62;
+Dieser Text wurde direkt an dieser Seite mit dem Richtextabsatz-Baustein platziert.&#60;br &#47;&#62;
+&#60;br &#47;&#62;
+Gleich folgen noch weitere per &#38;quot;Baustein&#38;quot; zugeordnete Inhalte: &#60;br &#47;&#62;
+&#60;ul&#62;
+    &#60;li&#62;eine Tabelle&#60;&#47;li&#62;
+    &#60;li&#62;ein Galerie-Include und&#60;br &#47;&#62;
+    &#60;&#47;li&#62;
+    &#60;li&#62;ein weiterer Richtextabsatz - diesmal mit anderem Style &#60;&#47;li&#62;
+&#60;&#47;ul&#62;||</pag_fullsearch>
+				<script></script>
+				<inc_id1>0</inc_id1>
+				<inc_id2>0</inc_id2>
+				<ver_status>1</ver_status>
+			</version>
+
+		</pageversions>
+		<languages>			<language>
+				<lng_id>0</lng_id>
+				<pag_titel></pag_titel>
+			</language>
+		</languages>
+		<sequence_data>
+			<component>
+				<com_id>1101</com_id>
+				<ver_id>1</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>1</dat_pos>
+				<dat_comdata>YToyOntzOjM6ImJleiI7czoxOToiSGVyemxpY2ggV2lsbGtvbW1lbiI7czo3OiJzdWJsaW5lIjtzOjQwOiJhdWYgZGVyIFBoZW5vdHlwZSBEZW1vbnN0cmF0aW9ucyBXZWJzaXRlIjt9</dat_comdata>
+				<dat_fullsearch>Herzlich Willkommen|auf der Phenotype Demonstrations Website</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1001</com_id>
+				<ver_id>1</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>2</dat_pos>
+				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjA6IiI7czo0OiJ0ZXh0IjtzOjQwNDoiUGhlbm90eXBlIGFyYmVpdGV0IHNlaXRlbi0gdW5kIGluaGFsdG9yaWVudGllcnQuIDxiciAvPg0KPGJyIC8+DQpEaWVzZXIgVGV4dCB3dXJkZSBkaXJla3QgYW4gZGllc2VyIFNlaXRlIG1pdCBkZW0gUmljaHRleHRhYnNhdHotQmF1c3RlaW4gcGxhdHppZXJ0LjxiciAvPg0KPGJyIC8+DQpHbGVpY2ggZm9sZ2VuIG5vY2ggd2VpdGVyZSBwZXIgJnF1b3Q7QmF1c3RlaW4mcXVvdDsgenVnZW9yZG5ldGUgSW5oYWx0ZTogPGJyIC8+DQo8dWw+DQogICAgPGxpPmVpbmUgVGFiZWxsZTwvbGk+DQogICAgPGxpPmVpbiBHYWxlcmllLUluY2x1ZGUgdW5kPGJyIC8+DQogICAgPC9saT4NCiAgICA8bGk+ZWluIHdlaXRlcmVyIFJpY2h0ZXh0YWJzYXR6IC0gZGllc21hbCBtaXQgYW5kZXJlbSBTdHlsZSA8L2xpPg0KPC91bD4iO3M6NjoiaW1nX2lkIjtzOjE6IjAiO3M6MzoiYWx0IjtzOjA6IiI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjU6ImxpbmtzIjtzOjc6ImxpbmtiZXoiO3M6MDoiIjtzOjc6Imxpbmt1cmwiO3M6MDoiIjtzOjEwOiJsaW5rdGFyZ2V0IjtzOjU6Il9zZWxmIjtzOjU6InN0eWxlIjtzOjE6IjAiO30=</dat_comdata>
+				<dat_fullsearch>|Phenotype arbeitet seiten- und inhaltorientiert. &#60;br &#47;&#62;
+&#60;br &#47;&#62;
+Dieser Text wurde direkt an dieser Seite mit dem Richtextabsatz-Baustein platziert.&#60;br &#47;&#62;
+&#60;br &#47;&#62;
+Gleich folgen noch weitere per &#38;quot;Baustein&#38;quot; zugeordnete Inhalte: &#60;br &#47;&#62;
+&#60;ul&#62;
+    &#60;li&#62;eine Tabelle&#60;&#47;li&#62;
+    &#60;li&#62;ein Galerie-Include und&#60;br &#47;&#62;
+    &#60;&#47;li&#62;
+    &#60;li&#62;ein weiterer Richtextabsatz - diesmal mit anderem Style &#60;&#47;li&#62;
+&#60;&#47;ul&#62;</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1105</com_id>
+				<ver_id>1</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>3</dat_pos>
+				<dat_comdata>YToxODp7czo1OiJzdHlsZSI7aToxO3M6NToid2lkdGgiO3M6MzoiNDUwIjtzOjg6ImFuemFobF94IjtpOjI7czo4OiJhbnphaGxfeSI7aTo1O3M6MTA6InRjb25feDFfeTEiO3M6NzoiRmVhdHVyZSI7czoxMDoidGNvbl94MV95MiI7czo5OiJNZWRpYWJhc2UiO3M6MTA6InRjb25feDFfeTMiO3M6MTY6IlNlaXRlbnZlcndhbHR1bmciO3M6MTA6InRjb25feDJfeTEiO3M6OToiRXJrbORydW5nIjtzOjEwOiJ0Y29uX3gyX3kyIjtzOjEwMToiTWVkaWVudmVyd2FsdHVuZyBtaXQgZnJlaWVyIEthdGVnb3Jpc2llcnVuZywgYnJvd3Nlcmdlc3T8dHplciBCaWxkYmVhcmJlaXR1bmcgdW5kIFZhcmlhbnRlbm1hbmFnZW1lbnQiO3M6MTA6InRjb25feDJfeTMiO3M6OTM6IkJlc3T8Y2t1bmcgdm9uIFNlaXRlbiD8YmVyIGZyZWkgcHJvZ3JhbW1pZXJiYXJlICJCYXVzdGVpbmUiLCB6LkIuIFRhYmVsbGVuLCBUZWFzZXIsIFZvdGUgdXN3LiI7czoxMDoidGNvbl94M195MSI7czowOiIiO3M6MTA6InRjb25feDNfeTIiO3M6MDoiIjtzOjEwOiJ0Y29uX3gzX3kzIjtzOjA6IiI7czo4OiJoZWFkbGluZSI7czozNDoiRGFzIGlzdCBlaW5lIGJlaXNwaWVsaGFmdGUgVGFiZWxsZSI7czoxMDoidGNvbl94MV95NCI7czoxNzoiQ29udGVudHZlcndhbHR1bmciO3M6MTA6InRjb25feDJfeTQiO3M6MTIyOiJWZXJ3YWx0dW5nIHZvbiBtZWhyZmFjaCB6dSB2ZXJ3ZW5kZW5kZW4gSW5oYWx0ZW4g/GJlciBDb250ZW50b2JqZWt0ZSBtaXQgZnJlaSBwcm9ncmFtbWllcmJhcmVuICJpbnRlbGxpZ2VudGVuIiBGb3JtdWxhcmVuLiI7czoxMDoidGNvbl94MV95NSI7czozOiIuLi4iO3M6MTA6InRjb25feDJfeTUiO3M6MTg6InVuZCB2aWVsZXMgbWVociA7KSI7fQ==</dat_comdata>
+				<dat_fullsearch></dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1601</com_id>
+				<ver_id>1</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>4</dat_pos>
+				<dat_comdata>YToyOntzOjg6InZhcmlhYmxlIjtzOjQ6IldlcnQiO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
+				<dat_fullsearch></dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1001</com_id>
+				<ver_id>1</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>5</dat_pos>
+				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjI2OiJBdXNm/GhybGljaGUgRG9rdW1lbnRhdGlvbiI7czo0OiJ0ZXh0IjtzOjExNjoiQXVzZiZ1dW1sO2hybGljaGUgSW5mbyB6dSBQaGVub3R5cGUgZmluZGVuIFNpZSB1bnRlcjxhIGhyZWY9Imh0dHA6Ly93d3cucGhlbm90eXBlLWNtcy5kZSI+IHd3dy5waGVub3R5cGUtY21zLmRlPC9hPi4iO3M6NjoiaW1nX2lkIjtzOjE6IjAiO3M6MzoiYWx0IjtzOjA6IiI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjU6ImxpbmtzIjtzOjc6ImxpbmtiZXoiO3M6MDoiIjtzOjc6Imxpbmt1cmwiO3M6MDoiIjtzOjEwOiJsaW5rdGFyZ2V0IjtzOjU6Il9zZWxmIjtzOjU6InN0eWxlIjtzOjE6IjIiO30=</dat_comdata>
+				<dat_fullsearch>Ausführliche Dokumentation|Ausf&#38;uuml;hrliche Info zu Phenotype finden Sie unter&#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62; www.phenotype-cms.de&#60;&#47;a&#62;.</dat_fullsearch>
+			</component>
+		</sequence_data>
+	</content>
+</phenotype>

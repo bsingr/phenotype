@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<com_id>1001</com_id>
+		<com_bez>Richtextabsatz</com_bez>		
+		<com_rubrik>Textbausteine</com_rubrik>
+		<com_description>## Baustein 1001 - Richtextabsatz
+
+Mit diesem Bausteinen können bereits die meisten Anforderungen einer einfachen Website abegedeckt werden. Ein Absatz besteht aus Überschrift, Text, Bild und Link.
+
+</com_description>
+	</meta>
+	<script>&#60;? 
+class PhenotypeComponent_1001 extends PhenotypeComponent
+{
+	var $tool_type = 1001;
+	var $bez = &#34;Richtextabsatz&#34;;
+
+	function setDefaultProperties()
+	{
+		$this-&#62;set(&#34;headline&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;text&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;img_id&#34;,0);
+		$this-&#62;set(&#34;alt&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;bildausrichtung&#34;,&#34;links&#34;);
+		$this-&#62;set(&#34;linkbez&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;linkurl&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;linktarget&#34;,&#34;_self&#34;);
+	}
+
+	function edit()
+	{
+		global $myAdm;
+		
+		$_options = Array(0=&#62;&#34;Standard&#34;,2=&#62;&#34;Box&#34;);
+        $options = $myAdm-&#62;buildOptionsByNamedArray($_options,$this-&#62;get(&#34;style&#34;));
+        $this-&#62;form_select(&#34;Style&#34;,&#34;style&#34;,$options,150);
+        echo &#34;&#60;br&#62;&#34;;
+        
+        
+		$this-&#62;form_textfield(&#34;Überschrift&#34;,&#34;headline&#34;,$this-&#62;get(&#34;headline&#34;));
+		echo &#34;&#60;br&#62;&#34;;
+		$this-&#62;form_image(&#34;&#34;,$this-&#62;get(&#34;img_id&#34;),-1,1,0,0,$this-&#62;get(&#34;alt&#34;),$this-&#62;get(&#34;bildausrichtung&#34;),2);
+
+
+    ?&#62; 
+    &#60;br&#62; 
+    &#60;table width=&#34;408&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;tableBausteineBackground&#34;&#62; 
+    &#60;tr&#62;&#60;td nowrap&#62; 
+    &#60;?
+    $this-&#62;form_Richtext(&#34;text&#34;,$this-&#62;get(&#34;text&#34;),80,16);
+    ?&#62; 
+    &#60;&#47;td&#62;&#60;&#47;tr&#62;&#60;&#47;table&#62; &#60;br&#62; 
+    &#60;? 
+    $this-&#62;form_link(&#34;link&#34;,$this-&#62;get(&#34;linkbez&#34;),$this-&#62;get(&#34;linkurl&#34;),$this-&#62;get(&#34;linktarget&#34;));
+    ?&#62;
+    &#60;br&#62;Link-Anchor: #t&#60;?=$this-&#62;id?&#62;
+    &#60;?
+	}
+
+	function update()
+	{
+		global $myApp;
+
+		$this-&#62;fset(&#34;style&#34;);
+		$this-&#62;fset(&#34;headline&#34;);
+		$text = $this-&#62;fget(&#34;text&#34;);
+		&#47;&#47; Nur erlaubte Tags !!
+		$text = $myApp-&#62;richtext_strip_tags($text);
+		$this-&#62;set(&#34;text&#34;,$text);
+		$this-&#62;fset(&#34;img_id&#34;);
+		$this-&#62;fset(&#34;bildausrichtung&#34;,&#34;img_align&#34;);
+		if ($this-&#62;get(&#34;img_id&#34;)!=0)
+		{
+			$this-&#62;fset(&#34;alt&#34;,&#34;img_alt&#34;);
+		}
+		else
+		{
+			$this-&#62;set(&#34;alt&#34;,&#34;&#34;);
+		}
+		if ($this-&#62;get(&#34;bildausrichtung&#34;)==&#34;&#34;)
+		{
+			$this-&#62;set(&#34;bildausrichtung&#34;,&#34;links&#34;);
+		}
+		$this-&#62;fset(&#34;linkbez&#34;,&#34;linkbez&#34;);
+		$this-&#62;fset(&#34;linkurl&#34;,&#34;linkurl&#34;);
+		$this-&#62;fset(&#34;linktarget&#34;,&#34;linktarget&#34;);
+	}
+
+
+	function setFullSearch()
+	{
+		$s = $this-&#62;get(&#34;headline&#34;) . &#34;|&#34; . $this-&#62;get(&#34;text&#34;);
+		return ($s);
+	}
+
+	function render($context)
+	{
+
+		&#47;&#47; Notwendig, um die Smartyengine richtig zu initialisieren
+		eval ($this-&#62;initRendering());
+
+		$template = $TPL_DEFAULT;
+
+		if ($this-&#62;get(&#34;style&#34;)==2)
+		{
+			$mySmarty-&#62;assign(&#34;box&#34;,1);
+		}
+		
+		switch ($this-&#62;get(&#34;bildausrichtung&#34;))
+		{
+			case &#34;links&#34;:
+				$class = &#34;imageleft&#34;;
+				break;
+
+			case &#34;rechts&#34;:
+				$class = &#34;imageright&#34;;
+				break;
+
+			case &#34;mittig&#34;:
+				$template = $TPL_TOPIMAGE;
+				$class = &#34;imagecenter&#34;;
+				break;
+		}
+
+
+
+		if ($this-&#62;get(&#34;img_id&#34;)!=0)
+		{
+			$alt = $this-&#62;get(&#34;alt&#34;);
+			$myImg = new PhenotypeImage($this-&#62;get(&#34;img_id&#34;));
+			$myImg-&#62;class = $class;
+
+			$mySmarty-&#62;assign(&#34;image&#34;,$myImg-&#62;render($alt));
+		}
+
+		$mySmarty-&#62;assign(&#34;headline&#34;,$this-&#62;get(&#34;headline&#34;));
+		$mySmarty-&#62;assign(&#34;text&#34;,$this-&#62;get(&#34;text&#34;));
+		$mySmarty-&#62;assign(&#34;id&#34;,$this-&#62;id);
+
+		if ($this-&#62;get(&#34;linkurl&#34;)!=&#34;&#34;)
+		{
+			$link = &#39;&#38;nbsp;&#60;a href=&#34;&#39;.$this-&#62;get(&#34;linkurl&#34;).&#39;&#34; target=&#34;&#39;.$this-&#62;get(&#34;linktarget&#34;).&#39;&#34;&#62;&#39;.$this-&#62;get(&#34;linkbez&#34;).&#39;&#60;&#47;a&#62;&#39;;
+			$a= &#39;&#60;a href=&#34;&#39;.$this-&#62;get(&#34;linkurl&#34;).&#39;&#34; target=&#34;&#39;.$this-&#62;get(&#34;linktarget&#34;).&#39;&#34;&#62;&#39;;
+			$aa = &#39;&#60;&#47;a&#62;&#39;;
+			$mySmarty-&#62;assign(&#34;a&#34;,$a);
+			$mySmarty-&#62;assign(&#34;aa&#34;,$aa);
+			$mySmarty-&#62;assign(&#34;link&#34;,$link);
+		}
+
+		return $mySmarty-&#62;fetch($template);
+
+	}
+
+}
+?&#62;</script>
+	<templates>
+<template access="TPL_DEFAULT">&#60;div class=&#34;richtext {if $box}box{&#47;if}&#34;&#62;
+&#60;a name=&#34;t{$id}&#34;&#62;&#60;&#47;a&#62;
+{if $headline!=&#34;&#34;}&#60;h1&#62;{$a}{$headline}{$aa}&#60;&#47;h1&#62;{&#47;if}
+{$a}{$image}{$aa}{$text}{$link}
+&#60;&#47;div&#62;
+&#60;br clear=&#34;all&#34;&#47;&#62;</template>
+<template access="TPL_TOPIMAGE">&#60;div class=&#34;richtext {if $box}box{&#47;if}&#34;&#62;
+&#60;a name=&#34;t{$id}&#34;&#62;&#60;&#47;a&#62;
+{if $headline!=&#34;&#34;}&#60;h1&#62;{$a}{$headline}{$aa}&#60;&#47;h1&#62;{&#47;if}
+{$a}{$image}{$aa}
+{$text}{$link}
+&#60;&#47;div&#62;
+&#60;br clear=&#34;all&#34;&#47;&#62;</template>
+   	</templates>
+	<componentgroups><group>
+			<cog_id>1</cog_id>
+			<cog_bez>Default</cog_bez>
+			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_pos>0</cog_pos>
+		  </group></componentgroups>
+</phenotype>

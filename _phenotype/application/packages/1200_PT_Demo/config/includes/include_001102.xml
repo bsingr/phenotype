@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>
+		<inc_id>1102</inc_id>
+		<inc_bez>Seitenheader</inc_bez>		
+		<inc_rubrik>Navigation</inc_rubrik>
+		<inc_description></inc_description>
+		<inc_usage_layout>1</inc_usage_layout>
+		<inc_usage_includecomponent>0</inc_usage_includecomponent>
+		<inc_usage_page>0</inc_usage_page>
+	</meta>
+	<script>&#60;?
+class PhenotypeInclude_1102 extends PhenotypeInclude
+{
+	&#47;&#47; Seitenheader
+
+	public $id = 1102;
+
+	function display()
+	{
+		global $myDB;
+		global $myPage;
+		global $myPT;
+
+		&#47;&#47; This is a very simple menu
+		&#47;&#47; it expects the Homepage to have the ID 1, reads and print all subpages of page 1
+		&#47;&#47; category of a page must be set through the pagevariable &#34;category&#34;,
+		&#47;&#47; it must contain the pag_id to be highlighted
+
+
+		$sql = &#34;SELECT * FROM page WHERE pag_id_top=1 AND pag_status=1 ORDER BY pag_pos&#34;;
+		$rs = $myDB-&#62;query($sql);
+
+		$html = &#39;&#60;ul&#62;&#39;;
+
+		while ($row=mysql_fetch_array($rs))
+		{
+			if ($row[&#34;pag_id&#34;]==$myPage-&#62;getI(&#34;category&#34;))
+			{
+				$html .= &#39;&#60;li class=&#34;active&#34;&#62;&#60;a href=&#34;index.php?id=&#39;.$row[&#34;pag_id&#34;].&#39;&#34; class=&#34;active&#34;&#62;&#39;.$myPT-&#62;getH($row[&#34;pag_titel&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
+			}
+			else
+			{
+				$html .= &#39;&#60;li&#62;&#60;a href=&#34;index.php?id=&#39;.$row[&#34;pag_id&#34;].&#39;&#34;&#62;&#39;.$myPT-&#62;getH($row[&#34;pag_titel&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
+			}
+
+
+		}
+		$html.= &#39;&#60;&#47;ul&#62;&#39;;
+		echo $html;
+	}
+
+	
+}
+?&#62;</script>
+	<templates>
+   	</templates>
+</phenotype>

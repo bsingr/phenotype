@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>2.4</ptversion>
+		<ptsubversion>0</ptsubversion>
+		<inc_id>1102</inc_id>
+		<inc_bez>Seitenheader</inc_bez>		
+		<inc_rubrik>Navigation</inc_rubrik>
+		<inc_description></inc_description>
+		<inc_usage_layout>1</inc_usage_layout>
+		<inc_usage_includecomponent>0</inc_usage_includecomponent>
+		<inc_usage_page>0</inc_usage_page>
+	</meta>
+	<script>&#60;?
+// -------------------------------------------------------
+// Copyright (c) 2003-2006 Phenotype Hagemann &#38; Sellinger
+// -------------------------------------------------------
+// Kontakt: 
+// phenotype@nilshagemann.de
+// Nils Hagemann, Lothringer Str. 31, 65195 Wiesbaden
+// -------------------------------------------------------
+// Das Phenotype CMS Framework unterliegt dem Urheberrecht
+// und ist Eigentum von Hagemann &#38; Sellinger. Ohne schriftliche 
+// Genehmigung darf kein Teil dieser Software reproduziert, ver-
+// vielfältigt oder verbreitet werden.
+// -------------------------------------------------------
+
+class PhenotypeInclude_1102 extends PhenotypeInclude
+{
+	// Seitenheader
+
+	public $id = 1102;
+
+	function display()
+	{
+	
+		$this-&#62;displayListHeader(1);
+		//$this-&#62;displayHeaderByPageVar(&#34;rubrik&#34;);
+	}
+
+	function displayListHeader($pag_id_anchor)
+	{
+		global $myDB;
+		global $myPage;
+		$pag_id = $myPage-&#62;pag_id_mimikry;
+
+		if (isset ($_REQUEST[&#34;pag_id_mik&#34;]))
+		{
+			$pag_id = $myRequest-&#62;getI(&#34;pag_id_mik&#34;);
+		}
+
+		$sql = &#34;SELECT * FROM page WHERE pag_id = &#34;.$pag_id;
+		$rs_page = $myDB-&#62;query($sql);
+		$row_page = mysql_fetch_array($rs_page);
+
+		$pages_id = Array ();
+		$pages_bez = Array ();
+		$pages_id[] = $pag_id;
+		$pages_bez[] = $row_page[&#34;pag_bez&#34;];
+		if ($row_page[&#34;pag_url&#34;] != &#34;&#34;)
+		{
+			$pages_url[] = $row_page[&#34;pag_url&#34;];
+		} else
+		{
+			$pages_url[] = &#34;index.php?id=&#34;.$pag_id;
+		}
+
+		$pag_id_top = $row_page[&#34;pag_id_top&#34;];
+		$pag_id_next = $pag_id_top;
+		$pag_id_area = $pag_id_next;
+		$grp_id = $row_page[&#34;grp_id&#34;];
+
+		$pag_id_border = 0;
+
+		// Alle Seiten oberhalb der aktuellen Seite ermitteln
+		while ($pag_id_next != $pag_id_border)
+		{
+			$sql = &#34;SELECT * FROM page WHERE pag_id = &#34;.$pag_id_next.&#34; AND grp_id=&#34;.$grp_id.&#34; AND pag_status = 1&#34;;
+			$rs_page1 = $myDB-&#62;query($sql);
+			$row_page1 = mysql_fetch_array($rs_page1);
+			$pag_id_next = $row_page1[&#34;pag_id_top&#34;];
+			$pages_id[] = $row_page1[&#34;pag_id&#34;];
+			$pages_bez[] = $row_page1[&#34;pag_bez&#34;];
+			if ($row_page1[&#34;pag_url&#34;] != &#34;&#34;)
+			{
+				$pages_url[] = $row_page1[&#34;pag_url&#34;];
+			} else
+			{
+				$pages_url[] = &#34;index.php?id=&#34;.$row_page1[&#34;pag_id&#34;];
+			}
+			}
+
+		// Seitenpfad als Seitenvariable speichern, so dass es im Breadcrumb-Include
+		// genutzt werden kann
+		$myPage-&#62;set(&#34;pagepath&#34;, Array ($pages_id, $pages_bez, $pages_url));
+
+		echo &#39;&#60;ul&#62;&#39;;
+		$sql = &#34;SELECT * FROM page WHERE pag_id_top=&#34;.$pag_id_anchor.&#34; AND grp_id=&#34;.$grp_id.&#34; AND pag_status = 1 ORDER by pag_pos&#34;;
+		$rs = $myDB-&#62;query($sql);
+		$c=mysql_num_rows($rs);
+		$i=0;
+
+		while ($row = mysql_fetch_array($rs))
+		{
+			$i++;
+			if ($i==$c){$token=&#34;&#34;;}
+			if ($row[&#34;pag_url&#34;] != &#34;&#34;)
+			{
+				$pag_url= $row[&#34;pag_url&#34;];
+			} else
+			{
+				$pag_url = &#34;index.php?id=&#34;.$row[&#34;pag_id&#34;];
+			}
+			if (in_array($row[&#34;pag_id&#34;], $pages_id))
+			{
+				echo &#39;&#60;li class=&#34;active&#34;&#62;&#60;a href=&#34;&#39;.$pag_url.&#39;&#34;&#62;&#39;.$row[&#34;pag_bez&#34;].&#34;&#60;/a&#62;&#60;/li&#62;&#34;;
+			} else
+			{
+				echo &#39;&#60;li&#62;&#60;a href=&#34;&#39;.$pag_url.&#39;&#34;&#62;&#39;.$row[&#34;pag_bez&#34;].&#34;&#60;/a&#62;&#60;/li&#62;&#34;;
+			}
+			
+		}
+		echo &#39;&#60;/ul&#62;&#39;;
+
+	}
+
+	
+	/**
+	 * Alternative pageheader method, used, when you have special templates for different areas
+	 *
+	 * @param string $p
+	 */
+	function displayHeaderByPageVar($p)
+	{
+		global $mySmarty;
+		$rubrik = $myPage-&#62;get($p);
+		switch ($rubrik)
+		{
+			case &#34;homepage&#34; :
+				$template = $TPL_HOMEPAGE;
+				break;
+			case &#34;privat&#34; :
+				$template = $TPL_PRIVAT;
+				break;
+			default :
+				$template = $TPL_HOMEPAGE;
+				break;
+		}
+		$mySmarty-&#62;display($template);
+	}
+
+}
+?&#62;</script>
+	<templates>
+   	</templates>
+</phenotype>

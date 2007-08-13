@@ -1,0 +1,55 @@
+*
+* Phenotype
+*
+
+-------
+- build procedure
+-------
+
+You should install phing >= 2.2 including the phing svn bindings. obviously the simple way is to use PEAR
+HOWTO on http://forum.sellinger-server.de/viewtopic.php?t=15 , more info on http://phing.info
+
+with
+
+	phing
+
+you just build phenotype while
+
+	phing dist
+
+builds phenotype and creates a nice named .tgz archive like phenotype_2.5_r71-0001.tgz
+
+When you want to set up a development system you should check out the target dev-build, that just copies the bloody files from _mirror into the _phenoype and htdocs dir, so your svn-version becomes runnable.
+To prevent the mirror-files from always showing up in the svn status lists there is a svn:ignore property set that tells svn to ignore the path that were copied from _mirror. Remember this when adding new stuff to _mirror!
+
+-------
+- installer and dependencies/sytem requirements
+-------
+
+When you develop rocket science phenotype features that require some php package or whatever else you can
+enter these requirements in the installer script. Currently homed in install.php itself (see top of file),
+later on this should move in an xml file.
+There are, for now, 4 types of requirements supported (this string you can enter as value for key 'type')
+The value of pattern is always the value that you require.
+Importance can be either 'required' or 'recommended'. First stops install on error while second only prints a warning.
+The message is printed while the check is running and on the errors, so it should inform the user about what you expect from his system.
+- phpVersion -> checks the target system for a specific php version. Use php official notation like 5.0.4
+- phpExt -> checks for a specific php extension like gd lib. Look for the headlines in the phpinfo() output to get the correct package names
+- filePermission -> checks read- and/or write-access for a given file/dir, see additional key 'mode'
+- generic -> to check whatever you want. just put in a piece of php code for eval. don't include the return() statement or the ';'
+
+Unfortunately, the file permission checks occur only on the specific files, not recursively
+
+EXAMPLES 
+$reqs[] = array('type' => "phpVersion", 'pattern' => "5", 'importance' => "required", 'message' => "php version");
+$reqs[] = array('type' => "phpExt", 'pattern' => "gd", 'importance' => "required", 'message' => "gdlib php extension");
+$reqs[] = array('type' => "phpExt", 'pattern' => "SimpleXML", 'importance' => "required", 'message' => "simpleXML php extension");
+$reqs[] = array('type' => "phpExt", 'pattern' => "test", 'importance' => "recommended", 'message' => "test php extension");
+$reqs[] = array('type' => "generic", 'pattern' => "file_exists('/Users/www/pysqlite-1.1.7.tar.gz')", 'importance' => "recommended", 'message' => "existence of /Users/www/pysqlite-1.1.7.tar.gz");
+$reqs[] = array('type' => "filePermission", 'pattern' => "htdocs/media", 'mode' => "w", 'importance' => "required", 'message' => "write permissions in htdocs/media");
+$reqs[] = array('type' => "filePermission", 'pattern' => "_phenotype/system", 'mode' => "r", 'importance' => "required", 'message' => "read permissions in _phenotype/system");
+$reqs[] = array('type' => "filePermission", 'pattern' => "htdocs", 'mode' => "rw", 'importance' => "required", 'message' => "read/write permissions in htdocs");
+$reqs[] = array('type' => "filePermission", 'pattern' => "_phenotype/temp", 'mode' => "wr", 'importance' => "required", 'message' => "read/write permissions in _phenotype/temp");
+
+
+For more info just have a look into the phenotype wiki at www.phenotype.de/wiki/

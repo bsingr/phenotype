@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>##!PT_VERSION!##</ptversion>
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<pag_id>4</pag_id>
+		<importmethod>overwrite</importmethod>
+		<grp_id>1</grp_id>				
+	</meta>
+	<content>
+	<pag_uid>f0b1ad6861aa4ab3e4bc8b9a63e5a9b4</pag_uid>
+<pag_bez>Rubrik 3</pag_bez>
+<pag_titel>Rubrik 3</pag_titel>
+<pag_alttitel></pag_alttitel>
+<pag_comment></pag_comment>
+<pag_quickfinder></pag_quickfinder>
+<pag_searchtext></pag_searchtext>
+<pag_url></pag_url>
+<pag_id_mimikry>4</pag_id_mimikry>
+<pag_id_top>1</pag_id_top>
+<pag_pos>3</pag_pos>
+<pag_cache>86400</pag_cache>
+<pag_status>1</pag_status>
+<usr_id_creator>10</usr_id_creator>
+<pag_creationdate>1153068248</pag_creationdate>
+<usr_id>10</usr_id>
+<pag_date>1162654585</pag_date>
+<pag_props>YToxOntzOjg6ImNhdGVnb3J5IjtzOjE6IjQiO30=</pag_props>
+		<pageversions>  			<version>
+				<ver_id>4</ver_id>
+				<ver_nr>1</ver_nr>
+				<lay_id>1</lay_id>
+				<ver_bez>Version 1</ver_bez>
+				<pag_fullsearch>Rubrik 3|Rubrik 3|Rubrik 3||||Rubrik 3||</pag_fullsearch>
+				<script></script>
+				<inc_id1>0</inc_id1>
+				<inc_id2>0</inc_id2>
+				<ver_status>1</ver_status>
+			</version>
+
+		</pageversions>
+		<languages>			<language>
+				<lng_id>0</lng_id>
+				<pag_titel></pag_titel>
+			</language>
+		</languages>
+		<sequence_data>
+			<component>
+				<com_id>1101</com_id>
+				<ver_id>4</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>1</dat_pos>
+				<dat_comdata>YToyOntzOjM6ImJleiI7czo4OiJSdWJyaWsgMyI7czo3OiJzdWJsaW5lIjtzOjA6IiI7fQ==</dat_comdata>
+				<dat_fullsearch>Rubrik 3|</dat_fullsearch>
+			</component>
+		</sequence_data>
+	</content>
+</phenotype>

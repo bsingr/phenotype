@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>2.4</ptversion>
+		<ptsubversion>0</ptsubversion>	
+		<com_id>1104</com_id>
+		<com_bez>Trennlinie</com_bez>		
+		<com_rubrik>Sonstige</com_rubrik>
+		<com_description>## Baustein 1104 - Trennlinie</com_description>
+	</meta>
+	<script>&#60;?  
+// -------------------------------------------------------
+// Copyright (c) 2003-2006 Phenotype Hagemann &#38; Sellinger
+// -------------------------------------------------------
+// Kontakt: 
+// phenotype@nilshagemann.de
+// Nils Hagemann, Lothringer Str. 31, 65195 Wiesbaden
+// -------------------------------------------------------
+// Das Phenotype CMS Framework unterliegt dem Urheberrecht
+// und ist Eigentum von Hagemann &#38; Sellinger. Ohne schriftliche 
+// Genehmigung darf kein Teil dieser Software reproduziert, ver-
+// vielfältigt oder verbreitet werden.
+// -------------------------------------------------------
+ 
+class PhenotypeComponent_1104 extends PhenotypeComponent  
+{  
+  var $tool_type = 1104;  
+  var $bez = &#34;Trennlinie&#34;;  
+ 
+  function render($context)  
+  {  
+     return &#34;&#60;hr/&#62;&#34;;  
+  }  
+    
+}  
+?&#62;</script>
+	<templates>
+   	</templates>
+	<componentgroups><group>
+			<cog_id>1</cog_id>
+			<cog_bez>Default</cog_bez>
+			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_pos>0</cog_pos>
+		  </group></componentgroups>
+</phenotype>

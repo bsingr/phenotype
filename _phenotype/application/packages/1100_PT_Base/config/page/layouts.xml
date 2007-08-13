@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<meta>
+		<ptversion>2.4</ptversion>
+		<ptsubversion>0</ptsubversion>
+	</meta>
+	<layouts>
+		<layout>
+			<lay_id>1</lay_id>
+			<lay_bez>Standard</lay_bez>
+			<lay_description></lay_description>
+			<blocks>
+				<block>
+					<lay_blocknr>1</lay_blocknr>
+					<lay_blockbez>Bausteine</lay_blockbez>
+					<cog_id>1</cog_id>
+					<lay_context>1</lay_context>
+				</block>
+			</blocks>				
+			<includes>
+				<include>
+					<inc_id>1102</inc_id>
+					<lay_includenr>1</lay_includenr>
+					<lay_includecache>1</lay_includecache>
+				</include>
+				<include>
+					<inc_id>1101</inc_id>
+					<lay_includenr>2</lay_includenr>
+					<lay_includecache>1</lay_includecache>
+				</include>
+				<include>
+					<inc_id>1103</inc_id>
+					<lay_includenr>3</lay_includenr>
+					<lay_includecache>1</lay_includecache>
+				</include>
+			</includes>
+			<templates>
+				<page>&#60;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.0 Transitional//EN&#34; &#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&#34;&#62;
+&#60;html xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&#62;
+&#60;head&#62;
+&#60;meta http-equiv=&#34;Content-Type&#34; content=&#34;text/html; charset=iso-8859-1&#34; /&#62;
+&#60;title&#62;{$title|escape}&#60;/title&#62;
+&#60;meta name=&#34;author&#34; content=&#34;Nils Hagemann&#34;/&#62;
+&#60;meta name=&#34;keywords&#34; content=&#34;{$keywords|escape}&#34;/&#62;
+
+{literal}
+&#60;style type=&#34;text/css&#34;&#62;
+body {color:#000000;margin:0px; padding:0px; text-align:left; font-family: Verdana, Arial, sans-serif;font-size: 11px; font-weight: normal;}
+a {color:#003F96;text-decoration:none;}
+a:visited {color: #003F96;text-decoration:none;} 
+a:hover {text-decoration:underline;}
+#header {padding-left: 200px;}
+#header li {list-style:none;display:inline;padding-right:40px;font-size:25px;background-color:#EEEEEE;}
+#header li.active {font-weight:bold}
+
+#navigation li.level1 {font-size:20px;padding-left:5px;list-style:none}
+#navigation li.level2 {font-size:16px;padding-left:15px;list-style:none}
+#navigation li.level3 {font-size:14px;padding-left:20px;list-style:none}
+#navigation li.level4 {font-size:12px;padding-left:25px;list-style:none}
+#navigation li.active {font-weight:bold}
+
+#footer {padding-left:150px}
+&#60;/style&#62;
+{/literal}
+&#60;/head&#62;
+
+&#60;body&#62;
+
+&#60;!--Header --&#62;
+&#60;div id=&#34;header&#34;&#62;
+{$pt_include1}
+&#60;/div&#62;
+&#60;br clear=&#34;all&#34;/&#62;
+
+&#60;!--Content --&#62;
+&#60;div id=&#34;navigation&#34; style=&#34;position:absolute&#34;&#62;
+{$pt_include2}
+&#60;/div&#62;
+&#60;div id=&#34;content&#34; style=&#34;padding-left:200px;width:250px&#34;&#62;
+{$pt_block1}
+&#60;/div&#62;
+&#60;br clear=&#34;all&#34;/&#62;
+&#60;!--Footer --&#62;
+&#60;div id=&#34;footer&#34; style=&#34;padding-left:200px;width:250px&#34;&#62;
+{$pt_include3}
+&#60;/div&#62;
+
+&#60;/body&#62;
+&#60;/html&#62; </page>
+				<print></print>
+			</templates><pagegroup grp_id=""/><pagegroup grp_id=""/><pagegroup grp_id=""/>
+		</layout>
+	</layouts>
+</phenotype>

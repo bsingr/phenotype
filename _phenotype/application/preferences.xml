@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<phenotype>
+	<preferences>
+		<section name="backend">
+			<language>de</language>
+			<img_id_cover>0</img_id_cover>
+			<img_id_cover_error>0</img_id_cover_error>
+			<rad_upload>lite</rad_upload>
+			<grp_id_pagegroup_start>1</grp_id_pagegroup_start>
+		</section>
+		<section name="edit_pages">
+			<show_alternative_title>0</show_alternative_title>
+			<show_quickfinder>1</show_quickfinder>
+			<show_pageurl>1</show_pageurl>
+			<auto_pageurl>1</auto_pageurl>
+		</section>
+		<section name="edit_content">
+			<flat_tree>1</flat_tree>
+			<build_snapshot>1</build_snapshot>
+		</section>
+		<section name="edit_media">
+			<auto_deleteimportbox>1</auto_deleteimportbox>
+			<build_snapshot>1</build_snapshot>
+		</section>
+		<section name="config_pages">
+		</section>
+		<section name="config_content">
+		
+		</section>
+		<section name="tickets">
+			<default_compactmode>0</default_compactmode>
+			<tab_closedtickets>1</tab_closedtickets>
+		    <nrofdays_listing_closedtickets>28</nrofdays_listing_closedtickets>
+		    <show_notices_to_all_users>0</show_notices_to_all_users>
+			<popup_ticketaction_assess>0</popup_ticketaction_assess>
+			<popup_ticketaction_process>1</popup_ticketaction_process>
+			<popup_ticketaction_editmode>1</popup_ticketaction_editmode>
+			<active_markup_removal>0</active_markup_removal>
+			<active_request_removal>0</active_request_removal>
+			<sbj_id_expressticket>1</sbj_id_expressticket>
+		    <!-- 
+			Possibility to add a second organizational category to your tickets, based upon datasets of any contentobject
+			-->
+			<con_id_2ndorder>0</con_id_2ndorder>
+			<bez_2ndorder>Projekt</bez_2ndorder>
+			<tab_2ndorder>Projekte</tab_2ndorder>
+		</section>
+		<section name="frontend">
+		</section>
+	</preferences>
+</phenotype>

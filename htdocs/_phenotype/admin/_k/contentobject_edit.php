@@ -1,0 +1,283 @@
+<?
+// -------------------------------------------------------
+// Phenotype Content Application Framework
+// -------------------------------------------------------
+// Copyright (c) 2003-2006 Nils Hagemann, Paul Sellinger,
+// Peter Sellinger.
+// -------------------------------------------------------
+// Thanks for your support: Markus Griesbach, Michael 
+// Krämer, Annemarie Komor, Jochen Rieger, Alexander
+// Wehrum, Martin Ochs.
+// -------------------------------------------------------
+// Kontakt:
+// www.phenotype.de - offical product homepage
+// www.phenotype-cms.de - documentation & support
+// www.sellinger-server.de - inventors of phenotype
+// -------------------------------------------------------
+// Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
+// -------------------------------------------------------
+?>
+<?
+require("_config.inc.php");
+require("_session.inc.php");
+if (PT_CONFIGMODE!=1){exit();}
+?>
+<?
+if (!$mySUser->checkRight("superuser"))
+{
+  $url = "noaccess.php";
+  Header ("Location:" . $url."?".SID);
+  exit();
+}
+?>
+<?
+$mySmarty = new Smarty;
+$myAdm = new PhenotypeAdmin();
+$id = $_REQUEST["id"];
+
+?>
+<?
+$myAdm->header("Konfiguration");
+?>
+<body>
+<?
+$myAdm->menu("Konfiguration");
+?>
+<?
+// -------------------------------------
+// {$left} 
+// -------------------------------------
+$myPT->startBuffer();
+?>
+<?
+$myAdm->explorer_prepare("Konfiguration","Content");
+$myAdm->explorer_set("con_id",$id);
+$myAdm->explorer_draw();
+
+$left = $myPT->stopBuffer();
+?>
+<?
+// -------------------------------------
+// -- {$left} 
+// -------------------------------------
+?>
+<?
+// -------------------------------------
+// {$content} 
+// -------------------------------------
+$myPT->startBuffer();
+$sql = "SELECT * FROM content WHERE con_id =" . $id;
+$rs = $myDB->query($sql);
+$row = mysql_fetch_array($rs);
+?>
+    <form action="contentobject_update.php" method="post">
+	<input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">	
+	<input type="hidden" name="b" value="<?=$_REQUEST["b"]?>">		
+	<input type="hidden" name="r" value="<?=$myRequest->getH("r")?>">	
+    <table width="680" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="windowTitle"><?=$id?> Contentobjekt / <?=$row["con_bez"]?></td>
+            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=15" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
+          </tr>
+        </table></td>
+        <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
+      </tr>
+      <tr>
+        <td class="windowBottomShadow"><img src="img/win_sh_mi_le.gif"></td>
+        <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
+      </tr>
+    </table>	
+	<?
+	 $myLayout->tab_new();
+	 $url = "contentobject_edit.php?id=" .$id ."&b=0";	 
+	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
+	 $url = "contentobject_edit.php?id=" .$id ."&b=1";	  
+	 $myLayout->tab_addEntry("Skript",$url,"b_script.gif");
+	 $url = "contentobject_edit.php?id=" .$id ."&b=2";	  
+	 $sql = "SELECT * FROM content_template WHERE con_id = " . $id . " ORDER BY tpl_bez";
+	 $rs = $myDB->query($sql);
+	 $c= mysql_num_rows($rs);
+	 if ($c>0)
+	 {
+	   $myLayout->tab_addEntry("Templates",$url,"b_template.gif");
+	 }
+	 $url = "contentobject_edit.php?id=" .$id ."&b=3";	 
+	 //$myLayout->tab_addEntry("Info",$url,"b_utilisation.gif");		
+	 
+	 switch ($_REQUEST["b"])
+	 {
+	   case 0: 
+	     $myLayout->tab_draw("Konfiguration");
+	     $myLayout->workarea_start_draw();
+         $html = $myLayout->workarea_form_text("","bez",$row["con_bez"]);
+	     $myLayout->workarea_row_draw("Bezeichnung",$html);
+		 $html = $myLayout->workarea_form_text("","rubrik",$row["con_rubrik"]);
+	     $myLayout->workarea_row_draw("Rubrik",$html);		 
+	     $html=  $myLayout->workarea_form_textarea("","description",$row["con_description"],8);
+	     $myLayout->workarea_row_draw("Beschreibung",$html);
+		 
+		 $sql = "SELECT * FROM content_template WHERE con_id = " . $id . " ORDER BY tpl_bez";
+		 $rs = $myDB->query($sql);
+		 $c= mysql_num_rows($rs);
+		 $myPT->startBuffer();
+		 ?>
+					 <input name="anlegen" type="checkbox" value="1" <?if ($row["con_anlegen"]==1){echo "checked";}?>> Anlegen<br>
+                     <input name="bearbeiten" type="checkbox" value="1" <?if ($row["con_bearbeiten"]==1){echo "checked";}?>> Bearbeiten<br>
+                     <input name="loeschen" type="checkbox" value="1" <?if ($row["con_loeschen"]==1){echo "checked";}?>> L&ouml;schen<br>
+                     <!--<input name="statistik" type="checkbox" value="1" <?if ($row["con_statistik"]==1){echo "checked";}?>> Statistik<br>-->
+         <?
+		 $html =$myPT->stopBuffer();
+		 $myLayout->workarea_row_draw("Anwendung",$html);
+		 
+		 $myPT->startBuffer();
+		 if ($c==0)
+		 {
+		 
+         ?>
+			 <input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> Template einf&uuml;gen<br>
+		 <?
+		 }
+		 while ($row_ttp=mysql_fetch_array($rs))
+		 {
+		   $identifier = "ttp_". $row_ttp["tpl_id"];
+		 ?>
+		 <strong>$</strong><input name="<?=$identifier?>_bez" type="text" class="input" style="width: 150px" value="<?=$row_ttp["tpl_bez"]?>" size="30">&nbsp;
+<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?=$identifier?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?=$identifier?>_plus"><br>
+		 <?
+		 }
+		 $html = $myPT->stopBuffer();
+		 $myLayout->workarea_row_draw("Templates",$html);
+		 break;
+		 
+	   case 1:
+	     $myLayout->tab_draw("Skript");
+	     $myLayout->workarea_start_draw();
+		 $scriptname = "content/PhenotypeContent_"  . $id . ".class.php";	
+		 ?>
+			 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="tableBody"><strong><?=$scriptname;?></strong><br>
+			<?
+			$scriptname = APPPATH . $scriptname;
+			echo $myLayout->form_HTMLTextArea("skript",$scriptname,80,30,"PHP");
+			?>
+			</td>
+            </tr>
+          <tr>
+            <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
+          </tr>
+			</table>
+		 <?
+		 break;		 
+		 
+		 case 2:
+		    $myLayout->tab_draw("Templates");
+	       $myLayout->workarea_start_draw();
+
+					 $sql = "SELECT * FROM content_template WHERE con_id = " . $id . " ORDER BY tpl_bez";
+					 $rs = $myDB->query($sql);
+					 $c= mysql_num_rows($rs);
+					 ?>
+					 <?
+
+					 while ($row_ttp=mysql_fetch_array($rs))
+					 {
+					   $identifier = "ttp_". $row_ttp["tpl_id"];
+					 ?>
+					 <br>
+					 <table width="660" border="0" cellpadding="0" cellspacing="0">
+                      <?
+					  $scriptname = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $id, $row_ttp["tpl_id"], "templates/");
+                      ?>
+					  <tr>
+					  <td width="10">&nbsp;</td>
+					  <td  width="300"><strong><?=$scriptname;?></strong></td>
+					  <td width="335" align="right" >
+					  <strong>$</strong><input name="<?=$identifier?>_bez" type="text" class="input" style="width: 150px" value="<?=$row_ttp["tpl_bez"]?>" size="30">&nbsp;
+<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?=$identifier?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?=$identifier?>_plus">
+                      </td>
+					  <td width="15">&nbsp;</td>
+					  </tr>
+          <tr>
+		    <td>&nbsp;</td>
+            <td colspan="3">
+					  <?
+					  $scriptname =  APPPATH .$scriptname;
+					  $myAdm->buildHTMLTextArea($identifier. "_template",$scriptname,80,15,"HTML");
+                      ?>
+					  </td>
+					  </tr>
+					  </table><br><br>
+					  <?
+					  }
+		 break;		 
+		 
+		 case 3:
+		    $myLayout->tab_draw("Info");
+	        $myLayout->workarea_start_draw();			
+			?>
+			<?
+            // Kommt noch
+		 break;				 
+	}
+	?>
+
+		 <?
+	   // Abschlusszeile
+	   // Seiten + Baustein fehlt noch !!
+       $sql = "SELECT COUNT(*) AS C FROM content_data WHERE con_id = " . $id;
+
+	   $rs = $myDB->query($sql);
+	   $row = mysql_fetch_array($rs);
+	 ?>
+	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="windowFooterWhite">&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?if ($row["C"]==0){?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses Contentobjekt wirklich l&ouml;schen?')">&nbsp;&nbsp;<?}?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+          </tr>
+        </table>
+	 <?
+	 $myLayout->workarea_stop_draw();
+	?>
+	</form>
+	
+<?
+$content = $myPT->stopBuffer();
+// -------------------------------------
+// -- {$content} 
+// -------------------------------------
+?>
+<?
+$myAdm->mainTable($left,$content);
+?>
+<?
+
+?>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

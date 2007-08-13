@@ -1,0 +1,116 @@
+- backend.php und PhenotypeBackend-Klasse für komplett freie Backends
+- filter-Funktion in die Applikationsklasse 
+- Möglichkeit den FCK zu konfigurieren in die Applikationsklasse 
+- einfaches Extra mit den letzten Snapshots aus allen Bereichen und Undomöglichkeit 
+- Snapshottabellen anlegen 
+- GZIP beim Snapshot dran denken 
+- Tickettklasse vererben 
+- RUNMODE_SILENT, RUNMODE_DEBUG in die _config.php
+- FRONTENDSESSION in die _config.php
+- Cleanup auch Statistik bedenken 
+- Cleanup mit Wiederherstellung von Standard-Application.class.php
+- Smarty-Template-Caching ! Bug
+- Backend_Editor_Selector oder Backend_Editor_Media,selector (z.B. aus Admin raus)
+
+
+
+Am Cleaner noch offen:
+- Leeren von ticketpin
+
+Am Paketmanager noch offen:
+
+- Möglichkeit, dass sich ein Paket in die _application.class.php installiert
+- Volltexthandling an Contentobjekten (wie ist es sinnvoll??)
+- scheinbar werden Seitenskripte nicht ordentlich gelöscht, hier noch Datei- und Versionshichhack, wegen der ver_id, evtl, auch ein nachgelagertes Truncate
+
+
+
+
+AM PT_Core und PT_Basis noch offen:
+- displayXML am Richtextbaustein analog Midray
+
+
+Im Redaktionsmodus:
+- Sprung an die richtige Stelle beim Einfügen eines Bausteines
+
+
+XML
+- xmlcontent.php sollte RSS 0.91 und RSS 1.0 können
+- xmlcontent.php sollte phenotype-xml analog xmlpage.php können
+- Absichern der XML-PHPs durch Passwort in der _config.inc.php
+- Kodieren von / in der getX-Methode
+
+
+Umbau Backend:
+- Steuerung über Klassen und zentrale backend.php-Datei
+
+folgende Klassen wird es auf jeden Fall geben:
+
+Editor_Start
+      _Pages
+      _Media
+      _Content
+Extras
+Analyze_Pages
+Admin
+Config_Components
+      _Componentgroups
+      _Includes
+      _Pages
+      _Packages
+      _Content
+      _Extras
+Info
+Session_Login??
+       _Logout??
+
+
+start.php hat noch viele falsche Links auf alte Seiten
+
+
+Das kommt in die Version 2.5:
+
+- Snapshots mit Rollbackmöglichkeit
+
+PG Pagegroup 		grp_id
+LY Layout		lay_id
+CM Component		com_id
+IN Include		inc_id
+CC Contentclass		con_id
+MG Mediagruppe		-
+EX Extra		ext_id
+AC Aktion		act_id
+SG Aufgabenbereich	sbj_id
+RO Rolle		rol_id
+
+PA Seite		pag_id
+CO Contentobjekt	dat_id	con_id
+MO Mediaobjekt		med_id
+TI Aufgabe		tik_id
+US Benutzer		usr_id
+
+
+Das kommt in die Version 2.6:
+
+- Live / Slave
+
+- Configmodus und Backend per _config.inc.php an- und abschaltbar
+
+Das kommt in ide Version 2.7:
+
+- Bessere UTF8-Unterstützung
+
+
+Plan:
+Tag1:
+- Besprechung Bugs und Features und Eintragung in Sourceforge
+- Offene Fragen (Zugriff auf Smarty, Smarturl, PT_VERSION, Bedeutung der Config-Files)
+- Besprechung Website (u.a. phpDoc)
+- primäre Arbeiten an B&F für Galerietool
+
+Tag2:
+- gemeinsames Arbeiten an allen B&F, die 2.5 betreffen
+- Release 2.5 (Subversion übertragen?)
+- Arbeiten an Website
+
+für Folgetage: Verteilen von Aufgaben
