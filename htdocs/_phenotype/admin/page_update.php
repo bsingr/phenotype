@@ -92,8 +92,10 @@ if ($block_nr==0)
 
 
 	// fuer alle Versionen
-	$mySQL->addField("pag_bez",$_REQUEST["bez"]);
-	$mySQL->addField("pag_titel",$_REQUEST["titel"]);
+	//$mySQL->addField("pag_bez",$_REQUEST["bez"]);
+	//$mySQL->addField("pag_titel",$_REQUEST["titel"]);
+	$mySQL->addField("pag_bez",stripslashes($_REQUEST["bez"]));// Changed by Dominique Bös - 2007/08/19	
+	$mySQL->addField("pag_titel",stripslashes($_REQUEST["titel"]));// Changed by Dominique Bös - 2007/08/19	
 	$mySQL->addField("pag_alttitel",$_REQUEST["alttitel"]);
 
 	$url = $_REQUEST["url"];
@@ -101,7 +103,8 @@ if ($block_nr==0)
 	$url = $myApp->buildRewriteRules($id,$myRequest->get("url"));
 
 
-	$mySQL->addField("pag_comment",$_REQUEST["comment"]);
+	//$mySQL->addField("pag_comment",$_REQUEST["comment"]);
+	$mySQL->addField("pag_comment",stripslashes($_REQUEST["comment"]));// Changed by Dominique Bös - 2007/08/19	
 	if (isset($_REQUEST["status"]))
 	{
 		$mySQL->addField("pag_status",1,DB_NUMBER);

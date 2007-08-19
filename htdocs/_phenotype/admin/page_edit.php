@@ -429,7 +429,8 @@ if ($mySUser->checkRight("elm_task"))
     	$myLayout->workarea_start_draw();
 
     	// Eigenschaften
-    	$html = $myLayout->workarea_form_text("Titel","titel",$myPage->titel);
+    	//$html = $myLayout->workarea_form_text("Titel","titel",$myPage->titel);
+			$html = $myLayout->workarea_form_text("Titel","titel",stripslashes($myPage->titel)); // Changed by Dominique Bös - 2007/08/19	
 
     	if ($myPT->getPref("edit_pages.show_alternative_title")==1)
     	{
@@ -516,9 +517,11 @@ if ($mySUser->checkRight("elm_task"))
 
     	// Meta
 
-    	$html = $myLayout->workarea_form_text("Seitenbezeichnung","bez",$myPage->bez);
+    	//$html = $myLayout->workarea_form_text("Seitenbezeichnung","bez",$myPage->bez);
+    	$html = $myLayout->workarea_form_text("Seitenbezeichnung","bez",stripslashes($myPage->bez)); // Changed by Dominique Bös - 2007/08/19
     	$html.= $myLayout->workarea_form_text("Name der Version","ver_bez",$myPage->ver_bez);
-    	$html.=   $myLayout->workarea_form_textarea("Kommentar","comment",$myPage->row["pag_comment"]);
+    	//$html.=   $myLayout->workarea_form_textarea("Kommentar","comment",$myPage->row["pag_comment"]);
+    	$html.=   $myLayout->workarea_form_textarea("Kommentar","comment",stripslashes($myPage->row["pag_comment"])); // Changed by Dominique Bös - 2007/08/19
     	$myLayout->workarea_row_draw("Meta",$html);
 
     	// Navigation
