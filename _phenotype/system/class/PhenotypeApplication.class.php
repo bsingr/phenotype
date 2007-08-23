@@ -466,7 +466,8 @@ function buildRewriteRules($pag_id,$url)
 	global $myRequest;
 	global $myDB;
 
-	$url = str_replace(" ","_",$url);
+	//$url = str_replace(" ","_",$url);
+	$url = $this->msAmendUmlautsToURLConform($url); //Changed 07/08/23 by Dominique Bös
 	// Alle Sonderzeichen, die nicht URL-typisch sind rausfiltern
 	$patterns = "/[^a-z0-9A-Z_,.-\/]*/";
 	$url = preg_replace($patterns,"", $url);
@@ -477,7 +478,8 @@ function buildRewriteRules($pag_id,$url)
 	if ($url=="" AND $myPT->getPref("edit_pages.auto_pageurl") ==1)
 	{
 		$url = $myRequest->get("titel").".html";
-		$url = str_replace(" ","_",$url);
+		//$url = str_replace(" ","_",$url);
+		$url = $this->msAmendUmlautsToURLConform($url); //Changed 07/08/23 by Dominique Bös
 		// Alle Sonderzeichen, die nicht URL-typisch sind rausfiltern
 		$patterns = "/[^a-z0-9A-Z_,.-\/]*/";
 		$url = preg_replace($patterns,"", $url);
@@ -596,4 +598,32 @@ function onTicket_closeTicket($tik_id,$progress)
 
 }
 
+	/**
+	* Amend the German umlauts URL conform
+	* Ü -> Ue
+	* Ö -> Oe
+	* Ä -> Ae
+	* ü -> ue
+	* ö -> oe
+	* ä -> ae
+	* ß -> ss
+	* " " -> _
+	* added 07/08/23 by Dominique Bös
+	
+	* @param string $sText This is the text to be changed
+	* @return string Return the new String
+	*/
+	private function msAmendUmlautsToURLConform($sText="") {
+		$sText = str_replace(" ","_",$sText);
+		$sText = str_replace("ü","ue",$sText);
+		$sText = str_replace("ä","ae",$sText);
+		$sText = str_replace("ö","oe",$sText);
+		$sText = str_replace("ß","ss",$sText);
+		$sText = str_replace("Ö","Oe",$sText);
+		$sText = str_replace("Ä","Ae",$sText);
+		$sText = str_replace("Ü","Ue",$sText); 
+		
+		return $sText;
+	}
+	
 }
