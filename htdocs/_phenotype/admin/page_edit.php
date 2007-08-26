@@ -568,8 +568,14 @@ if ($mySUser->checkRight("elm_task"))
      $html.= $myPT->stopBuffer();
      $myLayout->workarea_row_draw("Navigation",$html);
 
-     // Cache
-     $options = Array(0=>"kein Cache",15=>"15 Sekunden",30=>"30 Sekunden",45=>"45 Sekunden",60=>"1 Minute",120=>"2 Minuten",300=>"5 Minuten",600=>"10 Minuten",3600=>"60 Minuten",86400=>"24 Stunden");
+     //Cache
+		 //$options = Array(0=>"kein Cache",15=>"15 Sekunden",30=>"30 Sekunden",45=>"45 Sekunden",60=>"1 Minute",120=>"2 Minuten",300=>"5 Minuten",600=>"10 Minuten",3600=>"60 Minuten",86400=>"24 Stunden");
+		 //Get the cache times from the preferences XML-file | added 07/08/23 by Dominique Bös
+		 $aXML = $myPT->gaGetPreferencesArray("preferences.section_cache.cachetime");
+		 foreach($aXML as $sItem => $sValue) {
+			 $options[$sValue["seconds"]] = $sValue["name"];
+		 }
+
      $options=$myAdm->buildOptionsByNamedArray($options,$myPage->row["pag_cache"]);
      $html=$myLayout->workarea_form_select("","cache",$options,100);
      $myLayout->workarea_row_draw("Cache",$html);

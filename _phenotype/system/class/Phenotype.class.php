@@ -122,6 +122,12 @@ class Phenotype
 
 	private $_preferences = false;
 
+	/**
+	* @var array $aPreferences This array implements the Preferences XML-file 
+	* added 07/08/23 by Dominique Bös
+	*/
+	private $aPreferences = false;
+
 	private $_phrases = Array();
 
 	function __construct()
@@ -790,6 +796,95 @@ class Phenotype
 				break;
 		}
 	}
+	
+	/**
+	* Build Preferences Array
+	* added 07/08/23 by Dominique Bös
+	* 
+	* @return null
+	*/
+	public function gBuildPreferencesArray() {
+		if($this->aPreferences == false) {
+			$sXML = simplexml_load_file(APPPATH ."preferences.xml");
+			$this->aPreferences = $this->gaXMLToArray($sXML);
+		}
+	}
+	
+	/**
+	* Get Preferences Array
+	* added 07/08/23 by Dominique Bös
+	* 
+	* @param string $sSearchKey String width array keys, separator is "." Example: "preferences.section_cache"
+	* @return null
+	*/
+	public function gaGetPreferencesArray($sSearchKey="") {
+		$oReturn = "";
+		$bFoundKey = false;
+		
+		if($this->aPreferences == false) {
+			$this->gBuildPreferencesArray();
+		}
+		
+		if($sSearchKey != "") {
+			$aArrayKeys = explode(".", $sSearchKey);
+			$aTemp = $this->aPreferences;
+			foreach($aArrayKeys as $sKey => $sValue) {
+				$aTemp = $aTemp[$sValue];
+			}
+			
+			//Check if is not empty
+			if(!empty($aTemp)) {
+				$bFoundKey = true;
+				$oReturn = $aTemp;
+			}
+		}
+
+		if($bFoundKey == false) {
+			$oReturn = $this->aPreferences;
+		}
+		
+		return $oReturn;
+	}
+	
+	/**
+	* Write XML childs into an array
+	* added 07/08/23 by Dominique Bös
+	* 
+	* @param string $sXML XML-file
+	* @return null
+	*/
+	public function gaXMLToArray($sXML) {
+		$oReturn = "";
+		 foreach($sXML as $sKey=>$sValue)
+		 {
+				//$k = ($parent == "") ? (string)$sKey : $parent . "." . (string)$sKey;
+				
+				$oTempValue = $this->gaXMLToArray($sValue);
+				if($oTempValue == "") {
+					$oReturn[$sKey] = (string)$sValue;
+				} else {
+					$sKeyName = $sKey;
+					$aAttributes = array();
+					
+					//Show for attributes
+					foreach($sValue->attributes() as $sKey2 => $sValue2) {
+						//Check the attribute "name"
+						if($sKey2 == "name") {
+							$sKeyName .= "_" . $sValue2;
+						} else {
+							$aAttributes[$sKey2] = $sValue2;
+						}
+						
+					}
+					if(count($aAttributes) > 0) {
+						$oReturn[$sKeyName]["aAttributes"] = $aAttributes;
+					}
+					$oReturn[$sKeyName] = $oTempValue;
+				}
+		 }
+		 return $oReturn;
+	}
+	
 }
 
 

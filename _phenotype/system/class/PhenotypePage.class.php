@@ -462,7 +462,10 @@ class PhenotypePageStandard
 		$mySQL->addField("pag_uid",$myPT->uid());
 		$mySQL->addField("pag_pos",$pos,DB_NUMBER);
 		$mySQL->addField("pag_id_top",$top_id,DB_NUMBER);
-		$mySQL->addField("pag_cache",24*60*60,DB_NUMBER);
+		//$mySQL->addField("pag_cache",24*60*60,DB_NUMBER);
+		//Get the cache default time from the preferences XML-file | added 07/08/23 by Dominique Bös
+		$aXML = $myPT->gaGetPreferencesArray();
+		$mySQL->addField("pag_cache",$aXML["preferences"]["section_cache"]["default_cache_seconds"],DB_NUMBER);
 		$mySQL->addField("pag_nextbuild1",time(),DB_NUMBER);
 		$mySQL->addField("pag_nextbuild2",time(),DB_NUMBER);
 		$mySQL->addField("pag_nextbuild3",time(),DB_NUMBER);
