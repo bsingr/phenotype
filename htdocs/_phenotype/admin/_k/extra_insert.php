@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySQL = new SQLBuilder();
 $mySQL->addField("ext_bez","Neues Extra");
 
@@ -67,7 +67,7 @@ fclose ($fp);
 // Cacheordner anlegen
 
 ?>
-<?
+<?php
 $url = "extra_edit.php?id=" . $id . "&b=0";
 Header ("Location:" . $url."&".SID);
 ?>

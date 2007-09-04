@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
@@ -53,7 +53,7 @@ require("_session.inc.php");
 </head>
 
 <body bgcolor="#EEEEEE">
-<?
+<?php
 $id = $_REQUEST["id"];
 $block_nr = $_REQUEST["b"];
 $toolkit = $_REQUEST["t"];
@@ -78,13 +78,13 @@ if (!isset($_REQUEST["editbuffer"]))
 ?>
 	<form enctype="multipart/form-data" name="editform" method="post" action="sequence_update.php">
 	<input type="hidden" value="1" name="editbuffer">
-	<input type="hidden" name="id" value="<?=$id?>">
-	<input type="hidden" name="block_nr" value="<?=$block_nr?>">	
+	<input type="hidden" name="id" value="<?php echo $id ?>">
+	<input type="hidden" name="block_nr" value="<?php echo $block_nr ?>">	
 	<input type="hidden" name="newtool_id" value="">	
 	<input type="hidden" name="newtool_type" value="">		
-	<input type="hidden" name="t" value="<?=$toolkit?>">	
+	<input type="hidden" name="t" value="<?php echo $toolkit ?>">	
  <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#EEEEEE">
-			  <?
+			  <?php
 			  // -------------------------------------------------------------
 			  // -- componentgroup 1
 			  // -------------------------------------------------------------
@@ -94,17 +94,17 @@ if (!isset($_REQUEST["editbuffer"]))
                   <td class="maskeEinf" >
 				      <select name="addtool_0" class="listeEinf" onchange="addnew(0)">
             		<option value="0" selected>Einf&uuml;gen</option>					  
-				      <?require APPPATH . "components/toolkit" . $toolkit . ".inc.html";?>
+				      <?php require APPPATH . "components/toolkit" . $toolkit . ".inc.html"; ?>
                     </select><br></td>
                 </tr>
 				<tr><td>&nbsp;</td><td>&nbsp;</td></tr>    
-			  <?
+			  <?php
 			  // -------------------------------------------------------------
 			  // -- componentgroup 1
 			  // -------------------------------------------------------------
 			  ?>				    
 		
-	<?
+	<?php
 	$sql = "SELECT * FROM sequence_data WHERE con_id = " . $id . " AND dat_blocknr=" . $block_nr . " AND dat_editbuffer=1 ORDER BY dat_pos";
     $rs = $myDB->query($sql);
 	while ($row = mysql_fetch_array($rs))
@@ -114,11 +114,11 @@ if (!isset($_REQUEST["editbuffer"]))
 	  $myComponent->init($row);
 	  ?>
 	  <tr><td>&nbsp;</td><td><p> 
-	  <?
+	  <?php
 	  $myComponent->edit();
 	  ?>
-	  &nbsp;<input name="<?=$row["dat_id"]?>_delete" type="submit" class="button" value="Entf."></p></td></tr>
-	  <?
+	  &nbsp;<input name="<?php echo $row["dat_id"] ?>_delete" type="submit" class="button" value="Entf."></p></td></tr>
+	  <?php
 	  //$myComponent->props = unserialize($s);
 	  //echo $myComponent->get("bez");
 	  //$test = unserialize($obj);
@@ -129,13 +129,13 @@ if (!isset($_REQUEST["editbuffer"]))
 	  ?>
       <tr> 
          <td align="center" class="maskeEinf" >+</td>
-         <td class="maskeEinf" > <select name="addtool_<?=$row["dat_id"]?>" class="listeEinf" onchange="addnew(<?=$row["dat_id"]?>)">
+         <td class="maskeEinf" > <select name="addtool_<?php echo $row["dat_id"] ?>" class="listeEinf" onchange="addnew(<?php echo $row["dat_id"] ?>)">
 			<option value="0" selected>Einf&uuml;gen</option>
-	      <?require APPPATH . "/components/toolkit" . $toolkit . ".inc.html";?>         
+	      <?php require APPPATH . "/components/toolkit" . $toolkit . ".inc.html"; ?>         
 		  </select><br></td>
       </tr>
 	  <tr><td>&nbsp;</td><td>&nbsp;</td></tr>    
-	  <?
+	  <?php
 	  // -------------------------------------------------------------
 	  // -- componentgroup 1
 	  // -------------------------------------------------------------

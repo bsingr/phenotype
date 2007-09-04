@@ -8,7 +8,7 @@
 		<com_rubrik>Textbausteine</com_rubrik>
 		<com_description>## Baustein 1101 - Überschrift</com_description>
 	</meta>
-	<script>&#60;?
+	<script>&#60;?php
 class PhenotypeComponent_1101 extends PhenotypeComponent 
 { 
   var $tool_type = 1101; 

@@ -11,7 +11,7 @@
 		<inc_usage_includecomponent>1</inc_usage_includecomponent>
 		<inc_usage_page>0</inc_usage_page>
 	</meta>
-	<script>&#60;?
+	<script>&#60;?php
 
 class PhenotypeInclude_1104 extends PhenotypeInclude
 {
@@ -71,7 +71,7 @@ class PhenotypeInclude_1104 extends PhenotypeInclude
 		
 		function check_number(feld,meldung){  if (isNaN(document.forms.form1[feld].value))  {    alert (meldung);document.forms.form1[feld].focus();return false;  }  return true;} 
 	&#60;&#47;script&#62;
-		&#60;?
+		&#60;?php
 	}
 
 	function displayFormFooter()

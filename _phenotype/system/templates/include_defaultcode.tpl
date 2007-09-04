@@ -1,4 +1,4 @@
-{literal}<?
+{literal}<?php
 class PhenotypeInclude_{/literal}{$id}{literal} extends PhenotypeInclude
 {
   // Bezeichnung des Includes

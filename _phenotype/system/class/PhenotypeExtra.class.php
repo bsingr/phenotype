@@ -1,4 +1,4 @@
-<?
+<?php
 
 // -------------------------------------------------------
 // Phenotype Content Application Framework
@@ -18,7 +18,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 
 /**
  * @package phenotype

@@ -12,7 +12,7 @@ Mit diesem Bausteinen können bereits die meisten Anforderungen einer einfachen W
 
 </com_description>
 	</meta>
-	<script>&#60;? 
+	<script>&#60;?php 
 class PhenotypeComponent_1001 extends PhenotypeComponent
 {
 	var $tool_type = 1001;
@@ -49,15 +49,15 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
     &#60;br&#62; 
     &#60;table width=&#34;408&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;tableBausteineBackground&#34;&#62; 
     &#60;tr&#62;&#60;td nowrap&#62; 
-    &#60;?
+    &#60;?php
     $this-&#62;form_Richtext(&#34;text&#34;,$this-&#62;get(&#34;text&#34;),80,16);
     ?&#62; 
     &#60;&#47;td&#62;&#60;&#47;tr&#62;&#60;&#47;table&#62; &#60;br&#62; 
-    &#60;? 
+    &#60;?php 
     $this-&#62;form_link(&#34;link&#34;,$this-&#62;get(&#34;linkbez&#34;),$this-&#62;get(&#34;linkurl&#34;),$this-&#62;get(&#34;linktarget&#34;));
     ?&#62;
-    &#60;br&#62;Link-Anchor: #t&#60;?=$this-&#62;id?&#62;
-    &#60;?
+    &#60;br&#62;Link-Anchor: #t&#60;?php echo $this-&#62;id ?&#62;
+    &#60;?php
 	}
 
 	function update()

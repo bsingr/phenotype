@@ -1,4 +1,4 @@
-<?
+<?php
 require("../_config.inc.php");
 
 
@@ -20,7 +20,7 @@ else
 
 
 ?>
-<?
+<?php
 
 if (PT_FRONTENDSESSION==1)
 {

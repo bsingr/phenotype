@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 if (PT_BACKEND!=1){exit();}
 
 // Session auch ohne Cookies ermöglichen

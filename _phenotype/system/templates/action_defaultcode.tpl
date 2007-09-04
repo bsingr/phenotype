@@ -1,4 +1,4 @@
-{literal}<?
+{literal}<?php
 class PhenotypeAction_{/literal}{$id}{literal} extends PhenotypeAction
 {
 

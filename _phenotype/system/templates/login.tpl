@@ -7,7 +7,7 @@
           <td class="windowFooterGrey2">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr valign="bottom">
-                <td height="120" colspan="2" class="login"><?
+                <td height="120" colspan="2" class="login"><?php
 				echo $myApp->getLoginInfoText();
 				?></td>
               </tr>

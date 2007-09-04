@@ -1,4 +1,4 @@
-<?
+<?php
 // This file ist not included anywhere, it's only purpose is to fill in the missing classes for phpDoc
 
 /**

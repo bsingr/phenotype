@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 //require("_session.inc.php");
 ?>
-<?
+<?php
 @session_start();
 $login = false;
 if ($_REQUEST['user']!="")
@@ -73,21 +73,21 @@ if ($login == true)
   exit();
 }
 ?>
-<?
+<?php
 //echo session_id();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?></title>
+<title>phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="content.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<?require(SYSTEMPATH . "templates/topline_empty.tpl");?>
-<?require(SYSTEMPATH . "templates/login_retry.tpl");?>
+<?php require(SYSTEMPATH . "templates/topline_empty.tpl"); ?>
+<?php require(SYSTEMPATH . "templates/login_retry.tpl"); ?>
 </body>
 </html>

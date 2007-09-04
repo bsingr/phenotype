@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $id = $_REQUEST["id"];
 $ver_id = $_REQUEST["ver_id"];
 $ver_nr = $_REQUEST["ver_nr"];

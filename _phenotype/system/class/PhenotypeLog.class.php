@@ -1,4 +1,4 @@
-<?
+<?php
 /*
  * class PhenotypeLog
  * logs system and application stuff

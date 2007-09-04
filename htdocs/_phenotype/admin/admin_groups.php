@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "noaccess.php";
@@ -29,36 +29,36 @@ if (!$mySUser->checkRight("elm_admin"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Seitengruppen");
 $myAdm->explorer_draw();
 
 
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -98,7 +98,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
  $sql = "SELECT * FROM pagegroup ORDER BY grp_bez";
  $rs = $myDB->query($sql);
   while ($row=mysql_fetch_array($rs))
@@ -106,24 +106,24 @@ $myPT->startBuffer();
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=sprintf("%02d",$row["grp_id"])?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="admin_group_edit.php?id=<?=$row["grp_id"]?>&b=0"><img src="img/t_pagegroup.gif" alt="Seitengruppe anzeigen" width="60" height="40" border="0"></a></span></td>
-              <td class="tableBody"><?=$row["grp_bez"]?></td>
-              <td align="right" nowrap class="tableBody"><a href="admin_group_edit.php?id=<?=$row["grp_id"]?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+              <td class="tableBody"><?php echo sprintf("%02d",$row["grp_id"]) ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="admin_group_edit.php?id=<?php echo $row["grp_id"] ?>&b=0"><img src="img/t_pagegroup.gif" alt="Seitengruppe anzeigen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><?php echo $row["grp_bez"] ?></td>
+              <td align="right" nowrap class="tableBody"><a href="admin_group_edit.php?id=<?php echo $row["grp_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
        $sql = "SELECT COUNT(*) AS C FROM page WHERE grp_id = " . $row["grp_id"];
 	   $rs_check = $myDB->query($sql);
 	   $row_check = mysql_fetch_array($rs_check);
 	   if ($row_check["C"]==0)
 	   {
 ?>   
-<a href="admin_group_delete.php?id=<?=$row["grp_id"]?>" onclick="javascript:return confirm('Diese Seitengruppe wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+<a href="admin_group_delete.php?id=<?php echo $row["grp_id"] ?>" onclick="javascript:return confirm('Diese Seitengruppe wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
        }else
 	   {
 	   ?>
 	   <img src="img/transparent.gif" width="22" height="22" alt="" border="0">
-	   <?
+	   <?php
 	   }
 ?>
 </td>
@@ -131,7 +131,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -148,16 +148,16 @@ $myPT->startBuffer();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

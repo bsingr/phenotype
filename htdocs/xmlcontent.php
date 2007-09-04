@@ -1,4 +1,4 @@
-<?
+<?php
 require("../_config.inc.php");
 
 $pw = $myRequest->get("pw");

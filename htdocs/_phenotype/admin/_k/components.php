@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,40 +30,40 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Bausteine");
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myPT->startBuffer();
 ?>
 <table width="680" border="0" cellpadding="0" cellspacing="0">
@@ -101,7 +101,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
  if ($_REQUEST["r"]=="")
  {
    $sql = "SELECT * FROM component ORDER BY com_id";
@@ -117,25 +117,25 @@ $myPT->startBuffer();
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=sprintf("%02d",$row["com_id"])?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="component_edit.php?id=<?=$row["com_id"]?>&b=0&r=<?=urlencode($row["com_rubrik"])?>"><img src="img/t_baustein.gif" alt="Baustein anzeigen" width="60" height="40" border="0"></a></span></td>
-<td class="tableBody"><?=$row["com_rubrik"]?></td>
-              <td class="tableBody"><?=$row["com_bez"]?></td>
-              <td align="right" nowrap class="tableBody"><a href="component_edit.php?id=<?=$row["com_id"]?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+              <td class="tableBody"><?php echo sprintf("%02d",$row["com_id"]) ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="component_edit.php?id=<?php echo $row["com_id"] ?>&b=0&r=<?php echo urlencode($row["com_rubrik"]) ?>"><img src="img/t_baustein.gif" alt="Baustein anzeigen" width="60" height="40" border="0"></a></span></td>
+<td class="tableBody"><?php echo $row["com_rubrik"] ?></td>
+              <td class="tableBody"><?php echo $row["com_bez"] ?></td>
+              <td align="right" nowrap class="tableBody"><a href="component_edit.php?id=<?php echo $row["com_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
        $sql = "SELECT COUNT(*) AS C FROM sequence_data WHERE com_id = " . $row["com_id"];
 	   $rs_check = $myDB->query($sql);
 	   $row_check = mysql_fetch_array($rs_check);
 	   if ($row_check["C"]==0)
 	   {
 ?>   
-<a href="component_delete.php?id=<?=$row["com_id"]?>" onclick="javascript:return confirm('Diesen Baustein wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+<a href="component_delete.php?id=<?php echo $row["com_id"] ?>" onclick="javascript:return confirm('Diesen Baustein wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
        }else
 	   {
 	   ?>
 	   <img src="img/transparent.gif" width="22" height="22" alt="" border="0">
-	   <?
+	   <?php
 	   }
 ?>
 </td>
@@ -143,7 +143,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -161,16 +161,16 @@ $myPT->startBuffer();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

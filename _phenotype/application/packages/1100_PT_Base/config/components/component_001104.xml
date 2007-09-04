@@ -8,7 +8,7 @@
 		<com_rubrik>Sonstige</com_rubrik>
 		<com_description>## Baustein 1104 - Trennlinie</com_description>
 	</meta>
-	<script>&#60;?  
+	<script>&#60;?php  
 // -------------------------------------------------------
 // Copyright (c) 2003-2006 Phenotype Hagemann &#38; Sellinger
 // -------------------------------------------------------

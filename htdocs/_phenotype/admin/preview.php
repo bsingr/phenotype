@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_page"))
 {
   $url = "noaccess.php";
@@ -29,7 +29,7 @@ if (!$mySUser->checkRight("elm_page"))
   exit();
 }
 ?>
-<?
+<?php
 $url = SERVERFULLURL . "preview.php?id=" . $_REQUEST["id"] . "&ver_id=" . $_REQUEST["ver_id"];
 Header ("Location:" . $url."&".SID);
 exit();

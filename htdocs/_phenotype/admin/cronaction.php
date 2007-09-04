@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 
 
 ?>
-<?
+<?php
 $sql = "SELECT * FROM action WHERE act_status = 1 ORDER BY act_nextrun";
 if (isset($_REQUEST["act_id"]))
 {

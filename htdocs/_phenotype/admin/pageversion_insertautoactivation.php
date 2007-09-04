@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_page"))
 {
   $url = "noaccess.php";
@@ -29,7 +29,7 @@ if (!$mySUser->checkRight("elm_page"))
   exit();
 }
 ?>
-<?
+<?php
 $id = (int)$_REQUEST["id"];
 $ver_id = (int)$_REQUEST["ver_id"];
 $ver_id2 = (int)$_REQUEST["ver_id_2bactivated"];
@@ -63,6 +63,6 @@ $myPage->versionCheck();
 
 ?>
 <script language="javascript">
-top.opener.location = "page_edit.php?id=<?=$id?>&b=99&ver_id=<?=$ver_id?>";
+top.opener.location = "page_edit.php?id=<?php echo $id ?>&b=99&ver_id=<?php echo $ver_id ?>";
 self.close();
 </script>

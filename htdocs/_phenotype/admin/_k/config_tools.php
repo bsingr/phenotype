@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,54 +30,54 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Tools");
 
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myPT->startBuffer();
 ?>
 
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

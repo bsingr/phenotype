@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySQL = new SQLBuilder();
 $mySQL->addField("cog_bez","Neue Bausteingruppe");
 // ID unter 1000 ermitteln
@@ -46,7 +46,7 @@ $sql = $mySQL->insert("componentgroup");
 $myDB->query($sql);
 $id = mysql_insert_id();
 ?>
-<?
+<?php
 $url = "toolkit_edit.php?id=" . $id;
 Header ("Location:" . $url."&".SID);
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 define ("NAV_TREE", 1);
 /**
  * @package phenotype
@@ -323,14 +323,14 @@ class PhenotypeAdminStandard
 	function displayChangeStatus($usr_id,$datum)
 	{
 		global $myDB;
-		?>Letzte &Auml;nderung am <?=date("d.m.Y H:i",$datum)?><?
+		?>Letzte &Auml;nderung am <?php echo date("d.m.Y H:i",$datum) ?><?php
 		$sql = "SELECT * FROM user WHERE usr_id = " . $usr_id;
 		$rs = $myDB->query($sql);
 		$row = mysql_fetch_array($rs);
 		if (mysql_num_rows($rs)!=0)
 		{
 	?>
-	 durch <?=$row["usr_vorname"]?><?if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";}?><?=$row["usr_nachname"]?>.<?
+	 durch <?php php echo $row["usr_vorname"] ?><?php if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";} ?><?php php echo $row["usr_nachname"] ?>.<?php
 		}
 	}
 
@@ -338,14 +338,14 @@ class PhenotypeAdminStandard
 	{
 		global $myDB;
 		if ($datum==0){return;} // Datensätze vor 2.2
-		?>Angelegt am <?=date("d.m.Y H:i",$datum)?><?
+		?>Angelegt am <?php echo date("d.m.Y H:i",$datum) ?><?php
 		$sql = "SELECT * FROM user WHERE usr_id = " . $usr_id;
 		$rs = $myDB->query($sql);
 		$row = mysql_fetch_array($rs);
 		if (mysql_num_rows($rs)!=0)
 		{
 	?>
-	 durch <?=$row["usr_vorname"]?><?if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";}?><?=$row["usr_nachname"]?>.<?
+	 durch <?php php echo $row["usr_vorname"] ?><?php if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";} ?><?php php echo $row["usr_nachname"] ?>.<?php
 		}
 	}
 
@@ -357,7 +357,7 @@ class PhenotypeAdminStandard
 		if ($this->browserOK_HTMLArea())
 		{
 	?>
-	<textarea cols="<?=$cols?>" rows="<?=$rows?>" wrap="physical" name="<?=$name?>"  id="<?=$name?>" class="input"  style="width: <?=$x?>px"><?
+	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  id="<?php echo $name ?>" class="input"  style="width: <?php echo $x ?>px"><?php
 	if (file_exists($filename))
 	{
 		switch ($mode)
@@ -383,56 +383,56 @@ class PhenotypeAdminStandard
 		echo'<font size="3"><pre></pre></font>';
 	}
 	?></textarea>
-	<?
+	<?php
 	if ($this->whichHTMLArea()==3)
 	{
 	?>
 	<script language="JavaScript1.2">
 	var config = new HTMLArea.Config();
-	config.width = '<?=$x?>px';
-	config.height = '<?=$rows*25?>px';
+	config.width = '<?php echo $x ?>px';
+	config.height = '<?php echo $rows*25 ?>px';
 	config.pageStyle = 'body { background-color: white} ';
 	config.toolbar = [['popupeditor']];
-	HTMLArea.replace('<?=$name?>', config);
+	HTMLArea.replace('<?php echo $name ?>', config);
 	</script>
-    <?
+    <?php
 	}
 	?>
-	<?
+	<?php
 	if ($this->whichHTMLArea()==2)
 	{
 	?>
 	<script language="JavaScript1.2">
 	var config = new Object();
 	config.toolbar = [['popupeditor']];
-	editor_generate('<?=$name?>',config);
+	editor_generate('<?php echo $name ?>',config);
 	</script>
-    <?
+    <?php
 	}
 	?>	
-	<?
+	<?php
 	if ($this->whichHTMLArea()==4)
 	{
 	?>
 	<script language="JavaScript1.2">
-	var oFCKeditor = new FCKeditor( '<?=$name?>' ) ;
-	oFCKeditor.BasePath	= '<?=ADMINURL?>/fckeditor/' ;
-	oFCKeditor.Height = <?=$rows*20?> ;
-	oFCKeditor.Width = <?=$x?>;
+	var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
+	oFCKeditor.BasePath	= '<?php echo ADMINURL ?>/fckeditor/' ;
+	oFCKeditor.Height = <?php echo $rows*20 ?> ;
+	oFCKeditor.Width = <?php echo $x ?>;
 	oFCKeditor.ToolbarSet = "Coding" ;
-	oFCKeditor.Config["CustomConfigurationsPath"] = "<?=ADMINURL?>/fckconfig.php";
+	oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo ADMINURL ?>/fckconfig.php";
 	oFCKeditor.ReplaceTextarea() ;
 	</script>
 
-    <?
+    <?php
 	}
 	?>		
-	<?
+	<?php
 		}
 		else
 		{
 	?>
-	<textarea cols="<?=$cols?>" rows="<?=$rows?>" wrap="physical" name="<?=$name?>"  style="width:<?=$x?>px" class="input"><?
+	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  style="width:<?php echo $x ?>px" class="input"><?php
 	if (file_exists($filename))
 	{
 		if ($mode=="PHP")
@@ -445,7 +445,7 @@ class PhenotypeAdminStandard
 		}
 	}
 	?></textarea>		
-    <?
+    <?php
 		}
 	}
 
@@ -494,7 +494,7 @@ class PhenotypeAdminStandard
 		}
 		fclose ($fp);
 		if ($buffer=="")return('<font size="3"><pre></pre></font>');
-		$buffer = "<?_CHEAT_SHOW_SOURCE_" . $buffer . "_CHEAT_SHOW_SOURCE_?>";
+		$buffer = "<?php _CHEAT_SHOW_SOURCE_" . $buffer . "_CHEAT_SHOW_SOURCE_ ?>";
 		$buffer = str_replace(chr(92),"_CHR_ASCII_92_",$buffer);
 		$filename_bak = TEMPPATH ."htmlarea/~" . uniqid("") . ".tmp";
 		$fp = fopen ($filename_bak,"w");
@@ -505,7 +505,7 @@ class PhenotypeAdminStandard
 		show_source($filename_bak);
 		$buffer = $myPT->stopbuffer();
 		$buffer = str_replace('_CHR_ASCII_92_',chr(92),$buffer);
-		$buffer = str_replace('&lt;?_CHEAT_SHOW_SOURCE_',"",$buffer);
+		$buffer = str_replace('&lt;?php _CHEAT_SHOW_SOURCE_',"",$buffer);
 		$buffer = str_replace('_CHEAT_SHOW_SOURCE_?&gt;',"",$buffer);
 		// Spaeter andere Farbkodierung nachruesten
 		//$buffer = str_replace("font","bond",$buffer);
@@ -992,7 +992,7 @@ class PhenotypeAdminStandard
 			@chmod ($dir.$k,UMASK);
 		}
 
-		$script = '<?
+		$script = '<?php
 // Phenotype Skript Konsole   
 //   
 // Für das Skript zwischendurch, um die üblichen test.php-Dateien auf dem   
@@ -1039,7 +1039,7 @@ phpinfo();
 			@chmod ($dir."package/data/".$k,UMASK);
 		}
 
-		$script = '<?
+		$script = '<?php
 class PhenotypePackage extends PhenotypePackageStandard
 {
 	public $bez = "New Package";
@@ -1065,7 +1065,7 @@ class PhenotypePackage extends PhenotypePackageStandard
 
 
 ?>
-<?
+<?php
 // Hilfsfunktionen einladen
 require (ADMINPATH . "kses/kses.php");
 if (!defined("UMASK"))

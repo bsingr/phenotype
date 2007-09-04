@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -244,13 +244,13 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 
 		?>
 		<form enctype="multipart/form-data" name="editform" method="post" action="backend.php">	
-		<input type="hidden" name="id" value="<?=$tik_id?>">
-		<input type="hidden" name="b" value="<?=$block_nr?>">
-		<input type="hidden" name="sbj_id" value="<?=$sbj_id?>">
-		<input type="hidden" name="dat_id_2ndorder" value="<?=$dat_id?>">
-		<input type="hidden" name="focus" value="<?=$focus?>">
-		<input type="hidden" name="sortorder" value="<?=$sortorder?>">
-		<?
+		<input type="hidden" name="id" value="<?php echo $tik_id ?>">
+		<input type="hidden" name="b" value="<?php echo $block_nr ?>">
+		<input type="hidden" name="sbj_id" value="<?php echo $sbj_id ?>">
+		<input type="hidden" name="dat_id_2ndorder" value="<?php echo $dat_id ?>">
+		<input type="hidden" name="focus" value="<?php echo $focus ?>">
+		<input type="hidden" name="sortorder" value="<?php echo $sortorder ?>">
+		<?php
 
 		switch ($block_nr)
 		{
@@ -307,7 +307,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		global $mySUser;
 	?>
 
-	<?
+	<?php
 	$html = '<input type="radio" name="step" value="1" checked> Kommentar/Dokumentation ';
 	$html .= '<input type="radio" name="step" value="2"> Anfrage ';
 	$html .= '<input type="radio" name="step" value="3"> Hinweis ';
@@ -328,8 +328,8 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	else
 	{
 	?>
-	<input type="hidden" name="progress" value="<?=$myTicket->row["tik_percentage"]?>">
-	<?
+	<input type="hidden" name="progress" value="<?php echo $myTicket->row["tik_percentage"] ?>">
+	<?php
 	}
 	$options='<option value="0"></option><option value="5">5 Minuten</option><option value="10">10 Minuten</option><option value="15">15 Minuten</option><option value="20">20 Minuten</option><option value="30">30 Minuten</option><option value="45">45 Minuten</option><option value="60">1 Stunde</option><option value="90">1,5 Stunden</option><option value="120">2 Stunden</option><option value="180">3 Stunden</option><option value="240">4 Stunden</option><option value="300">5 Stunden</option><option value="360">6 Stunden</option><option value="420">7 Stunden</option><option value="480">8 Stunden</option><option value="540">9 Stunden</option><option value="600">10 Stunden</option>';
 	$html .= $myLayout->workarea_form_select("Dauer","duration",$options,100);
@@ -343,21 +343,21 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			document.forms.editform.datum1.value = document.forms.editform.timeframe1[document.forms.editform.timeframe1.selectedIndex].value;
 		}
 </script>
-	<input type="text" name="datum1" size="10" value="<?if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);}?>" class="input">&nbsp;&nbsp;
+	<input type="text" name="datum1" size="10" value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>" class="input">&nbsp;&nbsp;
 <select name="timeframe1" onchange="javascript:taketime1();" class="input">
-<option value="<?if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);}?>">Vorgabe</option>
-<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y')));?>">morgen</option>
-<option value="<?=$myPT->nextFriday(time(),1)?>">Ende der Woche</option>
-<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y')));?>">n&auml;chste Woche</option>
-<option value="<?=$myPT->nextMonday(time(),1)?>">n&auml;chsten Montag</option>
-<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y')));?>">in zwei Wochen</option>
-<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y')));?>">in vier Wochen</option>
-<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y')));?>">in 2 Monaten</option>
-<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y')));?>">in 3 Monaten</option>
-<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y')));?>">in 6 Monaten</option>
-<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1));?>">in 1 Jahr</option>
+<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>">Vorgabe</option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
+<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
+<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
 </select>
-	<?
+	<?php
 	$html = $myPT->stopbuffer();
 
 	$myLayout->workarea_row_draw("R&uuml;ckstellung",$html);
@@ -394,11 +394,11 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td align="right" class="windowFooterWhite"><?if ($mySUser->checkRight("elm_admin") OR $mySUser->checkRight("superuser") ){?><input name="delete" type="submit" class="buttonWhite" style="width:102px"value="L&ouml;schen" onclick="javascript:return confirm('Dieses Ticket wirklich l&ouml;schen?')">&nbsp;<?}?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($mySUser->checkRight("elm_admin") OR $mySUser->checkRight("superuser") ){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px"value="L&ouml;schen" onclick="javascript:return confirm('Dieses Ticket wirklich l&ouml;schen?')">&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
 
-	<?
+	<?php
 	
 	}
 
@@ -431,7 +431,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			document.forms.editform.datum3.value = document.forms.editform.timeframe3[document.forms.editform.timeframe3.selectedIndex].value;
 		}
 </script>
-		<?
+		<?php
 		$html = $myLayout->workarea_form_text("Bezeichnung","bez",$myTicket->row["tik_bez"]);
 		$sql ="SELECT ticketsubject.sbj_id AS K, sbj_bez AS V FROM ticketsubject LEFT JOIN user_ticketsubject ON ticketsubject.sbj_id = user_ticketsubject.sbj_id WHERE usr_id = " . $_SESSION["usr_id"] . " ORDER BY sbj_bez";
 		$options = $myAdm->buildOptionsBySQL($sql,$myTicket->row["sbj_id"]);
@@ -456,21 +456,21 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		$myPT->startbuffer();
 		?>
 		<br>R&uuml;ckstellung:<br>
-		<input type="text" name="datum3" size="10" value="<?if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);}?>" class="input">&nbsp;&nbsp;
+		<input type="text" name="datum3" size="10" value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe3" onchange="javascript:taketime3();" class="input">
-		<option value="<?if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);}?>">Vorgabe</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y')));?>">morgen</option>
-		<option value="<?=$myPT->nextFriday(time(),1)?>">Ende der Woche</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y')));?>">n&auml;chste Woche</option>
-		<option value="<?=$myPT->nextMonday(time(),1)?>">n&auml;chsten Montag</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y')));?>">in zwei Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y')));?>">in vier Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y')));?>">in 2 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y')));?>">in 3 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y')));?>">in 6 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1));?>">in 1 Jahr</option>
+		<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>">Vorgabe</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
+		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
+		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
 		</select>
-		<?
+		<?php
 		$html .= $myPT->stopbuffer();
 		$myLayout->workarea_row_draw("Priorit&auml;t",$html);
 
@@ -487,54 +487,54 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		$tage = floor($tage/(60*60*24))+1;
 
    		?>
-		eingestellt am <?=date('d.m.Y H:i',$myTicket->row["tik_startdate"])?> von <?=$mySUser->getName($myTicket->row["usr_id_creator"])?>. (Tag <?=$tage?>)
-		<?
+		eingestellt am <?php echo date('d.m.Y H:i',$myTicket->row["tik_startdate"]) ?> von <?php echo $mySUser->getName($myTicket->row["usr_id_creator"]) ?>. (Tag <?php echo $tage ?>)
+		<?php
 		if ($myTicket->row["tik_complexity"]!=6)
 		{
 		?>
 		<br><br>
 		Limit:<br>
-		<input type="text" name="datum1" size="10" value="<?=date("d.m.Y",$myTicket->row["tik_enddate"]);?>" class="input">&nbsp;&nbsp;
+		<input type="text" name="datum1" size="10" value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe1" onchange="javascript:taketime1();" class="input">
-		<option value="<?=date("d.m.Y",$myTicket->row["tik_enddate"]);?>">Vorgabe</option>
-		<option value="<?=date("d.m.Y");?>">heute</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y')));?>">morgen</option>
-		<option value="<?=$myPT->nextFriday(time(),1)?>">Ende der Woche</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y')));?>">n&auml;chste Woche</option>
-		<option value="<?=$myPT->nextMonday(time(),1)?>">n&auml;chsten Montag</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y')));?>">in zwei Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y')));?>">in vier Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y')));?>">in 2 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y')));?>">in 3 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y')));?>">in 6 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1));?>">in 1 Jahr</option>
+		<option value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>">Vorgabe</option>
+		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
+		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
+		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
 		</select>
 		<br>
 		Ziel:<br>
-		<input type="text" name="datum2" size="10" value="<?if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);}?>" class="input">&nbsp;&nbsp;
+		<input type="text" name="datum2" size="10" value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe2" onchange="javascript:taketime2();" class="input">
-		<option value="<?if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);}?>">Vorgabe</option>
+		<option value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>">Vorgabe</option>
 		<option value="-1">Limit</option>
-		<option value="<?=date("d.m.Y");?>">heute</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y')));?>">morgen</option>
-		<option value="<?=$myPT->nextFriday(time(),1)?>">Ende der Woche</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y')));?>">n&auml;chste Woche</option>
-		<option value="<?=$myPT->nextMonday(time(),1)?>">n&auml;chsten Montag</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y')));?>">in zwei Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y')));?>">in vier Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y')));?>">in 2 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y')));?>">in 3 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y')));?>">in 6 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1));?>">in 1 Jahr</option>
+		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
+		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
+		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
 		</select>
-		<?
+		<?php
 		}
 		else
 		{
 		?>
-		<input type="hidden" name="datum1" value="<?=date("d.m.Y",$myTicket->row["tik_enddate"]);?>">
-		<input type="hidden" name="datum2" size="10" value="<?if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);}?>" class="input">
-		<?
+		<input type="hidden" name="datum1" value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>">
+		<input type="hidden" name="datum2" size="10" value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>" class="input">
+		<?php
 		}
 
 		$html = $myPT->stopbuffer();
@@ -572,11 +572,11 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		?>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td align="right" class="windowFooterWhite"><?if ($mySUser->checkRight("elm_admin") OR $mySUser->checkRight("superuser") )
-	{?><input name="delete" type="submit" class="buttonWhite" style="width:102px"value="L&ouml;schen" onclick="javascript:return confirm('Dieses Ticket wirklich l&ouml;schen?')">&nbsp;<?}?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($mySUser->checkRight("elm_admin") OR $mySUser->checkRight("superuser") )
+	{?><input name="delete" type="submit" class="buttonWhite" style="width:102px"value="L&ouml;schen" onclick="javascript:return confirm('Dieses Ticket wirklich l&ouml;schen?')">&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-        <?
+        <?php
 	}
 
 	// --------------------------------------------------------------------------------------------
@@ -599,13 +599,13 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		$html = "&nbsp;W&auml;hlen Sie jetzt die Benutzer aus, die Sie auf Ihren Kommentar hinweisen m&ouml;chten:<br><br>".$user."<br><br><br><br><br><br><br><br>";
 		$myLayout->workarea_row_draw("Benutzer",$html);
   		?>
-   		<input type="hidden" name="comment" value="<?=htmlentities($myRequest->get("comment"))?>">
+   		<input type="hidden" name="comment" value="<?php echo htmlentities($myRequest->get("comment")) ?>">
    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Ausf&uuml;hren">&nbsp;&nbsp;</td>
           </tr>
         </table>
-        <?
+        <?php
 	}
 
 	// --------------------------------------------------------------------------------------------
@@ -628,13 +628,13 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		$html = "&nbsp;W&auml;hlen Sie jetzt die Benutzer aus, die auf Ihre Frage mit einem Kommentar antworten sollen:<br/><br/>".$user."<br/><br/><br/><br/><br/><br/><br/><br/>";
 		$myLayout->workarea_row_draw("Benutzer",$html);
 		?>
-    <input type="hidden" name="comment" value="<?=htmlentities($myRequest->get("comment"))?>">
+    <input type="hidden" name="comment" value="<?php echo htmlentities($myRequest->get("comment")) ?>">
    	<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Ausf&uuml;hren">&nbsp;&nbsp;</td>
           </tr>
         </table>
-        <?
+        <?php
 	}
 
 	function displayNoticesMask($myTicket,$sbj_id,$dat_id,$focus,$sortorder)
@@ -644,7 +644,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="tableBody"><br>
-			<?
+			<?php
 			$myLayout->form_Richtext("description",$myTicket->row["tik_notice"],80,25,640)
 			?>
 			</td>
@@ -660,7 +660,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
             <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-		<?
+		<?php
 	}
 
 
@@ -703,7 +703,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		"http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?=$myPT->version?></title>
+		<title>phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -719,13 +719,13 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		</head>
 		<body>
 		<form enctype="multipart/form-data" name="editform" method="post" action="backend.php">	
-		<input type="hidden" name="id" value="<?=$id?>">
+		<input type="hidden" name="id" value="<?php echo $id ?>">
 		<input type="hidden" name="page" value="Ticket,Process,removemarkup"/>
 		<input type="hidden" name="popup" value="1"/>
 		<script language="JavaScript">
 		self.focus();
 		</script>
-		<table width="<?=$table_x?>" border="0" align="center" cellpadding="0" cellspacing="0">
+		<table width="<?php echo $table_x ?>" border="0" align="center" cellpadding="0" cellspacing="0">
 		  <tr>
 		    <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		      <tr>
@@ -735,7 +735,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		    </table></td>
 		  </tr>
 		</table>
-		<?
+		<?php
 		}
 		$_prio = Array(1=>"++ H&ouml;chste Priorit&auml;t",2=>"vorrangig",3=>"Standard",4=>"nachrangig");
 		$_komplex = Array("ohne Schätzung","Stunde","Tag","Wenige Tage","Woche","Monat","Daueraufgabe");
@@ -786,17 +786,17 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 
   				?>
 				<br>
-				<table width="<?=$table_x?>" border="0" align="center" cellpadding="0" cellspacing="0">
+				<table width="<?php echo $table_x ?>" border="0" align="center" cellpadding="0" cellspacing="0">
 				  <tr>
 				    <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 				      <tr>
-				        <td class="windowTitle">Woche <?=date("W",$montag)?>/<?=date("Y",$sonntag)?> vom <?=date("d.m.y",$montag)?> - <?=date("d.m.y",$sonntag)?></td>
+				        <td class="windowTitle">Woche <?php echo date("W",$montag) ?>/<?php echo date("Y",$sonntag) ?> vom <?php echo date("d.m.y",$montag) ?> - <?php echo date("d.m.y",$sonntag) ?></td>
 				        <td align="right" class="windowTitle">&nbsp;</td>
 				      </tr>
 				    </table></td>
 				  </tr>
 				</table>
-  				<?
+  				<?php
 
   				$aktwoche = $myPT->nextMonday($aktwoche+60*60*24);
   				$woche = $aktwoche;
@@ -874,30 +874,30 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 
 
 
-<table width="<?=$table_x?>" border="0" cellpadding="0" cellspacing="0" align="center" class="window">
+<table width="<?php echo $table_x ?>" border="0" cellpadding="0" cellspacing="0" align="center" class="window">
 <tr>
     <td width="50" valign="top" class="taskTopCorner">
 	<!-- Ticketstatus zu Beginn des Arbeitsschrittes -->
-	<?
+	<?php
 	if ($zeigegrafik1==1)
 	{
 	?>
-	<img src="img/<?=$grafik1?>" alt="" width="48" height="36" vspace="6" border="0">
-	<?
+	<img src="img/<?php echo $grafik1 ?>" alt="" width="48" height="36" vspace="6" border="0">
+	<?php
 	}
 	?>
 	</td>
 	<td width="60"  valign="top" class="taskTopCorner" rowspan="2">
 	<p align="center"><img src="img/transparent.gif" width="3" height="9"><br>
-	<?
+	<?php
 	if ($zeigedatum==1)
 	{
 
 		$tage = $datum - $ticketdatum;
 		$tage = floor($tage/(60*60*24))+1;
 	?>
-	<strong><?=$_tag[$wochentag]?> <?=date('d.m.',$datum)?></strong><br>(Tag <?=$tage?>)
-	<?
+	<strong><?php echo $_tag[$wochentag] ?> <?php echo date('d.m.',$datum) ?></strong><br>(Tag <?php echo $tage ?>)
+	<?php
 	}
 	?>
 	</p>
@@ -908,19 +908,19 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
     <td class="textarea">
 	<table width="98%" border="0" cellpadding="2" cellspacing="0" align="center">
 	<!-- Wer und Wann  -->
-	<?
+	<?php
 	if ($zeigeuhrzeit==1)
 	{
 	?>
 	<tr>
-	<td width="55" valign="top" class="taskTopCorner"><p><?=date("H:i",$uhrzeit)?></p></td>
-	<td  class="taskTopCorner"><?=$mySUser->getName($row["usr_id"])?></td>
+	<td width="55" valign="top" class="taskTopCorner"><p><?php echo date("H:i",$uhrzeit) ?></p></td>
+	<td  class="taskTopCorner"><?php echo $mySUser->getName($row["usr_id"]) ?></td>
 	</tr>
-	<?
+	<?php
 	}
 	?>
 	<!-- Aktion -->
-	<?
+	<?php
 	switch ($row["act_type"])
 	{
 		// Anlage
@@ -933,51 +933,51 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<tr>
 	<td align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
 	<td valign="top" >
-	Bezeichnung: <?=$myPT->getH($_details["bez"])?><br>
-	Bereich:  <?=$myPT->getH($_details["subject"])?><br>
-	Zieldatum: <?=date('d.m.Y',$_details["enddate"])?><br>
-	Priorit&auml;t: <?=$_prio[$_details["prio"]]?><br>
-	Bearbeiter: <?=$myPT->getH($_details["owner"])?><br>
+	Bezeichnung: <?php echo $myPT->getH($_details["bez"]) ?><br>
+	Bereich:  <?php echo $myPT->getH($_details["subject"]) ?><br>
+	Zieldatum: <?php echo date('d.m.Y',$_details["enddate"]) ?><br>
+	Priorit&auml;t: <?php echo $_prio[$_details["prio"]] ?><br>
+	Bearbeiter: <?php echo $myPT->getH($_details["owner"]) ?><br>
 	</td>
 	</tr>	
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	?>
-	<?
+	<?php
 	break;
 	?>
-	<?
+	<?php
 	// Delegation
 		case 2:
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_myjob.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket an <?=$myPT->getH($_details["newowner"])?> delegiert.</td>
+	<td valign="top" >Ticket an <?php echo $myPT->getH($_details["newowner"]) ?> delegiert.</td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	?>
-	<?
+	<?php
 	break;
 	?>	
-	<?
+	<?php
 	// Ticket akzeptiert
 		case 3:
 	?>
@@ -986,106 +986,106 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<td valign="top" >Ticket akzeptiert.</td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td width="55"  align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	?>
-	<?
+	<?php
 	break;
 	?>
-	<?
+	<?php
 	// Ticket bearbeitet
 		case 4:
 	?>
 <tr>
 		  <td  width="55" align="center" valign="top" height="25">
 		   <img src="img/transparent.gif" width="3" height="5"><br>
-		 <? if ($_details["complexity"]!=6){?>
+		 <?php if ($_details["complexity"]!=6){ ?>
                <table width="50" border="0" cellspacing="0" cellpadding="0">
                         <tr>
-						<?
+						<?php
 						$w = floor($_details["percentage"]*48/100);
 						?>
-                          <td align="left" class="taskProgress"><img src="img/task_progressline.gif" width="<?=$w?>" height="3" alt=" <?=$_details["percentage"]?> %" title=" <?=$_details["percentage"]?> %"></td>
+                          <td align="left" class="taskProgress"><img src="img/task_progressline.gif" width="<?php echo $w ?>" height="3" alt=" <?php echo $_details["percentage"] ?> %" title=" <?php echo $_details["percentage"] ?> %"></td>
                         </tr>
                     </table>
-				  <?}?>
+				  <?php } ?>
 		 
 		 </td>
 		  <td valign="top" >
-		  <?
+		  <?php
 		  if ($_details["minutes"]>0)
 		  {
 		  ?>
-		  <?=$_details["minutes"]?> Minuten 
-		  <?
+		  <?php echo $_details["minutes"] ?> Minuten 
+		  <?php
 		  }
 		  else
 		  {
 		  ?>
 		  Ticket
-		  <?
+		  <?php
 		  }
 		  ?>
 		  bearbeitet
-		  <?
+		  <?php
 		  if ($_details["percentage"]!=$_details["oldpercentage"])
 		  {
 		  ?>
-		  , Fertigstellungsgrad <?=$_details["percentage"]?>%.
-		  <?
+		  , Fertigstellungsgrad <?php echo $_details["percentage"] ?>%.
+		  <?php
 		  }else{
 		  ?>
 		  .
-		  <?
+		  <?php
 		  }
 		  ?>
 		  </td>
 		  </tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	?>
-	<?
+	<?php
 	break;
 	?>
-	<?
+	<?php
 	// Ticket geschlossen
 		case 5:
 	?>
 	<tr>
-	<td  width="55" align="center" valign="top" height="25"><?if ($_details["percentage"]!=100){?><img src="img/t_closed0.gif" width="17" height="17" hspace="1"><?}else{?><img src="img/t_closed100.gif" width="17" height="17" hspace="1"><?}?><img src="img/t_closed.gif" width="22" height="22"></td>
+	<td  width="55" align="center" valign="top" height="25"><?php if ($_details["percentage"]!=100){ ?><img src="img/t_closed0.gif" width="17" height="17" hspace="1"><?php }else{ ?><img src="img/t_closed100.gif" width="17" height="17" hspace="1"><?php } ?><img src="img/t_closed.gif" width="22" height="22"></td>
 	<td valign="top" >Ticket geschlossen. </td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 	?>	
-	<?
+	<?php
 	// Ticket angesehen
 		case 6:
 	?>
@@ -1094,23 +1094,23 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<td valign="top" >Ticket angesehen.</td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 	?>	
-	<?
+	<?php
 	// Ticket kommentiert
 		case 7:
 	?>
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 		if ($row["usr_id"]==$_details["usr_id_owner"])
@@ -1118,21 +1118,21 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_edit.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 		}else{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 		}
 	}
 	break;
 	?>		
-	<?
+	<?php
 	// Ticket zur&uuml;ckgewiesen
 		case 8:
 	?>
@@ -1141,15 +1141,15 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<td valign="top" >Ticket zur&uuml;ckgewiesen.</td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 
@@ -1158,76 +1158,76 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<tr>
 	<td width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
 	<td valign="top" >
-	<?
+	<?php
 	if ($_details["newsubject"]!=""){
 	?>
-	Bezeichnung: <?=$myPT->getH($_details["newsubject"])?><br>
-	<?
+	Bezeichnung: <?php echo $myPT->getH($_details["newsubject"]) ?><br>
+	<?php
 	}
 	?>
-	<?
+	<?php
 	if ($_details["newenddate"]!=""){
 	?>
-	Enddatum: <?=date('d.m.Y',$_details["newenddate"])?><br>
-	<?
+	Enddatum: <?php echo date('d.m.Y',$_details["newenddate"]) ?><br>
+	<?php
 	}
 	?>
-	<?
+	<?php
 	if ($_details["newestimationdate"]!=""){
 	?>
-	Zieldatum: <?
+	Zieldatum: <?php
 	if ($_details["newestimationdate"]==0){echo"keine Festlegung";}else{echo date('d.m.Y',$_details["newestimationdate"]);}
 	?><br>
-	<?
+	<?php
 	}
 	?>	
-	<?
+	<?php
 	if ($_details["newsleepdate"]!=""){
 	?>
-	R&uuml;ckstellung: <?=date('d.m.Y',$_details["newsleepdate"])?><br>
-	<?
+	R&uuml;ckstellung: <?php echo date('d.m.Y',$_details["newsleepdate"]) ?><br>
+	<?php
 	}
 	?>	
-	<?
+	<?php
 	if ($_details["newpriority"]!=""){
 	?>
-	Priorit&auml;t: <?=$_prio[$_details["newpriority"]]?><br>
-	<?
+	Priorit&auml;t: <?php echo $_prio[$_details["newpriority"]] ?><br>
+	<?php
 	}
 	?>
-	<?
+	<?php
 	if ($_details["newcomplexity"]!=""){
 	?>
-	Komplexit&auml;t: <?=$_komplex[$_details["newcomplexity"]]?><br>
-	<?
+	Komplexit&auml;t: <?php echo $_komplex[$_details["newcomplexity"]] ?><br>
+	<?php
 	}
 	?>
-	<?
+	<?php
 	if ($_details["newtendency"]!=""){
 	?>
-	Tendenz: <?=$_tendency[$_details["newtendency"]]?><br>
-	<?
+	Tendenz: <?php echo $_tendency[$_details["newtendency"]] ?><br>
+	<?php
 	}
 	?>	
 			
 
 	</td>
 	</tr>	
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	?>
-	<?
+	<?php
 	break;
 	?>
-	<?
+	<?php
 	// Notizen ge&auml;andert
 		case 10:
 	?>
@@ -1235,31 +1235,31 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_noticecomment.gif" width="22" height="22"></td>
 	<td valign="top" >Ticketnotizen bearbeitet.</td>
 	</tr>
-	<?
+	<?php
 	break;
 	?>	
-	<?
+	<?php
 	// Bereich gewechselt
 		case 11:
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
-	<td valign="top" >Bereich: <?=$myPT->getH($_details["newsubject"])?></td>
+	<td valign="top" >Bereich: <?php echo $myPT->getH($_details["newsubject"]) ?></td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 	?>
-	<?
+	<?php
 	// Ticket widerbelebt
 		case 12:
 	?>
@@ -1268,36 +1268,36 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<td valign="top" >Ticket erneut ge&ouml;ffnet.</td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 	?>	
-<?
+<?php
 // Hinweis
 		case 13:
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_notice.gif" width="22" height="22"></td>
-	<td valign="top" >Hinweis f&uuml;r <?=$myPT->getH($_details["aim"])?></td>
+	<td valign="top" >Hinweis f&uuml;r <?php echo $myPT->getH($_details["aim"]) ?></td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25" >&nbsp;</td>
-    <td valign="top" class="taskTopCorner"><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" class="taskTopCorner"><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 
@@ -1306,46 +1306,46 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_request.gif" width="22" height="22"></td>
-	<td valign="top" >Anfrage f&uuml;r <?=$myPT->getH($_details["aim"])?></td>
+	<td valign="top" >Anfrage f&uuml;r <?php echo $myPT->getH($_details["aim"]) ?></td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25" >&nbsp;</td>
-    <td valign="top" class="taskTopCorner"><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" class="taskTopCorner"><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	?>			
-	<?
+	<?php
 	break;
 	?>	
-	<?
+	<?php
 	// Ticket zurueckgestellt
 		case 15: //
 		//print_r ($_details);
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket bis <?=$_tag[date('w',$_details["sleepdate"])]?> <?=date('d.m.y',$_details["sleepdate"])?> zur&uuml;ckgestellt.</td>
+	<td valign="top" >Ticket bis <?php echo $_tag[date('w',$_details["sleepdate"])] ?> <?php echo date('d.m.y',$_details["sleepdate"]) ?> zur&uuml;ckgestellt.</td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 	?>	
-	<?
+	<?php
 	// Ticket-Rueckstellung aufgehoben
 		case 16:
 	?>
@@ -1354,19 +1354,19 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<td valign="top" >Ticket-R&uuml;ckstellung aufgehoben.</td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 	?>	
-	<?
+	<?php
 	// Dokument angeh&auml;ngt
 		case 17:
 			$med_id = $_details["med_id"];
@@ -1396,41 +1396,41 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_attach.gif" width="17" height="17" vspace="1" hspace="2"></td>
-	<td valign="top" >Dokument <a href="<?=$myDoc->url?>" target="_blank"><?=$myDoc->bez?></a> angeh&auml;ngt.<br>
-	<br><a href="<?=$myDoc->url?>" target="_blank"><?=$attachment?></a>
+	<td valign="top" >Dokument <a href="<?php echo $myDoc->url ?>" target="_blank"><?php echo $myDoc->bez ?></a> angeh&auml;ngt.<br>
+	<br><a href="<?php echo $myDoc->url ?>" target="_blank"><?php echo $attachment ?></a>
 	</td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 	?>		
-		<?
+		<?php
 		// Bereich gewechselt
 		case 18:
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
-	<td valign="top" ><?=$myPT->getPref("tickets.bez_2ndorder")?>: <?=$myPT->getH($_details["new2ndorder"])?></td>
+	<td valign="top" ><?php echo $myPT->getPref("tickets.bez_2ndorder") ?>: <?php echo $myPT->getH($_details["new2ndorder"]) ?></td>
 	</tr>
 
-	<?
+	<?php
 	if ($row["act_comment"]!="")
 	{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?=nl2br(htmlentities($row["act_comment"]))?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
     </tr>	
-	<?
+	<?php
 	}
 	break;
 
@@ -1441,7 +1441,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<td valign="top" >Hinweismerker gelöscht.</td>
 	</tr>
 	
-	<?
+	<?php
 	break;
 		case 20:
 	?>
@@ -1449,7 +1449,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_request.gif" width="22" height="22"></td>
 	<td valign="top" >Anfragemerker gelöscht.</td>
 	</tr>
-	<?
+	<?php
 	break;
 	// Ende switch case
 	}
@@ -1463,18 +1463,18 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 <tr>
 <td  class="taskTopCorner">
 <!-- Ticketstatus zu Ende des Arbeitsschrittes -->
-<?
+<?php
 if ($zeigegrafik2==1)
 {
 ?>
-<img src="img/<?=$grafik2?>" alt="" width="48" height="36" vspace="6" border="0">
-<?
+<img src="img/<?php echo $grafik2 ?>" alt="" width="48" height="36" vspace="6" border="0">
+<?php
 }
 ?>
 </td>
 </tr>
 </table>
-<?
+<?php
 		}
 
 		echo "<br/><br/>";
@@ -1496,17 +1496,17 @@ if ($zeigegrafik2==1)
 		?>
 	 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowFooterWhite" align="left">&nbsp;&nbsp<?=$html_button1?>&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?=$html_button2?>&nbsp;&nbsp;</td>
+            <td class="windowFooterWhite" align="left">&nbsp;&nbsp<?php echo $html_button1 ?>&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php echo $html_button2 ?>&nbsp;&nbsp;</td>
           </tr>
         </table>
-        <?
+        <?php
 
         if ($popup==1)
         {
         	?>
         	<form></body></html>
-        	<?
+        	<?php
         }
 	}
 
@@ -1533,7 +1533,7 @@ if ($zeigegrafik2==1)
 		"http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?=$myPT->version?></title>
+		<title>phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -1583,7 +1583,7 @@ if ($zeigegrafik2==1)
 		    </tr>
 		</table>
 		<br/>
-		<?
+		<?php
 		$url = 'backend.php?page=Ticket,Process,insert&pag_id=' .$pag_id. '&ver_id=' .$ver_id. '&dat_id=' . $dat_id . '&med_id=' . $med_id .'&sbj_id=' .$sbj_id. "&dat_id_2ndorder=".$dat_id_2ndorder."&express=0";
 
 		$this->tab_addEntry("Standard-Ticket",$url,"b_job.gif");
@@ -1602,7 +1602,7 @@ if ($zeigegrafik2==1)
 		<form action="backend.php" method="post" enctype="multipart/form-data" name="form1"  onsubmit="return checkForm();">
 		<input type="hidden" name="page" value="Ticket,Process,insert"/>
 		<input type="hidden" name="step" value="2"/>
-		<input type="hidden" name="express" value="<?=$express?>"/>
+		<input type="hidden" name="express" value="<?php echo $express ?>"/>
 
 			<table width="100%" border=0" cellpadding="0" cellspacing="0" align="center" class="window">
 		        <tr>
@@ -1621,7 +1621,7 @@ if ($zeigegrafik2==1)
 		<td width="100">Bereich:</td>
 		<td>
 		<select name="sbj_id" class="listmenu" style="width: 200px" >
-		<?
+		<?php
 
 		$sql ="SELECT * FROM ticketsubject LEFT JOIN user_ticketsubject ON ticketsubject.sbj_id = user_ticketsubject.sbj_id WHERE usr_id = " . $_SESSION["usr_id"] . " ORDER BY sbj_bez";
 
@@ -1637,24 +1637,24 @@ if ($zeigegrafik2==1)
 			$selected ="";
 			if ($sbj_id==$row["sbj_id"]){$selected="selected";}
 			?>
-			<option value="<?=$row["sbj_id"]?>" <?=$selected?>><?=$myPT->getH($row["sbj_bez"])?></option>
-			<?
+			<option value="<?php echo $row["sbj_id"] ?>" <?php echo $selected ?>><?php echo $myPT->getH($row["sbj_bez"]) ?></option>
+			<?php
 		}
 
 		?>
 		</select>
 		</td>
 		</tr>
-		<?
+		<?php
 		if ($myPT->getIPref("tickets.con_id_2ndorder")!=0 AND $express==0)
 		{
 		?>
 		<tr>
-		<td width="100"><br><?=$myPT->getH($myPT->getPref("tickets.bez_2ndorder"))?>:</td>
+		<td width="100"><br><?php echo $myPT->getH($myPT->getPref("tickets.bez_2ndorder")) ?>:</td>
 		<td><br>
 		<select name="dat_id_2ndorder" class="listmenu" style="width: 200px" >
 		<option value="0">...</option>
-		<?
+		<?php
 
 		$sql ="SELECT dat_id,dat_bez FROM content_data WHERE con_id=" . $myPT->getIPref("tickets.con_id_2ndorder") . " AND dat_status=1 ORDER BY dat_bez";
 		$rs = $myDB->query($sql);
@@ -1663,74 +1663,74 @@ if ($zeigegrafik2==1)
 			$selected ="";
 			if ($dat_id_2ndorder==$row["dat_id"]){$selected="selected";}
 			?>
-			<option value="<?=$row["dat_id"]?>" <?=$selected?>><?=$myPT->getH($row["dat_bez"])?></option>
-			<?
+			<option value="<?php echo $row["dat_id"] ?>" <?php echo $selected ?>><?php echo $myPT->getH($row["dat_bez"]) ?></option>
+			<?php
 		}
 		?>
 		</select>
 		</td>
 		</tr>
-		<?
+		<?php
 		}
 
 		if ($pag_id!=0)
 		{
 			$bez = $myAdm->getPageName($pag_id,$ver_id);
 			?>
-			<input type="hidden" name="pag_id" value="<?=$pag_id?>">
-			<input type="hidden" name="ver_id" value="<?=$ver_id?>">
+			<input type="hidden" name="pag_id" value="<?php echo $pag_id ?>">
+			<input type="hidden" name="ver_id" value="<?php echo $ver_id ?>">
 			<tr>
 			<td width="100">
 			<br>Seite:
 			</td>
-			<td ><br><p class="input"><?=$myPT->getH($bez)?></p></td>
+			<td ><br><p class="input"><?php echo $myPT->getH($bez) ?></p></td>
 			</tr>
-			<?
+			<?php
 		}
 
 		if ($dat_id!=0)
 		{
 			$bez = $myAdm->getContentName($dat_id);
 			?>
-			<input type="hidden" name="dat_id" value="<?=$dat_id?>">
+			<input type="hidden" name="dat_id" value="<?php echo $dat_id ?>">
 			<tr>
 			<td>
 			<br>Content-Datensatz:
 			</td>
-			<td ><br><p class="input"><?=$myPT->getH($bez)?></p></td>
+			<td ><br><p class="input"><?php echo $myPT->getH($bez) ?></p></td>
 			</tr>
-		<?
+		<?php
 		}
 		if ($med_id!=0)
 		{
 			$myMB = new PhenotypeMediabase;
 			$bez = $myMB->getMediaObjectName($med_id);
 			?>
-			<input type="hidden" name="med_id" value="<?=$med_id?>">
+			<input type="hidden" name="med_id" value="<?php echo $med_id ?>">
 			<tr>
 			<td>
 			<br>Mediaobjekt:
 			</td>
-			<td ><br><p class="input"><?=$myPT->getH($bez)?></p></td>
+			<td ><br><p class="input"><?php echo $myPT->getH($bez) ?></p></td>
 			</tr>
-			<?
+			<?php
 		}
 		?>
 		<tr>
 		<td valign="top"><br>Priorit&auml;t:</td>
 		<td  colspan="3" ><br>
-		<?
+		<?php
 		if ($express==1)
 		{
 		?>
 		<select name="priority" style="width: 200px" class="listmenu" ><option value="3" selected>o&nbsp; Standard</option></select>
-		<?
+		<?php
 		}
 		else
 		{
 		?>
 		<select name="priority" style="width: 200px" class="listmenu" ><option value="1" >++ H&ouml;chste Priorit&auml;t</option><option value="2" >+&nbsp; vorrangig</option><option value="3" selected>o&nbsp; Standard</option><option value="4" >-&nbsp; nachrangig</option></select>
-		<?
+		<?php
 		}
 		?>
 		<br><br>
@@ -1739,33 +1739,33 @@ if ($zeigegrafik2==1)
 		<tr>
 		<td>Zeitraum:</td>
 		<td  colspan="3">
-		<?
+		<?php
 		if ($express==1)
 		{
 		?>
 		<select name="timeframe" class="listmenu">
-		<option value="<?=date("d.m.Y");?>">heute</option>
-		</select>&nbsp;&nbsp;<input type="hidden" name="datum" size="10" value="<?=date("d.m.Y");?>" class="input" /><?=date("d.m.Y");?>
-		<?
+		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
+		</select>&nbsp;&nbsp;<input type="hidden" name="datum" size="10" value="<?php echo date("d.m.Y"); ?>" class="input" /><?php echo date("d.m.Y"); ?>
+		<?php
 		}
 		else
 		{
 		?>
 		<select name="timeframe" onchange="javascript:taketime()" class="listmenu">
 		<option value=""></option>
-		<option value="<?=date("d.m.Y");?>">heute</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y')));?>">morgen</option>
-		<option value="<?=$myPT->nextFriday(time(),1)?>">Ende der Woche</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y')));?>">n&auml;chste Woche</option>
-		<option value="<?=$myPT->nextMonday(time(),1)?>">n&auml;chsten Montag</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y')));?>">in zwei Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y')));?>">in vier Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y')));?>">in 2 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y')));?>">in 3 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y')));?>">in 6 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1));?>">in 1 Jahr</option>
+		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
+		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
+		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
 		</select>&nbsp;&nbsp;<input type="text" name="datum" size="10" value="" class="input">
-		<?
+		<?php
 		}
 		?>
 		<br><br>
@@ -1775,7 +1775,7 @@ if ($zeigegrafik2==1)
 		<td>f&uuml;r:</td>
 		<td  colspan="3">
 		<select name="usr_id" class="listmenu" style="width: 200px" >
-		<?
+		<?php
 		$sql = "SELECT * FROM user WHERE usr_status = 1 ORDER by usr_vorname, usr_nachname";
 		
 		if ($express==1)
@@ -1807,7 +1807,7 @@ if ($zeigegrafik2==1)
 		        <tr>
 		           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
 		          </tr>
-		  <?
+		  <?php
 		  if ($express==1)
 		  {
 		  	?>
@@ -1827,7 +1827,7 @@ if ($zeigegrafik2==1)
 		  <tr>
 		  	<td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
 		  </tr>
-		  <?
+		  <?php
 		  }
 		  ?>        
 		        <tr>
@@ -1864,7 +1864,7 @@ if ($zeigegrafik2==1)
 		</form>
 		</body>
 		</html>
-		<?	
+		<?php	
 	}
 
 	function processInsertWizard()
@@ -1991,14 +1991,14 @@ if ($zeigegrafik2==1)
 		<title>phenotype 2.2</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<script language="JavaScript">
-		top.opener.location = "<?=$url?>";
+		top.opener.location = "<?php echo $url ?>";
 		self.close();
 		</script>
 		</head>
 		<body>
 		</body>
 		</html>
-		<?
+		<?php
 	}
 
 	function displayPlanningWizard($myTicket)
@@ -2056,9 +2056,9 @@ if ($zeigegrafik2==1)
 		<body>
 		
 		<form action="backend.php" method="post" enctype="multipart/form-data" name="editform"  onsubmit="return checkForm();">
-		<input type="hidden" name="tik_id" value="<?=$tik_id?>">
-		<input type="hidden" name="sbj_id" value="<?=$sbj_id?>">
-		<input type="hidden" name="dat_id_2ndorder" value="<?=$dat_id_2ndorder?>">
+		<input type="hidden" name="tik_id" value="<?php echo $tik_id ?>">
+		<input type="hidden" name="sbj_id" value="<?php echo $sbj_id ?>">
+		<input type="hidden" name="dat_id_2ndorder" value="<?php echo $dat_id_2ndorder ?>">
 		<input type="hidden" name="page" value="Ticket,Process,insert"/>
 		<input type="hidden" name="step" value="3"/>
 		<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -2083,53 +2083,53 @@ if ($zeigegrafik2==1)
 				  <td><br>
 				  		
 						Limit:<br>
-		<input type="text" name="datum1" size="10" value="<?=date("d.m.Y",$myTicket->row["tik_enddate"]);?>" class="input">&nbsp;&nbsp;
+		<input type="text" name="datum1" size="10" value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe1" onchange="javascript:taketime1();" class="input">
-		<option value="<?=date("d.m.Y",$myTicket->row["tik_enddate"]);?>">Vorgabe</option>
-		<option value="<?=date("d.m.Y");?>">heute</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y')));?>">morgen</option>
-		<option value="<?=$myPT->nextFriday(time(),1)?>">Ende der Woche</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y')));?>">n&auml;chste Woche</option>
-		<option value="<?=$myPT->nextMonday(time(),1)?>">n&auml;chsten Montag</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y')));?>">in zwei Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y')));?>">in vier Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y')));?>">in 2 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y')));?>">in 3 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y')));?>">in 6 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1));?>">in 1 Jahr</option>
+		<option value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>">Vorgabe</option>
+		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
+		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
+		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
 		</select>
 		<br>
 		Ziel:<br>
-		<input type="text" name="datum2" size="10" value="<?if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);}?>" class="input">&nbsp;&nbsp;
+		<input type="text" name="datum2" size="10" value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe2" onchange="javascript:taketime2();" class="input">
-		<option value="<?if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);}?>">Vorgabe</option>
+		<option value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>">Vorgabe</option>
 		<option value="-1">Limit</option>
-		<option value="<?=date("d.m.Y");?>">heute</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y')));?>">morgen</option>
-		<option value="<?=$myPT->nextFriday(time(),1)?>">Ende der Woche</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y')));?>">n&auml;chste Woche</option>
-		<option value="<?=$myPT->nextMonday(time(),1)?>">n&auml;chsten Montag</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y')));?>">in zwei Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y')));?>">in vier Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y')));?>">in 2 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y')));?>">in 3 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y')));?>">in 6 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1));?>">in 1 Jahr</option>
+		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
+		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
+		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
 		</select>
 			<br>R&uuml;ckstellung:<br>
-			<input type="text" name="datum3" size="10" value="<?if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);}?>" class="input">&nbsp;&nbsp;
+			<input type="text" name="datum3" size="10" value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe3" onchange="javascript:taketime3();" class="input">
-		<option value="<?if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);}?>">Vorgabe</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y')));?>">morgen</option>
-		<option value="<?=$myPT->nextFriday(time(),1)?>">Ende der Woche</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y')));?>">n&auml;chste Woche</option>
-		<option value="<?=$myPT->nextMonday(time(),1)?>">n&auml;chsten Montag</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y')));?>">in zwei Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y')));?>">in vier Wochen</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y')));?>">in 2 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y')));?>">in 3 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y')));?>">in 6 Monaten</option>
-		<option value="<?=date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1));?>">in 1 Jahr</option>
+		<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>">Vorgabe</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
+		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
+		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
 		</select><br><br>
 				  </td>
 				</tr>		
@@ -2141,7 +2141,7 @@ if ($zeigegrafik2==1)
 				  <td width="10">&nbsp;</td>
 		          <td valign="top" width="110"><br><strong>Resourcenplanung</strong></td>
 		          <td width="10">&nbsp;</td>
-				  <td><br><?
+				  <td><br><?php
 				  $options = Array (0=>"ohne Schätzung",1=>"Stunde",2=>"Tag",3=>"Wenige Tage",4=>"Woche",5=>"Monat",6=>"Daueraufgabe");
 				  $options = $myAdm->buildOptionsByNamedArray($options,$myTicket->row["tik_complexity"]);
 				  $html = $myLayout->workarea_form_select("Komplexität:","complexity",$options,150);
@@ -2179,7 +2179,7 @@ if ($zeigegrafik2==1)
 		</form>
 		</body>
 		</html>
-		<?
+		<?php
 	}
 
 

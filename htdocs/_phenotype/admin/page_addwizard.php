@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_pageconfig"))
 {
   $url = "noaccess.php";
@@ -34,7 +34,7 @@ if (!$mySUser->checkRight("elm_pageconfig"))
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?></title>
+<title>phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@ body {
 
 <body>
 <form action="page_insert.php" method="post" name="form1" id="form1" target="_parent">
-<input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">
+<input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
 <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -99,13 +99,13 @@ body {
         <tr>
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
         </tr>
-		<?if ($_REQUEST["c"]==0){?>
+		<?php if ($_REQUEST["c"]==0){ ?>
         <tr>
           <td colspan="5" valign="top" class="tableCellMedia"><input name="insertorder" type="radio" value="3">
                   <img src="img/i_classification_sub.gif" alt="&uuml;ber der aktivierten Seite" width="30" height="35" align="absmiddle"> Unterhalb
                   der Seite, eine Ebene tiefer</td>
         </tr>
-		<?}?>
+		<?php } ?>
         <tr>
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
@@ -115,7 +115,7 @@ body {
           </tr>
 		<tr>
 		<td colspan="5" valign="top" class="tableBody">
-		<?
+		<?php
 		$myPage = new PhenotypePage();
 		$myPage->init($_REQUEST["id"]);
 		 // Bestimmen welche Layouts genutzt werden dürfen

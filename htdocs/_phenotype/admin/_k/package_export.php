@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
 	$url = "noaccess.php";
@@ -30,36 +30,36 @@ if (!$mySUser->checkRight("superuser"))
 	exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Packages");
 $myAdm->explorer_set("packagemode","export");
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
@@ -88,13 +88,13 @@ $myPT->startBuffer();
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
-    <?
+    <?php
     $myLayout->workarea_start_draw();
 		?>
 
 		<form action="package_export2.php" method="post">
 		
-		<?
+		<?php
 		$html = $myLayout->workarea_form_checkbox("", "pagegroups", 1,"Seitengruppen");
 		$myLayout->workarea_row_draw("Seiten", $html);
 
@@ -209,7 +209,7 @@ $myPT->startBuffer();
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
-    <?
+    <?php
     $myLayout->workarea_start_draw();
     $sql = "SELECT * FROM pagegroup ORDER BY grp_id";
     $rs = $myDB->query ($sql);
@@ -278,7 +278,7 @@ $myPT->startBuffer();
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
-    <?
+    <?php
     $myLayout->workarea_start_draw();
     
     $html = $myLayout->workarea_form_text("","title","");
@@ -306,23 +306,23 @@ $myPT->startBuffer();
           </tr>
         </table>		
 		</form>
-		<?
+		<?php
 
 
 		$myLayout->workarea_stop_draw();
 		?>
 
 
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

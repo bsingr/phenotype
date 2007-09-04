@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 
 if (!$mySUser->checkRight("elm_page"))
 {
@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("elm_page"))
 	exit();
 }
 ?>
-<?
+<?php
 $id = $myRequest->getI("id");
 $ver_id = (int)$_REQUEST["ver_id"];
 $block_nr = (int)$_REQUEST["block_nr"];
@@ -48,7 +48,7 @@ if ($block_nr>0 AND $block_nr<77)
 }
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 ?>
-<?
+<?php
 
 
 

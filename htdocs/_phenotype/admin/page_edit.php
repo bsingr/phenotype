@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_page"))
 {
 	$url = "noaccess.php";
@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("elm_page"))
 	exit();
 }
 ?>
-<?
+<?php
 $id = $myRequest->getI("id");
 if (isset($_REQUEST["ver_id"]))
 {
@@ -143,17 +143,17 @@ if (!isset($_REQUEST["editbuffer"]) OR $languagechange == 1)
 
 }
 ?>
-<?
+<?php
 //$myPage = $myPT->getPage($id);
 
 
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 ?>
-<?
+<?php
 $myAdm->header("Redaktion");
 ?>
-<?
+<?php
 
 
 if ($block_nr>0 AND $block_nr<77)
@@ -163,42 +163,42 @@ if ($block_nr>0 AND $block_nr<77)
 ?>
 <body>
   <script type="text/javascript" language="JavaScript">
-  <?
+  <?php
   if (isset($_REQUEST["preview"]))
   {
   	?>
-  	previewPage(<?=$_REQUEST["id"]?>,<?=$_REQUEST["ver_id"]?>,<?=$_SESSION["lng_id"]?>);
-  	<?
+  	previewPage(<?php echo $_REQUEST["id"] ?>,<?php echo $_REQUEST["ver_id"] ?>,<?php echo $_SESSION["lng_id"] ?>);
+  	<?php
   }
   ?>
   </script>
-<?
+<?php
 $myAdm->menu("Redaktion");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Redaktion","Seiten");
 $myAdm->explorer_set("pag_id",$_REQUEST["id"]);
 $myAdm->explorer_draw();
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 //$myAdm->editBlock($myPage,$block_nr,$ver_id);
 global $myDB;
 global $myPT;
@@ -212,14 +212,14 @@ if ($multilanguage==1)
 {
 	?>
 	<form action="page_edit.php" id="multilanguage">
-	<input type="hidden" name="id" value="<?=$myPage->id?>">
-	<input type="hidden" name="ver_id" value="<?=$myPage->ver_id?>">
-	<input type="hidden" name="b" value="<?=$block_nr?>">
+	<input type="hidden" name="id" value="<?php echo $myPage->id ?>">
+	<input type="hidden" name="ver_id" value="<?php echo $myPage->ver_id ?>">
+	<input type="hidden" name="b" value="<?php echo $block_nr ?>">
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab" align="right">
 			<select class="input" name="lng_id" onchange="document.forms.multilanguage.submit();">
-			<?
+			<?php
 			foreach ($PTC_LANGUAGES AS $key => $val)
 			{
 
@@ -231,8 +231,8 @@ if ($multilanguage==1)
 
 
 			?>
-			<option value="<?=$key?>" <?=$selected?>><?=$val?></option>
-			<?
+			<option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $val ?></option>
+			<?php
 			}
 			?></select>&nbsp;
 			</td>
@@ -244,7 +244,7 @@ if ($multilanguage==1)
       </tr>
     </table>
     </form>
-	<?
+	<?php
 }
 
 
@@ -284,7 +284,7 @@ if ($conflict)
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td class="windowAlert"><h1>Achtung!</h1>
-			    <p><?=$conflict?></p></td>
+			    <p><?php echo $conflict ?></p></td>
               </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -294,7 +294,7 @@ if ($conflict)
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-<?	
+<?php	
 }
 
 if ($language_copy)
@@ -305,7 +305,7 @@ if ($language_copy)
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td class="windowInfo"><h1>Hinweis!</h1>
-			    <p>Diese Seite wurde in der Sprache <strong><?=$PTC_LANGUAGES[$_SESSION["lng_id"]]?></strong> bisher nicht bearbeitet. Es wurde eine aktuelle Kopie der Standardsprache erstellt.</p></td>
+			    <p>Diese Seite wurde in der Sprache <strong><?php echo $PTC_LANGUAGES[$_SESSION["lng_id"]] ?></strong> bisher nicht bearbeitet. Es wurde eine aktuelle Kopie der Standardsprache erstellt.</p></td>
               </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -315,7 +315,7 @@ if ($language_copy)
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-<?	
+<?php	
 }
 
 
@@ -351,7 +351,7 @@ if ($mySUser->checkRight("elm_task"))
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTask">
-	<?$myLayout->listTickets($rs);
+	<?php $myLayout->listTickets($rs);
 	?>
 			</td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
@@ -361,7 +361,7 @@ if ($mySUser->checkRight("elm_task"))
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-	<?
+	<?php
 	}
 	// Temptabellen wieder loeschen
 	$sql = "DROP TEMPORARY TABLE " . $table_markup;
@@ -375,12 +375,12 @@ if ($mySUser->checkRight("elm_task"))
     ?>
     <form enctype="multipart/form-data" name="editform" method="post" action="page_update.php">
     <input type="hidden" value="1" name="editbuffer">
-    <input type="hidden" name="id" value="<?=$myPage->id?>">
-    <input type="hidden" name="ver_id" value="<?=$myPage->ver_id?>">
-    <input type="hidden" name="block_nr" value="<?=$block_nr?>">
+    <input type="hidden" name="id" value="<?php echo $myPage->id ?>">
+    <input type="hidden" name="ver_id" value="<?php echo $myPage->ver_id ?>">
+    <input type="hidden" name="block_nr" value="<?php echo $block_nr ?>">
     <input type="hidden" name="newtool_id" value="">
     <input type="hidden" name="newtool_type" value="">
-     <?
+     <?php
      $myLayout->tab_new();
      $sql = "SELECT * FROM layout_block WHERE lay_id = " . $myPage->lay_id . " ORDER BY lay_blocknr";
      $rs = $myDB->query($sql);
@@ -421,7 +421,7 @@ if ($mySUser->checkRight("elm_task"))
      ?>
 
 
-    <?
+    <?php
     // Konfigurationstab
     if ($block_nr==0 AND $mySUser->checkRight("elm_pageconfig"))
     {
@@ -537,11 +537,11 @@ if ($mySUser->checkRight("elm_task"))
      ?>
      Verhalten:<br>
      <select name="pag_id_mimikry" style="width: 200px" class="listmenu">
-     <option value="<?=$myPage->pag_id?>">Standard</option>
-     <option value="<?=$myPage->pag_id?>">- - - - - - - - - - - - - - - - - - -</option>
+     <option value="<?php echo $myPage->pag_id ?>">Standard</option>
+     <option value="<?php echo $myPage->pag_id ?>">- - - - - - - - - - - - - - - - - - -</option>
      <!--<option value="-1">Unsichtbar</option>
-     <option value="<?=$myPage->pag_id?>">- - - - - - - - - - - - - - - - - - -</option>-->
-     <?
+     <option value="<?php echo $myPage->pag_id ?>">- - - - - - - - - - - - - - - - - - -</option>-->
+     <?php
      $sql = "SELECT * FROM page WHERE pag_id <> 0 AND pag_id_mimikry = pag_id ORDER BY grp_id, pag_bez";
      $rs = $myDB->query($sql);
      $grp_id =0;
@@ -551,7 +551,7 @@ if ($mySUser->checkRight("elm_task"))
      	{
      		if ($grp_id !=0)
      		{
-     			?><option value="<?=$myPage->pag_id?>">- - - - - - - - - - - - - - - - - - -</option><?
+     			?><option value="<?php echo $myPage->pag_id ?>">- - - - - - - - - - - - - - - - - - -</option><?php
      		}
      		$grp_id = $row_page["grp_id"];
      	}
@@ -560,11 +560,11 @@ if ($mySUser->checkRight("elm_task"))
      	{
      		$selected = "selected";
      	}
-     	?><option value="<?=$row_page["pag_id"]?>" <?=$selected?>>Mimikry -> <?=$row_page["pag_bez"]?></option><?
+     	?><option value="<?php echo $row_page["pag_id"] ?>" <?php echo $selected ?>>Mimikry -> <?php echo $row_page["pag_bez"] ?></option><?php
      }
      ?>
      </select>
-     <?
+     <?php
      $html.= $myPT->stopBuffer();
      $myLayout->workarea_row_draw("Navigation",$html);
 
@@ -586,11 +586,11 @@ if ($mySUser->checkRight("elm_task"))
      {
      	$myPT->startBuffer();
      ?>
-     <input name="usequickfinder" type="checkbox" value="1" <?if ($myPage->row["pag_quickfinder"]!="") echo"checked";?>>
+     <input name="usequickfinder" type="checkbox" value="1" <?php if ($myPage->row["pag_quickfinder"]!="") echo"checked"; ?>>
                     Seite unter:
-                    <input name="quickfinder" type="text" class="feld" value="<?=$myPage->row["pag_quickfinder"]?>" size="30" />
+                    <input name="quickfinder" type="text" class="feld" value="<?php echo $myPage->row["pag_quickfinder"] ?>" size="30" />
                     im Quickfinder anlegen. <br><br>
-     <?
+     <?php
      $html = $myPT->stopBuffer();
      }
      $html.=   $myLayout->workarea_form_textarea("Suchbegriffe","searchtext",$myPage->row["pag_searchtext"]);
@@ -603,8 +603,8 @@ if ($mySUser->checkRight("elm_task"))
      // Status
      $myPT->startBuffer();
      ?>
-     <input name="status" type="checkbox" value="1" <?if ($myPage->row["pag_status"]=="1") echo"checked";?>> online.
-     <?
+     <input name="status" type="checkbox" value="1" <?php if ($myPage->row["pag_status"]=="1") echo"checked"; ?>> online.
+     <?php
      $myAdm->displayCreationStatus($myPage->row["usr_id_creator"],$myPage->row["pag_creationdate"]);
      echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
      $myAdm->displayChangeStatus($myPage->row["usr_id"],$myPage->row["pag_date"]);
@@ -618,11 +618,11 @@ if ($mySUser->checkRight("elm_task"))
             <td class="windowFooterWhite">
         <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="Vorschau">
             </td>
-            <td align="right" class="windowFooterWhite">    <?if ($myPage->hasChilds()==0){?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Seite wirklich l&ouml;schen?')">&nbsp;&nbsp;<?}?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite">    <?php if ($myPage->hasChilds()==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Seite wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
 
-     <?
+     <?php
      $myLayout->workarea_stop_draw();
      echo "</form>";
 
@@ -667,7 +667,7 @@ if ($mySUser->checkRight("elm_task"))
       /* Dynamisierung der x-Position für den Mittelwert */
 .tableMarker {
     padding: 5px 10px 5px 10px;
-    background:  url(img/i_stat_marker.gif) no-repeat <?=$avg+8?>px 0px;
+    background:  url(img/i_stat_marker.gif) no-repeat <?php echo $avg+8 ?>px 0px;
     }
     </style>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -677,7 +677,7 @@ if ($mySUser->checkRight("elm_task"))
             <td width="500" class="tableHead">Diagramm ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> zeigt den Mittelwert an)</td>
             </tr>
           <tr>
-      <?
+      <?php
       $color="red";
       $tag="<strong>heute</strong>";
       for ($i=0;$i<=14;$i++)
@@ -695,12 +695,12 @@ if ($mySUser->checkRight("elm_task"))
             <td colspan="3" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
           <tr>
-            <td class="tableBody"><?=$tag?></td>
-            <td align="center" class="tableBody"><?=$pi?></td>
-            <td class="tableMarker"><img src="img/i_stat_<?=$color?>.gif" width="<?=$x?>" height="6"></td>
+            <td class="tableBody"><?php echo $tag ?></td>
+            <td align="center" class="tableBody"><?php echo $pi ?></td>
+            <td class="tableMarker"><img src="img/i_stat_<?php echo $color ?>.gif" width="<?php echo $x ?>" height="6"></td>
             </tr>
           <tr>
-      <?
+      <?php
       }
       ?>
            <tr>
@@ -711,7 +711,7 @@ if ($mySUser->checkRight("elm_task"))
           <td colspan="3" class="windowFooterWhite">&nbsp;</td>
         </tr>
         </table>
-    <?
+    <?php
     $myLayout->workarea_stop_draw();
     }
     // Beginn Block Skript
@@ -728,8 +728,8 @@ if ($mySUser->checkRight("elm_task"))
 
     ?><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="tableBody"><strong><?=$scriptname;?></strong><br>
-            <?
+            <td class="tableBody"><strong><?php echo $scriptname; ?></strong><br>
+            <?php
             $scriptname = APPPATH . $scriptname;
             echo $myLayout->form_HTMLTextArea("skript",$scriptname,80,20,"PHP");
             ?>
@@ -739,7 +739,7 @@ if ($mySUser->checkRight("elm_task"))
             <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
             </table>
-		<?
+		<?php
     	}
     	else
     	{
@@ -755,7 +755,7 @@ if ($mySUser->checkRight("elm_task"))
     		$myLayout->workarea_row_draw("Seitenskript",$html);
     	}
 		?>	
-             <?
+             <?php
              $sql = "SELECT * FROM include WHERE inc_usage_page = 1 ORDER BY inc_rubrik,inc_bez";
              $rs = $myDB->query($sql);
              $_includes = Array();
@@ -777,7 +777,7 @@ if ($mySUser->checkRight("elm_task"))
              $html.=  $myLayout->workarea_form_select("","inc_id2",$options);
              $myLayout->workarea_row_draw("Includes<br>(Pre/Post)",$html);
           ?>
-          <?
+          <?php
           $html = '<table border="0" cellspacing="0" cellpadding="0">';
           $_props = $myPage->row["pag_props_all"];
           $_props_top =Array();
@@ -923,7 +923,7 @@ if ($mySUser->checkRight("elm_task"))
             <td align="right" class="windowFooterWhite"><input name="savescript" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table
-        <?
+        <?php
         $myLayout->workarea_stop_draw();
         echo "</form>";
     }
@@ -972,7 +972,7 @@ if ($mySUser->checkRight("elm_task"))
             <td colspan="5" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
 
-<?
+<?php
 $sql = "SELECT ver_id FROM page WHERE pag_id = ". $myPage->id;
 $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
@@ -989,29 +989,29 @@ while ($row = mysql_fetch_array($rs))
 	if ($row["ver_id"]==$ver_id_currentactive)
 	{
 ?>          <tr>
-            <td class="tableBody"><?=$row["ver_id"]?></td>
-            <td class="tableBody"><p class="blue"><strong><?=$row["ver_nr"]?></strong></p></td>
+            <td class="tableBody"><?php echo $row["ver_id"] ?></td>
+            <td class="tableBody"><p class="blue"><strong><?php echo $row["ver_nr"] ?></strong></p></td>
             <td class="tableBody"><p class="blue"><strong>
-<?=$row["ver_bez"]?></strong></p></td>
+<?php echo $row["ver_bez"] ?></strong></p></td>
             <td class="tableBody"><img src="img/i_online.gif" width="30" height="22"></td>
-            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?=$myPage->id?>&b=0&ver_id=<?=$row["ver_id"]?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a><a href="javascript:pageversion_autoactivation(<?=$myPage->id?>,<?=$row["ver_id"]?>,<?=$_REQUEST["ver_id"]?>);"> <img src="img/b_einstellen.gif" alt="Versionswechsel einstellen" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo $_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="Versionswechsel einstellen" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
            <tr>
             <td colspan="5" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-<?   }else{
+<?php   }else{
     ?>
          <tr>
-            <td class="tableBody"><?=$row["ver_id"]?></td>
-            <td class="tableBody"><p><?=$row["ver_nr"]?></p></td>
-            <td class="tableBody"><p><?=$row["ver_bez"]?></p></td>
+            <td class="tableBody"><?php echo $row["ver_id"] ?></td>
+            <td class="tableBody"><p><?php echo $row["ver_nr"] ?></p></td>
+            <td class="tableBody"><p><?php echo $row["ver_bez"] ?></p></td>
             <td class="tableBody"><img src="img/i_offline.gif" width="30" height="22"></td>
-            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?=$myPage->id?>&b=0&ver_id=<?=$row["ver_id"]?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <a href="javascript:pageversion_autoactivation(<?=$myPage->id?>,<?=$row["ver_id"]?>,<?=$_REQUEST["ver_id"]?>);"> <img src="img/b_einstellen.gif" alt="Versionswechsel einstellen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_delete.php?id=<?=$myPage->id?>&b=0&ver_id=<?=$row["ver_id"]?>&ver_id_editing=<?=$_REQUEST["ver_id"]?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_activate.php?id=<?=$myPage->id?>&b=0&ver_id=<?=$row["ver_id"]?>"><img src="img/b_aktivieren.gif" alt="aktivieren" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo $_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="Versionswechsel einstellen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_delete.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>&ver_id_editing=<?php echo $_REQUEST["ver_id"] ?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_activate.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_aktivieren.gif" alt="aktivieren" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
            <tr>
             <td colspan="5" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-    <? }
+    <?php }
 }
 ?>
         </table></td>
@@ -1020,7 +1020,7 @@ while ($row = mysql_fetch_array($rs))
     </table>
       <table width="680" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td class="windowFooterGrey2"><a href="pageversion_insert.php?id=<?=$myPage->id?>&ver_id=<?=$_REQUEST["ver_id"]?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Version hinzuf&uuml;gen </a>
+          <td class="windowFooterGrey2"><a href="pageversion_insert.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo $_REQUEST["ver_id"] ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Version hinzuf&uuml;gen </a>
 </td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
@@ -1062,7 +1062,7 @@ while ($row = mysql_fetch_array($rs))
                 <td class="tableHead">Bezeichnung</td>
                 <td width="100" class="tableHead">Aktion</td>
               </tr>
- <?
+ <?php
  $sql = "SELECT * FROM  pageversion_autoactivate LEFT JOIN pageversion ON pageversion_autoactivate.ver_id = pageversion.ver_id WHERE pageversion_autoactivate.pag_id = " . $myPage->id . " ORDER BY ver_date";
  $rs = $myDB->query($sql);
 
@@ -1073,12 +1073,12 @@ while ($row = mysql_fetch_array($rs))
                 <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
                 </tr>
               <tr>
-                <td class="tableBody"><?=date("d.m.Y",$row["ver_date"])?></td>
-                <td class="tableBody"><?=date("H:i",$row["ver_date"])?></td>
-                <td class="tableBody"><?=$row["ver_bez"]?></td>
-                <td align="right" class="tableBody"><a href="pageversion_deleteautoactivation.php?id=<?=$myPage->id?>&ver_id=<?=$_REQUEST["ver_id"]?>&auv_id=<?=$row["auv_id"]?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a></td>
+                <td class="tableBody"><?php echo date("d.m.Y",$row["ver_date"]) ?></td>
+                <td class="tableBody"><?php echo date("H:i",$row["ver_date"]) ?></td>
+                <td class="tableBody"><?php echo $row["ver_bez"] ?></td>
+                <td align="right" class="tableBody"><a href="pageversion_deleteautoactivation.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo $_REQUEST["ver_id"] ?>&auv_id=<?php echo $row["auv_id"] ?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a></td>
               </tr>
-       <?
+       <?php
  }
        ?>
           </table></td>
@@ -1087,7 +1087,7 @@ while ($row = mysql_fetch_array($rs))
       </table>
       <table width="680" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td class="windowFooterGrey2"><a href="javascript:pageversion_autoactivation(<?=$myPage->id?>,0,<?=$_REQUEST["ver_id"]?>);" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Automatischen Versionswechsel eintragen</a></td>
+          <td class="windowFooterGrey2"><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,0,<?php echo $_REQUEST["ver_id"] ?>);" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Automatischen Versionswechsel eintragen</a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
         <tr>
@@ -1101,7 +1101,7 @@ while ($row = mysql_fetch_array($rs))
      </table>
      </td>
      </tr>
-    <?
+    <?php
     }
     // Bausteinbloecke
     if ($block_nr>0 AND $block_nr<77)
@@ -1118,14 +1118,14 @@ while ($row = mysql_fetch_array($rs))
     <tr>
       <td colspan="4">&nbsp;</td>
     </tr>
-    <?
+    <?php
     // Das erste Bausteinpulldown
     if (!$mySUser->checkRight("elm_pagenocomponent"))
     {
     	$myLayout->workarea_componentselector_draw($toolkit,0);
     }
     ?>
-    <?
+    <?php
     $sql = "SELECT * FROM sequence_data WHERE pag_id = " . $myPage->id . " AND ver_id = " . $myPage->ver_id . " AND dat_blocknr=" . $block_nr . " AND dat_editbuffer=1 AND lng_id=".$_SESSION["lng_id"]." AND usr_id=".$_SESSION["usr_id"]." ORDER BY dat_pos";
     //echo $sql;
     $rs = $myDB->query($sql);
@@ -1142,45 +1142,45 @@ while ($row = mysql_fetch_array($rs))
     	$myComponent->init($row);
       ?>
       <tr>
-            <td class="padding30"><strong><?=$myComponent->bez?></strong><br><input name="<?=$row["dat_id"]?>_visible" type="checkbox" value="checkbox" <?if ($myComponent->visible){echo "checked";}?>>sichtbar
+            <td class="padding30"><strong><?php php echo $myComponent->bez ?></strong><br><input name="<?php php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>>sichtbar
             </td>
             <td>&nbsp;</td>
             <td class="formarea">
-      <?
+      <?php
       $myComponent->edit($context);
       ?>
             </td>
             <td align="center">
-            <?if (!$mySUser->checkRight("elm_pagenocomponent")){?>
-			<?
+            <?php if (!$mySUser->checkRight("elm_pagenocomponent")){ ?>
+			<?php
 			if ($i>1)
 			{
 			?>
-			<input type="image" src="img/b_up.gif" alt="Baustein nach oben verschieben" width="18" height="18" border="0" name="<?=$row["dat_id"]?>_moveup"><br>
-			<?
+			<input type="image" src="img/b_up.gif" alt="Baustein nach oben verschieben" width="18" height="18" border="0" name="<?php echo $row["dat_id"] ?>_moveup"><br>
+			<?php
 			}
 			?>
-                <input type="image" src="img/b_delete.gif" alt="Baustein l&ouml;schen" width="22" height="22" border="0"  name="<?=$row["dat_id"]?>_delete">
-			<?
+                <input type="image" src="img/b_delete.gif" alt="Baustein l&ouml;schen" width="22" height="22" border="0"  name="<?php echo $row["dat_id"] ?>_delete">
+			<?php
 			if ($mySUser->checkRight("superuser"))
 			{
 			?>
-			<br><a href="component_debug.php?id=<?=$row["dat_id"]?>" target="_blank"><img src="img/b_debug_grey.gif" border="0"></a>
-			<?
+			<br><a href="component_debug.php?id=<?php echo $row["dat_id"] ?>" target="_blank"><img src="img/b_debug_grey.gif" border="0"></a>
+			<?php
 			}
 			?>
-              <?
+              <?php
               if ($i<$n)
               {
 			  ?>
-              <br><input type="image" src="img/b_down.gif" alt="Baustein nach unten verschieben" width="18" height="18" border="0" name="<?=$row["dat_id"]?>_movedown">
-			  <?
+              <br><input type="image" src="img/b_down.gif" alt="Baustein nach unten verschieben" width="18" height="18" border="0" name="<?php echo $row["dat_id"] ?>_movedown">
+			  <?php
               }
 			  ?>
-			  <?}else{?>&nbsp;<?}?>
+			  <?php }else{ ?>&nbsp;<?php } ?>
               </td>        
           </tr>
-      <?
+      <?php
       if (!$mySUser->checkRight("elm_pagenocomponent"))
       {
       	$myLayout->workarea_componentselector_draw($toolkit,$row["dat_id"]);
@@ -1191,7 +1191,7 @@ while ($row = mysql_fetch_array($rs))
       	{
       	?>
 		<tr><td nowrap width="160" class="narrowingRight" colspan="4">&nbsp;</td></tr>
-		<?
+		<?php
       	}
       }
     }
@@ -1206,24 +1206,24 @@ while ($row = mysql_fetch_array($rs))
             <td class="windowFooterWhite">
         <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="Vorschau">
             </td>
-            <td align="right" class="windowFooterWhite">    <?if ($myPage->hasChilds()==0 AND $mySUser->checkRight("elm_pageconfig")){?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Seite wirklich l&ouml;schen?')">&nbsp;&nbsp;<?}?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite">    <?php if ($myPage->hasChilds()==0 AND $mySUser->checkRight("elm_pageconfig")){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Seite wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-    <?
+    <?php
     $myLayout->workarea_stop_draw();
     echo "</form>";
     }
 ?>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

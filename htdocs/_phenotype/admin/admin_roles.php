@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "noaccess.php";
@@ -29,36 +29,36 @@ if (!$mySUser->checkRight("elm_admin"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Rollen");
 $myAdm->explorer_draw();
 
 
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -98,7 +98,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
            $sql = "SELECT * FROM role ORDER BY rol_bez";  
  $rs = $myDB->query($sql);
  while ($row=mysql_fetch_array($rs))
@@ -106,16 +106,16 @@ $myPT->startBuffer();
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=$row["rol_id"]?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="admin_role_edit.php?id=<?=$row["rol_id"]?>&b=0"><img src="img/t_role.gif" alt="Rolle anzeigen" width="60" height="40" border="0"></a></span></td>
-              <td class="tableBody"><?=$row["rol_bez"]?></td>
-              <td align="right" nowrap class="tableBody"><a href="admin_role_edit.php?id=<?=$row["rol_id"]?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+              <td class="tableBody"><?php echo $row["rol_id"] ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="admin_role_edit.php?id=<?php echo $row["rol_id"] ?>&b=0"><img src="img/t_role.gif" alt="Rolle anzeigen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><?php echo $row["rol_bez"] ?></td>
+              <td align="right" nowrap class="tableBody"><a href="admin_role_edit.php?id=<?php echo $row["rol_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
 </td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -132,16 +132,16 @@ $myPT->startBuffer();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

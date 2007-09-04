@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
 ?>
-<?
+<?php
 $id = (int)$_REQUEST["id"];
 $block_nr = (int)$_REQUEST["block_nr"];
 $toolkit = (int)$_REQUEST["t"];

@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 /**
  * @package phenotype
  * @subpackage system
@@ -616,8 +616,8 @@ class PhenotypePageStandard
 		$myTC->start();
 		//$html = $this->render(HTML_FULL,$version,PAGE_BUFFER);
 		$html = $this->renderPreview($this->ver_id,$editbuffer);
-		$_search = Array("<?xml","<? xml","<?  xml");
-		$html = str_replace($_search,'<?="<?xml"?>',$html);
+		$_search = Array("<?php xml","<?php xml","<?php  xml");
+		$html = str_replace($_search,'<?php echo "<?xml" ?>',$html);
 		$filename_bak = TEMPPATH ."previewcache/~" . uniqid("") . ".tmp";
 		$fp = fopen ($filename_bak,"w");
 		fputs($fp,$html);
@@ -636,7 +636,7 @@ class PhenotypePageStandard
 		<div ID="time" STYLE="position:absolute; left:3px; top:576px;">
 		<table border="0" cellspacing="1" cellpadding="1" bgcolor="#D9E6CC">
 		<tr>
-		<td><p>Renderzeit: &nbsp;<?=sprintf("%0.4f",$myTC->getSeconds());?> sec</p></td>
+		<td><p>Renderzeit: &nbsp;<?php echo sprintf("%0.4f",$myTC->getSeconds()); ?> sec</p></td>
 		</tr>
 		</table>
 		<script language="JavaScript">
@@ -644,7 +644,7 @@ class PhenotypePageStandard
 		</script>
 
 		</div>
-		<?
+		<?php
 		*/
 	}
 
@@ -696,8 +696,8 @@ class PhenotypePageStandard
 			//$this->versionCheck();
 			$html = $this->renderPage4Cache($this->ver_id);
 			//$html = $this->render(HTML_INCLUDES_NOCACHE,$this->ver_id,PAGE_FREE);
-			$_search = Array("<?xml","<? xml","<?  xml");
-			$html = str_replace($_search,'<?="<?xml"?>',$html);
+			$_search = Array("<?php xml","<?php xml","<?php  xml");
+			$html = str_replace($_search,'<?php echo "<?xml" ?>',$html);
 			$fp = fopen ($dateiname,"w");
 			fputs ($fp,$html);
 			fclose ($fp);
@@ -799,11 +799,11 @@ class PhenotypePageStandard
 	<div ID="time" STYLE="position:absolute; left:900px; top:0px;">
 	<table border="0" cellspacing="1" cellpadding="1" bgcolor="#AAAAAA" width="220">
 	<tr>
-	<td><p>Renderzeit: &nbsp;<?=sprintf("%0.4f",$myTC->getSeconds());?> sec (<?=$info?>) <a href="<?=ADMINURL?>/page_edit.php?id=<?=$this->id?>" target="_blank">Edit</a></p></td>
+	<td><p>Renderzeit: &nbsp;<?php echo sprintf("%0.4f",$myTC->getSeconds()); ?> sec (<?php echo $info ?>) <a href="<?php echo ADMINURL ?>/page_edit.php?id=<?php echo $this->id ?>" target="_blank">Edit</a></p></td>
 	</tr>
 	</table>
 	</div>
-	<?
+	<?php
 		}
 
 	}
@@ -841,8 +841,8 @@ class PhenotypePageStandard
 				$this->versionCheck();
 			}
 			$html = $this->renderPrint4Cache($this->ver_id);
-			$_search = Array("<?xml","<? xml","<?  xml");
-			$html = str_replace($_search,'<?="<?xml"?>',$html);
+			$_search = Array("<?php xml","<?php xml","<?php  xml");
+			$html = str_replace($_search,'<?php echo "<?xml" ?>',$html);
 
 			$fp = fopen ($dateiname,"w");
 			fputs ($fp,$html);
@@ -907,11 +907,11 @@ class PhenotypePageStandard
 	<div ID="time" STYLE="position:absolute; left:3px; top:576px;">
 	<table border="0" cellspacing="1" cellpadding="1" bgcolor="#D9E6CC">
 	<tr>
-	<td><p>Renderzeit: &nbsp;<?=sprintf("%0.4f",$myTC->getSeconds());?> sec (<?=$info?>)</p></td>
+	<td><p>Renderzeit: &nbsp;<?php echo sprintf("%0.4f",$myTC->getSeconds()); ?> sec (<?php echo $info ?>)</p></td>
 	</tr>
 	</table>
 	</div>
-	<?
+	<?php
 		}
 
 	}
@@ -939,8 +939,8 @@ class PhenotypePageStandard
 				$this->versionCheck();
 			}
 			$html = $this->renderXML4Cache($this->ver_id);
-			$_search = Array("<?xml","<? xml","<?  xml");
-			$html = str_replace($_search,'<?="<?xml"?>',$html);
+			$_search = Array("<?php xml","<?php xml","<?php  xml");
+			$html = str_replace($_search,'<?php echo "<?xml" ?>',$html);
 
 			$fp = fopen ($dateiname,"w");
 			fputs ($fp,$html);
@@ -972,37 +972,37 @@ class PhenotypePageStandard
 	?>
 	<phenotype>
 	<request>
-	<session><?=session_id()?></session>
+	<session><?php echo session_id() ?></session>
 	<cookies>
-	<?
+	<?php
 	foreach ($_COOKIE as $k => $v)
 	{
 		$k = $myPT->xmlencode($k);
 		$v = $myPT->xmlencode($v);
 	?>
-	<cookie name="<?=$k?>" value="<?=$v?>"/>
-	<?
+	<cookie name="<?php echo $k ?>" value="<?php echo $v ?>"/>
+	<?php
 	}
 	?>
 	</cookies>
 	<sessionvars>
-	<?
+	<?php
 	foreach ($_SESSION as $k => $v)
 	{
 		$k = $myPT->xmlencode($k);
 		$v = $myPT->xmlencode($v);
 	?>
-	<var name="<?=$k?>" value="<?=$v?>"/>
-	<?
+	<var name="<?php echo $k ?>" value="<?php echo $v ?>"/>
+	<?php
 	}
 	?>
 	</sessionvars>
 	</request>
-	<?
+	<?php
 	require ($dateiname);
 	?>
 	</phenotype>
-	<?
+	<?php
 	$myTC->stop();
 	// Jetzt die Statistik
 	if ($this->statistic==true)
@@ -1095,34 +1095,34 @@ class PhenotypePageStandard
 
 	?>
 	<page>
-	<titel><?=$myPT->xmlencode($this->titel)?></titel>
+	<titel><?php echo $myPT->xmlencode($this->titel) ?></titel>
 	<meta>
-	<pag_id><?=$this->id?></pag_id>
-	<pag_uid><?=$this->uid?></pag_uid>
-	<pagename><?=$myPT->xmlencode($this->bez)?></pagename>
-	<status><?=$this->status?></status>
-	<pag_pos><?=$this->pos?></pag_pos>
-	<pag_id_mik><?=$this->pag_id_mimikry?></pag_id_mik>
-	<pag_id_top><?=$this->pag_id_top?></pag_id_top>
-	<titel><?=$myPT->xmlencode($this->titel)?></titel>
-	<alttitel><?=$myPT->xmlencode($this->alttitel)?></alttitel>
-	<version nr="<?=$this->ver_nr?>" ver_id="<?=$this->ver_id?>"><?=$myPT->xmlencode($this->ver_bez)?></version>
-	<pagegroup grp_id="<?=$this->grp_id?>"><?
+	<pag_id><?php echo $this->id ?></pag_id>
+	<pag_uid><?php echo $this->uid ?></pag_uid>
+	<pagename><?php echo $myPT->xmlencode($this->bez) ?></pagename>
+	<status><?php echo $this->status ?></status>
+	<pag_pos><?php echo $this->pos ?></pag_pos>
+	<pag_id_mik><?php echo $this->pag_id_mimikry ?></pag_id_mik>
+	<pag_id_top><?php echo $this->pag_id_top ?></pag_id_top>
+	<titel><?php echo $myPT->xmlencode($this->titel) ?></titel>
+	<alttitel><?php echo $myPT->xmlencode($this->alttitel) ?></alttitel>
+	<version nr="<?php echo $this->ver_nr ?>" ver_id="<?php echo $this->ver_id ?>"><?php echo $myPT->xmlencode($this->ver_bez) ?></version>
+	<pagegroup grp_id="<?php echo $this->grp_id ?>"><?php
 	$sql = "SELECT * FROM pagegroup WHERE grp_id=" . $this->grp_id;
 	$rs = $myDB->query($sql);
 	$row = mysql_fetch_array($rs);
 	echo $myPT->xmlencode($row["grp_bez"]);
 	?></pagegroup>
-	<lastchange><?=date('d.m.Y H:i',$this->row["pag_date"])?></lastchange>
-	<lastuser usr_id="<?=$this->row["usr_id"]?>"><?
+	<lastchange><?php echo date('d.m.Y H:i',$this->row["pag_date"]) ?></lastchange>
+	<lastuser usr_id="<?php echo $this->row["usr_id"] ?>"><?php
 	$myUser = new PhenotypeUser($this->row["usr_id"]);
 	echo $myPT->xmlencode($myUser->getName());
 	?></lastuser>
-	<lastfetch><?=date('d.m.Y H:i',$this->row["pag_lastfetch"])?></lastfetch>
-	<nextrebuild><?=date('d.m.Y H:i',$this->row["pag_nextbuild".CACHENR])?></nextrebuild>
+	<lastfetch><?php echo date('d.m.Y H:i',$this->row["pag_lastfetch"]) ?></lastfetch>
+	<nextrebuild><?php echo date('d.m.Y H:i',$this->row["pag_nextbuild".CACHENR]) ?></nextrebuild>
 	<layout lay_id="2">
 	<includes>
-	<?
+	<?php
 	$sql = "SELECT include.inc_id, layout_include.lay_id, layout_include.lay_includenr,
 	layout_include.lay_includecache, include.inc_rubrik, include.inc_bez, include.inc_description FROM
 	layout_include,	include WHERE layout_include.inc_id = include.inc_id AND layout_include.lay_id = ". $this->lay_id . " ORDER BY lay_includenr";
@@ -1131,50 +1131,50 @@ class PhenotypePageStandard
 	while ($row=mysql_fetch_array($rs))
 	{
 	?>
-	<include nr="<?=$row["lay_includenr"]?>">
-	<id><?=$row["inc_id"]?></id>
-	<title><?=$myPT->xmlencode($row["inc_bez"])?></title>
-	<description><?=$myPT->xmlencode($row["inc_description"])?></description>
+	<include nr="<?php echo $row["lay_includenr"] ?>">
+	<id><?php echo $row["inc_id"] ?></id>
+	<title><?php echo $myPT->xmlencode($row["inc_bez"]) ?></title>
+	<description><?php echo $myPT->xmlencode($row["inc_description"]) ?></description>
 	</include>
-	<?
+	<?php
 	}
 	?>
 	</includes>
 	<blocks>
-	<?
+	<?php
 	$sql = "SELECT * FROM layout_block WHERE lay_id = " . $this->lay_id . " ORDER BY lay_blocknr";
 	$rs_block = $myDB->query($sql);
 	while ($row_block = mysql_fetch_array($rs_block))
 	{
 	?>
-	<block nr="<?=$row_block["lay_blocknr"]?>" componentgroup="<?=$row_block["cog_id"]?>" context="<?=$row_block["lay_context"]?>"/>
-	<?
+	<block nr="<?php echo $row_block["lay_blocknr"] ?>" componentgroup="<?php echo $row_block["cog_id"] ?>" context="<?php echo $row_block["lay_context"] ?>"/>
+	<?php
 	}
 	?>
 	</blocks>
 	</layout>
 	<pagevars>
-	<?
+	<?php
 	foreach ($this->props AS $k=>$v)
 	{
 	?>
-	<var name="<?=$myPT->xmlencode($k)?>" value="<?=$myPT->xmlencode($v)?>"/>
-	<?
+	<var name="<?php echo $myPT->xmlencode($k) ?>" value="<?php echo $myPT->xmlencode($v) ?>"/>
+	<?php
 	}
 	?>
 	</pagevars>
 	</meta>
 	<components>
 
-	<?
+	<?php
 	// Bloecke
 	$sql = "SELECT * FROM layout_block WHERE lay_id = " . $this->lay_id . " ORDER BY lay_blocknr";
 	$rs_block = $myDB->query($sql);
 	while ($row_block = mysql_fetch_array($rs_block))
 	{
 	   ?>
-	   <block nr="<?=$row_block["lay_blocknr"]?>">
-	   <?    
+	   <block nr="<?php echo $row_block["lay_blocknr"] ?>">
+	   <?php    
 	   $this->blocknr = $row_block["lay_blocknr"];
 	   $html_block = "";
 	   $sql = "SELECT * FROM sequence_data WHERE pag_id = " . $this->id . " AND ver_id = ". $ver_id . " AND dat_blocknr=" . $row_block["lay_blocknr"];
@@ -1192,12 +1192,12 @@ class PhenotypePageStandard
 	   }
 	   ?>
 	   </block>
-	   <?
+	   <?php
 	}
 	?>
 	</components>
 	<includes>
-	<?
+	<?php
 	$sql = "SELECT * FROM layout_include WHERE lay_id = ". $this->lay_id . " ORDER BY lay_includenr";
 
 	$rs = $myDB->query($sql);
@@ -1213,17 +1213,17 @@ class PhenotypePageStandard
 		}
 		else
 		{
-			$code = '<?$myInc = new PhenotypeInclude_' . $row["inc_id"] . '();echo $myInc->renderXML();?>';
+			$code = '<?php $myInc = new PhenotypeInclude_' . $row["inc_id"] . '();echo $myInc->renderXML(); ?>';
 			echo $code;
 		}
 
 	?>
-	<?
+	<?php
 	}
 	?>
 	</includes>
 	</page>
-	<?
+	<?php
 	$xml = $myPT->stopBuffer();
 	return ($xml);
 	//return utf8_encode($xml);
@@ -1305,10 +1305,10 @@ class PhenotypePageStandard
 				}
 				else
 				{
-					$html_include = '<?$myPage->includenocache=1?>';// Notwendig fuer Content-Statistik
-					$html_include .= '<?$myInc = new PhenotypeInclude_' . $row_inc["inc_id"] .'();echo $myInc->execute()?>';
+					$html_include = '<?php $myPage->includenocache=1 ?>';// Notwendig fuer Content-Statistik
+					$html_include .= '<?php $myInc = new PhenotypeInclude_' . $row_inc["inc_id"] .'();echo $myInc->execute() ?>';
 
-					$html_include .= '<?$myPage->includenocache=0?>';
+					$html_include .= '<?php $myPage->includenocache=0 ?>';
 
 				}
 			}

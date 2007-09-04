@@ -1,4 +1,4 @@
-<? 
+<?php 
 class PhenotypeComponent_1002 extends PhenotypeComponent 
 { 
   var $tool_type = 1002; 
@@ -44,7 +44,7 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
     
 	// PHP-Tags entferen, damit keiner Code einschleussen kann !!
 	
-	$html = ereg_replace("<\?[^>]*>","",$html); 
+	$html = ereg_replace("<\?php[^>]*>","",$html); 
 	$html = ereg_replace("<\%[^>]*>","",$html); // ASP-Style Tags
 
   
@@ -61,7 +61,7 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
   	<html>$this->getX("html")</html>
     </content>
     </component>
-  	<?
+  	<?php
   	return true;
   }     
 } 

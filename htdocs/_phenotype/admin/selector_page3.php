@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_pageconfig"))
 {
   $url = "noaccess.php";
@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("elm_pageconfig"))
   exit();
 }
 ?>
-<?
+<?php
   $pag_id = (int)$_REQUEST["id"];
   $pag_id_newtop = (int)$_REQUEST["id2"];
   $insertorder = (int)$_REQUEST["insertorder"];
@@ -43,7 +43,7 @@ if (!$mySUser->checkRight("elm_pageconfig"))
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?></title>
+<title>phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -56,17 +56,17 @@ body {
 }
 -->
 </style>
-<? if ($rc){?>
+<?php if ($rc){ ?>
 
 <script language="JavaScript">
-top.opener.location ="page_edit.php?id=<?=$_REQUEST["id"]?>";
+top.opener.location ="page_edit.php?id=<?php echo $_REQUEST["id"] ?>";
 self.close();
 </script>
-<?}?>
+<?php } ?>
 </head>
 
 <body>
-<? if (!$rc){?>
+<?php if (!$rc){ ?>
 
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -81,7 +81,7 @@ self.close();
         <td class="windowBottomShadow"><img src="img/win_sh_mi_le.gif"></td>
       </tr>
     </table>	
-<?
+<?php
 }
 ?>
 </body>

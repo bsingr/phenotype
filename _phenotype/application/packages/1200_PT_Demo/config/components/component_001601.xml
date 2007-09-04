@@ -8,7 +8,7 @@
 		<com_rubrik>Demonstration</com_rubrik>
 		<com_description></com_description>
 	</meta>
-	<script>&#60;?
+	<script>&#60;?php
 class PhenotypeComponent_1601 extends PhenotypeComponent
 {
   public $tool_type = 1601;
@@ -64,8 +64,8 @@ class PhenotypeComponent_1601 extends PhenotypeComponent
 	
 	?&#62;
 	&#60;div class=&#34;gallery&#34;&#62;
-	&#60;h1&#62;&#60;?=$myCO-&#62;getH(&#34;bez&#34;)?&#62;&#60;&#47;h1&#62;
-	&#60;?
+	&#60;h1&#62;&#60;?php echo $myCO-&#62;getH(&#34;bez&#34;) ?&#62;&#60;&#47;h1&#62;
+	&#60;?php
 	
 	$_images = $myCO-&#62;get(&#34;precalc&#34;);
 	$i=0;
@@ -73,32 +73,32 @@ class PhenotypeComponent_1601 extends PhenotypeComponent
 	{
 		$i++;
 		?&#62;
-		&#60;div class=&#34;thumbnail&#34;&#62;&#60;a href=&#34;index.php?id=&#60;?=$myApp-&#62;pag_id_galleryview?&#62;&#38;amp;gal_id=&#60;?=$dat_id?&#62;&#38;amp;nr=&#60;?=$i?&#62;&#38;amp;pag_id_mik=&#60;?=$myPage-&#62;id?&#62;&#34;&#62;&#60;img src=&#34;&#60;?=MEDIABASEURL.$_image[2]?&#62;&#34; alt=&#34;&#34; border=&#34;0&#34; &#47;&#62;&#60;&#47;a&#62;
+		&#60;div class=&#34;thumbnail&#34;&#62;&#60;a href=&#34;index.php?id=&#60;?php echo $myApp-&#62;pag_id_galleryview ?&#62;&#38;amp;gal_id=&#60;?php echo $dat_id ?&#62;&#38;amp;nr=&#60;?php echo $i ?&#62;&#38;amp;pag_id_mik=&#60;?php echo $myPage-&#62;id ?&#62;&#34;&#62;&#60;img src=&#34;&#60;?php echo MEDIABASEURL.$_image[2] ?&#62;&#34; alt=&#34;&#34; border=&#34;0&#34; &#47;&#62;&#60;&#47;a&#62;
 		
 		&#60;&#47;div&#62;
-		&#60;?
+		&#60;?php
 		if ($i%4==0)
 		{
 		?&#62;
 		&#60;div class=&#34;clear&#34;&#62;&#60;&#47;div&#62;
-		&#60;?
+		&#60;?php
 		}
 	}
 	?&#62;
 	&#60;&#47;div&#62;
-	&#60;?
+	&#60;?php
 	if ($myCO-&#62;get(&#34;desc&#34;)!=&#34;&#34;)
 	{
 	?&#62;
 	&#60;p&#62;
-	&#60;?=$myCO-&#62;get(&#34;desc&#34;)?&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;
+	&#60;?php echo $myCO-&#62;get(&#34;desc&#34;) ?&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;
 	&#60;&#47;p&#62;
-	&#60;?
+	&#60;?php
 	}
 	?&#62;	
 	&#60;div class=&#34;clear&#34;&#62;&#60;&#47;div&#62;
 	&#60;br&#47;&#62;
-	&#60;?
+	&#60;?php
 	return $myPT-&#62;stopBuffer();
   }
   

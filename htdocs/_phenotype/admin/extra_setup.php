@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_extras"))
 {
   $url = "noaccess.php";
@@ -30,29 +30,29 @@ if (!$mySUser->checkRight("elm_extras"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Extras");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Extras");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $url = "extras.php";
 $myLayout->tab_addEntry("Extras",$url,"b_script.gif");
 $myLayout->tab_draw("Extras",$x=260,1);
 ?>
-<?
+<?php
 $myNav = new PhenotypeTree();
 $nav_id = $myNav->addNode("&Uuml;bersicht","extras.php",0,"");
 $sql = "SELECT * FROM extra ORDER BY ext_bez";
@@ -78,13 +78,13 @@ $myLayout->displayTreeNavi($myNav,$myRequest->getI("id"));
         </tr>
 		</table>
 
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -104,7 +104,7 @@ if ($myRequest->check("save"))
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$myExtra->bez?></td>
+            <td class="windowTitle"><?php echo $myExtra->bez ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=5" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -116,8 +116,8 @@ if ($myRequest->check("save"))
       </tr>
     </table>	
 	<form action ="extra_setup.php" name="editform" method="post">
-	<input type="hidden" name="id" value="<?=$id?>">
-<?
+	<input type="hidden" name="id" value="<?php echo $id ?>">
+<?php
 	 $myLayout->tab_new();
 	 $url = "extra_start.php?id=" .$id;	 
 	 $myLayout->tab_addEntry("Start",$url,"b_script.gif");
@@ -141,16 +141,16 @@ if ($myRequest->check("save"))
           </tr>
         </table>
 		</form>
-<?$myLayout->workarea_stop_draw();
+<?php $myLayout->workarea_stop_draw();
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

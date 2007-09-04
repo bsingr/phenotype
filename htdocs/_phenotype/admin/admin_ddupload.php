@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,14 +17,14 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 //require("_session.inc.php");
 //DEFINE ("MEDIABASEPATH","D:\WWW\_\www_evo\phenotype\application\mediabase");
 ?>
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?></title>
+<title>phenotype <?php echo PT_VERSION ?></title>
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="site.css" rel="stylesheet" type="text/css">
@@ -41,7 +41,7 @@ body {
 
 <body>
  <table width="240" border="0" cellpadding="2" cellspacing="2">
-<?
+<?php
 
 
 $save_path=MEDIABASEPATH . "/import/";    
@@ -53,8 +53,8 @@ $k = count($file['name']);
 for($i=0 ; $i < $k ; $i++)
 {
 ?>
-<tr><td width="180"><strong><?=$file['name'][$i]?></strong></td><td align="right"><?=$file['size'][$i]?></td></tr>
-<?
+<tr><td width="180"><strong><?php echo $file['name'][$i] ?></strong></td><td align="right"><?php echo $file['size'][$i] ?></td></tr>
+<?php
 
 	if(isset($save_path) && $save_path!="")
 	{

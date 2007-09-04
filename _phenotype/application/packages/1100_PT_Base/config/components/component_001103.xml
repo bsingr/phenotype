@@ -8,7 +8,7 @@
 		<com_rubrik>Sonstige</com_rubrik>
 		<com_description>## Baustein 1103 - Aufzählung</com_description>
 	</meta>
-	<script>&#60;? 
+	<script>&#60;?php 
 // -------------------------------------------------------
 // Copyright (c) 2003-2006 Phenotype Hagemann &#38; Sellinger
 // -------------------------------------------------------
@@ -37,27 +37,27 @@ class PhenotypeComponent_1103 extends PhenotypeComponent
   function edit() 
   { 
 ?&#62; 
-  &#60;input type=&#34;hidden&#34; name=&#34;&#60;?=$this-&#62;id?&#62;_anzahl&#34; value=&#34;&#60;?=$this-&#62;get(&#34;anzahl&#34;)?&#62;&#34;&#62; 
+  &#60;input type=&#34;hidden&#34; name=&#34;&#60;?php echo $this-&#62;id ?&#62;_anzahl&#34; value=&#34;&#60;?php echo $this-&#62;get(&#34;anzahl&#34;) ?&#62;&#34;&#62; 
       &#60;table width=&#34;408&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&#62; 
       &#60;tr&#62; 
       &#60;td nowrap class=&#34;tableBausteineBackground&#34;&#62; 
-      &#60;? 
+      &#60;?php 
       for ($i=1;$i&#60;=$this-&#62;get(&#34;anzahl&#34;);$i++) 
       { 
       ?&#62; 
-&#60;input name=&#34;&#60;?=$this-&#62;formid?&#62;_text&#60;?=$i?&#62;&#34; type=&#34;text&#34; class=&#34;input&#34; style=&#34;width: 355px&#34; value=&#34;&#60;?=$this-&#62;getQ(&#34;text&#34;.$i)?&#62;&#34;&#62;&#38;nbsp;
+&#60;input name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_text&#60;?php echo $i ?&#62;&#34; type=&#34;text&#34; class=&#34;input&#34; style=&#34;width: 355px&#34; value=&#34;&#60;?php echo $this-&#62;getQ(&#34;text&#34;.$i) ?&#62;&#34;&#62;&#38;nbsp;
 
 
 
 
-      &#60;?if ($this-&#62;get(&#34;anzahl&#34;)&#62;1){?&#62;&#60;input type=&#34;image&#34; src=&#34;img/b_minus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_minus_z&#60;?=$i?&#62;&#34;&#62;&#60;?}?&#62; &#60;input type=&#34;image&#34; src=&#34;img/b_plus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_plus_z&#60;?=$i?&#62;&#34;&#62;&#60;br&#62; 
-      &#60;? 
+      &#60;?php if ($this-&#62;get(&#34;anzahl&#34;)&#62;1){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img/b_minus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_minus_z&#60;?php php echo $i ?&#62;&#34;&#62;&#60;?php } ?&#62; &#60;input type=&#34;image&#34; src=&#34;img/b_plus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_plus_z&#60;?php php echo $i ?&#62;&#34;&#62;&#60;br&#62; 
+      &#60;?php 
       } 
       ?&#62; 
       &#60;/td&#62; 
       &#60;/tr&#62; 
       &#60;/table&#62; 
-      &#60;? 
+      &#60;?php 
 
   } 
 

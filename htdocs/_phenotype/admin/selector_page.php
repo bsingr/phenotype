@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if ($_REQUEST["cop"]==1)
 {
   $titel = "Seite kopieren";
@@ -35,7 +35,7 @@ else
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?></title>
+<title>phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -61,13 +61,13 @@ self.focus();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$titel?></td>
+            <td class="windowTitle"><?php echo $titel ?></td>
             <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
       </tr>
     </table>
-<?
+<?php
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 $url = "selector_page.php?b=0&id=".$_REQUEST["id"];
 $myLayout->tab_addEntry("Seiten",$url,"b_site.gif");
@@ -77,7 +77,7 @@ $url = "selector_page.php?b=1&id=".$_REQUEST["id"];
 //$myLayout->tab_addEntry("WWW",$url,"b_extern.gif");
 $myLayout->tab_draw("Seiten",350,0,0)
 ?>
-<?
+<?php
 $rechte = $mySUser->getRights();
 $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
   $html = "";
@@ -112,11 +112,11 @@ $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
             <tr>
               <td class="padding10">Gruppe:</td>
               <td><form action="selector_page.php" method="post" name="formGrp">
-			  <input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">
-			  <input type="hidden" name="cop" value="<?=$_REQUEST["cop"]?>">
+			  <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
+			  <input type="hidden" name="cop" value="<?php echo $_REQUEST["cop"] ?>">
 			  <select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
 
-<?
+<?php
   echo $html;
 ?>				 
 </select></td>
@@ -124,7 +124,7 @@ $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
           </table></td>
         </tr>
       </table>
-<?
+<?php
 $top_id = $rechte["pag_id_grp_" . $grp_id];
   if (isset($_REQUEST["pag_id"]))
   {
@@ -166,7 +166,7 @@ $top_id = $rechte["pag_id_grp_" . $grp_id];
 ?>	  
 <table width="350" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="windowFooterGrey2"><a href="selector_page2.php?id=<?=$_REQUEST["id"]?>&cop=<?=$_REQUEST["cop"]?>&id2=<?=$row["pag_id"]?>"><img src="img/b_teaserlink2.gif" width="22" height="22" border="0" align="absmiddle"> Seite auswählen </a></td>
+    <td class="windowFooterGrey2"><a href="selector_page2.php?id=<?php echo $_REQUEST["id"] ?>&cop=<?php echo $_REQUEST["cop"] ?>&id2=<?php echo $row["pag_id"] ?>"><img src="img/b_teaserlink2.gif" width="22" height="22" border="0" align="absmiddle"> Seite auswählen </a></td>
   </tr>
 </table>
 </form>

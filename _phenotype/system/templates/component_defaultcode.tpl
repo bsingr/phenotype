@@ -1,4 +1,4 @@
-{literal}<?
+{literal}<?php
 class PhenotypeComponent_{/literal}{$id}{literal} extends PhenotypeComponent
 {
   public $tool_type = {/literal}{$id}{literal};
@@ -16,7 +16,7 @@ class PhenotypeComponent_{/literal}{$id}{literal} extends PhenotypeComponent
   {
   ?>
     Hier HTML-Code eingeben oder
-  <?
+  <?php
     // mit den eingebauten Methoden eine Formularfeld zusammenbauen
 	// Nachfolgend ein Beispiel fuer ein Textfeld:
     $this->form_textfield("Schlagzeile","bez",$this->get("bez"));

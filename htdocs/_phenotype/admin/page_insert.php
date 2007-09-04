@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_pageconfig"))
 {
   $url = "noaccess.php";
@@ -29,7 +29,7 @@ if (!$mySUser->checkRight("elm_pageconfig"))
   exit();
 }
 ?>
-<?
+<?php
 $id = $myRequest->getI("id");
 $insertorder = (int)$_REQUEST["insertorder"];
 
@@ -55,17 +55,17 @@ $myPage->buildProps();
 
 $url = "page_edit.php?id=" . $id;
 ?>
-<?
+<?php
 $myAdm = new PhenotypeAdmin();
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?></title>
+<title>phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <script language="JavaScript">
-top.opener.location = "<?=$url?>";
+top.opener.location = "<?php echo $url ?>";
 self.close();
 </script>
 </head>

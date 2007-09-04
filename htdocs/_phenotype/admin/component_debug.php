@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   die();
@@ -37,13 +37,13 @@ if (!$mySUser->checkRight("superuser"))
 
 <body>
 <pre>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 
 $id = $myRequest->getI("id");
 ?>
-<?
+<?php
 
 
 $sql = "SELECT dat_comdata FROM sequence_data WHERE dat_id = " . $id;

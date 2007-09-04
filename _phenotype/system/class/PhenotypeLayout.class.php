@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 /**
  * @package phenotype
  * @subpackage system
@@ -87,7 +87,7 @@ class PhenotypeLayout
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype 2.5 - <?=$modul?></title>
+<title>phenotype 2.5 - <?php echo $modul ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -95,11 +95,11 @@ class PhenotypeLayout
 <link href="site.css" rel="stylesheet" type="text/css">
 <link href="task.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="phenotype.js"></script>
-<?=$myApp->displayBackendJavascript()?>
+<?php echo $myApp->displayBackendJavascript() ?>
 <script type="text/javascript" src="wz_dragdrop.js"></script> 
 <script type="text/javascript" src="fckeditor/fckeditor.js"></script>
 </head>
-<?
+<?php
 	}
 
 	// veraltet
@@ -112,32 +112,32 @@ class PhenotypeLayout
 	<td width="300" class="top"><a href="http://www.phenotype.de" target="_blank"><img src="img/phenotype_ani_logo.gif" width="27" height="27" border="0"><img src="img/phenotype_typo.gif" width="97" height="27" border="0"></a></td>
 	<td width="430" class="top"><table height="27"  border="0" cellpadding="0" cellspacing="0">
 	<tr>
-	<?
+	<?php
 	foreach ($this->props_topline as $_entry)
 	{
 		if ($_entry["bez"]==$modul)
 		{
 			?>
-			<td class="kopfmenu"><a href="<?=$_entry["url"]?>" class="topmenuActive"><?=$_entry["bez"]?></a></td>
-			<?
+			<td class="kopfmenu"><a href="<?php echo $_entry["url"] ?>" class="topmenuActive"><?php echo $_entry["bez"] ?></a></td>
+			<?php
 		}
 		else
 		{
 			?>
-			<td class="kopfmenu"><a href="<?=$_entry["url"]?>" class="topmenu"><?=$_entry["bez"]?></a></td>
-			<?
+			<td class="kopfmenu"><a href="<?php echo $_entry["url"] ?>" class="topmenu"><?php echo $_entry["bez"] ?></a></td>
+			<?php
 		}
 	}
 	?>
 	</tr>
 	</table></td>
-	<td align="right" nowrap class="top">Benutzer: <?=$mySUser->getName()?><a href="logout.php"><img src="img/topbuttonclose.gif" width="30" height="27" border="0" align="absmiddle"></a></td>
+	<td align="right" nowrap class="top">Benutzer: <?php echo $mySUser->getName() ?><a href="logout.php"><img src="img/topbuttonclose.gif" width="30" height="27" border="0" align="absmiddle"></a></td>
 	</tr>
 	<tr>
 	<td height="32" colspan="3" class="topShadow">&nbsp;</td>
 	</tr>
 	</table>
-	<?
+	<?php
 	}
 	
 
@@ -146,51 +146,51 @@ class PhenotypeLayout
 	function tab_draw($item,$x=680,$shadow_unten=0,$shadow_rechts=1)
 	{
 	?>
-	<table width="<?=$x?>" border="0" cellpadding="0" cellspacing="0">
+	<table width="<?php echo $x ?>" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 	<td class="windowTab"><table border="0" cellpadding="0" cellspacing="0">
 	<tr>
-	<?
+	<?php
 	foreach ($this->props_tab as $_entry)
 	{
 		if ($_entry["bez"]==$item)
 		{
 			?>
-			<td><a href="<?=$_entry["url"]?>" class="tabmenuActive"><img src="img/<?=$_entry["icon"]?>" width="22" height="22" border="0" align="absmiddle"> <?=$_entry["bez"]?></a></td>
+			<td><a href="<?php echo $_entry["url"] ?>" class="tabmenuActive"><img src="img/<?php echo $_entry["icon"] ?>" width="22" height="22" border="0" align="absmiddle"> <?php echo $_entry["bez"] ?></a></td>
 			<td width="3"><img src="img/tab_vline.gif" width="3" height="22"></td>
-			<?
+			<?php
 		}
 		else
 		{
 			?>
-			<td><a href="<?=$_entry["url"]?>" class="tabmenu"><img src="img/<?=$_entry["icon"]?>" width="22" height="22" border="0" align="absmiddle"> <?=$_entry["bez"]?></a></td>
+			<td><a href="<?php echo $_entry["url"] ?>" class="tabmenu"><img src="img/<?php echo $_entry["icon"] ?>" width="22" height="22" border="0" align="absmiddle"> <?php echo $_entry["bez"] ?></a></td>
 			<td width="3"><img src="img/tab_vline.gif" width="3" height="22"></td>
-			<?
+			<?php
 		}
 
 	}
 	?>
 	</tr>
 	</table></td>
-	<?if ($shadow_rechts==1){?>
-	<td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td><?}?>
+	<?php if ($shadow_rechts==1){ ?>
+	<td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td><?php } ?>
 	</tr>
-	<?if ($shadow_unten==1){?>
+	<?php if ($shadow_unten==1){ ?>
 	<tr>
 	<td class="windowBottomShadow"><img src="img/win_sh_mi_le.gif"></td>
 	<td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
 	</tr>
-	<?}?>
+	<?php } ?>
 	</table>
-	<?
+	<?php
 	}
 
 	function iconbar_draw($name,$val,$formname="form1")
 	{
 	?>
-	<input type="hidden" name="<?=$name?>" value="<?=$val?>">
+	<input type="hidden" name="<?php echo $name ?>" value="<?php echo $val ?>">
 
-	<?
+	<?php
 	$i=0;
 	foreach ($this->props_iconbar as $_entry)
 	{
@@ -201,28 +201,28 @@ class PhenotypeLayout
 		{
 			$url =$_entry["url_active"];
 		}
-		?><a href="javascript:switch_<?=$name?>('<?=$value?>',<?=$i?>,'<?=$_entry["url_active"]?>');"><img src="img/<?=$url?>" alt="<?=$alt?>" width="22" height="22" border="0" align="absmiddle" name="<?=$name. "_img_".$i?>"></a><?
+		?><a href="javascript:switch_<?php echo $name ?>('<?php echo $value ?>',<?php echo $i ?>,'<?php echo $_entry["url_active"] ?>');"><img src="img/<?php echo $url ?>" alt="<?php echo $alt ?>" width="22" height="22" border="0" align="absmiddle" name="<?php echo $name. "_img_".$i ?>"></a><?php
 		$i++;
 	}
 	?>
 	<script language="JavaScript">
-	function switch_<?=$name?>(v,i,url)
+	function switch_<?php echo $name ?>(v,i,url)
 	{
-		document.forms.<?=$formname?>.<?=$name?>.value=v;
-		<?
+		document.forms.<?php echo $formname ?>.<?php echo $name ?>.value=v;
+		<?php
 		for ($j=0;$j<$i;$j++)
 		{
 			?>
-			document.forms.<?=$formname?>.<?=$name?>_img_<?=$j?>.src='img/<?=$this->props_iconbar[$j]["url_inactive"];?>';
-			<?
+			document.forms.<?php echo $formname ?>.<?php echo $name ?>_img_<?php echo $j ?>.src='img/<?php echo $this->props_iconbar[$j]["url_inactive"]; ?>';
+			<?php
 		}
 		?>
-		fname = '<?=$name?>_img_'+i;
-		document.forms.<?=$formname?>[fname].src='img/'+url;
+		fname = '<?php echo $name ?>_img_'+i;
+		document.forms.<?php echo $formname ?>[fname].src='img/'+url;
 	}
 
 	  </script>
-	<?
+	<?php
 	}
 
 	function idline_page_draw($myPage)
@@ -233,40 +233,40 @@ class PhenotypeLayout
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="18">
-			<?
+			<?php
 			if ($myPage->status ==1)
 			{
 			?>
 			<img src="img/i_site_on.gif" width="24" height="18">
-			<?
+			<?php
 			}else{
 			?>
 			<img src="img/i_site_off.gif" width="24" height="18">
-			<?
+			<?php
 			}
 			?>
 			</td>
-            <td class="windowTitle"><?=$myPage->id?>.<?=sprintf("%02d",$myPage->ver_nr)?> <?=$myPage->bez?><?if($myPage->ver_bez!=""){?> (<?=$myPage->ver_bez?>)<?}?></td>
+            <td class="windowTitle"><?php php echo $myPage->id ?>.<?php php echo sprintf("%02d",$myPage->ver_nr) ?> <?php php echo $myPage->bez ?><?php if($myPage->ver_bez!=""){ ?> (<?php php echo $myPage->ver_bez ?>)<?php } ?></td>
             <td align="right" nowrap class="windowTitle">
-			<?
+			<?php
 			global $mySUser;
 			if ($mySUser->checkRight("elm_task"))
 			{
 			?>
-			<a href="javascript:ticketWizard(<?=$myPage->id?>,<?=$myPage->ver_id?>,0,0,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" title="neue Aufgabe einstellen" width="22" height="22" border="0"></a>
-			<?
+			<a href="javascript:ticketWizard(<?php echo $myPage->id ?>,<?php echo $myPage->ver_id ?>,0,0,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" title="neue Aufgabe einstellen" width="22" height="22" border="0"></a>
+			<?php
 			}
 			?>
-			<?
+			<?php
 			if ($mySUser->checkRight("elm_pageconfig"))
 			{
 			?>
-<a href="javascript:page_copy(<?=$myPage->id?>)"><img src="img/b_copy.gif" alt="Seite kopieren" title="Seite kopieren" width="22" height="22" border="0"></a> 
-<a href="javascript:page_move(<?=$myPage->id?>)"><img src="img/b_reasign.gif" alt="Seite umh&auml;ngen" title="Seite umh&auml;ngen" width="22" height="22" border="0"></a>
-            <?
+<a href="javascript:page_copy(<?php echo $myPage->id ?>)"><img src="img/b_copy.gif" alt="Seite kopieren" title="Seite kopieren" width="22" height="22" border="0"></a> 
+<a href="javascript:page_move(<?php echo $myPage->id ?>)"><img src="img/b_reasign.gif" alt="Seite umh&auml;ngen" title="Seite umh&auml;ngen" width="22" height="22" border="0"></a>
+            <?php
 			}
 			?>
-<a href="pageversion_insert.php?id=<?=$myPage->id?>&ver_id=<?=$myPage->ver_id?>"><img src="img/b_newversion.gif" alt="neue Version erstellen" title="neue Version erstellen" width="22" height="22" border="0"></a> 
+<a href="pageversion_insert.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo $myPage->ver_id ?>"><img src="img/b_newversion.gif" alt="neue Version erstellen" title="neue Version erstellen" width="22" height="22" border="0"></a> 
 <a href="http://www.phenotype-cms.de/docs.php?v=23&t=1" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -277,7 +277,7 @@ class PhenotypeLayout
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?  
+	<?php  
 	}
 
 	// ToDO Remove outdated
@@ -289,40 +289,40 @@ class PhenotypeLayout
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="18">
-			<?
+			<?php
 			if ($myCO->status ==1)
 			{
 			?>
 			<img src="img/i_site_on.gif" width="24" height="18">
-			<?
+			<?php
 			}else{
 			?>
 			<img src="img/i_site_off.gif" width="24" height="18">
-			<?
+			<?php
 			}
 			?>
 			</td>
-            <td class="windowTitle"><?=$myCO->id?> <?=$myCO->bez?></td>
+            <td class="windowTitle"><?php echo $myCO->id ?> <?php echo $myCO->bez ?></td>
             <td align="right" nowrap class="windowTitle">&nbsp;
-            <?
+            <?php
             global $mySUser;
             if ($mySUser->checkRight("elm_task"))
             {
 			?>
-			<a href="javascript:ticketWizard(0,0,<?=$myCO->id?>,0,0,0)"><img src="img/b_newtask.gif" alt="Neue Aufgabe einstellen" title="Neue Aufgabe einstellen" width="22" height="22" border="0"></a>
-			<?
+			<a href="javascript:ticketWizard(0,0,<?php echo $myCO->id ?>,0,0,0)"><img src="img/b_newtask.gif" alt="Neue Aufgabe einstellen" title="Neue Aufgabe einstellen" width="22" height="22" border="0"></a>
+			<?php
             }
 			?>
-			<a href="content_copy.php?id=<?=$myCO->id?>"><img src="img/b_copy.gif" alt="Datensatz kopieren" title="Datensatz kopieren" width="22" height="22" border="0"></a>
+			<a href="content_copy.php?id=<?php echo $myCO->id ?>"><img src="img/b_copy.gif" alt="Datensatz kopieren" title="Datensatz kopieren" width="22" height="22" border="0"></a>
 			
-			<?
+			<?php
 			$tausend = floor($myCO->id /1000);
 			//$url = CACHEDEBUGURL . CACHENR . "/content/". $myCO->content_type."/".$tausend."/content_" . sprintf("%04.0f",$myCO->content_type) . "_" . sprintf("%04.0f",$myCO->id) ."_skin_debug.inc.php";
 			$url = "content_debug.php?id=" . $myCO->id;
 			if ($mySUser->checkRight("superuser")){
 	   		?>
-			<a href="<?=$url?>" target="_blank"><img src="img/b_debug.gif" alt="Debug-Skin anzeigen" title="Debug-Skin anzeigen" width="22" height="22" border="0"></a>
-			<?
+			<a href="<?php echo $url ?>" target="_blank"><img src="img/b_debug.gif" alt="Debug-Skin anzeigen" title="Debug-Skin anzeigen" width="22" height="22" border="0"></a>
+			<?php
 			}
 			?>
 			<a href="http://www.phenotype-cms.de/docs.php?v=23&t=2" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>
@@ -336,7 +336,7 @@ class PhenotypeLayout
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?  
+	<?php  
 	}
 	// ToDO: Remove, outdatetd
 	function idline_mediaobject_draw($myObj)
@@ -350,19 +350,19 @@ class PhenotypeLayout
             <td width="18">
 			<img src="img/i_site_on.gif" width="24" height="18">
 			</td>
-            <td class="windowTitle"><?=$myObj->id?> <?=$myPT->cutString($myObj->bez,45,45);?></td>
-			<?
+            <td class="windowTitle"><?php echo $myObj->id ?> <?php echo $myPT->cutString($myObj->bez,45,45); ?></td>
+			<?php
 			$n=strlen($myObj->bez);
 			if($n>45){$n=48;}
 			?>
-			<td align="right" nowrap >[<?=$myPT->cutString($myObj->physical_folder."/".$myObj->filename,(65-$n),(65-$n));?>]</td>
-			<td align="right" width="55" nowrap class="windowTitle"><?
+			<td align="right" nowrap >[<?php echo $myPT->cutString($myObj->physical_folder."/".$myObj->filename,(65-$n),(65-$n)); ?>]</td>
+			<td align="right" width="55" nowrap class="windowTitle"><?php
 			global $mySUser;
 			if ($mySUser->checkRight("elm_task"))
 			{
 			?>
-			<a href="javascript:ticketWizard(0,0,0,<?=$myObj->id?>,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" width="22" height="22" border="0"></a>&nbsp;
-			<?
+			<a href="javascript:ticketWizard(0,0,0,<?php echo $myObj->id ?>,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" width="22" height="22" border="0"></a>&nbsp;
+			<?php
 			}
 			?><a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>
 			</td>
@@ -375,16 +375,16 @@ class PhenotypeLayout
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?  
+	<?php  
 	}
 
 	function workarea_start_draw($x=680)
 	{
   ?>
-  <table width="<?=$x?>" border="0" cellpadding="0" cellspacing="0">
+  <table width="<?php echo $x ?>" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="window">
-  <?
+  <?php
 	}
 
 	function workarea_stop_draw()
@@ -398,7 +398,7 @@ class PhenotypeLayout
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-  <?
+  <?php
 	}
 
 	function workarea_row_draw($bez,$content)
@@ -419,23 +419,23 @@ class PhenotypeLayout
        <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
      </tr>
 	 </table>
-  <?
+  <?php
 	}
 
 	function workarea_componentselector_draw($toolkit,$pos)
 	{
 	?>
   <tr>
-            <td nowrap width="160" class="narrowingLeft"><a name="pos<?=$this->component_count?>"></a><img src="img/i_add_item.gif" width="22" height="22" align="absbottom">
-                <select name="addtool_<?=$pos?>" onchange="addnew(<?=$pos?>)" class="listmenu" style="width:130px">
+            <td nowrap width="160" class="narrowingLeft"><a name="pos<?php echo $this->component_count ?>"></a><img src="img/i_add_item.gif" width="22" height="22" align="absbottom">
+                <select name="addtool_<?php echo $pos ?>" onchange="addnew(<?php echo $pos ?>)" class="listmenu" style="width:130px">
                   <option selected>Baustein einf&uuml;gen</option>
-				  <?@readfile(APPPATH . "components/toolkit" . $toolkit . ".inc.html");?>
+				  <?php @readfile(APPPATH . "components/toolkit" . $toolkit . ".inc.html"); ?>
               </select></td>
             <td width="18"><img src="img/narrowing.gif" width="18" height="26" align="absbottom"></td>
             <td width="*" class="narrowingRight">&nbsp;</td>
             <td width="45" class="narrowingRight">&nbsp;</td>
           </tr>
-	<?
+	<?php
 	}
 
 	function workarea_form_text($bez,$name,$val,$x=300,$br=1)
@@ -521,30 +521,30 @@ class PhenotypeLayout
 		{
 
 ?>
-	<textarea cols="<?=$cols?>" rows="<?=$rows?>" wrap="physical" name="<?=$name?>" id="<?=$name?>" class="input" style="width: <?=$x?>px"><?=$val?></textarea>
-<?	
+	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" class="input" style="width: <?php echo $x ?>px"><?php echo $val ?></textarea>
+<?php	
 
 	  ?>
 	<script language="JavaScript1.2">
-	var oFCKeditor = new FCKeditor( '<?=$name?>' ) ;
-	oFCKeditor.BasePath	= '<?=ADMINURL?>/fckeditor/' ;
-	oFCKeditor.Width = <?=$x?>;
-	oFCKeditor.Height = <?=$rows*17?> ;
-	<?if ($toolbarset!=""){?>
-	oFCKeditor.ToolbarSet = "<?=$toolbarset?>" ;
-	<?}?>
-	oFCKeditor.Config["CustomConfigurationsPath"] = "<?=ADMINURL?>/fckconfig.php";
+	var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
+	oFCKeditor.BasePath	= '<?php echo ADMINURL ?>/fckeditor/' ;
+	oFCKeditor.Width = <?php echo $x ?>;
+	oFCKeditor.Height = <?php echo $rows*17 ?> ;
+	<?php if ($toolbarset!=""){ ?>
+	oFCKeditor.ToolbarSet = "<?php echo $toolbarset ?>" ;
+	<?php } ?>
+	oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo ADMINURL ?>/fckconfig.php";
 	oFCKeditor.ReplaceTextarea() ;
 	</script>	  
 	 
-	  <?
+	  <?php
 
 		}
 		else
 		{
 	?>
-	<textarea cols="<?=$cols?>" rows="<?=$rows?>" wrap="physical" name="<?=$name?>"  style="width: <?=$x?>px" class="input"><?=$val?></textarea>
-    <?
+	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  style="width: <?php echo $x ?>px" class="input"><?php echo $val ?></textarea>
+    <?php
 		}
 	}
 
@@ -580,7 +580,7 @@ class PhenotypeLayout
 		  <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-		  <?
+		  <?php
 
 		  $rs_data = $myDB->query($sql);
 		  while ($row_data=mysql_fetch_array($rs_data))
@@ -593,10 +593,10 @@ class PhenotypeLayout
 		  	}
           ?>
           <tr>
-            <td class="tableBody"><?=$row_data["dat_id"]?></td>
+            <td class="tableBody"><?php echo $row_data["dat_id"] ?></td>
             <td class="tableBody">
-			<?if ($row["con_bearbeiten"]==1){?><a href="content_edit.php?id=<?=$row_data["dat_id"]?>&uid=<?=$row_data["dat_uid"]?>"><?}?>
-			<?
+			<?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><?php } ?>
+			<?php
 			if ($row_data["med_id_thumb"]!=0)
 			{
 
@@ -604,34 +604,34 @@ class PhenotypeLayout
 				$myImg->display_ThumbX(60,$row_data["dat_bez"]);
 			}
 		  ?>
-		  <?if ($row["con_bearbeiten"]==1){?>
+		  <?php if ($row["con_bearbeiten"]==1){ ?>
 		  </a>
-		  <?}?>
+		  <?php } ?>
 		  </td>
-            <td class="tableBody"><?=$row_data["dat_bez"]?>
-			<?
+            <td class="tableBody"><?php echo $row_data["dat_bez"] ?>
+			<?php
 			if ($con_id==-1)
 			{
 			?>
-			<br>(<?=$row["con_bez"]?>)
-			<?
+			<br>(<?php echo $row["con_bez"] ?>)
+			<?php
 			}
 			?>
 			</td>
-            <td class="tableBody"><?=date('d.m.Y H:i',$row_data["dat_date"])?><br><?=$myAdm->displayUser($row_data["usr_id"]);?></td>
+            <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["dat_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
-			<?if ($row_data["dat_status"]==1){?>
+			<?php if ($row_data["dat_status"]==1){ ?>
 			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
-			<?}else{?>
+			<?php }else{ ?>
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
-			<?}?>
+			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?if ($row["con_bearbeiten"]==1){?><a href="content_edit.php?id=<?=$row_data["dat_id"]?>&uid=<?=$row_data["dat_uid"]?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?}?><?if ($row["con_loeschen"]==1){?><a href="content_delete.php?id=<?=$row_data["dat_id"]?>&uid=<?=$row_data["dat_uid"]?>&c=<?=$_REQUEST["c"]?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?}?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="content_delete.php?id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>&c=<?php php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 		  }
 ?>			
           <tr>
@@ -643,20 +643,20 @@ class PhenotypeLayout
       </tr>
     </table>
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
-	 <?=$html?>
-	 <?if ($row["con_anlegen"]==1){?>
+	 <?php echo $html ?>
+	 <?php if ($row["con_anlegen"]==1){ ?>
       <tr>
-        <td class="windowFooterGrey2"><a href="content_insert.php?id=<?=$con_id?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen
+        <td class="windowFooterGrey2"><a href="content_insert.php?id=<?php echo $con_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen
             Datensatz hinzuf&uuml;gen</a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
-	  <? } ?>
+	  <?php } ?>
       <tr>
         <td class="windowBottomShadow" width="670"><img src="img/win_sh_bo_le.gif" width="10" height="10"></td>
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table><br>
-	<?
+	<?php
 	}
 
 
@@ -664,10 +664,10 @@ class PhenotypeLayout
 	{
 		$myTree->buildtree();
   ?>
-<table width="<?=$x?>" border="0" cellpadding="0" cellspacing="0">
+<table width="<?php echo $x ?>" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowMenu">
-		<?
+		<?php
 		for ($i=0;$i<count($myTree->_flattree);$i++)
 		{
 			$_node = $myTree->_flattree[$i];
@@ -675,18 +675,18 @@ class PhenotypeLayout
 		?>
 		<table width="100%"  border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="level0<?=$_node["ebene"]?>">
-			<?if ($_node["ext_id"]==$ext_id){?>
-			<img src="img/b_arrow_passive<?=$open?>.gif" width="10" height="9">
-			<a href="<?=$_node["url"]?>"><strong class="blue"><?=$_node["bez"]?></strong></a>
-            <?}else{?>
-			<img src="img/b_arrow_passive<?=$open?>.gif" width="10" height="9">
-            <a href="<?=$_node["url"]?>"><?=$_node["bez"]?></a>
-            <?}?>
+            <td class="level0<?php echo $_node["ebene"] ?>">
+			<?php if ($_node["ext_id"]==$ext_id){ ?>
+			<img src="img/b_arrow_passive<?php echo $open ?>.gif" width="10" height="9">
+			<a href="<?php echo $_node["url"] ?>"><strong class="blue"><?php echo $_node["bez"] ?></strong></a>
+            <?php }else{ ?>
+			<img src="img/b_arrow_passive<?php echo $open ?>.gif" width="10" height="9">
+            <a href="<?php echo $_node["url"] ?>"><?php echo $_node["bez"] ?></a>
+            <?php } ?>
             </td>
           </tr>
         </table>
-		<?
+		<?php
 		}
 		?>
 </td>
@@ -695,17 +695,17 @@ class PhenotypeLayout
     </table>      
 			
         
-  <?
+  <?php
 	}
 
 	function displayTreeNaviNoShadow($myTree,$ext_id=-1,$x=260)
 	{
 		$myTree->buildtree();
   ?>
-<table width="<?=$x?>" border="0" cellpadding="0" cellspacing="0">
+<table width="<?php echo $x ?>" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowMenu">
-		<?
+		<?php
 		for ($i=0;$i<count($myTree->_flattree);$i++)
 		{
 			$_node = $myTree->_flattree[$i];
@@ -713,18 +713,18 @@ class PhenotypeLayout
 		?>
 		<table width="100%"  border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="level0<?=$_node["ebene"]?>">
-			<?if ($_node["ext_id"]==$ext_id){?>
-			<img src="img/b_arrow_passive<?=$open?>.gif" width="10" height="9">
-			<a href="<?=$_node["url"]?>"><strong class="blue"><?=$_node["bez"]?></strong></a>
-            <?}else{?>
-			<img src="img/b_arrow_passive<?=$open?>.gif" width="10" height="9">
-            <a href="<?=$_node["url"]?>"><?=$_node["bez"]?></a>
-            <?}?>
+            <td class="level0<?php echo $_node["ebene"] ?>">
+			<?php if ($_node["ext_id"]==$ext_id){ ?>
+			<img src="img/b_arrow_passive<?php echo $open ?>.gif" width="10" height="9">
+			<a href="<?php echo $_node["url"] ?>"><strong class="blue"><?php echo $_node["bez"] ?></strong></a>
+            <?php }else{ ?>
+			<img src="img/b_arrow_passive<?php echo $open ?>.gif" width="10" height="9">
+            <a href="<?php echo $_node["url"] ?>"><?php echo $_node["bez"] ?></a>
+            <?php } ?>
             </td>
           </tr>
         </table>
-		<?
+		<?php
 		}
 		?>
 </td>
@@ -732,7 +732,7 @@ class PhenotypeLayout
     </table>      
 			
         
-  <?
+  <?php
 	}
 
 
@@ -754,11 +754,11 @@ class PhenotypeLayout
 	   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_image(
-"editform","<?=$name?>","<?=$folder?>",<?=$changefolder?>,<?=$x?>,<?=$y?>)'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,<?php echo $x ?>,<?php echo $y ?>)'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
 hinzuf&uuml;gen</a></td>
 </tr>
 </table>
-	 <?
+	 <?php
 		}
 		else
 		{
@@ -767,39 +767,39 @@ hinzuf&uuml;gen</a></td>
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_image(
-"editform","<?=$name?>","<?=$folder?>",<?=$changefolder?>,<?=$x?>,<?=$y?>)'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Bild &auml;ndern</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,<?php echo $x ?>,<?php echo $y ?>)'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Bild &auml;ndern</a></td>
                   </tr>
                 </table>
-       <?
+       <?php
 		}
 	   ?>				
-       <div id="<?=$name?>panel" <?=$style?>>
+       <div id="<?php echo $name ?>panel" <?php echo $style ?>>
 	   <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_image('editform','<?=$name?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
+                    <td nowrap><a href="javascript:reset_image('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
                         entfernen</a></td>
                   </tr>
                 </table>
      <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-       <?
+       <?php
        $myImg = new PhenoTypeImage($img_id);
        $myImg->fname=$name . "img_id_image";
 	   ?>
-	   <a href="<?=MEDIABASEURL . $myImg->physical_folder?>/<?=$myImg->filename?>" target="_blank" id="<?=$name ."link_image"?>">
-	   <?
+	   <a href="<?php echo MEDIABASEURL . $myImg->physical_folder ?>/<?php echo $myImg->filename ?>" target="_blank" id="<?php echo $name ."link_image" ?>">
+	   <?php
 	   $myImg->style="float:left;vertical-align:middle";
 	   $myImg->display_thumb($alt);
-       ?></a><br/> <a href="backend.php?page=Editor,Media,edit&id=<?=$myImg->id?>" id="<?=$name ."editlink_image"?>"><img src="img/b_edit_b.gif" alt="" style="padding-top:5px;padding-left:5px" border="0"/></a>
+       ?></a><br/> <a href="backend.php?page=Editor,Media,edit&id=<?php echo $myImg->id ?>" id="<?php echo $name ."editlink_image" ?>"><img src="img/b_edit_b.gif" alt="" style="padding-top:5px;padding-left:5px" border="0"/></a>
      </td></tr></table>
-<?if ($mode==2){?>
+<?php if ($mode==2){ ?>
  <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
 				Alt-Text:<br>
-				<input type="text" name="<?=$name?>img_alt" style="width:200px" class="input" value="<?=htmlentities($alt)?>"><br>
-     <?
+				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
+     <?php
      echo "Ausrichtung:<br>";
      $this->iconbar_new();
      $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","links","Linksb&uuml;ndig");
@@ -810,12 +810,12 @@ hinzuf&uuml;gen</a></td>
      echo "<br>";
 ?>
  </td></tr></table>
- <?}?>
+ <?php } ?>
  </div>
 
-<input name="<?=$name?>img_id" type="hidden" value="<?=$img_id?>">
-<input name="<?=$name?>med_id" type="hidden" value="<?=$img_id?>">
-<?
+<input name="<?php echo $name ?>img_id" type="hidden" value="<?php echo $img_id ?>">
+<input name="<?php echo $name ?>med_id" type="hidden" value="<?php echo $img_id ?>">
+<?php
 return $myPT->stopBuffer();
 	}
 
@@ -825,7 +825,7 @@ return $myPT->stopBuffer();
 		global $myPT;
 		$myPT->startBuffer();
      ?>			
-   	<? if ($img_id==0)
+   	<?php if ($img_id==0)
    	{
 
    		$style='style="visibility: hidden;display:none"';
@@ -835,32 +835,32 @@ return $myPT->stopBuffer();
    		$style="";
    	}
 	   ?>
-       <div id="<?=$name?>panel" <?=$style?>>
+       <div id="<?php echo $name ?>panel" <?php echo $style ?>>
 	   <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_image('editform','<?=$name?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
+                    <td nowrap><a href="javascript:reset_image('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
                         entfernen</a></td>
                   </tr>
                 </table>
      <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-       <?
+       <?php
        $myImg = new PhenoTypeImage($img_id);
        $myImg->fname=$name . "img_id_image";
 	   ?>
-	   <a href="<?=MEDIABASEURL . $myImg->physical_folder?>/<?=$myImg->filename?>" target="_blank">
-	   <?
+	   <a href="<?php echo MEDIABASEURL . $myImg->physical_folder ?>/<?php echo $myImg->filename ?>" target="_blank">
+	   <?php
 	   $myImg->display_thumb($alt);
        ?></a>
      </td></tr></table>
-<?if ($mode==2){?>
+<?php if ($mode==2){ ?>
  <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
 				Alt-Text:<br>
-				<input type="text" name="<?=$name?>img_alt" style="width:200px" class="input" value="<?=htmlentities($alt)?>"><br>
-     <?
+				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
+     <?php
      echo "Ausrichtung:<br>";
      $this->iconbar_new();
      $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","links","Linksb&uuml;ndig");
@@ -870,19 +870,19 @@ return $myPT->stopBuffer();
      echo "<br>";
 ?>
  </td></tr></table>
- <?}?>
+ <?php } ?>
  </div>
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap>
-  <?if ($img_id<>""){echo"<br>";}?>
-  <input name="<?=$name?>userfile" type="file" class="input">
+  <?php if ($img_id<>""){echo"<br>";} ?>
+  <input name="<?php echo $name ?>userfile" type="file" class="input">
   </td>
 </tr>
 </table>	   	
 
-<input name="<?=$name?>img_id" type="hidden" value="<?=$img_id?>">
-<?
+<input name="<?php echo $name ?>img_id" type="hidden" value="<?php echo $img_id ?>">
+<?php
 return $myPT->stopBuffer();
 	}
 
@@ -900,19 +900,19 @@ return $myPT->stopBuffer();
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_document(
-"editform","<?=$name?>","-1",1,"")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Dokument &auml;ndern</a></td>
+"editform","<?php echo $name ?>","-1",1,"")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Dokument &auml;ndern</a></td>
                   </tr>
                 </table>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_document('editform','<?=$name?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
+                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
                         entfernen</a></td>
                   </tr>
                 </table>
-     <table id="<?=$name?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+     <table id="<?php echo $name ?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-                <?
+                <?php
                 $myDoc = new PhenotypeDocument($med_id);
                 if ($myDoc->id!=0)
                 {
@@ -926,26 +926,26 @@ return $myPT->stopBuffer();
                 ?>
      </td></tr></table>
 
-    <?}else{?>
+    <?php }else{ ?>
 
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_document(
-"editform","<?=$name?>","-1",1,"")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
+"editform","<?php echo $name ?>","-1",1,"")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
 hinzuf&uuml;gen</a></td>
 </tr>
 </table>
-     <table id="<?=$name?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+     <table id="<?php echo $name ?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
                Dokument hinzugef&uuml;gt.
      </td></tr></table>
-<?
+<?php
     }
 ?>
-<input name="<?=$name?>med_id" type="hidden" value="<?=$med_id?>">
-<input name="<?=$name?>img_id" type="hidden" value="0">
-<?
+<input name="<?php echo $name ?>med_id" type="hidden" value="<?php echo $med_id ?>">
+<input name="<?php echo $name ?>img_id" type="hidden" value="0">
+<?php
 return $myPT->stopBuffer();
 	}
 
@@ -979,19 +979,19 @@ return $myPT->stopBuffer();
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_document(
-"editform","<?=$name?>","<?=$folder?>",<?=$changefolder?>,"<?=$doctype2?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Dokument &auml;ndern</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Dokument &auml;ndern</a></td>
                   </tr>
                 </table>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_document('editform','<?=$name?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
+                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
                         entfernen</a></td>
                   </tr>
                 </table>
-     <table id="<?=$name?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+     <table id="<?php echo $name ?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-                <?
+                <?php
                 $myDoc = new PhenotypeDocument($med_id);
                 if ($myDoc->id!=0)
                 {
@@ -1005,26 +1005,26 @@ return $myPT->stopBuffer();
                 ?>
      </td></tr></table>
 
-    <?}else{?>
+    <?php }else{ ?>
 
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_document(
-"editform","<?=$name?>","<?=$folder?>",<?=$changefolder?>,"<?=$doctype2?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
 hinzuf&uuml;gen</a></td>
 </tr>
 </table>
-     <table id="<?=$name?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+     <table id="<?php echo $name ?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
                Dokument hinzugef&uuml;gt.
      </td></tr></table>
-<?
+<?php
     }
 ?>
-<input name="<?=$name?>med_id" type="hidden" value="<?=$med_id?>">
-<input name="<?=$name?>img_id" type="hidden" value="0">
-<?
+<input name="<?php echo $name ?>med_id" type="hidden" value="<?php echo $med_id ?>">
+<input name="<?php echo $name ?>img_id" type="hidden" value="0">
+<?php
 return $myPT->stopBuffer();
 	}
 
@@ -1060,74 +1060,74 @@ return $myPT->stopBuffer();
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_media(
-"editform","<?=$name?>","<?=$folder?>",<?=$changefolder?>,"<?=$doctype2?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild &auml;ndern</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild &auml;ndern</a></td>
                   </tr>
                 </table>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_media('editform','<?=$name?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild
+                    <td nowrap><a href="javascript:reset_media('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild
                         entfernen</a></td>
                   </tr>
                 </table>
-                <?
+                <?php
                 $myDoc = new PhenotypeDocument($med_id);
                 $doc_id = $myDoc->id;
                 if ($doc_id!=0) // Dokument und kein Bild
                 {
                 ?>
-     <table id="<?=$name?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+     <table id="<?php echo $name ?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-                <?
+                <?php
                 $myDoc = new PhenotypeDocument($med_id);
                 echo '<a href="'.$myDoc->url.'" target="_blank">Dokument Nr. ' . $myDoc->id . " - " . $myDoc->bez."</a>";
                 ?>
      </td></tr></table>
-				<?
+				<?php
                 }
                 else
                 { // Erst mal nur zu Debugzwecken
                 	?>
-                	<table id="<?=$name?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+                	<table id="<?php echo $name ?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
                 	</table>
     
-                	<?
+                	<?php
                 }
 				?>
-    <?}else{?>
+    <?php }else{ ?>
 
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_media(
-"editform","<?=$name?>","<?=$folder?>",<?=$changefolder?>,"<?=$doctype2?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild
 hinzuf&uuml;gen</a></td>
 </tr>
 </table>
-     <table id="<?=$name?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+     <table id="<?php echo $name ?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
                Dokument / Bild hinzugef&uuml;gt.
      </td></tr></table>
-<?
+<?php
     }
 ?>
 
      <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-       <?
+       <?php
        $myImg = new PhenoTypeImage($med_id);
        $img_id = $myImg->id;
        $myImg->fname=$name . "img_id_image";
 	   ?>
-	   <a href="<?=MEDIABASEURL . $myImg->physical_folder?>/<?=$myImg->filename?>" target="_blank">
-	   <?
+	   <a href="<?php echo MEDIABASEURL . $myImg->physical_folder ?>/<?php echo $myImg->filename ?>" target="_blank">
+	   <?php
 	   $myImg->display_thumb($alt);
        ?></a>
      </td></tr></table>   
-<input name="<?=$name?>med_id" type="hidden" value="<?=$doc_id?>">
-<input name="<?=$name?>img_id" type="hidden" value="<?=$img_id?>">
-<?
+<input name="<?php echo $name ?>med_id" type="hidden" value="<?php echo $doc_id ?>">
+<input name="<?php echo $name ?>img_id" type="hidden" value="<?php echo $img_id ?>">
+<?php
 return $myPT->stopBuffer();
 	}
 
@@ -1138,39 +1138,39 @@ return $myPT->stopBuffer();
 		global $myPT;
 		$myPT->startBuffer();
      ?>			
-   	<? if ($med_id!=0)
+   	<?php if ($med_id!=0)
    	{
 ?>
-       <div id="<?=$name?>panel">
+       <div id="<?php echo $name ?>panel">
 	   <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_document('editform','<?=$name?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument entfernen</a></td>
+                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument entfernen</a></td>
                   </tr>
                 </table>
      <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-     <?
+     <?php
      $myDoc = new PhenotypeDocument($med_id);
      echo "Dokument Nr. " . $myDoc->id . " - " . $myDoc->bez;
                 ?>
  </td></tr></table>
  </div>
-<?
+<?php
    	}
 	   ?>
 
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap>
-  <?if ($med_id<>""){echo"<br>";}?>
-  <input name="<?=$name?>userfile" type="file" class="input">
+  <?php if ($med_id<>""){echo"<br>";} ?>
+  <input name="<?php echo $name ?>userfile" type="file" class="input">
   </td>
 </tr>
 </table>	   	
 
-<input name="<?=$name?>med_id" type="hidden" value="<?=$med_id?>">
-<?
+<input name="<?php echo $name ?>med_id" type="hidden" value="<?php echo $med_id ?>">
+<?php
 return $myPT->stopBuffer();
 	}
 
@@ -1187,15 +1187,15 @@ return $myPT->stopBuffer();
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_link(
-"editform","<?=$name?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Referenz ausw&auml;hlen</a></td>
+"editform","<?php echo $name ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Referenz ausw&auml;hlen</a></td>
                   </tr>
                 </table>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_link('editform','<?=$name?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Link zur&uuml;cksetzen</a></td>
+                    <td nowrap><a href="javascript:reset_link('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Link zur&uuml;cksetzen</a></td>
                   </tr>
                 </table>
-    <?}
+    <?php }
     else
     {
     	$style='style="visibility: hidden;display:none"';
@@ -1204,26 +1204,26 @@ return $myPT->stopBuffer();
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:addlink(
-"editform","<?=$name?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Link hinzuf&uuml;gen</a></td>
+"editform","<?php echo $name ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Link hinzuf&uuml;gen</a></td>
 </tr>
 </table>
-<?if ($pageselector==true){?>
-<table width="408" border="0" cellpadding="0" cellspacing="0" style="visibility: hidden;display:none" id="<?=$name?>select">
+<?php if ($pageselector==true){ ?>
+<table width="408" border="0" cellpadding="0" cellspacing="0" style="visibility: hidden;display:none" id="<?php echo $name ?>select">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_link(
-"editform","<?=$name?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Referenz ausw&auml;hlen</a></td>
+"editform","<?php echo $name ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Referenz ausw&auml;hlen</a></td>
                   </tr>
                 </table>
-                <?}else{?>
-                <table width="408" border="0" cellpadding="0" cellspacing="0" style="visibility: hidden;display:none" id="<?=$name?>select"></table>
-                <?}?>
-<?
+                <?php }else{ ?>
+                <table width="408" border="0" cellpadding="0" cellspacing="0" style="visibility: hidden;display:none" id="<?php echo $name ?>select"></table>
+                <?php } ?>
+<?php
     }
 ?>
- <table  id="<?=$name?>panel" <?=$style?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
+ <table  id="<?php echo $name ?>panel" <?php echo $style ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
               <tr >
                 <td nowrap>
-     <?
+     <?php
      if ($linktype!==false)
      {
      	echo $this->workarea_form_select2("Linktyp",$name."type",$linktype,$linktype_options,100);
@@ -1260,7 +1260,7 @@ return $myPT->stopBuffer();
      ?>
      <table cellpadding="0" cellspacing="0" border="0" style="padding-top:4px">
      <tr>
-     <?
+     <?php
      if ($target!==false)
      {
      if($target==""){$target="_self";}
@@ -1290,7 +1290,7 @@ return $myPT->stopBuffer();
 	 </table>
  </td></tr></table>
 
-<?
+<?php
 return $myPT->stopBuffer();
 	}
 
@@ -1336,7 +1336,7 @@ return $myPT->stopBuffer();
             <tr>
               <td class="padding10"><form action="pagegroup_select.php" method="post" name="formGrp">Gruppe:</td>
               <td><select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
-<?
+<?php
 $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
 $html = "";
 $rs = $myDB->query($sql);
@@ -1361,7 +1361,7 @@ echo $html;
         </tr>
       </table>
 	  
-<?
+<?php
 if ($mySUser->checkRight("elm_pageconfig"))
 {
 
@@ -1377,23 +1377,23 @@ if ($mySUser->checkRight("elm_pageconfig"))
        
 
         <tr>
-          <td class="windowFooterGrey2"><a href="javascript:pageWizard(<?=$_REQUEST["id"]?>,<?=$myPage->hasChilds()?>)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Seite hinzuf&uuml;gen </a></td>
+          <td class="windowFooterGrey2"><a href="javascript:pageWizard(<?php echo $_REQUEST["id"] ?>,<?php echo $myPage->hasChilds() ?>)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Seite hinzuf&uuml;gen </a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
-<?}else{?>
+<?php }else{ ?>
 <table width="260" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td class="windowFooterGrey2"><a href="pagegroup_insertfirstpage.php?grp_id=<?=$grp_id?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Erste Seite hinzuf&uuml;gen </a></td>
+          <td class="windowFooterGrey2"><a href="pagegroup_insertfirstpage.php?grp_id=<?php echo $grp_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Erste Seite hinzuf&uuml;gen </a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
-<?}?>	
+<?php } ?>	
 		
         <tr>
           <td class="windowBottomShadow"><img src="img/win_sh_bo_le.gif" width="10" height="10"></td>
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table>  
-	  <?}
+	  <?php }
 	  else
 	  {
 	  	// Kein Recht Seiten hinzuzufuegen
@@ -1406,7 +1406,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
           <td valign="top" class="windowRightShadow" ><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table> 
-		<?
+		<?php
 	  }
 	  ?>
       <table width="260" border="0" cellpadding="0" cellspacing="0">
@@ -1419,7 +1419,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
                 <td class="padding10"> Bezeichnung </td>
                 <td>
                 <form action="page_search.php" method="post">
- 	  		    <input type="hidden" name="id" value="<?=$id?>">
+ 	  		    <input type="hidden" name="id" value="<?php echo $id ?>">
                 <input type="text" name="s" style="width: 100px" class="input">
                 </td>
               </tr>
@@ -1448,7 +1448,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table>
-	  <?
+	  <?php
 
 	}
 
@@ -1543,14 +1543,14 @@ if ($mySUser->checkRight("elm_pageconfig"))
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td colspan="3" class="padding10"><strong>Suche Content <?=$contenttype?> nach:</strong></td>
+              <td colspan="3" class="padding10"><strong>Suche Content <?php echo $contenttype ?> nach:</strong></td>
             </tr>
             <tr>
               <td class="padding10">Bezeichnung</td>
               <td>
 			  <form action="content_select.php" method="post">
- 	  		  <input type="hidden" name="t" value="<?=$myAdm->explorer_get("con_id")?>">
-			  <input type="hidden" name="r" value="<?=htmlentities($myAdm->explorer_get("rubrik"))?>">
+ 	  		  <input type="hidden" name="t" value="<?php echo $myAdm->explorer_get("con_id") ?>">
+			  <input type="hidden" name="r" value="<?php echo htmlentities($myAdm->explorer_get("rubrik")) ?>">
 		    <input type="hidden" name="c" value="search">
 			  <input type="text" name="s" style="width: 100
 			  px" class="input"></td>
@@ -1572,7 +1572,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
           </table></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
-		<?
+		<?php
 		if ($myAdm->explorer_get("con_id")!="")
 		{
 			$sql = "SELECT con_anlegen FROM content WHERE con_id=".$myAdm->explorer_get("con_id");
@@ -1582,10 +1582,10 @@ if ($mySUser->checkRight("elm_pageconfig"))
 			{
 		?>
 		<tr>
-          <td class="windowFooterGrey2"><a href="content_insert.php?id=<?=$myAdm->explorer_get("con_id")?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen Datensatz hinzuf&uuml;gen </a></td>
+          <td class="windowFooterGrey2"><a href="content_insert.php?id=<?php echo $myAdm->explorer_get("con_id") ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen Datensatz hinzuf&uuml;gen </a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
-		<?
+		<?php
 			}
 		}
 		?>
@@ -1594,7 +1594,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table>
-	  <?
+	  <?php
 	}
 
 	
@@ -1619,7 +1619,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
 		$this->tab_addEntry("Media",$url,"b_media.gif");
 		$this->tab_draw("Media",$x=260,1);
 ?>
-<?
+<?php
 $myNav = new PhenotypeTree();
 $nav_id_top = $myNav->addNode("&Uuml;bersicht","mediabase.php?folder=-1&type=-1&sortorder=1&p=1&a=20",0,"-1");
 global $myDB;
@@ -1800,24 +1800,24 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
               <td class="windowTabTypeOnly"><strong>Neue Dateien: </strong></td>
               <td class="windowTabTypeOnly">
 			    
-      <input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">
-      <input type="hidden" name="folder" value="<?=$_REQUEST["folder"]?>">
-      <input type="hidden" name="type" value="<?=$_REQUEST["type"]?>">				   				   
-      <input type="hidden" name="sortorder" value="<?=$_REQUEST["sortorder"]?>">
-      <input type="hidden" name="p" value="<?=$_REQUEST["p"]?>">		  
-	  <input type="hidden" name="a" value="<?=$_REQUEST["a"]?>">	
+      <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
+      <input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
+      <input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   				   
+      <input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
+      <input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">		  
+	  <input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">	
 	  <input name="upload" type="submit" class="buttonWhite" id="upload" style="width:102px" value="Hochladen"></td>
             </tr>
 			</form>
             <tr>
               <td class="windowTabTypeOnly">&nbsp;</td>
               <td class="windowTabTypeOnly"><form action="mediabase_import.php" method="post">
-      <input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">
-      <input type="hidden" name="folder" value="<?=$_REQUEST["folder"]?>">
-      <input type="hidden" name="type" value="<?=$_REQUEST["type"]?>">				   				   
-      <input type="hidden" name="sortorder" value="<?=$_REQUEST["sortorder"]?>">
-      <input type="hidden" name="p" value="<?=$_REQUEST["p"]?>">	
-	  <input type="hidden" name="a" value="<?=$_REQUEST["a"]?>">	  
+      <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
+      <input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
+      <input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   				   
+      <input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
+      <input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">	
+	  <input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">	  
 	  <input name="import" type="submit" class="buttonWhite" id="import2" style="width:102px" value="Importieren"></form></td>
             </tr>
           </table>
@@ -1840,12 +1840,12 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
                 <td class="padding10"> Bezeichnung </td>
                 <td>
                 <form action="media_search.php" method="post">
- 	  		    <input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">
-      			<input type="hidden" name="folder" value="<?=$_REQUEST["folder"]?>">
-      			<input type="hidden" name="type" value="<?=$_REQUEST["type"]?>">				   				   
-      			<input type="hidden" name="sortorder" value="<?=$_REQUEST["sortorder"]?>">
-      			<input type="hidden" name="p" value="<?=$_REQUEST["p"]?>">	
-	  			<input type="hidden" name="a" value="<?=$_REQUEST["a"]?>">
+ 	  		    <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
+      			<input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
+      			<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   				   
+      			<input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
+      			<input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">	
+	  			<input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">
                 <input type="text" name="s" style="width: 100px" class="input">
                 </td>
               </tr>
@@ -1872,7 +1872,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table>
-	  <?
+	  <?php
 	}
 
 	function explorer_konfiguration_draw($submodul)
@@ -2141,7 +2141,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 		</table>
 		<br/>
 		<br/>
-	<?
+	<?php
 
 	// Packages Explorer
 
@@ -2163,7 +2163,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
       <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
     </tr>
 	</table>
-	<?
+	<?php
 	}
 
 
@@ -2329,7 +2329,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
 		</table>
-	<?
+	<?php
 	}
 
 
@@ -2376,7 +2376,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 	?>
 	<table width="260" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
-          <td class="windowFooterGrey2"><a href="javascript:ticketWizard(0,0,0,0,<?=$sbj_id2?>,0)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Aufgabe einstellen </a></td>
+          <td class="windowFooterGrey2"><a href="javascript:ticketWizard(0,0,0,0,<?php echo $sbj_id2 ?>,0)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Aufgabe einstellen </a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
 	 <tr>
@@ -2388,16 +2388,16 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td colspan="3" class="padding10"><strong>Suche Aufgaben <?=$sbj_bez?> nach:</strong></td>
+              <td colspan="3" class="padding10"><strong>Suche Aufgaben <?php echo $sbj_bez ?> nach:</strong></td>
             </tr>
             <tr>
               <td class="padding10">Bezeichnung</td>
               <td>
 			  <form action="tickets.php" method="post">
 			  <input type="hidden" name="suche" value="1">
- 	  		  <input type="hidden" name="sbj_id" value="<?=$sbj_id?>">
-			  <input type="hidden" name="focus" value="<?=$block_nr?>">
-			  <input type="hidden" name="sortorder" value="<?=$sortorder?>">
+ 	  		  <input type="hidden" name="sbj_id" value="<?php echo $sbj_id ?>">
+			  <input type="hidden" name="focus" value="<?php echo $block_nr ?>">
+			  <input type="hidden" name="sortorder" value="<?php echo $sortorder ?>">
 	    	  <input type="text" name="s" style="width: 100
 			  px" class="input"></td>
             </tr>
@@ -2423,7 +2423,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table>		
-	<?
+	<?php
 	}
 
 	function displayStatsPanel_Page($bez,$nr,$mode,$datum,$scope,$anzahl,$grp_id)
@@ -2431,13 +2431,13 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 		global $myDB;
 		global $myPT;
   ?>
-  <input type="hidden" name="p<?=$nr?>_newscope" value="<?=$scope?>">
-  <input type="hidden" name="p<?=$nr?>_mode" value="<?=$mode?>">
+  <input type="hidden" name="p<?php echo $nr ?>_newscope" value="<?php echo $scope ?>">
+  <input type="hidden" name="p<?php echo $nr ?>_mode" value="<?php echo $mode ?>">
   <table width="400" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td class="windowTitle"><?=$bez?></td>
+                <td class="windowTitle"><?php echo $bez ?></td>
                 <td align="right" class="windowTitle">
                 <a href="http://www.phenotype-cms.de/docs.php?v=23&t=6" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>
                 <!--<a href="#"><img src="img/b_print.gif" alt="Statistik ausdrucken" width="22" height="22" border="0"></a> <a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
@@ -2450,7 +2450,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
         </tr>
       </table>
-	  <?
+	  <?php
 	  $this->tab_new();
 	  $url = "javascript:document.forms.form1.p" .$nr . "_mode.value=1;document.forms.form1.submit();";
 	  $this->tab_addEntry("Abrufe",$url,"b_clicks.gif");
@@ -2465,7 +2465,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 	  	$this->tab_draw("Verlauf",$x=400);
 	  }
 	  ?>
-	  <?
+	  <?php
 	  // Pruefung, welche Monate sich in der Statistik befinden
 	  $_monat = Array("Januar","Februar","M&auml;rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
 	  $sql = "SELECT MIN(sta_datum) AS start FROM page_statistics";
@@ -2500,7 +2500,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 	  }
       ?>
 	   
-			  <?
+			  <?php
 			  // ####################################################
 			  // Abrufe
 			  if ($mode==1)
@@ -2512,20 +2512,20 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
               <tr>
                 <td nowrap class="padding10">
                   Tagesansicht<br>
-				  <?
+				  <?php
 				  $checked="";
 				  if ($scope=="2"){$checked="checked";}
 				  ?>
-                  <input type="radio" name="p<?=$nr?>_scope" value="2" <?=$checked;?> onclick="document.forms.form1.p<?=$nr?>_newscope.value=2;document.forms.form1.submit();">
-                  <input name="p<?=$nr?>_datum" type="text" class="input" style="width: 45px" value="<?=date("d.m.y",$datum)?>"><input type="image" src="img/transparent.gif" alt="" width="1" height="1" border="0" align="absmiddle" name="p<?=$nr?>_dtfocus"><input type="image" src="img/b_minus.gif" alt="ein Tag zur&uuml;ck" width="18" height="18" border="0" align="absmiddle" name="p<?=$nr?>_minus"><input type="image" src="img/b_plus.gif" alt="ein Tag vor" width="18" height="18" border="0" align="absmiddle" name="p<?=$nr?>_plus"></td>
+                  <input type="radio" name="p<?php echo $nr ?>_scope" value="2" <?php echo $checked; ?> onclick="document.forms.form1.p<?php echo $nr ?>_newscope.value=2;document.forms.form1.submit();">
+                  <input name="p<?php echo $nr ?>_datum" type="text" class="input" style="width: 45px" value="<?php echo date("d.m.y",$datum) ?>"><input type="image" src="img/transparent.gif" alt="" width="1" height="1" border="0" align="absmiddle" name="p<?php echo $nr ?>_dtfocus"><input type="image" src="img/b_minus.gif" alt="ein Tag zur&uuml;ck" width="18" height="18" border="0" align="absmiddle" name="p<?php echo $nr ?>_minus"><input type="image" src="img/b_plus.gif" alt="ein Tag vor" width="18" height="18" border="0" align="absmiddle" name="p<?php echo $nr ?>_plus"></td>
                 <td nowrap class="padding10">Monatsansicht<br>
-				  <?
+				  <?php
 				  $checked="";
 				  if ($scope=="1"){$checked="checked";}
 				  ?>				
-                    <input type="radio" name="p<?=$nr?>_scope" value="1" <?=$checked;?> onclick="document.forms.form1.p<?=$nr?>_newscope.value=1;document.forms.form1.submit();">                                         
-                    <select name="p<?=$nr?>_monat" class="listmenu" onChange="document.forms.form1.p<?=$nr?>_newscope.value=1;document.forms.form1.submit();">
-                       <?
+                    <input type="radio" name="p<?php echo $nr ?>_scope" value="1" <?php echo $checked; ?> onclick="document.forms.form1.p<?php echo $nr ?>_newscope.value=1;document.forms.form1.submit();">                                         
+                    <select name="p<?php echo $nr ?>_monat" class="listmenu" onChange="document.forms.form1.p<?php echo $nr ?>_newscope.value=1;document.forms.form1.submit();">
+                       <?php
                        $aktuell = date("Ym",$datum);
                        foreach ($_options AS $K => $V)
                        {
@@ -2535,31 +2535,31 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
                        		$selected="selected";
                        	}
 					   ?>
-					   <option value="<?=$K?>" <?=$selected?>><?=$V?></option>
-					   <?
+					   <option value="<?php echo $K ?>" <?php echo $selected ?>><?php echo $V ?></option>
+					   <?php
                        }
 					   ?>
                     </select></td>
                 <td nowrap class="padding10">
-				Auflistung<br><select name="p<?=$nr?>_anzahl" class="listmenu" onChange="document.forms.form1.submit();">
-                    <?
+				Auflistung<br><select name="p<?php echo $nr ?>_anzahl" class="listmenu" onChange="document.forms.form1.submit();">
+                    <?php
                     for ($i=10;$i<=50;$i=$i+10)
                     {
                     	$selected ="";
                     	if ($i==$anzahl){$selected="selected";}
 					?>
-                    <option value="<?=$i?>" <?=$selected?>><?=$i?> Zeilen</option>
-					<?
+                    <option value="<?php echo $i ?>" <?php echo $selected ?>><?php echo $i ?> Zeilen</option>
+					<?php
                     }
 					?>  
-                    <?
+                    <?php
                     for ($i=100;$i<=500;$i=$i+100)
                     {
                     	$selected ="";
                     	if ($i==$anzahl){$selected="selected";}
 					?>
-                    <option value="<?=$i?>" <?=$selected?>><?=$i?> Zeilen</option>
-					<?
+                    <option value="<?php echo $i ?>" <?php echo $selected ?>><?php echo $i ?> Zeilen</option>
+					<?php
                     }
 					?>  					                                                                                                   
                     </select>
@@ -2570,7 +2570,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
         </tr>
 		
       </table>
-<?
+<?php
 
 
 $table ="temp_stats_" .uniqid("pt");
@@ -2622,12 +2622,12 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
                 </tr>			  
 			  	  <style>
 	  /* Dynamisierung der x-Position für den Mittelwert */
-.tableMarker<?=$nr?> {
+.tableMarker<?php echo $nr ?> {
 	padding: 5px 10px 5px 10px;
-	background:  url(img/i_stat_marker.gif) no-repeat <?=$avg+8?>px 0px;
+	background:  url(img/i_stat_marker.gif) no-repeat <?php echo $avg+8 ?>px 0px;
 	}
 	</style>
-			  <?
+			  <?php
 			  $sql = "SELECT * FROM " . $table . " LEFT JOIN page ON " . $table . ".pag_id = page.pag_id ORDER BY sum DESC LIMIT 0," . $anzahl;
 
 			  $rs = $myDB->query($sql);
@@ -2649,19 +2649,19 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
                 <td colspan="3" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
               </tr>
               <tr>
-                <td align="center" class="tableBody"><?=$row["sum"]?></td>
-                <td class="tableBody"><?=$myPT->cutString($row["pag_bez"],30,14);?></td>
-                <td class="tableMarker<?=$nr?>"><img src="img/i_stat_<?=$color?>.gif" width="<?=$x?>" height="6"></td>
+                <td align="center" class="tableBody"><?php echo $row["sum"] ?></td>
+                <td class="tableBody"><?php echo $myPT->cutString($row["pag_bez"],30,14); ?></td>
+                <td class="tableMarker<?php echo $nr ?>"><img src="img/i_stat_<?php echo $color ?>.gif" width="<?php echo $x ?>" height="6"></td>
                 
-				<?
+				<?php
 				/*
 				?>
-				<td align="right" class="tableBody"><a href="#<?=$row["pag_id"]?>" class="tableBody" onClick="MM_openBrWindow('statistics_pagedetail.php?id=<?=$row["pag_id"]?>','','scrollbars=yes,resizable=yes,width=570,height=300')"><img src="img/b_view.gif" width="22" height="22" border="0" align="absmiddle"></a></td>
-				<?
+				<td align="right" class="tableBody"><a href="#<?php echo $row["pag_id"] ?>" class="tableBody" onClick="MM_openBrWindow('statistics_pagedetail.php?id=<?php echo $row["pag_id"] ?>','','scrollbars=yes,resizable=yes,width=570,height=300')"><img src="img/b_view.gif" width="22" height="22" border="0" align="absmiddle"></a></td>
+				<?php
 				*/
 				?>
               </tr>
-			  <?
+			  <?php
 			  }
 ?>
               <tr>
@@ -2681,7 +2681,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
           <td valign="top" class="windowRightShadow"><span class="windowBottomShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></span></td>
         </tr>
       </table>
-<?
+<?php
 $sql = "DROP TABLE ".  $table;
 $myDB->query($sql);
 			  }
@@ -2695,13 +2695,13 @@ $myDB->query($sql);
           <td class="windowHeaderGrey2"><table border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td nowrap class="padding10">
-				  <?
+				  <?php
 				  $checked="";
 				  if ($scope=="1"){$checked="checked";}
 				  ?>				
-                    <input type="radio" name="p<?=$nr?>_scope" value="1" <?=$checked;?> onclick="document.forms.form1.p<?=$nr?>_newscope.value=1;document.forms.form1.submit();">                                         
-                    <select name="p<?=$nr?>_monat" class="listmenu" onChange="document.forms.form1.p<?=$nr?>_newscope.value=1;document.forms.form1.submit();">
-                       <?
+                    <input type="radio" name="p<?php echo $nr ?>_scope" value="1" <?php echo $checked; ?> onclick="document.forms.form1.p<?php echo $nr ?>_newscope.value=1;document.forms.form1.submit();">                                         
+                    <select name="p<?php echo $nr ?>_monat" class="listmenu" onChange="document.forms.form1.p<?php echo $nr ?>_newscope.value=1;document.forms.form1.submit();">
+                       <?php
                        $aktuell = date("Ym",$datum);
                        foreach ($_options AS $K => $V)
                        {
@@ -2711,21 +2711,21 @@ $myDB->query($sql);
                        		$selected="selected";
                        	}
 					   ?>
-					   <option value="<?=$K?>" <?=$selected?>><?=$V?></option>
-					   <?
+					   <option value="<?php echo $K ?>" <?php echo $selected ?>><?php echo $V ?></option>
+					   <?php
                        }
 					   ?>
                     </select></td>
                 <td nowrap class="padding10">
-                  <?
+                  <?php
                   $checked="";
                   if ($scope=="3"){$checked="checked";}
 				  ?>
-                  <input type="radio" name="p<?=$nr?>_scope" value="3" <?=$checked;?> onclick="document.forms.form1.p<?=$nr?>_newscope.value=3;document.forms.form1.submit();"><strong>Gesamtsicht</strong>
+                  <input type="radio" name="p<?php echo $nr ?>_scope" value="3" <?php echo $checked; ?> onclick="document.forms.form1.p<?php echo $nr ?>_newscope.value=3;document.forms.form1.submit();"><strong>Gesamtsicht</strong>
                   </td>					
                 <td nowrap class="padding10">
-<input name="p<?=$nr?>_datum" type="hidden" class="input" style="width: 50px" value="<?=date("d.m.y",$datum)?>">				
-<input type="hidden" name="p<?=$nr?>_anzahl" value="<?=$anzahl?>">
+<input name="p<?php echo $nr ?>_datum" type="hidden" class="input" style="width: 50px" value="<?php echo date("d.m.y",$datum) ?>">				
+<input type="hidden" name="p<?php echo $nr ?>_anzahl" value="<?php echo $anzahl ?>">
 					</td>
                 </tr>
           </table></td>
@@ -2733,7 +2733,7 @@ $myDB->query($sql);
         </tr>
       </table>
 
-<?
+<?php
 if ($scope==1)
 {
 ?>
@@ -2747,7 +2747,7 @@ if ($scope==1)
                 <td width="200" class="tableHead">Diagramm ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> Mittelwert )</td>
                 <td class="tableHead">&nbsp;</td>
               </tr>			
-<?
+<?php
 $max=0;
 $sum=0;
 $startdatum = $myPT->lastDayinMonth($datum);
@@ -2793,10 +2793,10 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 	  /* Dynamisierung der x-Position für den Mittelwert */
 .tableMarker {
 	padding: 5px 10px 5px 10px;
-	background:  url(img/i_stat_marker.gif) no-repeat <?=$avg+8?>px 0px;
+	background:  url(img/i_stat_marker.gif) no-repeat <?php echo $avg+8 ?>px 0px;
 	}
 	</style>
- <?
+ <?php
  $color="red";
  $tag="<strong>heute</strong>";
  for ($i=0;$i<=$c_entry;$i++)
@@ -2817,16 +2817,16 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
                 <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
               </tr>
               <tr>
-                <td align="left" class="tableBody"><?=$tag?></td>
-                <td align="right" class="tableBody"><?=$pi?></td>
-                <td class="tableMarker"><img src="img/i_stat_<?=$color?>.gif" width="<?=$x?>" height="6"></td>
+                <td align="left" class="tableBody"><?php echo $tag ?></td>
+                <td align="right" class="tableBody"><?php echo $pi ?></td>
+                <td class="tableMarker"><img src="img/i_stat_<?php echo $color ?>.gif" width="<?php echo $x ?>" height="6"></td>
                 <td>&nbsp;</td>
 				</tr>
-<?
+<?php
  }
 } // -- Ende scope1
 ?>					
-<?
+<?php
 if ($scope==3)
 {
 ?>
@@ -2840,7 +2840,7 @@ if ($scope==3)
                 <td width="185" class="tableHead">Diagramm ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> Mittelwert )</td>
                 <td class="tableHead">&nbsp;</td>
               </tr>			
-<?
+<?php
 $max=0;
 $sum=0;
 $i=0;
@@ -2880,12 +2880,12 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 ?>			    
 			  	  <style>
 	  /* Dynamisierung der x-Position für den Mittelwert */
-.tableMarker<?=$nr?> {
+.tableMarker<?php echo $nr ?> {
 	padding: 5px 10px 5px 10px;
-	background:  url(img/i_stat_marker.gif) no-repeat <?=$avg+8?>px 0px;
+	background:  url(img/i_stat_marker.gif) no-repeat <?php echo $avg+8 ?>px 0px;
 	}
 	</style>
- <?  
+ <?php  
  for ($i=0;$i<=$c_entry;$i++)
  {
  	$vdatum = mktime( 0,0,0,(date('m')-$i),1,date('Y'));
@@ -2905,12 +2905,12 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
                 <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
               </tr>
               <tr>
-                <td align="left" class="tableBody"><?=$monat?></td>
-                <td align="right" class="tableBody"><?=$pi?></td>
-                <td class="tableMarker<?=$nr?>"><img src="img/i_stat_<?=$color?>.gif" width="<?=$x?>" height="6"></td>
+                <td align="left" class="tableBody"><?php echo $monat ?></td>
+                <td align="right" class="tableBody"><?php echo $pi ?></td>
+                <td class="tableMarker<?php echo $nr ?>"><img src="img/i_stat_<?php echo $color ?>.gif" width="<?php echo $x ?>" height="6"></td>
                 <td>&nbsp;</td>
 				</tr>
-<?
+<?php
  }
 } // -- Ende scope3
 ?>			
@@ -2933,10 +2933,10 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
           <td valign="top" class="windowRightShadow"><span class="windowBottomShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></span></td>
         </tr>
       </table>	
-<?
+<?php
 			  }
 ?>
-  <?
+  <?php
 	}
 
 	function renderPageBrowser($currentpage,$entries,$url,$itemcount=10,$forcedisplay=false)
@@ -2951,7 +2951,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
         <td align="right" class="windowFooterWhite"><table border="0" cellpadding="0" cellspacing="1">
           <tr>
             <td align="center">Seite: </td>
-			<?
+			<?php
 			$max=ceil($anzahl/$itemcount);
 			$start = $p-3;
 			$stop = $p+3;
@@ -2960,9 +2960,9 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			if ($p>1)
 			{
 			?>
-            <td align="center"><a href="<?=$url.($p-1)?>" class="tabmenuType">zur&uuml;ck</a></td>
+            <td align="center"><a href="<?php echo $url.($p-1) ?>" class="tabmenuType">zur&uuml;ck</a></td>
 	        <td align="center">&nbsp;</td>
-			<?
+			<?php
 			}
 
 			for ($i=$start;$i<=$stop;$i++)
@@ -2971,15 +2971,15 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 				if ($p==$i){$active="Active";}
 
 			?>
-			<td align="center"><a href="<?=$url.($i)?>" class="tabmenuType<?=$active?>"><?=$i?></a></td>
-			<?
+			<td align="center"><a href="<?php echo $url.($i) ?>" class="tabmenuType<?php echo $active ?>"><?php echo $i ?></a></td>
+			<?php
 			}
 			if ($p!=$max)
 			{
 			?>
 	        <td align="center">&nbsp;</td>
-            <td align="center"><a href="<?=$url.($p+1)?>" class="tabmenuType">vor</a></td>
-			<?
+            <td align="center"><a href="<?php echo $url.($p+1) ?>" class="tabmenuType">vor</a></td>
+			<?php
 			}
 			?>
           </tr>
@@ -2992,7 +2992,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
       </tr>-->
 	  </table>
 
-	<?
+	<?php
 	$html = $myPT->stopBuffer();
 
 	// Seitenblättern, nur wenn notwendig
@@ -3009,14 +3009,14 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
 	      <tr>
-	        <td class="windowTabTypeOnly"><strong><?=$this->getH($title)?></strong></td>
+	        <td class="windowTabTypeOnly"><strong><?php echo $this->getH($title) ?></strong></td>
 	        <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
 	      </tr>
 	    </table>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
 	      <tr>
 	        <td class="windowTask">
-			<?
+			<?php
 			$this->listTickets($rs,$mode,$expand,$scope,$sbj_id,$dat_id,$focus,$sortorder,$block_nr);
 		    ?>
 			</td>
@@ -3028,7 +3028,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 	      </tr>
 	    </table>
 		<br>
-		<?
+		<?php
 	}
 
 	function listTickets($rs,$mode=1,$expand=0,$scope="",$sbj_id=0,$dat_id=0,$focus=0,$sortorder=0,$block_nr=0)
@@ -3070,7 +3070,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			case 2:
 				$colspan=6;
 				?>
-				<table width="<?=$x?>" border="0" cellpadding="0" cellspacing="0">
+				<table width="<?php echo $x ?>" border="0" cellpadding="0" cellspacing="0">
 		          <tr>
 		            <td><img src="img/transparent.gif" width="25" height="3"></td>
 					<td><img src="img/transparent.gif" width="30" height="3"></td>
@@ -3084,17 +3084,17 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		            <td valign="top" class="taskTopCorner"><img src="img/task_topcorner.gif" width="20" height="20"></td>
 					<td class="taskHeaderGrey" align="right">ID</td>
 		            <td class="taskHeaderGrey">Bezeichnung</td>
-		            <td class="taskHeaderGrey">Bereich<?if ($view_projects){echo"/".$myPT->getPref("tickets.bez_2ndorder");}?></td>
+		            <td class="taskHeaderGrey">Bereich<?php if ($view_projects){echo"/".$myPT->getPref("tickets.bez_2ndorder");} ?></td>
 		            <td class="taskHeaderGrey">Bearbeiter</td>
 		            <td class="taskHeaderGrey">Aktion</td>
 		            <td valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
 		          </tr>
-				<?				
+				<?php				
 				break;
 			default:
 				$colspan=7;
 				?>
-				<table width="<?=$x?>" border="0" cellpadding="0" cellspacing="0">
+				<table width="<?php echo $x ?>" border="0" cellpadding="0" cellspacing="0">
 		          <tr>
 		            <td><img src="img/transparent.gif" width="48" height="3"></td>
 		            <td><img src="img/transparent.gif" width="90" height="3"></td>
@@ -3110,12 +3110,12 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		            <td class="taskHeaderGrey">Status</td>
 					<td class="taskHeaderGrey" align="right">ID</td>
 		            <td class="taskHeaderGrey">Bezeichnung</td>
-		            <td class="taskHeaderGrey">Bereich<?if ($view_projects){echo"/".$myPT->getPref("tickets.bez_2ndorder");}?></td>
+		            <td class="taskHeaderGrey">Bereich<?php if ($view_projects){echo"/".$myPT->getPref("tickets.bez_2ndorder");} ?></td>
 		            <td class="taskHeaderGrey">Bearbeiter/Einsteller</td>
 		            <td class="taskHeaderGrey">Aktion</td>
 		            <td valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
 		          </tr>
-				<?
+				<?php
 				break;
 
 		}
@@ -3133,11 +3133,11 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		}
 		  ?>
       	  <tr>
-        	<td colspan="<?=$colspan?>" class="windowBottomShadow"><img src="img/win_sh_mi_le.gif"></td>
+        	<td colspan="<?php echo $colspan ?>" class="windowBottomShadow"><img src="img/win_sh_mi_le.gif"></td>
         	<td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       	  </tr>
 		</table>
-		<?
+		<?php
 	}
 
 
@@ -3254,13 +3254,13 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
                     <td>
                     	<table width="50" border="0" cellspacing="0" cellpadding="0">
                         	<tr>
-	                          <td class="taskProgress"><img src="img/task_progressline.gif" width="<?=$w?>" height="3" alt=" <?=$row["tik_percentage"]?> %" title=" <?=$row["tik_percentage"]?> %"></td>
+	                          <td class="taskProgress"><img src="img/task_progressline.gif" width="<?php echo $w ?>" height="3" alt=" <?php echo $row["tik_percentage"] ?> %" title=" <?php echo $row["tik_percentage"] ?> %"></td>
     	                    </tr>
         	            </table>
 				    </td>
                   </tr>
               </table>
-			<?
+			<?php
 			}
 			echo '</td>';
 
@@ -3271,7 +3271,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			?>
     		<td class="taskTopCorner" height="45">&nbsp;</td>
  	  		<td align="center" class="taskData">
- 	  		<?
+ 	  		<?php
  	  		if ($row["tik_percentage"]!=100)
  	  		{
  	  			echo'<img src="img/t_closed0.gif" width="17" height="17" hspace="1">';
@@ -3283,13 +3283,13 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			?>
  	  		<img src="img/t_closed.gif" alt="Ticket geschlossen" width="22" height="22" border="0">
  	  		</td>
- 	  	<?
+ 	  	<?php
 		}
 		?>
-			<td valign="top" class="taskData" align="right"><?=$row["tik_id"]?></td>
-            <td valign="top" class="taskData"><?=$row["tik_bez"]?></td>
+			<td valign="top" class="taskData" align="right"><?php echo $row["tik_id"] ?></td>
+            <td valign="top" class="taskData"><?php echo $row["tik_bez"] ?></td>
             <td valign="top" class="taskData">
-            <?
+            <?php
             echo $row["sbj_bez"];
             if ($_projects)
             {
@@ -3297,12 +3297,12 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
             }
             ?>
             </td>
-			<td valign="top" class="taskData"><strong class="<?=$color?>">
-			<?=$myUser->getName($row["usr_id_owner"])?></strong><br>
-     		<?=$myUser->getName($row["usr_id_creator"])?>
+			<td valign="top" class="taskData"><strong class="<?php echo $color ?>">
+			<?php echo $myUser->getName($row["usr_id_owner"]) ?></strong><br>
+     		<?php echo $myUser->getName($row["usr_id_creator"]) ?>
      		</td>
             <td align="center" class="taskDataLastCell">
-            <?
+            <?php
 
             $url_pin = "backend.php?page=Ticket,".$scope.",pin&id=" . $row["tik_id"]. "&b=".$block_nr. $params;
             //."#tik".$row["tik_id"];
@@ -3333,7 +3333,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
             </td>
             <td width="10" class="windowRightShadow">&nbsp;</td>
           </tr>
-		<?
+		<?php
 	}
 
 	function listTicketCompact($row,$scope,$params,$_projects,$block_nr)
@@ -3410,10 +3410,10 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
  	  	
 		}
 		?>
-			<td valign="top" class="taskData" align="right"><?=$row["tik_id"]?></td>
-            <td valign="top" class="taskData"><?=$row["tik_bez"]?></td>
+			<td valign="top" class="taskData" align="right"><?php echo $row["tik_id"] ?></td>
+            <td valign="top" class="taskData"><?php echo $row["tik_bez"] ?></td>
             <td valign="top" class="taskData">
-            <?
+            <?php
             echo $row["sbj_bez"];
             if ($_projects)
             {
@@ -3421,11 +3421,11 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
             }
             ?>
             </td>
-			<td valign="top" class="taskData"><strong class="<?=$color?>">
-			<?=$myUser->getName($row["usr_id_owner"])?></strong>
+			<td valign="top" class="taskData"><strong class="<?php echo $color ?>">
+			<?php echo $myUser->getName($row["usr_id_owner"]) ?></strong>
      		</td>
             <td align="center" class="taskDataLastCell">
-            <?
+            <?php
 
             $url_pin = "backend.php?page=Ticket,".$scope.",pin&id=" . $row["tik_id"]. "&b=".$block_nr. $params;
             //."#tik".$row["tik_id"];
@@ -3455,7 +3455,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			?>       </td>
             <td width="10" class="windowRightShadow">&nbsp;</td>
           </tr>
-		<?
+		<?php
 	}
 }
 

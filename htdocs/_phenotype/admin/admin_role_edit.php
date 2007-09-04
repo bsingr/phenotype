@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
 	$url = "noaccess.php";
@@ -29,36 +29,36 @@ if (!$mySUser->checkRight("elm_admin"))
 	exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 $id = $myRequest->getI("id");
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Rollen");
 $myAdm->explorer_set("rol_id",$id);
 $myAdm->explorer_draw();
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
@@ -78,13 +78,13 @@ $rechte = Array();
 if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 ?> 
  <form action="admin_role_update.php" method="post">
-	<input type="hidden" name="id" value="<?=$id?>">	
-	<input type="hidden" name="b" value="<?=$_REQUEST["b"]?>">		
+	<input type="hidden" name="id" value="<?php echo $id ?>">	
+	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$id?> Rolle / <?=$row["rol_bez"]?></td>
+            <td class="windowTitle"><?php echo $id ?> Rolle / <?php echo $row["rol_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=12" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -95,7 +95,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?
+	<?php
 	$myLayout->tab_new();
 	$url = "admin_user_edit.php?id=" .$id ."&b=0";
 	$myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
@@ -142,7 +142,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 			$myPT->startbuffer();
 		 ?>
 		 <table border="0" cellspacing="0" cellpadding="0">
-		 <?
+		 <?php
 		 $sql = "SELECT * FROM pagegroup ORDER by grp_bez";
 		 $rs = $myDB->query($sql);
 		 while ($row_grp = mysql_fetch_array($rs))
@@ -157,20 +157,20 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 		 	}
 		 ?>
          <tr><td>     
-		 <input name="access_grp_<?=$row_grp["grp_id"]?>" type="checkbox" value="1" <?=$checked?>> <?=$row_grp["grp_bez"]?>&nbsp;&nbsp;
+		 <input name="access_grp_<?php echo $row_grp["grp_id"] ?>" type="checkbox" value="1" <?php echo $checked ?>> <?php echo $row_grp["grp_bez"] ?>&nbsp;&nbsp;
          </td><td>
-		 <select name="pag_id_grp_<?=$row_grp["grp_id"]?>" class="input" style="width:250px">
+		 <select name="pag_id_grp_<?php echo $row_grp["grp_id"] ?>" class="input" style="width:250px">
 		 <option value="0">* alle Seiten * </option>
-		 <?
+		 <?php
 		 $sql = "SELECT pag_id AS K, pag_bez AS V FROM page WHERE grp_id = " . $row_grp["grp_id"] . " ORDER BY V";
 		 echo $myAdm->buildOptionsBySQL($sql,$rechte["pag_id_grp_" . $row_grp["grp_id"]]);
 		 ?>
 		 </select></td></tr>
-		 <?
+		 <?php
 		 }
 		 ?>
 		 </table>
-		 <?
+		 <?php
 		 $html = $myPT->stopBuffer();
 		 $myLayout->workarea_row_draw("Seitengruppen",$html);
 
@@ -198,7 +198,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 		 $myPT->startbuffer();
 		 ?>
 		 <table border="0" cellspacing="0" cellpadding="0">
-		 <?
+		 <?php
 		 $sql = "SELECT * FROM mediagroup ORDER by grp_bez";
 		 $rs = $myDB->query($sql);
 		 while ($row_grp = mysql_fetch_array($rs))
@@ -213,13 +213,13 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 		 	}
 		 ?>
          <tr><td>     
-		 <input name="access_mediagrp_<?=$row_grp["grp_id"]?>" type="checkbox" value="1" <?=$checked?>> <?=$row_grp["grp_bez"]?>&nbsp;&nbsp;
+		 <input name="access_mediagrp_<?php echo $row_grp["grp_id"] ?>" type="checkbox" value="1" <?php echo $checked ?>> <?php echo $row_grp["grp_bez"] ?>&nbsp;&nbsp;
          </td><td>
-		 <?
+		 <?php
 		 }
 		 ?>
 		 </table>
-		 <?
+		 <?php
 		 $html = $myPT->stopBuffer();
 		 $myLayout->workarea_row_draw("Mediagruppen",$html);
 		 
@@ -267,7 +267,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 
 	 ?>
 	 
-	 <?
+	 <?php
 	 // Abschlusszeile
 	 ?>
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -276,20 +276,20 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
             <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Rolle wirklich l&ouml;schen?')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-	 <?
+	 <?php
 	 $myLayout->workarea_stop_draw();
 	?>
 	</form>	
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

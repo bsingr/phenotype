@@ -11,7 +11,7 @@
 		<inc_usage_includecomponent>0</inc_usage_includecomponent>
 		<inc_usage_page>0</inc_usage_page>
 	</meta>
-	<script>&#60;?
+	<script>&#60;?php
 class PhenotypeInclude_1101 extends PhenotypeInclude
 {
 	&#47;&#47; Seitennavigation

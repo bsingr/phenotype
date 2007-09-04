@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
 	$url = "noaccess.php";
@@ -30,18 +30,18 @@ if (!$mySUser->checkRight("superuser"))
 	exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 function cleanupPages()
 {
 	global $myDB;
@@ -454,7 +454,7 @@ function cleanupApplication()
 {
 	global $myPT;
 
-	$buffer = '<?
+	$buffer = '<?php
 // -----------------------------------------------------------------------------------------
 // [BLOCKSTART_INHERITANCE]
 // -----------------------------------------------------------------------------------------
@@ -586,7 +586,7 @@ function cleanupHostConfig()
 {
 	global $myPT;
 
-	$buffer = '<?
+	$buffer = '<?php
 /* 
  * place to be for your host specific application configs
  */
@@ -653,25 +653,25 @@ function cleanupSnapshots()
 	$myDB->query($sql);
 }
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Packages");
 $myAdm->explorer_set("packagemode","cleanup");
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
@@ -700,13 +700,13 @@ $myPT->startBuffer();
       </tr>
       
     </table>
-    <?
+    <?php
     $myLayout->workarea_start_draw();
     ?>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr>
     <td class="tableBody">
-    <?
+    <?php
     if ($myRequest->getI("pages")){cleanupPages();}
     if ($myRequest->getI("pagegroups")){cleanupPagegroups();}
     if ($myRequest->getI("layouts")){cleanupLayouts();}
@@ -737,7 +737,7 @@ $myPT->startBuffer();
 	</td>
       </tr>
     </table>
-	<?
+	<?php
 	$myLayout->workarea_whiteline();
 	?>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -749,7 +749,7 @@ $myPT->startBuffer();
       </tr>
     </table>		
 		</form>
-		<?
+		<?php
 
 
 		$myLayout->workarea_stop_draw();
@@ -757,16 +757,16 @@ $myPT->startBuffer();
 		?>
 
 
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

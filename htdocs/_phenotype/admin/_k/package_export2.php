@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
 	$url = "noaccess.php";
@@ -30,36 +30,36 @@ if (!$mySUser->checkRight("superuser"))
 	exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Packages");
 $myAdm->explorer_set("packagemode","export");
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
@@ -88,7 +88,7 @@ $myPT->startBuffer();
       </tr>
       
     </table>
-    <?
+    <?php
     $myLayout->workarea_start_draw();
 
     $myAdm->cfg_rebuildTempPackageStructure();
@@ -405,10 +405,10 @@ $myPT->startBuffer();
     		{
     			$fcounter++;
 					?><br/>
-					<strong>Seiten der Seitengruppe <?=$id?></strong><br/>
-					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=pages&grp_id=<?=$id?>&fcounter=<?=$fcounter?>" width="495" height="100" frameborder="0"></iframe>
+					<strong>Seiten der Seitengruppe <?php echo $id ?></strong><br/>
+					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=pages&grp_id=<?php echo $id ?>&fcounter=<?php echo $fcounter ?>" width="495" height="100" frameborder="0"></iframe>
 					<br/>
-					<?
+					<?php
     		}
     		else
     		{
@@ -440,10 +440,10 @@ $myPT->startBuffer();
     		{
     			$fcounter++;
 					?><br/>
-					<strong>Datensätze der Contentklasse <?=$id?></strong><br/>
-					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=content&con_id=<?=$id?>&importmethod=<?=$importmethod?>&fcounter=<?=$fcounter?>" width="495" height="100" frameborder="0"></iframe>
+					<strong>Datensätze der Contentklasse <?php echo $id ?></strong><br/>
+					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=content&con_id=<?php echo $id ?>&importmethod=<?php echo $importmethod ?>&fcounter=<?php echo $fcounter ?>" width="495" height="100" frameborder="0"></iframe>
 					<br/>
-					<?
+					<?php
     		}
     		else
     		{
@@ -483,10 +483,10 @@ $myPT->startBuffer();
     		{
     			$fcounter++;
     			?><br/>
-					<strong>Mediaobjekte der Mediagruppe <?=$id?></strong><br/>
-					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=media&grp_id=<?=$id?>&importmethod=<?=$importmethod?>&fcounter=<?=$fcounter?>" width="495" height="100" frameborder="0"></iframe>
+					<strong>Mediaobjekte der Mediagruppe <?php echo $id ?></strong><br/>
+					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=media&grp_id=<?php echo $id ?>&importmethod=<?php echo $importmethod ?>&fcounter=<?php echo $fcounter ?>" width="495" height="100" frameborder="0"></iframe>
 					<br/>
-					<?
+					<?php
     		}
     		else
     		{
@@ -530,10 +530,10 @@ $myPT->startBuffer();
     		{
     			$fcounter++;
 					?><br/>
-					<strong>Aufgaben des Aufgabenbereichs <?=$id?></strong><br/>
-					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=tickets&sbj_id=<?=$id?>&fcounter=<?=$fcounter?>" width="495" height="100" frameborder="0"></iframe>
+					<strong>Aufgaben des Aufgabenbereichs <?php echo $id ?></strong><br/>
+					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=tickets&sbj_id=<?php echo $id ?>&fcounter=<?php echo $fcounter ?>" width="495" height="100" frameborder="0"></iframe>
 					<br/>
-					<?
+					<?php
     		}
     		else
     		{
@@ -581,7 +581,7 @@ $myPT->startBuffer();
     }
     
     // create the package class file
-		$script = '<?
+		$script = '<?php
 	class PhenotypePackage extends PhenotypePackageStandard
 	{
 		public $bez = "'.$myRequest->getS("title").'";
@@ -609,7 +609,7 @@ $myPT->startBuffer();
        	<br/>
 		<iframe src="" width="495" height="100" frameborder="0" id="ajaxcopy"></iframe>
 		<br/>
-		<?
+		<?php
     }
     else
     {
@@ -743,7 +743,7 @@ function cleanupPackageDir($baseDir, $dir = "", $ignoreDotFiles = true) {
         </table>
         <script type="text/javascript">
         var feedback = new Array();
-        var fcounter = <?=$fcounter?>;
+        var fcounter = <?php echo $fcounter ?>;
 
 
 
@@ -759,13 +759,13 @@ function cleanupPackageDir($baseDir, $dir = "", $ignoreDotFiles = true) {
         	if (c==fcounter)
         	{
         		var obj = document.getElementById("ajaxcopy");
-        		obj.src ="backend.php?page=Config,Packages,ajaxexport&type=package&folder=<?=$myRequest->getURL("folder");?>&title=<?=$myRequest->getURL("title");?>&desc=<?=$myRequest->getURL("desc");?>";
+        		obj.src ="backend.php?page=Config,Packages,ajaxexport&type=package&folder=<?php echo $myRequest->getURL("folder"); ?>&title=<?php echo $myRequest->getURL("title"); ?>&desc=<?php echo $myRequest->getURL("desc"); ?>";
         	}
         }
 		ajaxfeedback(0);
 </script>
 
-<? 
+<?php 
 
 $myLayout->workarea_stop_draw();
 $content = $myPT->stopBuffer();
@@ -773,10 +773,10 @@ $content = $myPT->stopBuffer();
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

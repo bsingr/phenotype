@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,16 +17,16 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 $id = $myRequest->getI("id");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin") AND $id != $mySUser->id)
 {
 	$url = "noaccess.php";
@@ -34,20 +34,20 @@ if (!$mySUser->checkRight("elm_admin") AND $id != $mySUser->id)
 	exit();
 }
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Benutzer");
 $myAdm->explorer_set("usr_id",$id);
 if (!$mySUser->checkRight("elm_admin"))
@@ -60,13 +60,13 @@ else
 }
 $myAdm->explorer_draw();
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
@@ -82,13 +82,13 @@ $preferences = Array();
 if ($row["usr_preferences"]!=""){$preferences = unserialize($row["usr_preferences"]);}
 ?> 
  <form action="admin_user_update.php" method="post" name="editform">
-	<input type="hidden" name="id" value="<?=$id?>">	
-	<input type="hidden" name="b" value="<?=$_REQUEST["b"]?>">		
+	<input type="hidden" name="id" value="<?php echo $id ?>">	
+	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$id?> Benutzer / <?=$row["usr_vorname"]?> <?=$row["usr_nachname"]?></td>
+            <td class="windowTitle"><?php echo $id ?> Benutzer / <?php echo $row["usr_vorname"] ?> <?php echo $row["usr_nachname"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=8" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -99,7 +99,7 @@ if ($row["usr_preferences"]!=""){$preferences = unserialize($row["usr_preference
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?
+	<?php
 	$myLayout->tab_new();
 	$url = "admin_user_edit.php?id=" .$id ."&b=0";
 	$myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
@@ -148,11 +148,11 @@ if ($row["usr_preferences"]!=""){$preferences = unserialize($row["usr_preference
 			{
 				$myPT->startBuffer();
 		   ?>
-		   <?$checked="";if (isset($preferences["pref_ticket_markup"])){$checked="checked";}?>
-		 <input name="pref_ticket_markup" type="checkbox" value="1" <?=$checked?>> Auf neue Aufgaben und Veränderungen per Mail hinweisen.<br>
-         <?$checked="";if (isset($preferences["pref_ticket_overview"])){$checked="checked";}?>
-         <input name="pref_ticket_overview" type="checkbox" value="1" <?=$checked?>> Zu Wochenbeginn Aufgabenübersicht verschicken.<br>
-   		   <?
+		   <?php $checked="";if (isset($preferences["pref_ticket_markup"])){$checked="checked";} ?>
+		 <input name="pref_ticket_markup" type="checkbox" value="1" <?php echo $checked ?>> Auf neue Aufgaben und Veränderungen per Mail hinweisen.<br>
+         <?php $checked="";if (isset($preferences["pref_ticket_overview"])){$checked="checked";} ?>
+         <input name="pref_ticket_overview" type="checkbox" value="1" <?php echo $checked ?>> Zu Wochenbeginn Aufgabenübersicht verschicken.<br>
+   		   <?php
    		   $html .= $myPT->stopBuffer();
 			}
 
@@ -200,7 +200,7 @@ if ($row["usr_preferences"]!=""){$preferences = unserialize($row["usr_preference
 			$myPT->startbuffer();
 		 ?>
 		 <table border="0" cellspacing="0" cellpadding="0">
-		 <?
+		 <?php
 		 $sql = "SELECT * FROM pagegroup ORDER by grp_bez";
 		 $rs = $myDB->query($sql);
 		 while ($row_grp = mysql_fetch_array($rs))
@@ -215,20 +215,20 @@ if ($row["usr_preferences"]!=""){$preferences = unserialize($row["usr_preference
 		 	}
 		 ?>
          <tr><td>     
-		 <input name="access_grp_<?=$row_grp["grp_id"]?>" type="checkbox" value="1" <?=$checked?>> <?=$row_grp["grp_bez"]?>&nbsp;&nbsp;
+		 <input name="access_grp_<?php echo $row_grp["grp_id"] ?>" type="checkbox" value="1" <?php echo $checked ?>> <?php echo $row_grp["grp_bez"] ?>&nbsp;&nbsp;
          </td><td>
-		 <select name="pag_id_grp_<?=$row_grp["grp_id"]?>" class="input" style="width:250px">
+		 <select name="pag_id_grp_<?php echo $row_grp["grp_id"] ?>" class="input" style="width:250px">
 		 <option value="0">* alle Seiten * </option>
-		 <?
+		 <?php
 		 $sql = "SELECT pag_id AS K, pag_bez AS V FROM page WHERE grp_id = " . $row_grp["grp_id"] . " ORDER BY V";
 		 echo $myAdm->buildOptionsBySQL($sql,$rechte["pag_id_grp_" . $row_grp["grp_id"]]);
 		 ?>
 		 </select></td></tr>
-		 <?
+		 <?php
 		 }
 		 ?>
 		 </table>
-		 <?
+		 <?php
 		 $html = $myPT->stopBuffer();
 		 $myLayout->workarea_row_draw("Seitengruppen",$html);
 
@@ -292,7 +292,7 @@ if ($row["usr_preferences"]!=""){$preferences = unserialize($row["usr_preference
 
 	 ?>
 	 
-	 <?
+	 <?php
 	 // Abschlusszeile
 	 ?>
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -301,20 +301,20 @@ if ($row["usr_preferences"]!=""){$preferences = unserialize($row["usr_preference
             <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diesen Benutzer wirklich l&ouml;schen?')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-	 <?
+	 <?php
 	 $myLayout->workarea_stop_draw();
 	?>
 	</form>	
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

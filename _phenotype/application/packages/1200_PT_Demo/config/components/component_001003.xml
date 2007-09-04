@@ -8,7 +8,7 @@
 		<com_rubrik>System</com_rubrik>
 		<com_description>## Baustein 1003 - Include</com_description>
 	</meta>
-	<script>&#60;? 
+	<script>&#60;?php 
 class PhenotypeComponent_1003 extends PhenotypeComponent 
 { 
   var $tool_type = 1003; 
@@ -25,9 +25,9 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
   { 
     global $myDB; 
 
-  ?&#62;       &#60;select name=&#34;&#60;?=$this-&#62;formid?&#62;inc_id&#34; class=&#34;input&#34; style=&#34;width:300px&#34;&#62; 
+  ?&#62;       &#60;select name=&#34;&#60;?php echo $this-&#62;formid ?&#62;inc_id&#34; class=&#34;input&#34; style=&#34;width:300px&#34;&#62; 
       &#60;option value=&#34;0&#34;&#62;...&#60;&#47;option&#62; 
-      &#60;? 
+      &#60;?php 
       $sql = &#34;SELECT * FROM include WHERE inc_usage_includecomponent = 1 ORDER BY inc_rubrik,inc_bez&#34;; 
       $rs = $myDB-&#62;query($sql); 
       while ($row=mysql_fetch_array($rs)) 
@@ -35,15 +35,15 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
         $selected = &#34;&#34;; 
         if ($row[&#34;inc_id&#34;]==$this-&#62;get(&#34;inc_id&#34;)){$selected = &#34;selected&#34;;} 
       ?&#62; 
-      &#60;option &#60;?=$selected?&#62; value=&#34;&#60;?=$row[&#34;inc_id&#34;]?&#62;&#34;&#62;&#60;?=$row[&#34;inc_rubrik&#34;].&#34;: &#34;.$row[&#34;inc_bez&#34;]?&#62;&#60;&#47;option&#62; 
-      &#60;? 
+      &#60;option &#60;?php echo $selected ?&#62; value=&#34;&#60;?php echo $row[&#34;inc_id&#34;] ?&#62;&#34;&#62;&#60;?php echo $row[&#34;inc_rubrik&#34;].&#34;: &#34;.$row[&#34;inc_bez&#34;] ?&#62;&#60;&#47;option&#62; 
+      &#60;?php 
       } 
       ?&#62; 
       &#60;&#47;select&#62;&#60;br&#62;Cache&#60;br&#62;
-	  &#60;select name=&#34;&#60;?=$this-&#62;formid?&#62;cache&#34; class=&#34;input&#34; style=&#34;width:80px&#34;&#62; 
+	  &#60;select name=&#34;&#60;?php echo $this-&#62;formid ?&#62;cache&#34; class=&#34;input&#34; style=&#34;width:80px&#34;&#62; 
       &#60;option value=&#34;1&#34; &#62;wie Seite&#60;&#47;option&#62;
-	  &#60;option value=&#34;0&#34; &#60;?if ($this-&#62;get(&#34;cache&#34;)==&#34;0&#34;){echo &#34;selected&#34;;}?&#62;&#62;nie&#60;&#47;option&#62;
-	  &#60;?
+	  &#60;option value=&#34;0&#34; &#60;?php if ($this-&#62;get(&#34;cache&#34;)==&#34;0&#34;){echo &#34;selected&#34;;} ?&#62;&#62;nie&#60;&#47;option&#62;
+	  &#60;?php
   } 
 
   function update() 
@@ -81,9 +81,9 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
 		}
 		else
 		{
-		  $html = &#39;&#60;?$myPage-&#62;includenocache=1?&#62;&#39;;&#47;&#47; Notwendig fuer Content-Statistik
-		  $html .= &#39;&#60;?$myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;execute()?&#62;&#39;;
-          $html .= &#39;&#60;?$myPage-&#62;includenocache=0?&#62;&#39;;
+		  $html = &#39;&#60;?php $myPage-&#62;includenocache=1 ?&#62;&#39;;&#47;&#47; Notwendig fuer Content-Statistik
+		  $html .= &#39;&#60;?php $myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;execute() ?&#62;&#39;;
+          $html .= &#39;&#60;?php $myPage-&#62;includenocache=0 ?&#62;&#39;;
 		}
       } 
 	}  
@@ -96,7 +96,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
   	 ?&#62;
   	 &#60;component com_id=&#34;1003&#34; type=&#34;Include&#34;&#62;
      &#60;content&#62;
-  	 &#60;?
+  	 &#60;?php
   	 $inc_id = $this-&#62;get(&#34;inc_id&#34;); 
      if ($inc_id!=&#34;0&#34;) 
      { 
@@ -119,7 +119,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
 			}
 			else
 			{
-			   echo  &#39;&#60;?$myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;renderXML()?&#62;&#39;;
+			   echo  &#39;&#60;?php $myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;renderXML() ?&#62;&#39;;
   
 			}
       } 
@@ -129,7 +129,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
      ?&#62;
      &#60;&#47;content&#62;
      &#60;&#47;component&#62;
-     &#60;?
+     &#60;?php
      return true;
   }  
 } 

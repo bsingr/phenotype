@@ -1,4 +1,4 @@
-<?
+<?php
 /* 
  * place to be for your host specific application configs
  */

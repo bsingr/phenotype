@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
@@ -25,7 +25,7 @@ require("_session.inc.php");
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= $myPT->version ?></title>
+<title>phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -42,7 +42,7 @@ body {
 </head>
 
 <body>
-<?
+<?php
                   // determine mediagroups of current user
 				  $sql = "SELECT * FROM mediagroup ORDER BY grp_bez";
 	              $rs = $myDB->query($sql);
@@ -72,7 +72,7 @@ self.focus();
         </table></td>
       </tr>
     </table>
-	<?if ($_REQUEST["cf"]==1){?>
+	<?php if ($_REQUEST["cf"]==1){ ?>
 <table width="495" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td class="windowHeaderGrey2"><table border="0" cellspacing="0" cellpadding="0">
@@ -80,7 +80,7 @@ self.focus();
           <td class="padding10">Ordner:</td>
           <td>          <select name="folder" class="feld" onchange="document.forms.form1.submit();">
           <option value="-1">(alle)</option>
-          <?
+          <?php
           $myMB = new PhenotypeMediaBase();
                           // Hot fix - check groups
                   
@@ -97,8 +97,8 @@ self.focus();
 			if ($_REQUEST["folder"]==$k){$selected="selected";}
 
           ?>
-         <option <?=$selected?>><?=$k?></option>
-          <?
+         <option <?php echo $selected ?>><?php echo $k ?></option>
+          <?php
           }
           ?>
           </select>
@@ -108,20 +108,20 @@ self.focus();
     </td>
   </tr>
 </table>
-<?}if ($_REQUEST["cf"]==1){?>
+<?php }if ($_REQUEST["cf"]==1){ ?>
 <input type="hidden" name="cf" value="1">
-<?}else{?>
-<input type="hidden" name="folder" value="<?=$_REQUEST["folder"]?>">
+<?php }else{ ?>
+<input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
 <input type="hidden" name="cf" value="0">
-<?}?>
-<input type="hidden" name="x" value="<?=$_REQUEST["x"]?>">
-<input type="hidden" name="y" value="<?=$_REQUEST["y"]?>">
+<?php } ?>
+<input type="hidden" name="x" value="<?php echo $_REQUEST["x"] ?>">
+<input type="hidden" name="y" value="<?php echo $_REQUEST["y"] ?>">
 <input type="hidden" name="p" value="1">
-<input type="hidden" name="sortorder" value="<?=$_REQUEST["sortorder"]?>">
-<input type="hidden" name="type" value="<?=$_REQUEST["type"]?>">
+<input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
+<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">
 
 
-<?
+<?php
 
 	    		  
 // SQL-String fuer Medienauswahl zusammenbauen
@@ -204,7 +204,7 @@ self.focus();
         <td class="windowBlank" valign="top">
 
         <table width="100%" border="0" cellpadding="0" cellspacing="3">
-        <?
+        <?php
                   $rs =$myDB->query($sql);
                   $i=0;$aktion=-1;
                   while ($row=mysql_fetch_array($rs))
@@ -216,7 +216,7 @@ self.focus();
                     {
         ?>
           <tr valign="top">
-        <?
+        <?php
         }
         ?>
             <td class="tableCellMedia" width="136">
@@ -224,7 +224,7 @@ self.focus();
             <table width="100" height="100" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td align="center" class="tableCellImage">
-                  <?
+                  <?php
                     if ($row["med_type"]==MB_IMAGE)
                     {
                       $myIMG = new PhenoTypeImage($row["med_id"]);
@@ -250,11 +250,11 @@ self.focus();
                       	$tx=0;$ty=0;
                       }
                       ?>
-                      <a href="javascript:select_image(<?=$row["med_id"]?>,'<?=$myIMG->thumburl?>','<?=$myIMG->url?>',<?=$tx?>,<?=$ty?>);self.close();"><?
+                      <a href="javascript:select_image(<?php echo $row["med_id"] ?>,'<?php echo $myIMG->thumburl ?>','<?php echo $myIMG->url ?>',<?php echo $tx ?>,<?php echo $ty ?>);self.close();"><?php
                       $myIMG->display_thumb();
                       ?>
                       </a>
-                      <?
+                      <?php
                     }
                     else
                     {
@@ -305,8 +305,8 @@ self.focus();
                   </td>
                 </tr>
               </table>
-               </a><!-- Ordner: <?=$row["med_logical_folder1"]?><br>-->
-                <?
+               </a><!-- Ordner: <?php echo $row["med_logical_folder1"] ?><br>-->
+                <?php
                 if ($row["med_type"]==MB_IMAGE)
                     {
                       echo "Gr&ouml;&szlig;e: (" . $row["med_x"] ." x " . $row["med_y"] .")<br>";
@@ -316,25 +316,25 @@ self.focus();
                       echo "<br>";
                     }
                 ?>
-                <strong><?=$myPT->cutString($row["med_bez"],32,17);?></strong><br>
-                <?
+                <strong><?php echo $myPT->cutString($row["med_bez"],32,17); ?></strong><br>
+                <?php
                 if ($row["med_type"]==MB_IMAGE){
                 ?>
-                <a href="javascript:select_image(<?=$row["med_id"]?>,'<?=$myIMG->thumburl?>',<?=$tx?>,<?=$ty?>);self.close();"><img src="img/b_media.gif" alt="Bild &uuml;bernehmen" width="22" height="22" border="0" align="absmiddle"> &uuml;bernehmen</a>
-                <?
+                <a href="javascript:select_image(<?php echo $row["med_id"] ?>,'<?php echo $myIMG->thumburl ?>',<?php echo $tx ?>,<?php echo $ty ?>);self.close();"><img src="img/b_media.gif" alt="Bild &uuml;bernehmen" width="22" height="22" border="0" align="absmiddle"> &uuml;bernehmen</a>
+                <?php
                 }else{
                 ?>
-                 <a href="javascript:select_document(<?=$row["med_id"]?>);self.close();"><img src="img/b_media.gif" alt="Dokument &uuml;bernehmen" width="22" height="22" border="0" align="absmiddle"> &uuml;bernehmen</a>
-                <?
+                 <a href="javascript:select_document(<?php echo $row["med_id"] ?>);self.close();"><img src="img/b_media.gif" alt="Dokument &uuml;bernehmen" width="22" height="22" border="0" align="absmiddle"> &uuml;bernehmen</a>
+                <?php
                 }?>
                 </td>
 
-                    <?
+                    <?php
                     if ($aktion==0) // Zeile schliessen
                     {
                     ?>
                     </tr>
-                    <?
+                    <?php
                     }
                   }
                   if ($aktion!=0)
@@ -344,11 +344,11 @@ self.focus();
                     {
                     ?>
                     <td valign="top" class="tableCellMedia" width="136"></td>
-                    <?
+                    <?php
                     }
                   ?>
                   </tr>
-                  <?
+                  <?php
                   }
                   ?>
 
@@ -362,18 +362,18 @@ self.focus();
 <table width="495" border="0" cellpadding="0" cellspacing="0" align="center">
       <tr>
 	  </form><form action="selector_media_upload.php" method="post">
-	  <input type="hidden" name="cf" value="<?=$_REQUEST["cf"]?>">
-<input type="hidden" name="folder" value="<?=$_REQUEST["folder"]?>">
-<input type="hidden" name="x" value="<?=$_REQUEST["x"]?>">
-<input type="hidden" name="y" value="<?=$_REQUEST["y"]?>">
+	  <input type="hidden" name="cf" value="<?php echo $_REQUEST["cf"] ?>">
+<input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
+<input type="hidden" name="x" value="<?php echo $_REQUEST["x"] ?>">
+<input type="hidden" name="y" value="<?php echo $_REQUEST["y"] ?>">
 <input type="hidden" name="p" value="1">
-<input type="hidden" name="sortorder" value="<?=$_REQUEST["sortorder"]?>">
-<input type="hidden" name="type" value="<?=$_REQUEST["type"]?>">
+<input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
+<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">
 <td class="windowFooterWhite"><input type="submit" class="buttonWhite" value="Hochladen" style="width:102px"></td></form>
         <td align="right" class="windowFooterWhite"><table border="0" cellpadding="0" cellspacing="1">
           <tr>
             <td align="center">Seite: </td>
-            <?
+            <?php
             $max=ceil($anzahl/(12));
             //echo $anzahl;
             $start = $p-3;
@@ -386,9 +386,9 @@ self.focus();
             if ($p>1)
             {
             ?>
-            <td align="center"><a href="selector_media.php<?=$url?>&p=<?=$p-1?>&a=12" class="tabmenuType">zur&uuml;ck</a></td>
+            <td align="center"><a href="selector_media.php<?php echo $url ?>&p=<?php echo $p-1 ?>&a=12" class="tabmenuType">zur&uuml;ck</a></td>
             <td align="center">&nbsp;</td>
-            <?
+            <?php
             }
 
             for ($i=$start;$i<=$stop;$i++)
@@ -397,15 +397,15 @@ self.focus();
               if ($p==$i){$active="Active";}
 
             ?>
-            <td align="center"><a href="selector_media.php<?=$url?>&p=<?=$i?>&a=12" class="tabmenuType<?=$active?>"><?=$i?></a></td>
-            <?
+            <td align="center"><a href="selector_media.php<?php echo $url ?>&p=<?php echo $i ?>&a=12" class="tabmenuType<?php echo $active ?>"><?php echo $i ?></a></td>
+            <?php
             }
             if ($p!=$max)
             {
             ?>
             <td align="center">&nbsp;</td>
-            <td align="center"><a href="selector_media.php<?=$url?>&p=<?=$p+1?>&a=12" class="tabmenuType">vor</a></td>
-            <?
+            <td align="center"><a href="selector_media.php<?php echo $url ?>&p=<?php echo $p+1 ?>&a=12" class="tabmenuType">vor</a></td>
+            <?php
             }
             ?>
           </tr>

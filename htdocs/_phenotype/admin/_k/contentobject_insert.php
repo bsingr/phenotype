@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySQL = new SQLBuilder();
 $mySQL->addField("con_bez","Neues Contentobjekt");
 
@@ -70,7 +70,7 @@ $dir = CACHEPATH.CACHENR ."/content/" . $id;
 @chmod ($dir,UMASK);
 
 ?>
-<?
+<?php
 $url = "contentobject_edit.php?id=" . $id . "&b=0";
 Header ("Location:" . $url."&".SID);
 ?>

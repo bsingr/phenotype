@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "noaccess.php";
@@ -30,15 +30,15 @@ if (!$mySUser->checkRight("elm_admin"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $action_id = $myRequest->getI("action_id");
 $submodul="";
 $header = "Protokoll";
@@ -62,25 +62,25 @@ switch ($action_id)
 $myAdm->menu("Admin");
 
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin",$submodul);
 $myAdm->explorer_draw();
 
 
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -90,7 +90,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$header?></td>
+            <td class="windowTitle"><?php echo $header ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=9" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -109,7 +109,7 @@ $myPT->startBuffer();
 			
 			
 	
-<?
+<?php
 if ($action_id==1)
 {
  echo "<strong>Nachfolgende Seiten werden beim n&auml;chsten Aufruf neu gerendert:</strong>";
@@ -197,27 +197,27 @@ while ($row=mysql_fetch_array($rs))
 }
 ?>
 
-<?
+<?php
 if ($action_id==5)
 {
 ;
 ?>
-<?		if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE")) { ?>
+<?php 		if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE")) { ?>
 			<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
 				width= "250" height= "250"  
 				codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">
-<?		} else { ?>
+<?php 		} else { ?>
 			<object type="application/x-java-applet;version=1.4.1"
 				width= "250" height= "250"  >
-	<?	} ?>
-				<param name="archive" value="<?=ADMINFULLURL?>dndlite.jar">
+	<?php 	} ?>
+				<param name="archive" value="<?php echo ADMINFULLURL ?>dndlite.jar">
 				<param name="code" value="com.radinks.dnd.DNDAppletLite">
 				<param name="name" value="Rad Upload Lite">
-		   		<param name = "url" value = "<?=ADMINFULLURL?>admin_ddupload.php"> 
+		   		<param name = "url" value = "<?php echo ADMINFULLURL ?>admin_ddupload.php"> 
    				<param name = "message" value="<br\>&nbsp;Drag & Drop - Upload">
 
 
-   		<?
+   		<?php
 			if(isset($_SERVER['PHP_AUTH_USER']))
 			{
 				printf('<param name="chap" value="%s">',
@@ -227,10 +227,10 @@ if ($action_id==5)
    		</object>
 
 		<p>Ziehen Sie per Drag & Drop die hochzuladenden<br>Dateien in den Kasten.</p>
-<?
+<?php
 }
 ?>
-<?
+<?php
 if ($action_id==6)
 {
   echo "<strong>Nachfolgende Contentobjekt-Datensätze werden gel&ouml;scht:</strong><br><br>";	
@@ -268,16 +268,16 @@ if ($action_id==6)
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

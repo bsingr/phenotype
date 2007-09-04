@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -68,7 +68,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTask">
-	<?$this->listTickets($rs);
+	<?php $this->listTickets($rs);
 	?>
 			</td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
@@ -78,7 +78,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-	<?
+	<?php
 
 
 
@@ -130,7 +130,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTask">
-	<?$this->listTickets($rs);
+	<?php $this->listTickets($rs);
 	?>
 			</td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
@@ -140,7 +140,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-	<?
+	<?php
 			}
 			$sql = "DROP TABLE ".  $table_request;
 			$myDB->query($sql);
@@ -159,7 +159,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 		global $myAdm;
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
-    	<?
+    	<?php
     	if($caption==true)
     	{
 		?>
@@ -176,7 +176,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			  <tr>
 	            <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
 	          </tr>
-		<?
+		<?php
     	}
 
     	$con_id=0;
@@ -190,8 +190,8 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
     		}
           ?>
           <tr>
-            <td class="tableBody"><?=$row_data["dat_id"]?></td>
-            <td class="tableBody"><?
+            <td class="tableBody"><?php echo $row_data["dat_id"] ?></td>
+            <td class="tableBody"><?php
 			if ($row["con_bearbeiten"]==1)
 			{
 				echo '<a href="backend.php?page=Editor,Content,edit&id='.$row_data["dat_id"].'&uid='.$row_data["dat_uid"].'">';
@@ -208,30 +208,30 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 		    }
 		    ?>
 		    </td>
-            <td class="tableBody"><?=$row_data["dat_bez"]?>
-			<?
+            <td class="tableBody"><?php echo $row_data["dat_bez"] ?>
+			<?php
 			if ($display_content_type==true)
 			{
 			?>
-			<br>(<?=$row["con_bez"]?>)
-			<?
+			<br>(<?php echo $row["con_bez"] ?>)
+			<?php
 			}
 			?>
 			</td>
-            <td class="tableBody"><?=date('d.m.Y H:i',$row_data["dat_date"])?><br><?=$myAdm->displayUser($row_data["usr_id"]);?></td>
+            <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["dat_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
-			<?if ($row_data["dat_status"]==1){?>
+			<?php if ($row_data["dat_status"]==1){ ?>
 			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
-			<?}else{?>
+			<?php }else{ ?>
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
-			<?}?>
+			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?if ($row["con_bearbeiten"]==1){?><a href="backend.php?page=Editor,Content,edit&id=<?=$row_data["dat_id"]?>&uid=<?=$row_data["dat_uid"]?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?}?><?if ($row["con_loeschen"]==1){?><a href="backend.php?page=Editor,Content,delete&id=<?=$row_data["dat_id"]?>&uid=<?=$row_data["dat_uid"]?>&c=<?=$_REQUEST["c"]?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?}?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>&c=<?php php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
     	}
 ?>			
           <tr>
@@ -242,7 +242,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
     </table>
-	<?
+	<?php
 	}
 
 	function displayIDLineContentRecord($myCO)
@@ -253,46 +253,46 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	          <tr>
 	            <td width="18">
-				<?
+				<?php
 				if ($myCO->status ==1)
 				{
 				?>
 				<img src="img/i_site_on.gif" width="24" height="18">
-				<?
+				<?php
 				}else{
 				?>
 				<img src="img/i_site_off.gif" width="24" height="18">
-				<?
+				<?php
 				}
 				?>
 				</td>
-	            <td class="windowTitle"><?=$myCO->id?> <?=$myCO->bez?></td>
+	            <td class="windowTitle"><?php echo $myCO->id ?> <?php echo $myCO->bez ?></td>
 	            <td align="right" nowrap class="windowTitle">&nbsp;
-	            <?
+	            <?php
 	            global $mySUser;
 	            if ($mySUser->checkRight("elm_task"))
 	            {
 				?>
-				<a href="javascript:ticketWizard(0,0,<?=$myCO->id?>,0,0,0)"><img src="img/b_newtask.gif" alt="Neue Aufgabe einstellen" title="Neue Aufgabe einstellen" width="22" height="22" border="0"></a>
-				<?
+				<a href="javascript:ticketWizard(0,0,<?php echo $myCO->id ?>,0,0,0)"><img src="img/b_newtask.gif" alt="Neue Aufgabe einstellen" title="Neue Aufgabe einstellen" width="22" height="22" border="0"></a>
+				<?php
 	            }
 				?>
-				<a href="backend.php?page=Editor,Content,copy&id=<?=$myCO->id?>"><img src="img/b_copy.gif" alt="Datensatz kopieren" title="Datensatz kopieren" width="22" height="22" border="0"></a>
+				<a href="backend.php?page=Editor,Content,copy&id=<?php echo $myCO->id ?>"><img src="img/b_copy.gif" alt="Datensatz kopieren" title="Datensatz kopieren" width="22" height="22" border="0"></a>
 				
-				<?
+				<?php
 				$tausend = floor($myCO->id /1000);
 				//$url = CACHEDEBUGURL . CACHENR . "/content/". $myCO->content_type."/".$tausend."/content_" . sprintf("%04.0f",$myCO->content_type) . "_" . sprintf("%04.0f",$myCO->id) ."_skin_debug.inc.php";
 				$url = "backend.php?page=Editor,Content,debug&id=" . $myCO->id;
 				if ($mySUser->checkRight("superuser")){
 		   		?>
-				<a href="<?=$url?>" target="_blank"><img src="img/b_debug.gif" alt="Debug-Skin anzeigen" title="Debug-Skin anzeigen" width="22" height="22" border="0"></a>
-				<?
+				<a href="<?php echo $url ?>" target="_blank"><img src="img/b_debug.gif" alt="Debug-Skin anzeigen" title="Debug-Skin anzeigen" width="22" height="22" border="0"></a>
+				<?php
 				}
 				$url = "backend.php?page=Editor,Content,rollback&id=" . $myCO->id;
 				if ($mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin") OR $mySUser->checkRight("elm_rollback")){
 		   		?>
-				<a href="<?=$url?>" ><img src="img/b_rollback.gif" alt="Snapshot einspielen" title="Snapshot einspielen" width="22" height="22" border="0"></a>
-				<?
+				<a href="<?php echo $url ?>" ><img src="img/b_rollback.gif" alt="Snapshot einspielen" title="Snapshot einspielen" width="22" height="22" border="0"></a>
+				<?php
 				}
 				?>
 				<a href="http://www.phenotype-cms.de/docs.php?v=23&t=2" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>
@@ -306,7 +306,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 	        <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
 	      </tr>
 	    </table>
-    	<?
+    	<?php
 	}
 	
 	function displayIDLineMediaObject($myObj)
@@ -320,28 +320,28 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
             <td width="18">
 			<img src="img/i_site_on.gif" width="24" height="18">
 			</td>
-            <td class="windowTitle"><?=$myObj->id?> <?=$myPT->cutString($myObj->bez,45,45);?></td>
-			<?
+            <td class="windowTitle"><?php echo $myObj->id ?> <?php echo $myPT->cutString($myObj->bez,45,45); ?></td>
+			<?php
 			$n=strlen($myObj->bez);
 			if($n>45){$n=48;}
 			?>
-			<td align="right" nowrap >[<?=$myPT->cutString($myObj->physical_folder."/".$myObj->filename,(65-$n),(65-$n));?>]</td>
-			<td align="right" width="55" nowrap class="windowTitle"><?
+			<td align="right" nowrap >[<?php echo $myPT->cutString($myObj->physical_folder."/".$myObj->filename,(65-$n),(65-$n)); ?>]</td>
+			<td align="right" width="55" nowrap class="windowTitle"><?php
 			global $mySUser;
 			if ($mySUser->checkRight("elm_task"))
 			{
 			?>
-			<a href="javascript:ticketWizard(0,0,0,<?=$myObj->id?>,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" width="22" height="22" border="0"></a>&nbsp;
-			<?
+			<a href="javascript:ticketWizard(0,0,0,<?php echo $myObj->id ?>,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" width="22" height="22" border="0"></a>&nbsp;
+			<?php
 			}
 			$url = "backend.php?page=Editor,Media,rollback&id=" . $myObj->id;
 				
 				if ($mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin") OR $mySUser->checkRight("elm_rollback")){
 		   		?>
-				<a href="<?=$url?>" ><img src="img/b_rollback.gif" alt="Snapshot einspielen" title="Snapshot einspielen" width="22" height="22" border="0"></a>
-				<?
+				<a href="<?php echo $url ?>" ><img src="img/b_rollback.gif" alt="Snapshot einspielen" title="Snapshot einspielen" width="22" height="22" border="0"></a>
+				<?php
 				}
-				?><a href="#" onclick="lightbox_switch(<?=$myObj->id?>,0);return false;"><img src="img/b_pinadd.gif" alt="Objekt in Sammelbox legen / aus Sammelbox nehmen" title="Objekt in Sammelbox legen / aus Sammelbox nehmen" width="22" height="22" border="0" ></a> <a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" title="Hilfe aufrufen" width="22" height="22" border="0"></a>
+				?><a href="#" onclick="lightbox_switch(<?php echo $myObj->id ?>,0);return false;"><img src="img/b_pinadd.gif" alt="Objekt in Sammelbox legen / aus Sammelbox nehmen" title="Objekt in Sammelbox legen / aus Sammelbox nehmen" width="22" height="22" border="0" ></a> <a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" title="Hilfe aufrufen" width="22" height="22" border="0"></a>
 			</td>
           </tr>
         </table></td>
@@ -352,7 +352,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?  
+	<?php  
 	}
 	
 	

@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,36 +30,36 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Includes");
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 $myPT->startBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -100,7 +100,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
  if ($_REQUEST["r"]==-1)
  {
    $sql = "SELECT * FROM include ORDER BY inc_id";
@@ -116,30 +116,30 @@ $myPT->startBuffer();
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=$row["inc_id"]?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="include_edit.php?id=<?=$row["inc_id"]?>&r=<?=$row["inc_rubrik"]?>&b=0"><img src="img/t_include.gif" alt="Baustein anzeigen" width="60" height="40" border="0"></a></span></td>
-              <td class="tableBody"><?=$row["inc_rubrik"]?></td>
-              <td class="tableBody"><?=$row["inc_bez"]?></td>
-              <td align="right" nowrap class="tableBody"><a href="include_edit.php?id=<?=$row["inc_id"]?>&r=<?=$row["inc_rubrik"]?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+              <td class="tableBody"><?php echo $row["inc_id"] ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="include_edit.php?id=<?php echo $row["inc_id"] ?>&r=<?php echo $row["inc_rubrik"] ?>&b=0"><img src="img/t_include.gif" alt="Baustein anzeigen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><?php echo $row["inc_rubrik"] ?></td>
+              <td class="tableBody"><?php echo $row["inc_bez"] ?></td>
+              <td align="right" nowrap class="tableBody"><a href="include_edit.php?id=<?php echo $row["inc_id"] ?>&r=<?php echo $row["inc_rubrik"] ?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
        $sql = "SELECT COUNT(*) AS C FROM layout_include WHERE inc_id = " . $row["inc_id"];
 	   $rs_check = $myDB->query($sql);
 	   $row_check = mysql_fetch_array($rs_check);
 	   if ($row_check["C"]==0)
 	   {
 ?>   
-<a href="include_delete.php?id=<?=$row["inc_id"]?>&r=<?
+<a href="include_delete.php?id=<?php echo $row["inc_id"] ?>&r=<?php
         if ($_REQUEST["r"]==-1)
         {echo urlencode("Neue Rubrik");}
 		else
 		{echo $_REQUEST["r"];}
 		?>" onclick="javascript:return confirm('Dieses Include wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+<?php
        }else
 	   {
 	   ?>
 	   <img src="img/transparent.gif" width="22" height="22" alt="" border="0">
-	   <?
+	   <?php
 	   }
 ?>
 </td>
@@ -147,7 +147,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -157,7 +157,7 @@ $myPT->startBuffer();
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowFooterGrey2"><a href="include_insert.php?r=
-		<?
+		<?php
         if ($_REQUEST["r"]==-1)
         {echo urlencode("Neue Rubrik");}
 		else
@@ -171,16 +171,16 @@ $myPT->startBuffer();
       </tr>
     </table>
 	
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

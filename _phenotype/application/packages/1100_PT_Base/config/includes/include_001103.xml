@@ -11,7 +11,7 @@
 		<inc_usage_includecomponent>0</inc_usage_includecomponent>
 		<inc_usage_page>0</inc_usage_page>
 	</meta>
-	<script>&#60;?
+	<script>&#60;?php
 // -------------------------------------------------------
 // Copyright (c) 2003-2006 Phenotype Hagemann &#38; Sellinger
 // -------------------------------------------------------
@@ -44,8 +44,8 @@ class PhenotypeInclude_1103 extends PhenotypeInclude
 			for ($i = $n; $i &#62;= 0; $i --)
 			{
 				?&#62;
-  				&#60;a href=&#34;&#60;?=$pages_url[$i]?&#62;&#34;&#62;&#60;?=$pages_bez[$i]?&#62;&#60;/a&#62;
-  				&#60;?
+  				&#60;a href=&#34;&#60;?php echo $pages_url[$i] ?&#62;&#34;&#62;&#60;?php echo $pages_bez[$i] ?&#62;&#60;/a&#62;
+  				&#60;?php
 				if ($i&#62;0){echo &#34; &#62; &#34;;}
 			}
 

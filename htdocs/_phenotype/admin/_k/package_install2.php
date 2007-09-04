@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,19 +17,19 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
 	exit();
 }
 ?>
-<?
+<?php
 $myAdm = new PhenotypeAdmin();
 $id =$myRequest->get("id");
 
@@ -67,7 +67,7 @@ switch ($type)
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?=$myPT->version?></title>
+		<title>phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -85,25 +85,25 @@ switch ($type)
 		</tr>
 		<td class="formarea" width="490">
 		<strong>Users</strong><br/>
-		<iframe src="package_install2.php?type=users&id=<?=$id?>" width="495" height="100" frameborder="0"></iframe>
+		<iframe src="package_install2.php?type=users&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/><br/>
 		<strong>Media</strong><br/>
-		<iframe src="package_install2.php?type=media&id=<?=$id?>" width="495" height="100" frameborder="0"></iframe>
+		<iframe src="package_install2.php?type=media&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/><br/>
 		<strong>Pages</strong><br/>
-		<iframe src="package_install2.php?type=pages&id=<?=$id?>" width="495" height="100" frameborder="0"></iframe>
+		<iframe src="package_install2.php?type=pages&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/><br/>
 		<strong>Content</strong><br/>
-		<iframe src="package_install2.php?type=content&id=<?=$id?>" width="495" height="100" frameborder="0"></iframe>
+		<iframe src="package_install2.php?type=content&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/><br/>
 		<strong>Tickets</strong><br/>
-		<iframe src="package_install2.php?type=tickets&id=<?=$id?>" width="495" height="100" frameborder="0"></iframe>
+		<iframe src="package_install2.php?type=tickets&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/>
 		</td></tr>
 		</table>
 		</body>
 		</html>
-		<?
+		<?php
 
 		break;
 	case "":
@@ -111,7 +111,7 @@ switch ($type)
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?=$myPT->version?></title>
+		<title>phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -128,7 +128,7 @@ switch ($type)
 		<table width="490" cellpadding="0" cellspacing="0" border="0">
 		</tr>
 		<td class="formarea" width="490">
-		<?
+		<?php
 		// Alte Methode alles auf einen Rutsch zu installieren
 		$myPak->globalInstallData();
 		?>
@@ -137,7 +137,7 @@ switch ($type)
 		</table>
 		</body>
 		</html>
-		<?
+		<?php
 		break;
 
 }

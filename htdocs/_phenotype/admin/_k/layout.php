@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "noaccess.php";
@@ -30,36 +30,36 @@ if (!$mySUser->checkRight("elm_admin"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Layout");
 $myAdm->explorer_draw();
 
 
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -99,7 +99,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
  $sql = "SELECT * FROM layout ORDER BY lay_bez";
  $rs = $myDB->query($sql);
  $includes = Array();
@@ -108,24 +108,24 @@ $myPT->startBuffer();
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=sprintf("%02d",$row["lay_id"])?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="layout_edit.php?id=<?=$row["lay_id"]?>&b=0"><img src="img/t_layout.gif" alt="Layout bearbeiten" width="60" height="40" border="0"></a></span></td>
-              <td class="tableBody"><?=$row["lay_bez"]?></td>
-              <td align="right" nowrap class="tableBody"><a href="layout_edit.php?id=<?=$row["lay_id"]?>&b=0"><img src="img/b_edit.gif" alt="Layout bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+              <td class="tableBody"><?php echo sprintf("%02d",$row["lay_id"]) ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="layout_edit.php?id=<?php echo $row["lay_id"] ?>&b=0"><img src="img/t_layout.gif" alt="Layout bearbeiten" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><?php echo $row["lay_bez"] ?></td>
+              <td align="right" nowrap class="tableBody"><a href="layout_edit.php?id=<?php echo $row["lay_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Layout bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
        $sql = "SELECT COUNT(*) AS C FROM pageversion WHERE lay_id = "  . $row["lay_id"];
 	   $rs_check = $myDB->query($sql);
 	   $row_check = mysql_fetch_array($rs_check);
 	   if ($row_check["C"]==0)
 	   {
 ?>   
-<a href="layout_delete.php?id=<?=$row["lay_id"]?>" onclick="javascript:return confirm('Dieses Layout wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Layout l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+<a href="layout_delete.php?id=<?php echo $row["lay_id"] ?>" onclick="javascript:return confirm('Dieses Layout wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Layout l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
        }else
 	   {
 	   ?>
 	   <img src="img/transparent.gif" width="22" height="22" alt="" border="0">
-	   <?
+	   <?php
 	   }
 ?>
 </td>
@@ -133,7 +133,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -150,16 +150,16 @@ $myPT->startBuffer();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

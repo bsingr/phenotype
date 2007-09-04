@@ -1,4 +1,4 @@
-<?
+<?php
 class PhenotypePackage extends PhenotypePackageStandard
 {
 	public $bez = "Corepaket";

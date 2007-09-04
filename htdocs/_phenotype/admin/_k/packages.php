@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
 	$url = "noaccess.php";
@@ -30,37 +30,37 @@ if (!$mySUser->checkRight("superuser"))
 	exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Packages");
 $myAdm->explorer_set("packagemode","install");
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
@@ -100,7 +100,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 $fp = opendir(PACKAGEPATH);
 $i=0;
 if ($fp)
@@ -112,16 +112,16 @@ if ($fp)
 			$i++;
 		?>
 	        <tr>
-              <td class="tableBody"><?=$i?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="package_edit.php?id=<?=urlencode($file)?>&b=0"><img src="img/t_script.gif" alt="Package auswählen" width="60" height="40" border="0"></a></span></td>
-              <td class="tableBody"><?=$file?></td>
-              <td align="right" nowrap class="tableBody"><a href="package_edit.php?id=<?=urlencode($file)?>&b=0"><img src="img/b_edit.gif" alt="Package auswählen" width="22" height="22" border="0" align="absmiddle"></a>
+              <td class="tableBody"><?php echo $i ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="package_edit.php?id=<?php echo urlencode($file) ?>&b=0"><img src="img/t_script.gif" alt="Package auswählen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><?php echo $file ?></td>
+              <td align="right" nowrap class="tableBody"><a href="package_edit.php?id=<?php echo urlencode($file) ?>&b=0"><img src="img/b_edit.gif" alt="Package auswählen" width="22" height="22" border="0" align="absmiddle"></a>
 			</td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-		<?
+		<?php
 		}
 	}
 }
@@ -137,16 +137,16 @@ if ($fp)
       </tr>
     </table>
 
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

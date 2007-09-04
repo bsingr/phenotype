@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 /**
  * @package phenotype
  * @subpackage system
@@ -299,7 +299,7 @@ class PhenotypeComponentStandard
 	{
 		// macht in der Superklasse keinen Sinn
   ?>
-  <?
+  <?php
 	}
 
 	function update()
@@ -332,21 +332,21 @@ class PhenotypeComponentStandard
 	{
 		global $myPT;
   	?>
-	<component com_id="<?=$this->tool_type?>" type="<?=$myPT->xmlencode($this->bez)?>">
+	<component com_id="<?php echo $this->tool_type ?>" type="<?php echo $myPT->xmlencode($this->bez) ?>">
 	<content>
-	<?
+	<?php
 	foreach ($this->props AS $k=>$v)
 	{
 		$k = $myPT->xmlencode($k);
 		$v = $myPT->xmlencode($v);
 	?>
-	<var name="<?=$k?>" value="<?=$v?>"/>
-	<?
+	<var name="<?php echo $k ?>" value="<?php echo $v ?>"/>
+	<?php
 	}
 	?>
 	</content>
   	</component>
-  	<?
+  	<?php
   	return true;
 	}
 
@@ -388,7 +388,7 @@ class PhenotypeComponentStandard
 	    $dateiname =  $myPT->getTemplateFileName(PT_CFG_COMPONENT, $this->tool_type, $row_ttp["tpl_id"]);
 	    $$tpl = $dateiname;
 		 }	 
-	<?
+	<?php
 	$code = $myPT->stopbuffer();
 
 	return $code;
@@ -461,56 +461,56 @@ class PhenotypeComponentStandard
 		// Derzeit nicht aus der Layoutklasse
   	?>
   	
-  	<?if ($status==0){?>
+  	<?php if ($status==0){ ?>
   	<table width="408" border="0" cellpadding="0" cellspacing="0" >
     <tr>
     <td nowrap>
-    <a class="bausteineLink" href="javascript:<?=$js_add?>"><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"><?=$text_add?></a>
+    <a class="bausteineLink" href="javascript:<?php echo $js_add ?>"><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"><?php echo $text_add ?></a>
     </td>
     </tr>
     </table>
-    <?}?>
-    <table id="<?=$this->formid?><?=$name?>select" width="408" border="0" cellpadding="0" cellspacing="0" <?if($status==0){?>style="visibility: hidden;display:none"<?}?>>
+    <?php } ?>
+    <table id="<?php php echo $this->formid ?><?php php echo $name ?>select" width="408" border="0" cellpadding="0" cellspacing="0" <?php if($status==0){ ?>style="visibility: hidden;display:none"<?php } ?>>
     <tr>
     <td nowrap>
-    <a class="bausteineLink" href="javascript:<?=$js_select?>"><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"><?=$text_select?></a>
+    <a class="bausteineLink" href="javascript:<?php echo $js_select ?>"><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"><?php echo $text_select ?></a>
     </td>
     </tr>
     </table>
-    <?if ($status==1){?>
-    <table id="<?=$this->formid?><?=$name?>reset" width="408" border="0" cellpadding="0" cellspacing="0">
+    <?php if ($status==1){ ?>
+    <table id="<?php echo $this->formid ?><?php echo $name ?>reset" width="408" border="0" cellpadding="0" cellspacing="0">
     <tr>
     <td nowrap>
-    <a href="javascript:<?=$js_reset?>" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"><?=$text_reset?></a>
+    <a href="javascript:<?php echo $js_reset ?>" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"><?php echo $text_reset ?></a>
     </td>
     </tr>
     </table>    
-    <?}?>
-    <table id="<?=$this->formid?><?=$name?>panel_form" <?if($html_form==""){?>style="visibility: hidden;display:none"<?}?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
+    <?php } ?>
+    <table id="<?php php echo $this->formid ?><?php php echo $name ?>panel_form" <?php if($html_form==""){ ?>style="visibility: hidden;display:none"<?php } ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
     <tr >
     <td>
-    <?=$html_form?>
+    <?php echo $html_form ?>
     </td>
     </tr>
     </table>    
-    <table id="<?=$this->formid?><?=$name?>panel_start" <?if($html_start==""){?>style="visibility: hidden;display:none"<?}?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
+    <table id="<?php php echo $this->formid ?><?php php echo $name ?>panel_start" <?php if($html_start==""){ ?>style="visibility: hidden;display:none"<?php } ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
     <tr >
     <td >
-    <?=$html_start?>
+    <?php echo $html_start ?>
     </td>
     </tr>
     </table>
-    <table id="<?=$this->formid?><?=$name?>panel_select" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
+    <table id="<?php echo $this->formid ?><?php echo $name ?>panel_select" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
     <tr >
     <td>
-    <?=$html_select?>
+    <?php echo $html_select ?>
     </td>
     </tr>
     </table>
-    <table id="<?=$this->formid?><?=$name?>panel_reset" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
+    <table id="<?php echo $this->formid ?><?php echo $name ?>panel_reset" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
     <tr >
     <td>
-    <?=$html_reset?>
+    <?php echo $html_reset ?>
     </td>
     </tr>
     </table>    
@@ -518,12 +518,12 @@ class PhenotypeComponentStandard
     <table style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
     <tr >
     <td>
-    <?=$html_hidden?>
+    <?php echo $html_hidden ?>
     </td>
     </tr>
     </table><br clear="all">
     
-  	<?
+  	<?php
 	}
 
 	function form_download($name,$med_id)
@@ -623,7 +623,7 @@ class PhenotypeComponentStandard
 	{
 		?>
 		<p>
-		 <?
+		 <?php
 		 $anzahl = $quantity;
 		 $token = $this->formid.$name;
 		 $kette = "";
@@ -662,44 +662,44 @@ class PhenotypeComponentStandard
 		 
 			 ?>
 			 
-			 <input type="hidden" name="<?=$token?>" value="<?=implode(",",$_position)?>"/>
-			 <input type="hidden" name="<?=$token?>_posstart" value="<?=implode(",",$_position)?>"/>
-			 <?
+			 <input type="hidden" name="<?php echo $token ?>" value="<?php echo implode(",",$_position) ?>"/>
+			 <input type="hidden" name="<?php echo $token ?>_posstart" value="<?php echo implode(",",$_position) ?>"/>
+			 <?php
 			 $this->displayDHtmlWZJavascript($token, $anzahl,16);
 
 			 $mname = $methodname;
 			 for ($j = 1; $j <= $anzahl; $j ++)
 			 {
 			 ?>
-			 <div id="<?=$token.$j?>" style="width:404px;position:relative;background:url(img/moveit.gif) top left no-repeat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:<?=$token?>movedown(<?=$j?>)"><img src="img/b_down2.gif" width="18" height="18" border="0"></a>
-        	 <a href="javascript:<?=$token?>moveup(<?=$j?>)"><img src="img/b_up2.gif" width="18" height="18" border="0"></a><br/>
-        	 <? if ($background==1)
+			 <div id="<?php echo $token.$j ?>" style="width:404px;position:relative;background:url(img/moveit.gif) top left no-repeat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:<?php echo $token ?>movedown(<?php echo $j ?>)"><img src="img/b_down2.gif" width="18" height="18" border="0"></a>
+        	 <a href="javascript:<?php echo $token ?>moveup(<?php echo $j ?>)"><img src="img/b_up2.gif" width="18" height="18" border="0"></a><br/>
+        	 <?php if ($background==1)
         	 {
         	 ?>
-        	 <div style="background-color:#D1D6DB;padding:2px;width:404px;"><p><?=$this->$mname($_position[$j-1]);?></p></div></div><br/>
-        	 <?
+        	 <div style="background-color:#D1D6DB;padding:2px;width:404px;"><p><?php echo $this->$mname($_position[$j-1]); ?></p></div></div><br/>
+        	 <?php
         	 }else{
 			 ?>
-        	 <p><?=$this->$mname($_position[$j-1]);?></p></div><br/>
-        	 <?
+        	 <p><?php echo $this->$mname($_position[$j-1]); ?></p></div><br/>
+        	 <?php
         	 }
         	 ?>
-			 <script type="text/javascript">ADD_DHTML("<?=$token?><?=$j?>"+VERTICAL+TRANSPARENT);</script>
-			 <?
+			 <script type="text/javascript">ADD_DHTML("<?php echo $token ?><?php echo $j ?>"+VERTICAL+TRANSPARENT);</script>
+			 <?php
 			 }
 			 ?>
 			 <script type="text/javascript">
-			 <?
+			 <?php
 			 for ($j = 1; $j <= $anzahl; $j ++)
 			 {
 			 	?>
-			 	dd.elements.<?=$token?><?=$j?>.setDropFunc(<?=$token?>dropTopListItem);
-			 	<?
+			 	dd.elements.<?php echo $token ?><?php echo $j ?>.setDropFunc(<?php echo $token ?>dropTopListItem);
+			 	<?php
 			 }
 			 ?>
 			 </script>
 			 </p>
-			 <?
+			 <?php
 	}
 
 
@@ -713,19 +713,19 @@ class PhenotypeComponentStandard
 			 <script type="text/javascript">
 			 SET_DHTML(CURSOR_MOVE);
 			 </script>
-			 <?
+			 <?php
 
 
 			 $myLayout->dhtmlwz_init = 1;
 		}
 ?>
   	<script type="text/javascript">
-  	function <?=$token?>moveup(item)
+  	function <?php echo $token ?>moveup(item)
   	{
 
-  		order = <?=$token?>determineOrder();
+  		order = <?php echo $token ?>determineOrder();
   		currentpos = item;
-  		for (i=0;i<<?=$anzahl?>;i++)
+  		for (i=0;i<<?php echo $anzahl ?>;i++)
   		{
   			if(order[i]==item)
   			{
@@ -738,11 +738,11 @@ class PhenotypeComponentStandard
   			changepos = currentpos-1;
   			changeitem = order[changepos-1];
 
-  			citem ="<?=$token?>" + item;
+  			citem ="<?php echo $token ?>" + item;
   			y = dd.elements[citem].y;
   			x = dd.elements[citem].x;
 
-  			citem2 ="<?=$token?>" + changeitem;
+  			citem2 ="<?php echo $token ?>" + changeitem;
   			y2 = dd.elements[citem2].y;
   			x2 = dd.elements[citem2].x;
 
@@ -750,47 +750,47 @@ class PhenotypeComponentStandard
   			dd.elements[citem2].moveTo(x,y);
   		}
 
-  		<?=$token?>dropTopListItem();
+  		<?php echo $token ?>dropTopListItem();
   	}
 
-  	function <?=$token?>movedown(item)
+  	function <?php echo $token ?>movedown(item)
   	{
-  		order = <?=$token?>determineOrder();
+  		order = <?php echo $token ?>determineOrder();
   		currentpos = item;
-  		for (i=0;i<<?=$anzahl?>;i++)
+  		for (i=0;i<<?php echo $anzahl ?>;i++)
   		{
   			if(order[i]==item)
   			{
   				currentpos =i+1;
   			}
   		}
-  		if (currentpos<<?=$anzahl?>)
+  		if (currentpos<<?php echo $anzahl ?>)
   		{
   			// Item an der übergeordneten Position bestimmen
   			changepos = currentpos+1;
   			changeitem = order[changepos-1];
 
-  			citem ="<?=$token?>" + item;
+  			citem ="<?php echo $token ?>" + item;
   			y = dd.elements[citem].y;
   			x = dd.elements[citem].x;
 
-  			citem2 ="<?=$token?>" + changeitem;
+  			citem2 ="<?php echo $token ?>" + changeitem;
   			y2 = dd.elements[citem2].y;
   			x2 = dd.elements[citem2].x;
 
   			dd.elements[citem].moveTo(x2,y2);
   			dd.elements[citem2].moveTo(x,y);
   		}
-  		<?=$token?>dropTopListItem();
+  		<?php echo $token ?>dropTopListItem();
   	}
 
-  	function <?=$token?>determineOrder()
+  	function <?php echo $token ?>determineOrder()
   	{
   		order = new Array();
 
-  		for (i=1;i<=<?=$anzahl?>;i++)
+  		for (i=1;i<=<?php echo $anzahl ?>;i++)
   		{
-  			citem ='<?=$token?>' + i;
+  			citem ='<?php echo $token ?>' + i;
   			y = dd.elements[citem].y;
   			order[i-1]=y + "#" + i;
 
@@ -804,7 +804,7 @@ class PhenotypeComponentStandard
   		}
   		);
 
-  		for (i=0;i<<?=$anzahl?>;i++)
+  		for (i=0;i<<?php echo $anzahl ?>;i++)
   		{
   			p = order[i].indexOf("#")
   			order[i]=order[i].substr(p+1);
@@ -812,41 +812,41 @@ class PhenotypeComponentStandard
   		return (order);
   	}
 
-  	function <?=$token?>storeOrder()
+  	function <?php echo $token ?>storeOrder()
   	{
-  		posstart = document.forms.editform.<?=$token?>_posstart.value;
+  		posstart = document.forms.editform.<?php echo $token ?>_posstart.value;
   		startorder = posstart.split(",");
 
   		
-  		order = <?=$token?>determineOrder();
+  		order = <?php echo $token ?>determineOrder();
   		
   		s="";
-  		for (i=0;i<<?=$anzahl?>;i++)
+  		for (i=0;i<<?php echo $anzahl ?>;i++)
   		{
   			s = s+ "," + startorder[order[i]-1];
   		}
   	
-  		document.forms.editform.<?=$token?>.value=s.substr(1);
+  		document.forms.editform.<?php echo $token ?>.value=s.substr(1);
     }
   	
 
 
-  	function  <?=$token?>dropTopListItem()
+  	function  <?php echo $token ?>dropTopListItem()
   	{
 
-  		order = <?=$token?>determineOrder();
+  		order = <?php echo $token ?>determineOrder();
 
-  		citem ="<?=$token?>1";
+  		citem ="<?php echo $token ?>1";
   		y = dd.elements[citem].defy;
-  		for (i=1;i<=<?=$anzahl?>;i++)
+  		for (i=1;i<=<?php echo $anzahl ?>;i++)
   		{
-  			citem ="<?=$token?>" + order[i-1];
+  			citem ="<?php echo $token ?>" + order[i-1];
   			x = dd.elements[citem].x;
   			h = dd.elements[citem].h;
    			dd.elements[citem].moveTo(x,y);
-  			y=y+h+<?=$spacer?>;
+  			y=y+h+<?php echo $spacer ?>;
   		}
-  		<?=$token?>storeOrder();
+  		<?php echo $token ?>storeOrder();
 
   	}
 
@@ -854,7 +854,7 @@ class PhenotypeComponentStandard
   	//-->
 
     </script>
-    <?
+    <?php
 
 
 	}

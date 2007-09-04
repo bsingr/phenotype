@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 /**
  * @package phenotype
  * @subpackage system
@@ -69,7 +69,7 @@ class PhenotypeIncludeStandard
 	    $dateiname =  $myPT->getTemplateFileName(PT_CFG_INCLUDE, $this->id, $row_itp["tpl_id"]);
 	    $$tpl = $dateiname;
 	 }	 
-	<?
+	<?php
 	$code = $myPT->stopbuffer();
 	return $code;
 	}
@@ -125,11 +125,11 @@ class PhenotypeIncludeStandard
 		$rs=$myDB->query($sql);
 		$row = mysql_fetch_array($rs);
   	?>
-	<include inc_id="<?=$this->id?>" type="<?=$myPT->xmlencode($row["inc_bez"])?>">
+	<include inc_id="<?php echo $this->id ?>" type="<?php echo $myPT->xmlencode($row["inc_bez"]) ?>">
 	<content>
 	</content>
   	</include>
-  	<?
+  	<?php
 	}
 
 

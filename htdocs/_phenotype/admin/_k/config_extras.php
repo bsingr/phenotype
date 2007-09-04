@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,41 +30,41 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Extras");
 
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myPT->startBuffer();
 ?>
 <table width="680" border="0" cellpadding="0" cellspacing="0">
@@ -101,7 +101,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
  $sql = "SELECT * FROM extra ORDER BY ext_bez";
  $rs = $myDB->query($sql);
  while ($row=mysql_fetch_array($rs))
@@ -109,18 +109,18 @@ $myPT->startBuffer();
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=sprintf("%02d",$row["ext_id"])?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="extra_edit.php?id=<?=$row["ext_id"]?>&b=0"><img src="img/t_script.gif" alt="Contentobjekt bearbeiten" width="60" height="40" border="0"></a></span></td>
-              <td class="tableBody"><?=$row["ext_bez"]?></td>
-              <td align="right" nowrap class="tableBody"><a href="extra_edit.php?id=<?=$row["ext_id"]?>&b=0"><img src="img/b_edit.gif" alt="Contentobjekt bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+              <td class="tableBody"><?php echo sprintf("%02d",$row["ext_id"]) ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="extra_edit.php?id=<?php echo $row["ext_id"] ?>&b=0"><img src="img/t_script.gif" alt="Contentobjekt bearbeiten" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><?php echo $row["ext_bez"] ?></td>
+              <td align="right" nowrap class="tableBody"><a href="extra_edit.php?id=<?php echo $row["ext_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Contentobjekt bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
 
-<a href="extra_delete.php?id=<?=$row["ext_id"]?>" onclick="javascript:return confirm('Dieses Extra wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<a href="extra_delete.php?id=<?php echo $row["ext_id"] ?>" onclick="javascript:return confirm('Dieses Extra wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
 </td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -137,16 +137,16 @@ $myPT->startBuffer();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

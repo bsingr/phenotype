@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,38 +30,38 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 $id = $_REQUEST["id"];
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Includes");
 $myAdm->explorer_set("inc_id",$id);
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 $myPT->startBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -71,14 +71,14 @@ $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
 ?>
     <form action="include_update.php" method="post">
-	<input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">	
-	<input type="hidden" name="b" value="<?=$_REQUEST["b"]?>">		
-    <input type="hidden" name="r" value="<?=$_REQUEST["r"]?>">	
+	<input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">	
+	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
+    <input type="hidden" name="r" value="<?php echo $_REQUEST["r"] ?>">	
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$id?> Includes / <?=$row["inc_bez"]?></td>
+            <td class="windowTitle"><?php echo $id ?> Includes / <?php echo $row["inc_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=17" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -89,7 +89,7 @@ $row = mysql_fetch_array($rs);
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>	
-	<?
+	<?php
 	 $myLayout->tab_new();
 	 $url = "include_edit.php?id=" .$id ."&b=0&r=" . $_REQUEST["r"];	 
 	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
@@ -125,10 +125,10 @@ $row = mysql_fetch_array($rs);
 			 $c= mysql_num_rows($rs);
 			 $myPT->startBuffer();
 			 ?>
-			 <input name="usage_template" type="checkbox" value="1" <?if ($row["inc_usage_layout"]=="1") echo"checked";?>> kann in einem Layout genutzt werden.<br>
-				     <input name="usage_tool" type="checkbox" value="1" <?if ($row["inc_usage_includecomponent"]=="1") echo"checked";?>> kann mit dem "Includes"-Baustein platziert werden<br>
-<input name="usage_page" type="checkbox" value="1" <?if ($row["inc_usage_page"]=="1") echo"checked";?>> kann einer Seite zugeordnet werden.<br>
-         <?
+			 <input name="usage_template" type="checkbox" value="1" <?php if ($row["inc_usage_layout"]=="1") echo"checked"; ?>> kann in einem Layout genutzt werden.<br>
+				     <input name="usage_tool" type="checkbox" value="1" <?php if ($row["inc_usage_includecomponent"]=="1") echo"checked"; ?>> kann mit dem "Includes"-Baustein platziert werden<br>
+<input name="usage_page" type="checkbox" value="1" <?php if ($row["inc_usage_page"]=="1") echo"checked"; ?>> kann einer Seite zugeordnet werden.<br>
+         <?php
 			 $html =$myPT->stopBuffer();
 			 $myLayout->workarea_row_draw("Anwendung",$html);
 		 
@@ -137,15 +137,15 @@ $row = mysql_fetch_array($rs);
 			 {
          ?>
 			 <input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> Template einf&uuml;gen<br>
-			 <?
+			 <?php
 			 }
 			 while ($row_ttp=mysql_fetch_array($rs))
 			 {
 			   $identifier = "ttp_". $row_ttp["tpl_id"];
 				 ?>
-				 <strong>$</strong><input name="<?=$identifier?>_bez" type="text" class="input" style="width: 150px" value="<?=$row_ttp["tpl_bez"]?>" size="30">&nbsp;
-<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?=$identifier?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?=$identifier?>_plus"><br>
-				 <?
+				 <strong>$</strong><input name="<?php echo $identifier ?>_bez" type="text" class="input" style="width: 150px" value="<?php echo $row_ttp["tpl_bez"] ?>" size="30">&nbsp;
+<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"><br>
+				 <?php
 			 }
 			 $html = $myPT->stopBuffer();
 			 $myLayout->workarea_row_draw("Templates",$html);
@@ -160,8 +160,8 @@ $row = mysql_fetch_array($rs);
 		 ?>
 			 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="tableBody"><strong><?=$scriptname;?></strong><br>
-			<?
+            <td class="tableBody"><strong><?php echo $scriptname; ?></strong><br>
+			<?php
 			$scriptname = APPPATH . $scriptname;
 			echo $myLayout->form_HTMLTextArea("skript",$scriptname,80,30,"PHP");
 			?>
@@ -171,8 +171,8 @@ $row = mysql_fetch_array($rs);
             <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
 			</table>
-			<input type="hidden" name="rubrik" value="<?=$row["inc_rubrik"]?>">
-		 <?
+			<input type="hidden" name="rubrik" value="<?php echo $row["inc_rubrik"] ?>">
+		 <?php
 		 break;		 
 		 
 		 case 2:
@@ -183,7 +183,7 @@ $row = mysql_fetch_array($rs);
 					 $rs = $myDB->query($sql);
 					 $c= mysql_num_rows($rs);
 					 ?>
-					 <?
+					 <?php
 
 					 while ($row_ttp=mysql_fetch_array($rs))
 					 {
@@ -191,31 +191,31 @@ $row = mysql_fetch_array($rs);
 					 ?>
 					 <br>
 					 <table width="660" border="0" cellpadding="0" cellspacing="0">
-                      <?
+                      <?php
 					  $scriptname = $myPT->getTemplateFileName(PT_CFG_INCLUDE, $id, $row_ttp["tpl_id"], "templates/"); 
                       ?>
 					  <tr>
 					  <td width="10">&nbsp;</td>
-					  <td  width="300"><strong><?=$scriptname;?></strong></td>
+					  <td  width="300"><strong><?php echo $scriptname; ?></strong></td>
 					  <td width="335" align="right" >
-					  <strong>$</strong><input name="<?=$identifier?>_bez" type="text" class="input" style="width: 150px" value="<?=$row_ttp["tpl_bez"]?>" size="30">&nbsp;
-<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?=$identifier?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?=$identifier?>_plus">
+					  <strong>$</strong><input name="<?php echo $identifier ?>_bez" type="text" class="input" style="width: 150px" value="<?php echo $row_ttp["tpl_bez"] ?>" size="30">&nbsp;
+<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus">
                       </td>
 					  <td width="15">&nbsp;</td>
 					  </tr>
           <tr>
 		    <td>&nbsp;</td>
             <td colspan="3">
-					  <?
+					  <?php
 					  $scriptname =  APPPATH .$scriptname;
 					  $myAdm->buildHTMLTextArea($identifier. "_template",$scriptname,80,15,"HTML");
                       ?>
 					  </td>
 					  </tr>
 					  </table>
-					  <input type="hidden" name="rubrik" value="<?=$row["inc_rubrik"]?>">
+					  <input type="hidden" name="rubrik" value="<?php echo $row["inc_rubrik"] ?>">
                       <br><br>
-					  <?
+					  <?php
 					  }
 		 break;		 
 		 
@@ -223,7 +223,7 @@ $row = mysql_fetch_array($rs);
 		    $myLayout->tab_draw("Info");
 	        $myLayout->workarea_start_draw();			
 			?>
-			<?
+			<?php
 			$sql ="SELECT * FROM `layout_include` LEFT JOIN layout ON layout.lay_id = layout_include.lay_id  WHERE inc_id = " . $id . " ORDER BY lay_bez";
  			$rs = $myDB->query($sql);
 			$html="";
@@ -251,7 +251,7 @@ $row = mysql_fetch_array($rs);
 	}
 	?>
 
-		 <?
+		 <?php
 	   // Abschlusszeile
 	   // Seiten + Baustein fehlt noch !!
        $sql = "SELECT COUNT(*) AS C FROM layout_include WHERE inc_id = " . $id;
@@ -261,24 +261,24 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?if ($row["C"]==0){?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses Include wirklich l&ouml;schen?')">&nbsp;&nbsp;<?}?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses Include wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-	 <?
+	 <?php
 	 $myLayout->workarea_stop_draw();
 	?>
 	</form>
 	
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
@@ -28,7 +28,7 @@ $myAdm = new PhenotypeAdmin();
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?></title>
+<title>phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -51,12 +51,12 @@ self.focus();
 </script>
 
 	 <form action="selector_media_upload2.php" method="post" enctype="multipart/form-data" name="form1">
-	  <input type="hidden" name="cf" value="<?=$_REQUEST["cf"]?>">
-<input type="hidden" name="x" value="<?=$_REQUEST["x"]?>">
-<input type="hidden" name="y" value="<?=$_REQUEST["y"]?>">
+	  <input type="hidden" name="cf" value="<?php echo $_REQUEST["cf"] ?>">
+<input type="hidden" name="x" value="<?php echo $_REQUEST["x"] ?>">
+<input type="hidden" name="y" value="<?php echo $_REQUEST["y"] ?>">
 <input type="hidden" name="p" value="1">
-<input type="hidden" name="sortorder" value="<?=$_REQUEST["sortorder"]?>">
-<input type="hidden" name="type" value="<?=$_REQUEST["type"]?>">				   
+<input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
+<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   
 				   
 <table width="495" border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -74,7 +74,7 @@ self.focus();
       </tr>
     </table>	
 				
-<?				
+<?php				
 $myLayout->tab_new();
 $url = "mediabase_upload.php";
 $myLayout->tab_addEntry("Eigenschaften",$url,"b_konfig.gif");
@@ -88,7 +88,7 @@ $myPT->startBuffer();
   ?>
   <input name="userfile" type="file" class="input"><br>
   <input type="checkbox" value="1" name="documentonly"> Bilder als Dokumente handhaben    		
-  <?
+  <?php
   $html = $myPT->stopBuffer();
   $myLayout->workarea_row_draw("Bild / Dokument",$html); 
 
@@ -99,7 +99,7 @@ if ($_REQUEST["cf"]==1)
 {
 ?>
 <select name="folder1" class="input" style="width:240px">
-<?
+<?php
 $myMB = new PhenotypeMediaBase();
 $_folder = $myMB->getLogicalFolder();
 if (!in_array("_upload",$_folder))
@@ -118,20 +118,20 @@ if (!in_array("_upload",$_folder))
 			if ($_REQUEST["folder"]==$k){$selected="selected";}
 
           ?>
-         <option <?=$selected?>><?=$myPT->codeH($k)?></option>
-          <?
+         <option <?php echo $selected ?>><?php echo $myPT->codeH($k) ?></option>
+          <?php
           }
           ?>
 </select><br><br><input name="folder1_new" type="text" class="input" value="" style="width:230px">
-<?
+<?php
 }
 else
 {
 ?>
-<input type="hidden" name="folder1" value="<?=$_REQUEST["folder"]?>">
-<input type="hidden" name="folder1_new" value="<?=$_REQUEST["folder"]?>">
-<?=$_REQUEST["folder"]?>
-<?
+<input type="hidden" name="folder1" value="<?php echo $_REQUEST["folder"] ?>">
+<input type="hidden" name="folder1_new" value="<?php echo $_REQUEST["folder"] ?>">
+<?php echo $_REQUEST["folder"] ?>
+<?php
 }
 
 $html = $myPT->stopBuffer();
@@ -158,15 +158,15 @@ while ($row=mysql_fetch_array($rs))
 $myPT->startBuffer();
 ?>
 <select name="grp_id" class="input" style="width:120px">
-<?
+<?php
 $grp_id=2;
 foreach ($_mediagroups AS $k=>$v)
 {
 	$selected="";
 	if ($k == $grp_id){$selected='selected="selected"';} // Standard
 ?>
-<option <?=$selected?> value="<?=$k?>"><?=$v?></option>
-<?
+<option <?php echo $selected ?> value="<?php echo $k ?>"><?php echo $v ?></option>
+<?php
 }
 
 $html = $myPT->stopBuffer();
@@ -180,7 +180,7 @@ $myLayout->workarea_row_draw("Mediagruppe",$html);
             <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="Hochladen">&nbsp;&nbsp;</td>
           </tr>
         </table>
-<?
+<?php
 $myLayout->workarea_stop_draw();
  
 ?>

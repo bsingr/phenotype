@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -85,7 +85,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?=$myPT->version?></title>
+<title>phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -110,7 +110,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
             <td class="windowFooterGrey2">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="bottom">
-                  <td height="145" colspan="2"  style="background:url(<?=$url?>) no-repeat top left;"><div class="alert">Kein Zugriff!<br>
+                  <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert">Kein Zugriff!<br>
                   <!--Bitte melden Sie sich mit den erforderlichen Rechten an<br>oder Drücken Sie den Zurück-Button Ihres Browsers.--></div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
@@ -139,7 +139,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 
 </body>
 </html>
-<?
+<?php
 exit();
 	}
 
@@ -162,7 +162,7 @@ exit();
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?=$myPT->version?></title>
+<title>phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -187,7 +187,7 @@ exit();
             <td class="windowFooterGrey2">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="bottom">
-                  <td height="145" colspan="2"  style="background:url(<?=$url?>) no-repeat top left;"><div class="alert">Session abgelaufen! Bitte melden Sie sich erneut an.</div></td>
+                  <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert">Session abgelaufen! Bitte melden Sie sich erneut an.</div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
                   <td colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -215,7 +215,7 @@ exit();
 
 </body>
 </html>
-<?
+<?php
 exit();
 	}
 
@@ -482,7 +482,7 @@ exit();
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	            <tr>
 	              <td class="windowError"><h1>Fehler</h1>
-				    <p><?=$myPT->codeHKT($text)?></p></td>
+				    <p><?php echo $myPT->codeHKT($text) ?></p></td>
 	              </tr>
 	        </table></td>
 	        <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -492,7 +492,7 @@ exit();
 	        <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
 	      </tr>
 	    </table>
-		<?	
+		<?php	
 	}
 
 	function displayAlert($text)
@@ -504,7 +504,7 @@ exit();
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	            <tr>
 	              <td class="windowAlert"><h1>Hinweis</h1>
-				    <p><?=$myPT->codeHKT($text)?></p></td>
+				    <p><?php echo $myPT->codeHKT($text) ?></p></td>
 	              </tr>
 	        </table></td>
 	        <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -514,7 +514,7 @@ exit();
 	        <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
 	      </tr>
 	    </table>
-		<?	
+		<?php	
 	}
 
 	function displayInfo($text)
@@ -526,7 +526,7 @@ exit();
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	            <tr>
 	              <td class="windowInfo"><h1>Hinweis</h1>
-				    <p><?=$myPT->codeHKT($text)?></p></td>
+				    <p><?php echo $myPT->codeHKT($text) ?></p></td>
 	              </tr>
 	        </table></td>
 	        <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -536,7 +536,7 @@ exit();
 	        <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
 	      </tr>
 	    </table>
-		<?	
+		<?php	
 	}
 
 	function displayFeedback($text)
@@ -549,7 +549,7 @@ exit();
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	            <tr>
 	              <td class="windowFeedback"><h1>Info</h1>
-				    <p><?=$myPT->codeHKT($text)?></p></td>
+				    <p><?php echo $myPT->codeHKT($text) ?></p></td>
 	              </tr>
 	        </table></td>
 	        <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -560,7 +560,7 @@ exit();
 	      </tr>
 	    </table>
 	    <script>window.setTimeout('hide("feedback")',3*1000);</script>
-		<?	
+		<?php	
 	}
 
 
@@ -575,10 +575,10 @@ exit();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$this->getH($title)?></td>
-            <?if ($url_help!=""){?>
-            <td align="right" class="windowTitle"><a href="<?=urlencode($url_help)?>" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
-            <?}?>
+            <td class="windowTitle"><?php echo $this->getH($title) ?></td>
+            <?php if ($url_help!=""){ ?>
+            <td align="right" class="windowTitle"><a href="<?php echo urlencode($url_help) ?>" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
+            <?php } ?>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -588,7 +588,7 @@ exit();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-		<?
+		<?php
 	}
 
 	function renderHeadline($title,$url_help="")
@@ -609,7 +609,7 @@ exit();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-            <?
+            <?php
             foreach ($_table AS $x => $title)
             {
             	echo '<td width="'.$x.'" class="tableHead">'.$this->getH($title).'</td>';
@@ -617,9 +617,9 @@ exit();
             ?>
             </tr>
             <tr>
-              <td colspan="<?=count($_table)?>" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
+              <td colspan="<?php echo count($_table) ?>" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-		<?
+		<?php
 	}
 
 
@@ -670,7 +670,7 @@ exit();
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
     </table>
-		<?
+		<?php
 	}
 
 
@@ -696,10 +696,10 @@ exit();
 		 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('<?=$confirmstring?>')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('<?php echo $confirmstring ?>')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-    <?
+    <?php
 	}
 
 
@@ -714,24 +714,24 @@ exit();
 		}
 		?>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
-		<?
+		<?php
 		if ($spacer==true)
 		{
 		?>
 			<tr>
           		<td class="tableHline" colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
         	</tr>
-		<?
+		<?php
 		}
 		?>
 		<tr>
-          <td class="tableHead" colspan="2"><?=$myPT->codeH($s)?></td>
+          <td class="tableHead" colspan="2"><?php echo $myPT->codeH($s) ?></td>
         </tr>
         <tr>
           <td class="tableHline" colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
         </tr>
         </table>
-		<?
+		<?php
 	}
 
 	function optionTag($key,$value,$selectedkey="")
@@ -777,14 +777,14 @@ exit();
 		  <tr>
             <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-          <?
+          <?php
           while ($row=mysql_fetch_array($rs))
           {
 	?>
 		   <tr>
-            <td class="tableBody"><?=$row["sna_id"]?></td>
-			<td class="tableBody"><?=date('d.m.Y - H:i:s',$row["sna_date"])?></td>
-			<td width="50" class="tableBody"><?
+            <td class="tableBody"><?php echo $row["sna_id"] ?></td>
+			<td class="tableBody"><?php echo date('d.m.Y - H:i:s',$row["sna_date"]) ?></td>
+			<td width="50" class="tableBody"><?php
 			$sekunden = time()-$row["sna_date"];
 			$minuten = $sekunden / 60;
 			if ($minuten>60)
@@ -806,11 +806,11 @@ exit();
 			}
 
 			?></td>
-            <td class="tableBody"><?=$mySUser->getName($row["usr_id"])?></td>
-			<td align="right" nowrap class="tableBody"><a href="backend.php?page=<?=$page?>,<?=$scope?>,viewsnapshot&id=<?=$row["sna_id"]?>&sna_type=<?=$sna_type?>" target="_blank"><img src="img/b_view.gif" alt="Snapshot ansehen" width="22" height="22" border="0" align="absmiddle"></a> <a href="backend.php?page=<?=$page?>,<?=$scope?>,installsnapshot&id=<?=$row["sna_id"]?>&sna_type=<?=$sna_type?>"><img src="img/b_rollback.gif" alt="Snapshot installieren" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td class="tableBody"><?php echo $mySUser->getName($row["usr_id"]) ?></td>
+			<td align="right" nowrap class="tableBody"><a href="backend.php?page=<?php echo $page ?>,<?php echo $scope ?>,viewsnapshot&id=<?php echo $row["sna_id"] ?>&sna_type=<?php echo $sna_type ?>" target="_blank"><img src="img/b_view.gif" alt="Snapshot ansehen" width="22" height="22" border="0" align="absmiddle"></a> <a href="backend.php?page=<?php echo $page ?>,<?php echo $scope ?>,installsnapshot&id=<?php echo $row["sna_id"] ?>&sna_type=<?php echo $sna_type ?>"><img src="img/b_rollback.gif" alt="Snapshot installieren" width="22" height="22" border="0" align="absmiddle"></a></td>
             
             </tr>
-            <?}?>
+            <?php } ?>
             <tr>
             <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
@@ -832,7 +832,7 @@ exit();
 		
 		
 
-		<?
+		<?php
 	}
 
 	function viewSnapshot($sna_id)

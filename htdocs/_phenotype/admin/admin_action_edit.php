@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "noaccess.php";
@@ -29,36 +29,36 @@ if (!$mySUser->checkRight("elm_admin"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 $id = $myRequest->getI("id");
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Aktionen");
 $myAdm->explorer_set("act_id",$id);
 $myAdm->explorer_draw();
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -68,13 +68,13 @@ $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
 ?>
     <form action="admin_action_update.php" method="post">
-	<input type="hidden" name="id" value="<?=$id?>">	
-	<input type="hidden" name="b" value="<?=$_REQUEST["b"]?>">		
+	<input type="hidden" name="id" value="<?php echo $id ?>">	
+	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$id?> Aktion / <?=$row["act_bez"]?></td>
+            <td class="windowTitle"><?php echo $id ?> Aktion / <?php echo $row["act_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=9" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -85,7 +85,7 @@ $row = mysql_fetch_array($rs);
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?
+	<?php
 	 $myLayout->tab_new();
 	 $url = "admin_action_edit.php?id=" .$id ."&b=0";	 
 	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
@@ -100,15 +100,15 @@ $row = mysql_fetch_array($rs);
 	 ?>
 	 Datum:<br>
 	 <input type="radio" name="datum" value="1">
-	 <?
+	 <?php
 	 $_schedule = Array();
 	 if ($row["act_schedule"]!=""){$_schedule = unserialize($row["act_schedule"]);}
 	 $_days = Array("","Mo","Di","Mi","Do","Fr","Sa","So");
 	 for ($i=1;$i<=7;$i++)
 	 {
 	 ?>
-	 <input type="checkbox" value="<?=$i?>" name="<?=$_days[$i]?>"><?=$_days[$i]?>&nbsp;
-	 <?
+	 <input type="checkbox" value="<?php echo $i ?>" name="<?php echo $_days[$i] ?>"><?php echo $_days[$i] ?>&nbsp;
+	 <?php
 	 }
 	 ?>
 	 <input type="radio" name="datum" value="2">
@@ -122,25 +122,25 @@ $row = mysql_fetch_array($rs);
 	 <option value="6">Montasanfang</option>
 	 <br>Uhrzeit:<br>
 	 Stunde <select><option>jede</option>
-	 <?
+	 <?php
 	 for ($i=0;$i<=23;$i++)
 	 {
 	 ?>
-	 <option><?=$i?></option>
-	 <?
+	 <option><?php echo $i ?></option>
+	 <?php
 	 }
 	 ?>
 	 </select>&nbsp; Minute <select><option>jede</option>
-	  <?
+	  <?php
 	 for ($i=0;$i<=59;$i++)
 	 {
 	 ?>
-	 <option><?=$i?></option>
-	 <?
+	 <option><?php echo $i ?></option>
+	 <?php
 	 }
 	 ?>
 	 </select>
-	 <?
+	 <?php
 	 $html = $myPT->stopBuffer();
 	 $myLayout->workarea_row_draw("Zeitschema",$html);	
 	 */
@@ -148,23 +148,23 @@ $row = mysql_fetch_array($rs);
 		 ?>
 			 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="tableBody"><strong><?=$scriptname;?></strong><br>
-			<?
+            <td class="tableBody"><strong><?php echo $scriptname; ?></strong><br>
+			<?php
 			$scriptname = APPPATH . $scriptname;
 			echo $myLayout->form_HTMLTextArea("skript",$scriptname,80,30,"PHP");
 			?>
 			</td>
             </tr>
 			</table>	 
-	<?
+	<?php
 	 // Status
 	 $myLayout->workarea_whiteline();
 	 $myPT->startBuffer();
 	 ?>
-	 <input name="status" type="checkbox" value="1" <?if ($row["act_status"]=="1") echo"checked";?>> online. <br>
-	 <br><?if ($row["act_lastrun"]!=0){?>Letzter Lauf: <?=date('d.m.Y H:i',$row["act_lastrun"])?><br><?}?>
-	 <?if ($row["act_nextrun"]!=0){?>N&auml;chster Lauf: <?=date('d.m.Y H:i',$row["act_nextrun"])?><?}else{?>N&auml;chster Lauf: sofort<?}?>
-     <?
+	 <input name="status" type="checkbox" value="1" <?php if ($row["act_status"]=="1") echo"checked"; ?>> online. <br>
+	 <br><?php if ($row["act_lastrun"]!=0){ ?>Letzter Lauf: <?php php echo date('d.m.Y H:i',$row["act_lastrun"]) ?><br><?php } ?>
+	 <?php if ($row["act_nextrun"]!=0){ ?>N&auml;chster Lauf: <?php php echo date('d.m.Y H:i',$row["act_nextrun"]) ?><?php }else{ ?>N&auml;chster Lauf: sofort<?php } ?>
+     <?php
 	 $html = $myPT->stopBuffer();
 	 $myLayout->workarea_row_draw("Status",$html);		
 	 ?>	
@@ -174,20 +174,20 @@ $row = mysql_fetch_array($rs);
             <td align="right" class="windowFooterWhite"><input name="reset" type="submit" class="buttonWhite" style="width:102px" value="Reset" onclick="javascript:return confirm('Diese Aktion wirklich zurücksetzen?')">&nbsp;&nbsp;<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Aktion wirklich l&ouml;schen?')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-	 <?
+	 <?php
 	 $myLayout->workarea_stop_draw();
 	?>
 	</form>	 
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

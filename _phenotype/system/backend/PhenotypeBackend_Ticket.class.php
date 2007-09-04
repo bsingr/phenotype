@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -225,7 +225,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 		?>
 		<table width="260" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
-          <td class="windowFooterGrey2"><a href="javascript:ticketWizard(0,0,0,0,<?=$sbj_id?>,<?=$dat_id_2ndorder?>)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Aufgabe einstellen </a></td>
+          <td class="windowFooterGrey2"><a href="javascript:ticketWizard(0,0,0,0,<?php echo $sbj_id ?>,<?php echo $dat_id_2ndorder ?>)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Aufgabe einstellen </a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
 	 <tr>
@@ -233,7 +233,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
 		</table>
-		<?
+		<?php
 	}
 
 	function displaySearchForm($sbj_id,$dat_id,$focus,$sortorder,$search_term="")
@@ -245,15 +245,15 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td colspan="3" class="padding10"><strong>Suche Aufgaben <?=$search_term?> nach:</strong></td>
+              <td colspan="3" class="padding10"><strong>Suche Aufgaben <?php echo $search_term ?> nach:</strong></td>
             </tr>
             <tr>
               <td class="padding10">Bezeichnung</td>
               <td>
- 	  		  <input type="hidden" name="sbj_id" value="<?=$sbj_id?>">
- 	  		  <input type="hidden" name="dat_id" value="<?=$dat_id?>">
-			  <input type="hidden" name="focus" value="<?=$focus?>">
-			  <input type="hidden" name="sortorder" value="<?=$sortorder?>">
+ 	  		  <input type="hidden" name="sbj_id" value="<?php echo $sbj_id ?>">
+ 	  		  <input type="hidden" name="dat_id" value="<?php echo $dat_id ?>">
+			  <input type="hidden" name="focus" value="<?php echo $focus ?>">
+			  <input type="hidden" name="sortorder" value="<?php echo $sortorder ?>">
 	    	  <input type="text" name="s" style="width: 100
 			  px" class="input"></td>
             </tr>
@@ -279,7 +279,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table></form>	
-		<?
+		<?php
 	}
 
 }

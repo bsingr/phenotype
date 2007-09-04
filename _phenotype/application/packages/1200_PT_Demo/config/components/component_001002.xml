@@ -8,7 +8,7 @@
 		<com_rubrik>System</com_rubrik>
 		<com_description>## Baustein 1002 - HTML</com_description>
 	</meta>
-	<script>&#60;? 
+	<script>&#60;?php 
 class PhenotypeComponent_1002 extends PhenotypeComponent 
 { 
   var $tool_type = 1002; 
@@ -71,7 +71,7 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
   	&#60;html&#62;$this-&#62;getX(&#34;html&#34;)&#60;&#47;html&#62;
     &#60;&#47;content&#62;
     &#60;&#47;component&#62;
-  	&#60;?
+  	&#60;?php
   	return true;
   }     
 } 

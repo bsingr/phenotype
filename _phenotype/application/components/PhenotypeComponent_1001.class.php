@@ -1,4 +1,4 @@
-<? 
+<?php 
 class PhenotypeComponent_1001 extends PhenotypeComponent
 {
 	var $tool_type = 1001;
@@ -27,15 +27,15 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
     <br> 
     <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground"> 
     <tr><td nowrap> 
-    <?
+    <?php
     $this->form_Richtext("text",$this->get("text"),80,16);
     ?> 
     </td></tr></table> <br> 
-    <? 
+    <?php 
     $this->form_link("link",$this->get("linkbez"),$this->get("linkurl"),$this->get("linktarget"));
     ?>
-    <br>Link-Anchor: #t<?=$this->id?>
-    <?
+    <br>Link-Anchor: #t<?php echo $this->id ?>
+    <?php
 	}
 
 	function update()

@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -247,15 +247,15 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	              <form action="backend.php" method="post" name="formGrp">
 		          <input type="hidden" name="page" value ="Editor,Media,browse">
 		  	      <input type="hidden" name="folder" value="">
-				  <input type="hidden" name="type" value="<?=$this->type?>">				   				   
-				  <input type="hidden" name="sortorder" value="<?=$this->sortorder?>">
-				  <input type="hidden" name="p" value="<?=$this->pagenr?>">		  
-				  <input type="hidden" name="a" value="<?=$this->itemcount?>">
+				  <input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+				  <input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
+				  <input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
+				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">
 	              Gruppe:</td>
 	              <td>
 	              <select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
 	              <option value="0">alle</a>
-	              <?
+	              <?php
 	              foreach ($this->_mediagroups AS $k=>$v)
 	              echo $this->optionTag($k,$v,$this->grp_id);
 
@@ -275,7 +275,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	          <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></form></td>
 	        </tr>
      	</table>
-		<?
+		<?php
 		}
 	}
 
@@ -393,12 +393,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
                 <td>
 	  			<form action="backend.php" method="post">
 	            <input type="hidden" name="page" value ="Editor,Media,search">
-				<input type="hidden" name="grp_id" value="<?=$this->grp_id?>">	
-	            <input type="hidden" name="folder" value="<?=$myPT->codeH($this->folder)?>">
-			    <input type="hidden" name="type" value="<?=$this->type?>">				   				   
-			    <input type="hidden" name="sortorder" value="<?=$this->sortorder?>">
-			    <input type="hidden" name="p" value="<?=$this->pagenr?>">		  
-				<input type="hidden" name="a" value="<?=$this->itemcount?>">	
+				<input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">	
+	            <input type="hidden" name="folder" value="<?php echo $myPT->codeH($this->folder) ?>">
+			    <input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+			    <input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
+			    <input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
+				<input type="hidden" name="a" value="<?php echo $this->itemcount ?>">	
                 <input type="text" name="s" style="width: 100px" class="input">
                 </td>
               </tr>
@@ -425,7 +425,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table>
-		<?
+		<?php
 	}
 
 	function displayNewMediaObjectsForm()
@@ -441,12 +441,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	            <tr>
 	              <td class="windowTabTypeOnly"><strong>Neue Dateien: </strong></td>
 	              <td class="windowTabTypeOnly">
-				  <input type="hidden" name="grp_id" value="<?=$this->grp_id?>">	
-	              <input type="hidden" name="folder" value="<?=$myPT->codeH($this->folder)?>">
-			      <input type="hidden" name="type" value="<?=$this->type?>">				   				   
-			      <input type="hidden" name="sortorder" value="<?=$this->sortorder?>">
-			      <input type="hidden" name="p" value="<?=$this->pagenr?>">		  
-				  <input type="hidden" name="a" value="<?=$this->itemcount?>">	
+				  <input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">	
+	              <input type="hidden" name="folder" value="<?php echo $myPT->codeH($this->folder) ?>">
+			      <input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+			      <input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
+			      <input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
+				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">	
 				  <input name="upload" type="submit" class="buttonWhite" id="upload" style="width:102px" value="Hochladen"></td>
 	            </tr>
 				</form>
@@ -455,12 +455,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	              <td class="windowTabTypeOnly">
 	              <form action="backend.php" method="post">
 	              <input type="hidden" name="page" value ="Editor,Media,import">
-				  <input type="hidden" name="grp_id" value="<?=$this->grp_id?>">	
-	              <input type="hidden" name="folder" value="<?=$myPT->codeH($this->folder)?>">
-			      <input type="hidden" name="type" value="<?=$this->type?>">				   				   
-			      <input type="hidden" name="sortorder" value="<?=$this->sortorder?>">
-			      <input type="hidden" name="p" value="<?=$this->pagenr?>">		  
-				  <input type="hidden" name="a" value="<?=$this->itemcount?>">		  
+				  <input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">	
+	              <input type="hidden" name="folder" value="<?php echo $myPT->codeH($this->folder) ?>">
+			      <input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+			      <input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
+			      <input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
+				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">		  
 				  <input name="import" type="submit" class="buttonWhite" id="import2" style="width:102px" value="Importieren">	
 				  </form>
 				  </td>
@@ -474,7 +474,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	        <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
 	      </tr>
 	    </table> 		
-		<?
+		<?php
 	}
 
 
@@ -486,7 +486,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		global $myRequest;
 		?>
 		<div id="lightbox">
-		<?
+		<?php
 
 		$myDO = new PhenotypeDataObject("system.lightbox_media_usr_id_".$mySUser->id);
 
@@ -521,7 +521,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
       	<tr>
         	<td class="windowMenu">
 			<table  border="0" cellspacing="8" cellpadding="0">
-				<?
+				<?php
 				foreach ($_objects AS $object)
 				{
 					$url = "backend.php?page=Editor,Media,edit&grp_id=".$this->grp_id."&folder=".urlencode($this->folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount;
@@ -530,12 +530,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 					{
 					?>
 					<tr>
-	    	        	<td width="10"><input type="checkbox" checked="checked" onclick="lightbox_switch(<?=$myImg->id?>,1)"></td>
+	    	        	<td width="10"><input type="checkbox" checked="checked" onclick="lightbox_switch(<?php echo $myImg->id ?>,1)"></td>
 	    	        	<td width="40">
-	    	        	<a href="<?=$url?>&id=<?=$myImg->id?>"><?=$myImg->display_thumbX(45);?></a></td>
-	    	        	<td ><a href="<?=$url?>&id=<?=$myImg->id?>"><?=$myPT->codeH($myPT->cutString($myImg->bez,23))?></a></td>
+	    	        	<a href="<?php echo $url ?>&id=<?php echo $myImg->id ?>"><?php echo $myImg->display_thumbX(45); ?></a></td>
+	    	        	<td ><a href="<?php echo $url ?>&id=<?php echo $myImg->id ?>"><?php echo $myPT->codeH($myPT->cutString($myImg->bez,23)) ?></a></td>
 	          	  	</tr>
-	          	  	<?
+	          	  	<?php
 					}
 					else
 					{
@@ -544,10 +544,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 						{
 					?>
 					<tr>
-	    	        	<td width="10"><input type="checkbox" checked="checked" onclick="lightbox_switch(<?=$myDoc->id?>,1)"></td>
-	    	        	<td colspan="2"><a href="<?=$url?>&id=<?=$myDoc->id?>"><?=$myPT->codeH($myDoc->bez)?></a></td>
+	    	        	<td width="10"><input type="checkbox" checked="checked" onclick="lightbox_switch(<?php echo $myDoc->id ?>,1)"></td>
+	    	        	<td colspan="2"><a href="<?php echo $url ?>&id=<?php echo $myDoc->id ?>"><?php echo $myPT->codeH($myDoc->bez) ?></a></td>
 	          	  	</tr>
-	          	  	<?
+	          	  	<?php
 						}
 					}
 				}
@@ -561,11 +561,11 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>    	  
     	</table>
-    	<?
+    	<?php
 		}
     	?>
     	</div>      
-		<?
+		<?php
 	}
 
 
@@ -596,12 +596,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 			// following variables are necessary for correct edit links...
 
-			ajax.setVar("grp_id",<?=$this->grp_id?>);
-			ajax.setVar("folder","<?=$myPT->codeH($this->folder)?>");
-			ajax.setVar("type",<?=$this->type?>);
-			ajax.setVar("sortorder",<?=$this->sortorder?>);
-			ajax.setVar("p",<?=$this->pagenr?>);
-			ajax.setVar("a",<?=$this->itemcount?>);
+			ajax.setVar("grp_id",<?php echo $this->grp_id ?>);
+			ajax.setVar("folder","<?php echo $myPT->codeH($this->folder) ?>");
+			ajax.setVar("type",<?php echo $this->type ?>);
+			ajax.setVar("sortorder",<?php echo $this->sortorder ?>);
+			ajax.setVar("p",<?php echo $this->pagenr ?>);
+			ajax.setVar("a",<?php echo $this->itemcount ?>);
 
 
 			//ajax.onLoading = whenLoading;
@@ -611,7 +611,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			ajax.runAJAX();
 		}
 		</script>
-		<?
+		<?php
 	}
 	function renderBrowser()
 	{
@@ -730,19 +730,19 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	            <tr>
 	              <td class="padding10"><form action="backend.php" method="post" name="formsort">
 	              <input type="hidden" name="page" value="Editor,Media,browse">
-				  <input type="hidden" name="grp_id" value="<?=$this->grp_id?>">	
-	              <input type="hidden" name="folder" value="<?=$myPT->codeH($this->folder)?>">
-			      <input type="hidden" name="type" value="<?=$this->type?>">				   				   
-			      <input type="hidden" name="p" value="<?=$p?>">		  
-				  <input type="hidden" name="a" value="<?=$this->itemcount?>">		              
-		          <input name="sortorder" type="radio" value="1" <?if ($this->sortorder==1){echo"checked";}?> onclick="document.forms.formsort.submit();">Datum
-				  <input name="sortorder" type="radio" value="2" <?if ($this->sortorder==2){echo"checked";}?> onclick="document.forms.formsort.submit();">Bezeichnung
-				  <input name="sortorder" type="radio" value="3" <?if ($this->sortorder==3){echo"checked";}?> onclick="document.forms.formsort.submit();">ID</td>
+				  <input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">	
+	              <input type="hidden" name="folder" value="<?php echo $myPT->codeH($this->folder) ?>">
+			      <input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+			      <input type="hidden" name="p" value="<?php echo $p ?>">		  
+				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">		              
+		          <input name="sortorder" type="radio" value="1" <?php if ($this->sortorder==1){echo"checked";} ?> onclick="document.forms.formsort.submit();">Datum
+				  <input name="sortorder" type="radio" value="2" <?php if ($this->sortorder==2){echo"checked";} ?> onclick="document.forms.formsort.submit();">Bezeichnung
+				  <input name="sortorder" type="radio" value="3" <?php if ($this->sortorder==3){echo"checked";} ?> onclick="document.forms.formsort.submit();">ID</td>
 	              <td class="padding10"><select name="a" class="listmenu" onchange="document.forms.formsort.submit();">
-				    <? for ($i=1;$i<=5;$i++){?>
-	                <option value="<?=($i*10)?>" <?if ($this->itemcount==($i*10)){echo "selected";}?>><?=($i*10)?> Medien / Seite anzeigen</option>
-					<?}?>
-					<input type="hidden" name="a2" value="<?=$this->itemcount?>">
+				    <?php for ($i=1;$i<=5;$i++){ ?>
+	                <option value="<?php php echo ($i*10) ?>" <?php if ($this->itemcount==($i*10)){echo "selected";} ?>><?php php echo ($i*10) ?> Medien / Seite anzeigen</option>
+					<?php } ?>
+					<input type="hidden" name="a2" value="<?php echo $this->itemcount ?>">
 					</select></form></td>
 	            </tr>
 	        </table></td>
@@ -755,7 +755,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	        <td class="windowBlank">
 	
 			<table width="100%" border="0" cellpadding="0" cellspacing="3">
-			<?
+			<?php
 			$rs =$myDB->query($sql);
 			$i=0;$aktion=-1;
 			while ($row=mysql_fetch_array($rs))
@@ -774,7 +774,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				{
 				?>
 			  <tr valign="top">
-				<?
+				<?php
 				}
 				?>
 	            <td class="tableCellMedia" width="136">
@@ -782,8 +782,8 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				<table width="115" height="105" border="0" cellpadding="0" cellspacing="0">
 	                <tr>
 	                  <td align="center" class="tableCellImage">
-	                  <a href="backend.php?page=Editor,Media,edit&id=<?=$row["med_id"]?>&grp_id=<?=$this->grp_id?>&folder=<?=$myPT->codeH($this->folder)?>&type=<?=$this->type?>&sortorder=<?=$this->sortorder?>&p=<?=$this->pagenr?>&a=<?=$this->itemcount?>">
-					  <?
+	                  <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row["med_id"] ?>&grp_id=<?php echo $this->grp_id ?>&folder=<?php echo $myPT->codeH($this->folder) ?>&type=<?php echo $this->type ?>&sortorder=<?php echo $this->sortorder ?>&p=<?php echo $this->pagenr ?>&a=<?php echo $this->itemcount ?>">
+					  <?php
 					  if ($row["med_type"]==MB_IMAGE)
 					  {
 					  	$myIMG = new PhenoTypeImage($row["med_id"]);
@@ -840,9 +840,9 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	                </tr>
 	              </table>
 	              
-	                <a href="backend.php?page=Editor,Media,edit&id=<?=$row["med_id"]?>&grp_id=<?=$this->grp_id?>&folder=<?=$myPT->codeH($this->folder)?>&type=<?=$this->type?>&sortorder=<?=$this->sortorder?>&p=<?=$this->pagenr?>&a=<?=$this->itemcount?>"><img src="img/b_edit.gif" width="22" height="22" border="0" align="absmiddle"> bearbeiten<br>
-	                </a> Ordner: <?=$row["med_logical_folder1"]?><br>
-					<?
+	                <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row["med_id"] ?>&grp_id=<?php echo $this->grp_id ?>&folder=<?php echo $myPT->codeH($this->folder) ?>&type=<?php echo $this->type ?>&sortorder=<?php echo $this->sortorder ?>&p=<?php echo $this->pagenr ?>&a=<?php echo $this->itemcount ?>"><img src="img/b_edit.gif" width="22" height="22" border="0" align="absmiddle"> bearbeiten<br>
+	                </a> Ordner: <?php echo $row["med_logical_folder1"] ?><br>
+					<?php
 					if ($row["med_type"]==MB_IMAGE)
 					{
 						echo "Gr&ouml;&szlig;e: (" . $row["med_x"] ." x " . $row["med_y"] .")<br>";
@@ -852,15 +852,15 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 						echo "<br>";
 					}
 				    ?>
-	                <strong><?=$myPT->cutString($row["med_bez"],32,18);?></strong>
+	                <strong><?php echo $myPT->cutString($row["med_bez"],32,18); ?></strong>
 					</td>
 	
-						<?
+						<?php
 						if ($aktion==0) // Zeile schliessen
 						{
 						?>
 						</tr>
-						<?
+						<?php
 						}
 			}
 			if ($aktion!=0)
@@ -870,11 +870,11 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				{
 						?>
 						<td valign="top" class="tableCellMedia" width="136"></td>
-						<?
+						<?php
 				}
 					  ?>
 					  </tr>
-					  <?
+					  <?php
 			}
 					  ?>
 	
@@ -885,7 +885,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 	      </tr>
 	    </table>
-	    <?
+	    <?php
 
 
 	    $url = "backend.php?page=Editor,Media,browse&grp_id=".$this->grp_id . "&folder=" .$myPT->codeH($this->folder) ."&type=" .$this->type . "&sortorder=" . $this->sortorder . "&a=" . $this->itemcount."&p=";
@@ -945,21 +945,21 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		if ($block_nr==1 AND $blocknr_versionen==-1){$block_nr=0;}// switch to properties tab if no versions exists
 
 		?>
-        <form action="backend.php" method="post" enctype="multipart/form-data" name="editform" <? if ($block_nr==2){?>onsubmit="return false;"<?}?>>
+        <form action="backend.php" method="post" enctype="multipart/form-data" name="editform" <?php if ($block_nr==2){ ?>onsubmit="return false;"<?php } ?>>
         <input type="hidden" name="page" value="Editor,Media,update">
-        <input type="hidden" name="grp_id" value="<?=$this->grp_id?>">
-        <input type="hidden" name="id" value="<?=$myObj->id?>">
-        <input type="hidden" name="ver_id" value="<?=$myRequest->getI("ver_id")?>">
-        <input type="hidden" name="folder" value="<?=$this->folder?>">
-		<input type="hidden" name="type" value="<?=$this->type?>">				   				   
-		<input type="hidden" name="sortorder" value="<?=$this->sortorder?>">
-		<input type="hidden" name="p" value="<?=$this->pagenr?>">		  
-		<input type="hidden" name="a" value="<?=$this->itemcount?>">
-		<input type="hidden" name="objecttype" value="<?=$type?>">	
-		<input type="hidden" name="b" value="<?=$block_nr?>">	
+        <input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">
+        <input type="hidden" name="id" value="<?php echo $myObj->id ?>">
+        <input type="hidden" name="ver_id" value="<?php echo $myRequest->getI("ver_id") ?>">
+        <input type="hidden" name="folder" value="<?php echo $this->folder ?>">
+		<input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+		<input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
+		<input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
+		<input type="hidden" name="a" value="<?php echo $this->itemcount ?>">
+		<input type="hidden" name="objecttype" value="<?php echo $type ?>">	
+		<input type="hidden" name="b" value="<?php echo $block_nr ?>">	
         
 
-		<?	
+		<?php	
 		$this->displayIDLineMediaObject($myObj);
 
 		$conflict = "";
@@ -1096,10 +1096,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		{
 			$myPT->startBuffer();
 			?>
-  			<a href="<?=MEDIABASEURL .  $myObj->physical_folder?>/<?=$myObj->filename?> " target="_blank">
-  			<?
+  			<a href="<?php echo MEDIABASEURL .  $myObj->physical_folder ?>/<?php echo $myObj->filename ?> " target="_blank">
+  			<?php
   			$myObj->display_maxX(500);
-  			?></a><br><br><input name="userfile" type="file" class="input"><?
+  			?></a><br><br><input name="userfile" type="file" class="input"><?php
 
   			$html = $myPT->stopBuffer();
   			$this->workarea_row_draw("Bild (".$myObj->x."x".$myObj->y.")", $html);
@@ -1108,9 +1108,9 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		{
 			$myPT->startBuffer();
 			?>
-  			<a href="<?=MEDIABASEURL . $myObj->physical_folder?>/<?=$myObj->filename?> " target="_blank"><?=$myObj->filename?></a>
+  			<a href="<?php echo MEDIABASEURL . $myObj->physical_folder ?>/<?php echo $myObj->filename ?> " target="_blank"><?php echo $myObj->filename ?></a>
 			<br><br><input name="userfile" type="file" class="input">
-  			<?
+  			<?php
   			$html = $myPT->stopBuffer();
   			$this->workarea_row_draw("Dokument", $html);
 		}
@@ -1125,7 +1125,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		?>
 		<select name="folder1" class="input" style="width:250px" onchange="document.forms.editform.folder1_new.value='';">
 		<option value="">...</option>
-		<?
+		<?php
 		foreach ($_folder AS $k)
 		{
 			$selected = "";
@@ -1134,14 +1134,14 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				$selected = 'selected="selected"';
 			}
 		?>
-		<option <?=$selected?>><?=$k?></option>
-		<?
+		<option <?php echo $selected ?>><?php echo $k ?></option>
+		<?php
 		}
 		?>
 		</select>&nbsp;<input name="folder1_new" type="text" class="input" value="" style="width:200px" onfocus="document.forms.editform.folder1.selectedIndex=0;"><br>
 		<select name="folder2" class="input" style="width:250px" onchange="document.forms.editform.folder2_new.value='';">
 		<option value="">...</option>
-		<?
+		<?php
 
 		foreach ($_folder AS $k)
 		{
@@ -1151,14 +1151,14 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				$selected = 'selected="selected"';
 			}
 		?>
-		<option <?=$selected?>><?=$k?></option>
-		<?
+		<option <?php echo $selected ?>><?php echo $k ?></option>
+		<?php
 		}
 		?>
 		</select>&nbsp;<input name="folder2_new" type="text" class="input" value="" style="width:200px" onfocus="document.forms.editform.folder2.selectedIndex=0;"><br>
 		<select name="folder3" class="input" style="width:250px" onchange="document.forms.editform.folder3_new.value='';">
 		<option value="">...</option>
-		<?
+		<?php
 
 		foreach ($_folder AS $k)
 		{
@@ -1168,12 +1168,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				$selected = 'selected="selected"';
 			}
 		?>
-		<option <?=$selected?>><?=$k?></option>
-		<?
+		<option <?php echo $selected ?>><?php echo $k ?></option>
+		<?php
 		}
 		?>
 		</select>&nbsp;<input name="folder3_new" type="text" class="input" value="" style="width:200px" onfocus="document.forms.editform.folder3.selectedIndex=0;"><br>
-		<?
+		<?php
 		$html = $myPT->stopBuffer();
 		$this->workarea_row_draw("Ordner", $html);
 
@@ -1193,7 +1193,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		if ($myObj->versioncount == 0 AND $grp_type == 2) // nur bei manueller Versionierung
 		{
 			$myPT->startBuffer();
-			?><p>Bezeichnung</p><input name="ver_bez" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile" type="file" class="input"><br><br/><?
+			?><p>Bezeichnung</p><input name="ver_bez" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile" type="file" class="input"><br><br/><?php
 
 
 
@@ -1220,10 +1220,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
             <td class="windowFooterWhite">
 		    &nbsp;
 			</td>
-            <td align="right" class="windowFooterWhite">	<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses <?if ($type==MB_IMAGE){echo "Bild";}else{echo "Dokument";}?> wirklich l&ouml;schen?')"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite">	<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses <?php if ($type==MB_IMAGE){echo "Bild";}else{echo "Dokument";} ?> wirklich l&ouml;schen?')"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-		<?
+		<?php
 		$this->workarea_stop_draw();
 		?>
 		</form>
@@ -1233,7 +1233,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
      		// NOP
    		}
    		</SCRIPT>
-		<?
+		<?php
 	}
 
 
@@ -1259,7 +1259,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			$myObj->initVersion($row);
 			$bez = $row["ver_bez"];
 			$myPT->startBuffer();
-			?><table><tr><td width="475"><a href="<?=MEDIABASEURL .  $myObj->physical_folder?>/<?=$myObj->filename?> " target="_blank"><?
+			?><table><tr><td width="475"><a href="<?php echo MEDIABASEURL .  $myObj->physical_folder ?>/<?php echo $myObj->filename ?> " target="_blank"><?php
 
 			if ($myObj->type == MB_IMAGE)
 			{
@@ -1268,10 +1268,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			else
 			{
 			?>
-	 		<a href="<?=$myObj->url?> " target="_blank"><?=$myObj->filename?></a>
-			<?
+	 		<a href="<?php echo $myObj->url ?> " target="_blank"><?php echo $myObj->filename ?></a>
+			<?php
 			}
-			?></a></td><td><?if ($grp_type == 2 OR $mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin")){?><input type="image" src="img/b_delete.gif" name="ver<?=$row["ver_id"]?>_delete"><?}else echo"&nbsp;";?></td></tr></table><br/><p>Bezeichnung</p><input name="ver<?=$row["ver_id"]?>_bez" type="text" class="input" value="<?=htmlentities($bez)?>" style="width:250px"><?
+			?></a></td><td><?php if ($grp_type == 2 OR $mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin")){ ?><input type="image" src="img/b_delete.gif" name="ver<?php php echo $row["ver_id"] ?>_delete"><?php }else echo"&nbsp;"; ?></td></tr></table><br/><p>Bezeichnung</p><input name="ver<?php php echo $row["ver_id"] ?>_bez" type="text" class="input" value="<?php php echo htmlentities($bez) ?>" style="width:250px"><?php
 			$html = $myPT->stopBuffer();
 			if ($myObj->type == MB_IMAGE)
 			{
@@ -1285,7 +1285,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			?><p>Bezeichnung</p><input name="ver_bez1" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile1" type="file" class="input"><br><br/>
 <p>Bezeichnung</p><input name="ver_bez2" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile2" type="file" class="input"><br><br/>
 <p>Bezeichnung</p><input name="ver_bez3" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile3" type="file" class="input"><br><br/>
-			<?
+			<?php
 			$html = $myPT->stopBuffer();
 
 			$this->workarea_row_draw("Neue Versionen anlegen", $html);
@@ -1300,7 +1300,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-		<?
+		<?php
 		$this->workarea_stop_draw();
 	}
 
@@ -1325,7 +1325,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 <SCRIPT LANGUAGE=javascript>
 function Store()
 {
-  OIE.GetAsBase64('<?=$myObj->filename?>'); // Nur zum Bestimmen des Typs
+  OIE.GetAsBase64('<?php echo $myObj->filename ?>'); // Nur zum Bestimmen des Typs
   document.oieform.imagedata64.value = OIE.EncodedData;
   return (OIE.EncodedData.length != 0);
 }
@@ -1336,7 +1336,7 @@ function Load()
   OIE.BgColor='#FFFFFF';
   //OIE.SetFeature('ImageMenu',false);
   OIE.AddSizePreset(120,90);
-  OIE.LoadFromURL('<?=MEDIABASEURL . $myObj->physical_folder."/".$myObj->filename;?>');
+  OIE.LoadFromURL('<?php echo MEDIABASEURL . $myObj->physical_folder."/".$myObj->filename; ?>');
 }
 </SCRIPT>
 <SCRIPT LANGUAGE=javascript>
@@ -1364,14 +1364,14 @@ function initoid()
 <BR>
 <form action="backend.php" method="post" enctype="multipart/form-data" name="oieform">
 <input type="hidden" name="page" value="Editor,Media,update">
-<input type="hidden" name="b" value="<?=$blocknr_oie?>">
-<input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">
-<input type="hidden" name="folder" value="<?=$_REQUEST["folder"]?>">
-<input type="hidden" name="type" value="<?=$_REQUEST["type"]?>">				   				   
-<input type="hidden" name="sortorder" value="<?=$_REQUEST["sortorder"]?>">
-<input type="hidden" name="p" value="<?=$_REQUEST["p"]?>">	
-<input type="hidden" name="a" value="<?=$_REQUEST["a"]?>">
-<input type="hidden" name="objecttype" value="<?=$type?>">	
+<input type="hidden" name="b" value="<?php echo $blocknr_oie ?>">
+<input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
+<input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
+<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   				   
+<input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
+<input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">	
+<input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">
+<input type="hidden" name="objecttype" value="<?php echo $type ?>">	
 <input type="hidden" name="imagedata64">
 </CENTER></td><td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 </tr>
@@ -1385,7 +1385,7 @@ function initoid()
       </tr>
     </table>      
   </FORM>
-  <?
+  <?php
 
 	}
 
@@ -1485,12 +1485,12 @@ function initoid()
 		var smallSquareWidth = 7;	// Size of small squares used to resize crop rectangle
 
 		// Size of image shown in crop tool
-		var crop_imageWidth = <?=$x2?>;
-		var crop_imageHeight = <?=$y2?>;
+		var crop_imageWidth = <?php echo $x2 ?>;
+		var crop_imageHeight = <?php echo $y2 ?>;
 
 		// Size of original image
-		var crop_originalImageWidth = <?=$x?>;
-		var crop_originalImageHeight = <?=$y?>;
+		var crop_originalImageWidth = <?php echo $x ?>;
+		var crop_originalImageHeight = <?php echo $y ?>;
 
 		var crop_minimumPercent = 10;	// Minimum percent - resize
 		var crop_maximumPercent = 200;	// Maximum percent -resize
@@ -1514,23 +1514,23 @@ function initoid()
 				document.forms.editform.size_method.value=1;
 				break;
 
-				<?
+				<?php
 				$_definitions = $myApp->getImageEditingFormatArray($myObj);
 				$i=0;
 				foreach ($_definitions AS $_def)
 				{
 					$i++;
 					?>
-					case "<?=$i?>":
-					document.forms.editform.size_method.value=<?=$_def["method"]?>;
-					document.forms.editform.size_x.value=<?=$_def["x"]?>;
-					document.forms.editform.size_y.value=<?=$_def["y"]?>;
-					document.forms.editform.size_sharpening.selectedIndex=<?=$_def["sharpening"]?>;
-					document.forms.editform.size_quality.value=<?=$_def["quality"]?>;
-					document.forms.editform.size_versionaction.selectedIndex=<?=$_def["versionaction"]?>;
-					document.forms.editform.size_newversion.value='<?=$myPT->codeH($_def["newversion"])?>';
+					case "<?php echo $i ?>":
+					document.forms.editform.size_method.value=<?php echo $_def["method"] ?>;
+					document.forms.editform.size_x.value=<?php echo $_def["x"] ?>;
+					document.forms.editform.size_y.value=<?php echo $_def["y"] ?>;
+					document.forms.editform.size_sharpening.selectedIndex=<?php echo $_def["sharpening"] ?>;
+					document.forms.editform.size_quality.value=<?php echo $_def["quality"] ?>;
+					document.forms.editform.size_versionaction.selectedIndex=<?php echo $_def["versionaction"] ?>;
+					document.forms.editform.size_newversion.value='<?php echo $myPT->codeH($_def["newversion"]) ?>';
 					break;
-					<?
+					<?php
 				}
 				?>
 
@@ -1655,7 +1655,7 @@ function initoid()
 	              <td class="padding10">
 	              Format: <select name="size_format" class="listmenu" onchange="painter_changeCropFormat();">
 	                <option value="0" selected>...</option>
-	                <?
+	                <?php
 	                $_definitions = $myApp->getImageEditingFormatArray($myObj);
 	                $i=0;
 	                foreach ($_definitions AS $_def)
@@ -1713,7 +1713,7 @@ function initoid()
 	      </tr>
 	    </table>
 		<br/>
-	    <?
+	    <?php
 
 
 	    $this->tab_new();
@@ -1731,7 +1731,7 @@ function initoid()
         <td class="windowBlank">
        	<br/>    		
 		<div id="imageContainer">
-		<img src="<?=$url_image?>" width="<?=$x2?>" height="<?=$y2?>">
+		<img src="<?php echo $url_image ?>" width="<?php echo $x2 ?>" height="<?php echo $y2 ?>">
 		</div>
 		<br/>
 		<br/>
@@ -1749,7 +1749,7 @@ function initoid()
 	              <td class="padding10">
 	              Aktion:&nbsp;<select name="size_versionaction" class="listmenu">
 	                <option value="0">Version überschreiben</option>
-	                <option value="1" <?if ($ver_id==0){echo 'selected="selected"';}?>>neue Version:</option>
+	                <option value="1" <?php if ($ver_id==0){echo 'selected="selected"';} ?>>neue Version:</option>
 				  </select>
 	  			  <input type="text" class="input" name="size_newversion" style="width:200px" >		  
 				
@@ -1763,8 +1763,8 @@ function initoid()
 	   	<div style="visibility:hidden;position:absolute" >
 		<input type="text" class="textInput" name="crop_x" id="input_crop_x" value="0">
 		<input type="text" class="textInput" name="crop_y" id="input_crop_y" value="0">
-		<input type="text" class="textInput" name="crop_width" id="input_crop_width" value="<?=$x?>">
-		<input type="text" class="textInput" name="crop_height" id="input_crop_height" value="<?=$y?>">
+		<input type="text" class="textInput" name="crop_width" id="input_crop_width" value="<?php echo $x ?>">
+		<input type="text" class="textInput" name="crop_height" id="input_crop_height" value="<?php echo $y ?>">
 		<input type="text" class="textInput" name="crop_percent_size" id="crop_percent_size" value="100">
 		<span id="label_dimension"></span>
 		</div>
@@ -1778,9 +1778,9 @@ function initoid()
           <tr>
 
             <td class="windowFooterWhite">
-        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="Vorschau" onclick="preview(<?=$myObj->id?>,<?=$ver_id?>)">
+        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="Vorschau" onclick="preview(<?php echo $myObj->id ?>,<?php echo $ver_id ?>)">
             </td>
-            <td align="right" class="windowFooterWhite"><?if ($ver_id!=0){?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:if (confirm('Diese Version wirklich l&ouml;schen?')){document.forms.editform.deleteversion.value=1;document.forms.editform.submit();}"><?}?> <input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" onclick="document.forms.editform.submit();">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($ver_id!=0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:if (confirm('Diese Version wirklich l&ouml;schen?')){document.forms.editform.deleteversion.value=1;document.forms.editform.submit();}"><?php } ?> <input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" onclick="document.forms.editform.submit();">&nbsp;&nbsp;</td>
           </tr>
         </table>
       		</td>
@@ -1794,9 +1794,9 @@ function initoid()
     </table>
 		<script type="text/javascript">
 		init_imageCrop();
-		cropDiv_selectionsize.innerHTML = '<span><?=$_images[$ver_id]["x"]?>x<?=$_images[$ver_id]["y"]?> (<?=(int)($_images[$ver_id]["size"]/1024)?> kb)</span>';
+		cropDiv_selectionsize.innerHTML = '<span><?php echo $_images[$ver_id]["x"] ?>x<?php echo $_images[$ver_id]["y"] ?> (<?php echo (int)($_images[$ver_id]["size"]/1024) ?> kb)</span>';
 		</script>
-		<?
+		<?php
 
 	}
 
@@ -1865,17 +1865,17 @@ function initoid()
 		  <tr>
             <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-		  <?
+		  <?php
 
 		  while ($row_data=mysql_fetch_array($rs_data))
 		  {
           ?>
           <tr>
-            <td class="tableBody"><?=$row_data["med_id"]?></td>
+            <td class="tableBody"><?php echo $row_data["med_id"] ?></td>
 			
             <td class="tableBody">
-			<a href="backend.php?page=Editor,Media,edit&id=<?=$row_data["med_id"]?>&folder=<?=urlencode($row_data["med_logical_folder1"])?>&type=0&sortorder=1&p=1&a=10">
-			<?
+			<a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>&folder=<?php echo urlencode($row_data["med_logical_folder1"]) ?>&type=0&sortorder=1&p=1&a=10">
+			<?php
 			if ($row_data["med_type"]==1)
 			{
 
@@ -1930,17 +1930,17 @@ function initoid()
 		  ?>
 		  </a>
 		   </td>
-            <td class="tableBody"><?=$row_data["med_bez"]?></td>
-			<td class="tableBody"><?=$_mediagroups[$row_data["grp_id"]]?> / <?=$row_data["med_logical_folder1"]?></td>
-		    <td class="tableBody"><?if($row_data["med_date"]!=0){echo date('d.m.Y H:i',$row_data["med_date"]);}?><br><?=$myAdm->displayUser($row_data["usr_id"]);?></td>
+            <td class="tableBody"><?php echo $row_data["med_bez"] ?></td>
+			<td class="tableBody"><?php echo $_mediagroups[$row_data["grp_id"]] ?> / <?php echo $row_data["med_logical_folder1"] ?></td>
+		    <td class="tableBody"><?php if($row_data["med_date"]!=0){echo date('d.m.Y H:i',$row_data["med_date"]);} ?><br><?php php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td>&nbsp;</td>
-			<td align="right" nowrap class="tableBody"><a href="#" onclick="lightbox_switch(<?=$row_data["med_id"]?>,0);return false;"><img src="img/b_pinadd.gif" alt="Objekt in Sammelbox legen / aus Sammelbox nehmen" title="Objekt in Sammelbox legen / aus Sammelbox nehmen" width="22" height="22" border="0" align="absmiddle"></a> <a href="backend.php?page=Editor,Media,edit&id=<?=$row_data["med_id"]?>&folder=<?=urlencode($row_data["med_logical_folder1"])?>&type=0&sortorder=1&p=1&a=10"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
+			<td align="right" nowrap class="tableBody"><a href="#" onclick="lightbox_switch(<?php echo $row_data["med_id"] ?>,0);return false;"><img src="img/b_pinadd.gif" alt="Objekt in Sammelbox legen / aus Sammelbox nehmen" title="Objekt in Sammelbox legen / aus Sammelbox nehmen" width="22" height="22" border="0" align="absmiddle"></a> <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>&folder=<?php echo urlencode($row_data["med_logical_folder1"]) ?>&type=0&sortorder=1&p=1&a=10"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
             
             </tr>
           <tr>
             <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 		  }
 ?>			
           <tr>
@@ -1951,7 +1951,7 @@ function initoid()
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
     </table>
-	<?
+	<?php
 
 	$url = "backend.php?page=Editor,Media,search&grp_id=".$this->grp_id."&folder=".urlencode($this->folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&a=" . $this->itemcount."&v=".$myRequest->getURL("v")."&s=".$myRequest->getURL("s")."&p=";
 
@@ -1963,7 +1963,7 @@ function initoid()
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table><br> 
-	<?
+	<?php
 
 	return $myPT->stopBuffer();
 	}
@@ -1981,18 +1981,18 @@ function initoid()
 		$this->displayJS_Lightbox();
 
 		?>
-		<form action="backend.php" method="post" enctype="multipart/form-data" name="editform" <? if ($block_nr=="p"){?>onsubmit="return false;"<?}?>>
+		<form action="backend.php" method="post" enctype="multipart/form-data" name="editform" <?php if ($block_nr=="p"){ ?>onsubmit="return false;"<?php } ?>>
         <input type="hidden" name="page" value="Editor,Media,upload2">
-        <input type="hidden" name="grp_id" value="<?=$this->grp_id?>">
-        <input type="hidden" name="folder" value="<?=$this->folder?>">
-		<input type="hidden" name="type" value="<?=$this->type?>">				   				   
-		<input type="hidden" name="sortorder" value="<?=$this->sortorder?>">
-		<input type="hidden" name="p" value="<?=$this->pagenr?>">		  
-		<input type="hidden" name="a" value="<?=$this->itemcount?>">
-		<input type="hidden" name="objecttype" value="<?=$type?>">	
+        <input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">
+        <input type="hidden" name="folder" value="<?php echo $this->folder ?>">
+		<input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+		<input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
+		<input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
+		<input type="hidden" name="a" value="<?php echo $this->itemcount ?>">
+		<input type="hidden" name="objecttype" value="<?php echo $type ?>">	
 		<input type="hidden" name="b" value="1">
 				   
-		<?
+		<?php
 		$headline = "Mediaobjekte hochladen";
 		$this->displayHeadline($headline);
 
@@ -2010,7 +2010,7 @@ function initoid()
   		?>
   		<input name="userfile" type="file" class="input"><br>
   		<input type="checkbox" value="1" name="documentonly"> Bilder als Dokumente handhaben    		
-  		<?
+  		<?php
   		$html = $myPT->stopBuffer();
   		$this->workarea_row_draw("Bild / Dokument",$html);
   		$myPT->startBuffer();
@@ -2018,7 +2018,7 @@ function initoid()
 
 		<select name="folder1" class="input" style="width:250px" onchange="document.forms.editform.folder1_new.value='';">
 		<option value="_upload">...</option>
-		<?
+		<?php
 		$myMB = new PhenotypeMediaBase();
 		$_folder = $myMB->getLogicalFolder($this->_mediagroups);
 		if (!in_array("_upload",$_folder))
@@ -2031,12 +2031,12 @@ function initoid()
 			$selected="";
 			if ($k=="_upload"){$selected='selected';}
 		?>
-		<option <?=$selected?>><?=$k?></option>
-		<?
+		<option <?php echo $selected ?>><?php echo $k ?></option>
+		<?php
 		}
 		?>
 		</select>&nbsp;<input name="folder1_new" type="text" class="input" value="" style="width:200px" onfocus="document.forms.editform.folder1.selectedIndex=0;">
-		<?
+		<?php
 		$html = $myPT->stopBuffer();
 		$this->workarea_row_draw("Ordner",$html);
 
@@ -2049,15 +2049,15 @@ function initoid()
 		$myPT->startBuffer();
 		?>
 		<select name="grp_id_upload" class="input" style="width:120px">
-		<?
+		<?php
 		if ($this->grp_id==0){$grp_id=2;}else{$grp_id=$this->grp_id;}
 		foreach ($this->_mediagroups AS $k=>$v)
 		{
 			$selected="";
 			if ($k == $grp_id){$selected='selected="selected"';} // Standard
 		?>
-		<option <?=$selected?> value="<?=$k?>"><?=$v?></option>
-		<?
+		<option <?php echo $selected ?> value="<?php echo $k ?>"><?php echo $v ?></option>
+		<?php
 		}
 
 		$html = $myPT->stopBuffer();
@@ -2071,11 +2071,11 @@ function initoid()
             <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="Hochladen">&nbsp;&nbsp;</td>
           </tr>
         </table>
-		<?
+		<?php
 		$this->workarea_stop_draw();
 		?>
 		</form>				
-		<?
+		<?php
 		return  $myPT->stopBuffer();
 	}
 
@@ -2101,18 +2101,18 @@ function initoid()
 			$myAdm->removeDirComplete($save_path,1);
 		}
 		?>
-		<form action="backend.php" method="post" enctype="multipart/form-data" name="editform" <? if ($block_nr=="p"){?>onsubmit="return false;"<?}?>>
+		<form action="backend.php" method="post" enctype="multipart/form-data" name="editform" <?php if ($block_nr=="p"){ ?>onsubmit="return false;"<?php } ?>>
         <input type="hidden" name="page" value="Editor,Media,import">
-        <input type="hidden" name="grp_id" value="<?=$this->grp_id?>">
-        <input type="hidden" name="folder" value="<?=$this->folder?>">
-		<input type="hidden" name="type" value="<?=$this->type?>">				   				   
-		<input type="hidden" name="sortorder" value="<?=$this->sortorder?>">
-		<input type="hidden" name="p" value="<?=$this->pagenr?>">		  
-		<input type="hidden" name="a" value="<?=$this->itemcount?>">
-		<input type="hidden" name="objecttype" value="<?=$type?>">	
+        <input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">
+        <input type="hidden" name="folder" value="<?php echo $this->folder ?>">
+		<input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+		<input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
+		<input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
+		<input type="hidden" name="a" value="<?php echo $this->itemcount ?>">
+		<input type="hidden" name="objecttype" value="<?php echo $type ?>">	
 		<input type="hidden" name="b" value="1">
 				   
-		<?
+		<?php
 		$headline = "Mediaobjekte importieren";
 		$this->displayHeadline($headline);
 
@@ -2133,16 +2133,16 @@ function initoid()
              <td width="120" class="padding30" valign="top"><p><strong>&nbsp;</strong></p>
              </td>
              <td width="509" class="formarea">
-             <?
+             <?php
              if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE"))
              {
 			 ?>
 			 <script type="text/javascript" src="backend.php?page=Editor,Media,import&b=99"></script>
-			 <?
+			 <?php
              }else{
 			 ?>
-			 <script type="text/javascript"><?=$this->displayImport_Step1RadJS();?></script>
-             <?
+			 <script type="text/javascript"><?php echo $this->displayImport_Step1RadJS(); ?></script>
+             <?php
              }
              ?>
 			 </td>
@@ -2157,11 +2157,11 @@ function initoid()
             <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="Weiter">&nbsp;&nbsp;</td>
           </tr>
         </table>
-		<?
+		<?php
 		$this->workarea_stop_draw();
 		?>
 		</form>				
-		<?		
+		<?php		
 		return $myPT->stopBuffer();
 	}
 
@@ -2250,31 +2250,31 @@ function initoid()
 			{
             ?>
 			document.write ('<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" width= "400" height= "400" cobase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">');
-			<?
+			<?php
 			}
 			else
 			{
 			?>
 			document.write ('<object type="application/x-java-applet;version=1.4.1" width= "400" height= "400" >');
-			<?	
+			<?php	
 			}
 			?>
-			document.write ('<param name="archive" value="<?=ADMINFULLURL?>dndplus.jar">');
+			document.write ('<param name="archive" value="<?php echo ADMINFULLURL ?>dndplus.jar">');
 			document.write ('<param name="code" value="com.radinks.dnd.DNDAppletPlus">');
 			document.write ('<param name="name" value="Rad Upload Plus">');
-		   	document.write ('<param name = "url" value = "<?=ADMINFULLURL?>backend.php?page=Editor,Media,ddupload&usr_id=<?=$mySUser->id?>&PHPSESSID=<?=session_id()?>">'); 
-		   	document.write ('<param name = "url" value = "<?=ADMINFULLURL?>backend.php?page=Editor,Media,ddupload&usr_id=<?=$mySUser->id?>&PHPSESSID=<?=session_id()?>">'); 
-   			document.write ('<param name = "message" value="<?=ADMINFULLURL?>backend.php?page=Editor,Media,import&b=98">');
- 		  	<?
+		   	document.write ('<param name = "url" value = "<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,ddupload&usr_id=<?php echo $mySUser->id ?>&PHPSESSID=<?php echo session_id() ?>">'); 
+		   	document.write ('<param name = "url" value = "<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,ddupload&usr_id=<?php echo $mySUser->id ?>&PHPSESSID=<?php echo session_id() ?>">'); 
+   			document.write ('<param name = "message" value="<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,import&b=98">');
+ 		  	<?php
  		  	if (isset ($_SERVER['PHP_AUTH_USER']))
  		  	{
  		  		?>
- 		  		document.write ('<?=printf('<param name="chap" value="%s">', base64_encode($_SERVER['PHP_AUTH_USER'].":".$_SERVER['PHP_AUTH_PW']));?>');
- 		  		<?
+ 		  		document.write ('<?php echo printf('<param name="chap" value="%s">', base64_encode($_SERVER['PHP_AUTH_USER'].":".$_SERVER['PHP_AUTH_PW'])); ?>');
+ 		  		<?php
  		  	}
 			?>
 			document.write ('</object>');
-			<?
+			<?php
 
 		}
 		else // DND Lite
@@ -2283,30 +2283,30 @@ function initoid()
 			{
             ?>
 			document.write ('<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" width= "400" height= "400" cobase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">');
-			<?
+			<?php
 			}
 			else
 			{
 			?>
 			document.write ('<object type="application/x-java-applet;version=1.4.1" width= "400" height= "400" >');
-			<?	
+			<?php	
 			}
 			?>
-			document.write ('<param name="archive" value="<?=ADMINFULLURL?>dndlite.jar">');
+			document.write ('<param name="archive" value="<?php echo ADMINFULLURL ?>dndlite.jar">');
 			document.write ('<param name="code" value="com.radinks.dnd.DNDAppletLite">');
 			document.write ('<param name="name" value="Rad Upload Lite">');
-		   	document.write ('<param name = "url" value = "<?=ADMINFULLURL?>backend.php?page=Editor,Media,ddupload&usr_id=<?=$mySUser->id?>&PHPSESSID=<?=session_id()?>">'); 
+		   	document.write ('<param name = "url" value = "<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,ddupload&usr_id=<?php echo $mySUser->id ?>&PHPSESSID=<?php echo session_id() ?>">'); 
    			document.write ('<param name = "message" value="<br\>&nbsp;Drag & Drop - Upload">');
- 		  	<?
+ 		  	<?php
  		  	if (isset ($_SERVER['PHP_AUTH_USER']))
  		  	{
  		  		?>
- 		  		document.write ('<?=printf('<param name="chap" value="%s">', base64_encode($_SERVER['PHP_AUTH_USER'].":".$_SERVER['PHP_AUTH_PW']));?>');
- 		  		<?
+ 		  		document.write ('<?php echo printf('<param name="chap" value="%s">', base64_encode($_SERVER['PHP_AUTH_USER'].":".$_SERVER['PHP_AUTH_PW'])); ?>');
+ 		  		<?php
  		  	}
 			?>
 			document.write ('</object>');
-			<?
+			<?php
 		}
 
 
@@ -2328,17 +2328,17 @@ function initoid()
 
 
 		?>
-		<form action="backend.php" method="post" enctype="multipart/form-data" name="editform" <? if ($block_nr=="p"){?>onsubmit="return false;"<?}?>>
+		<form action="backend.php" method="post" enctype="multipart/form-data" name="editform" <?php if ($block_nr=="p"){ ?>onsubmit="return false;"<?php } ?>>
         <input type="hidden" name="page" value="Editor,Media,import2">
-        <input type="hidden" name="grp_id" value="<?=$this->grp_id?>">
-        <input type="hidden" name="folder" value="<?=$this->folder?>">
-		<input type="hidden" name="type" value="<?=$this->type?>">				   				   
-		<input type="hidden" name="sortorder" value="<?=$this->sortorder?>">
-		<input type="hidden" name="p" value="<?=$this->pagenr?>">		  
-		<input type="hidden" name="a" value="<?=$this->itemcount?>">
-		<input type="hidden" name="objecttype" value="<?=$type?>">	
+        <input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">
+        <input type="hidden" name="folder" value="<?php echo $this->folder ?>">
+		<input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
+		<input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
+		<input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
+		<input type="hidden" name="a" value="<?php echo $this->itemcount ?>">
+		<input type="hidden" name="objecttype" value="<?php echo $type ?>">	
 				   
-		<?
+		<?php
 		$headline = "Mediaobjekte importieren";
 		$this->displayHeadline($headline);
 
@@ -2394,9 +2394,9 @@ function initoid()
 				$name = "folder_".sha1($file);
 				?>
 				Ordner<br/>
-				<select name="<?=$name?>" class="input" style="width:200px" onchange="document.forms.editform.<?=$name?>_new.value='';">
+				<select name="<?php echo $name ?>" class="input" style="width:200px" onchange="document.forms.editform.<?php echo $name ?>_new.value='';">
 				<option value="" selected>...</option>
-				<?
+				<?php
 				$_folder = $myMB->getLogicalFolder($this->_mediagroups);
 				if (!in_array("_import",$_folder))
 				{
@@ -2406,12 +2406,12 @@ function initoid()
 				foreach ($_folder AS $k)
 				{
 				?>
-				<option><?=$k?></option>
-				<?
+				<option><?php echo $k ?></option>
+				<?php
 				}
 				?>
-				</select>&nbsp;<input name="<?=$name?>_new" type="text" class="input" value="" style="width:250px" onfocus="document.forms.editform.<?=$name?>.selectedIndex=0;"><br/>
-				<?
+				</select>&nbsp;<input name="<?php echo $name ?>_new" type="text" class="input" value="" style="width:250px" onfocus="document.forms.editform.<?php echo $name ?>.selectedIndex=0;"><br/>
+				<?php
 				$html .= $myPT->stopBuffer();
 
 
@@ -2426,24 +2426,24 @@ function initoid()
 		          <tr>
 		            <td valign="top" class="padding30" width="120">
 		            <p><strong>
-		            <?
+		            <?php
 		            if (substr($file,-4)==".jpg")
 		            {
 		            ?>
-		            <img src="backend.php?page=Editor,Media,streamImportPreviewImage&file=<?=urlencode($file)?>">
-		            <?
+		            <img src="backend.php?page=Editor,Media,streamImportPreviewImage&file=<?php echo urlencode($file) ?>">
+		            <?php
 		            }
 					?>
 		            </strong></p>
 		            </td>
-		            <td class="formarea"><p><?=$html?></p></td>
+		            <td class="formarea"><p><?php echo $html ?></p></td>
 		
 		          </tr>
 		          <tr>
 		            <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
 		          </tr>
 				</table>
-				<?
+				<?php
 			}
 		}
 		if ($n==0)
@@ -2460,15 +2460,15 @@ function initoid()
 		$myPT->startBuffer();
 		?>
 		<select name="grp_id_import" class="input" style="width:120px">
-		<?
+		<?php
 		if ($this->grp_id==0){$grp_id=2;}else{$grp_id=$this->grp_id;}
 		foreach ($this->_mediagroups AS $k=>$v)
 		{
 			$selected="";
 			if ($k == $grp_id){$selected='selected="selected"';} // Standard
 		?>
-		<option <?=$selected?> value="<?=$k?>"><?=$v?></option>
-		<?
+		<option <?php echo $selected ?> value="<?php echo $k ?>"><?php echo $v ?></option>
+		<?php
 		}
 
 		$html = $myPT->stopBuffer();
@@ -2479,7 +2479,7 @@ function initoid()
 		$myPT->startBuffer();
 		?>
 		<input type="checkbox" value="1" name="documentonly"> Bilder als Dokumente handhaben    		
-		<?
+		<?php
 		$html = $myPT->stopBuffer();
 		$this->workarea_row_draw("Bild / Dokument",$html);
 
@@ -2489,7 +2489,7 @@ function initoid()
 		?>
 		<select name="folder1" class="input" style="width:200px" onchange="document.forms.editform.folder1_new.value='';">
 		<option value="_import">...</option>
-		<?
+		<?php
 		$myMB = new PhenotypeMediaBase();
 		$_folder = $myMB->getLogicalFolder($this->_mediagroups);
 		if (!in_array("_import",$_folder))
@@ -2503,12 +2503,12 @@ function initoid()
 			if ($k=="_import"){$selected='selected';}
 
 		?>
-		<option <?=$selected?>><?=$k?></option>
-		<?
+		<option <?php echo $selected ?>><?php echo $k ?></option>
+		<?php
 		}
 		?>
 		</select>&nbsp;<input name="folder1_new" type="text" class="input" value="" style="width:250px" onfocus="document.forms.editform.folder1.selectedIndex=0;">
-		<?
+		<?php
 		$html = $myPT->stopBuffer();
 		$this->workarea_row_draw("Ordner",$html);
 
@@ -2521,7 +2521,7 @@ function initoid()
 		$myPT->startBuffer();
 		?>
 		<input type="checkbox" value="1" name="lightbox"> Medien in die Sammelbox aufnehmen    		
-		<?
+		<?php
 		$html = $myPT->stopBuffer();
 		$this->workarea_row_draw("Sammelbox",$html);
 
@@ -2534,11 +2534,11 @@ function initoid()
             <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="Importieren">&nbsp;&nbsp;</td>
           </tr>
         </table>
-		<?
+		<?php
 		$this->workarea_stop_draw();
 		?>
 		</form>				
-		<?
+		<?php
 		return $myPT->stopBuffer();
 	}
 
@@ -2627,7 +2627,7 @@ function initoid()
 		<script type="text/javascript">
 		self.focus();
 		</script>
-		<?
+		<?php
 		$image = $this->smallphotoshop($img_id,$ver_id);
 
 		if ($image!=false)
@@ -2639,14 +2639,14 @@ function initoid()
 
 			list($x, $y) = getimagesize($targetfile);
 		  ?>
-		  <div style="width:<?=$x?>px;padding:15px">
-		  <img src="backend.php?page=Editor,Media,streamPainterPreviewImage&img_id=<?=$img_id?>" width="<?=$x?>" height="<?=$y?>" border="1" alt="Preview" title="Preview"><br/>
+		  <div style="width:<?php echo $x ?>px;padding:15px">
+		  <img src="backend.php?page=Editor,Media,streamPainterPreviewImage&img_id=<?php echo $img_id ?>" width="<?php echo $x ?>" height="<?php echo $y ?>" border="1" alt="Preview" title="Preview"><br/>
 		  <span style="text-align:right"><p>
-		  <?=$x?> x <?=$y?> (<?=(int)(filesize($targetfile)/1024)?> kb)
+		  <?php echo $x ?> x <?php echo $y ?> (<?php echo (int)(filesize($targetfile)/1024) ?> kb)
 		  </p>
 		  </span>
 		  </div>
-		  <?
+		  <?php
 
 		}
 
@@ -3544,7 +3544,7 @@ function initoid()
 		global $myRequest;
 		?>
 		<table width="240" border="0" cellpadding="2" cellspacing="2">
-		<?
+		<?php
 		$save_path=MEDIABASEPATH. "/import/";
 		if(!file_exists($save_path)){mkdir ($save_path,UMASK);}
 		$save_path.=$myRequest->getI("usr_id")."/";
@@ -3559,8 +3559,8 @@ function initoid()
 		for($i=0 ; $i < $k ; $i++)
 		{
 		?>
-		<tr><td width="180"><strong><?=$file['name'][$i]?></strong></td><td align="right"><?=$file['size'][$i]?></td></tr>
-		<?
+		<tr><td width="180"><strong><?php echo $file['name'][$i] ?></strong></td><td align="right"><?php echo $file['size'][$i] ?></td></tr>
+		<?php
 
 		if(isset($save_path) && $save_path!="")
 		{
@@ -3586,19 +3586,19 @@ function initoid()
 		{
 		?>
 		<tr><td colspan="2">&nbsp;--------------------------------------------------------</td></tr>
-		<?
+		<?php
 		}
 		foreach ($_listfiles AS $file)
 		{
 		?>
-		<tr><td width="180"><strong><?=$file?></strong></td><td align="right"><?=filesize($save_path.$file)?></td></tr>
+		<tr><td width="180"><strong><?php echo $file ?></strong></td><td align="right"><?php echo filesize($save_path.$file) ?></td></tr>
 		
-		<?
+		<?php
 		}
 
 		?>
 		</table>
-		<?
+		<?php
 		exit();
 	}
 

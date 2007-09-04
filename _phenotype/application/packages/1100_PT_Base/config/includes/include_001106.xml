@@ -12,7 +12,7 @@ Tags</inc_description>
 		<inc_usage_includecomponent>0</inc_usage_includecomponent>
 		<inc_usage_page>0</inc_usage_page>
 	</meta>
-	<script>&#60;?
+	<script>&#60;?php
 
 class PhenotypeInclude_1006 extends PhenotypeInclude
 {
@@ -34,11 +34,11 @@ class PhenotypeInclude_1006 extends PhenotypeInclude
 		?&#62;
 		&#60;form action=&#34;index.php&#34; method=&#34;POST&#34;&#62;
 		&#60;select name=&#34;id&#34;&#62;
-		&#60;?=$options?&#62;
+		&#60;?php echo $options ?&#62;
 		&#60;/select&#62;
 		&#60;input type=&#34;submit&#34; value=&#34;Los&#34;&#62;
 		&#60;/form&#62;
-		&#60;?
+		&#60;?php
 
 	}
 

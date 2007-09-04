@@ -1,4 +1,4 @@
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
@@ -7,7 +7,7 @@ require("_session.inc.php");
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?> - Redaktion</title>
+<title>phenotype <?php echo PT_VERSION ?> - Redaktion</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -20,7 +20,7 @@ require("_session.inc.php");
 
 <body>
 <script language="JavaScript">self.focus();</script>
-<?
+<?php
 $id = $myRequest->getI("id");
 $myPT->displaySequence(0,0,$id,(int)$_REQUEST["b"],1);
 ?>

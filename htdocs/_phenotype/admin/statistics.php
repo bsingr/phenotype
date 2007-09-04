@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_analyse"))
 {
   $url = "noaccess.php";
@@ -29,29 +29,29 @@ if (!$mySUser->checkRight("elm_analyse"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Analyse");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Analyse");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $url = "statistics.php?grp_id=-1"; 
 $myLayout->tab_addEntry("Seiten",$url,"b_site.gif");
 $myLayout->tab_draw("Seiten",$x=180,"1");
 ?>
-<?
+<?php
 $curl="";
 foreach($_REQUEST AS $K => $V)
 {
@@ -88,7 +88,7 @@ while ($row = mysql_fetch_array($rs))
         </tr>
       </table> 
 	  <br><br>
-<?
+<?php
 
 $sql = "SELECT * FROM content WHERE con_statistik = 1 ORDER BY con_pos, con_bez";
 $rs = $myDB->query($sql);
@@ -127,68 +127,68 @@ if (mysql_num_rows($rs)!=0)
         </tr>
       </table> 
 	  <br><br>  
-<?
+<?php
 */
 } // -- Check, ob es Contentobjekte mit Statistik gibt
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content1} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
 <form action="statistics.php" method="post" name="form1" id="form1">
-<?if (isset($_REQUEST["grp_id"])){?>
-<input type="hidden" name="grp_id" value="<?=$_REQUEST["grp_id"]?>"?>
-<?}?>
-<?if (isset($_REQUEST["con_id"])){?>
-<input type="hidden" name="con_id" value="<?=$_REQUEST["con_id"]?>"?>
-<?}?>
-<?
+<?php if (isset($_REQUEST["grp_id"])){ ?>
+<input type="hidden" name="grp_id" value="<?php echo $_REQUEST["grp_id"] ?>"?>
+<?php } ?>
+<?php if (isset($_REQUEST["con_id"])){ ?>
+<input type="hidden" name="con_id" value="<?php echo $_REQUEST["con_id"] ?>"?>
+<?php } ?>
+<?php
 $nr=1;
 
 displayPanel($nr);
 ?>
-<?
+<?php
 $content1 = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content2} 
 // -------------------------------------
 ?>
 </form>
-<?
+<?php
 // -------------------------------------
 // {$content2} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $nr=2;
 
 displayPanel($nr);
 ?>
-<?
+<?php
 $content2 = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content2} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->statsTable($left,$content1,$content2);
 ?>
-<?
+<?php
 
 ?>
 </body>
 </html>
 
-<?
+<?php
 function displaypanel($nr)
 {
   global $myPT;

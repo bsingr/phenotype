@@ -8,7 +8,7 @@
 		<com_rubrik>Media</com_rubrik>
 		<com_description>## Baustein 1102 - Bild</com_description>
 	</meta>
-	<script>&#60;?
+	<script>&#60;?php
 class PhenotypeComponent_1102 extends PhenotypeComponent
 {
 	var $tool_type = 1102;

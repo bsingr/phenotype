@@ -1,4 +1,4 @@
-<?
+<?php
 
 // -------------------------------------------------------
 // Copyright (c) 2003-2005 Phenotype Hagemann & Sellinger
@@ -15,13 +15,13 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 
 
 require ("_config.inc.php");
 require ("_session.inc.php");
 ?>
-<?
+<?php
 
 
 if (!$mySUser->checkRight("elm_extras"))
@@ -31,7 +31,7 @@ if (!$mySUser->checkRight("elm_extras"))
 	exit ();
 }
 ?>
-<? 
+<?php 
 
 
 $id = $myRequest->getI("id");

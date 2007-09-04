@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -61,7 +61,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 	"http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?=$myPT->version?></title>
+		<title>phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -86,7 +86,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 		          <td class="windowFooterGrey2">
 		            <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		              <tr valign="bottom">
-		                <td height="145" colspan="2" style="background:url(<?=$url?>) no-repeat top left;"><div class="login"><?
+		                <td height="145" colspan="2" style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="login"><?php
 		                echo $myApp->getLoginInfoText();
 						?></div></td>
 		              </tr>
@@ -118,7 +118,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 		</table>
 		</body>
 		</html>
-		<?
+		<?php
 	}
 
 	function displayLoginRetry()
@@ -140,7 +140,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?=$myPT->version?></title>
+<title>phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -165,7 +165,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
             <td class="windowFooterGrey2">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="bottom">
-                  <td height="145" colspan="2" style="background:url(<?=$url?>) no-repeat top left;"><div class="alert">Falsche Benutzer-/Password-Kombination.</div></td>
+                  <td height="145" colspan="2" style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert">Falsche Benutzer-/Password-Kombination.</div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
                   <td colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -193,7 +193,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 
 </body>
 </html>
-<?
+<?php
 	}
 }
 ?>

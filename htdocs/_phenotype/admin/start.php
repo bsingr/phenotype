@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,30 +17,30 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
 $myApp->onPress_Start();
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Start");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Start");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $rechte = $mySUser->getRights();
 //print_r($rechte);
 
@@ -75,7 +75,7 @@ if ($mySUser->checkRight("elm_page"))
             <tr>
               <td class="padding10"><form action="pagegroup_select.php" method="post" name="formGrp">Gruppe:</td>
               <td><select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
-<?
+<?php
 echo $html;
 ?>				 
 </select></td>
@@ -84,7 +84,7 @@ echo $html;
           <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></form></td>
         </tr>
       </table>
-<?
+<?php
 $top_id = (int)$rechte["pag_id_grp_" . $grp_id];
 if ($top_id==0)
 {
@@ -107,11 +107,11 @@ if ($pag_id!=""){$myAdm->showNavi($pag_id,$top_id,false);}
         </tr>
       </table> 
 	  <br><br>
-<?
+<?php
 }
 // Content
 ?>	    
-<?
+<?php
 if ($mySUser->checkRight("elm_content"))
 {
 	$myLayout->tab_new();
@@ -142,11 +142,11 @@ if ($mySUser->checkRight("elm_content"))
         </tr>
       </table> 
 <br><br>
-<?
+<?php
 }
 // Mediabase
 ?>	    
-<?
+<?php
 if ($mySUser->checkRight("elm_mediabase"))
 {
 	$myLayout->tab_new();
@@ -154,7 +154,7 @@ if ($mySUser->checkRight("elm_mediabase"))
 	$myLayout->tab_addEntry("Media",$url,"b_media.gif");
 	$myLayout->tab_draw("Media",$x=260,1);
 ?>
-<?
+<?php
 $myNav = new PhenotypeTree();
 $nav_id =   $myNav->addNode("&Uuml;bersicht","backend.php?page=Editor,Media",0,"-1");
 global $myDB;
@@ -172,14 +172,14 @@ $myLayout->displayTreeNavi($myNav,"");
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
       </table> 
-<?
+<?php
 }
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
@@ -200,7 +200,7 @@ $myPT->startBuffer();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-<?
+<?php
 if ($mySUser->checkRight("elm_page"))
 {
 	$sql = "SELECT grp_id FROM pagegroup";
@@ -249,30 +249,30 @@ if ($mySUser->checkRight("elm_page"))
 		  <tr>
             <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-		  <?
+		  <?php
 		  $rs_data = $myDB->query($sql);
 		  while ($row_data=mysql_fetch_array($rs_data))
 		  {
           ?>
           <tr>
-            <td class="tableBody"><?=$row_data["pag_id"]?></td>
+            <td class="tableBody"><?php echo $row_data["pag_id"] ?></td>
 			
 
-            <td class="tableBody"><?=$row_data["pag_bez"]?></td>
-            <td class="tableBody"><?=date('d.m.Y H:i',$row_data["pag_date"])?><br><?=$myAdm->displayUser($row_data["usr_id"]);?></td>
+            <td class="tableBody"><?php echo $row_data["pag_bez"] ?></td>
+            <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["pag_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
-			<?if ($row_data["pag_status"]==1){?>
+			<?php if ($row_data["pag_status"]==1){ ?>
 			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
-			<?}else{?>
+			<?php }else{ ?>
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
-			<?}?>
+			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><a href="page_edit.php?id=<?=$row_data["pag_id"]?>"><img src="img/b_edit.gif" alt="Seite bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="right" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $row_data["pag_id"] ?>"><img src="img/b_edit.gif" alt="Seite bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
           <tr>
             <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 		  }
 ?>			
           <tr>
@@ -289,11 +289,11 @@ if ($mySUser->checkRight("elm_page"))
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table><br>  
-	<?
+	<?php
 }
 // -- Seiten
 ?>	
-<?
+<?php
 // Content
 if ($mySUser->checkRight("elm_content"))
 {
@@ -385,17 +385,17 @@ if ($mySUser->checkRight("elm_content"))
 		  <tr>
             <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-		  <?
+		  <?php
 		  $rs_data = $myDB->query($sql_union);
 		  while ($row_data=mysql_fetch_array($rs_data))
 		  {
           ?>
           <tr>
-            <td class="tableBody"><?=$row_data["dat_id"]?></td>
+            <td class="tableBody"><?php echo $row_data["dat_id"] ?></td>
 			
             <td class="tableBody">
-			<?if ($row_data["con_bearbeiten"]==1){?><a href="backend.php?page=Editor,Content,edit&id=<?=$row_data["dat_id"]?>&uid=<?=$row_data["dat_uid"]?>"><?}?>
-			<?
+			<?php if ($row_data["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><?php } ?>
+			<?php
 			if ($row_data["med_id_thumb"]!=0)
 			{
 
@@ -403,26 +403,26 @@ if ($mySUser->checkRight("elm_content"))
 				$myImg->display_ThumbX(60,$row_data["dat_bez"]);
 			}
 		  ?>
-		  <?if ($row_data["con_bearbeiten"]==1){?>
+		  <?php if ($row_data["con_bearbeiten"]==1){ ?>
 		  </a>
-		  <?}?>
+		  <?php } ?>
 		  </td>
-            <td class="tableBody"><?=$row_data["dat_bez"]?></td>
-			<td class="tableBody"><?=$row_data["con_bez"]?></td>
-            <td class="tableBody"><?=date('d.m.Y H:i',$row_data["dat_date"])?><br><?=$myAdm->displayUser($row_data["usr_id"]);?></td>
+            <td class="tableBody"><?php echo $row_data["dat_bez"] ?></td>
+			<td class="tableBody"><?php echo $row_data["con_bez"] ?></td>
+            <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["dat_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
-			<?if ($row_data["dat_status"]==1){?>
+			<?php if ($row_data["dat_status"]==1){ ?>
 			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
-			<?}else{?>
+			<?php }else{ ?>
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
-			<?}?>
+			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?if ($row_data["con_bearbeiten"]==1){?><a href="backend.php?page=Editor,Content,edit&id=<?=$row_data["dat_id"]?>&uid=<?=$row_data["dat_uid"]?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?}?><?if ($row_data["con_loeschen"]==1){?><a href="backend.php?page=Editor,Content,delete&id=<?=$row_data["dat_id"]?>&c=<?=$_REQUEST["c"]?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?}?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row_data["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row_data["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php php echo $row_data["dat_id"] ?>&c=<?php php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 		  }
 ?>			
           <tr>
@@ -439,13 +439,13 @@ if ($mySUser->checkRight("elm_content"))
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table><br>  
-	<?
+	<?php
 	$sql = "DROP TABLE " . $table;
 	$rs = $myDB->query($sql);
 	}
 } // -- Content
 ?>
-<?
+<?php
 // Media
 if ($mySUser->checkRight("elm_mediabase"))
 {
@@ -473,17 +473,17 @@ if ($mySUser->checkRight("elm_mediabase"))
 		  <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-		  <?
+		  <?php
 		  $rs_data = $myDB->query($sql);
 		  while ($row_data=mysql_fetch_array($rs_data))
 		  {
           ?>
           <tr>
-            <td class="tableBody"><?=$row_data["med_id"]?></td>
+            <td class="tableBody"><?php echo $row_data["med_id"] ?></td>
 			
             <td class="tableBody">
-			<a href="backend.php?page=Editor,Media,edit&id=<?=$row_data["med_id"]?>">
-			<?
+			<a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>">
+			<?php
 			if ($row_data["med_type"]==1)
 			{
 
@@ -538,16 +538,16 @@ if ($mySUser->checkRight("elm_mediabase"))
 		  ?>
 		  </a>
 		   </td>
-            <td class="tableBody"><?=$row_data["med_bez"]?></td>
-		    <td class="tableBody"><?=date('d.m.Y H:i',$row_data["med_date"])?><br><?=$myAdm->displayUser($row_data["usr_id"]);?></td>
+            <td class="tableBody"><?php echo $row_data["med_bez"] ?></td>
+		    <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["med_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td>&nbsp;</td>
-			<td align="right" nowrap class="tableBody"><a href="backend.php?page=Editor,Media,edit&id=<?=$row_data["med_id"]?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
+			<td align="right" nowrap class="tableBody"><a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
             
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 		  }
 ?>			
           <tr>
@@ -564,16 +564,16 @@ if ($mySUser->checkRight("elm_mediabase"))
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table><br>  
-	<?
+	<?php
 }	 // -- Media
 ?>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
 

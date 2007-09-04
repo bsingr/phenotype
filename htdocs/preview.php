@@ -1,11 +1,11 @@
-<?
+<?php
 require("../_config.inc.php");
 ?>
-<?
+<?php
 require(ADMINPATH . "_session.inc.php");
 
 ?>
-<?
+<?php
 $id = $_REQUEST["id"];
 if (isset($_REQUEST["ver_id"]))
 {
@@ -16,7 +16,7 @@ else
  $ver_id = 0;
 }
 ?>
-<?
+<?php
 
 $lng_id = $myRequest->getI("lng_id");
 

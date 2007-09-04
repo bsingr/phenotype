@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -265,15 +265,15 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td colspan="3" class="padding10"><strong>Suche Content <?=$myPT->codeH($contenttype)?> nach:</strong></td>
+              <td colspan="3" class="padding10"><strong>Suche Content <?php echo $myPT->codeH($contenttype) ?> nach:</strong></td>
             </tr>
             <tr>
               <td class="padding10">Bezeichnung</td>
               <td>
 			  <form action="backend.php" method="post">
 			  <input type="hidden" name="page" value="Editor,Content,search">
- 	  		  <input type="hidden" name="con_id" value="<?=$this->con_id?>">
-			  <input type="hidden" name="r" value="<?=$myPT->codeH($this->category)?>">
+ 	  		  <input type="hidden" name="con_id" value="<?php echo $this->con_id ?>">
+			  <input type="hidden" name="r" value="<?php echo $myPT->codeH($this->category) ?>">
 		      <input type="hidden" name="c" value="search">
 			  <input type="text" name="s" style="width: 100
 			  px" class="input"></td>
@@ -295,7 +295,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
           </table></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
-		<?
+		<?php
 		if ($this->con_id !=0)
 		{
 			$sql = "SELECT con_anlegen FROM content WHERE con_id=".$this->con_id;
@@ -305,10 +305,10 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 			{
 		?>
 		<tr>
-          <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?=$this->con_id?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" heighcon_id="22" border="0" align="absmiddle"> Neuen Datensatz hinzuf&uuml;gen </a></td>
+          <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $this->con_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" heighcon_id="22" border="0" align="absmiddle"> Neuen Datensatz hinzuf&uuml;gen </a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
-		<?
+		<?php
 			}
 		}
 		?>
@@ -317,7 +317,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" heighcon_id="10"></td>
         </tr>
       </table>
-	  <?
+	  <?php
 	}
 
 	/**
@@ -359,11 +359,11 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     		?>
 			<table width="680" border="0" cellpadding="0" cellspacing="0">
 		      <tr>
-		        <td class="windowTabTypeOnly"><strong><?=$row["con_bez"]?></strong></td>
+		        <td class="windowTabTypeOnly"><strong><?php echo $row["con_bez"] ?></strong></td>
 		        <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" heighcon_id="10"></td>
 		      </tr>
 		    </table>
-			<?
+			<?php
 			$sql = "SELECT * FROM content_data WHERE con_id = " . $row["con_id"];
 			$cname = "PhenotypeContent_" . $row["con_id"];
 			$myCO = new $cname;
@@ -379,16 +379,16 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 			?>
 			<table width="680" border="0" cellpadding="0" cellspacing="0">
-		 	<?
+		 	<?php
 		 	if ($row["con_anlegen"]==1)
 		 	{
 		 	?>
 		      <tr>
-		        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?=$row["con_id"]?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen
+		        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $row["con_id"] ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen
 		            Datensatz hinzuf&uuml;gen</a></td>
 		        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 		      </tr>
-			<? 
+			<?php 
 		 	}
 		 	?>
 		    <tr>
@@ -396,7 +396,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		      <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
 		    </tr>
 		    </table><br>
-	    	<?
+	    	<?php
 			}
 		}
 		return $myPT->stopBuffer();
@@ -436,58 +436,58 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     	<tr>
         	<td class="windowTabTypeOnly"><table border="0" cellpadding="0" cellspacing="1">
             <tr>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?=$this->con_id?>&c=akt" class="tabmenuType<?if($order=="akt"){echo"Active";}?>">Aktuell</a></td>
-				<?
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=akt" class="tabmenuType<?php if($order=="akt"){echo"Active";} ?>">Aktuell</a></td>
+				<?php
 				// Individuelle Tabs
 				foreach ($myCO->_extratabs AS $k => $v)
 				{
 					$titel = $v[0];
 				?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?=$this->con_id?>&c=etab_<?=$k?>" class="tabmenuType<?if($order=="etab_".$k){echo"Active";}?>"><?=$titel?></a></td>
-				<?
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=etab_<?php php echo $k ?>" class="tabmenuType<?php if($order=="etab_".$k){echo"Active";} ?>"><?php php echo $titel ?></a></td>
+				<?php
 				}
 				if ($myCO->tab_az)
 				{
 				?>
-			  	<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?=$this->con_id?>&c=num" class="tabmenuType<?if($order=="num"){echo"Active";}?>">0-9</a></td>
-              		<?
+			  	<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
+              		<?php
               		for ($i=1;$i<=26;$i++)
               		{
               			$c = chr(64+$i);
 			  		?>
-			  		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?=$this->con_id?>&c=<?=$c?>" class="tabmenuType<?if($order==$c){echo"Active";}?>"><?=$c?></a></td>
-				  	<?
+			  		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=<?php php echo $c ?>" class="tabmenuType<?php if($order==$c){echo"Active";} ?>"><?php php echo $c ?></a></td>
+				  	<?php
               		}
 				}
 				if ($myCO->tab_shortaz)
 				{
 					$_az = Array("ABC","DEF","GHIJ","KLMN","OPQR","STU","VWXYZ");
 		  			?>
-		  	 		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?=$this->con_id?>&c=num" class="tabmenuType<?if($order=="num"){echo"Active";}?>">0-9</a></td>
-       	  			<?
+		  	 		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
+       	  			<?php
        	  			foreach ($_az AS $k)
        	  			{
 		  				?>
-		  				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?=$this->con_id?>&c=<?=strtolower($k)?>" class="tabmenuType<?if($order==strtolower($k)){echo"Active";}?>"><?=$k?></a></td>
-				  		<?
+		  				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=<?php php echo strtolower($k) ?>" class="tabmenuType<?php if($order==strtolower($k)){echo"Active";} ?>"><?php php echo $k ?></a></td>
+				  		<?php
        	  			}
 				}
 				if ($myCO->tab_alle)
 				{
 		      	?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?=$this->con_id?>&c=alle" class="tabmenuType<?if($order=="alle"){echo"Active";}?>">Alle</a></td><?
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=alle" class="tabmenuType<?php if($order=="alle"){echo"Active";} ?>">Alle</a></td><?php
 				}
 				if ($myCO->tab_id)
 				{
 			  	?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?=$this->con_id?>&c=id" class="tabmenuType<?if($order=="id"){echo"Active";}?>">ID</a></td><?
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=id" class="tabmenuType<?php if($order=="id"){echo"Active";} ?>">ID</a></td><?php
 			  }?>
             </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" heighcon_id="10"></td>
       </tr>
     </table>
-		<?
+		<?php
 
 
 		switch ($order)
@@ -598,7 +598,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
-	 	<?
+	 	<?php
 	 	$sql = "SELECT * FROM content WHERE con_id=".$this->con_id;
 	 	$rs = $myDB->query($sql);
 	 	$row = mysql_fetch_array($rs);
@@ -606,11 +606,11 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 	 	{
 	 	?>
 	      <tr>
-	        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?=$this->con_id?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen
+	        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $this->con_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen
 	            Datensatz hinzuf&uuml;gen</a></td>
 	        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 	      </tr>
-		<? 
+		<?php 
 	 	}
 	 	?>
 	    <tr>
@@ -618,7 +618,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 	      <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
 	    </tr>
 	    </table><br>
-    	<?
+    	<?php
 
     	return $myPT->stopBuffer();
 
@@ -728,11 +728,11 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
       	<tr>
-        	<td class="windowTabTypeOnly"><strong><?=$myPT->codeH($headline)?></strong></td>
+        	<td class="windowTabTypeOnly"><strong><?php echo $myPT->codeH($headline) ?></strong></td>
         	<td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       	</tr>
     	</table>
-		<?
+		<?php
 
 
 
@@ -911,9 +911,9 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		?>
  		<form action="backend.php" method="post" enctype="multipart/form-data" name="editform">
  		<input type="hidden" name="page" value="Editor,Content,update">
-		<input type="hidden" name="id" value="<?=$dat_id?>">
-		<input type="hidden" name="b" value="<?=$block_nr?>">
-		<?
+		<input type="hidden" name="id" value="<?php echo $dat_id ?>">
+		<input type="hidden" name="b" value="<?php echo $block_nr ?>">
+		<?php
 		$_jsarray = $myCO->edit();
 		$this->_jsarray = $_jsarray;
 
@@ -930,8 +930,8 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 			if ($myCO->nostatus==0)
 			{
      		?>
-	 		<input name="status" type="checkbox" value="1" <?if ($myCO->row["dat_status"]=="1") echo"checked";?>> online. 
-     		<?
+	 		<input name="status" type="checkbox" value="1" <?php if ($myCO->row["dat_status"]=="1") echo"checked"; ?>> online. 
+     		<?php
 			}
 			$myAdm->displayCreationStatus($myCO->row["usr_id_creator"],$myCO->row["dat_creationdate"]);
 			echo "<br>";
@@ -959,19 +959,19 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 			</td>
             <td align="right" class="windowFooterWhite" tabindex="99">
             <input type="image" src="transparentpixel.gif" width="1" height="1" onclick="return false;"/>
-            <?
+            <?php
             $sql = "SELECT con_loeschen FROM content WHERE con_id=".$myCO->content_type;
             $rs= $myDB->query($sql);
             $row = mysql_fetch_array($rs);
             if ($row["con_loeschen"]==1)
-			{?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diesen Datensatz wirklich l&ouml;schen?')"><?}?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" tabindex="1" accesskey="s">&nbsp;&nbsp;</td>
+			{?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diesen Datensatz wirklich l&ouml;schen?')"><?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" tabindex="1" accesskey="s">&nbsp;&nbsp;</td>
           </tr>
     	</table>
-		 <?
+		 <?php
 		 $this->workarea_stop_draw();
 	 	?>
 		</form>	 
-		<?
+		<?php
 		return $myPT->stopBuffer();
 	}
 
@@ -1136,12 +1136,12 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 		<html>
 		<head>
-			<title>Debug property view - Record Nr. <?=$myRequest->getI("id")?></title>
+			<title>Debug property view - Record Nr. <?php echo $myRequest->getI("id") ?></title>
 		</head>
 
 		<body>
 		<pre>
-		<?
+		<?php
 		$sql = "SELECT dat_props FROM content_data WHERE dat_id = " . $myRequest->getI("id");
 		$rs = $myDB->query($sql);
 		if (mysql_num_rows($rs)==0)
@@ -1166,7 +1166,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		</pre>
 		</body>
 		</html>
-		<?
+		<?php
 		exit();
 	}
 
@@ -1306,7 +1306,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		$myPT->startBuffer();
 		$step = $myCO->execute_form_ajax($token,$step,$usr_id);
 		$html = $myPT->stopBuffer();
-		?><!--<?=$step?>###--><?
+		?><!--<?php echo $step ?>###--><?php
 		echo utf8_encode($html);
 		exit();
 	}
@@ -1335,7 +1335,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         <td class="windowMenu">
 		<table width="199" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td align="center" class="windowHeaderGrey2"><strong><?=$_month[date('n',$highlight)]?> <?=date('Y',$highlight)?></strong></td>
+    <td align="center" class="windowHeaderGrey2"><strong><?php echo $_month[date('n',$highlight)] ?> <?php echo date('Y',$highlight) ?></strong></td>
   </tr>
 </table>
 <table width="199" border="0" cellpadding="0" cellspacing="0">
@@ -1350,7 +1350,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
           <td class="tableKalenderTage">SA</td>
           <td class="tableKalenderTage">SO</td>
         </tr>
-   	    <? 
+   	    <?php 
    	    $wochentag = date("w",$start);
    	    if ($wochentag==0){$wochentag=7;}
    	    $montag = mktime(0,0,0, date("m",$start),date("d",$start)-$wochentag+1,date("Y",$start));
@@ -1360,7 +1360,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
    	    while ($weiter==1){
         ?> 
         <tr> 
-        <? 
+        <?php 
         $j++;
         for ($i=1;$i<=7;$i++)
         {
@@ -1373,23 +1373,23 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         	if ($class!=""){$class='class="'.$class.'"';}
         	if ($class2!=""){$class2='class="'.$class2.'"';}
         ?> 
-        <td <?=$class?>><a href="javascript:setDate_<?=$ename?>('<?=date('d.m.Y',$datum)?>')" <?=$class2?>><?=$tag?></a></td> 
-        <? 
+        <td <?php echo $class ?>><a href="javascript:setDate_<?php echo $ename ?>('<?php echo date('d.m.Y',$datum) ?>')" <?php echo $class2 ?>><?php echo $tag ?></a></td> 
+        <?php 
         $datum = mktime(0,0,0, date("m",$datum),date("j",$datum)+1,date("Y",$datum));
         }
         ?> 
         </tr> 
-        <? 
+        <?php 
         if (date("m",$datum)!=date("m",$highlight)){$weiter=0;}
    	    }
-   	    if ($j==4){?><tr><td class="tableKalenderWhite" colspan="7">&nbsp;</td></tr><?}
-   	    if ($j<=5){?><tr><td class="tableKalenderWhite" colspan="7">&nbsp;</td></tr><?}
+   	    if ($j==4){?><tr><td class="tableKalenderWhite" colspan="7">&nbsp;</td></tr><?php }
+   	    if ($j<=5){?><tr><td class="tableKalenderWhite" colspan="7">&nbsp;</td></tr><?php }
         ?> 
       </table>
     </td>
   </tr>
 </table>
-<?
+<?php
 $vormonat = mktime(0,0,0, date("m",$highlight)-1,date("j",$highlight),date("Y",$highlight));
 if (date("m",$vormonat)==date("m",$highlight)){$vormonat = mktime(0,0,0, date("m",$highlight)-1,1,date("Y",$highlight));}
 $nachmonat = mktime(0,0,0, date("m",$highlight)+1,date("j",$highlight),date("Y",$highlight));
@@ -1400,12 +1400,12 @@ if (date("m",$nachmonat)==date("m",$highlight)){$nachmonat =mktime(0,0,0, date("
   <tr>
     <td width="50%" class="windowFooterWhite"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td><a href="javascript:ajax_<?=$ename?>_doit(<?=$vormonat?>,1)" class="bausteineLink"> <img src="img/b_zurueck_tr.gif" alt="Monat zur&uuml;ck" width="18" height="18" border="0" align="absmiddle"> <?=$_month[date('n',$vormonat)]?></a></td>
+        <td><a href="javascript:ajax_<?php echo $ename ?>_doit(<?php echo $vormonat ?>,1)" class="bausteineLink"> <img src="img/b_zurueck_tr.gif" alt="Monat zur&uuml;ck" width="18" height="18" border="0" align="absmiddle"> <?php echo $_month[date('n',$vormonat)] ?></a></td>
       </tr>
     </table></td>
     <td width="50%" class="windowFooterWhite"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td align="right"><a href="javascript:ajax_<?=$ename?>_doit(<?=$nachmonat?>,1)" class="bausteineLink"><?=$_month[date('n',$nachmonat)]?> <img src="img/b_vor_tr.gif" alt="Monat vor" width="18" height="18" border="0" align="absmiddle"></a></td>
+        <td align="right"><a href="javascript:ajax_<?php echo $ename ?>_doit(<?php echo $nachmonat ?>,1)" class="bausteineLink"><?php echo $_month[date('n',$nachmonat)] ?> <img src="img/b_vor_tr.gif" alt="Monat vor" width="18" height="18" border="0" align="absmiddle"></a></td>
       </tr>
     </table></td>
   </tr>
@@ -1420,7 +1420,7 @@ if (date("m",$nachmonat)==date("m",$highlight)){$nachmonat =mktime(0,0,0, date("
       </table>
 		
 
-		<?
+		<?php
 	}
 }
 ?>

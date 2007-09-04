@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "noaccess.php";
@@ -29,36 +29,36 @@ if (!$mySUser->checkRight("elm_admin"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Aktionen");
 $myAdm->explorer_draw();
 
 
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -99,7 +99,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
  $sql = "SELECT * FROM action ORDER BY act_bez";
  $rs = $myDB->query($sql);
   while ($row=mysql_fetch_array($rs))
@@ -107,25 +107,25 @@ $myPT->startBuffer();
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=sprintf("%02d",$row["act_id"])?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="admin_action_edit.php?id=<?=$row["act_id"]?>&b=0"><img src="img/t_timer.gif" alt="Aktion anzeigen" width="60" height="40" border="0"></a></span></td>
-              <td class="tableBody"><?=$row["act_bez"]?></td>
+              <td class="tableBody"><?php echo sprintf("%02d",$row["act_id"]) ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="admin_action_edit.php?id=<?php echo $row["act_id"] ?>&b=0"><img src="img/t_timer.gif" alt="Aktion anzeigen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><?php echo $row["act_bez"] ?></td>
 			              <td class="tableBody">
-			<?if ($row["act_status"]==1){?>
+			<?php if ($row["act_status"]==1){ ?>
 			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
-			<?}else{?>
+			<?php }else{ ?>
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
-			<?}?>
+			<?php } ?>
 			</td>
-              <td align="right" nowrap class="tableBody"><a href="admin_action_edit.php?id=<?=$row["act_id"]?>&b=0"><img src="img/b_edit.gif" alt="Aktion anzeigen" width="22" height="22" border="0" align="absmiddle"></a>
+              <td align="right" nowrap class="tableBody"><a href="admin_action_edit.php?id=<?php echo $row["act_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Aktion anzeigen" width="22" height="22" border="0" align="absmiddle"></a>
 
-<a href="admin_action_delete.php?id=<?=$row["act_id"]?>" onclick="javascript:return confirm('Diese Aktion wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Aktion l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<a href="admin_action_delete.php?id=<?php echo $row["act_id"] ?>" onclick="javascript:return confirm('Diese Aktion wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Aktion l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
 </td>
             </tr>
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -142,16 +142,16 @@ $myPT->startBuffer();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

@@ -1,4 +1,4 @@
-<?
+<?php
 require("../_config.inc.php");
 
 $pw = $myRequest->get("pw");
@@ -16,7 +16,7 @@ else
 $id= PAG_ID_STARTPAGE;
 }
 ?>
-<?
+<?php
 
 if (PT_FRONTENDSESSION==1)
 {

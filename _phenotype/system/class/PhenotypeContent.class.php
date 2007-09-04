@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version 2.5 vom 02.03.2007
 // -------------------------------------------------------
 ?>
-<?
+<?php
 
 /**
  * @package phenotype
@@ -493,7 +493,7 @@ class PhenotypeContentStandard
 	    $dateiname =  $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $this->content_type, $row_etp["tpl_id"]);
 	    $$tpl = $dateiname;
 	 }	 
-	<?
+	<?php
 
 
 	$code = $myPT->stopbuffer();
@@ -586,7 +586,7 @@ class PhenotypeContentStandard
 		{
 			if ($myPage->buildingcache == 1 AND $myPage->includenocache == 0)
 			{
-				echo '<?$myPage->contentCount('.$this->content_type.",".$this->id.");?>";
+				echo '<?php $myPage->contentCount('.$this->content_type.",".$this->id."); ?>";
 			} else
 			{
 				$myPage->contentCount($this->content_type, $this->id);
@@ -1165,9 +1165,9 @@ class PhenotypeContentStandard
 		global $myRequest;
 		global $myApp;
 ?>
-<input type="hidden" name="http_referer" value ="<?=$_SERVER["HTTP_REFERER"]?>">   
+<input type="hidden" name="http_referer" value ="<?php echo $_SERVER["HTTP_REFERER"] ?>">   
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<?
+	<?php
 
 	// Array for Javascript-Function which must be displayed at the same time like the edit form
 	$_jsarray = Array();
@@ -1212,19 +1212,19 @@ class PhenotypeContentStandard
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
       		
-			<?	
+			<?php	
 			}
 			?>
             <tr>
               <td class="tableHline" colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
 	        <tr>
-              <td class="tableHead" colspan="2"><?=$a[1]?></td>
+              <td class="tableHead" colspan="2"><?php echo $a[1] ?></td>
             </tr>
             <tr>
               <td class="tableHline" colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1232,10 +1232,10 @@ class PhenotypeContentStandard
 			case 2 : // Textbox
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1245,7 +1245,7 @@ class PhenotypeContentStandard
              </p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1253,10 +1253,10 @@ class PhenotypeContentStandard
 			case 25 : // Zahl
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1267,7 +1267,7 @@ class PhenotypeContentStandard
              </p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1275,10 +1275,10 @@ class PhenotypeContentStandard
 			case 19 : // Textbox-Cluster
 ?>
              <tr>
-             <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $n = $a[4];
@@ -1293,7 +1293,7 @@ class PhenotypeContentStandard
              </p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1301,10 +1301,10 @@ class PhenotypeContentStandard
 			case 13 : // Doppelte Textbox (z.B. Strasse/Hausnummer)
 			?>
             <tr>
-            <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+            <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
             </td>
             <td width="509" class="formarea"><p>
-            <?
+            <?php
 
 
             $name = $myCO->formid."_".$a[2];
@@ -1318,16 +1318,16 @@ class PhenotypeContentStandard
             </p>
             </td>
             </tr>
-			<?
+			<?php
 			break;
 
 			case 3 : // Textarea
 			?>
             <tr>
-            <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+            <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
             </td>
             <td width="509" class="formarea"><p>
-            <?
+            <?php
             $name = $myCO->formid."_".$a[2];
             $val = $myCO->get($a[2]);
             echo $myLayout->workarea_form_textarea("", $name, $val, $a[4], $a[3]);
@@ -1335,7 +1335,7 @@ class PhenotypeContentStandard
             </p>
             </td>
             </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1343,10 +1343,10 @@ class PhenotypeContentStandard
 			case 4 : // Datumsbox
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
- 			 <?
+ 			 <?php
              $name = $myCO->formid."_".$a[2];
              $val = $myCO->get($a[2]);
              if ($val != "")
@@ -1358,35 +1358,35 @@ class PhenotypeContentStandard
              	$datum = "";
              }
 			 ?>
-			 <input type="text" name="<?=$name?>" value="<?=$datum?>" size="9" class="input" onchange="ajax_<?=$a[2]?>_doit(this.value,0)"><a href="javascript:flip('divajax_<?=$a[2]?>')"><img src="img/b_kalender_tr.gif" width="18" height="18" border="0" align="absmiddle"></a>
-			 <div id="divajax_<?=$a[2]?>" style="position:absolute;visibility:hidden"></div>
+			 <input type="text" name="<?php echo $name ?>" value="<?php echo $datum ?>" size="9" class="input" onchange="ajax_<?php echo $a[2] ?>_doit(this.value,0)"><a href="javascript:flip('divajax_<?php echo $a[2] ?>')"><img src="img/b_kalender_tr.gif" width="18" height="18" border="0" align="absmiddle"></a>
+			 <div id="divajax_<?php echo $a[2] ?>" style="position:absolute;visibility:hidden"></div>
 			 <script type="text/javascript">
-			 var ajax_<?=$a[2]?> = new sack();
+			 var ajax_<?php echo $a[2] ?> = new sack();
 
 			 var error=0;
-			 function ajax_<?=$a[2]?>_doit(date,timestamp){
-			 	ajax_<?=$a[2]?>.resetData();
-			 	ajax_<?=$a[2]?>.requestFile = "backend.php";
-			 	ajax_<?=$a[2]?>.method = "GET";
-			 	ajax_<?=$a[2]?>.element = 'divajax_<?=$a[2]?>';
-			 	ajax_<?=$a[2]?>.setVar("page","Editor,Content,selector_date");
-			 	ajax_<?=$a[2]?>.setVar("d",date);
-			 	ajax_<?=$a[2]?>.setVar("t",timestamp);
-			 	ajax_<?=$a[2]?>.setVar("e",'<?=$a[2]?>');
-			 	ajax_<?=$a[2]?>.runAJAX();
+			 function ajax_<?php echo $a[2] ?>_doit(date,timestamp){
+			 	ajax_<?php echo $a[2] ?>.resetData();
+			 	ajax_<?php echo $a[2] ?>.requestFile = "backend.php";
+			 	ajax_<?php echo $a[2] ?>.method = "GET";
+			 	ajax_<?php echo $a[2] ?>.element = 'divajax_<?php echo $a[2] ?>';
+			 	ajax_<?php echo $a[2] ?>.setVar("page","Editor,Content,selector_date");
+			 	ajax_<?php echo $a[2] ?>.setVar("d",date);
+			 	ajax_<?php echo $a[2] ?>.setVar("t",timestamp);
+			 	ajax_<?php echo $a[2] ?>.setVar("e",'<?php echo $a[2] ?>');
+			 	ajax_<?php echo $a[2] ?>.runAJAX();
 			 }
-			 function setDate_<?=$a[2]?>(date)
+			 function setDate_<?php echo $a[2] ?>(date)
 			 {
-			 	document.forms.editform.<?=$name?>.value=date;	
-			 	hide('divajax_<?=$a[2]?>');
-			 	ajax_<?=$a[2]?>_doit(date,0);
+			 	document.forms.editform.<?php echo $name ?>.value=date;	
+			 	hide('divajax_<?php echo $a[2] ?>');
+			 	ajax_<?php echo $a[2] ?>_doit(date,0);
 			 }
 			</script>
-			<script type="text/javascript">ajax_<?=$a[2]?>_doit(<?=$val?>,1)</script>
+			<script type="text/javascript">ajax_<?php echo $a[2] ?>_doit(<?php echo $val ?>,1)</script>
 			 </p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1394,10 +1394,10 @@ class PhenotypeContentStandard
 			case 8 : // Datumsbox mit Uhrzeit
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1411,34 +1411,34 @@ class PhenotypeContentStandard
              	$datum = "";
              }
 ?>
-			 <input type="text" name="<?=$name?>" value="<?=$datum?>" size="14" class="input" ><a href="javascript:flip('divajax_<?=$a[2]?>')"><img src="img/b_kalender_tr.gif" width="18" height="18" border="0" align="absmiddle"></a>
-			 <div id="divajax_<?=$a[2]?>" style="position:absolute;visibility:hidden"></div>
+			 <input type="text" name="<?php echo $name ?>" value="<?php echo $datum ?>" size="14" class="input" ><a href="javascript:flip('divajax_<?php echo $a[2] ?>')"><img src="img/b_kalender_tr.gif" width="18" height="18" border="0" align="absmiddle"></a>
+			 <div id="divajax_<?php echo $a[2] ?>" style="position:absolute;visibility:hidden"></div>
 			 <script type="text/javascript">
-			 var ajax_<?=$a[2]?> = new sack();
+			 var ajax_<?php echo $a[2] ?> = new sack();
 
 			 var error=0;
-			 function ajax_<?=$a[2]?>_doit(date){
+			 function ajax_<?php echo $a[2] ?>_doit(date){
 			 	alert(date);
-			 	ajax_<?=$a[2]?>.resetData();
-			 	ajax_<?=$a[2]?>.requestFile = "backend.php";
-			 	ajax_<?=$a[2]?>.method = "GET";
-			 	ajax_<?=$a[2]?>.element = 'divajax_<?=$a[2]?>';
-			 	ajax_<?=$a[2]?>.setVar("page","Editor,Content,selector_date");
-			 	ajax_<?=$a[2]?>.setVar("d",date);
-			 	ajax_<?=$a[2]?>.setVar("e",'<?=$a[2]?>');
-			 	ajax_<?=$a[2]?>.runAJAX();
+			 	ajax_<?php echo $a[2] ?>.resetData();
+			 	ajax_<?php echo $a[2] ?>.requestFile = "backend.php";
+			 	ajax_<?php echo $a[2] ?>.method = "GET";
+			 	ajax_<?php echo $a[2] ?>.element = 'divajax_<?php echo $a[2] ?>';
+			 	ajax_<?php echo $a[2] ?>.setVar("page","Editor,Content,selector_date");
+			 	ajax_<?php echo $a[2] ?>.setVar("d",date);
+			 	ajax_<?php echo $a[2] ?>.setVar("e",'<?php echo $a[2] ?>');
+			 	ajax_<?php echo $a[2] ?>.runAJAX();
 			 }
-			 function setDate_<?=$a[2]?>(date)
+			 function setDate_<?php echo $a[2] ?>(date)
 			 {
-			 	document.forms.editform.<?=$name?>.value=date;	
-			 	hide('divajax_<?=$a[2]?>');
+			 	document.forms.editform.<?php echo $name ?>.value=date;	
+			 	hide('divajax_<?php echo $a[2] ?>');
 			 }
 			</script>
-			<script type="text/javascript">ajax_<?=$a[2]?>_doit(<?=$val?>)</script>
+			<script type="text/javascript">ajax_<?php echo $a[2] ?>_doit(<?php echo $val ?>)</script>
              </p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1446,10 +1446,10 @@ class PhenotypeContentStandard
 			case 5 : //HTML
 ?>
              <tr>
-             <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1465,7 +1465,7 @@ class PhenotypeContentStandard
 ?>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1473,15 +1473,15 @@ class PhenotypeContentStandard
 			case 6 : // Selectbox
 		?>
 		<tr>
-        <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+        <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
         <td width="509" class="formarea"><p>
-		<select name="<?=$myCO->formid?>_<?=$a[2]?>" class="input">
-		<? 
+		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>" class="input">
+		<?php 
 		if ($a[4]==true){
 		?>
 		<option value="0">...</option>
-		<?
+		<?php
 		}
 
 		foreach ($a[3] as $key => $val)
@@ -1492,8 +1492,8 @@ class PhenotypeContentStandard
 				$selected = 'selected="selected"';
 			}
 		?>
-		<option value="<?=$key?>" <?=$selected?>><?=$val?></option>
-		<?
+		<option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $val ?></option>
+		<?php
 
 
 		}
@@ -1502,20 +1502,20 @@ class PhenotypeContentStandard
         </p>
         </td>
         </tr>
-		<?
+		<?php
 		break;
 			case 34 : // Selectbox auf Contentdatensätze
 		?>
 		<tr>
-        <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+        <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
         <td width="509" class="formarea"><p>
-		<select name="<?=$myCO->formid?>_<?=$a[2]?>" class="input">
-		<? 
+		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>" class="input">
+		<?php 
 		if ($a[3]==true){
 		?>
 		<option value="0">...</option>
-		<?
+		<?php
 		}
 		$sql  = "SELECT dat_id,dat_bez FROM content_data WHERE con_id=".$a[4];
 		if ($a[5]==true)
@@ -1536,8 +1536,8 @@ class PhenotypeContentStandard
 				$selected = 'selected="selected"';
 			}
 		?>
-		<option value="<?=$row["dat_id"]?>" <?=$selected?>><?=$row["dat_bez"]?></option>
-		<?
+		<option value="<?php echo $row["dat_id"] ?>" <?php echo $selected ?>><?php echo $row["dat_bez"] ?></option>
+		<?php
 
 
 		}
@@ -1546,18 +1546,18 @@ class PhenotypeContentStandard
         </p>
         </td>
         </tr>
-		<?
+		<?php
 		break;
 
 			case 24 : // Doppelte Selectbox
 ?>
 		<tr>
-        <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+        <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
         <td width="509" class="formarea"><p>
-		<?=$a[4]?> <select name="<?=$myCO->formid?>_<?=$a[2]?>" class="input">
+		<?php echo $a[4] ?> <select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>" class="input">
 		<option value="0">...</option>
-		<?
+		<?php
 
 
 		foreach ($a[3] as $key => $val)
@@ -1568,17 +1568,17 @@ class PhenotypeContentStandard
 				$selected = "selected";
 			}
 ?>
-		<option value="<?=$key?>" <?=$selected?>><?=$val?></option>
-		<?
+		<option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $val ?></option>
+		<?php
 
 
 		}
 ?>
         </select>&nbsp;
-        <?=$a[7]?>
-		<select name="<?=$myCO->formid?>_<?=$a[5]?>" class="input">
+        <?php echo $a[7] ?>
+		<select name="<?php echo $myCO->formid ?>_<?php echo $a[5] ?>" class="input">
 		<option value="0">...</option>
-		<?
+		<?php
 
 
 		foreach ($a[6] as $key => $val)
@@ -1589,8 +1589,8 @@ class PhenotypeContentStandard
 				$selected = "selected";
 			}
 ?>
-		<option value="<?=$key?>" <?=$selected?>><?=$val?></option>
-		<?
+		<option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $val ?></option>
+		<?php
 
 
 		}
@@ -1599,7 +1599,7 @@ class PhenotypeContentStandard
         </p>
         </td>
         </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1607,11 +1607,11 @@ class PhenotypeContentStandard
 			case 20 : // Multiple Selectbox
 		?>	
 		<tr>
-        <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+        <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
         <td width="509" class="formarea"><p>
-		<select name="<?=$myCO->formid?>_<?=$a[2]?>[]" class="input_multiselectbox" multiple style="width: <?=$a[4]?>px; height: <?=$a[5]?>px">
-		<?
+		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>[]" class="input_multiselectbox" multiple style="width: <?php echo $a[4] ?>px; height: <?php echo $a[5] ?>px">
+		<?php
 
 
 		foreach ($a[3] as $key => $val)
@@ -1622,26 +1622,26 @@ class PhenotypeContentStandard
 				$selected = "selected";
 			}
 		?>
-		<option value="<?=$key?>" <?=$selected?>><?=$val?></option>
-		<?
+		<option value="<?php echo $key ?>" <?php echo $selected ?>><?php echo $val ?></option>
+		<?php
 		}
 		?>
         </select>
         </p>
         </td>
         </tr>
-		<?
+		<?php
 		break;
 
 
 			case 35 : // Multiple Selectbox auf Basis von Contentdatensätzen
 		?>	
 		<tr>
-        <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+        <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
         <td width="509" class="formarea"><p>
-		<select name="<?=$myCO->formid?>_<?=$a[2]?>[]" class="input_multiselectbox" multiple style="width: <?=$a[3]?>px; height: <?=$a[4]?>px">
-		<?
+		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>[]" class="input_multiselectbox" multiple style="width: <?php echo $a[3] ?>px; height: <?php echo $a[4] ?>px">
+		<?php
 
 
 		$sql  = "SELECT dat_id,dat_bez FROM content_data WHERE con_id=".$a[5];
@@ -1664,15 +1664,15 @@ class PhenotypeContentStandard
 				$selected = 'selected="selected"';
 			}
 		?>
-		<option value="<?=$row["dat_id"]?>" <?=$selected?>><?=$row["dat_bez"]?></option>
-		<?
+		<option value="<?php echo $row["dat_id"] ?>" <?php echo $selected ?>><?php echo $row["dat_bez"] ?></option>
+		<?php
 		}
 		?>
         </select>
         </p>
         </td>
         </tr>
-		<?		
+		<?php		
 
 
 		break;
@@ -1680,12 +1680,12 @@ class PhenotypeContentStandard
 			case 21 : // Expanding List
 		?>
 		<tr>
-        <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+        <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
         <td width="509" class="formarea"><p>
-		<select name="<?=$myCO->formid?>_<?=$a[2]?>" class="input">
+		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>" class="input">
 		<option value="">...</option>
-		<?
+		<?php
 
 
 		$myList = new PhenotypeExpandingList($a[3]);
@@ -1699,14 +1699,14 @@ class PhenotypeContentStandard
 				$match = 1;
 			}
 ?>
-		<option value="<?=$val?>" <?=$selected?>><?=$val?></option>
-		<?
+		<option value="<?php echo $val ?>" <?php echo $selected ?>><?php echo $val ?></option>
+		<?php
 
 
 		}
 ?>
         </select>
-		<?
+		<?php
 
 
 		$val = "";
@@ -1719,14 +1719,14 @@ class PhenotypeContentStandard
         </p>
         </td>
         </tr>
-		<?
+		<?php
 
 		break;
 
 			case 7 : // Newline
 ?>
 		<tr><td colspan="2">&nbsp;</td></tr>
-		<?
+		<?php
 
 
 		break;
@@ -1751,10 +1751,10 @@ class PhenotypeContentStandard
       			<td colspan="4">&nbsp;</td>
     		</tr>
             <input type="hidden" value="1" name="editbuffer">
-			<input type="hidden" name="block_nr" value="<?=$block_nr?>">	
+			<input type="hidden" name="block_nr" value="<?php echo $block_nr ?>">	
 			<input type="hidden" name="newtool_id" value="">	
 			<input type="hidden" name="newtool_type" value="">
-			<?
+			<?php
 			// Das erste Bausteinpulldown
 			$myLayout->workarea_componentselector_draw($cog_id,0);
 
@@ -1772,48 +1772,48 @@ class PhenotypeContentStandard
 				$myComponent->init($row);
 				?>
  				<tr>
-            		<td class="padding30"><strong><?=$myComponent->bez?></strong><br><input name="<?=$row["dat_id"]?>_visible" type="checkbox" value="checkbox" <?if ($myComponent->visible){echo "checked";}?>>sichtbar
+            		<td class="padding30"><strong><?php php echo $myComponent->bez ?></strong><br><input name="<?php php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>>sichtbar
             	</td>
             	<td>&nbsp;</td>
             	<td class="formarea">
-      			<?
+      			<?php
       			$myComponent->edit();
       			?>
             	</td>
             	<td align="center">
-            	<?
+            	<?php
             	if ($j>1)
             	{
 				?>
-				<input type="image" src="img/b_up.gif" alt="Baustein nach oben verschieben" width="18" height="18" border="0" name="<?=$row["dat_id"]?>_moveup"><br>
-				<?
+				<input type="image" src="img/b_up.gif" alt="Baustein nach oben verschieben" width="18" height="18" border="0" name="<?php echo $row["dat_id"] ?>_moveup"><br>
+				<?php
             	}
 				?>
-                <input type="image" src="img/b_delete.gif" alt="Baustein l&ouml;schen" width="22" height="22" border="0"  name="<?=$row["dat_id"]?>_delete">
-				<?
+                <input type="image" src="img/b_delete.gif" alt="Baustein l&ouml;schen" width="22" height="22" border="0"  name="<?php echo $row["dat_id"] ?>_delete">
+				<?php
 				if ($mySUser->checkRight("superuser"))
 				{
 				?>
-				<br><a href="component_debug.php?id=<?=$row["dat_id"]?>" target="_blank"><img src="img/b_debug_grey.gif" border="0"></a>
-				<?
+				<br><a href="component_debug.php?id=<?php echo $row["dat_id"] ?>" target="_blank"><img src="img/b_debug_grey.gif" border="0"></a>
+				<?php
 				}
 				if ($j<$n)
 				{
 			  	?>
-              	<br><input type="image" src="img/b_down.gif" alt="Baustein nach unten verschieben" width="18" height="18" border="0" name="<?=$row["dat_id"]?>_movedown">
-			  	<?
+              	<br><input type="image" src="img/b_down.gif" alt="Baustein nach unten verschieben" width="18" height="18" border="0" name="<?php echo $row["dat_id"] ?>_movedown">
+			  	<?php
 				}
 			  	?>
 			  	</td>        
           		</tr>
-       			<?
+       			<?php
        			$myLayout->workarea_componentselector_draw($cog_id,$row["dat_id"]);
 			}
 			?>
 			<tr>
       			<td colspan="4">&nbsp;</td>
     		</tr>			
-			<?
+			<?php
 
 			// Ende Sequenz
 			break;
@@ -1821,10 +1821,10 @@ class PhenotypeContentStandard
 			case 11 : // Bild
 ?>
 		     <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-			 <?
+			 <?php
 
 
 			 $fname = $this->formid."_".$a[2];
@@ -1841,7 +1841,7 @@ class PhenotypeContentStandard
 			 </p>
 			 </td></tr>
 			 
-		<?
+		<?php
 
 
 		break;
@@ -1849,24 +1849,24 @@ class PhenotypeContentStandard
 			case 9 : // Externes Bild
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
-			 <?
+			 <?php
 
 
 			 $val = $myCO->get($a[2]);
 			 if ($val != "")
 			 {
 ?>
-			 <img src="<?=$val?>"><br clear="all">
-			 <?
+			 <img src="<?php echo $val ?>"><br clear="all">
+			 <?php
 
 
 			 }
 ?>
 			 <p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1875,7 +1875,7 @@ class PhenotypeContentStandard
              </p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1883,10 +1883,10 @@ class PhenotypeContentStandard
 			case 12 : // Richtext
 ?>
              <tr>
-             <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1897,7 +1897,7 @@ class PhenotypeContentStandard
              
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1905,10 +1905,10 @@ class PhenotypeContentStandard
 			case 14 : // Checkbox
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1918,7 +1918,7 @@ class PhenotypeContentStandard
              </p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -1926,10 +1926,10 @@ class PhenotypeContentStandard
 			case 15 : // Link
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1959,17 +1959,17 @@ class PhenotypeContentStandard
              </p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
 			case 16 : // Dokument
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -1979,7 +1979,7 @@ class PhenotypeContentStandard
              {
 ?>
 			 Infozeile<br>
-			 <?
+			 <?php
 
 
 			 $bez = $myCO->get($a[2]."_bez");
@@ -1992,17 +1992,17 @@ class PhenotypeContentStandard
              </p>
              </td>
              </tr>
-		<?
+		<?php
 
 		break;
 
 			case 26 : // Dokument2
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -2012,7 +2012,7 @@ class PhenotypeContentStandard
              {
 ?>
 			 Infozeile<br>
-			 <?
+			 <?php
 
 
 			 $bez = $myCO->get($a[2]."_bez");
@@ -2028,7 +2028,7 @@ class PhenotypeContentStandard
              </tr>		     
 		
 			 
-		<?
+		<?php
 
 
 		break;
@@ -2038,13 +2038,13 @@ class PhenotypeContentStandard
 			 $name = $myCO->formid."_".$a[2];
 			 ?>
              <tr>
-             <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <input type="file" name="<?=$name?>_userfile" class="input"/>
+             <input type="file" name="<?php echo $name ?>_userfile" class="input"/>
              <br/>
              <br/>
-             <?
+             <?php
              
              $med_id = $myCO->get($a[2]."_med_id");
 
@@ -2053,16 +2053,16 @@ class PhenotypeContentStandard
              if ($doc_id!=0) // Dokument und kein Bild
              {
                 ?>
-     			<table id="<?=$name?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+     			<table id="<?php echo $name ?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               	<tr>
                 <td nowrap>
-                <?
+                <?php
                 $myDoc = new PhenotypeDocument($med_id);
                 echo '<a href="'.$myDoc->url.'" target="_blank">Dokument Nr. ' . $myDoc->id . " - " . $myDoc->bez."</a>";
                 ?>
      			</td></tr>
      			</table>
-				<?
+				<?php
              }
              $myImg = new PhenoTypeImage($med_id);
        		 $img_id = $myImg->id;
@@ -2072,14 +2072,14 @@ class PhenotypeContentStandard
 			  <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-				   <a href="<?=MEDIABASEURL . $myImg->physical_folder?>/<?=$myImg->filename?>" target="_blank">
-				   <?
+				   <a href="<?php echo MEDIABASEURL . $myImg->physical_folder ?>/<?php echo $myImg->filename ?>" target="_blank">
+				   <?php
 				   $myImg->display_thumb($alt);
 			       ?></a>
      			</td>
      		  </tr>
      		  </table> 
-     		 <?
+     		 <?php
              }
 			 ?>
              </p>
@@ -2087,7 +2087,7 @@ class PhenotypeContentStandard
              </tr>		     
 		
 			 
-		<?
+		<?php
 
 
 		break;
@@ -2095,10 +2095,10 @@ class PhenotypeContentStandard
 			case 27 : // Mediaselector (wie Dokument kann aber auch Bilder zuordnen)
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-             <?
+             <?php
 
 
              $name = $myCO->formid."_".$a[2];
@@ -2108,7 +2108,7 @@ class PhenotypeContentStandard
              {
 ?>
 			 Infozeile<br>
-			 <?
+			 <?php
 
 
 			 $bez = $myCO->get($a[2]."_bez");
@@ -2124,7 +2124,7 @@ class PhenotypeContentStandard
              </tr>		     
 		
 			 
-		<?
+		<?php
 
 
 		break;
@@ -2132,11 +2132,11 @@ class PhenotypeContentStandard
 			case 17 : //Skript
 ?>
              <tr>
-             <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
-			 <b><?=$a[5]?></b><br>
-             <?
+			 <b><?php echo $a[5] ?></b><br>
+             <?php
 
 
              $filename = $a[5];
@@ -2146,7 +2146,7 @@ class PhenotypeContentStandard
 ?>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -2154,15 +2154,15 @@ class PhenotypeContentStandard
 			case 18 : // Kommentar
 ?>
              <tr>
-             <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
              <div style="width:460px">
              <p>
-             <?=$myPT->codeHKT($a[2])?> </p></div>
+             <?php echo $myPT->codeHKT($a[2]) ?> </p></div>
              </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -2170,17 +2170,17 @@ class PhenotypeContentStandard
 			case 28 : // Editlink
 ?>
              <tr>
-             <td width="120" class="padding30" valign="middle"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30" valign="middle"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
              <table cellspacing="0" cellpadding="0" border="0"></tr><td>
-             <p><?=$a[2]?></p>
+             <p><?php echo $a[2] ?></p>
              </td><td width="10">&nbsp;</td><td>
-             <a href="<?=$a[3]?>" target="<?=$a[4]?>"><img src="img/b_edit.gif" border="0"></a>
+             <a href="<?php echo $a[3] ?>" target="<?php echo $a[4] ?>"><img src="img/b_edit.gif" border="0"></a>
              </td></tr></table>
                 </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
@@ -2191,24 +2191,24 @@ class PhenotypeContentStandard
 			{
 ?>
              <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
-             <td width="509" class="formarea"><p><input type="submit" value="<?=$a[2]?>" class="buttonWhite" style="width:102px" name="<?=$a[3]?>"></p>
+             <td width="509" class="formarea"><p><input type="submit" value="<?php echo $a[2] ?>" class="buttonWhite" style="width:102px" name="<?php echo $a[3] ?>"></p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 			} else // Button mit URL
 			{
 ?>
 		 <tr>
-             <td width="120" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
-             <td width="509" class="formarea"><p><input type="button" value="<?=$a[2]?>" class="buttonWhite" style="width:102px" name="<?=$a[3]?>" onclick="self.location.href='<?=$a[4]?>'"></p>
+             <td width="509" class="formarea"><p><input type="button" value="<?php echo $a[2] ?>" class="buttonWhite" style="width:102px" name="<?php echo $a[3] ?>" onclick="self.location.href='<?php echo $a[4] ?>'"></p>
              </td>
              </tr>
-		<?
+		<?php
 
 
 			}
@@ -2220,10 +2220,10 @@ class PhenotypeContentStandard
 			{
 ?>
              <tr>
-             <td width="120" valign="top" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" valign="top" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea"><p>
-			 <?
+			 <?php
 
 
 			 $mname = $a[2];
@@ -2231,15 +2231,15 @@ class PhenotypeContentStandard
 ?></p>
              </td>
              </tr>
-		<?}else{?>
+		<?php }else{ ?>
 	 
 			 <tr><td colspan="2" class="padding30"><p>
-			 <?
+			 <?php
 
 			 $mname = $a[2];
 			 $this-> $mname ($a[4])
 ?></p></td></tr>
-		<?
+		<?php
 		}
 		break;
 			case 38 : // ajax
@@ -2248,25 +2248,25 @@ class PhenotypeContentStandard
 			{
 ?>
              <tr>
-             <td width="120" valign="top" class="padding30"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" valign="top" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
 			 <script type="text/javascript">
-			 var ajax_<?=$a[2]?> = new sack();
+			 var ajax_<?php echo $a[2] ?> = new sack();
 
 
 			 var error=0;
 
-			 function ajax_<?=$a[2]?>_whenCompleted(){
+			 function ajax_<?php echo $a[2] ?>_whenCompleted(){
 
-			 	s = ajax_<?=$a[2]?>.response;
+			 	s = ajax_<?php echo $a[2] ?>.response;
 			 	p = s.indexOf("###");
 			 	step = s.substring(4, p);
 
 			 	error =0;
-			 	if (ajax_<?=$a[2]?>.responseStatus)
+			 	if (ajax_<?php echo $a[2] ?>.responseStatus)
 			 	{
-			 		if (ajax_<?=$a[2]?>.responseStatus[0]!=200)
+			 		if (ajax_<?php echo $a[2] ?>.responseStatus[0]!=200)
 			 		{
 			 			error = 1;
 			 		}
@@ -2285,46 +2285,46 @@ class PhenotypeContentStandard
 			 		else
 			 		{
 			 			//alert(filenr);
-			 			ajax_<?=$a[2]?>_doit(step);
+			 			ajax_<?php echo $a[2] ?>_doit(step);
 			 		}
 			 	}
 			 	else
 			 	{
 			 		alert ("AJAX-Fehler, OK für Wiederholung ("+ step+")");
-			 		ajax_<?=$a[2]?>_doit(step);
+			 		ajax_<?php echo $a[2] ?>_doit(step);
 			 	}
 			 }
 
 
-			 function ajax_<?=$a[2]?>_doit(step){
-			 	ajax_<?=$a[2]?>.resetData();
-			 	ajax_<?=$a[2]?>.requestFile = "backend.php";
-			 	ajax_<?=$a[2]?>.method = "GET";
-			 	ajax_<?=$a[2]?>.element = 'divajax_<?=$a[2]?>';
-			 	ajax_<?=$a[2]?>.setVar("page","Editor,Content,form_ajax");
-			 	ajax_<?=$a[2]?>.setVar("step",step);
-			 	ajax_<?=$a[2]?>.setVar("token","<?=$a[2]?>");
-			 	ajax_<?=$a[2]?>.setVar("con_id","<?=$this->content_type?>");
-			 	ajax_<?=$a[2]?>.setVar("dat_id","<?=$this->id?>");
-			 	ajax_<?=$a[2]?>.setVar("usr_id","<?=$mySUser->id?>");
+			 function ajax_<?php echo $a[2] ?>_doit(step){
+			 	ajax_<?php echo $a[2] ?>.resetData();
+			 	ajax_<?php echo $a[2] ?>.requestFile = "backend.php";
+			 	ajax_<?php echo $a[2] ?>.method = "GET";
+			 	ajax_<?php echo $a[2] ?>.element = 'divajax_<?php echo $a[2] ?>';
+			 	ajax_<?php echo $a[2] ?>.setVar("page","Editor,Content,form_ajax");
+			 	ajax_<?php echo $a[2] ?>.setVar("step",step);
+			 	ajax_<?php echo $a[2] ?>.setVar("token","<?php echo $a[2] ?>");
+			 	ajax_<?php echo $a[2] ?>.setVar("con_id","<?php echo $this->content_type ?>");
+			 	ajax_<?php echo $a[2] ?>.setVar("dat_id","<?php echo $this->id ?>");
+			 	ajax_<?php echo $a[2] ?>.setVar("usr_id","<?php echo $mySUser->id ?>");
 			 	//ajax.onLoading = whenLoading;
 			 	//ajax.onLoaded = whenLoaded;
 			 	//ajax.onInteractive = whenInteractive;
-			 	ajax_<?=$a[2]?>.onCompletion = ajax_<?=$a[2]?>_whenCompleted;
-			 	ajax_<?=$a[2]?>.runAJAX();
+			 	ajax_<?php echo $a[2] ?>.onCompletion = ajax_<?php echo $a[2] ?>_whenCompleted;
+			 	ajax_<?php echo $a[2] ?>.runAJAX();
 			 }
 			</script>
-			<div id="divajax_<?=$a[2]?>" style="width:400px;height:<?=$a[4]?>px;"></div>
-			<script type="text/javascript">ajax_<?=$a[2]?>_doit('start')</script>
+			<div id="divajax_<?php echo $a[2] ?>" style="width:400px;height:<?php echo $a[4] ?>px;"></div>
+			<script type="text/javascript">ajax_<?php echo $a[2] ?>_doit('start')</script>
              </td>
              </tr>
-		<?}else{?>
+		<?php }else{ ?>
 	 
 			 <tr><td colspan="2" class="padding30"><p>
-			 <?
+			 <?php
 			 test
 ?></p></td></tr>
-		<?		
+		<?php		
 
 		}
 		break;
@@ -2332,25 +2332,25 @@ class PhenotypeContentStandard
 			case 29 : // DD-Upload
 ?>
              <tr>
-             <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+             <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
-            <?		if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE")) { ?>
+            <?php 		if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE")) { ?>
 			<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
-				width= "<?=$a[3]?>" height= "<?=$a[4]?>"  
+				width= "<?php echo $a[3] ?>" height= "<?php echo $a[4] ?>"  
 				codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">
-<?		} else { ?>
+<?php 		} else { ?>
 			<object type="application/x-java-applet;version=1.4.1"
-				width= "<?=$a[3]?>" height= "<?=$a[4]?>"  >
-	<?	} ?>
-				<param name="archive" value="<?=ADMINFULLURL?>dndlite.jar">
+				width= "<?php echo $a[3] ?>" height= "<?php echo $a[4] ?>"  >
+	<?php 	} ?>
+				<param name="archive" value="<?php echo ADMINFULLURL ?>dndlite.jar">
 				<param name="code" value="com.radinks.dnd.DNDAppletLite">
 				<param name="name" value="Rad Upload Lite">
-		   		<param name = "url" value = "<?=ADMINFULLURL?>admin_ddcontentupload.php?con_id=<?=$this->content_type?>&userid=<?=$mySUser->id?>&savepath=<?=urlencode($a[2])?>"> 
+		   		<param name = "url" value = "<?php echo ADMINFULLURL ?>admin_ddcontentupload.php?con_id=<?php echo $this->content_type ?>&userid=<?php echo $mySUser->id ?>&savepath=<?php echo urlencode($a[2]) ?>"> 
    				<param name = "message" value="<br\>&nbsp;Drag & Drop - Upload">
 
 
-   		<?
+   		<?php
 
 
    		if (isset ($_SERVER['PHP_AUTH_USER']))
@@ -2360,18 +2360,18 @@ class PhenotypeContentStandard
 ?>	</object>
 			 </td>
              </tr>
-		<?
+		<?php
 
 
 		break;
 			case 30 : // Positioner
 			 ?>
 	         <tr>
-	         <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+	         <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
 	         </td>
 	         <td width="509" class="formarea">
 			 <p>
-			 <?
+			 <?php
 			 $anzahl = $a[3];
 			 $token = $this->formid."_".$a[2]."_ddp_";
 			 $kette = "";
@@ -2411,46 +2411,46 @@ class PhenotypeContentStandard
 			 	}
 			 }
 			 ?>
-			 <input type="hidden" name="<?=$token?>_poschange" value="<?=$kette?>"/>
-<input type="hidden" name="<?=$token?>_posstart" value="<?=implode(",",$_position)?>"/>
-			 <?
+			 <input type="hidden" name="<?php echo $token ?>_poschange" value="<?php echo $kette ?>"/>
+<input type="hidden" name="<?php echo $token ?>_posstart" value="<?php echo implode(",",$_position) ?>"/>
+			 <?php
 			 $this->displayDHtmlWZJavascript($token, $anzahl,16);
 
 			 $mname = $a[4];
 			 for ($j = 1; $j <= $anzahl; $j ++)
 			 {
 			 ?>
-			 <div id="<?=$token.$j?>" style="width:404px;position:relative;background:url(img/moveit.gif) top left no-repeat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:<?=$token?>movedown(<?=$j?>)"><img src="img/b_down2.gif" width="18" height="18" border="0"></a>
-        	 <a href="javascript:<?=$token?>moveup(<?=$j?>)"><img src="img/b_up2.gif" width="18" height="18" border="0"></a><br/><div style="background-color:#D1D6DB;padding:2px;width:404px;"><p><?=$this->$mname($_position[$j-1]);?></p></div></div><br/>
-			 <script type="text/javascript">ADD_DHTML_DELAYED("<?=$token?><?=$j?>"+VERTICAL+TRANSPARENT);</script>
-			 <?
+			 <div id="<?php echo $token.$j ?>" style="width:404px;position:relative;background:url(img/moveit.gif) top left no-repeat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:<?php echo $token ?>movedown(<?php echo $j ?>)"><img src="img/b_down2.gif" width="18" height="18" border="0"></a>
+        	 <a href="javascript:<?php echo $token ?>moveup(<?php echo $j ?>)"><img src="img/b_up2.gif" width="18" height="18" border="0"></a><br/><div style="background-color:#D1D6DB;padding:2px;width:404px;"><p><?php echo $this->$mname($_position[$j-1]); ?></p></div></div><br/>
+			 <script type="text/javascript">ADD_DHTML_DELAYED("<?php echo $token ?><?php echo $j ?>"+VERTICAL+TRANSPARENT);</script>
+			 <?php
 			 }
 			 ?>
 			 <script type="text/javascript">
-			 <?
+			 <?php
 			 for ($j = 1; $j <= $anzahl; $j ++)
 			 {
 			 	?>
-			 	SET_DHTML_DROPFUNC_DELAYED('<?=$token?><?=$j?>',<?=$token?>dropTopListItem);
-			 	//dd.elements.<?=$token?><?=$j?>.setDropFunc(<?=$token?>dropTopListItem);
-			 	<?
+			 	SET_DHTML_DROPFUNC_DELAYED('<?php echo $token ?><?php echo $j ?>',<?php echo $token ?>dropTopListItem);
+			 	//dd.elements.<?php echo $token ?><?php echo $j ?>.setDropFunc(<?php echo $token ?>dropTopListItem);
+			 	<?php
 			 }
 			 ?>
 			 </script>
 			 </p>
              </td>
              </tr>
-			 <?
+			 <?php
 			 break;
 
 			case 31 : // DD-Textbox-Cluster
  ?>
 	         <tr>
-	         <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+	         <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
 	         </td>
 	         <td width="509" class="formarea">
 			 <p>
-			 <?
+			 <?php
 			 $anzahl = $a[4];
 			 $token = $this->formid."_".$a[2]."_ddp_";
 			 $kette = "";
@@ -2487,41 +2487,41 @@ class PhenotypeContentStandard
 			 	$_position = $_newposition;
 			 }
 			 ?>
-			 <input type="hidden" name="<?=$token?>_poschange" value="<?=$kette?>"/>
-<input type="hidden" name="<?=$token?>_posstart" value="<?=implode(",",$_position)?>"/>
-			 <?
+			 <input type="hidden" name="<?php echo $token ?>_poschange" value="<?php echo $kette ?>"/>
+<input type="hidden" name="<?php echo $token ?>_posstart" value="<?php echo implode(",",$_position) ?>"/>
+			 <?php
 			 $this->displayDHtmlWZJavascript($token, $anzahl,16);
 
 			 for ($j = 1; $j <= $anzahl; $j ++)
 			 {
 			 ?>
-			 <div id="<?=$token.$j?>" style="padding:0px;width:480px;position:relative;background:url(img/moveitonerow.gif) top left no-repeat"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:<?=$token?>movedown(<?=$j?>)"><img src="img/b_down2.gif" width="18" height="18" border="0"></a>
-        	 <a href="javascript:<?=$token?>moveup(<?=$j?>)"><img src="img/b_up2.gif" width="18" height="18" border="0"></a>
-        	 <?
+			 <div id="<?php echo $token.$j ?>" style="padding:0px;width:480px;position:relative;background:url(img/moveitonerow.gif) top left no-repeat"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:<?php echo $token ?>movedown(<?php echo $j ?>)"><img src="img/b_down2.gif" width="18" height="18" border="0"></a>
+        	 <a href="javascript:<?php echo $token ?>moveup(<?php echo $j ?>)"><img src="img/b_up2.gif" width="18" height="18" border="0"></a>
+        	 <?php
         	 $name = $myCO->formid."_".$a[2]."_".$_position[$j-1];
         	 $val = $myCO->get($a[2]."_".$_position[$j-1]);
         	 echo $myLayout->workarea_form_text("", $name, $val, $a[3], 1);
         	 ?>
         	 </p></div><br/>
-			 <script type="text/javascript">ADD_DHTML_DELAYED("<?=$token?><?=$j?>"+VERTICAL+TRANSPARENT);</script>
-			 <?
+			 <script type="text/javascript">ADD_DHTML_DELAYED("<?php echo $token ?><?php echo $j ?>"+VERTICAL+TRANSPARENT);</script>
+			 <?php
 			 }
 			 ?>
 			 <script type="text/javascript">
-			 <?
+			 <?php
 			 for ($j = 1; $j <= $anzahl; $j ++)
 			 {
 			 	?>
-			 	SET_DHTML_DROPFUNC_DELAYED('<?=$token?><?=$j?>',<?=$token?>dropTopListItem);
-			 	//dd.elements.<?=$token?><?=$j?>.setDropFunc(<?=$token?>dropTopListItem);
-			 	<?
+			 	SET_DHTML_DROPFUNC_DELAYED('<?php echo $token ?><?php echo $j ?>',<?php echo $token ?>dropTopListItem);
+			 	//dd.elements.<?php echo $token ?><?php echo $j ?>.setDropFunc(<?php echo $token ?>dropTopListItem);
+			 	<?php
 			 }
 			 ?>
 			 </script>
 			 </p>
              </td>
              </tr>
-			 <?				
+			 <?php				
 			 break;
 
 
@@ -2542,19 +2542,19 @@ class PhenotypeContentStandard
 				}
 			?>
 			<tr>
-	        <td width="120" class="padding30" valign="top"><p><strong><?=$a[1]?></strong></p>
+	        <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
 	        </td>
 	        <td width="509" class="formarea">
 			<p>
-			<table width="<?=$a[1]?>" border="0" cellpadding="0" cellspacing="0">
+			<table width="<?php echo $a[1] ?>" border="0" cellpadding="0" cellspacing="0">
       		<tr>
         	<td valign="top" class="window">
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td colspan="<?=$n?>" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
+              <td colspan="<?php echo $n ?>" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
             <tr>
-            <?
+            <?php
             for ($j=0;$j<$n;$j++)
             {
             	$width="left";
@@ -2563,21 +2563,21 @@ class PhenotypeContentStandard
             		$width = ';width:'.$a[7][$j].'px';
             	}
 			?>
-			  <td width="*" class="tableHead" style="text-align:left<?=$width?>" valign="top"><?=$_table[0][$j]?></td>
-			<?
+			  <td width="*" class="tableHead" style="text-align:left<?php echo $width ?>" valign="top"><?php echo $_table[0][$j] ?></td>
+			<?php
             }
 			?>
             </tr>
             <tr>
               <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-             <?
+             <?php
              $m = count($_table);
              for ($l=1;$l<$m;$l++)
              {
 				?>
 				<tr>
-				<?
+				<?php
 				for ($j=0;$j<$n;$j++)
 				{
 					$align="left";
@@ -2592,30 +2592,30 @@ class PhenotypeContentStandard
 							{
 						?>
 						<td  class="tableBody"><img src="img/i_online.gif"></td>
-						<?	
+						<?php	
 							}
 							else
 							{
 						?>
 						<td  class="tableBody"><img src="img/i_offline.gif"></td>
-						<?
+						<?php
 							}
 							break;
 						case $col_edit:
 					?>
-					<td  class="tableBody"><a href="<?=urlencode($_table[$l][$j])?>"><img src="img/b_edit.gif" border="0"></a></td>
-					<?						
+					<td  class="tableBody"><a href="<?php echo urlencode($_table[$l][$j]) ?>"><img src="img/b_edit.gif" border="0"></a></td>
+					<?php						
 					break;
 						default:
 					?>
-					<td  class="tableBody" style="text-align:<?=$align?>" valign="top"><?=$_table[$l][$j]?></td>
-					<?
+					<td  class="tableBody" style="text-align:<?php echo $align ?>" valign="top"><?php echo $_table[$l][$j] ?></td>
+					<?php
 					break;
 					}
 				}
 			?>
 			</tr>
-			<?
+			<?php
              }
 			?>
     				<tr>	
@@ -2629,7 +2629,7 @@ class PhenotypeContentStandard
         			 </p>
              </td>
              </tr>
-			<?
+			<?php
 			break;
 
 			case 33: // form_hidden
@@ -2638,8 +2638,8 @@ class PhenotypeContentStandard
 			$name = $myCO->formid."_".$a[1];
 			$val = $a[2];
 			?>
-			<tr><td colspan="3"><p><strong><input type="hidden" name="<?=$name?>" value="<?=$val?>"/></td></tr>
-            <?
+			<tr><td colspan="3"><p><strong><input type="hidden" name="<?php echo $name ?>" value="<?php echo $val ?>"/></td></tr>
+            <?php
             break;
 
 
@@ -2655,14 +2655,14 @@ class PhenotypeContentStandard
    <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite padding30"   width="120" valign="top">
-		    <p><strong><?=$a[1]?></strong></p>
-		    <input type="hidden" name="p" value="<?=$a[3]?>"/>
+		    <p><strong><?php echo $a[1] ?></strong></p>
+		    <input type="hidden" name="p" value="<?php echo $a[3] ?>"/>
 			</td>
             <td align="left" class="windowFooterWhite" width="509">
             <!-- -->
             <table cellspacing="1" cellpading="0">
              <tr>
-             <?
+             <?php
              for ($j=1;$j<=$a[2];$j++)
              {
              	$class="tabmenuType";
@@ -2672,8 +2672,8 @@ class PhenotypeContentStandard
              	}
              	$url = "id=" . $this->id . "&amp;uid=".$this->uid."&amp;b=".$this->block_nr."&amp;p=".$j
              	?>
-             	<td align="center"><a href="backend.php?page=Editor,Content,edit&<?=$url?>" class="<?=$class?>"><?=$j?></a></td>			
-             	<?
+             	<td align="center"><a href="backend.php?page=Editor,Content,edit&<?php echo $url ?>" class="<?php echo $class ?>"><?php echo $j ?></a></td>			
+             	<?php
              }
              	?>
 		     </tr>
@@ -2681,7 +2681,7 @@ class PhenotypeContentStandard
             <!-- -->
             </td>
           </tr>
-			<?
+			<?php
 			break;
 
 			case 37: // form_javascript_onload
@@ -2694,7 +2694,7 @@ class PhenotypeContentStandard
 	}
 ?>
 </table>
-	<?
+	<?php
 	return ($_jsarray);
 
 	}
@@ -2702,7 +2702,7 @@ class PhenotypeContentStandard
 	function displayDHtmlWZJavascript($token, $anzahl,$spacer)
 	{
 ?>
-  				 <?
+  				 <?php
 
 
   				 if ($this->dhtmlwz_init == 0)
@@ -2711,19 +2711,19 @@ class PhenotypeContentStandard
 			 <script type="text/javascript">
 			 SET_DHTML(CURSOR_MOVE);
 			 </script>
-			 <?
+			 <?php
 
 
 			 $this->dhtmlwz_init = 1;
   				 }
 ?>
   	<script type="text/javascript">
-  	function <?=$token?>moveup(item)
+  	function <?php echo $token ?>moveup(item)
   	{
 
-  		order = <?=$token?>determineOrder();
+  		order = <?php echo $token ?>determineOrder();
   		currentpos = item;
-  		for (i=0;i<<?=$anzahl?>;i++)
+  		for (i=0;i<<?php echo $anzahl ?>;i++)
   		{
   			if(order[i]==item)
   			{
@@ -2736,11 +2736,11 @@ class PhenotypeContentStandard
   			changepos = currentpos-1;
   			changeitem = order[changepos-1];
 
-  			citem ="<?=$token?>" + item;
+  			citem ="<?php echo $token ?>" + item;
   			y = dd.elements[citem].y;
   			x = dd.elements[citem].x;
 
-  			citem2 ="<?=$token?>" + changeitem;
+  			citem2 ="<?php echo $token ?>" + changeitem;
   			y2 = dd.elements[citem2].y;
   			x2 = dd.elements[citem2].x;
 
@@ -2748,47 +2748,47 @@ class PhenotypeContentStandard
   			dd.elements[citem2].moveTo(x,y);
   		}
 
-  		<?=$token?>dropTopListItem();
+  		<?php echo $token ?>dropTopListItem();
   	}
 
-  	function <?=$token?>movedown(item)
+  	function <?php echo $token ?>movedown(item)
   	{
-  		order = <?=$token?>determineOrder();
+  		order = <?php echo $token ?>determineOrder();
   		currentpos = item;
-  		for (i=0;i<<?=$anzahl?>;i++)
+  		for (i=0;i<<?php echo $anzahl ?>;i++)
   		{
   			if(order[i]==item)
   			{
   				currentpos =i+1;
   			}
   		}
-  		if (currentpos<<?=$anzahl?>)
+  		if (currentpos<<?php echo $anzahl ?>)
   		{
   			// Item an der übergeordneten Position bestimmen
   			changepos = currentpos+1;
   			changeitem = order[changepos-1];
 
-  			citem ="<?=$token?>" + item;
+  			citem ="<?php echo $token ?>" + item;
   			y = dd.elements[citem].y;
   			x = dd.elements[citem].x;
 
-  			citem2 ="<?=$token?>" + changeitem;
+  			citem2 ="<?php echo $token ?>" + changeitem;
   			y2 = dd.elements[citem2].y;
   			x2 = dd.elements[citem2].x;
 
   			dd.elements[citem].moveTo(x2,y2);
   			dd.elements[citem2].moveTo(x,y);
   		}
-  		<?=$token?>dropTopListItem();
+  		<?php echo $token ?>dropTopListItem();
   	}
 
-  	function <?=$token?>determineOrder()
+  	function <?php echo $token ?>determineOrder()
   	{
   		order = new Array();
 
-  		for (i=1;i<=<?=$anzahl?>;i++)
+  		for (i=1;i<=<?php echo $anzahl ?>;i++)
   		{
-  			citem ='<?=$token?>' + i;
+  			citem ='<?php echo $token ?>' + i;
   			y = dd.elements[citem].y;
   			order[i-1]=y + "#" + i;
 
@@ -2802,7 +2802,7 @@ class PhenotypeContentStandard
   		}
   		);
 
-  		for (i=0;i<<?=$anzahl?>;i++)
+  		for (i=0;i<<?php echo $anzahl ?>;i++)
   		{
   			p = order[i].indexOf("#")
   			order[i]=order[i].substr(p+1);
@@ -2810,33 +2810,33 @@ class PhenotypeContentStandard
   		return (order);
   	}
 
-  	function <?=$token?>storeOrder()
+  	function <?php echo $token ?>storeOrder()
   	{
-  		order = <?=$token?>determineOrder();
+  		order = <?php echo $token ?>determineOrder();
   		s="";
-  		for (i=0;i<<?=$anzahl?>;i++)
+  		for (i=0;i<<?php echo $anzahl ?>;i++)
   		{
   			s = s+ "," + order[i];
   		}
-  		document.forms.editform.<?=$token?>_poschange.value=s;
+  		document.forms.editform.<?php echo $token ?>_poschange.value=s;
   	}
 
-  	function  <?=$token?>dropTopListItem()
+  	function  <?php echo $token ?>dropTopListItem()
   	{
 
-  		order = <?=$token?>determineOrder();
+  		order = <?php echo $token ?>determineOrder();
 
-  		citem ="<?=$token?>1";
+  		citem ="<?php echo $token ?>1";
   		y = dd.elements[citem].defy;
-  		for (i=1;i<=<?=$anzahl?>;i++)
+  		for (i=1;i<=<?php echo $anzahl ?>;i++)
   		{
-  			citem ="<?=$token?>" + order[i-1];
+  			citem ="<?php echo $token ?>" + order[i-1];
   			x = dd.elements[citem].x;
   			h = dd.elements[citem].h;
   			dd.elements[citem].moveTo(x,y);
-  			y=y+h+<?=$spacer?>;
+  			y=y+h+<?php echo $spacer ?>;
   		}
-  		<?=$token?>storeOrder();
+  		<?php echo $token ?>storeOrder();
 
   	}
 
@@ -2844,7 +2844,7 @@ class PhenotypeContentStandard
   	//-->
 
     </script>
-    <?
+    <?php
 
 
 	}

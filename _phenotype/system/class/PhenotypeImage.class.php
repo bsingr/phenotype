@@ -1,4 +1,4 @@
-<?
+<?php
 
 
 // -------------------------------------------------------
@@ -19,7 +19,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 
 
 /**
@@ -171,7 +171,7 @@ class PhenotypeImage extends PhenotypeMediaObject
 		{
 			$alt = $this->alt;
 		}
-?><img src="<?=MEDIABASEURL . $this->physical_folder . "/" . $this->filename?>" width="<?=$this->x?>" height="<?=$this->y?>" alt="<?=$alt?>" title="<?=$alt?>" border="0"<?if ($this->align!=""){?> align="<?=$this->align?>"<?}?><?if ($this->class!=""){?> class="<?=$this->class?>"<?}?><?if ($this->style!=""){?> style="<?=$this->style?>"<?}?> /><?
+?><img src="<?php php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php php echo $this->x ?>" height="<?php php echo $this->y ?>" alt="<?php php echo $alt ?>" title="<?php php echo $alt ?>" border="0"<?php if ($this->align!=""){ ?> align="<?php php echo $this->align ?>"<?php } ?><?php if ($this->class!=""){ ?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
 
 
 
@@ -194,7 +194,7 @@ class PhenotypeImage extends PhenotypeMediaObject
 		{
 			$alt = $this->alt;
 		}
-?><img src="<?=MEDIABASEURL . $this->physical_folder . "/" . $this->filename?>" width="<?=$x?>" height="<?=$y?>" alt="<?=$alt?>" title="<?=$alt?>" border="0" <?if ($this->class!=""){?> class="<?=$this->class?>"<?}?><?if ($this->style!=""){?> style="<?=$this->style?>"<?}?> /><?
+?><img src="<?php php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php php echo $x ?>" height="<?php php echo $y ?>" alt="<?php php echo $alt ?>" title="<?php php echo $alt ?>" border="0" <?php if ($this->class!=""){ ?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
 
 
 
@@ -239,16 +239,16 @@ class PhenotypeImage extends PhenotypeMediaObject
 				$filename = $this->filename_thumb;
 			}
 		}
-?><img src="<?=MEDIABASEURL . $this->physical_folder . "/" . $filename?>" width="<?=$tx?>" height="<?=$ty?>" alt="<?=$alt?>" title="<?=$alt?>" border="0" <?
+?><img src="<?php echo MEDIABASEURL . $this->physical_folder . "/" . $filename ?>" width="<?php echo $tx ?>" height="<?php echo $ty ?>" alt="<?php echo $alt ?>" title="<?php echo $alt ?>" border="0" <?php
 
 
 
 		if ($this->fname != "")
 		{
 ?>
-    name="<?=$this->fname?>"
-   <?
-   } if ($this->class!=""){?> class="<?=$this->class?>"<?}?><?if ($this->style!=""){?> style="<?=$this->style?>"<?}?> /><?
+    name="<?php echo $this->fname ?>"
+   <?php
+   } if ($this->class!=""){?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
 
 
 
@@ -256,16 +256,16 @@ class PhenotypeImage extends PhenotypeMediaObject
 
 		function display_XY($x, $y, $alt = NULL)
 		{
-?><img src="<?=MEDIABASEURL . $this->physical_folder . "/" . $this->filename?>" width="<?=$x?>" height="<?=$y?>" alt="<?=$alt?>" title="<?=$alt?>" border="0" <?
+?><img src="<?php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php echo $x ?>" height="<?php echo $y ?>" alt="<?php echo $alt ?>" title="<?php echo $alt ?>" border="0" <?php
 
 
 
 			if ($this->fname != "")
 			{
 ?>
-    name="<?=$this->fname?>"
-   <?
-   } if ($this->class!=""){?> class="<?=$this->class?>"<?}?><?if ($this->style!=""){?> style="<?=$this->style?>"<?}?> /><?
+    name="<?php echo $this->fname ?>"
+   <?php
+   } if ($this->class!=""){?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
 
 
 
@@ -300,16 +300,16 @@ class PhenotypeImage extends PhenotypeMediaObject
 					}
 					$filename = $this->filename;
 				}
-?><img src="<?=MEDIABASEURL . $this->physical_folder . "/" . $filename?>" width="<?=$tx?>" height="<?=$ty?>" alt="<?=$alt?>" title="<?=$alt?>" border="0" <?
+?><img src="<?php echo MEDIABASEURL . $this->physical_folder . "/" . $filename ?>" width="<?php echo $tx ?>" height="<?php echo $ty ?>" alt="<?php echo $alt ?>" title="<?php echo $alt ?>" border="0" <?php
 
 
 
 				if ($this->fname != "")
 				{
 ?>
-    name="<?=$this->fname?>"
-   <?
-   } if ($this->class!=""){?> class="<?=$this->class?>"<?}?><?if ($this->style!=""){?> style="<?=$this->style?>"<?}?> /><?
+    name="<?php echo $this->fname ?>"
+   <?php
+   } if ($this->class!=""){?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
 
 
 

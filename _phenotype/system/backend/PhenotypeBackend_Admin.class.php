@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -188,7 +188,7 @@ class PhenotypeBackend_Admin_Standard extends PhenotypeBackend
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
         </tr>
 		</table>
-	<?
+	<?php
 	return ($myPT->stopBuffer());
 	}
 

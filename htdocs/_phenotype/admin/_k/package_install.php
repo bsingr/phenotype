@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,13 +17,13 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
 	$url = "noaccess.php";
@@ -31,7 +31,7 @@ if (!$mySUser->checkRight("superuser"))
 	exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 $id =$myRequest->get("id");
@@ -42,32 +42,32 @@ $myPak = new PhenotypePackage();
 
 
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Packages");
 $myAdm->explorer_set("id",$myRequest->get("id"));
 $myAdm->explorer_set("packagemode","install");
 $myAdm->explorer_draw();
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
@@ -78,12 +78,12 @@ $myPT->startBuffer();
 
 ?>
     <form action="package_install.php" method="post">
-	<input type="hidden" name="id" value="<?=urlencode($myRequest->get("id"))?>">	
+	<input type="hidden" name="id" value="<?php echo urlencode($myRequest->get("id")) ?>">	
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Package <?=$id?></td>
+            <td class="windowTitle">Package <?php echo $id ?></td>
             <td align="right" class="windowTitle"><!--<a href="http://www.phenotype-cms.de/docs.php?v=23&t=21" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
@@ -95,8 +95,8 @@ $myPT->startBuffer();
       </tr>
     </table>
 	<form action="toolkit_update.php" method="post">
-	<input type="hidden" name="id" value="<?=$id?>">
-	<?
+	<input type="hidden" name="id" value="<?php echo $id ?>">
+	<?php
 	$myLayout->tab_new();
 	$url = "package_edit.php?id=" .$id ."&b=0";
 	$myLayout->tab_addEntry("Protokoll",$url,"b_konfig.gif");
@@ -130,20 +130,20 @@ $myPT->startBuffer();
             <td align="right" class="windowFooterWhite">&nbsp;&nbsp;</td>
           </tr>
         </table>
-	 <?
+	 <?php
 	 $myLayout->workarea_stop_draw();
 	?>
 	</form>	 
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

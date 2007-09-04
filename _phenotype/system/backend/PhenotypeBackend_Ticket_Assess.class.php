@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -165,13 +165,13 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 		?>
 		<form action="backend.php" enctype="multipart/form-data" name="formsort" id="formsort">
-		<input type="hidden" name="page" value="Ticket,Assess,<?=$action?>">
-		<input type="hidden" name="sbj_id" value="<?=$sbj_id?>"?>
-		<input type="hidden" name="dat_id" value="<?=$dat_id?>"?>
-		<input type="hidden" name="s" value="<?=addslashes($myRequest->get("s"))?>">
-		<input type="hidden" name="v" value="<?=addslashes($myRequest->get("v"))?>">
-		<input type="hidden" name="i" value="<?=addslashes($myRequest->get("i"))?>">
-		<?
+		<input type="hidden" name="page" value="Ticket,Assess,<?php echo $action ?>">
+		<input type="hidden" name="sbj_id" value="<?php echo $sbj_id ?>"?>
+		<input type="hidden" name="dat_id" value="<?php echo $dat_id ?>"?>
+		<input type="hidden" name="s" value="<?php echo addslashes($myRequest->get("s")) ?>">
+		<input type="hidden" name="v" value="<?php echo addslashes($myRequest->get("v")) ?>">
+		<input type="hidden" name="i" value="<?php echo addslashes($myRequest->get("i")) ?>">
+		<?php
 
 		$this->displayHeadline($headline,"http://www.phenotype-cms.de/docs.php?v=23&t=7");
 
@@ -294,14 +294,14 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 		// Default-Sortierung bei geschlossenen Ticket nach Einstellungsdatum
 		?>
-		<input type="hidden" name="focus" value="<?=$focus?>"?>
+		<input type="hidden" name="focus" value="<?php echo $focus ?>"?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
 			<tr>
 	        <td class="windowHeaderGrey2">
 	        	<table border="0" cellspacing="0" cellpadding="0"> 	            
 	        		<tr>
 	              		<td class="padding10">
-	              		<?
+	              		<?php
 	              		if ($focus ==4)
 	              		{
 	              			if ($myRequest->check("adatum"))
@@ -321,29 +321,29 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 	              				$edatum = date ('d.m.Y',time());
 	              			}
 	        				?>
-	            		zeige Tickets, die zwischen <input type="text" name="adatum" value="<?=$this->getH($adatum)?>" class="input" style="width:60px" onchange="document.forms.formsort.submit();" onblur="document.forms.formsort.submit();"/> und <input type="text" name="edatum" value="<?=$this->getH($edatum)?>" class="input" style="width:60px" onchange="document.forms.formsort.submit();"/> geschlossen wurden. <input type="image" src="img/transparent.gif"/>
-						<?
+	            		zeige Tickets, die zwischen <input type="text" name="adatum" value="<?php echo $this->getH($adatum) ?>" class="input" style="width:60px" onchange="document.forms.formsort.submit();" onblur="document.forms.formsort.submit();"/> und <input type="text" name="edatum" value="<?php echo $this->getH($edatum) ?>" class="input" style="width:60px" onchange="document.forms.formsort.submit();"/> geschlossen wurden. <input type="image" src="img/transparent.gif"/>
+						<?php
 	              		}
 	              		else
 	              		{
 	          			?>
-	                   	<input name="sortorder" type="radio" value="1" <?if($sortorder==1){echo"checked";}?> onclick="document.forms.formsort.submit();">
+	                   	<input name="sortorder" type="radio" value="1" <?php if($sortorder==1){echo"checked";} ?> onclick="document.forms.formsort.submit();">
 		                ABCD
-		                <input type="radio" name="sortorder" value="2" <?if($sortorder==2){echo"checked";}?> onclick="document.forms.formsort.submit();">
+		                <input type="radio" name="sortorder" value="2" <?php if($sortorder==2){echo"checked";} ?> onclick="document.forms.formsort.submit();">
 		                Wichtigkeit
-		                <input type="radio" name="sortorder" value="3" <?if($sortorder==3){echo"checked";}?> onclick="document.forms.formsort.submit();">
+		                <input type="radio" name="sortorder" value="3" <?php if($sortorder==3){echo"checked";} ?> onclick="document.forms.formsort.submit();">
 		                Dringlichkeit
-		                <input type="radio" name="sortorder" value="4" <?if($sortorder==4){echo"checked";}?> onclick="document.forms.formsort.submit();"> 
+		                <input type="radio" name="sortorder" value="4" <?php if($sortorder==4){echo"checked";} ?> onclick="document.forms.formsort.submit();"> 
 		                Datum
-		                <input type="radio" name="sortorder" value="5" <?if($sortorder==5){echo"checked";}?> onclick="document.forms.formsort.submit();"> 
+		                <input type="radio" name="sortorder" value="5" <?php if($sortorder==5){echo"checked";} ?> onclick="document.forms.formsort.submit();"> 
 		                letzte &Auml;nderung
-		                <input type="radio" name="sortorder" value="6" <?if($sortorder==6){echo"checked";}?> onclick="document.forms.formsort.submit();">
+		                <input type="radio" name="sortorder" value="6" <?php if($sortorder==6){echo"checked";} ?> onclick="document.forms.formsort.submit();">
 		                Bezeichnung
-		                <input type="radio" name="sortorder" value="7" <?if($sortorder==7){echo"checked";}?> onclick="document.forms.formsort.submit();">
+		                <input type="radio" name="sortorder" value="7" <?php if($sortorder==7){echo"checked";} ?> onclick="document.forms.formsort.submit();">
 		                Bearbeiter		
-		                <input type="radio" name="sortorder" value="8" <?if($sortorder==8){echo"checked";}?> onclick="document.forms.formsort.submit();">
+		                <input type="radio" name="sortorder" value="8" <?php if($sortorder==8){echo"checked";} ?> onclick="document.forms.formsort.submit();">
 		                Einsteller			
-	           	   <?
+	           	   <?php
 	              		}
 				?>
 	        	</td>
@@ -356,7 +356,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 	      </tr>
 	    </table>
 		</form>
-		<?
+		<?php
 
 
 		switch ($focus)

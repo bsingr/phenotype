@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -30,56 +30,56 @@ if (!$mySUser->checkRight("superuser"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Seitenskripte");
 $myAdm->explorer_set("pagescript_nr",$_REQUEST["id"].".".sprintf("%02d",$_REQUEST["ver_nr"]));
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $id=$_REQUEST["id"];
 $ver_id=$_REQUEST["ver_id"];
 ?>
 <form action="pagescript_update.php" method="post">
-<input type="hidden" name="id" value="<?=$id?>">	
-<input type="hidden" name="ver_id" value="<?=$ver_id?>">		
-<input type="hidden" name="ver_nr" value="<?=$_REQUEST["ver_nr"]?>">		
+<input type="hidden" name="id" value="<?php echo $id ?>">	
+<input type="hidden" name="ver_id" value="<?php echo $ver_id ?>">		
+<input type="hidden" name="ver_nr" value="<?php echo $_REQUEST["ver_nr"] ?>">		
 <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$id?>.<?=sprintf("%02d",$_REQUEST["ver_nr"])?> Seitenskript</td>
+            <td class="windowTitle"><?php echo $id ?>.<?php echo sprintf("%02d",$_REQUEST["ver_nr"]) ?> Seitenskript</td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=19" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -90,7 +90,7 @@ $ver_id=$_REQUEST["ver_id"];
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?
+	<?php
 	 $myLayout->tab_new();
 	 $url = "pagescript_edit.php?id=" .$id ."&ver_id=" . $_REQUEST["ver_id"] . "&ver_nr=". $_REQUEST["ver_nr"] . "&b=0";	 
 	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
@@ -101,8 +101,8 @@ $ver_id=$_REQUEST["ver_id"];
 		 ?>
 			 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="tableBody"><strong><?=$scriptname;?></strong><br>
-			<?
+            <td class="tableBody"><strong><?php echo $scriptname; ?></strong><br>
+			<?php
 			$scriptname = APPPATH . $scriptname;
 			echo $myLayout->form_HTMLTextArea("skript",$scriptname,80,30,"PHP");
 			?>
@@ -119,20 +119,20 @@ $ver_id=$_REQUEST["ver_id"];
             <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses Seitenskript wirklich l&ouml;schen?')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-	 <?
+	 <?php
 	 $myLayout->workarea_stop_draw();
 	 ?>
 </form>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

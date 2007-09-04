@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 
 	define ("DAO_TYPE_SYSTEM", "DO_SYSTEM");
 	define ("DAO_TYPE_CONTENT", "DO_CONTENT");

@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -86,7 +86,7 @@ function pageHeader() {
 	<div id="MainFrameBox">
 
 		<div id="ContentFrameBox">
-<?
+<?php
 }
 
 
@@ -126,7 +126,7 @@ function doAction($action) {
 	<br><br/>
 	This is the Phenotype installer. Please be aware of the fact that <strong>the software is available only in German</strong> at the moment, even if the installer is already in English.<br /><br />
 	<strong>Problems?</strong> Please post your questions and problems in the forum on the <a href="http://www.phenotype.de/forum/" target="_blank">Phenotype forum</a>.<br /><br /><br /><br />
-	<?
+	<?php
 }
 
 
@@ -141,10 +141,10 @@ function doActionCheck() {
 
 ?>
 			<H2>Phenotype Installer</H2>
-			<p>Version <?=PT_VERSION?></p>
+			<p>Version <?php echo PT_VERSION ?></p>
 			<p>Checking the system...</p>
 			<p>
-<?			
+<?php			
 $errors = 0;
 $warnings = 0;
 
@@ -187,7 +187,7 @@ foreach ($reqs as $myReq) {
 
 	if (! $actionError) {
 
-		?>checking for <?=$myReq["message"]?>...<?
+		?>checking for <?php echo $myReq["message"] ?>...<?php
 		//echo("statement:&nbsp;&nbsp;$statement<BR />");
 		if (eval($statement)) {
 			// ok
@@ -213,27 +213,27 @@ foreach ($reqs as $myReq) {
 	}
 }
 
-?>			</p><?
+?>			</p><?php
 
 if ($errors) {
 	$msg = "check NOT OK, please correct the errors shown above ($errors errors)";
-?>			<p><?=$msg?></p>
+?>			<p><?php echo $msg ?></p>
 			<p>If you are sure to meet all requirements you can go on without passing the check,<br />
 					even if <strong>THIS IS NOT RECOMMENDED</strong> - Step 2: <a href="install.php?action=install">install Phenotype</a></p>	
 			<br/>
 			<br/>
-<?
+<?php
 } else {
 	$msg = "check OK";
 	if ($warnings) {
 		$msg .= ", but there were warnings. Please check the warnings shown above that might lead to malfunctions ($warnings warnings)";
 	}
-?>			<p><?=$msg?></p>
+?>			<p><?php echo $msg ?></p>
 			<p>Go on with 2: <a href="install.php?action=install">install Phenotype</a></p>	
 			<br/>
 			<br/>
 			
-<?
+<?php
 }
 
 
@@ -303,7 +303,7 @@ function doActionInstall() {
 			<tr><td class="headline" colspan="2">Remove installer and login to backend</td></tr>
 			</table>
 			</form>
-			<?
+			<?php
 		}
 
 	} else {
@@ -711,32 +711,32 @@ function renderInstallForm() {
 	<table>
 		<tr><td class="headline" colspan="2">Database Setup (ATTENTION, this database will be truncated if necessary!)</td></tr>
 		<tr><td><br/></td></tr>
-		<tr><td class="key">DB Host</td><td class="value"><input type="text" name="db_host" value="<?=dget('db_host')?>" />&nbsp;<span class="bad"><?=eget('db_host')?></span></td></tr>
-		<tr><td class="key">DB User</td><td class="value"><input type="text" name="db_user" value="<?=dget('db_user')?>" />&nbsp;<span class="bad"><?=eget('db_user')?></span></td></tr>
-		<tr><td class="key">DB Passwort</td><td class="value"><input type="text" name="db_pass" value="<?=dget('db_pass')?>" />&nbsp;<span class="bad"><?=eget('db_pass')?></span></td></tr>
-		<tr><td class="key">DB Name</td><td class="value"><input type="text" name="db_name" value="<?=dget('db_name')?>" />&nbsp;<span class="bad"><?=eget('db_name')?></span></td></tr>
-		<tr><td class="key">truncate DB and initialize?*</td><td class="value"><input type="checkbox" name="db_truncate" value="1" <?=cget("db_truncate")?>/>&nbsp;<br/></td></tr>
+		<tr><td class="key">DB Host</td><td class="value"><input type="text" name="db_host" value="<?php echo dget('db_host') ?>" />&nbsp;<span class="bad"><?php echo eget('db_host') ?></span></td></tr>
+		<tr><td class="key">DB User</td><td class="value"><input type="text" name="db_user" value="<?php echo dget('db_user') ?>" />&nbsp;<span class="bad"><?php echo eget('db_user') ?></span></td></tr>
+		<tr><td class="key">DB Passwort</td><td class="value"><input type="text" name="db_pass" value="<?php echo dget('db_pass') ?>" />&nbsp;<span class="bad"><?php echo eget('db_pass') ?></span></td></tr>
+		<tr><td class="key">DB Name</td><td class="value"><input type="text" name="db_name" value="<?php echo dget('db_name') ?>" />&nbsp;<span class="bad"><?php echo eget('db_name') ?></span></td></tr>
+		<tr><td class="key">truncate DB and initialize?*</td><td class="value"><input type="checkbox" name="db_truncate" value="1" <?php echo cget("db_truncate") ?>/>&nbsp;<br/></td></tr>
 		<tr><td><br/></td></tr>
 		<tr><td class="headline" colspan="2">The following line usually dont have to be customized!</td></tr>
-<?
+<?php
 if (strlen(eget('db'))) {
 ?>
-		<tr><td class="headline" colspan="2"><span class="bad"><?=eget('db')?></span></td></tr>
-<?
+		<tr><td class="headline" colspan="2"><span class="bad"><?php echo eget('db') ?></span></td></tr>
+<?php
 }
 ?>
 		<tr><td><br/></td></tr>
-		<tr><td class="key">Phenotype Basepath</td><td class="value"><input type="text" name="basepath" value="<?=dget('basepath')?>"  size="50"/>&nbsp;<span class="bad"><?=eget('basepath')?></span></td></tr>
-		<tr><td class="key">Phenotype BaseURL**</td><td class="value"><input type="text" name="serverurl" value="<?=dget('serverurl')?>" size="50"/>&nbsp;<span class="bad"><?=eget('serverurl')?></span></td></tr>
-		<tr><td class="key">Webserver Hostname (FQDN)</td><td class="value"><input type="text" name="fqdn" value="<?=dget('fqdn')?>" size="50" />&nbsp;<span class="bad"><?=eget('fqdn')?></span></td></tr>
+		<tr><td class="key">Phenotype Basepath</td><td class="value"><input type="text" name="basepath" value="<?php echo dget('basepath') ?>"  size="50"/>&nbsp;<span class="bad"><?php echo eget('basepath') ?></span></td></tr>
+		<tr><td class="key">Phenotype BaseURL**</td><td class="value"><input type="text" name="serverurl" value="<?php echo dget('serverurl') ?>" size="50"/>&nbsp;<span class="bad"><?php echo eget('serverurl') ?></span></td></tr>
+		<tr><td class="key">Webserver Hostname (FQDN)</td><td class="value"><input type="text" name="fqdn" value="<?php echo dget('fqdn') ?>" size="50" />&nbsp;<span class="bad"><?php echo eget('fqdn') ?></span></td></tr>
 		<tr><td><br/></td></tr>
-		<tr><td class="key"><img src="img/demo.jpg" style="border: 1px solid blue"/></td><td class="value"><input type="checkbox" name="demo" value="1" <?=cget("demo")?>/> Install Demo Package?</td></tr>
+		<tr><td class="key"><img src="img/demo.jpg" style="border: 1px solid blue"/></td><td class="value"><input type="checkbox" name="demo" value="1" <?php echo cget("demo") ?>/> Install Demo Package?</td></tr>
 		<tr><td class="headline" colspan="2"><input type="submit" value="go" /></td></tr>
 	</table>
 	<br/><br/>* If you dont check the box the installer will only save the account data to access the db, the db itself wont be modified.
 	<br/><br/>** Is always the relative path from the webserver docroot to the htdocs folder of Phenotype. Usually, you should configure your Webserver to use the Phenotype htdocs folder as docroot, then you simply have to enter / here.
 	</form>
-<?
+<?php
 }
 
 
@@ -758,18 +758,18 @@ function installDemoPackage()
 	?>
 	Installation of Demo package (Structure)<br/>
 	<table width="600">
-	<tr><td class="headline" colspan="2"><pre><?=$html?></pre></td></tr>
+	<tr><td class="headline" colspan="2"><pre><?php echo $html ?></pre></td></tr>
 	</table><br/>
-	<?	
+	<?php	
 	$myPT->startBuffer();
 	$myPak->globalInstallData();
 	$html = $myPT->stopBuffer();
 	?>
 	Installation of Demo package (Structure)<br/>
 	<table width="600">
-	<tr><td class="headline" colspan="2"><pre><?=$html?></pre></td></tr>
+	<tr><td class="headline" colspan="2"><pre><?php echo $html ?></pre></td></tr>
 	</table>	
-	<?
+	<?php
 }
 
 function removeDirComplete ($dir,$keep=0,$debug=0)

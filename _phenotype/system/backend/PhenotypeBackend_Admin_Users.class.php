@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -146,9 +146,9 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		?>
 		<form action="backend.php" method="post" name="editform">
 		<input type="hidden" name="page" value="Admin,Users,update">
-		<input type="hidden" name="id" value="<?=$usr_id?>">	
-		<input type="hidden" name="b" value="<?=$_REQUEST["b"]?>">	
-		<?
+		<input type="hidden" name="id" value="<?php echo $usr_id ?>">	
+		<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">	
+		<?php
 
 		$this->displayHeadline($usr_id." Benutzer / ". $row["usr_vorname"] . " " . $row["usr_nachname"],"http://www.phenotype-cms.de/docs.php?v=23&t=8");
 
@@ -265,7 +265,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 				$myPT->startbuffer();
 		 ?>
 		 <table border="0" cellspacing="0" cellpadding="0">
-		 <?
+		 <?php
 		 $sql = "SELECT * FROM pagegroup ORDER by grp_bez";
 		 $rs = $myDB->query($sql);
 		 while ($row_grp = mysql_fetch_array($rs))
@@ -280,20 +280,20 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 	}
 		 ?>
          <tr><td>     
-		 <input name="access_grp_<?=$row_grp["grp_id"]?>" type="checkbox" value="1" <?=$checked?>> <?=$row_grp["grp_bez"]?>&nbsp;&nbsp;
+		 <input name="access_grp_<?php echo $row_grp["grp_id"] ?>" type="checkbox" value="1" <?php echo $checked ?>> <?php echo $row_grp["grp_bez"] ?>&nbsp;&nbsp;
          </td><td>
-		 <select name="pag_id_grp_<?=$row_grp["grp_id"]?>" class="input" style="width:250px">
+		 <select name="pag_id_grp_<?php echo $row_grp["grp_id"] ?>" class="input" style="width:250px">
 		 <option value="0">* alle Seiten * </option>
-		 <?
+		 <?php
 		 $sql = "SELECT pag_id AS K, pag_bez AS V FROM page WHERE grp_id = " . $row_grp["grp_id"] . " ORDER BY V";
 		 echo $myAdm->buildOptionsBySQL($sql,$rechte["pag_id_grp_" . $row_grp["grp_id"]]);
 		 ?>
 		 </select></td></tr>
-		 <?
+		 <?php
 		 }
 		 ?>
 		 </table>
-		 <?
+		 <?php
 		 $html = $myPT->stopBuffer();
 		 $this->workarea_row_draw("Seitengruppen",$html);
 
@@ -320,7 +320,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 $myPT->startbuffer();
 		 ?>
 		 <table border="0" cellspacing="0" cellpadding="0">
-		 <?
+		 <?php
 		 $sql = "SELECT * FROM mediagroup ORDER by grp_bez";
 		 $rs = $myDB->query($sql);
 		 while ($row_grp = mysql_fetch_array($rs))
@@ -335,13 +335,13 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 	}
 		 ?>
          <tr><td>     
-		 <input name="access_mediagrp_<?=$row_grp["grp_id"]?>" type="checkbox" value="1" <?=$checked?>> <?=$row_grp["grp_bez"]?>&nbsp;&nbsp;
+		 <input name="access_mediagrp_<?php echo $row_grp["grp_id"] ?>" type="checkbox" value="1" <?php echo $checked ?>> <?php echo $row_grp["grp_bez"] ?>&nbsp;&nbsp;
          </td><td>
-		 <?
+		 <?php
 		 }
 		 ?>
 		 </table>
-		 <?
+		 <?php
 		 $html = $myPT->stopBuffer();
 		 $this->workarea_row_draw("Mediagruppen",$html);
 
@@ -392,7 +392,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		$this->workarea_stop_draw();
 	?>
 	</form>	
-	<?
+	<?php
 	return ($myPT->stopBuffer());
 	}
 

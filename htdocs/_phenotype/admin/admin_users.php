@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "admin_user_edit.php?id=".$mySUser->id."&b=0";
@@ -29,36 +29,36 @@ if (!$mySUser->checkRight("elm_admin"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Benutzer");
 $myAdm->explorer_draw();
 
 
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -98,7 +98,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 	       //$sql = "SELECT * FROM user WHERE usr_status = 1 AND usr_role <> - 1 ORDER BY usr_nachname";
            $sql = "SELECT * FROM user WHERE usr_status = 1 ORDER BY usr_nachname";  
  $rs = $myDB->query($sql);
@@ -108,9 +108,9 @@ $myPT->startBuffer();
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=$row["usr_id"]?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="admin_user_edit.php?id=<?=$row["usr_id"]?>&b=0">
-<?
+              <td class="tableBody"><?php echo $row["usr_id"] ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="admin_user_edit.php?id=<?php echo $row["usr_id"] ?>&b=0">
+<?php
 if ($row["med_id_thumb"]!=0)
 {
        $myImg = new PhenoTypeImage($row["med_id_thumb"]);
@@ -120,18 +120,18 @@ else
 {
 ?>
 <img src="img/t_user.gif" alt="Benutzer anzeigen" width="60" height="40" border="0">
-<?
+<?php
 }
 ?>
 </a></span></td>
-              <td class="tableBody"><?=$row["usr_vorname"]?> <?=$row["usr_nachname"]?></td>
-              <td align="right" nowrap class="tableBody"><a href="admin_user_edit.php?id=<?=$row["usr_id"]?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+              <td class="tableBody"><?php echo $row["usr_vorname"] ?> <?php echo $row["usr_nachname"] ?></td>
+              <td align="right" nowrap class="tableBody"><a href="admin_user_edit.php?id=<?php echo $row["usr_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
 </td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -148,16 +148,16 @@ else
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

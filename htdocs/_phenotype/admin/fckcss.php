@@ -1,4 +1,4 @@
-<?
+<?php
 require("_config.inc.php");
 /*
 header('Pragma: cache');

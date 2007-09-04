@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "noaccess.php";
@@ -30,36 +30,36 @@ if (!$mySUser->checkRight("elm_admin"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 $id = $_REQUEST["id"];
 ?>
-<?
+<?php
 $myAdm->header("Admin");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Admin");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Admin","Layout");
 $myAdm->explorer_set("lay_id",$id);
 $myAdm->explorer_draw();
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -69,13 +69,13 @@ $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
 ?>
     <form action="layout_update.php" method="post" name="editform">
-	<input type="hidden" name="id" value="<?=$id?>">	
-	<input type="hidden" name="b" value="<?=$_REQUEST["b"]?>">		
+	<input type="hidden" name="id" value="<?php echo $id ?>">	
+	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$id?> Layout / <?=$row["lay_bez"]?></td>
+            <td class="windowTitle"><?php echo $id ?> Layout / <?php echo $row["lay_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=18" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -86,7 +86,7 @@ $row = mysql_fetch_array($rs);
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>
-	<?
+	<?php
 	 $myLayout->tab_new();
 	 $url = "layout_edit.php?id=" .$id ."&b=0";	 
 	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
@@ -123,50 +123,50 @@ $row = mysql_fetch_array($rs);
 		 $c= mysql_num_rows($rs);
 		 ?>
 		 <table border="0" cellspacing="2" cellpadding="2">
-		 <?
+		 <?php
 		 if ($c==0){
 		 ?>			
 		 <tr><td>
 					 <input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="block_plus"> Platzhalter einf&uuml;gen</td></tr>
-		 <?
+		 <?php
 		 }else{
 		 ?>		 
 		 
 		 <tr><td>Smarty-Zugriff&nbsp;&nbsp;&nbsp;</td><td>Bezeichnung </td><td>Bausteingruppe&nbsp;</td><td>Context</td><td>&nbsp;</td></tr>
-		 <?
+		 <?php
 		
 		 while ($row_block=mysql_fetch_array($rs))
 		 {
 		   $identifier = $id . "_". $row_block["lay_blocknr"];
 		 ?>
 		 <tr>
-		 <td><b>{$pt_block<?=$row_block["lay_blocknr"]?>}</b>&nbsp;</td>
+		 <td><b>{$pt_block<?php echo $row_block["lay_blocknr"] ?>}</b>&nbsp;</td>
 		 <td>
-		 <input name="<?=$identifier?>_bez" type="text" class="input" value="<?=$row_block["lay_blockbez"]?>" size="20">&nbsp;
+		 <input name="<?php echo $identifier ?>_bez" type="text" class="input" value="<?php echo $row_block["lay_blockbez"] ?>" size="20">&nbsp;
          </td>
          <td>
-		 <select name="<?=$identifier?>_toolkit" class="input" style="width:100px">
-         <?
+		 <select name="<?php echo $identifier ?>_toolkit" class="input" style="width:100px">
+         <?php
 		  foreach ($toolkits as $key => $val)
           {
 		    if ($key==$row_block["cog_id"])
 			{
             ?>
-              <option value="<?=$key?>" selected><?=$val?></option>
-            <?					   
+              <option value="<?php echo $key ?>" selected><?php echo $val ?></option>
+            <?php					   
  		    }
  	        else
 			{
             ?>
-              <option value="<?=$key?>"><?=$val?></option>
-            <?
+              <option value="<?php echo $key ?>"><?php echo $val ?></option>
+            <?php
 		    }
            }
            ?>
                      </select>&nbsp;</td>
 					 <td>
-					 <select name="<?=$identifier?>_style" class="input" style="width:35px">
-					 <?
+					 <select name="<?php echo $identifier ?>_style" class="input" style="width:35px">
+					 <?php
 					 $options = "";
 					 for ($i=1;$i<=9;$i++)
 					 {
@@ -176,23 +176,23 @@ $row = mysql_fetch_array($rs);
 					 ?>
 					 </select>
 					 </td>
-					 <td><input type="image" src="img/b_minus_b.gif" alt="Platzhalter l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?=$identifier?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?=$identifier?>_plus"></td>
+					 <td><input type="image" src="img/b_minus_b.gif" alt="Platzhalter l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"></td>
 					 </tr>
-					 <?
+					 <?php
 					 }
 					 ?>
 					 
-		 <?}
+		 <?php }
 		 ?>
 		 </table>
-		 <?
+		 <?php
 		 $html = $myPT->stopBuffer();
 		 $myLayout->workarea_row_draw("Platzhalter",$html);
 		 
  		 // Includes
 		 $myPT->startbuffer();
 		 ?>
-					 <?
+					 <?php
 					 $sql = "SELECT * FROM include WHERE inc_usage_layout = 1 ORDER BY inc_rubrik,inc_bez";
 					 $rs = $myDB->query($sql);
 					 $includes = Array();
@@ -209,63 +209,63 @@ $row = mysql_fetch_array($rs);
 					 }
 					 ?>					 
 
-					 <?
+					 <?php
 					 $sql = "SELECT * FROM layout_include WHERE lay_id = " . $id . " ORDER BY lay_includenr";
 					 $rs = $myDB->query($sql);
 					 $c= mysql_num_rows($rs);
 					 ?>
 					 <table border="0" cellspacing="2" cellpadding="2">
-					 <?
+					 <?php
 					 if ($c==0){
 					 ?>
 					 <tr><td>
 					 <input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="include_plus"> Include einf&uuml;gen</td></tr>
-					 <?
+					 <?php
 					 }else{
 					 ?>
 					<table border="0" cellspacing="2" cellpadding="2"> <tr><td>Smarty-Zugriff&nbsp;&nbsp;&nbsp;</td><td>Bezeichnung</td><td>Cache</td><td>&nbsp;</td></tr>
-					 <?}?>					 
-					 <?
+					 <?php } ?>					 
+					 <?php
 					 while ($row_inc=mysql_fetch_array($rs))
 					 {
 					   $identifier = $id . "_inc". $row_inc["lay_includenr"];
 					 ?>
 					 <tr>
-					 <td><b>{$pt_include<?=$row_inc["lay_includenr"]?>}</b>&nbsp;</td>
-                     <td><select name="<?=$identifier?>_include" class="input">
-                     <?
+					 <td><b>{$pt_include<?php echo $row_inc["lay_includenr"] ?>}</b>&nbsp;</td>
+                     <td><select name="<?php echo $identifier ?>_include" class="input">
+                     <?php
 					 foreach ($includes as $key => $val)
                      {
 					   if ($key==$row_inc["inc_id"])
 					   {
                        ?>
-                       <option value="<?=$key?>" selected><?=$val?></option>
-                       <?					   
+                       <option value="<?php echo $key ?>" selected><?php echo $val ?></option>
+                       <?php					   
 					   }
 					   else
 					   {
                        ?>
-                       <option value="<?=$key?>"><?=$val?></option>
-                       <?
+                       <option value="<?php echo $key ?>"><?php echo $val ?></option>
+                       <?php
 					   }
                      }
                      ?>
                      </select>&nbsp;</td>
 					 <td>
-					 <select name="<?=$identifier?>_cache" class="input">
-					 <option value="1" <?if ($row_inc["lay_includecache"]==1){echo "selected";}?>>wie Seite</option>
-					 <option value="0" <?if ($row_inc["lay_includecache"]==0){echo "selected";}?>>nie</option>
+					 <select name="<?php echo $identifier ?>_cache" class="input">
+					 <option value="1" <?php if ($row_inc["lay_includecache"]==1){echo "selected";} ?>>wie Seite</option>
+					 <option value="0" <?php if ($row_inc["lay_includecache"]==0){echo "selected";} ?>>nie</option>
 					 </select>
 					 </td>
 					 <td>
-					 <input type="image" src="img/b_minus_b.gif" alt="Platzhalter l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?=$identifier?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?=$identifier?>_plus"></td>
+					 <input type="image" src="img/b_minus_b.gif" alt="Platzhalter l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"></td>
 					 </tr>
-					 <?
+					 <?php
 					 }
 					 ?>
 					 </table>
 		 
-		 <?
+		 <?php
 		 $html = $myPT->stopBuffer();
 		 $myLayout->workarea_row_draw("Includes",$html);		 
 	     $sql = "SELECT * FROM layout_pagegroup WHERE lay_id = " . $id;
@@ -303,11 +303,11 @@ $row = mysql_fetch_array($rs);
 		 <script language="JavaScript">
 		 function selectallgroups()
 		 {
-		   <?=$js1?>
+		   <?php echo $js1 ?>
 		 }
 		 function selectedgroups()
 		 {
-		   <?=$js1?>
+		   <?php echo $js1 ?>
 		 }
 		 function selectedgroups2()
 		 {
@@ -315,7 +315,7 @@ $row = mysql_fetch_array($rs);
 		   document.forms.editform.allgroups[1].checked=1;
 		 }		 
 		 </script>
-		 <?
+		 <?php
 		 $js = $myPT->stopBuffer();
          $html .=$js;
 		 $myLayout->workarea_row_draw("Seitengruppen",$html);	
@@ -330,8 +330,8 @@ $row = mysql_fetch_array($rs);
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="tableBody">Normalansicht:<br><br>
-			<strong><?=$scriptname;?></strong><br>
-			<?
+			<strong><?php echo $scriptname; ?></strong><br>
+			<?php
 			$scriptname = APPPATH .$scriptname;
 			echo $myLayout->form_HTMLTextArea("template_normal",$scriptname,80,20,"HTML");
 			?>
@@ -341,14 +341,14 @@ $row = mysql_fetch_array($rs);
             <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
 			</table>
-		 <?
+		 <?php
 		 $scriptname = $myPT->getTemplateFileName(PT_CFG_LAYOUT, $id, "print", "templates/");
 		 ?>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="tableBody">Druckansicht:<br><br>
-			<strong><?=$scriptname;?></strong><br>
-			<?
+			<strong><?php echo $scriptname; ?></strong><br>
+			<?php
 			$scriptname = APPPATH . $scriptname;
 			echo $myLayout->form_HTMLTextArea("template_print",$scriptname,80,20,"HTML");
 			?>
@@ -358,7 +358,7 @@ $row = mysql_fetch_array($rs);
             <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
 			</table>
-		 <?		 
+		 <?php		 
 		 break;
 
 		 case 2:
@@ -366,7 +366,7 @@ $row = mysql_fetch_array($rs);
 	        $myLayout->workarea_start_draw();			
 			$myPT->startBuffer();
 			?>
-			 <?
+			 <?php
 					 $sql = "SELECT COUNT(*) AS C FROM pageversion WHERE lay_id = " . $id;
 					 $rs = $myDB->query($sql);
 					 $row = mysql_fetch_array($rs);
@@ -375,13 +375,13 @@ $row = mysql_fetch_array($rs);
 					 {
 					 ?>
 					 Das layout wird in keiner Seite genutzt.
-					 <?
+					 <?php
 					 }else{
 					 ?>
-					 Das layout wird in <?=$row["C"]?> Seiten verwendet:
+					 Das layout wird in <?php echo $row["C"] ?> Seiten verwendet:
 					 <br>
 					 <br>
-					 <?
+					 <?php
 					 $sql = "SELECT * FROM pageversion LEFT JOIN page ON pageversion.pag_id = page.pag_id WHERE lay_id = " . $id . " ORDER BY pag_bez";
  					 $rs = $myDB->query($sql);
 					 while ($row = mysql_fetch_array($rs))
@@ -390,8 +390,8 @@ $row = mysql_fetch_array($rs);
 					   echo "-> ". $row["pag_id"].".".$row["ver_nr"] .": ".$row["pag_bez"] ." (". $row["ver_bez"] . ")<br>";
 					 }
 					 ?>
-                     <?}?>
-			<?
+                     <?php } ?>
+			<?php
 		    $html = $myPT->stopBuffer();
 		    $myLayout->workarea_row_draw("",$html);
 		 break;		 
@@ -399,7 +399,7 @@ $row = mysql_fetch_array($rs);
 	 
 	 ?>
 	 
-	 <?
+	 <?php
 	   // Abschlusszeile
        $sql = "SELECT COUNT(*) AS C FROM pageversion WHERE lay_id = " . $id;
 	   $rs = $myDB->query($sql);
@@ -408,25 +408,25 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?if ($row["C"]==0){?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses Layout wirklich l&ouml;schen?')">&nbsp;&nbsp;<?}?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses Layout wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
           </tr>
         </table>
-	 <?
+	 <?php
 	 $myLayout->workarea_stop_draw();
 	?>
 	</form>
 
 	
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

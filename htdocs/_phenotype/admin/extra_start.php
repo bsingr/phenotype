@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_extras"))
 {
   $url = "noaccess.php";
@@ -30,29 +30,29 @@ if (!$mySUser->checkRight("elm_extras"))
   exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Extras");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Extras");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $url = "extras.php";
 $myLayout->tab_addEntry("Extras",$url,"b_script.gif");
 $myLayout->tab_draw("Extras",$x=260,1);
 ?>
-<?
+<?php
 $myNav = new PhenotypeTree();
 $nav_id = $myNav->addNode("&Uuml;bersicht","extras.php",0,"");
 $sql = "SELECT * FROM extra ORDER BY ext_bez";
@@ -78,13 +78,13 @@ $myLayout->displayTreeNavi($myNav,$myRequest->getI("id"));
         </tr>
 		</table>
 
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
@@ -97,7 +97,7 @@ $myExtra = new $cname();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$myExtra->bez?></td>
+            <td class="windowTitle"><?php echo $myExtra->bez ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=5" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -108,7 +108,7 @@ $myExtra = new $cname();
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>	
-<?
+<?php
 	 $myLayout->tab_new();
 	 $url = "extra_start.php?id=" .$id;	 
 	 $myLayout->tab_addEntry("Start",$url,"b_script.gif");
@@ -123,16 +123,16 @@ $myExtra = new $cname();
 	 
 	 $myExtra->displayStart();
 ?>	
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

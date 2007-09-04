@@ -11,7 +11,7 @@
 		<con_bearbeiten>1</con_bearbeiten>
 		<con_loeschen>1</con_loeschen>
 	</meta>
-	<script>&#60;? 
+	<script>&#60;?php 
 class PhenotypeContent_1601 extends PhenotypeContent
 {
 	&#47;&#47; WDR 2 Galerie

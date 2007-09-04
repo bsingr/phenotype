@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_page"))
 {
   $url = "noaccess.php";
@@ -29,7 +29,7 @@ if (!$mySUser->checkRight("elm_page"))
   exit();
 }
 ?>
-<?
+<?php
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
      $sql = "SELECT * FROM pageversion WHERE pag_id =" . $_REQUEST["id"] . " ORDER BY ver_nr";
      $rs = $myDB->query($sql);
@@ -43,7 +43,7 @@ $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?= PT_VERSION ?></title>
+<title>phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -73,10 +73,10 @@ body {
     <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td colspan="2" valign="top" class="tableBody">Version:<br>
-                <input type="hidden" name="id" value="<?=$_REQUEST["id"]?>">
-      <input type="hidden" name="ver_id" value="<?=$_REQUEST["ver_id_editing"]?>">
+                <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
+      <input type="hidden" name="ver_id" value="<?php echo $_REQUEST["ver_id_editing"] ?>">
       <select name="ver_id_2bactivated" class="input" style="width: 170px">
-      <?
+      <?php
       echo $myAdm->buildOptionsByNamedArray($versionen,$_REQUEST["ver_id"]);
       ?>
             </select><br></td>
@@ -87,7 +87,7 @@ body {
         <tr>
           <td colspan="2" valign="top" class="tableBody">
           Umschaltzeitpunkt:<br>
-                                                                                                                                   <input type="text" value="<?=date('d.m.Y H:i')?>" name="datum" class="input" style="width: 120px"><br>
+                                                                                                                                   <input type="text" value="<?php echo date('d.m.Y H:i') ?>" name="datum" class="input" style="width: 120px"><br>
           </td>
         </tr>
     </table></td>

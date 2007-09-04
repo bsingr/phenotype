@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,11 +17,11 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 ?>
-<?
+<?php
 // Elementarrechte
 
 if (!$mySUser->checkRight("elm_redaktion"))
@@ -43,7 +43,7 @@ if($mySUser->checkRight("elm_mediabase") AND !$mySUser->checkRight("elm_page"))
   exit();  
 }
 ?>
-<?
+<?php
 if ($_SESSION["grp_id"]!="" AND $_SESSION["pag_id"]!="" AND (!isset($_REQUEST["grp_id"])))
 {
   $url = "page_edit.php?id=" . $_SESSION["pag_id"];

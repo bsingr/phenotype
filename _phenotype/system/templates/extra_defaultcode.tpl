@@ -1,4 +1,4 @@
-{literal}<?
+{literal}<?php
 class PhenotypeExtra_{/literal}{$id}{literal} extends PhenotypeExtra
 {
 

@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("superuser"))
 {
 	$url = "noaccess.php";
@@ -30,41 +30,41 @@ if (!$mySUser->checkRight("superuser"))
 	exit();
 }
 ?>
-<?
+<?php
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 $myAdm->header("Konfiguration");
 ?>
 <body>
-<?
+<?php
 $myAdm->menu("Konfiguration");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Konfiguration","Content");
 
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
 ?>
-<?
+<?php
 // -------------------------------------
 // -- {$left}
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myPT->startBuffer();
 ?>
 <table width="680" border="0" cellpadding="0" cellspacing="0">
@@ -102,7 +102,7 @@ $myPT->startBuffer();
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 if ($_REQUEST["r"]==-1)
 {
 	$sql = "SELECT * FROM content ORDER BY con_id";
@@ -117,25 +117,25 @@ while ($row=mysql_fetch_array($rs))
 ?>		
 			
             <tr>
-              <td class="tableBody"><?=sprintf("%02d",$row["con_id"])?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="contentobject_edit.php?id=<?=$row["con_id"]?>&b=0&r=<?=urlencode($row["con_rubrik"])?>"><img src="img/t_script.gif" alt="Contentobjekt bearbeiten" width="60" height="40" border="0"></a></span></td>
-				<td class="tableBody"><?=$row["con_rubrik"]?></td>
-              <td class="tableBody"><?=$row["con_bez"]?></td>
-              <td align="right" nowrap class="tableBody"><a href="contentobject_edit.php?id=<?=$row["con_id"]?>&b=0&r=<?=urlencode($row["con_rubrik"])?>"><img src="img/b_edit.gif" alt="Contentobjekt bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+              <td class="tableBody"><?php echo sprintf("%02d",$row["con_id"]) ?></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="contentobject_edit.php?id=<?php echo $row["con_id"] ?>&b=0&r=<?php echo urlencode($row["con_rubrik"]) ?>"><img src="img/t_script.gif" alt="Contentobjekt bearbeiten" width="60" height="40" border="0"></a></span></td>
+				<td class="tableBody"><?php echo $row["con_rubrik"] ?></td>
+              <td class="tableBody"><?php echo $row["con_bez"] ?></td>
+              <td align="right" nowrap class="tableBody"><a href="contentobject_edit.php?id=<?php echo $row["con_id"] ?>&b=0&r=<?php echo urlencode($row["con_rubrik"]) ?>"><img src="img/b_edit.gif" alt="Contentobjekt bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
 $sql = "SELECT COUNT(*) AS C FROM content_data WHERE con_id = " . $row["con_id"];
 $rs_check = $myDB->query($sql);
 $row_check = mysql_fetch_array($rs_check);
 if ($row_check["C"]==0)
 {
 ?>   
-<a href="contentobject_delete.php?id=<?=$row["con_id"]?>&r=<?=urlencode($row["con_rubrik"])?>" onclick="javascript:return confirm('Dieses Contentobjekt wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
-<?
+<a href="contentobject_delete.php?id=<?php echo $row["con_id"] ?>&r=<?php echo urlencode($row["con_rubrik"]) ?>" onclick="javascript:return confirm('Dieses Contentobjekt wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<?php
 }else
 {
 	   ?>
 	   <img src="img/transparent.gif" width="22" height="22" alt="" border="0">
-	   <?
+	   <?php
 }
 ?>
 </td>
@@ -143,7 +143,7 @@ if ($row_check["C"]==0)
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
         </table></td>
@@ -160,16 +160,16 @@ if ($row_check["C"]==0)
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table>
-<?
+<?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content}
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

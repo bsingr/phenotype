@@ -8,7 +8,7 @@
 		<com_rubrik>Sonstige</com_rubrik>
 		<com_description>## Baustein 1104 - Trennlinie</com_description>
 	</meta>
-	<script>&#60;?  
+	<script>&#60;?php  
 
 class PhenotypeComponent_1104 extends PhenotypeComponent  
 {  

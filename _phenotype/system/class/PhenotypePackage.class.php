@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,7 +17,7 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 
 /**
  * @package phenotype
@@ -553,7 +553,7 @@ class PhenotypePackageStandard
 			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 			<html>
 			<head>
-			<title>phenotype <?=$myPT->version?></title>
+			<title>phenotype <?php echo $myPT->version ?></title>
 			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 			<link href="phenotype.css" rel="stylesheet" type="text/css">
 			<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -571,7 +571,7 @@ class PhenotypePackageStandard
 			var ajax = new sack();
 
 			var filenr = 1; // Sonst geht's net ??
-			var count = <?=$count?>;
+			var count = <?php echo $count ?>;
 			var error=0;
 
 			function whenCompleted(){
@@ -614,10 +614,10 @@ class PhenotypePackageStandard
 				ajax.requestFile = "package_install2.php";
 				ajax.method = "GET";
 				ajax.element = 'statusbar';
-				ajax.setVar("type","<?=$type?>");
+				ajax.setVar("type","<?php echo $type ?>");
 				ajax.setVar("filenr",nr);
 				ajax.setVar("count",count);
-				ajax.setVar("id","<?=$myRequest->get("id")?>");
+				ajax.setVar("id","<?php echo $myRequest->get("id") ?>");
 				//ajax.onLoading = whenLoading;
 				//ajax.onLoaded = whenLoaded;
 				//ajax.onInteractive = whenInteractive;
@@ -625,11 +625,11 @@ class PhenotypePackageStandard
 				ajax.runAJAX();
 			}
 			</script>
-			<div id="statusbar" style="width:400px;height:50px;font-size:10px"><?=$count?> XML-Dateien werden bearbeitet.</div>
+			<div id="statusbar" style="width:400px;height:50px;font-size:10px"><?php echo $count ?> XML-Dateien werden bearbeitet.</div>
 			
 			</body>
 			</html>
-			<?
+			<?php
 		}
 		else
 		{
@@ -640,10 +640,10 @@ class PhenotypePackageStandard
 				$w = (int)($filenr/$count*450);
 			?>
 			<div style="width:450px;height:18px;border:1px solid black;float:left">
-			<img src="img/progress.gif" width="<?=$w?>" height="18">
+			<img src="img/progress.gif" width="<?php echo $w ?>" height="18">
 			</div>
 			<div>
-			<?
+			<?php
 			echo $p.'% ('.$filenr.'/'.$count.')<br/><br clear="all"/></div>';
 
 

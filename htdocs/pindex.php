@@ -1,10 +1,10 @@
-<?
+<?php
 require("../_config.inc.php");
 ?>
-<?
+<?php
 
 ?>
-<?
+<?php
 if (isset($_REQUEST["id"]))
 {
 $id = $_REQUEST["id"];
@@ -14,7 +14,7 @@ else
 $id= PAG_ID_STARTPAGE;
 }
 ?>
-<?
+<?php
 
 // Diese Datei ist ein Beispiel dafür, wie man mehrere
 // Websites betreiben kann und über die Konstruktorparameter

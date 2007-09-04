@@ -1,4 +1,4 @@
-{literal}<?
+{literal}<?php
 class PhenotypeContent_{/literal}{$id}{literal} extends PhenotypeContent
 {
   // Bezeichnung des Contentobjektes

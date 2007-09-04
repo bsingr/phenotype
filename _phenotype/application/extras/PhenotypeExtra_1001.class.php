@@ -1,4 +1,4 @@
-<?
+<?php
 class PhenotypeExtra_1001 extends PhenotypeExtra
 {
 	public $id = 1001;
@@ -44,7 +44,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
         </td>
         </tr>
         </table>
-        <?
+        <?php
 
 	}
 	function displayStart()
@@ -56,8 +56,8 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		$myLayout->workarea_start_draw();
 		?>
 		<form action="extra_execute.php" method="post">
-		<input type="hidden" name="id" value="<?=$this->id?>">
-		<?
+		<input type="hidden" name="id" value="<?php echo $this->id ?>">
+		<?php
 		
 		$sql = "SELECT * FROM pagegroup ORDER BY grp_bez";
 		$rs = $myDB->query($sql);
@@ -118,7 +118,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
           </tr>
         </table>
         </form>
-		<?
+		<?php
 
 
 		$myLayout->workarea_stop_draw();
@@ -132,13 +132,13 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 	    <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td class="tableBody">
-        <?
+        <?php
 		$this->buildPages();
 		?>
 		</td>
           </tr>
         </table>
-		<?
+		<?php
 		$myLayout->workarea_whiteline();
 		$myLayout->workarea_stop_draw();
 	}

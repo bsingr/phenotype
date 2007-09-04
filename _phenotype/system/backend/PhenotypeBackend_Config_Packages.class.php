@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -107,7 +107,7 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 			<html>
 			<head>
-			<title>phenotype <?=$myPT->version?></title>
+			<title>phenotype <?php echo $myPT->version ?></title>
 			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 			<link href="phenotype.css" rel="stylesheet" type="text/css">
 			<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -125,7 +125,7 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 			var ajax = new sack();
 
 			var filenr = 1; 
-			var count = <?=$count?>;
+			var count = <?php echo $count ?>;
 			var error=0;
 
 			function whenCompleted(){
@@ -148,7 +148,7 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 					if (filenr>count)
 					{
 						// Abgeschlossen - Evtl. Log nachladen
-						top.ajaxfeedback(<?=$myRequest->getI("fcounter")?>);
+						top.ajaxfeedback(<?php echo $myRequest->getI("fcounter") ?>);
 					}
 					else
 					{
@@ -170,13 +170,13 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 				ajax.method = "GET";
 				ajax.element = 'statusbar';
 				ajax.setVar("page","Config,Packages,ajaxexport");
-				ajax.setVar("type","<?=$type?>");
+				ajax.setVar("type","<?php echo $type ?>");
 				ajax.setVar("filenr",nr);
 				ajax.setVar("count",count);
-				ajax.setVar("con_id","<?=$myRequest->getI("con_id")?>");
-				ajax.setVar("grp_id","<?=$myRequest->getI("grp_id")?>");
-				ajax.setVar("sbj_id","<?=$myRequest->getI("sbj_id")?>");
-				ajax.setVar("fcounter","<?=$myRequest->getI("fcounter")?>");
+				ajax.setVar("con_id","<?php echo $myRequest->getI("con_id") ?>");
+				ajax.setVar("grp_id","<?php echo $myRequest->getI("grp_id") ?>");
+				ajax.setVar("sbj_id","<?php echo $myRequest->getI("sbj_id") ?>");
+				ajax.setVar("fcounter","<?php echo $myRequest->getI("fcounter") ?>");
 				//ajax.onLoading = whenLoading;
 				//ajax.onLoaded = whenLoaded;
 				//ajax.onInteractive = whenInteractive;
@@ -184,11 +184,11 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 				ajax.runAJAX();
 			}
 			</script>
-			<div id="statusbar" style="width:400px;height:50px;font-size:10px"><?=$count?> Datensätze ermittelt.</div>
+			<div id="statusbar" style="width:400px;height:50px;font-size:10px"><?php echo $count ?> Datensätze ermittelt.</div>
 				
 			</body>
 			</html>
-			<?
+			<?php
 		}
 		else
 		{
@@ -199,10 +199,10 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 				$w = (int)($filenr/$count*450);
 			?>
 			<div style="width:450px;height:18px;border:1px solid black;float:left">
-			<img src="img/progress.gif" width="<?=$w?>" height="18">
+			<img src="img/progress.gif" width="<?php echo $w ?>" height="18">
 			</div>
 			<div>
-			<?
+			<?php
 			echo $p.'% ('.$filenr.'/'.$count.')<br/><br clear="all"/></div>';
 
 			$myPT->startBuffer();
@@ -322,7 +322,7 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?=$myPT->version?></title>
+		<title>phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -335,7 +335,7 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 		</style>
 		</head>
 		<body>
-		<?
+		<?php
 		 
 		if ($targetfolder=="")
 	    {
@@ -355,7 +355,7 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 	
 	
 	
-	    		$script = '<?
+	    		$script = '<?php
 	class PhenotypePackage extends PhenotypePackageStandard
 	{
 		public $bez = "'.$myRequest->getS("title").'";
@@ -402,7 +402,7 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 	    ?>
 	    </body>
 	    </html>
-	    <?
+	    <?php
 	}
 }
 ?>

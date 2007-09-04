@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -17,12 +17,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 require("_config.inc.php");
 require("_session.inc.php");
 
 ?>
-<?
+<?php
 if (!$mySUser->checkRight("elm_page"))
 {
   $url = "noaccess.php";
@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("elm_page"))
   exit();
 }
 ?>
-<?
+<?php
 $id = $myRequest->getI("id");
 if (isset($_REQUEST["ver_id"]))
 {
@@ -51,38 +51,38 @@ $_SESSION["grp_id"]=$myPage->grp_id;
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 ?>
-<?
+<?php
 $myAdm->header("Redaktion");
 ?>
 
 <body>
-<?
+<?php
 $myAdm->menu("Redaktion");
 ?>
-<?
+<?php
 // -------------------------------------
 // {$left} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 $myAdm->explorer_prepare("Redaktion","Seiten");
 $myAdm->explorer_set("pag_id",$_REQUEST["id"]);
 $myAdm->explorer_draw();
 ?>
-<?
+<?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 // -------------------------------------
 // {$content} 
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 if ($mySUser->checkRight("elm_page"))
 {
   $_pagegroups = Array();
@@ -148,31 +148,31 @@ if ($mySUser->checkRight("elm_page"))
 		  <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-		  <?
+		  <?php
 
 while ($row_data=mysql_fetch_array($rs_data))
 {
           ?>
           <tr>
-            <td class="tableBody"><?=$row_data["pag_id"]?></td>
+            <td class="tableBody"><?php echo $row_data["pag_id"] ?></td>
 			
 
-            <td class="tableBody"><?=$row_data["pag_bez"]?></td>
-			<td class="tableBody"><?=$_pagegroups[$row_data["grp_id"]]?></td>
-            <td class="tableBody"><?=date('d.m.Y H:i',$row_data["pag_date"])?><br><?=$myAdm->displayUser($row_data["usr_id"]);?></td>
+            <td class="tableBody"><?php echo $row_data["pag_bez"] ?></td>
+			<td class="tableBody"><?php echo $_pagegroups[$row_data["grp_id"]] ?></td>
+            <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["pag_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
-			<?if ($row_data["pag_status"]==1){?>
+			<?php if ($row_data["pag_status"]==1){ ?>
 			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
-			<?}else{?>
+			<?php }else{ ?>
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
-			<?}?>
+			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><a href="page_edit.php?id=<?=$row_data["pag_id"]?>"><img src="img/b_edit.gif" alt="Seite bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="right" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $row_data["pag_id"] ?>"><img src="img/b_edit.gif" alt="Seite bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-<?
+<?php
 }
 ?>			
           <tr>
@@ -183,7 +183,7 @@ while ($row_data=mysql_fetch_array($rs_data))
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
     </table>
-	<?
+	<?php
 	$url="page_search.php?id=".$id."&v=".$myRequest->getURL("v")."&s=".$myRequest->getURL("s")."&p=";
 	echo $myLayout->renderPageBrowser($page,$anzahl,$url);
 	?>
@@ -193,17 +193,17 @@ while ($row_data=mysql_fetch_array($rs_data))
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
       </tr>
     </table><br> 
-	<?
+	<?php
 }	
 $content = $myPT->stopBuffer();
 // -------------------------------------
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 $myAdm->mainTable($left,$content);
 ?>
-<?
+<?php
 
 ?>
 </body>

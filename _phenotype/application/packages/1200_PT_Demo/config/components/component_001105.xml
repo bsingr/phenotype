@@ -8,7 +8,7 @@
 		<com_rubrik>Demonstration</com_rubrik>
 		<com_description></com_description>
 	</meta>
-	<script>&#60;? 
+	<script>&#60;?php 
 class PhenotypeComponent_1105 extends PhenotypeComponent
 {
 	var $tool_type = 1105;
@@ -41,48 +41,48 @@ class PhenotypeComponent_1105 extends PhenotypeComponent
 		
 		$this-&#62;form_textfield(&#34;Überschrift&#34;,&#34;headline&#34;,$this-&#62;get(&#34;headline&#34;));
 		?&#62; 
-		&#60;input type=&#34;hidden&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_anzahl&#34; value=&#34;&#60;?=$this-&#62;get(&#34;anzahl&#34;)?&#62;&#34;&#62; 
+		&#60;input type=&#34;hidden&#34; name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_anzahl&#34; value=&#34;&#60;?php echo $this-&#62;get(&#34;anzahl&#34;) ?&#62;&#34;&#62; 
         &#60;br&#47;&#62;&#60;br&#47;&#62;
         &#60;table width=&#34;408&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;tableBausteineBackground&#34;&#62; 
         &#60;tr&#62; 
-        &#60;? 
+        &#60;?php 
         $x = ceil(73&#47;$anzahl_spalten);
         for ($j=1;$j&#60;=$this-&#62;get(&#34;anzahl_x&#34;);$j++)
         {
         ?&#62;         
-        &#60;td width=&#34;&#60;?=$x?&#62;%&#34;&#62;&#60;?if ($this-&#62;get(&#34;anzahl_x&#34;)&#62;1){?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Spalte entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_minus_s&#60;?=$j?&#62;&#34;&#62;&#60;?}?&#62;&#60;?if($anzahl_spalten&#60;$max_spalten){?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Spalte hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_plus_s&#60;?=$j?&#62;&#34;&#62;&#60;?}?&#62;&#60;&#47;td&#62; 
+        &#60;td width=&#34;&#60;?php php echo $x ?&#62;%&#34;&#62;&#60;?php if ($this-&#62;get(&#34;anzahl_x&#34;)&#62;1){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Spalte entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_minus_s&#60;?php php echo $j ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;?php if($anzahl_spalten&#60;$max_spalten){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Spalte hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_plus_s&#60;?php php echo $j ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;&#47;td&#62; 
         
         &#60;&#47;td&#62; 
-        &#60;? 
+        &#60;?php 
         }
         ?&#62; 
         &#60;td width=&#34;7%&#34; align=&#34;right&#34; nowrap&#62;&#60;!--&#60;img src=&#34;img&#47;b_text_bigwin.gif&#34; alt=&#34;Tabelleneditor vergr&#38;ouml;&#38;szlig;ern&#34; width=&#34;22&#34; height=&#34;22&#34; border=&#34;0&#34;&#62;--&#62;&#60;&#47;td&#62; 
         &#60;&#47;tr&#62; 
         
-        &#60;? 
+        &#60;?php 
         for ($i=1;$i&#60;=$this-&#62;get(&#34;anzahl_y&#34;);$i++)
         {
         ?&#62; 
         &#60;tr&#62; 
-        &#60;? 
+        &#60;?php 
         for ($j=1;$j&#60;=$this-&#62;get(&#34;anzahl_x&#34;);$j++)
         {
         ?&#62; 
-        &#60;td&#62;&#60;textarea name=&#34;&#60;?=$this-&#62;formid?&#62;_tcon_x&#60;?=$j?&#62;_y&#60;?=$i?&#62;&#34; class=&#34;input&#34; style=&#34;width: 90%;height: 55px&#34;&#62;&#60;?=$this-&#62;getH(&#34;tcon_x&#34;.$j.&#34;_y&#34;.$i)?&#62;&#60;&#47;textarea&#62;&#60;&#47;td&#62; 
-        &#60;? 
+        &#60;td&#62;&#60;textarea name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_tcon_x&#60;?php echo $j ?&#62;_y&#60;?php echo $i ?&#62;&#34; class=&#34;input&#34; style=&#34;width: 90%;height: 55px&#34;&#62;&#60;?php echo $this-&#62;getH(&#34;tcon_x&#34;.$j.&#34;_y&#34;.$i) ?&#62;&#60;&#47;textarea&#62;&#60;&#47;td&#62; 
+        &#60;?php 
         }
         ?&#62; 
         &#60;td  nowrap&#62; 
-        &#60;?if ($this-&#62;get(&#34;anzahl_y&#34;)&#62;1){?&#62; 
-        &#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Zeile entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_minus_z&#60;?=$i?&#62;&#34;&#62;&#60;?}?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Zeile hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?=$this-&#62;formid?&#62;_plus_z&#60;?=$i?&#62;&#34;&#62; 
+        &#60;?php if ($this-&#62;get(&#34;anzahl_y&#34;)&#62;1){ ?&#62; 
+        &#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Zeile entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_minus_z&#60;?php php echo $i ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Zeile hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_plus_z&#60;?php php echo $i ?&#62;&#34;&#62; 
         &#60;&#47;td&#62; 
         
         &#60;&#47;tr&#62; 
-        &#60;? 
+        &#60;?php 
         }
           ?&#62; 
          &#60;&#47;table&#62;&#60;br&#47;&#62; 
-         &#60;? 
+         &#60;?php 
          $this-&#62;form_textfield(&#34;Breite (Pixel)&#34;,&#34;width&#34;,$this-&#62;get(&#34;width&#34;),50);
 	}
 
@@ -177,19 +177,19 @@ class PhenotypeComponent_1105 extends PhenotypeComponent
 		$myPT-&#62;startBuffer();
 		?&#62;
         &#60;div class=&#34;table&#34;&#62;
-        &#60;?
+        &#60;?php
         if ($this-&#62;get(&#34;headline&#34;)!=&#34;&#34;)
         {
-       		?&#62;&#60;h1&#62;&#60;?=$this-&#62;getH(&#34;headline&#34;)?&#62;&#60;&#47;h1&#62;&#60;?
+       		?&#62;&#60;h1&#62;&#60;?php echo $this-&#62;getH(&#34;headline&#34;) ?&#62;&#60;&#47;h1&#62;&#60;?php
         }
         ?&#62;
-        &#60;table width=&#34;&#60;?=$this-&#62;getI(&#34;width&#34;)?&#62;&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;1&#34; &#62; 
-        &#60;? 
+        &#60;table width=&#34;&#60;?php echo $this-&#62;getI(&#34;width&#34;) ?&#62;&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;1&#34; &#62; 
+        &#60;?php 
         for ($i=1;$i&#60;=$this-&#62;get(&#34;anzahl_y&#34;);$i++)
         {
         ?&#62;
         &#60;tr&#62; 
-        &#60;? 
+        &#60;?php 
         for ($j=1;$j&#60;=$this-&#62;get(&#34;anzahl_x&#34;);$j++)
         {
 
@@ -203,17 +203,17 @@ class PhenotypeComponent_1105 extends PhenotypeComponent
         		$td2 = &#39;&#60;&#47;th&#62;&#39;;
         	}
         ?&#62; 
-        &#60;?=$td1?&#62;&#60;?=$this-&#62;getH(&#34;tcon_x&#34;.$j.&#34;_y&#34;.$i);?&#62;&#60;?=$td2?&#62;
-        &#60;? 
+        &#60;?php echo $td1 ?&#62;&#60;?php echo $this-&#62;getH(&#34;tcon_x&#34;.$j.&#34;_y&#34;.$i); ?&#62;&#60;?php echo $td2 ?&#62;
+        &#60;?php 
         }
         ?&#62; 
         &#60;&#47;tr&#62; 
-        &#60;?         
+        &#60;?php         
         }
         ?&#62; 
         &#60;&#47;table&#62;
         &#60;&#47;div&#62;
-        &#60;?
+        &#60;?php
 
         $html = $myPT-&#62;stopBuffer();
         return $html;

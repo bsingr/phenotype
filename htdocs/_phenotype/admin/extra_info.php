@@ -1,4 +1,4 @@
-<?
+<?php
 
 // -------------------------------------------------------
 // Phenotype Content Application Framework
@@ -18,13 +18,13 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
-<?
+<?php
 
 
 require ("_config.inc.php");
 require ("_session.inc.php");
 ?>
-<?
+<?php
 
 
 if (!$mySUser->checkRight("elm_extras"))
@@ -34,24 +34,24 @@ if (!$mySUser->checkRight("elm_extras"))
 	exit ();
 }
 ?>
-<?
+<?php
 
 
 $mySmarty = new Smarty;
 $myAdm = new PhenotypeAdmin();
 ?>
-<?
+<?php
 
 
 $myAdm->header("Extras");
 ?>
 <body>
-<?
+<?php
 
 
 $myAdm->menu("Extras");
 ?>
-<?
+<?php
 
 
 // -------------------------------------
@@ -59,14 +59,14 @@ $myAdm->menu("Extras");
 // -------------------------------------
 $myPT->startBuffer();
 ?>
-<?
+<?php
 
 
 $url = "extras.php";
 $myLayout->tab_addEntry("Extras", $url, "b_script.gif");
 $myLayout->tab_draw("Extras", $x = 260, 1);
 ?>
-<?
+<?php
 
 
 $myNav = new PhenotypeTree();
@@ -96,7 +96,7 @@ $myLayout->displayTreeNavi($myNav, $myRequest->getI("id"));
         </tr>
 		</table>
 
-<?
+<?php
 
 
 
@@ -105,7 +105,7 @@ $left = $myPT->stopBuffer();
 // -- {$left} 
 // -------------------------------------
 ?>
-<?
+<?php
 
 
 // -------------------------------------
@@ -127,7 +127,7 @@ if ($myRequest->check("save"))
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?=$myExtra->bez?></td>
+            <td class="windowTitle"><?php echo $myExtra->bez ?></td>
             <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
@@ -138,8 +138,8 @@ if ($myRequest->check("save"))
         <td valign="top" class="windowRightShadow"><img src="img/win_sh_mi_ri.gif"></td>
       </tr>
     </table>	
-	<input type="hidden" name="id" value="<?=$id?>">
-<?
+	<input type="hidden" name="id" value="<?php echo $id ?>">
+<?php
 
 
 $myLayout->tab_new();
@@ -163,12 +163,12 @@ $content = $myPT->stopBuffer();
 // -- {$content} 
 // -------------------------------------
 ?>
-<?
+<?php
 
 
 $myAdm->mainTable($left, $content);
 ?>
-<?
+<?php
 
 
 ?>

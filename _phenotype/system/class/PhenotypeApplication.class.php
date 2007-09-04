@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * @package phenotype
  * @subpackage system
@@ -14,11 +14,11 @@ class PhenotypeApplicationStandard
 <TITLE>404 Not Found</TITLE>
 </HEAD><BODY>
 <H1>Not Found</H1>
-The requested URL <?= $_SERVER["REQUEST_URI"] ?> was not found on this server.<P>
+The requested URL <?php echo $_SERVER["REQUEST_URI"] ?> was not found on this server.<P>
 <HR>
-<ADDRESS>Phenotype CMS/<?= PT_VERSION ?> at <?= $_SERVER["SERVER_NAME"] ?> Port <?= $_SERVER["SERVER_PORT"]?></ADDRESS>
+<ADDRESS>Phenotype CMS/<?php echo PT_VERSION ?> at <?php echo $_SERVER["SERVER_NAME"] ?> Port <?php echo $_SERVER["SERVER_PORT"] ?></ADDRESS>
 </BODY></HTML>
-<?
+<?php
 		exit();
 	}
 
@@ -214,12 +214,12 @@ The requested URL <?= $_SERVER["REQUEST_URI"] ?> was not found on this server.<P
 		?>
 		FCKConfig.CustomConfigurationsPath = '' ;
 
-		// FCKConfig.EditorAreaCSS = '<?=ADMINURL?>fckcss.php';
+		// FCKConfig.EditorAreaCSS = '<?php echo ADMINURL ?>fckcss.php';
 		// Unfortunately targeting the php-file doesn't work properly since neweset release of FCK
 		// (probably something with the expected HTTP-Header?)
 		// So this feature ist deactived by default
 		
-		//FCKConfig.EditorAreaCSS = '<?=ADMINURL?>fck_editorarea.css';
+		//FCKConfig.EditorAreaCSS = '<?php echo ADMINURL ?>fck_editorarea.css';
 		
 		FCKConfig.ToolbarComboPreviewCSS = '' ;
 		
@@ -240,7 +240,7 @@ The requested URL <?= $_SERVER["REQUEST_URI"] ?> was not found on this server.<P
 		// FCKConfig.Plugins.Add( 'autogrow' ) ;
 		FCKConfig.AutoGrowMax = 400 ;
 		
-		// FCKConfig.ProtectedSource.Add( /<\?[\s\S]*?\?>/g ) ;	// PHP style server side code
+		// FCKConfig.ProtectedSource.Add( /<\?php [\s\S]*? \?>/g ) ;	// PHP style server side code
 		// FCKConfig.ProtectedSource.Add( /(<asp:[^\>]+>[\s|\S]*?<\/asp:[^\>]+>)|(<asp:[^\>]+\/>)/gi ) ;	// ASP.Net style tags <asp:control>
 		
 		FCKConfig.AutoDetectLanguage	= true ;
@@ -373,7 +373,7 @@ The requested URL <?= $_SERVER["REQUEST_URI"] ?> was not found on this server.<P
 		FCKConfig.SmileyColumns = 8 ;
 		FCKConfig.SmileyWindowWidth		= 320 ;
 		FCKConfig.SmileyWindowHeight	= 240 ;
-		<?
+		<?php
 }
 
 function fckCSS() // doesn't work properly at the moment, so it's not used by default!!
@@ -439,7 +439,7 @@ function fckCSS() // doesn't work properly at the moment, so it's not used by de
 	margin-bottom: 0px;
 	}
 	*/
-	<?
+	<?php
 }
 
 function fckStyles()
@@ -456,7 +456,7 @@ function fckStyles()
 	<Attribute name="class" value="example2" />
 	</Style>
 	</Styles>
-	<?
+	<?php
 }
 
 
