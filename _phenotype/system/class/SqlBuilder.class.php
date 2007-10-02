@@ -55,12 +55,12 @@ var $values;
   
   function update($tabelle,$where)
   {
-    $sql = "UPDATE " . $tabelle . " SET ";
+    $sql = "UPDATE `" . $tabelle . "` SET ";
 	$c=count($this->felder);
 	for ($i=0;$i<$c;$i++)
 	{
       if ($i!=0){$sql.=", ";}
-	  $sql.= $this->felder[$i] . " = ";
+	  $sql.= "`".$this->felder[$i]."` = ";
 	  if ($this->feldtypen[$i]==DB_NUMBER)
 	  {
 	    $sql.= (int)$this->values[$i];
@@ -80,12 +80,12 @@ function insert($tabelle)
   {
     if (isset($this->felder))
 	{
-      $sql = "INSERT INTO " . $tabelle . " (";
+      $sql = "INSERT INTO `" . $tabelle . "` (";
 	  $c=count($this->felder);
 	  for ($i=0;$i<$c;$i++)
 	  {
 	    if ($i!=0){$sql.=", ";}
-	    $sql .= $this->felder[$i];
+	    $sql .= "`".$this->felder[$i]."`";
 	  }
 	  $sql .= ") VALUES (";
 	  for ($i=0;$i<$c;$i++)

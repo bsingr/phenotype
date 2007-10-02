@@ -335,23 +335,23 @@ class PhenotypeContentStandard
     }
   }
 
-  private function buildDataTable($table)
+  protected function buildDataTable($table)
   {
     global $myDB;
     global $myLog;
 
-     $_fields = array();
-          
+
+
     $sql = "SELECT COLUMN_NAME, COLUMN_TYPE  FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '" . $table."' AND table_schema = '" . DATABASE_NAME . "' ORDER BY ORDINAL_POSITION ASC";
     $rs = $myDB->query($sql);
     if (mysql_num_rows($rs)==0)
     {
       // table does not exist
       $myLog->log('creating data_table '.$table,PT_LOGFACILITY_SYS);
-      $sql = "CREATE TABLE ". $table. " (dat_id int(11)";
+      $sql = "CREATE TABLE `". $table. "` (dat_id int(11)";
       foreach ($this->datatable_fieldlist AS $name => $def)
       {
-        $sql .= ", ".$name." " .$def ." NULL";
+        $sql .= ", `".$name."` " .$def ." NULL";
       }
       $sql .= ",INDEX (dat_id))";
       $myDB->query($sql);
@@ -359,6 +359,7 @@ class PhenotypeContentStandard
     else
     {
       // table exists, but are all field defintions correct?
+      $_fields = array();
       while ($row = mysql_fetch_array($rs))
       {
         $name = $row["COLUMN_NAME"];
@@ -371,7 +372,7 @@ class PhenotypeContentStandard
 
           if ($fielddef!=$def) // but it it's defined different
           {
-            $sql = "ALTER TABLE " . $table . " CHANGE " . $name . " " . $name . " " . $fielddef . " NULL";
+            $sql = "ALTER TABLE `" . $table . "` CHANGE `" . $name . "` `" . $name . "` " . $fielddef . " NULL";
             $myDB->query($sql);
           }
         }
@@ -380,7 +381,7 @@ class PhenotypeContentStandard
           // drop field, if it's not in fieldlist
           if ($name!='dat_id')
           {
-            $sql = "ALTER TABLE " . $table . " DROP " . $name;
+            $sql = "ALTER TABLE `" . $table . "` DROP `" . $name."`";
             $myDB->query($sql);
           }
         }
@@ -388,16 +389,44 @@ class PhenotypeContentStandard
 
 
       }
+      // check for new fields
+      $_newfields = array_diff_key($this->datatable_fieldlist,$_fields);
+      foreach ($_newfields AS $name => $def)
+      {
+        $sql = "ALTER TABLE `" . $table . "` ADD `" . $name . "` " . $def . " NULL";
+        $myDB->query($sql);
+      }
     }
-    // check for new fields
-    $_newfields = array_diff_key($this->datatable_fieldlist,$_fields);
-    foreach ($_newfields AS $name => $def)
+
+
+
+  }
+
+  protected function updateFieldsByDataTable()
+  {
+    global $myDB;
+
+    // build the tablename
+    $table = $this->datatable_name;
+    if ($table=='')
     {
-      $sql = "ALTER TABLE " . $table . " ADD " . $name . " " . $fielddef . " NULL";
-      $myDB->query($sql);
+      $table = 'content_data'.$this->id;
     }
 
+    // do the introsepction if in debug mode, otherwise run into the error :)
+    if (PT_DEBUG){$this->buildDataTable($table);}
 
+
+    $sql = "SELECT * FROM " . $table . " WHERE dat_id=".$this->id;
+    $rs = $myDB->query($sql);
+    if (mysql_num_rows($rs)!=0)
+    {
+      $row = mysql_fetch_array($rs);
+      foreach ($this->datatable_mapping AS $f => $p)
+      {
+        $this->set($p,$row[$f]);
+      }
+    }
   }
 
   function updatePosition()
@@ -504,6 +533,11 @@ class PhenotypeContentStandard
 
     $this->loaded = 1;
     $this->pos = $row["dat_pos"];
+
+    if ($this->use_datatable AND $this->datatable_canupdate)
+    {
+      $this->updateFieldsByDataTable();
+    }
   }
 
   //function PhenotypeContent($id=-1)
