@@ -1,4 +1,4 @@
-<?php
+<?php 
 class PhenotypeExpandingList extends PhenotypeContent_1001 {}
 class PhenotypeContent_1001 extends PhenotypeContent
 {
@@ -99,4 +99,4 @@ class PhenotypeContent_1001 extends PhenotypeContent
 	}
 
 }
-?>
+ ?>

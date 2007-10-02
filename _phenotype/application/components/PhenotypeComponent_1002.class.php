@@ -55,14 +55,14 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
   function displayXML()
   {
   	// <html>$this->getX("html")</html>
-  	?>
+  	 ?>
   	<component com_id="1002" type="HTML">
   	<content>
   	<html>$this->getX("html")</html>
     </content>
     </component>
-  	<?php
+  	<?php 
   	return true;
   }     
 } 
-?>
+ ?>

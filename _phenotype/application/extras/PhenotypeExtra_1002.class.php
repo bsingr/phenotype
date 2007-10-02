@@ -1,4 +1,4 @@
-<?php
+<?php 
 class PhenotypeExtra_1002 extends PhenotypeExtra
 {
 
@@ -33,7 +33,7 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
 		 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="tableBody">
-			<?php
+			<?php 
 			$scriptname = TEMPPATH ."console/" . $scriptname;
 			if ($this->get("color")==1)
 			{
@@ -45,11 +45,11 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
 				$s = htmlentities($s);
 				echo $myLayout->workarea_form_textarea("","skript",$s,40,630);
 			}
-			?>
+			 ?>
 			</td>
             </tr>
 			</table>	 
-	<?php
+	<?php 
 	 // Status
 	 $myLayout->workarea_whiteline();
 	 ?>	
@@ -61,11 +61,11 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
             </td>
           </tr>
         </table>
-	 <?php
+	 <?php 
 	 $myLayout->workarea_stop_draw();
-	?>
+	 ?>
 	</form>	 
-  <?php
+  <?php 
   }
 
   function execute($myRequest)
@@ -109,7 +109,7 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
 			</td>
             </tr>
 			</table>	 
-	<?php
+	<?php 
 	 // Status
 	 $myLayout->workarea_whiteline();
 	 ?>	
@@ -121,12 +121,12 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
             </td>
           </tr>
         </table>
-	 <?php
+	 <?php 
 	 $myLayout->workarea_stop_draw();
-	?>
+	 ?>
 	</form>	 
-	<?php
+	<?php 
   }
 
 }
-?>
+ ?>

@@ -18,14 +18,6 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 
 	function edit()
 	{
-		global $myAdm;
-		
-		$_options = Array(0=>"Standard",2=>"Box");
-        $options = $myAdm->buildOptionsByNamedArray($_options,$this->get("style"));
-        $this->form_select("Style","style",$options,150);
-        echo "<br>";
-        
-        
 		$this->form_textfield("Überschrift","headline",$this->get("headline"));
 		echo "<br>";
 		$this->form_image("",$this->get("img_id"),-1,1,0,0,$this->get("alt"),$this->get("bildausrichtung"),2);
@@ -35,7 +27,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
     <br> 
     <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground"> 
     <tr><td nowrap> 
-    <?php
+    <?php 
     $this->form_Richtext("text",$this->get("text"),80,16);
     ?> 
     </td></tr></table> <br> 
@@ -43,20 +35,20 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
     $this->form_link("link",$this->get("linkbez"),$this->get("linkurl"),$this->get("linktarget"));
     ?>
     <br>Link-Anchor: #t<?php echo $this->id ?>
-    <?php
+    <?php 
 	}
 
 	function update()
 	{
 		global $myApp;
-
-		$this->fset("style");
-		$this->fset("headline");
+		
+		// Auswertung der Eingabemaske und Setzen der Properties des Tools
+		$this->fset("headline","headline");
 		$text = $this->fget("text");
 		// Nur erlaubte Tags !!
 		$text = $myApp->richtext_strip_tags($text);
 		$this->set("text",$text);
-		$this->fset("img_id");
+		$this->fset("img_id","img_id");
 		$this->fset("bildausrichtung","img_align");
 		if ($this->get("img_id")!=0)
 		{
@@ -90,24 +82,19 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 
 		$template = $TPL_DEFAULT;
 
-		if ($this->get("style")==2)
-		{
-			$mySmarty->assign("box",1);
-		}
-		
 		switch ($this->get("bildausrichtung"))
 		{
 			case "links":
-				$class = "imageleft";
+				$style = "float:left";
 				break;
 
 			case "rechts":
-				$class = "imageright";
+				$style = "float:right";
 				break;
 
 			case "mittig":
 				$template = $TPL_TOPIMAGE;
-				$class = "imagecenter";
+				$style = "";
 				break;
 		}
 
@@ -117,7 +104,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		{
 			$alt = $this->get("alt");
 			$myImg = new PhenotypeImage($this->get("img_id"));
-			$myImg->class = $class;
+			$myImg->style = $style;
 
 			$mySmarty->assign("image",$myImg->render($alt));
 		}
@@ -141,4 +128,4 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 	}
 
 }
-?>
+ ?>

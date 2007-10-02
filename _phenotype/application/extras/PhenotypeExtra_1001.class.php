@@ -1,4 +1,4 @@
-<?php
+<?php 
 class PhenotypeExtra_1001 extends PhenotypeExtra
 {
 	public $id = 1001;
@@ -17,34 +17,34 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 	function displayInfo()
 	{
 		global $myLayout;
-		?>
+		 ?>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td class="tableBody">
-        Mit dem Pagewizard können Sie auf sehr einfache Weise Seitenbäume anlegen.<br />
-        Schreiben Sie die Seitentitel einfach in einer Liste untereinander auf. Mit Leerzeichen rücken Sie<br />
-        Seiten ein, so         dass sie im Baum eine Ebene tiefer eingehängt werden.<br /> 
-        <br />
-        Beispiel: <br /><br />
-        Home<br />
-        &nbsp;Seite 1<br />
-        &nbsp;Seite 2<br />
-        &nbsp;&nbsp;Seite 2.1<br />
-        &nbsp;Seite 3<br />
-        <br />
-        <br />
+        Mit dem Pagewizard können Sie auf sehr einfache Weise Seitenbäume anlegen.</br>
+        Schreiben Sie die Seitentitel einfach in einer Liste untereinander auf. Mit Leerzeichen rücken Sie</br>
+        Seiten ein, so         dass sie im Baum eine Ebene tiefer eingehängt werden.</br> 
+        </br>
+        Beispiel: </br></br>
+        Home</br>
+        &nbsp;Seite 1</br>
+        &nbsp;Seite 2</br>
+        &nbsp;&nbsp;Seite 2.1</br>
+        &nbsp;Seite 3</br>
+        </br>
+        </br>
         Alle Seiten werden abhängig davon, welche Einstellungen sie hier vornehmen, angelegt. Sie können
-        einzelnen Seiten zusätzlich ein abweichendes Layout und einen abweichenden On/Offline-Status geben:<br />
-        <br />
-        Beispiel: <br />
-        Seite1 || 6 0<br />
-        Seite2 || 4 1<br /><br />
+        einzelnen Seiten zusätzlich ein abweichendes Layout und einen abweichenden On/Offline-Status geben:</br>
+        </br>
+        Beispiel: </br>
+        Seite1 || 6 0</br>
+        Seite2 || 4 1</br></br>
         Bei diesem Beispiel wird Seite1 mit dem Layout und Seite2 mit dem Layout4 angelegt. Seite 1 wird offline gestellt, Seite 2 online.
-        <br />
+        </br>
         </td>
         </tr>
         </table>
-        <?php
+        <?php 
 
 	}
 	function displayStart()
@@ -54,10 +54,10 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		global $myDB;
 
 		$myLayout->workarea_start_draw();
-		?>
+		 ?>
 		<form action="extra_execute.php" method="post">
 		<input type="hidden" name="id" value="<?php echo $this->id ?>">
-		<?php
+		<?php 
 		
 		$sql = "SELECT * FROM pagegroup ORDER BY grp_bez";
 		$rs = $myDB->query($sql);
@@ -108,7 +108,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		$myLayout->workarea_row_draw("Seitenbaum", $html);
 
 		$myLayout->workarea_whiteline();
-?>
+ ?>
 			 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
@@ -118,7 +118,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
           </tr>
         </table>
         </form>
-		<?php
+		<?php 
 
 
 		$myLayout->workarea_stop_draw();
@@ -132,13 +132,13 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 	    <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td class="tableBody">
-        <?php
+        <?php 
 		$this->buildPages();
-		?>
+		 ?>
 		</td>
           </tr>
         </table>
-		<?php
+		<?php 
 		$myLayout->workarea_whiteline();
 		$myLayout->workarea_stop_draw();
 	}
@@ -324,4 +324,4 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 	}
 
 }
-?>
+ ?>
