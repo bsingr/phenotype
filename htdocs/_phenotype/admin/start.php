@@ -394,7 +394,7 @@ if ($mySUser->checkRight("elm_content"))
             <td class="tableBody"><?php echo $row_data["dat_id"] ?></td>
 			
             <td class="tableBody">
-			<?php if ($row_data["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><?php } ?>
+			<?php if ($row_data["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><?php } ?>
 			<?php
 			if ($row_data["med_id_thumb"]!=0)
 			{
@@ -417,7 +417,7 @@ if ($mySUser->checkRight("elm_content"))
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
 			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?php if ($row_data["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row_data["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php php echo $row_data["dat_id"] ?>&c=<?php php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row_data["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row_data["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>

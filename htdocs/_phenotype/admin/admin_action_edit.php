@@ -162,8 +162,8 @@ $row = mysql_fetch_array($rs);
 	 $myPT->startBuffer();
 	 ?>
 	 <input name="status" type="checkbox" value="1" <?php if ($row["act_status"]=="1") echo"checked"; ?>> online. <br>
-	 <br><?php if ($row["act_lastrun"]!=0){ ?>Letzter Lauf: <?php php echo date('d.m.Y H:i',$row["act_lastrun"]) ?><br><?php } ?>
-	 <?php if ($row["act_nextrun"]!=0){ ?>N&auml;chster Lauf: <?php php echo date('d.m.Y H:i',$row["act_nextrun"]) ?><?php }else{ ?>N&auml;chster Lauf: sofort<?php } ?>
+	 <br><?php if ($row["act_lastrun"]!=0){ ?>Letzter Lauf: <?php echo date('d.m.Y H:i',$row["act_lastrun"]) ?><br><?php } ?>
+	 <?php if ($row["act_nextrun"]!=0){ ?>N&auml;chster Lauf: <?php echo date('d.m.Y H:i',$row["act_nextrun"]) ?><?php }else{ ?>N&auml;chster Lauf: sofort<?php } ?>
      <?php
 	 $html = $myPT->stopBuffer();
 	 $myLayout->workarea_row_draw("Status",$html);		

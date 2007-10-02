@@ -740,7 +740,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				  <input name="sortorder" type="radio" value="3" <?php if ($this->sortorder==3){echo"checked";} ?> onclick="document.forms.formsort.submit();">ID</td>
 	              <td class="padding10"><select name="a" class="listmenu" onchange="document.forms.formsort.submit();">
 				    <?php for ($i=1;$i<=5;$i++){ ?>
-	                <option value="<?php php echo ($i*10) ?>" <?php if ($this->itemcount==($i*10)){echo "selected";} ?>><?php php echo ($i*10) ?> Medien / Seite anzeigen</option>
+	                <option value="<?php echo ($i*10) ?>" <?php if ($this->itemcount==($i*10)){echo "selected";} ?>><?php echo ($i*10) ?> Medien / Seite anzeigen</option>
 					<?php } ?>
 					<input type="hidden" name="a2" value="<?php echo $this->itemcount ?>">
 					</select></form></td>
@@ -1271,7 +1271,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	 		<a href="<?php echo $myObj->url ?> " target="_blank"><?php echo $myObj->filename ?></a>
 			<?php
 			}
-			?></a></td><td><?php if ($grp_type == 2 OR $mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin")){ ?><input type="image" src="img/b_delete.gif" name="ver<?php php echo $row["ver_id"] ?>_delete"><?php }else echo"&nbsp;"; ?></td></tr></table><br/><p>Bezeichnung</p><input name="ver<?php php echo $row["ver_id"] ?>_bez" type="text" class="input" value="<?php php echo htmlentities($bez) ?>" style="width:250px"><?php
+			?></a></td><td><?php if ($grp_type == 2 OR $mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin")){ ?><input type="image" src="img/b_delete.gif" name="ver<?php echo $row["ver_id"] ?>_delete"><?php }else echo"&nbsp;"; ?></td></tr></table><br/><p>Bezeichnung</p><input name="ver<?php echo $row["ver_id"] ?>_bez" type="text" class="input" value="<?php echo htmlentities($bez) ?>" style="width:250px"><?php
 			$html = $myPT->stopBuffer();
 			if ($myObj->type == MB_IMAGE)
 			{
@@ -1932,7 +1932,7 @@ function initoid()
 		   </td>
             <td class="tableBody"><?php echo $row_data["med_bez"] ?></td>
 			<td class="tableBody"><?php echo $_mediagroups[$row_data["grp_id"]] ?> / <?php echo $row_data["med_logical_folder1"] ?></td>
-		    <td class="tableBody"><?php if($row_data["med_date"]!=0){echo date('d.m.Y H:i',$row_data["med_date"]);} ?><br><?php php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
+		    <td class="tableBody"><?php if($row_data["med_date"]!=0){echo date('d.m.Y H:i',$row_data["med_date"]);} ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td>&nbsp;</td>
 			<td align="right" nowrap class="tableBody"><a href="#" onclick="lightbox_switch(<?php echo $row_data["med_id"] ?>,0);return false;"><img src="img/b_pinadd.gif" alt="Objekt in Sammelbox legen / aus Sammelbox nehmen" title="Objekt in Sammelbox legen / aus Sammelbox nehmen" width="22" height="22" border="0" align="absmiddle"></a> <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>&folder=<?php echo urlencode($row_data["med_logical_folder1"]) ?>&type=0&sortorder=1&p=1&a=10"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
             

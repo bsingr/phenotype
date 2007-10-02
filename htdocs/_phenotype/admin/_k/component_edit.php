@@ -220,7 +220,7 @@ $row = mysql_fetch_array($rs);
 				  while ($row = mysql_fetch_array($rs))
 				  {
 				  ?>
-				  <input type="checkbox" value="1" <?php if (in_array($row["cog_id"],$toolkits)){ echo "checked";} ?> name="com_<?php php echo $row["cog_id"] ?>">&nbsp; <b><?php php echo $row["cog_bez"] ?></b><br>
+				  <input type="checkbox" value="1" <?php if (in_array($row["cog_id"],$toolkits)){ echo "checked";} ?> name="com_<?php echo $row["cog_id"] ?>">&nbsp; <b><?php echo $row["cog_bez"] ?></b><br>
 				  <?php
 				  }
 				  ?>

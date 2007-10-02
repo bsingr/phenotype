@@ -1772,7 +1772,7 @@ class PhenotypeContentStandard
 				$myComponent->init($row);
 				?>
  				<tr>
-            		<td class="padding30"><strong><?php php echo $myComponent->bez ?></strong><br><input name="<?php php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>>sichtbar
+            		<td class="padding30"><strong><?php echo $myComponent->bez ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>>sichtbar
             	</td>
             	<td>&nbsp;</td>
             	<td class="formarea">

@@ -330,7 +330,7 @@ class PhenotypeAdminStandard
 		if (mysql_num_rows($rs)!=0)
 		{
 	?>
-	 durch <?php php echo $row["usr_vorname"] ?><?php if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";} ?><?php php echo $row["usr_nachname"] ?>.<?php
+	 durch <?php echo $row["usr_vorname"] ?><?php if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";} ?><?php echo $row["usr_nachname"] ?>.<?php
 		}
 	}
 
@@ -345,7 +345,7 @@ class PhenotypeAdminStandard
 		if (mysql_num_rows($rs)!=0)
 		{
 	?>
-	 durch <?php php echo $row["usr_vorname"] ?><?php if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";} ?><?php php echo $row["usr_nachname"] ?>.<?php
+	 durch <?php echo $row["usr_vorname"] ?><?php if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";} ?><?php echo $row["usr_nachname"] ?>.<?php
 		}
 	}
 

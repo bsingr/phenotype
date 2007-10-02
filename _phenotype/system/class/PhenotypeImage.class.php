@@ -171,7 +171,7 @@ class PhenotypeImage extends PhenotypeMediaObject
 		{
 			$alt = $this->alt;
 		}
-?><img src="<?php php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php php echo $this->x ?>" height="<?php php echo $this->y ?>" alt="<?php php echo $alt ?>" title="<?php php echo $alt ?>" border="0"<?php if ($this->align!=""){ ?> align="<?php php echo $this->align ?>"<?php } ?><?php if ($this->class!=""){ ?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
+?><img src="<?php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php echo $this->x ?>" height="<?php echo $this->y ?>" alt="<?php echo $alt ?>" title="<?php echo $alt ?>" border="0"<?php if ($this->align!=""){ ?> align="<?php echo $this->align ?>"<?php } ?><?php if ($this->class!=""){ ?> class="<?php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php echo $this->style ?>"<?php } ?> /><?php
 
 
 
@@ -194,7 +194,7 @@ class PhenotypeImage extends PhenotypeMediaObject
 		{
 			$alt = $this->alt;
 		}
-?><img src="<?php php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php php echo $x ?>" height="<?php php echo $y ?>" alt="<?php php echo $alt ?>" title="<?php php echo $alt ?>" border="0" <?php if ($this->class!=""){ ?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
+?><img src="<?php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php echo $x ?>" height="<?php echo $y ?>" alt="<?php echo $alt ?>" title="<?php echo $alt ?>" border="0" <?php if ($this->class!=""){ ?> class="<?php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php echo $this->style ?>"<?php } ?> /><?php
 
 
 
@@ -248,7 +248,7 @@ class PhenotypeImage extends PhenotypeMediaObject
 ?>
     name="<?php echo $this->fname ?>"
    <?php
-   } if ($this->class!=""){?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
+   } if ($this->class!=""){?> class="<?php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php echo $this->style ?>"<?php } ?> /><?php
 
 
 
@@ -265,7 +265,7 @@ class PhenotypeImage extends PhenotypeMediaObject
 ?>
     name="<?php echo $this->fname ?>"
    <?php
-   } if ($this->class!=""){?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
+   } if ($this->class!=""){?> class="<?php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php echo $this->style ?>"<?php } ?> /><?php
 
 
 
@@ -309,7 +309,7 @@ class PhenotypeImage extends PhenotypeMediaObject
 ?>
     name="<?php echo $this->fname ?>"
    <?php
-   } if ($this->class!=""){?> class="<?php php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php php echo $this->style ?>"<?php } ?> /><?php
+   } if ($this->class!=""){?> class="<?php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php echo $this->style ?>"<?php } ?> /><?php
 
 
 

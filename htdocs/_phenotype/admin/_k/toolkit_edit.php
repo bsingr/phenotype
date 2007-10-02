@@ -114,7 +114,7 @@ $row = mysql_fetch_array($rs);
 	while ($row = mysql_fetch_array($rs))
 	{
 				  ?>
-				  <input type="checkbox" value="1" <?php if (in_array($row["com_id"],$tools)){ echo "checked";} ?> name="com_<?php php echo $row["com_id"] ?>">&nbsp; <b><?php php echo $row["com_bez"] ?></b><br>
+				  <input type="checkbox" value="1" <?php if (in_array($row["com_id"],$tools)){ echo "checked";} ?> name="com_<?php echo $row["com_id"] ?>">&nbsp; <b><?php echo $row["com_bez"] ?></b><br>
 				  <?php
 	}
 

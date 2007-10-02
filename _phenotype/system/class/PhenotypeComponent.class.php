@@ -470,7 +470,7 @@ class PhenotypeComponentStandard
     </tr>
     </table>
     <?php } ?>
-    <table id="<?php php echo $this->formid ?><?php php echo $name ?>select" width="408" border="0" cellpadding="0" cellspacing="0" <?php if($status==0){ ?>style="visibility: hidden;display:none"<?php } ?>>
+    <table id="<?php echo $this->formid ?><?php echo $name ?>select" width="408" border="0" cellpadding="0" cellspacing="0" <?php if($status==0){ ?>style="visibility: hidden;display:none"<?php } ?>>
     <tr>
     <td nowrap>
     <a class="bausteineLink" href="javascript:<?php echo $js_select ?>"><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"><?php echo $text_select ?></a>
@@ -486,14 +486,14 @@ class PhenotypeComponentStandard
     </tr>
     </table>    
     <?php } ?>
-    <table id="<?php php echo $this->formid ?><?php php echo $name ?>panel_form" <?php if($html_form==""){ ?>style="visibility: hidden;display:none"<?php } ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
+    <table id="<?php echo $this->formid ?><?php echo $name ?>panel_form" <?php if($html_form==""){ ?>style="visibility: hidden;display:none"<?php } ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
     <tr >
     <td>
     <?php echo $html_form ?>
     </td>
     </tr>
     </table>    
-    <table id="<?php php echo $this->formid ?><?php php echo $name ?>panel_start" <?php if($html_start==""){ ?>style="visibility: hidden;display:none"<?php } ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
+    <table id="<?php echo $this->formid ?><?php echo $name ?>panel_start" <?php if($html_start==""){ ?>style="visibility: hidden;display:none"<?php } ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
     <tr >
     <td >
     <?php echo $html_start ?>

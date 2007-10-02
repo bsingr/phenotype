@@ -246,7 +246,7 @@ class PhenotypeLayout
 			}
 			?>
 			</td>
-            <td class="windowTitle"><?php php echo $myPage->id ?>.<?php php echo sprintf("%02d",$myPage->ver_nr) ?> <?php php echo $myPage->bez ?><?php if($myPage->ver_bez!=""){ ?> (<?php php echo $myPage->ver_bez ?>)<?php } ?></td>
+            <td class="windowTitle"><?php echo $myPage->id ?>.<?php echo sprintf("%02d",$myPage->ver_nr) ?> <?php echo $myPage->bez ?><?php if($myPage->ver_bez!=""){ ?> (<?php echo $myPage->ver_bez ?>)<?php } ?></td>
             <td align="right" nowrap class="windowTitle">
 			<?php
 			global $mySUser;
@@ -595,7 +595,7 @@ class PhenotypeLayout
           <tr>
             <td class="tableBody"><?php echo $row_data["dat_id"] ?></td>
             <td class="tableBody">
-			<?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><?php } ?>
+			<?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><?php } ?>
 			<?php
 			if ($row_data["med_id_thumb"]!=0)
 			{
@@ -626,7 +626,7 @@ class PhenotypeLayout
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
 			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="content_delete.php?id=<?php php echo $row_data["dat_id"] ?>&uid=<?php php echo $row_data["dat_uid"] ?>&c=<?php php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="content_delete.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>

@@ -436,26 +436,26 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     	<tr>
         	<td class="windowTabTypeOnly"><table border="0" cellpadding="0" cellspacing="1">
             <tr>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=akt" class="tabmenuType<?php if($order=="akt"){echo"Active";} ?>">Aktuell</a></td>
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=akt" class="tabmenuType<?php if($order=="akt"){echo"Active";} ?>">Aktuell</a></td>
 				<?php
 				// Individuelle Tabs
 				foreach ($myCO->_extratabs AS $k => $v)
 				{
 					$titel = $v[0];
 				?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=etab_<?php php echo $k ?>" class="tabmenuType<?php if($order=="etab_".$k){echo"Active";} ?>"><?php php echo $titel ?></a></td>
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=etab_<?php echo $k ?>" class="tabmenuType<?php if($order=="etab_".$k){echo"Active";} ?>"><?php echo $titel ?></a></td>
 				<?php
 				}
 				if ($myCO->tab_az)
 				{
 				?>
-			  	<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
+			  	<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
               		<?php
               		for ($i=1;$i<=26;$i++)
               		{
               			$c = chr(64+$i);
 			  		?>
-			  		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=<?php php echo $c ?>" class="tabmenuType<?php if($order==$c){echo"Active";} ?>"><?php php echo $c ?></a></td>
+			  		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=<?php echo $c ?>" class="tabmenuType<?php if($order==$c){echo"Active";} ?>"><?php echo $c ?></a></td>
 				  	<?php
               		}
 				}
@@ -463,24 +463,24 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				{
 					$_az = Array("ABC","DEF","GHIJ","KLMN","OPQR","STU","VWXYZ");
 		  			?>
-		  	 		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
+		  	 		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
        	  			<?php
        	  			foreach ($_az AS $k)
        	  			{
 		  				?>
-		  				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=<?php php echo strtolower($k) ?>" class="tabmenuType<?php if($order==strtolower($k)){echo"Active";} ?>"><?php php echo $k ?></a></td>
+		  				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=<?php echo strtolower($k) ?>" class="tabmenuType<?php if($order==strtolower($k)){echo"Active";} ?>"><?php echo $k ?></a></td>
 				  		<?php
        	  			}
 				}
 				if ($myCO->tab_alle)
 				{
 		      	?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=alle" class="tabmenuType<?php if($order=="alle"){echo"Active";} ?>">Alle</a></td><?php
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=alle" class="tabmenuType<?php if($order=="alle"){echo"Active";} ?>">Alle</a></td><?php
 				}
 				if ($myCO->tab_id)
 				{
 			  	?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php php echo $this->con_id ?>&c=id" class="tabmenuType<?php if($order=="id"){echo"Active";} ?>">ID</a></td><?php
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=id" class="tabmenuType<?php if($order=="id"){echo"Active";} ?>">ID</a></td><?php
 			  }?>
             </tr>
         </table></td>
