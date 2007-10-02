@@ -61,7 +61,7 @@ class PhenotypeInclude_1106 extends PhenotypeInclude
 &#60;h2&#62;&#60;?php echo $_image[0] ?&#62;&#60;&#47;h2&#62;
 
 &#60;br &#47;&#62;        
-&#60;div class=&#34;center&#34;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php php echo $gal_id ?&#62;&#38;page=&#60;?php php echo $page ?&#62;&#38;nr=&#60;?php php echo $nr+1 ?&#62;&#38;pag_id_mik=&#60;?php php echo $pag_id_mik ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;img src=&#34;&#60;?php php echo MEDIABASEURL.&#34;&#47;&#34;.$_image[3] ?&#62;&#34; alt=&#34;&#60;?php php echo $_image[0] ?&#62;&#34; title=&#34;&#60;?php php echo $_image[0] ?&#62;&#34; class=&#34;GalImg&#34;&#47;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;&#47;a&#62;&#60;?php } ?&#62;&#60;&#47;div&#62;
+&#60;div class=&#34;center&#34;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php echo $gal_id ?&#62;&#38;page=&#60;?php echo $page ?&#62;&#38;nr=&#60;?php echo $nr+1 ?&#62;&#38;pag_id_mik=&#60;?php echo $pag_id_mik ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;img src=&#34;&#60;?php echo MEDIABASEURL.&#34;&#47;&#34;.$_image[3] ?&#62;&#34; alt=&#34;&#60;?php echo $_image[0] ?&#62;&#34; title=&#34;&#60;?php echo $_image[0] ?&#62;&#34; class=&#34;GalImg&#34;&#47;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;&#47;a&#62;&#60;?php } ?&#62;&#60;&#47;div&#62;
 
 &#60;&#47;div&#62;
 
@@ -72,9 +72,9 @@ class PhenotypeInclude_1106 extends PhenotypeInclude
 &#60;br&#47;&#62;
     &#60;table cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; width=&#34;&#60;?php echo $_image[4] ?&#62;&#34; class=&#34;tableBausteineBackground&#34;&#62;
         &#60;tr&#62;
-            &#60;td &#62;&#60;?php if ($nr&#62;1){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php php echo $gal_id ?&#62;&#38;page=&#60;?php php echo $page ?&#62;&#38;nr=&#60;?php php echo $nr-1 ?&#62;&#38;pag_id_mik=&#60;?php php echo $pag_id_mik ?&#62;&#34;&#62;Bild zur&#38;uuml;ck&#60;&#47;a&#62;&#60;?php }else{ ?&#62;&#38;nbsp;&#60;?php } ?&#62;&#60;&#47;td&#62;
+            &#60;td &#62;&#60;?php if ($nr&#62;1){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php echo $gal_id ?&#62;&#38;page=&#60;?php echo $page ?&#62;&#38;nr=&#60;?php echo $nr-1 ?&#62;&#38;pag_id_mik=&#60;?php echo $pag_id_mik ?&#62;&#34;&#62;Bild zur&#38;uuml;ck&#60;&#47;a&#62;&#60;?php }else{ ?&#62;&#38;nbsp;&#60;?php } ?&#62;&#60;&#47;td&#62;
             &#60;td &#62;&#38;nbsp;&#60;&#47;td&#62;
-&#60;td align=&#34;right&#34;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php php echo $gal_id ?&#62;&#38;page=&#60;?php php echo $page ?&#62;&#38;nr=&#60;?php php echo $nr+1 ?&#62;&#38;pag_id_mik=&#60;?php php echo $pag_id_mik ?&#62;&#34;&#62;Bild vor&#60;&#47;a&#62;&#60;?php }else{ ?&#62;&#38;nbsp;&#60;?php } ?&#62;&#60;&#47;td&#62;
+&#60;td align=&#34;right&#34;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php echo $gal_id ?&#62;&#38;page=&#60;?php echo $page ?&#62;&#38;nr=&#60;?php echo $nr+1 ?&#62;&#38;pag_id_mik=&#60;?php echo $pag_id_mik ?&#62;&#34;&#62;Bild vor&#60;&#47;a&#62;&#60;?php }else{ ?&#62;&#38;nbsp;&#60;?php } ?&#62;&#60;&#47;td&#62;
         &#60;&#47;tr&#62;
     &#60;&#47;table&#62;
     

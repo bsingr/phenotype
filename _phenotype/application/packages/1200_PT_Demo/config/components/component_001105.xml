@@ -50,7 +50,7 @@ class PhenotypeComponent_1105 extends PhenotypeComponent
         for ($j=1;$j&#60;=$this-&#62;get(&#34;anzahl_x&#34;);$j++)
         {
         ?&#62;         
-        &#60;td width=&#34;&#60;?php php echo $x ?&#62;%&#34;&#62;&#60;?php if ($this-&#62;get(&#34;anzahl_x&#34;)&#62;1){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Spalte entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_minus_s&#60;?php php echo $j ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;?php if($anzahl_spalten&#60;$max_spalten){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Spalte hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_plus_s&#60;?php php echo $j ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;&#47;td&#62; 
+        &#60;td width=&#34;&#60;?php echo $x ?&#62;%&#34;&#62;&#60;?php if ($this-&#62;get(&#34;anzahl_x&#34;)&#62;1){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Spalte entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_minus_s&#60;?php echo $j ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;?php if($anzahl_spalten&#60;$max_spalten){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Spalte hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_plus_s&#60;?php echo $j ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;&#47;td&#62; 
         
         &#60;&#47;td&#62; 
         &#60;?php 
@@ -74,7 +74,7 @@ class PhenotypeComponent_1105 extends PhenotypeComponent
         ?&#62; 
         &#60;td  nowrap&#62; 
         &#60;?php if ($this-&#62;get(&#34;anzahl_y&#34;)&#62;1){ ?&#62; 
-        &#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Zeile entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_minus_z&#60;?php php echo $i ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Zeile hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_plus_z&#60;?php php echo $i ?&#62;&#34;&#62; 
+        &#60;input type=&#34;image&#34; src=&#34;img&#47;b_minus.gif&#34; alt=&#34;Zeile entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_minus_z&#60;?php echo $i ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;input type=&#34;image&#34; src=&#34;img&#47;b_plus.gif&#34; alt=&#34;Zeile hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_plus_z&#60;?php echo $i ?&#62;&#34;&#62; 
         &#60;&#47;td&#62; 
         
         &#60;&#47;tr&#62; 

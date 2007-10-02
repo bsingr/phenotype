@@ -18,6 +18,14 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 
 	function edit()
 	{
+		global $myAdm;
+		
+		$_options = Array(0=>"Standard",2=>"Box");
+        $options = $myAdm->buildOptionsByNamedArray($_options,$this->get("style"));
+        $this->form_select("Style","style",$options,150);
+        echo "<br>";
+        
+        
 		$this->form_textfield("Überschrift","headline",$this->get("headline"));
 		echo "<br>";
 		$this->form_image("",$this->get("img_id"),-1,1,0,0,$this->get("alt"),$this->get("bildausrichtung"),2);
@@ -41,14 +49,14 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 	function update()
 	{
 		global $myApp;
-		
-		// Auswertung der Eingabemaske und Setzen der Properties des Tools
-		$this->fset("headline","headline");
+
+		$this->fset("style");
+		$this->fset("headline");
 		$text = $this->fget("text");
 		// Nur erlaubte Tags !!
 		$text = $myApp->richtext_strip_tags($text);
 		$this->set("text",$text);
-		$this->fset("img_id","img_id");
+		$this->fset("img_id");
 		$this->fset("bildausrichtung","img_align");
 		if ($this->get("img_id")!=0)
 		{
@@ -82,19 +90,24 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 
 		$template = $TPL_DEFAULT;
 
+		if ($this->get("style")==2)
+		{
+			$mySmarty->assign("box",1);
+		}
+		
 		switch ($this->get("bildausrichtung"))
 		{
 			case "links":
-				$style = "float:left";
+				$class = "imageleft";
 				break;
 
 			case "rechts":
-				$style = "float:right";
+				$class = "imageright";
 				break;
 
 			case "mittig":
 				$template = $TPL_TOPIMAGE;
-				$style = "";
+				$class = "imagecenter";
 				break;
 		}
 
@@ -104,7 +117,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		{
 			$alt = $this->get("alt");
 			$myImg = new PhenotypeImage($this->get("img_id"));
-			$myImg->style = $style;
+			$myImg->class = $class;
 
 			$mySmarty->assign("image",$myImg->render($alt));
 		}

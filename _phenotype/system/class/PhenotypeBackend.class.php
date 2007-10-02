@@ -40,6 +40,22 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 
 	public $_params = Array(); // parameter array for gotoPage actions
 
+	// main menu entries
+	
+	const menu_start         = 1;
+	const menu_editor        = 2;
+	const menu_extras        = 3;
+	const menu_analyze       = 4;
+	const menu_ticket        = 5;
+	const menu_admin         = 6;
+	const menu_configuration = 7;
+	const menu_info          = 8;
+	
+	// layout variants
+
+	const layout_default     = 1; 		//  Explorer +Content
+	const layout_blank       = 2;
+		
 
 	function execute($scope,$action)
 	{
@@ -94,7 +110,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 <body>
 <table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="320" class="top"><a href="http://www.phenotype.de" target="_blank"><img src="img/phenotype_ani_logo.gif" width="27" height="27" border="0"><img src="img/phenotype_typo.gif" width="97" height="27" border="0"></a></td>
+    <td width="320" class="top"><a href="http://www.phenotype.de" target="_blank"><img src="img/phenotype_ani_logo.gif" width="27" height="27" border="0"alt=""><img src="img/phenotype_typo.gif" width="97" height="27" border="0" alt=""></a></td>
   </tr>
   <tr>
     <td height="32" class="topShadow">&nbsp;</td>
@@ -111,7 +127,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="bottom">
                   <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert">Kein Zugriff!<br>
-                  <!--Bitte melden Sie sich mit den erforderlichen Rechten an<br>oder Drücken Sie den Zurück-Button Ihres Browsers.--></div></td>
+                  </div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
                   <td colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -222,23 +238,12 @@ exit();
 	function selectLayout($lay_nr)
 	{
 		$this->lay_nr = $lay_nr;
-
-		// 1 = Standard (Explorer+Content)
-		// 2 = Blank
-	}
+  }
 
 	function selectMenuItem($nr)
 	{
 		$this->menu_item = $nr;
 
-		// 1 = Start
-		// 2 = Redaktion
-		// 3 = Extras
-		// 4 = Analyse
-		// 5 = Aufgaben
-		// 6 = Admin
-		// 7 = Konfiguration
-		// 8 = Info
 	}
 
 	function setPageTitle($s)
@@ -424,8 +429,8 @@ exit();
 
 		echo '<table width="100%"  border="0" cellspacing="0" cellpadding="0">
 	<tr>
-	<td width="300" class="top"><a href="http://www.phenotype.de" target="_blank"><img src="img/phenotype_ani_logo.gif" width="27" height="27" border="0"><img src="img/phenotype_typo.gif" width="97" height="27" border="0"></a></td>
-	<td width="430" class="top"><table height="27"  border="0" cellpadding="0" cellspacing="0">
+	<td width="300" class="top"><a href="http://www.phenotype.de" target="_blank"><img src="img/phenotype_ani_logo.gif" width="27" height="27" border="0" alt=""><img src="img/phenotype_typo.gif" width="97" height="27" border="0" alt=""></a></td>
+	<td width="430" class="top"><table  border="0" cellpadding="0" cellspacing="0">
 	<tr>';
 
 
@@ -444,7 +449,7 @@ exit();
 
 		echo '</tr>
 	</table></td>
-	<td align="right" nowrap class="top">Benutzer: '.$this->getUserName(). '<a href="backend.php?page=Session,Logout"><img src="img/topbuttonclose.gif" width="30" height="27" border="0" align="absmiddle"></a></td>
+	<td align="right" nowrap class="top">Benutzer: '.$this->getUserName(). '<a href="backend.php?page=Session,Logout"><img src="img/topbuttonclose.gif" width="30" height="27" border="0" align="absmiddle" alt=""></a></td>
 	</tr>
 	<tr>
 	<td height="32" colspan="3" class="topShadow">&nbsp;</td>
@@ -923,7 +928,7 @@ exit();
 
 	}
 	
-	
+
 	
 }
 ?>

@@ -58,8 +58,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
       if ($myPage->buildingcache==0)
 	  {
 	    $cname = "PhenotypeInclude_" . $inc_id;
-			$myInc = new $cname();
-			$myInc->context = $context;
+		$myInc = new $cname();
 	    $html = $myInc->execute();
 	  }
 	  else
@@ -68,14 +67,13 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
 		{
 		  $cname = "PhenotypeInclude_" . $inc_id;
 		  $myInc = new $cname();
-			$myInc->context = $context;
-      $html = $myInc->execute();
+	      $html = $myInc->execute();
 		}
 		else
 		{
-			$html = '<?php $myPage->includenocache=1 ?>';// Notwendig fuer Content-Statistik
-			$html .= '<?php $myInc = new PhenotypeInclude_' . $inc_id .'();echo $myInc->execute() ?>';
-			$html .= '<?php $myPage->includenocache=0 ?>';
+		  $html = '<?php $myPage->includenocache=1 ?>';// Notwendig fuer Content-Statistik
+		  $html .= '<?php $myInc = new PhenotypeInclude_' . $inc_id .'();echo $myInc->execute() ?>';
+          $html .= '<?php $myPage->includenocache=0 ?>';
 		}
       } 
 	}  

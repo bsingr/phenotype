@@ -50,7 +50,7 @@ class PhenotypeComponent_1103 extends PhenotypeComponent
 
 
 
-      &#60;?php if ($this-&#62;get(&#34;anzahl&#34;)&#62;1){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img/b_minus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_minus_z&#60;?php php echo $i ?&#62;&#34;&#62;&#60;?php } ?&#62; &#60;input type=&#34;image&#34; src=&#34;img/b_plus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?php php echo $this-&#62;formid ?&#62;_plus_z&#60;?php php echo $i ?&#62;&#34;&#62;&#60;br&#62; 
+      &#60;?php if ($this-&#62;get(&#34;anzahl&#34;)&#62;1){ ?&#62;&#60;input type=&#34;image&#34; src=&#34;img/b_minus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt entfernen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_minus_z&#60;?php echo $i ?&#62;&#34;&#62;&#60;?php } ?&#62; &#60;input type=&#34;image&#34; src=&#34;img/b_plus.gif&#34; alt=&#34;Aufz&#38;auml;hlungspunkt hinzuf&#38;uuml;gen&#34; width=&#34;18&#34; height=&#34;18&#34; border=&#34;0&#34; align=&#34;absmiddle&#34; name=&#34;&#60;?php echo $this-&#62;formid ?&#62;_plus_z&#60;?php echo $i ?&#62;&#34;&#62;&#60;br&#62; 
       &#60;?php 
       } 
       ?&#62; 
