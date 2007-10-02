@@ -100,6 +100,7 @@ class PhenotypeContentStandard
   protected $datatable_mapping = array();
   protected $datatable_canupdate = false;
 
+  protected $datatable_followstatus = false;
 
 
   function set($bez, $val)
@@ -314,6 +315,13 @@ class PhenotypeContentStandard
     // do the introsepction if in debug mode, otherwise run into the error :)
     if (PT_DEBUG){$this->buildDataTable($table);}
 
+    if ($this->datatable_followstatus AND $this->status ==0 )
+    {
+       $sql = "DELETE FROM " . $table . " WHERE dat_id=".$this->id;
+       $rs = $myDB->query($sql);
+       return;
+    }
+    
     $mySQL = new SQLBuilder();
     foreach ($this->datatable_mapping AS $f => $p)
     {
@@ -406,6 +414,7 @@ class PhenotypeContentStandard
   {
     global $myDB;
 
+    
     // build the tablename
     $table = $this->datatable_name;
     if ($table=='')
@@ -415,7 +424,13 @@ class PhenotypeContentStandard
 
     // do the introsepction if in debug mode, otherwise run into the error :)
     if (PT_DEBUG){$this->buildDataTable($table);}
-
+    
+    if ($this->datatable_followstatus AND $this->status ==0 )
+    {
+       $sql = "DELETE FROM " . $table . " WHERE dat_id=".$this->id;
+       $rs = $myDB->query($sql);
+       return;
+    }
 
     $sql = "SELECT * FROM " . $table . " WHERE dat_id=".$this->id;
     $rs = $myDB->query($sql);
