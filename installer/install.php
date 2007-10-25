@@ -747,6 +747,7 @@ function installDemoPackage()
 	global $myPT;
 	global $myApp;
 	global $myAdm;
+	global $myRequest;
 	
 	require (CONFIG_FILE);
 	$myAdm = new PhenotypeAdmin();
