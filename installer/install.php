@@ -820,7 +820,7 @@ function rget($key) {
 */
 function dget($key) {
 	global $data;
-	if (isset($data["$key"])) {
+	if (array_key_exists($key, $data) && isset($data["$key"])) {
 		return ($data["$key"]);
 	} else {
 		return ("");
@@ -830,13 +830,9 @@ function dget($key) {
 
 function cget($key)
 {
-	if ($_REQUEST[$key]==1)
+	if (array_key_exists($key, $_REQUEST) && $_REQUEST[$key]==1)
 	{
 			return "checked";
-	}
-	if ($_REQUEST["checkbox"]!="1")
-	{
-		return "checked";
 	}
 }
 
@@ -845,7 +841,7 @@ function cget($key)
 */
 function eget($key) {
 	global $errors;
-	if (isset($errors["$key"])) {
+	if (array_key_exists($key, $errors) && isset($errors["$key"])) {
 		return ($errors["$key"]);
 	} else {
 		return ("");
