@@ -1,0 +1,11 @@
+#############################
+Release 2.5.2 from 2007/10/25
+
+bugfixes in installer and editing frontend
+
+
+#############################
+Release 2.5.1 from 2007/08/03
+
+first real release of Phenotype 2.5 for production use
+further development will take place in a seperate branch heading to Phenotype 2.6
