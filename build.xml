@@ -5,7 +5,7 @@
 	<php expression="PHP_OS" returnProperty="buildOS"/>
 	<php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>
 
-  <property name="ptVersion" value="2.5.1" />
+  <property name="ptVersion" value="2.5.2" />
   
   <tstamp>
   	<format property="DATE" pattern="%d.%m.%Y" locale="de_DE"/>
