@@ -708,24 +708,20 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		}
 
 
-		$pagingUrlExt = "";
 		if ($myRequest->get("s")!="")
 		{
 			$sql .= " AND dat_bez LIKE '%". $myRequest->getSQL("s")."%'";
 			$headline .= " nach Titel " . $myRequest->get("s");
-			$pagingUrlExt .= "&s=". urlencode($myRequest->get("s"));
 		}
 		if ($myRequest->get("v")!="")
 		{
 			$sql .= " AND dat_fullsearch LIKE '%". $myRequest->getSQL("v")."%'";
 			$headline .= " nach Volltext " . $myRequest->get("v");
-			$pagingUrlExt .= "&s=". urlencode($myRequest->get("v"));
 		}
 		if ($myRequest->getI("i")!=0)
 		{
 			$sql .= " AND dat_id = ". $myRequest->getI("i");
 			$headline .= " nach ID " . $myRequest->getI("i");
-			$pagingUrlExt .= "&s=". urlencode($myRequest->get("i"));
 		}
 
 		?>
@@ -765,7 +761,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 		$this->displayContentRecords($rs,true,$display_content_type);
 
-		$url = "backend.php?page=Editor,Content,search&con_id=".$this->con_id."&r=".$this->category."&b=0&c=".$order.$pagingUrlExt."&p=";
+		$url = "backend.php?page=Editor,Content,search&con_id=".$this->con_id."&r=".$this->category."&b=0&c=".$order."&p=";
 		echo $this->renderPageBrowser($p,$anzahl,$url);
 
 		return $myPT->stopBuffer();
