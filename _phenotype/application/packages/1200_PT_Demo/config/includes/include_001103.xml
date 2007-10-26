@@ -24,7 +24,11 @@ class PhenotypeInclude_1103 extends PhenotypeInclude
 		global $myRequest;
 		global $myPage;
 		global $myPT;
+		global $mySmarty;
 		
+		
+		&#47;&#47; Initialisieren des Smartyzugriffs
+		eval ($this-&#62;initRendering());
 		
 		$pag_id = $myPage-&#62;pag_id_mimikry;
 
@@ -46,19 +50,19 @@ class PhenotypeInclude_1103 extends PhenotypeInclude
 			$rs = $myDB-&#62;query($sql);
 			$row = mysql_fetch_array($rs);
 		}
-		?&#62;
-		&#60;div id=&#34;breadcrumb&#34;&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;
-		&#60;a href=&#34;index.php?id=1&#34;&#62;Startseite&#60;&#47;a&#62;
-		&#60;?php
+		
+		$entries = array();
 		for ($i=count($_pages)-1;$i&#62;=0;$i--)
 		{
-			echo &#39; &#62; &#60;a href=&#34;index.php?id=&#39;. $_pages[$i][0].&#39;&#34;&#62;&#39;.$myPT-&#62;codeH($_pages[$i][1]).&#39;&#60;&#47;a&#62;&#39;;
+			$cur = array();
+			$cur[&#39;url&#39;] = &#34;index.php?id=&#34;. $_pages[$i][0];
+			$cur[&#39;title&#39;] = $myPT-&#62;codeH($_pages[$i][1]);
+			$entries[] = $cur;
 		}
-		?&#62;
-		&#60;&#47;div&#62;
-		&#60;?php
 		
-		
+		&#47;&#47; assign to smarty and display
+		$mySmarty-&#62;assign(&#34;entries&#34;, $entries);
+		$mySmarty-&#62;display($TPL_1);
 
 	}
 	
@@ -66,5 +70,12 @@ class PhenotypeInclude_1103 extends PhenotypeInclude
 }
 ?&#62;</script>
 	<templates>
+<template access="TPL_1">		&#60;div id=&#34;breadcrumb&#34;&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;
+		&#60;a href=&#34;index.php?id=1&#34;&#62;Startseite&#60;&#47;a&#62;
+{section name=i loop=$entries}
+			&#60;a href=&#34;{$entries[i].url}&#34;&#62;{$entries[i].title}&#60;&#47;a&#62;
+{&#47;section}
+		&#60;&#47;div&#62;
+		</template>
    	</templates>
 </phenotype>
