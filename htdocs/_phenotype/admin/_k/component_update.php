@@ -85,7 +85,8 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
 	$sql = "SELECT * FROM component_template WHERE com_id = " . $id . " ORDER BY tpl_id";
 	$rs = $myDB->query($sql);
 	$c= mysql_num_rows($rs);
-	$plus = "";$minus = "";
+	$plus = "";
+	$minus = "";
 	$anzahl_templates=0;
 	while ($row_ttp=mysql_fetch_array($rs))
 	{
@@ -117,6 +118,7 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
 
 	if ($minus !="")
 	{
+	//var_dump($_REQUEST);
 		$sql = "DELETE FROM component_template WHERE tpl_id = " . $minus;
 		$myDB->query($sql);
 		$dateiname = APPPATH . "templates/component_templates/"  .sprintf("%04.0f", $id) . "_".sprintf("%04.0f", $minus) .".tpl";
@@ -124,24 +126,21 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
 		$anzahl_templates--;
 	}
 
-	if ($plus !="")
+	if ($plus !="" || isset($_REQUEST["ttp_plus_x"]))
 	{
+		$sql = "SELECT MAX(tpl_id) AS new_id FROM component_template WHERE com_id = $id";
+		$rs = $myDB->query($sql);
+		$row = mysql_fetch_array($rs);
+		$newId = $row['new_id'] + 1;
+		
 		$mySQL = new SQLBuilder();
+		$mySQL->addField("tpl_id",$newId,DB_NUMBER);
 		$mySQL->addField("com_id",$id,DB_NUMBER);
-		$mySQL->addField("tpl_bez","TPL_".($c+1));
+		$mySQL->addField("tpl_bez","TPL_". $newId);    
 		$sql = $mySQL->insert("component_template");
-		$myDB->query($sql);
+		$myDB->query($sql);  
 	}
 
-	if (isset($_REQUEST["ttp_plus_x"]))
-	{
-		// 1. Template
-		$mySQL = new SQLBuilder();
-		$mySQL->addField("com_id",$id,DB_NUMBER);
-		$mySQL->addField("tpl_bez","TPL_".($c+1));
-		$sql = $mySQL->insert("component_template");
-		$myDB->query($sql);
-	}
 }
 
 
