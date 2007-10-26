@@ -8,3 +8,8 @@
 # newest change at the top
 # ##########
 
+r208 - 2007/10/26
+- changed creation of include template ids: now uses separated numbers for every object
+- changed creation of component template ids: now uses separated numbers for every object
+- introduced changelog ;-)
+- 

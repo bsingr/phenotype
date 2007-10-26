@@ -83,10 +83,10 @@ INSERT INTO `component_componentgroup` VALUES (1, 1003);
 -- 
 
 CREATE TABLE `component_template` (
-  `tpl_id` int(11) NOT NULL auto_increment,
+  `tpl_id` int(11) NOT NULL,
   `com_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
-  PRIMARY KEY  (`tpl_id`)
+  PRIMARY KEY  (`tpl_id`, `com_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 
 -- 
@@ -349,10 +349,10 @@ CREATE TABLE `include` (
 -- 
 
 CREATE TABLE `include_template` (
-  `tpl_id` int(11) NOT NULL auto_increment,
+  `tpl_id` int(11) NOT NULL,
   `inc_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
-  PRIMARY KEY  (`tpl_id`)
+  PRIMARY KEY  (`tpl_id`, `inc_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 
 -- 
