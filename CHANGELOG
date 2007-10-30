@@ -12,4 +12,9 @@ r208 - 2007/10/26
 - changed creation of include template ids: now uses separated numbers for every object
 - changed creation of component template ids: now uses separated numbers for every object
 - introduced changelog ;-)
-- 
+
+
+r212 - 2007/10/30
+- changed creation of content template ids: now uses separated numbers for every object
+- changed creation of extra template ids: now uses separated numbers for every object
+- added sql migration scripts with alter table statements for the case you won't dump your development DB

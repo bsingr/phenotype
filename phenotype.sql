@@ -222,10 +222,10 @@ CREATE TABLE `content_statistics` (
 -- 
 
 CREATE TABLE `content_template` (
-  `tpl_id` int(11) NOT NULL auto_increment,
+  `tpl_id` int(11) NOT NULL,
   `con_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
-  PRIMARY KEY  (`tpl_id`)
+  PRIMARY KEY  (`tpl_id`, `con_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 
 -- 
@@ -309,10 +309,10 @@ INSERT INTO `extra` VALUES (1002, 'Konsole', '', 'Development', 'a:1:{s:5:"color
 -- 
 
 CREATE TABLE `extra_template` (
-  `tpl_id` int(11) NOT NULL auto_increment,
+  `tpl_id` int(11) NOT NULL,
   `ext_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
-  PRIMARY KEY  (`tpl_id`)
+  PRIMARY KEY  (`tpl_id`, `ext_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 
 -- 
