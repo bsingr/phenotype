@@ -616,7 +616,7 @@ class PhenotypePageStandard
 		$myTC->start();
 		//$html = $this->render(HTML_FULL,$version,PAGE_BUFFER);
 		$html = $this->renderPreview($this->ver_id,$editbuffer);
-		$_search = Array("<?php xml","<?php xml","<?php  xml");
+		$_search = Array("<?xml","<? xml","<?  xml");
 		$html = str_replace($_search,'<?php echo "<?xml" ?>',$html);
 		$filename_bak = TEMPPATH ."previewcache/~" . uniqid("") . ".tmp";
 		$fp = fopen ($filename_bak,"w");
@@ -696,7 +696,7 @@ class PhenotypePageStandard
 			//$this->versionCheck();
 			$html = $this->renderPage4Cache($this->ver_id);
 			//$html = $this->render(HTML_INCLUDES_NOCACHE,$this->ver_id,PAGE_FREE);
-			$_search = Array("<?php xml","<?php xml","<?php  xml");
+			$_search = Array("<?xml","<? xml","<?  xml");
 			$html = str_replace($_search,'<?php echo "<?xml" ?>',$html);
 			$fp = fopen ($dateiname,"w");
 			fputs ($fp,$html);
@@ -841,7 +841,7 @@ class PhenotypePageStandard
 				$this->versionCheck();
 			}
 			$html = $this->renderPrint4Cache($this->ver_id);
-			$_search = Array("<?php xml","<?php xml","<?php  xml");
+			$_search = Array("<?xml","<? xml","<?  xml");
 			$html = str_replace($_search,'<?php echo "<?xml" ?>',$html);
 
 			$fp = fopen ($dateiname,"w");
@@ -939,7 +939,7 @@ class PhenotypePageStandard
 				$this->versionCheck();
 			}
 			$html = $this->renderXML4Cache($this->ver_id);
-			$_search = Array("<?php xml","<?php xml","<?php  xml");
+			$_search = Array("<?xml","<? xml","<?  xml");
 			$html = str_replace($_search,'<?php echo "<?xml" ?>',$html);
 
 			$fp = fopen ($dateiname,"w");
