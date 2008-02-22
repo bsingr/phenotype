@@ -44,6 +44,11 @@ define("PT_CFG_TICKET", "TI");
 define("PT_CFG_USER", "US");
 
 
+// constants used in forms
+define ("PT_CON_FORM_NEWLINE", 7);
+define ("PT_CON_FORM_SEQUENCE", 10);
+define ("PT_CON_FORM_EXLIST", 21);
+
 
 // constants for logging levels, facilities and options
 

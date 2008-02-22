@@ -1035,7 +1035,7 @@ class PhenotypeContentStandard
 
   function form_sequence($cog_id, $blocknr = 1)
   {
-    $a = Array (10, $cog_id, $blocknr);
+		$a = Array (PT_CON_FORM_SEQUENCE, $cog_id, $blocknr);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1898,7 +1898,7 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 10 : // Sequenz
+			case PT_CON_FORM_SEQUENCE : // Sequenz
 
 	    $block_nr = $a[2];
 	    $cog_id = $a[1];
@@ -1914,6 +1914,10 @@ class PhenotypeContentStandard
 	    }
 
 			?>
+		<!-- sequence start here -->
+		<tr>
+			<td colspan="2">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			<tr>
       			<td colspan="4">&nbsp;</td>
     		</tr>
@@ -1937,9 +1941,10 @@ class PhenotypeContentStandard
 			  $tname = "PhenotypeComponent_" . $row["com_id"];
 			  $myComponent = new $tname;
 			  $myComponent->init($row);
+			  var_dump($myComponent);
 				?>
  				<tr>
-            		<td class="padding30"><strong><?php echo $myComponent->bez ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>>sichtbar
+            		<td class="padding30"><strong><?php echo $myComponent->bez ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?> >sichtbar
             	</td>
             	<td>&nbsp;</td>
             	<td class="formarea">
@@ -1979,7 +1984,10 @@ class PhenotypeContentStandard
 			?>
 			<tr>
       			<td colspan="4">&nbsp;</td>
-    		</tr>			
+    		</tr>
+    		</table>
+				</td>
+			</tr>    		
 			<?php
 
 			// Ende Sequenz
