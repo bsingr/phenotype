@@ -1941,7 +1941,6 @@ class PhenotypeContentStandard
 			  $tname = "PhenotypeComponent_" . $row["com_id"];
 			  $myComponent = new $tname;
 			  $myComponent->init($row);
-			  var_dump($myComponent);
 				?>
  				<tr>
             		<td class="padding30"><strong><?php echo $myComponent->bez ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?> >sichtbar
