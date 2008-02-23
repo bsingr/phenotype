@@ -45,9 +45,47 @@ define("PT_CFG_USER", "US");
 
 
 // constants used in forms
+define ("PT_CON_FORM_HEADLINE", 1);
+define ("PT_CON_FORM_TEXTFIELD", 2);
+define ("PT_CON_FORM_TEXTAREA", 3);
+define ("PT_CON_FORM_DATE", 4);
+define ("PT_CON_FORM_HTML", 5);
+define ("PT_CON_FORM_SELECTBOX", 6);
 define ("PT_CON_FORM_NEWLINE", 7);
+define ("PT_CON_FORM_DATETIME", 8);
+define ("PT_CON_FORM_IMAGEEXTERN", 9);
 define ("PT_CON_FORM_SEQUENCE", 10);
+define ("PT_CON_FORM_IMAGESELECTOR", 11);
+define ("PT_CON_FORM_RICHTEXT", 12);
+define ("PT_CON_FORM_DOUBLETEXTFIELD", 13);
+define ("PT_CON_FORM_CHECKBOX", 14);
+define ("PT_CON_FORM_LINK", 15);
+define ("PT_CON_FORM_DOCUMENT", 16);
+define ("PT_CON_FORM_SCRIPT", 17);
+define ("PT_CON_FORM_COMMENT", 18);
+define ("PT_CON_FORM_TEXTFIELDCLUSTER", 19);
+define ("PT_CON_FORM_MULTISELECTBOX", 20);
 define ("PT_CON_FORM_EXLIST", 21);
+define ("PT_CON_FORM_BUTTON", 22);
+define ("PT_CON_FORM_WRAP", 23);
+define ("PT_CON_FORM_DOUBLESELECTBOX", 24);
+define ("PT_CON_FORM_NUMBER", 25);
+define ("PT_CON_FORM_DOCUMENTSELECTOR", 26);
+define ("PT_CON_FORM_MEDIASELECTOR", 27);
+define ("PT_CON_FORM_EDITLINK", 28);
+define ("PT_CON_FORM_DDUPLOAD", 29);
+define ("PT_CON_FORM_DDPOSITIONER", 30);
+define ("PT_CON_FORM_DDTEXTFIELDCLUSTER", 31);
+define ("PT_CON_FORM_TABLE", 32);
+define ("PT_CON_FORM_HIDDEN", 33);
+define ("PT_CON_FORM_CONTENTSELECTBOX", 34);
+define ("PT_CON_FORM_CONTENTMULTISELECTBOX", 35);
+define ("PT_CON_FORM_PAGER", 36);
+define ("PT_CON_FORM_JAVASCRIPTONLOAD", 37);
+define ("PT_CON_FORM_AJAX", 38);
+define ("PT_CON_FORM_UPLOAD", 39);
+
+
 
 
 // constants for logging levels, facilities and options

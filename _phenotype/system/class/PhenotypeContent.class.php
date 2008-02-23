@@ -843,7 +843,7 @@ class PhenotypeContentStandard
 
   function form_headline($headline,$space=false)
   {
-    $a = Array (1, $headline,$space);
+    $a = Array (PT_CON_FORM_HEADLINE, $headline,$space);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -855,7 +855,7 @@ class PhenotypeContentStandard
 
   function form_textfield($input, $bez, $size)
   {
-    $a = Array (2, $input, $bez, $size);
+    $a = Array (PT_CON_FORM_TEXTFIELD, $input, $bez, $size);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -867,7 +867,7 @@ class PhenotypeContentStandard
 
   function form_number($input, $bez, $size, $decimals = 2)
   {
-    $a = Array (25, $input, $bez, $size, $decimals);
+    $a = Array (PT_CON_FORM_NUMBER, $input, $bez, $size, $decimals);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -879,7 +879,7 @@ class PhenotypeContentStandard
 
   function form_textfield_cluster($input, $bez, $size, $n)
   {
-    $a = Array (19, $input, $bez, $size, $n);
+    $a = Array (PT_CON_FORM_TEXTFIELDCLUSTER, $input, $bez, $size, $n);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -891,7 +891,7 @@ class PhenotypeContentStandard
 
   function form_ddtextfield_cluster($input, $bez, $size, $n, $sort)
   {
-    $a = Array (31, $input, $bez, $size, $n,$sort);
+    $a = Array (PT_CON_FORM_DDTEXTFIELDCLUSTER, $input, $bez, $size, $n,$sort);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -903,7 +903,7 @@ class PhenotypeContentStandard
 
   function form_textarea($input, $bez, $x, $rows)
   {
-    $a = Array (3, $input, $bez, $x, $rows);
+    $a = Array (PT_CON_FORM_TEXTAREA, $input, $bez, $x, $rows);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -915,7 +915,7 @@ class PhenotypeContentStandard
 
   function form_date($input, $bez)
   {
-    $a = Array (4, $input, $bez);
+    $a = Array (PT_CON_FORM_DATE, $input, $bez);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -927,7 +927,7 @@ class PhenotypeContentStandard
 
   function form_datetime($input, $bez)
   {
-    $a = Array (8, $input, $bez);
+    $a = Array (PT_CON_FORM_DATETIME, $input, $bez);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -939,7 +939,7 @@ class PhenotypeContentStandard
 
   function form_html($input, $bez, $x, $rows)
   {
-    $a = Array (5, $input, $bez, $x, $rows);
+    $a = Array (PT_CON_FORM_HTML, $input, $bez, $x, $rows);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -951,7 +951,7 @@ class PhenotypeContentStandard
 
   function form_selectbox($input, $bez, $_options, $addzerodots=true)
   {
-    $a = Array (6, $input, $bez, $_options, $addzerodots);
+    $a = Array (PT_CON_FORM_SELECTBOX, $input, $bez, $_options, $addzerodots);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -963,7 +963,7 @@ class PhenotypeContentStandard
 
   function form_content_selectbox($input, $bez, $con_id, $addzerodots=true, $statuscheck=true,$sql_where="")
   {
-    $a = Array (34, $input, $bez, $addzerodots, $con_id, $statuscheck, $sql_where);
+    $a = Array (PT_CON_FORM_CONTENTSELECTBOX, $input, $bez, $addzerodots, $con_id, $statuscheck, $sql_where);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -975,7 +975,7 @@ class PhenotypeContentStandard
 
   function form_doubleselectbox($input, $bez, $_options, $text, $bez2, $_options2, $text2)
   {
-    $a = Array (24, $input, $bez, $_options, $text, $bez2, $_options2, $text2);
+    $a = Array (PT_CON_FORM_DOUBLESELECTBOX, $input, $bez, $_options, $text, $bez2, $_options2, $text2);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -987,7 +987,7 @@ class PhenotypeContentStandard
 
   function form_multiselectbox($input, $bez, $_options, $x, $y)
   {
-    $a = Array (20, $input, $bez, $_options, $x, $y);
+    $a = Array (PT_CON_FORM_MULTISELECTBOX, $input, $bez, $_options, $x, $y);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -999,7 +999,7 @@ class PhenotypeContentStandard
 
   function form_content_multiselectbox($input, $bez, $x, $y,$con_id,  $statuscheck=true,$sql_where="")
   {
-    $a = Array (35, $input, $bez, $x, $y, $con_id, $statuscheck,$sql_where);
+    $a = Array (PT_CON_FORM_CONTENTMULTISELECTBOX, $input, $bez, $x, $y, $con_id, $statuscheck,$sql_where);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1011,7 +1011,7 @@ class PhenotypeContentStandard
 
   function form_expandinglist($input, $bez, $dat_id_expandinglist)
   {
-    $a = Array (21, $input, $bez, $dat_id_expandinglist);
+    $a = Array (PT_CON_FORM_EXLIST, $input, $bez, $dat_id_expandinglist);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1023,7 +1023,7 @@ class PhenotypeContentStandard
 
   function form_newline()
   {
-    $a = Array (7);
+    $a = Array (PT_CON_FORM_NEWLINE);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1047,7 +1047,7 @@ class PhenotypeContentStandard
 
   function form_image_selector($input, $bez, $folder, $changefolder = 1, $x = 0, $y = 0)
   {
-    $a = Array (11, $input, $bez, $folder, $changefolder, $x, $y);
+    $a = Array (PT_CON_FORM_IMAGESELECTOR, $input, $bez, $folder, $changefolder, $x, $y);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1059,7 +1059,7 @@ class PhenotypeContentStandard
 
   function form_image_extern($input, $bez)
   {
-    $a = Array (9, $input, $bez);
+    $a = Array (PT_CON_FORM_IMAGEEXTERN, $input, $bez);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1071,7 +1071,7 @@ class PhenotypeContentStandard
 
   function form_richtext($input, $bez, $x, $rows, $filter = 1)
   {
-    $a = Array (12, $input, $bez, $x, $rows, $filter);
+    $a = Array (PT_CON_FORM_RICHTEXT, $input, $bez, $x, $rows, $filter);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1083,7 +1083,7 @@ class PhenotypeContentStandard
 
   function form_doubletextfield($input, $bez, $size, $bez2, $size2)
   {
-    $a = Array (13, $input, $bez, $size, $bez2, $size2);
+    $a = Array (PT_CON_FORM_DOUBLETEXTFIELD, $input, $bez, $size, $bez2, $size2);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1095,7 +1095,7 @@ class PhenotypeContentStandard
 
   function form_checkbox($input, $bez, $text)
   {
-    $a = Array (14, $input, $bez, $text);
+    $a = Array (PT_CON_FORM_CHECKBOX, $input, $bez, $text);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1105,9 +1105,9 @@ class PhenotypeContentStandard
     }
   }
 
-  function form_link($input, $bez,$link_title=true,$link_target=true,$link_pageselector=false,$link_text=false,$link_popup=false,$link_source=false,$link_type=false,$link_type_options=Array())
+  function form_link($input, $bez, $link_title=true, $link_target=true, $link_pageselector=false, $link_text=false, $link_popup=false, $link_source=false, $link_type=false, $link_type_options=Array())
   {
-    $a = Array (15, $input, $bez,$link_title,$link_target,$link_text,$link_popup,$link_source,$link_type,$link_type_options,$link_pageselector);
+    $a = Array (PT_CON_FORM_LINK, $input, $bez,$link_title,$link_target,$link_text,$link_popup,$link_source,$link_type,$link_type_options,$link_pageselector);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1119,7 +1119,7 @@ class PhenotypeContentStandard
 
   function form_upload($input, $bez,$folder="_upload",$grp_id=2,$imageasdocument=0)
   {
-    $a = Array (39, $input, $bez,$folder,$grp_id,$imageasdocument);
+    $a = Array (PT_CON_FORM_UPLOAD, $input, $bez,$folder,$grp_id,$imageasdocument);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1131,7 +1131,7 @@ class PhenotypeContentStandard
 
   function form_document($input, $bez, $infozeile = 0)
   {
-    $a = Array (16, $input, $bez, $infozeile);
+    $a = Array (PT_CON_FORM_DOCUMENT, $input, $bez, $infozeile);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1143,7 +1143,7 @@ class PhenotypeContentStandard
 
   function form_document_selector($input, $bez, $folder, $changefolder = 1, $infozeile = 0, $doctype = "")
   {
-    $a = Array (26, $input, $bez, $folder, $changefolder, $infozeile, $doctype);
+    $a = Array (PT_CON_FORM_DOCUMENTSELECTOR, $input, $bez, $folder, $changefolder, $infozeile, $doctype);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1155,7 +1155,7 @@ class PhenotypeContentStandard
 
   function form_media_selector($input, $bez, $folder, $changefolder = 1, $infozeile = 0, $doctype = "")
   {
-    $a = Array (27, $input, $bez, $folder, $changefolder, $infozeile, $doctype);
+    $a = Array (PT_CON_FORM_MEDIASELECTOR, $input, $bez, $folder, $changefolder, $infozeile, $doctype);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1167,7 +1167,7 @@ class PhenotypeContentStandard
 
   function form_script($input, $bez, $x, $rows, $filename)
   {
-    $a = Array (17, $input, $bez, $x, $rows, $filename);
+    $a = Array (PT_CON_FORM_SCRIPT, $input, $bez, $x, $rows, $filename);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1179,7 +1179,7 @@ class PhenotypeContentStandard
 
   function form_comment($input, $text)
   {
-    $a = Array (18, $input, $text);
+    $a = Array (PT_CON_FORM_COMMENT, $input, $text);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1191,7 +1191,7 @@ class PhenotypeContentStandard
 
   function form_editlink($input, $text, $url, $target = "_self")
   {
-    $a = Array (28, $input, $text, $url, $target);
+    $a = Array (PT_CON_FORM_EDITLINK, $input, $text, $url, $target);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1203,7 +1203,7 @@ class PhenotypeContentStandard
 
   function form_button($input, $name, $formname, $url = "", $target = "")
   {
-    $a = Array (22, $input, $name, $formname, $url, $target);
+    $a = Array (PT_CON_FORM_BUTTON, $input, $name, $formname, $url, $target);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1215,7 +1215,7 @@ class PhenotypeContentStandard
 
   function form_wrap($input, $methodname, $params = Array (), $colspan = 0)
   {
-    $a = Array (23, $input, $methodname, $colspan, $params);
+    $a = Array (PT_CON_FORM_WRAP, $input, $methodname, $colspan, $params);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1227,7 +1227,7 @@ class PhenotypeContentStandard
 
   function form_ajax($input, $token="ajax",$height=50,$colspan = 0)
   {
-    $a = Array (38, $input, $token,$colspan,$height);
+    $a = Array (PT_CON_FORM_AJAX, $input, $token,$colspan,$height);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1239,7 +1239,7 @@ class PhenotypeContentStandard
 
   function form_ddupload($input, $folder, $x, $y)
   {
-    $a = Array (29, $input, $folder, $x, $y);
+    $a = Array (PT_CON_FORM_DDUPLOAD, $input, $folder, $x, $y);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1251,7 +1251,7 @@ class PhenotypeContentStandard
 
   function form_ddpositioner($input, $bez, $quantity, $methodname)
   {
-    $a = Array (30, $input, $bez, $quantity, $methodname);
+    $a = Array (PT_CON_FORM_DDPOSITIONER, $input, $bez, $quantity, $methodname);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1263,7 +1263,7 @@ class PhenotypeContentStandard
 
   function form_table($input, $size, $_table, $column_status=0,$colum_edit =0,$_align="",$_width="")
   {
-    $a = Array (32, $input, $size, $_table, $column_status,$colum_edit,$_align,$_width);
+    $a = Array (PT_CON_FORM_TABLE, $input, $size, $_table, $column_status,$colum_edit,$_align,$_width);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1274,9 +1274,9 @@ class PhenotypeContentStandard
   }
 
 
-  function form_hidden($bez,$value)
+  function form_hidden($bez, $value)
   {
-    $a = Array (33, $bez, $value);
+    $a = Array (PT_CON_FORM_HIDDEN, $bez, $value);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1289,7 +1289,7 @@ class PhenotypeContentStandard
   }
 
 
-  function form_pager($bez,$count,$p="")
+  function form_pager($bez, $count, $p="")
   {
     if ($p=="")
     {
@@ -1297,7 +1297,7 @@ class PhenotypeContentStandard
       $p = $myRequest->getI("p");
       if ($p==0){$p=1;}
     }
-    $a = Array(36,$bez,$count,$p);
+    $a = Array(PT_CON_FORM_PAGER, $bez, $count, $p);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1310,7 +1310,7 @@ class PhenotypeContentStandard
 
   function form_javascript_onload($js)
   {
-    $a = Array(37,$js);
+    $a = Array(PT_CON_FORM_JAVASCRIPTONLOAD, $js);
     $this->form[] = $a;
   }
 
@@ -1345,7 +1345,8 @@ class PhenotypeContentStandard
 
 	  switch ($a[0])
 	  {
-	    case 1: // Headline
+	  	// ######## Headline
+	    case PT_CON_FORM_HEADLINE:
 
 	    if ($a[2]==true)
 	    {
@@ -1396,7 +1397,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 2 : // Textbox
+	  	// ######## Textbox
+	    case PT_CON_FORM_TEXTFIELD :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1417,7 +1419,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 25 : // Zahl
+	  	// ######## Zahl
+	    case PT_CON_FORM_NUMBER :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1439,7 +1442,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 19 : // Textbox-Cluster
+	  	// ######## Textbox-Cluster
+	    case PT_CON_FORM_TEXTFIELDCLUSTER :
 ?>
              <tr>
              <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1465,7 +1469,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 13 : // Doppelte Textbox (z.B. Strasse/Hausnummer)
+	  	// ######## Doppelte Textbox (z.B. Strasse/Hausnummer)
+	    case PT_CON_FORM_DOUBLETEXTFIELD :
 			?>
             <tr>
             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1488,7 +1493,8 @@ class PhenotypeContentStandard
 			<?php
 			break;
 
-	    case 3 : // Textarea
+	  	// ######## Textarea
+	    case PT_CON_FORM_TEXTAREA :
 			?>
             <tr>
             <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1507,7 +1513,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 4 : // Datumsbox
+	  	// ######## Datumsbox
+	    case PT_CON_FORM_DATE :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1558,7 +1565,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 8 : // Datumsbox mit Uhrzeit
+	  	// ######## Datumsbox mit Uhrzeit
+	    case PT_CON_FORM_DATETIME :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1610,7 +1618,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 5 : //HTML
+	  	// ######## HTML
+	    case PT_CON_FORM_HTML :
 ?>
              <tr>
              <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1637,7 +1646,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 6 : // Selectbox
+	  	// ######## Selectbox
+	    case PT_CON_FORM_SELECTBOX :
 		?>
 		<tr>
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1671,7 +1681,9 @@ class PhenotypeContentStandard
         </tr>
 		<?php
 		break;
-	    case 34 : // Selectbox auf Contentdatensätze
+		
+	  	// ######## Selectbox auf Contentdatensätze
+	    case PT_CON_FORM_CONTENTSELECTBOX :
 		?>
 		<tr>
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1716,7 +1728,8 @@ class PhenotypeContentStandard
 		<?php
 		break;
 
-	    case 24 : // Doppelte Selectbox
+	  	// ######## Doppelte Selectbox
+	    case PT_CON_FORM_DOUBLESELECTBOX :
 ?>
 		<tr>
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1771,7 +1784,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 20 : // Multiple Selectbox
+	  	// ######## Multiple Selectbox
+	    case PT_CON_FORM_MULTISELECTBOX :
 		?>	
 		<tr>
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1800,8 +1814,8 @@ class PhenotypeContentStandard
 		<?php
 		break;
 
-
-	    case 35 : // Multiple Selectbox auf Basis von Contentdatensätzen
+	  	// ######## Multiple Selectbox auf Basis von Contentdatensätzen
+	    case PT_CON_FORM_CONTENTMULTISELECTBOX :
 		?>	
 		<tr>
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1844,7 +1858,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 21 : // Expanding List
+	  	// ######## Expanding List
+	    case PT_CON_FORM_EXLIST :
 		?>
 		<tr>
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -1890,7 +1905,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 7 : // Newline
+	  	// ######## Newline
+	    case PT_CON_FORM_NEWLINE :
 ?>
 		<tr><td colspan="2">&nbsp;</td></tr>
 		<?php
@@ -1898,7 +1914,8 @@ class PhenotypeContentStandard
 
 		break;
 
-			case PT_CON_FORM_SEQUENCE : // Sequenz
+	  	// ######## Sequenz
+			case PT_CON_FORM_SEQUENCE :
 
 	    $block_nr = $a[2];
 	    $cog_id = $a[1];
@@ -1992,7 +2009,8 @@ class PhenotypeContentStandard
 			// Ende Sequenz
 			break;
 
-	    case 11 : // Bild
+	  	// ######## Bild
+	    case PT_CON_FORM_IMAGESELECTOR :
 ?>
 		     <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2020,7 +2038,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 9 : // Externes Bild
+	  	// ######## Externes Bild
+	    case PT_CON_FORM_IMAGEEXTERN :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2054,7 +2073,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 12 : // Richtext
+	  	// ######## Richtext
+	    case PT_CON_FORM_RICHTEXT :
 ?>
              <tr>
              <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2076,7 +2096,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 14 : // Checkbox
+	  	// ######## Checkbox
+	    case PT_CON_FORM_CHECKBOX :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2097,7 +2118,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 15 : // Link
+	  	// ######## Link
+	    case PT_CON_FORM_LINK :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2137,7 +2159,9 @@ class PhenotypeContentStandard
 
 
 		break;
-	    case 16 : // Dokument
+
+	  	// ######## Dokument
+	    case PT_CON_FORM_DOCUMENT :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2170,7 +2194,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 26 : // Dokument2
+	  	// ######## Documentselector
+	    case PT_CON_FORM_DOCUMENTSELECTOR :
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2207,7 +2232,9 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 39 : // Upload
+
+	  	// ######## Upload
+	    case PT_CON_FORM_UPLOAD : 
 
 	    $name = $myCO->formid."_".$a[2];
 			 ?>
@@ -2266,7 +2293,8 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 27 : // Mediaselector (wie Dokument kann aber auch Bilder zuordnen)
+	  	// ######## Mediaselector (wie Dokument kann aber auch Bilder zuordnen)
+	    case PT_CON_FORM_MEDIASELECTOR : 
 ?>
              <tr>
              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2303,7 +2331,9 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 17 : //Skript
+
+	  	// ######## Skript
+	    case PT_CON_FORM_SCRIPT :
 ?>
              <tr>
              <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2325,7 +2355,9 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 18 : // Kommentar
+
+	  	// ######## Kommentar
+	    case PT_CON_FORM_COMMENT :
 ?>
              <tr>
              <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2341,7 +2373,9 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 28 : // Editlink
+
+	  	// ######## Editlink
+	    case PT_CON_FORM_EDITLINK :
 ?>
              <tr>
              <td width="120" class="padding30" valign="middle"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2359,7 +2393,9 @@ class PhenotypeContentStandard
 
 		break;
 
-	    case 22 : // Button
+
+	  	// ######## Button
+	    case PT_CON_FORM_BUTTON :
 	    //2do Targets
 	    if ($a[4] == "")
 	    {
@@ -2388,7 +2424,9 @@ class PhenotypeContentStandard
 	    }
 	    break;
 
-	    case 23 : // wrap
+
+	  	// ######## wrap
+	    case PT_CON_FORM_WRAP :
 
 	    if ($a[3] == 0)
 	    {
@@ -2416,7 +2454,10 @@ class PhenotypeContentStandard
 		<?php
 		}
 		break;
-	    case 38 : // ajax
+
+
+	  	// ######## ajax
+	    case PT_CON_FORM_AJAX :
 
 	    if ($a[3] == 0)
 	    {
@@ -2503,7 +2544,9 @@ class PhenotypeContentStandard
 		}
 		break;
 
-	    case 29 : // DD-Upload
+
+	  	// ######## DD-Upload
+	    case PT_CON_FORM_DDUPLOAD :
 ?>
              <tr>
              <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2538,7 +2581,10 @@ class PhenotypeContentStandard
 
 
 		break;
-	    case 30 : // Positioner
+
+
+	  	// ######## Positioner
+	    case PT_CON_FORM_DDPOSITIONER :
 			 ?>
 	         <tr>
 	         <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2617,7 +2663,9 @@ class PhenotypeContentStandard
 			 <?php
 			 break;
 
-	    case 31 : // DD-Textbox-Cluster
+
+	  	// ######## DD-Textbox-Cluster
+	    case PT_CON_FORM_DDTEXTFIELDCLUSTER :
  ?>
 	         <tr>
 	         <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
@@ -2699,7 +2747,8 @@ class PhenotypeContentStandard
 			 break;
 
 
-	    case 32:
+	  	// ######## 
+	    case PT_CON_FORM_TABLE:
 	      $_table = $a[3];
 
 	      $n = count ($_table[0]);
@@ -2806,7 +2855,9 @@ class PhenotypeContentStandard
 			<?php
 			break;
 
-	    case 33: // form_hidden
+
+	  	// ######## form_hidden
+	    case PT_CON_FORM_HIDDEN:
 
 
 	    $name = $myCO->formid."_".$a[1];
@@ -2817,7 +2868,8 @@ class PhenotypeContentStandard
             break;
 
 
-	    case 36: // form_pager
+	  	// ######## form_pager
+	    case PT_CON_FORM_PAGER:
 			?>
 
 
@@ -2858,7 +2910,9 @@ class PhenotypeContentStandard
 			<?php
 			break;
 
-	    case 37: // form_javascript_onload
+
+	  	// ######## form_javascript_onload
+	    case PT_CON_FORM_JAVASCRIPTONLOAD:
 
 	    $_jsarray["body_onload"]=$a[1];
 	    break;
