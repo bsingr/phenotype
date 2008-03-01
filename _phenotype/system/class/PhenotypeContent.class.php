@@ -3875,21 +3875,23 @@ class PhenotypeContentStandard
 
       // Templates anlegen
 
+	  $tpl_id = 1;
       foreach ($_xml->templates->template AS $_xml_template)
       {
         $access = (string)utf8_decode($_xml_template["access"]);
         $mySQL = new SQLBuilder();
+        $mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
         $mySQL->addField("con_id",$con_id,DB_NUMBER);
         $mySQL->addField("tpl_bez",$access);
         $sql = $mySQL->insert("content_template");
         $myDB->query($sql);
-        $tpl_id = mysql_insert_id();
         $html = (string)utf8_decode($_xml_template);
         $file = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $con_id, $tpl_id);
         $fp = fopen ($file,"w");
         fputs ($fp,$html);
         fclose ($fp);
         @chmod ($dateiname,UMASK);
+		$tpl_id++;
       }
 
       // war nur ein Test, wird umgebaut ...

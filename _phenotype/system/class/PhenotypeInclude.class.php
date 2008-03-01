@@ -250,21 +250,23 @@ class PhenotypeIncludeStandard
 
 			// Templates anlegen
 
+			$tpl_id = 1;
 			foreach ($_xml->templates->template AS $_xml_template)
 			{
 				$access = (string)utf8_decode($_xml_template["access"]);
 				$mySQL = new SQLBuilder();
+		        $mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
 				$mySQL->addField("inc_id",$inc_id,DB_NUMBER);
 				$mySQL->addField("tpl_bez",$access);
 				$sql = $mySQL->insert("include_template");
 				$myDB->query($sql);
-				$tpl_id = mysql_insert_id();
 				$html = (string)utf8_decode($_xml_template);
 				$file = $myPT->getTemplateFileName(PT_CFG_INCLUDE, $inc_id, $tpl_id);
 				$fp = fopen ($file,"w");
 				fputs ($fp,$html);
 				fclose ($fp);
 				@chmod ($dateiname,UMASK);
+				$tpl_id++;
 			}
 
 
