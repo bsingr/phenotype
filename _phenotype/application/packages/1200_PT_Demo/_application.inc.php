@@ -2,33 +2,13 @@
 // -----------------------------------------------------------------------------------------
 // [BLOCKSTART_INHERITANCE]
 // -----------------------------------------------------------------------------------------
-// inheritance of all main phenotype classe for application specific overrides
-class PhenotypeRequest extends PhenotypeRequestStandard {}
 
-class PhenotypeAdmin extends PhenotypeAdminStandard {}
-
-class PhenotypeComponent extends PhenotypeComponentStandard {}
-
-class PhenotypeContent extends PhenotypeContentStandard {}
-
-class PhenotypeExtra extends PhenotypeExtraStandard {}
-
-class PhenotypeInclude extends PhenotypeIncludeStandard {}
-
-class PhenotypePage extends PhenotypePageStandard {}
-
-class PhenotypeAction extends PhenotypeActionStandard {}
-
-class PhenotypeTicket extends PhenotypeTicketStandard {}
-
-class PhenotypeBackend extends PhenotypeBackendStandard {}
-
-class PhenotypeUser extends PhenotypeUserStandard  {}
-
-class PhenotypeDataObject extends PhenotypeDataObjectStandard {}
-
-// Diese Klasse wird mit dem vollständigen Umbau des Backends überflüssig !
-class PhenotypeAdminLayout extends PhenotypeLayout {}
+// you may inherit every PhenotypeXYZStandard class like this:
+//
+// class PhenotypeContent extends PhenotypeContentStandard {}
+//
+// So you're free to customize Phenotype like you want or to try something new before
+// you commit your changes to our svn repository.
 
 // -----------------------------------------------------------------------------------------
 // [BLOCKSTOP_INHERITANCE]

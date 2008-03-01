@@ -6,7 +6,7 @@ define ("PT_DEBUG",1);
 define ("PT_BACKEND",1);
 define ("PT_CONFIGMODE",1);
 define ("PT_FRONTENDSESSION",0);
-define ("PT_PAGECACHE",0);
+define ("PT_PAGECACHE",1);
 define ("PT_PAGECACHE_CLEARONCONTENTUPDATE",1);
 // Bestimmt, ob Contentskins gecached von der Festplatte geholt werden dürfen
 define ("PT_CONTENTCACHE",0);
@@ -97,53 +97,14 @@ define ("UMASK",0775);
 
 require (SYSTEMPATH . "_init.inc.php");
 require (BASEPATH . "buildinfo.inc.php");
-
-require (SMARTYPATH . "Smarty.class.php");
-
-require (CLASSPATH . "TCheck.class.php");
-
-require (CLASSPATH . "Database.class.php");
-require (CLASSPATH . "SqlBuilder.class.php");
-
 require (CLASSPATH . "Phenotype.class.php");
 require (CLASSPATH . "PhenotypePage.class.php");
+require (CLASSPATH . "Database.class.php");
+require (CLASSPATH . "SqlBuilder.class.php");
 require (CLASSPATH . "PhenotypeApplication.class.php");
-require (CLASSPATH . "PhenotypeLayout.class.php");
-require (CLASSPATH . "PhenotypeAdmin.class.php");
-require (CLASSPATH . "PhenotypeComponent.class.php");
-require (CLASSPATH . "PhenotypeContent.class.php");
-require (CLASSPATH . "PhenotypeInclude.class.php");
-require (CLASSPATH . "PhenotypeMediabase.class.php");
-require (CLASSPATH . "PhenotypeMediaObject.class.php");
-require (CLASSPATH . "PhenotypeImage.class.php");
-require (CLASSPATH . "PhenotypeDocument.class.php");
-require (CLASSPATH . "PhenotypeTicket.class.php");
-require (CLASSPATH . "PhenotypeAction.class.php");
-require (CLASSPATH . "PhenotypeUser.class.php");
-require (CLASSPATH . "PhenotypeTree.class.php");
 require (CLASSPATH . "PhenotypeRequest.class.php");
-require (CLASSPATH . "PhenotypeExtra.class.php");
-require (CLASSPATH . "PhenotypePackage.class.php");
-require (CLASSPATH . "PhenotypeBackend.class.php");
-require (CLASSPATH . "PhenotypeDataObject.class.php");
-require (CLASSPATH . "PhenotypeDataObject2.class.php");
+require (CLASSPATH . "TCheck.class.php");
 require (CLASSPATH . "PhenotypeLog.class.php");
-
-
-// ------------------------------------------------------
-// Grundinitalisierung
-// ------------------------------------------------------
-
-$myDB = new Database();
-$myDB->connect();
-$myPT = new Phenotype();
-$myLog = new PhenotypeLog();
-
-// ------------------------------------------------------
-// Alternativer Request-Zugriff
-// ------------------------------------------------------
-
-$myRequest = new PhenotypeRequest();
 
 // ------------------------------------------------------
 // REWRITE RULES
@@ -196,7 +157,20 @@ require (APPPATH . "_application.inc.php");
 
 $myApp = new PhenotypeApplication();
 
+// ------------------------------------------------------
+// Grundinitalisierung
+// ------------------------------------------------------
 
+$myDB = new Database();
+$myDB->connect();
+$myPT = new Phenotype();
+$myLog = new PhenotypeLog();
+
+// ------------------------------------------------------
+// Alternativer Request-Zugriff
+// ------------------------------------------------------
+
+$myRequest = new PhenotypeRequest();
 
 
 
