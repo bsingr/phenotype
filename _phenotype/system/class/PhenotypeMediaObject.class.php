@@ -23,7 +23,7 @@
  * @subpackage system
  *
  */
-class PhenotypeMediaObject
+class PhenotypeMediaObjectStandard
 {
 	public $id = 0;
 	public $ver_id =0;
@@ -208,7 +208,7 @@ class PhenotypeMediaObject
 				$physical_folder="";
 			}
 
-			$myMB = new PhenotypeMediaBase();
+			$myMB = new PhenotypeMediabase();
 			$myMB->setMediaGroup($grp_id);
 
 			$file = (string)utf8_decode($_xml->content->med_bez_original);

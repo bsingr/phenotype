@@ -23,7 +23,7 @@
  * @subpackage system
  *
  */
-class PhenotypeLayout
+class PhenotypeLayoutStandard
 {
 	//var $props_topline = Array();
 	
@@ -600,7 +600,7 @@ class PhenotypeLayout
 			if ($row_data["med_id_thumb"]!=0)
 			{
 
-				$myImg = new PhenoTypeImage($row_data["med_id_thumb"]);
+				$myImg = new PhenotypeImage($row_data["med_id_thumb"]);
 				$myImg->display_ThumbX(60,$row_data["dat_bez"]);
 			}
 		  ?>
@@ -784,7 +784,7 @@ hinzuf&uuml;gen</a></td>
               <tr>
                 <td nowrap>
        <?php
-       $myImg = new PhenoTypeImage($img_id);
+       $myImg = new PhenotypeImage($img_id);
        $myImg->fname=$name . "img_id_image";
 	   ?>
 	   <a href="<?php echo MEDIABASEURL . $myImg->physical_folder ?>/<?php echo $myImg->filename ?>" target="_blank" id="<?php echo $name ."link_image" ?>">
@@ -846,7 +846,7 @@ return $myPT->stopBuffer();
               <tr>
                 <td nowrap>
        <?php
-       $myImg = new PhenoTypeImage($img_id);
+       $myImg = new PhenotypeImage($img_id);
        $myImg->fname=$name . "img_id_image";
 	   ?>
 	   <a href="<?php echo MEDIABASEURL . $myImg->physical_folder ?>/<?php echo $myImg->filename ?>" target="_blank">
@@ -1116,7 +1116,7 @@ hinzuf&uuml;gen</a></td>
               <tr>
                 <td nowrap>
        <?php
-       $myImg = new PhenoTypeImage($med_id);
+       $myImg = new PhenotypeImage($med_id);
        $img_id = $myImg->id;
        $myImg->fname=$name . "img_id_image";
 	   ?>
@@ -1623,7 +1623,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
 $myNav = new PhenotypeTree();
 $nav_id_top = $myNav->addNode("&Uuml;bersicht","mediabase.php?folder=-1&type=-1&sortorder=1&p=1&a=20",0,"-1");
 global $myDB;
-$myMB = new PhenotypeMediaBase();
+$myMB = new PhenotypeMediabase();
 $_folder = $myMB->getFullLogicalFolder();
 
 // Umbau der Folder in ein Treeobjekt

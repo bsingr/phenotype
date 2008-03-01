@@ -431,7 +431,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 
 			if ($row["med_id_thumb"]!=0)
 			{
-				$myImg = new PhenoTypeImage($row["med_id_thumb"]);
+				$myImg = new PhenotypeImage($row["med_id_thumb"]);
 				$image_thumb .= $myImg->render_maxX(60,"Benutzer anzeigen");
 			}
 			else

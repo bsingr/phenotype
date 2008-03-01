@@ -100,7 +100,7 @@ if ($_REQUEST["cf"]==1)
 ?>
 <select name="folder1" class="input" style="width:240px">
 <?php
-$myMB = new PhenotypeMediaBase();
+$myMB = new PhenotypeMediabase();
 $_folder = $myMB->getLogicalFolder();
 if (!in_array("_upload",$_folder))
 		{

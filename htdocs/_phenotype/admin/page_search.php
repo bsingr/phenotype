@@ -44,7 +44,7 @@ else
   $ver_id = $row["ver_id"];
 }
 
-$myPage = new PhenoTypePage($id,$ver_id);
+$myPage = new PhenotypePage($id,$ver_id);
 $_SESSION["pag_id"]=$myPage->id;
 $_SESSION["grp_id"]=$myPage->grp_id;
 

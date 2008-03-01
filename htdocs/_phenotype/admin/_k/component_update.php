@@ -122,7 +122,7 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
 		$sql = "DELETE FROM component_template WHERE tpl_id = " . $minus;
 		$myDB->query($sql);
 		$dateiname = APPPATH . "templates/component_templates/"  .sprintf("%04.0f", $id) . "_".sprintf("%04.0f", $minus) .".tpl";
-		unlink ($dateiname);
+		@unlink ($dateiname);
 		$anzahl_templates--;
 	}
 

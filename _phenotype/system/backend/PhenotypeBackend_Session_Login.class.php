@@ -53,7 +53,7 @@ class PhenotypeBackend_Session_Login_Standard extends PhenotypeBackend_Session
 
 			$_SESSION["usr_id"] = $row["usr_id"];
 			$_SESSION["usr_id_fallback"] = $row["usr_id"];
-			$myUser = new PhenoTypeUser();
+			$myUser = new PhenotypeUser();
 			$myUser->init($row);
 			$_SESSION["status"]=1;
 			$_SESSION["grp_id"]= (int)$myPT->getPref("backend.grp_id_pagegroup_start");

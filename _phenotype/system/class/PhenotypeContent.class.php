@@ -2265,7 +2265,7 @@ class PhenotypeContentStandard
      			</table>
 				<?php
              }
-             $myImg = new PhenoTypeImage($med_id);
+             $myImg = new PhenotypeImage($med_id);
              $img_id = $myImg->id;
              if ($img_id!=0) // Dokument und kein Bild
              {

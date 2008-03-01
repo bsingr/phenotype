@@ -44,11 +44,11 @@ else
 	$ver_id = $row["ver_id"];
 }
 
-$myPage = new PhenoTypePage($id,$ver_id);
+$myPage = new PhenotypePage($id,$ver_id);
 
 if (!$myPage->isLoaded())
 {
-	$myPage = new PhenoTypePage($id);
+	$myPage = new PhenotypePage($id);
 }
 if (!$myPage->isLoaded())
 {
@@ -82,7 +82,7 @@ else
 		$block_nr = 1;
 	}
 }
-//$myPage = new PhenoTypePage($id,$ver_id);
+//$myPage = new PhenotypePage($id,$ver_id);
 $myPage->switchLanguage($lng_id);
 
 $sql = "SELECT grp_multilanguage FROM pagegroup WHERE grp_id=" . $myPage->grp_id;

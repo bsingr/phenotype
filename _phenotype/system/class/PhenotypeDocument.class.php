@@ -23,7 +23,7 @@
  * @subpackage system
  *
  */
-class PhenotypeDocument extends PhenotypeMediaObject
+class PhenotypeDocumentStandard extends PhenotypeMediaObject
 {
   public $type = MB_DOCUMENT;
   

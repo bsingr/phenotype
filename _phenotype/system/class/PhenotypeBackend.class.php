@@ -909,7 +909,7 @@ exit();
 					} else
 					{
 						$type = MB_DOCUMENT;
-						$myObj = new PhenoTypeDocument($med_id);
+						$myObj = new PhenotypeDocument($med_id);
 
 						if ($myObj->id == 0)
 						{

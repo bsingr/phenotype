@@ -22,14 +22,13 @@
 
 
 
-define("MB_IMAGE", 1);
-define("MB_DOCUMENT", 2);
+
 /**
  * @package phenotype
  * @subpackage system
  *
  */
-class PhenotypeMediabase
+class PhenotypeMediabaseStandard
 {
 
 	var $grp_id = 2; // Standard Mediagroup

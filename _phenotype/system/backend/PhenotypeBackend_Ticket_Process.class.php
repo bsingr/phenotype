@@ -1377,7 +1377,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 				$row_att = mysql_fetch_array($rs_att);
 				if ($row_att["med_type"]==MB_IMAGE)
 				{
-					$myDoc = new PhenoTypeImage($row_att["med_id"]);
+					$myDoc = new PhenotypeImage($row_att["med_id"]);
 					{
 						$attachment = $myDoc->render_fixX(280);
 					}

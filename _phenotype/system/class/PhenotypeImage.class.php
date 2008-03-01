@@ -27,7 +27,7 @@
  * @subpackage system
  *
  */
-class PhenotypeImage extends PhenotypeMediaObject
+class PhenotypeImageStandard extends PhenotypeMediaObject
 {
 	public $type = MB_IMAGE;
 	public $x;

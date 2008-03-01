@@ -171,7 +171,7 @@ if ($block_nr==0)
 	$sql = $mySQL->update("page","pag_id=".$id);
 	$myDB->query($sql);
 
-	$myPage = new PhenoTypePage($id,$ver_id);
+	$myPage = new PhenotypePage($id,$ver_id);
 	$myPage->buildProps();
 
 	// -- Editierbare Seitenvariablen speichern
@@ -471,7 +471,7 @@ if ((isset($_REQUEST["savescript"]) OR isset($_REQUEST["savescript_preview"])))
 	$sql = "UPDATE page_language SET pag_nextbuild1=0,pag_nextbuild2=0,pag_nextbuild3=0,pag_nextbuild4=0,pag_nextbuild5=0,pag_nextbuild6=0,pag_printcache1=0,pag_printcache2=0,pag_printcache3=0,pag_printcache4=0,pag_printcache5=0,pag_printcache6=0,pag_xmlcache1=0,pag_xmlcache2=0,pag_xmlcache3=0,pag_xmlcache4=0,pag_xmlcache5=0,pag_xmlcache6=0 WHERE pag_id=".$id;
 	$myDB->query($sql);
 
-	$myPage = new PhenoTypePage($id,$ver_id);
+	$myPage = new PhenotypePage($id,$ver_id);
 	$myPage->buildProps();
 }
 

@@ -17,12 +17,148 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 
+
+function __autoload($class_name) {
+
+  // create inheritage of standard classes, if not inherited by application
+
+  $_classes = Array("PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeDataObject2","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage");
+
+  if (in_array($class_name,$_classes))
+  {
+    $php = "class " . $class_name . " extends " .$class_name. "Standard {}";
+    eval ($php);
+    return;
+  }
+
+  // all standard classes are most likely in the classpath
+
+  if (substr ($class_name,-8)=="Standard")
+  {
+    $file = CLASSPATH . substr($class_name,0,-8). ".class.php";
+    if (file_exists($file))
+    {
+      require_once ($file);
+      return;
+    }
+  }
+
+  
+  // deprecated, but still needed and ineritable
+  
+  if ($class_name=="PhenotypeAdminLayout")
+  {
+    eval ("class PhenotypeAdminLayout extends PhenotypeLayout {}");
+    return;
+  }
+  
+  // specific classes without standard inheritage
+  
+  $_classes = Array ("Smarty"=>SMARTYPATH . "Smarty.class.php","PhenotypeTree"=>CLASSPATH."PhenotypeTree.class.php");
+  if (array_key_exists($class_name,$_classes))
+  {
+    $file = $_classes[$class_name];
+    if (file_exists($file))
+    {
+      require_once ($file);
+      return;
+    }
+  }
+
+  if (substr($class_name,0,19)=="PhenotypeComponent_")
+  {
+    $file =  APPPATH . "components/". $class_name . '.class.php';
+    if (file_exists($file))
+    {
+      require_once ($file);
+      return;
+    }
+    else
+    {
+      // Even if a component is unknow, editing will continue !
+
+      $php = "class " . $class_name . " extends PhenotypeComponent {}";
+      eval ($php);
+      return;
+    }
+
+  }
+  if (substr($class_name,0,17)=="PhenotypeInclude_")
+  {
+    require_once  APPPATH . "includes/". $class_name . '.class.php';
+    return;
+  }
+  if (substr($class_name,0,17)=="PhenotypeContent_")
+  {
+    require_once  APPPATH . "content/". $class_name . '.class.php';
+    return;
+  }
+
+  if (substr($class_name,0,15)=="PhenotypeExtra_")
+  {
+    require_once  APPPATH . "extras/". $class_name . '.class.php';
+    return;
+  }
+
+  if (substr($class_name,0,16)=="PhenotypeAction_")
+  {
+    require_once  APPPATH . "actions/". $class_name . '.class.php';
+    return;
+  }
+
+  if (substr($class_name,0,17)=="PhenotypeBackend_")
+  {
+    $file = SYSTEMPATH . "backend/". $class_name . '.class.php';
+    if (file_exists($file))
+    {
+      require_once($file);
+      $file =  APPPATH . "backend/". $class_name . '.class.php';
+      if (file_exists($file))
+      {
+        require_once($file);
+      }
+      else
+      {
+        $php = "class " . $class_name . " extends " . $class_name ."_Standard {}";
+        eval ($php);
+      }
+
+      return;
+    }
+    else // keine Systembackendklasse, aber vielleich in der Applikation
+    {
+      $file =  APPPATH . "backend/". $class_name . '.class.php';
+      if (file_exists($file))
+      {
+        require_once($file);
+        return;
+      }
+
+    }
+
+
+
+  }
+  if (PT_DEBUG==1)
+  {
+    die("could not find class " .$class_name);
+  }
+  else
+  {
+    die();
+  }
+}
+
 /* **********************
 * init.inc.php
 *
 * constants (except config) should be in this file
 * also some helper functions that are always needed
 */
+
+
+define("MB_IMAGE", 1);
+define("MB_DOCUMENT", 2);
 
 /*
 * Constants that identify types of phenotype objects
@@ -104,13 +240,13 @@ define("PT_LOGMTH_FILE", "FILE");
 
 if (PT_DEBUG==1)
 {
-	error_reporting(E_ALL ^ E_NOTICE); // DEVELOPMENT
-	//set_error_handler("onError");
+  error_reporting(E_ALL ^ E_NOTICE); // DEVELOPMENT
+  //set_error_handler("onError");
 
 }
 else
 {
-	error_reporting(0); // LIVE
+  error_reporting(0); // LIVE
 }
 
 ini_set("log_errors",true);
@@ -122,6 +258,6 @@ $_PT_HTTP_CONTENTTYPES = Array(1=>"text/html;charset=iso-8859-1",2=>"text/css;ch
 
 function match2Entity($matches)
 {
-	$c = $matches[0];
-	return "&#".ord($c).";";
+  $c = $matches[0];
+  return "&#".ord($c).";";
 }

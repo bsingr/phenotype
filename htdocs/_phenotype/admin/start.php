@@ -158,7 +158,7 @@ if ($mySUser->checkRight("elm_mediabase"))
 $myNav = new PhenotypeTree();
 $nav_id =   $myNav->addNode("&Uuml;bersicht","backend.php?page=Editor,Media",0,"-1");
 global $myDB;
-$myMB = new PhenotypeMediaBase();
+$myMB = new PhenotypeMediabase();
 $_folder = $myMB->getLogicalRootFolder();
 foreach ($_folder AS $k)
 {
@@ -399,7 +399,7 @@ if ($mySUser->checkRight("elm_content"))
 			if ($row_data["med_id_thumb"]!=0)
 			{
 
-				$myImg = new PhenoTypeImage($row_data["med_id_thumb"]);
+				$myImg = new PhenotypeImage($row_data["med_id_thumb"]);
 				$myImg->display_ThumbX(60,$row_data["dat_bez"]);
 			}
 		  ?>
@@ -487,7 +487,7 @@ if ($mySUser->checkRight("elm_mediabase"))
 			if ($row_data["med_type"]==1)
 			{
 
-				$myImg = new PhenoTypeImage($row_data["med_id"]);
+				$myImg = new PhenotypeImage($row_data["med_id"]);
 				$myImg->display_ThumbX(60,$row_data["med_bez"]);
 			}
 			else

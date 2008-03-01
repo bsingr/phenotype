@@ -20,7 +20,7 @@ else
 
 $lng_id = $myRequest->getI("lng_id");
 
-$myPage = new PhenoTypePage($id,$ver_id);
+$myPage = new PhenotypePage($id,$ver_id);
 $myPage->switchLanguage($lng_id);
 $mySmarty = new Smarty;
 $editbuffer=1;

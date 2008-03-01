@@ -199,7 +199,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			if ($row_data["med_id_thumb"]!=0)
 			{
 
-				$myImg = new PhenoTypeImage($row_data["med_id_thumb"]);
+				$myImg = new PhenotypeImage($row_data["med_id_thumb"]);
 				$myImg->display_ThumbX(60,$row_data["dat_bez"]);
 			}
 		  	if ($row["con_bearbeiten"]==1)

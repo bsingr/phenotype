@@ -283,7 +283,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	{
 
 
-		$myMB = new PhenotypeMediaBase();
+		$myMB = new PhenotypeMediabase();
 
 		// Umbau der Folder in ein Treeobjekt
 		if ($this->grp_id!=0)
@@ -786,7 +786,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 					  <?php
 					  if ($row["med_type"]==MB_IMAGE)
 					  {
-					  	$myIMG = new PhenoTypeImage($row["med_id"]);
+					  	$myIMG = new PhenotypeImage($row["med_id"]);
 					  	$myIMG->display_thumb();
 					  	echo '</a><br/><input type="checkbox" onclick="lightbox_switch('.$row["med_id"].',0)" '.$checked.' id="lb'.$row["med_id"].'">';
 					  }
@@ -919,7 +919,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		} else
 		{
 			$type = MB_DOCUMENT;
-			$myObj = new PhenoTypeDocument($_REQUEST["id"]);
+			$myObj = new PhenotypeDocument($_REQUEST["id"]);
 
 			if ($myObj->id == 0)
 			{
@@ -1119,7 +1119,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 
 		$myPT->startBuffer();
-		$myMB = new PhenotypeMediaBase();
+		$myMB = new PhenotypeMediabase();
 		$_folder = $myMB->getLogicalFolder();
 
 		?>
@@ -1879,7 +1879,7 @@ function initoid()
 			if ($row_data["med_type"]==1)
 			{
 
-				$myImg = new PhenoTypeImage($row_data["med_id"]);
+				$myImg = new PhenotypeImage($row_data["med_id"]);
 				$myImg->display_ThumbX(60,$row_data["med_bez"]);
 			}
 			else
@@ -2019,7 +2019,7 @@ function initoid()
 		<select name="folder1" class="input" style="width:250px" onchange="document.forms.editform.folder1_new.value='';">
 		<option value="_upload">...</option>
 		<?php
-		$myMB = new PhenotypeMediaBase();
+		$myMB = new PhenotypeMediabase();
 		$_folder = $myMB->getLogicalFolder($this->_mediagroups);
 		if (!in_array("_upload",$_folder))
 		{
@@ -2490,7 +2490,7 @@ function initoid()
 		<select name="folder1" class="input" style="width:200px" onchange="document.forms.editform.folder1_new.value='';">
 		<option value="_import">...</option>
 		<?php
-		$myMB = new PhenotypeMediaBase();
+		$myMB = new PhenotypeMediabase();
 		$_folder = $myMB->getLogicalFolder($this->_mediagroups);
 		if (!in_array("_import",$_folder))
 		{
@@ -2601,7 +2601,7 @@ function initoid()
 			} else
 			{
 				$type = MB_DOCUMENT;
-				$myObj = new PhenoTypeDocument($img_id);
+				$myObj = new PhenotypeDocument($img_id);
 
 				if ($myObj->id == 0)
 				{
@@ -2743,7 +2743,7 @@ function initoid()
 		} else
 		{
 			$type = MB_DOCUMENT;
-			$myObj = new PhenoTypeDocument($id);
+			$myObj = new PhenotypeDocument($id);
 		}
 
 		if (!$myObj->loaded)
@@ -2851,7 +2851,7 @@ function initoid()
 				}
 			} else
 			{
-				$myMB = new PhenotypeMediaBase();
+				$myMB = new PhenotypeMediabase();
 				$myMB->setMediaGroup($myObj->grp_id);
 				if ($myRequest->get("objecttype") == MB_IMAGE)
 				{
@@ -2869,7 +2869,7 @@ function initoid()
 		$size = $_FILES[$fname]["size"];
 		if ($size != 0)
 		{
-			$myMB = new PhenotypeMediaBase();
+			$myMB = new PhenotypeMediabase();
 			$myMB->setMediaGroup($myObj->grp_id);
 
 
@@ -2919,7 +2919,7 @@ function initoid()
 		} else
 		{
 			$type = MB_DOCUMENT;
-			$myObj = new PhenoTypeDocument($id);
+			$myObj = new PhenotypeDocument($id);
 		}
 
 		if (!$myObj->loaded)
@@ -2964,7 +2964,7 @@ function initoid()
 			$fname = "ver".$row["ver_id"]."_delete_x";
 			if ($myRequest->check($fname))
 			{
-				$myMB = new PhenotypeMediaBase();
+				$myMB = new PhenotypeMediabase();
 				$myMB->deleteMediaObjectVersion($id, $row["ver_id"]);
 				$this->_params["info"]="Version gelöscht.";
 				$this->_params["feedback"]="";
@@ -2978,7 +2978,7 @@ function initoid()
 			$size = $_FILES[$fname]["size"];
 			if ($size != 0)
 			{
-				$myMB = new PhenotypeMediaBase();
+				$myMB = new PhenotypeMediabase();
 				$myMB->setMediaGroup($myObj->grp_id);
 				if ($_REQUEST["objecttype"] == MB_IMAGE)
 				{
@@ -3033,7 +3033,7 @@ function initoid()
 
 			$url = $targetfile;
 
-			$myMB = new PhenotypeMediaBase();
+			$myMB = new PhenotypeMediabase();
 
 			$action = $myRequest->get("size_versionaction");
 			$ver_bez= trim($myRequest->get("size_newversion"));
@@ -3112,7 +3112,7 @@ function initoid()
 
 		if ($myObj->selectVersionID($ver_id)===false){$this->noAccess();}
 
-		$myMB = new PhenotypeMediaBase();
+		$myMB = new PhenotypeMediabase();
 		$myMB->setMediaGroup($myObj->grp_id);
 
 
@@ -3621,7 +3621,7 @@ function initoid()
 		} else
 		{
 			$type = MB_DOCUMENT;
-			$myObj = new PhenoTypeDocument($dat_id);
+			$myObj = new PhenotypeDocument($dat_id);
 
 			if ($myObj->id == 0)
 			{

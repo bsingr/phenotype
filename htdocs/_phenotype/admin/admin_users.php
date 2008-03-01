@@ -113,7 +113,7 @@ $myPT->startBuffer();
 <?php
 if ($row["med_id_thumb"]!=0)
 {
-       $myImg = new PhenoTypeImage($row["med_id_thumb"]);
+       $myImg = new PhenotypeImage($row["med_id_thumb"]);
        $myImg->display_maxX(60,"Benutzer anzeigen");
 }
 else

@@ -81,7 +81,7 @@ self.focus();
           <td>          <select name="folder" class="feld" onchange="document.forms.form1.submit();">
           <option value="-1">(alle)</option>
           <?php
-          $myMB = new PhenotypeMediaBase();
+          $myMB = new PhenotypeMediabase();
                           // Hot fix - check groups
                   
 
@@ -227,7 +227,7 @@ self.focus();
                   <?php
                     if ($row["med_type"]==MB_IMAGE)
                     {
-                      $myIMG = new PhenoTypeImage($row["med_id"]);
+                      $myIMG = new PhenotypeImage($row["med_id"]);
 
                       $sx=$myIMG->x;
                       $sy=$myIMG->y;

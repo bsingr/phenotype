@@ -1,4 +1,4 @@
-<?php
+<?
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -25,191 +25,213 @@
  */
 class Database
 {
-	var $dbhandle;
-	var $debug=0;
-	var $myT;
+  var $dbhandle;
+  var $debug=0;
+  var $myT;
+  var $context = "";
+  var $nextcontext = "";
 
-	// Debug-Arrays
+  // Debug-Arrays
 
-	public $_sql = Array();
-	public $_times = Array();
-	public $_results = Array();
-	public $_files = Array();
-	public $_lines = Array();
+  public $_sql = Array();
+  public $_times = Array();
+  public $_results = Array();
+  public $_files = Array();
+  public $_lines = Array();
+  public $_context = Array();
 
-	function connect()
-	{
-		$this->dbhandle = mysql_pconnect ( DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD) or die ("<p><font color=\"#FF0000\">Unable to connect to SQL server</font></p>");
-		$this->selectDatabase();
-		if (PT_DEBUG==1)
-		{
-			$this->debug=1;
-		}
+  function connect()
+  {
+    $this->dbhandle = mysql_pconnect ( DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD) or die ("<p><font color=\"#FF0000\">Unable to connect to SQL server</font></p>");
+    $this->selectDatabase();
+    if (PT_DEBUG==1)
+    {
+      $this->debug=1;
+    }
 
 
-	}
+  }
 
-	function selectDatabase($database="")
-	{
-		if ($database =="")
-		{
-			$database = DATABASE_NAME;
-		}
-		mysql_select_db ($database, $this->dbhandle) or die("<p><font color=#FF0000>Unable to select database</font></p>");
-	}
+  function selectDatabase($database="")
+  {
+    if ($database =="")
+    {
+      $database = DATABASE_NAME;
+    }
+    mysql_select_db ($database, $this->dbhandle) or die("<p><font color=#FF0000>Unable to select database</font></p>");
+  }
 
-	function query($sql)
-	{
-		if ($this->debug==1)
-		{
-			$this->_sql[] = $sql;
-			$this->myT = new TCheck();
-			$this->myT->start();
-		}
-		$result = mysql_query ($sql, $this->dbhandle);
+  function query($sql,$context="")
+  {
+    if ($this->debug==1)
+    {
+      if ($context!="")
+      {
+        $this->context =$context;
+      }
+      else
+      {
+        if ($this->nextcontext!="" AND ($this->context != $this->nextcontext))
+        {
+          $context = $this->nextcontext;
+          $this->context = $context;
+        }
+      }
+      $this->_sql[] = $sql;
+      $this->_context[] = $context;
+      $this->myT = new TCheck();
+      $this->myT->start();
+    }
+    $result = mysql_query ($sql, $this->dbhandle);
 
-		if (mysql_errno($this->dbhandle))
-		{
-			if (PT_DEBUG==1)
-			{
+    if (mysql_errno($this->dbhandle))
+    {
+      if (PT_DEBUG==1)
+      {
 
-				$_traces =	debug_backtrace();
+        $_traces =	debug_backtrace();
 
-				$zeile = $_traces[0]["line"];
-				$file = $_traces[0]["file"];
-				$p = strrpos($file,'\\');
-				$file = substr($file,$p+1);
+        $zeile = $_traces[0]["line"];
+        $file = $_traces[0]["file"];
+        $p = strrpos($file,'\\');
+        $file = substr($file,$p+1);
  	  		?>
  	  		<br clear="all">
 		 	<div style="position:absolute;background-color:#FF0000;left:10px;top:500px;width:1000px;opacity:0.8;color:white;
 filter:alpha(opacity=85);padding-left:5px">
 		 	<table>
-		 	<tr><td>SQL-Fehler:</td><td><strong><?php echo mysql_errno($this->dbhandle) ?></strong></td></tr>
-		 	<tr><td>Fehlermeldung:</td><td><strong><?php echo mysql_error($this->dbhandle) ?></strong></td></tr>
-		 	<tr><td>SQL:</td><td><strong><?php echo $sql ?></strong></td></tr>
-		 	<tr><td>Datei:</td><td><strong><?php echo $file ?></strong></td></tr>
-		 	<tr><td>Zeile:</td><td><strong><?php echo $zeile ?></strong></td></tr>
+		 	<tr><td>SQL-Fehler:</td><td><strong><?=mysql_errno($this->dbhandle)?></strong></td></tr>
+		 	<tr><td>Fehlermeldung:</td><td><strong><?=mysql_error($this->dbhandle)?></strong></td></tr>
+		 	<tr><td>SQL:</td><td><strong><?=$sql?></strong></td></tr>
+		 	<tr><td>Datei:</td><td><strong><?=$file?></strong></td></tr>
+		 	<tr><td>Zeile:</td><td><strong><?=$zeile?></strong></td></tr>
 		 	</table>
 		 	<br/>
 		 	
-		 	<?php
+		 	<?
 		 	foreach ($_traces AS $_trace)
 		 	{
 		 		?>
-		 		Aufruf: Zeile <strong><?php echo $_trace["line"] ?></strong> in  <?php echo $_trace["file"] ?><br/>
-		 		Methode: <?php echo $_trace["function"] ?><br/><br/>
-		 		<?php
+		 		Aufruf: Zeile <strong><?=$_trace["line"]?></strong> in  <?=$_trace["file"]?><br/>
+		 		Methode: <?=$_trace["function"]?><br/><br/>
+		 		<?
 		 	}
 			?>
 		 	</div>
- 	 		<?php
-			}
-			die();
-		}
-		else
-		{
-			if ($this->debug==1)
-			{
-				$this->myT->stop();
-				$this->_times[] = $this->myT->getSeconds();
-				$this->_results[] = mysql_affected_rows();
+ 	 		<?
+      }
+      die();
+    }
+    else
+    {
+      if ($this->debug==1)
+      {
+        $this->myT->stop();
+        $this->_times[] = $this->myT->getSeconds();
+        $this->_results[] = mysql_affected_rows();
 
-				$_traces =	debug_backtrace();
-				$this->_files[] = $_traces[0]["file"];
-				$this->_lines[] = $_traces[0]["line"];
-			}
-			return $result;
-		}
-	}
+        $_traces =	debug_backtrace();
+        $this->_files[] = $_traces[0]["file"];
+        $this->_lines[] = $_traces[0]["line"];
+      }
+      return $result;
+    }
+  }
 
 
-	function debug($switch=1)
-	{
-		$this->debug = (int)$switch;
-	}
+  function debug($switch=1)
+  {
+    $this->debug = (int)$switch;
+  }
 
-	function review($border = 0.01)
-	{
+  function review($border = 0.01)
+  {
 		?>
 		<br clear="all">
 	 	<div style="position:absolute;background-color:#FFFF00;left:10px;top:500px;width:1000px;opacity:0.57;color:black;
 filter:alpha(opacity=95);padding-left:10px;">
-	 	<?php
+	 	<?
 
 	 	$c = count($this->_sql);
 
 	 	for ($j=$c;$j>0;$j--)
 	 	{
-	 		$i=$j-1;
-	 		$sql = "EXPLAIN ". $this->_sql[$i];
-	 		$result = mysql_query ($sql, $this->dbhandle);
-	 		if ($result)
-	 		{
-	 			$row = mysql_fetch_assoc($result);
-	 		}
+	 	  $i=$j-1;
+	 	  $sql = "EXPLAIN ". $this->_sql[$i];
+	 	  $result = mysql_query ($sql, $this->dbhandle);
+	 	  if ($result)
+	 	  {
+	 	    $row = mysql_fetch_assoc($result);
+	 	  }
 
-	 		$zeit = sprintf("%0.4f",$this->_times[$i]);
-	 		if ($zeit>$border)
-	 		{
-	 			echo '<table style="color:red">';
-	 		}
-	 		else 
-	 		{
-	 			echo '<table>';
-	 		}
+	 	  $zeit = sprintf("%0.4f",$this->_times[$i]);
+	 	  if ($zeit>$border)
+	 	  {
+	 	    echo '<table style="color:red">';
+	 	  }
+	 	  else
+	 	  {
+	 	    echo '<table>';
+	 	  }
 	 		?>
 	 		
-	 		<tr><td>Nummer:</td><td><strong><?php echo $i+1 ?></strong></td></tr>
-	 		<tr><td>SQL:</td><td><strong><?php echo htmlentities($this->_sql[$i]) ?></strong></td></tr>
-	 		<tr><td>Zeit:</td><td><strong><?php echo $zeit ?></strong></td></tr>
-	 		<tr><td>Zeilen:</td><td><strong><?php echo $this->_results[$i] ?></strong></td></tr>
-		 	<tr><td>Datei:</td><td><strong><?php echo $this->_files[$i] ?></strong></td></tr>
-		 	<tr><td>Zeile:</td><td><strong><?php echo $this->_lines[$i] ?></strong></td></tr>
-		 	<?php
-			if ($result){
+	 		<tr><td>Nummer:</td><td><strong><?=$i+1?></strong></td></tr>
+	 		<tr><td>SQL:</td><td><strong><?=htmlentities($this->_sql[$i])?></strong></td></tr>
+	 		<tr><td>Zeit:</td><td><strong><?=$zeit?></strong></td></tr>
+	 		<tr><td>Zeilen:</td><td><strong><?=$this->_results[$i]?></strong></td></tr>
+		 	<tr><td>Datei:</td><td><strong><?=$this->_files[$i]?></strong></td></tr>
+		 	<tr><td>Zeile:</td><td><strong><?=$this->_lines[$i]?></strong></td></tr>
+		 	<?
+		 	if ($result){
 			?>
 		 	<tr><td>Analyse:</td><td><div><table style="border:1px black solid;border-style:solid">
-		 	<?php
+		 	<?
 		 	$tr1='<tr>';
 		 	$tr2='<tr>';
 		 	foreach ($row AS $k=>$v)
 		 	{
-		 		$tr1 .= '<td style="border:1px black solid;border-style:solid"><strong>'.$k.'</strong></td>';
-		 		$tr2 .= '<td>'.$v.'</td>';
+		 	  $tr1 .= '<td style="border:1px black solid;border-style:solid"><strong>'.$k.'</strong></td>';
+		 	  $tr2 .= '<td>'.$v.'</td>';
 		 	}
 		 	echo $tr1 . "</tr>";
 		 	echo $tr2 . "</tr>";
 		 	?></table></div></td></tr>
-		 	<?php
-			}
+		 	<?
+		 	}
 			?>
 		 	</table>
 		 	<br/><br/>
-	 		<?php
+	 		<?
 
 
 	 	}
 		?>
 	 	</div>
-	 	<?php
-	}
+	 	<?
+  }
 
-	function startTransaction()
-	{
-	}
+  function startTransaction()
+  {
+  }
 
-	function stopTransaction()
-	{
-	}
+  function stopTransaction()
+  {
+  }
 
-	function startT()
-	{
-		$this->startTransaction();
-	}
+  function startT()
+  {
+    $this->startTransaction();
+  }
 
-	function stopT()
-	{
-		$this->stopTransaction();
-	}
+  function stopT()
+  {
+    $this->stopTransaction();
+  }
+
+  function setNextContext($context)
+  {
+    $this->nextcontext = $context;
+  }
+
 }
 ?>

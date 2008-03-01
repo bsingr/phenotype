@@ -3,6 +3,7 @@
 // [BLOCKSTART_INHERITANCE]
 // -----------------------------------------------------------------------------------------
 // inheritance of all main phenotype classe for application specific overrides
+class PhenotypeRequest extends PhenotypeRequestStandard {}
 
 class PhenotypeAdmin extends PhenotypeAdminStandard {}
 

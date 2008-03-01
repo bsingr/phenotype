@@ -33,7 +33,7 @@ if (!$mySUser->checkRight("elm_page"))
 $id = $myRequest->getI("id");
 $ver_id = (int)$_REQUEST["ver_id"];
 
-$myPage = new PhenoTypePage($id);
+$myPage = new PhenotypePage($id);
 $myPage->activateVersion($ver_id);
 
 $url = "page_edit.php?id=" . $id . "&b=99&ver_id=" . $ver_id;

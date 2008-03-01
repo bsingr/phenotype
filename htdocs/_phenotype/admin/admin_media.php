@@ -79,7 +79,7 @@ $myPT->startBuffer();
 	
 					     <select name="folder" class="input" style="width:250px">
 					 <?php
-					 $myMB = new PhenotypeMediaBase();
+					 $myMB = new PhenotypeMediabase();
 					 $_folder = $myMB->getFullLogicalFolder();
 					 foreach ($_folder AS $k)
 					 {
