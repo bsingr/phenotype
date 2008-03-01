@@ -1915,7 +1915,7 @@ class PhenotypeContentStandard
 		break;
 
 	  	// ######## Sequenz
-			case PT_CON_FORM_SEQUENCE :
+		case PT_CON_FORM_SEQUENCE :
 
 	    $block_nr = $a[2];
 	    $cog_id = $a[1];
@@ -3099,13 +3099,13 @@ class PhenotypeContentStandard
       $a = $form[$i];
       switch ($a[0])
       {
-        case 2 : // Textfeld
+        case PT_CON_FORM_TEXTFIELD : // Textfeld
         $fname = $myCO->formid."_".$a[2];
         $myCO->set($a[2], $myRequest->get($fname));
         $this->fullsearch .= $myRequest->get($fname)." | ";
         break;
 
-        case 25 : // Number
+        case PT_CON_FORM_NUMBER : // Number
         $fname = $myCO->formid."_".$a[2];
         $v = $myRequest->get($fname);
         $v = str_replace(",", ".", $v);
@@ -3114,7 +3114,7 @@ class PhenotypeContentStandard
         $this->fullsearch .= $myRequest->get($fname)." | ";
         break;
 
-        case 19 : // Textfeld Cluster
+        case PT_CON_FORM_TEXTFIELDCLUSTER : // Textfeld Cluster
         $n = $a[4];
         for ($j = 1; $j <= $n; $j ++)
         {
@@ -3125,48 +3125,46 @@ class PhenotypeContentStandard
 
         break;
 
-        case 3 :
+        case PT_CON_FORM_TEXTAREA :
           $fname = $myCO->formid."_".$a[2];
           $myCO->set($a[2], $myRequest->get($fname));
           $this->fullsearch .= $myRequest->get($fname)." | ";
           break;
 
-        case 4 :
+        case PT_CON_FORM_DATE :
           $fname = $myCO->formid."_".$a[2];
           $data = $myRequest->get($fname);
           $data = $myPT->german2Timestamp($data);
           $myCO->set($a[2], $data);
           break;
 
-        case 8 :
+        case PT_CON_FORM_DATETIME :
           $fname = $myCO->formid."_".$a[2];
           $data = $myRequest->get($fname);
           $data = $myPT->germanDT2Timestamp($data);
           $myCO->set($a[2], $data);
           break;
 
-        case 5 :
+        case PT_CON_FORM_HTML :
           $fname = $myCO->formid."_".$a[2];
           $myCO->set($a[2], $myAdm->decodeRequest_HTMLArea($myRequest->get($fname)));
           break;
 
           // form_selectbox
-        case 6 :
+        case PT_CON_FORM_SELECTBOX :
           $fname = $myCO->formid."_".$a[2];
-          //echo ($_REQUEST[$fname]);
           $myCO->set($a[2], $myRequest->get($fname));
           $myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
           break;
 
-        case 34 :
+        case PT_CON_FORM_CONTENTSELECTBOX :
           $fname = $myCO->formid."_".$a[2];
-          //echo ($_REQUEST[$fname]);
           $myCO->set($a[2], $myRequest->get($fname));
           //$myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
           break;
 
           // form_doubleselectbox
-        case 24 :
+        case PT_CON_FORM_DOUBLESELECTBOX :
           $fname = $myCO->formid."_".$a[2];
           $myCO->set($a[2], $myRequest->get($fname));
           $myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
@@ -3176,7 +3174,7 @@ class PhenotypeContentStandard
           break;
 
           // form_multiselectbox
-        case 20 :
+        case PT_CON_FORM_MULTISELECTBOX :
           $fname = $myCO->formid."_".$a[2];
 
           $_selections = $_REQUEST[$fname];
@@ -3190,7 +3188,7 @@ class PhenotypeContentStandard
 
 
           // form_content_multiselectbox
-        case 35 :
+        case PT_CON_FORM_CONTENTMULTISELECTBOX :
           $fname = $myCO->formid."_".$a[2];
 
           $_selections = $_REQUEST[$fname];
@@ -3203,7 +3201,7 @@ class PhenotypeContentStandard
           break;
 
           // form_expandinglist
-        case 21 :
+        case PT_CON_FORM_EXLIST :
           $fname = $myCO->formid."_".$a[2];
           $myCO->set($a[2], $myRequest->get($fname));
           $fname = $myCO->formid."_".$a[2]."_new";
@@ -3217,115 +3215,100 @@ class PhenotypeContentStandard
           }
           break;
 
-        case 10 : // Sequenz
+        case PT_CON_FORM_SEQUENCE : // Sequenz
 
-        $block_nr = $a[2];
-        $cog_id = $a[1];
+	        $block_nr = $a[2];
+    	    $cog_id = $a[1];
 
 
-        $sql = "SELECT * FROM sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr=" . $block_nr . " AND dat_editbuffer = 1 AND usr_id = ". (int)$_SESSION["usr_id"] ." ORDER BY dat_pos";
-        $rs = $myDB->query($sql);
-        /*
-        while ($row = mysql_fetch_array($rs))
-        {
-        $tname = "PhenotypeComponent_" . $row["com_id"];
-        $myComponent = new $tname;
-        $myComponent->init($row);
-        $myComponent->update();
-        $myComponent->store();
-        // Wurde ein Tool geloescht
-        if (isset($_REQUEST[$row["dat_id"]."_delete_x"]))
-        {
-        $myComponent->delete();
-        }
-        }
-        */
+        	$sql = "SELECT * FROM sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr=" . $block_nr . " AND dat_editbuffer = 1 AND usr_id = ". (int)$_SESSION["usr_id"] ." ORDER BY dat_pos";
+	        $rs = $myDB->query($sql);
 
-        while ($row = mysql_fetch_array($rs))
-        {
-          $i++;
-          $tname = "PhenotypeComponent_" . $row["com_id"];
-          $myComponent = new $tname;
-          $myComponent->init($row);
-          if (isset($_REQUEST[$row["dat_id"]."_visible"]))
-          {
-            $myComponent->visible =1;
-          }
-          else
-          {
-            $myComponent->visible =0;
-          }
+			while ($row = mysql_fetch_array($rs))
+			{
+			  $i++;
+			  $tname = "PhenotypeComponent_" . $row["com_id"];
+			  $myComponent = new $tname;
+			  $myComponent->init($row);
+			  if (isset($_REQUEST[$row["dat_id"]."_visible"]))
+			  {
+				$myComponent->visible =1;
+			  }
+			  else
+			  {
+				$myComponent->visible =0;
+			  }
+	
+			  $myComponent->update();
+			  $myComponent->store();
+			  // has a component been deleted?
+			  if (isset($_REQUEST[$row["dat_id"]."_delete_x"]))
+			  {
+				$myComponent->delete();
+				$pos=($i-1);
+				//$del_tool_id = $row["dat_id"];
+			  }
+			  // move component up
+			  if (isset($_REQUEST[$row["dat_id"]."_moveup_x"]))
+			  {
+				$myComponent->moveup();
+				$pos=$i;
+			  }
+			  // move component downs
+			  if (isset($_REQUEST[$row["dat_id"]."_movedown_x"]))
+			  {
+				$myComponent->movedown();
+				$pos=$i;
+			  }
+			}
 
-          $myComponent->update();
-          $myComponent->store();
-          // Wurde ein Tool geloescht
-          if (isset($_REQUEST[$row["dat_id"]."_delete_x"]))
-          {
-            $myComponent->delete();
-            $pos=($i-1);
-            //$del_tool_id = $row["dat_id"];
-          }
-          // Soll Baustein nach oben verschoben werden
-          if (isset($_REQUEST[$row["dat_id"]."_moveup_x"]))
-          {
-            $myComponent->moveup();
-            $pos=$i;
-          }
-          // Soll Baustein nach unten verschoben werden
-          if (isset($_REQUEST[$row["dat_id"]."_movedown_x"]))
-          {
-            $myComponent->movedown();
-            $pos=$i;
-          }
-        }
+			// new component inserted?
+			$new_tool_id = $_REQUEST["newtool_id"];
+			if ($new_tool_id !="")
+			{
+			  $tname = "PhenotypeComponent_" . $_REQUEST["newtool_type"];
+			  $myComponent = new $tname;
+			  $myComponent->addNew(0,0,$this->id,$block_nr,$new_tool_id);
+			}
+	
+			if ($myRequest->check("save"))
+			{
+			  // save button pressed
+			  $sql = "DELETE FROM  sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr = ".$block_nr ." AND dat_editbuffer=0";
+			  $myDB->query($sql);
+	
+			  $sql = "INSERT INTO sequence_data(dat_id,dat_id_content,dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible,usr_id) SELECT dat_id, dat_id_content, 0 AS dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible, usr_id  FROM sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr = " .$block_nr." AND dat_editbuffer=1 AND usr_id = " .(int)$_SESSION["usr_id"];
+			  $myDB->query($sql);
+			  //echo $sql;
+	
+			}
+	
+			// end sequence
+			break;
 
-        // Wurde ein neues Tools eingefuegt?
-        $new_tool_id = $_REQUEST["newtool_id"];
-        if ($new_tool_id !="")
-        {
-          $tname = "PhenotypeComponent_" . $_REQUEST["newtool_type"];
-          $myComponent = new $tname;
-          $myComponent->addNew(0,0,$this->id,$block_nr,$new_tool_id);
-        }
-
-        if ($myRequest->check("save"))
-        {
-          // Speichern-Button wurde gedrückt
-          $sql = "DELETE FROM  sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr = ".$block_nr ." AND dat_editbuffer=0";
-          $myDB->query($sql);
-
-          $sql = "INSERT INTO sequence_data(dat_id,dat_id_content,dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible,usr_id) SELECT dat_id, dat_id_content, 0 AS dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible, usr_id  FROM sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr = " .$block_nr." AND dat_editbuffer=1 AND usr_id = " .(int)$_SESSION["usr_id"];
-          $myDB->query($sql);
-          //echo $sql;
-
-        }
-
-        // Ende Sequenz
-        break;
-
-        case 11 :
+        case PT_CON_FORM_IMAGESELECTOR :
           $fname = $myCO->formid."_".$a[2]."img_id";
           $myCO->set($a[2]."_img_id", $myRequest->get($fname));
 
           break;
 
-        case 9 :
+        case PT_CON_FORM_IMAGEEXTERN :
           $fname = $myCO->formid."_".$a[2];
           $myCO->set($a[2], $myRequest->get($fname));
           break;
 
-        case 12 : // Richtext
-        $fname = $myCO->formid."_".$a[2];
-        $s = $myRequest->get($fname);
-        if ($a[5] == 1)
-        {
-          $s = $myApp->richtext_strip_tags($s);
-        }
-        $myCO->set($a[2], $s);
-        $this->fullsearch .= strip_tags($s)." | ";
-        break;
+        case PT_CON_FORM_RICHTEXT : // Richtext
+			$fname = $myCO->formid."_".$a[2];
+			$s = $myRequest->get($fname);
+			if ($a[5] == 1)
+			{
+			  $s = $myApp->richtext_strip_tags($s);
+			}
+			$myCO->set($a[2], $s);
+			$this->fullsearch .= strip_tags($s)." | ";
+			break;
 
-        case 13 :
+        case PT_CON_FORM_DOUBLETEXTFIELD :
           $fname = $myCO->formid."_".$a[2];
           $myCO->set($a[2], $myRequest->get($fname));
           $this->fullsearch .= $myRequest->get($fname)." | ";
@@ -3334,41 +3317,40 @@ class PhenotypeContentStandard
           $this->fullsearch .= $myRequest->get($fname)." | ";
           break;
 
-        case 14 : // Checkbox
-        $fname = $myCO->formid."_".$a[2];
-        if ($myRequest->check($fname))
-        {
-          $myCO->set($a[2], 1);
-        } else
-        {
-          $myCO->set($a[2], 0);
-        }
-        break;
+        case PT_CON_FORM_CHECKBOX : // Checkbox
+			$fname = $myCO->formid."_".$a[2];
+			if ($myRequest->check($fname))
+			{
+			  $myCO->set($a[2], 1);
+			} else
+			{
+			  $myCO->set($a[2], 0);
+			}
+			break;
 
-        case 15 : // Link
-        // $a[3] $link_title=true
-        // $a[4] $link_target=true
-        // $a[5] $link_text=false
-        // $a[6] $link_popup=false
-        // $a[7] $link_source=false
-        // $a[8] $link_type=false
-        // $a[9] $link_type_options
+        case PT_CON_FORM_LINK : // Link
+			// $a[3] $link_title=true
+			// $a[4] $link_target=true
+			// $a[5] $link_text=false
+			// $a[6] $link_popup=false
+			// $a[7] $link_source=false
+			// $a[8] $link_type=false
+			// $a[9] $link_type_options
+	
+			$fname = $myCO->formid."_".$a[2];
+			$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
+			$this->fullsearch .= $myRequest->get($fname."bez")." | ";
+			$myCO->set($a[2]."_url", $myRequest->get($fname."url"));
+			$myCO->set($a[2]."_target", $myRequest->get($fname."target"));
+			$myCO->set($a[2]."_type", $myRequest->get($fname."type"));
+			$myCO->set($a[2]."_text", $myRequest->get($fname."text"));
+			$myCO->set($a[2]."_source", $myRequest->get($fname."source"));
+			$myCO->set($a[2]."_x", $myRequest->get($fname."x"));
+			$myCO->set($a[2]."_y", $myRequest->get($fname."y"));
+			if ($myCO->get($a[2]."_target")=="_self"){$myCO->set($a[2]."_x","");$myCO->set($a[2]."_y","");}
+			break;
 
-        $fname = $myCO->formid."_".$a[2];
-        $myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
-        $this->fullsearch .= $myRequest->get($fname."bez")." | ";
-        $myCO->set($a[2]."_url", $myRequest->get($fname."url"));
-        $myCO->set($a[2]."_target", $myRequest->get($fname."target"));
-        $myCO->set($a[2]."_type", $myRequest->get($fname."type"));
-        $myCO->set($a[2]."_text", $myRequest->get($fname."text"));
-        $myCO->set($a[2]."_source", $myRequest->get($fname."source"));
-        $myCO->set($a[2]."_x", $myRequest->get($fname."x"));
-        $myCO->set($a[2]."_y", $myRequest->get($fname."y"));
-        if ($myCO->get($a[2]."_target")=="_self"){$myCO->set($a[2]."_x","");$myCO->set($a[2]."_y","");}
-
-        break;
-
-        case 39:
+        case PT_CON_FORM_UPLOAD:
           $fname = $myCO->formid."_".$a[2]."_userfile";
 
           $dateiname_original =  $_FILES[$fname]["name"];
@@ -3407,70 +3389,68 @@ class PhenotypeContentStandard
           }
           break;
 
-        case 16 : // Dokument
-        $fname = $myCO->formid."_".$a[2];
-        $myCO->set($a[2]."_med_id", $myRequest->get($fname."med_id"));
-        if ($a[3])
-        {
-          $myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
-        } else
-        {
-          $myCO->set($a[2]."_bez", "");
-        }
+        case PT_CON_FORM_DOCUMENT : // Dokument
+			$fname = $myCO->formid."_".$a[2];
+			$myCO->set($a[2]."_med_id", $myRequest->get($fname."med_id"));
+			if ($a[3])
+			{
+			  $myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
+			} else
+			{
+			  $myCO->set($a[2]."_bez", "");
+			}
+			break;
 
-        break;
+        case PT_CON_FORM_DOCUMENTSELECTOR : // Dokument2
+			$fname = $myCO->formid."_".$a[2];
+			$myCO->set($a[2]."_med_id", $myRequest->get($fname."med_id"));
+			if ($a[3])
+			{
+			  $myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
+			} else
+			{
+			  $myCO->set($a[2]."_bez", "");
+			}
+			break;
 
-        case 26 : // Dokument2
-        $fname = $myCO->formid."_".$a[2];
-        $myCO->set($a[2]."_med_id", $myRequest->get($fname."med_id"));
-        if ($a[3])
-        {
-          $myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
-        } else
-        {
-          $myCO->set($a[2]."_bez", "");
-        }
-        break;
+        case PT_CON_FORM_MEDIASELECTOR : // Mediaselector
+			$fname = $myCO->formid."_".$a[2];
+			$img_id = $myRequest->get($fname."img_id");
+			$med_id = 0;
+			$type = 0;
+			if ($img_id <> 0)
+			{
+			  $med_id = $img_id;
+			  $type = MB_IMAGE;
+			} else
+			{
+			  $med_id = $myRequest->get($fname."med_id");
+			  if ($med_id <> 0)
+			  {
+				$type = MB_DOCUMENT;
+			  }
+			}
+			$myCO->set($a[2]."_med_id", $med_id);
+			$myCO->set($a[2]."_med_type", $type);
+			$mimetype = "";
+			if ($med_id != 0)
+			{
+			  $sql = "SELECT med_mimetype FROM media WHERE med_id=".$med_id;
+			  $rs = $myDB->query($sql);
+			  $row = mysql_fetch_array($rs);
+			  $mimetype = $row["med_mimetype"];
+			}
+			$myCO->set($a[2]."_mimetype", $mimetype);
+			if ($a[3])
+			{
+			  $myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
+			} else
+			{
+			  $myCO->set($a[2]."_bez", "");
+			}
+			break;
 
-        case 27 : // Mediaselector
-        $fname = $myCO->formid."_".$a[2];
-        $img_id = $myRequest->get($fname."img_id");
-        $med_id = 0;
-        $type = 0;
-        if ($img_id <> 0)
-        {
-          $med_id = $img_id;
-          $type = MB_IMAGE;
-        } else
-        {
-          $med_id = $myRequest->get($fname."med_id");
-          if ($med_id <> 0)
-          {
-            $type = MB_DOCUMENT;
-          }
-        }
-        $myCO->set($a[2]."_med_id", $med_id);
-        $myCO->set($a[2]."_med_type", $type);
-        $mimetype = "";
-        if ($med_id != 0)
-        {
-          $sql = "SELECT med_mimetype FROM media WHERE med_id=".$med_id;
-          $rs = $myDB->query($sql);
-          $row = mysql_fetch_array($rs);
-          $mimetype = $row["med_mimetype"];
-        }
-        $myCO->set($a[2]."_mimetype", $mimetype);
-        if ($a[3])
-        {
-          $myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
-        } else
-        {
-          $myCO->set($a[2]."_bez", "");
-        }
-
-        break;
-
-        case 17 :
+        case PT_CON_FORM_SCRIPT :
           $fname = $myCO->formid."_".$a[2];
           $buffer = $myAdm->decodeRequest_HTMLArea($myRequest->get($fname));
           $myCO->set($a[2], $buffer);
@@ -3481,62 +3461,62 @@ class PhenotypeContentStandard
           @ chown($filename, UMASK);
           break;
 
-        case 30 : // Positioner
-        $fname = $myCO->formid."_".$a[2]."_ddp_";
+        case PT_CON_FORM_DDPOSITIONER : // Positioner
+			$fname = $myCO->formid."_".$a[2]."_ddp_";
+	
+			$posstart = $myRequest->get($fname."_posstart");
+			$poschange = $myRequest->get($fname."_poschange");
+			$_posstart = explode(",", $posstart);
+			$_poschange = explode(",", $poschange);
+			$anzahl = $a[3];
+			$_posstore = Array ();
+	
+			for ($j = 1; $j <= $anzahl; $j ++)
+			{
+			  $tpos = $_poschange[$j] - 1;
+			  $_posstore[] = $_posstart[$tpos];
+			}
+	
+			$myCO->set($a[2], $_posstore);
+			break;
 
-        $posstart = $myRequest->get($fname."_posstart");
-        $poschange = $myRequest->get($fname."_poschange");
-        $_posstart = explode(",", $posstart);
-        $_poschange = explode(",", $poschange);
-        $anzahl = $a[3];
-        $_posstore = Array ();
-
-        for ($j = 1; $j <= $anzahl; $j ++)
-        {
-          $tpos = $_poschange[$j] - 1;
-          $_posstore[] = $_posstart[$tpos];
-        }
-
-        $myCO->set($a[2], $_posstore);
-        break;
-
-        case 31 : // DD-Textfieldcluster
-        $fname = $myCO->formid."_".$a[2]."_ddp_";
-
-        $posstart = $myRequest->get($fname."_posstart");
-        $poschange = $myRequest->get($fname."_poschange");
-        $_posstart = explode(",", $posstart);
-        $_poschange = explode(",", $poschange);
-        $anzahl = $a[4];
-        $_posstore = Array ();
-
-        for ($j = 1; $j <= $anzahl; $j ++)
-        {
-          $tpos = $_poschange[$j] - 1;
-          $_posstore[] = $_posstart[$tpos];
-
-          $fname = $myCO->formid."_".$a[2]."_".$j;
-          $myCO->set($a[2]."_".$j, $myRequest->get($fname));
-          $this->fullsearch .= $myRequest->get($fname)." | ";
-        }
-        if ($a[5]==1)
-        {
-          // Umsortieren
-          $_valtemp = Array();
-          for ($j = 1; $j <= $anzahl; $j ++)
-          {
-            $_valtemp[$j] = $myCO->get($a[2]."_".$_posstore[$j-1]);
-          }
-          $_posstore = Array();
-          for ($j = 1; $j <= $anzahl; $j ++)
-          {
-            $_posstore[] = $j;
-            $myCO->set($a[2]."_".$j,$_valtemp[$j]);
-          }
-        }
-
-        $myCO->set($a[2]."_pos", $_posstore);
-        break;
+        case PT_CON_FORM_DDTEXTFIELDCLUSTER : // DD-Textfieldcluster
+			$fname = $myCO->formid."_".$a[2]."_ddp_";
+	
+			$posstart = $myRequest->get($fname."_posstart");
+			$poschange = $myRequest->get($fname."_poschange");
+			$_posstart = explode(",", $posstart);
+			$_poschange = explode(",", $poschange);
+			$anzahl = $a[4];
+			$_posstore = Array ();
+	
+			for ($j = 1; $j <= $anzahl; $j ++)
+			{
+			  $tpos = $_poschange[$j] - 1;
+			  $_posstore[] = $_posstart[$tpos];
+	
+			  $fname = $myCO->formid."_".$a[2]."_".$j;
+			  $myCO->set($a[2]."_".$j, $myRequest->get($fname));
+			  $this->fullsearch .= $myRequest->get($fname)." | ";
+			}
+			if ($a[5]==1)
+			{
+			  // Umsortieren
+			  $_valtemp = Array();
+			  for ($j = 1; $j <= $anzahl; $j ++)
+			  {
+				$_valtemp[$j] = $myCO->get($a[2]."_".$_posstore[$j-1]);
+			  }
+			  $_posstore = Array();
+			  for ($j = 1; $j <= $anzahl; $j ++)
+			  {
+				$_posstore[] = $j;
+				$myCO->set($a[2]."_".$j,$_valtemp[$j]);
+			  }
+			}
+	
+			$myCO->set($a[2]."_pos", $_posstore);
+			break;
 
 
 
