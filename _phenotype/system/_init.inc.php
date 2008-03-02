@@ -102,6 +102,10 @@ define("PT_LOGLVL_DEBUG", "DEBUG");
 
 define("PT_LOGMTH_FILE", "FILE");
 
+define("PT_RTF_EDITOR_TINYMCE", "tinyMCE");
+define("PT_RTF_EDITOR_FCKEDITOR", "fckEditor");
+
+
 if (PT_DEBUG==1)
 {
 	error_reporting(E_ALL ^ E_NOTICE); // DEVELOPMENT

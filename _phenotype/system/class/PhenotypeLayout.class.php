@@ -35,6 +35,16 @@ class PhenotypeLayout
 
 	public $dhtmlwz_init = 0;
 	
+	/*	@var rtfInit
+		shows the state of rtf editor setup.
+			null => not initialized
+			array() => editor included
+		After inclusion of the editor, in the array will be stored which configs were loaded
+	*/
+	private $rtfEditorConfigs = Array();
+	private $codeEditorConfigs = Array();
+	private $editorInit = Array();
+	
 	/*
 	function topline_addEntry($bez,$url)
 	{
@@ -44,7 +54,7 @@ class PhenotypeLayout
 	}
 	*/
 
-	function tab_addEntry($bez,$url,$icon)
+	function tab_addEntry($bez, $url, $icon)
 	{
 		$_entry["url"]=$url;
 		$_entry["bez"]=$bez;
@@ -52,7 +62,7 @@ class PhenotypeLayout
 		$this->props_tab[] = $_entry;
 	}
 
-	function iconbar_addEntry($url1,$url2,$val,$alt)
+	function iconbar_addEntry($url1, $url2, $val, $alt)
 	{
 		$_entry["url_active"]=$url2;
 		$_entry["url_inactive"]=$url1;
@@ -97,7 +107,6 @@ class PhenotypeLayout
 <script type="text/javascript" src="phenotype.js"></script>
 <?php echo $myApp->displayBackendJavascript() ?>
 <script type="text/javascript" src="wz_dragdrop.js"></script> 
-<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
 </head>
 <?php
 	}
@@ -507,45 +516,117 @@ class PhenotypeLayout
 	function form_HTMLTextarea($name,$filename,$cols,$rows,$mode="PHP",$x=640)
 	{
 		global $myAdm;
+		global $myPT;
+		
+		// ** load the configured editor if necessary
+		if (! (array_key_exists($myPT->getPref("backend.code_editor"), $this->editorInit) && ($this->editorInit[$myPT->getPref("backend.code_editor")] == 1)) )
+		{
+			if ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_TINYMCE)
+			{ // TinyMCE
+?>
+	<!-- TinyMCE -->
+	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+	<!-- /TinyMCE -->
+<?php
+			} else
+			{ // FCKEditor
+?>
+	<script type="text/javascript" src="<?php echo(ADMINURL); ?>fckeditor/fckeditor.js"></script>
+<?php
+			}
+			$this->editorInit[$myPT->getPref("backend.code_editor")] = 1;
+			
+			
+			// now setup the configurations array in JS
+			if (count($codeEditorConfigs) == 0)
+			{
+?>
+	<script type="text/javascript">
+		var pt_code_opts = Array();
+	</script>
+<?php
+			}
+		}
+		
 		$myAdm->buildHTMLTextArea($name,$filename,$cols,$rows,$mode,$x);
 	}
 
 
-	function form_Richtext($name,$val,$cols=80,$rows=10,$x=410,$toolbarset="")
+	function form_Richtext($name,$val,$cols=80,$rows=10,$x=410,$configSet="default")
 	{
+		global $myPT;
+		
 		$val = htmlentities($val);
-		// ohne temporaere Datei
-		global $myAdm;
-
-		if ($myAdm->browserOK_HTMLArea())
+		
+		// ** load the configured editor if necessary
+		if (! (array_key_exists($myPT->getPref("backend.rtf_editor"), $this->editorInit) && ($this->editorInit[$myPT->getPref("backend.rtf_editor")] == 1)) )
 		{
-
+			if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
+			{ // TinyMCE
 ?>
-	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" class="input" style="width: <?php echo $x ?>px"><?php echo $val ?></textarea>
-<?php	
-
-	  ?>
-	<script language="JavaScript1.2">
-	var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
-	oFCKeditor.BasePath	= '<?php echo ADMINURL ?>/fckeditor/' ;
-	oFCKeditor.Width = <?php echo $x ?>;
-	oFCKeditor.Height = <?php echo $rows*17 ?> ;
-	<?php if ($toolbarset!=""){ ?>
-	oFCKeditor.ToolbarSet = "<?php echo $toolbarset ?>" ;
-	<?php } ?>
-	oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo ADMINURL ?>/fckconfig.php";
-	oFCKeditor.ReplaceTextarea() ;
-	</script>	  
-	 
-	  <?php
-
+	<!-- TinyMCE -->
+	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+	<!-- /TinyMCE -->
+<?php
+			} else
+			{ // FCKEditor
+?>
+	<script type="text/javascript" src="<?php echo(ADMINURL); ?>fckeditor/fckeditor.js"></script>
+<?php
+			}
+			$this->editorInit[$myPT->getPref("backend.rtf_editor")] = 1;
+			
+			
+			// now setup the configurations array in JS
+			if (count($rtfEditorConfigs) == 0)
+			{
+?>
+	<script type="text/javascript">
+		var pt_rtf_opts = Array();
+	</script>
+<?php
+			}
 		}
-		else
+		
+		// ** get config
+		if (! array_key_exists($configSet, $this->rtfEditorConfigs))
 		{
-	?>
-	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  style="width: <?php echo $x ?>px" class="input"><?php echo $val ?></textarea>
-    <?php
+?>
+	<script type="text/javascript" src="<?php echo(SERVERURL . $myPT->getPref("backend.rtf_editor_config_path") . $configSet .".js"); ?>"></script>
+<?php
+			$this->rtfEditorConfigs[$configSet] = 1;
 		}
+		
+		// ** now render and setup the particular editor field
+?>
+	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" style="width: <?php echo $x ?>px" class="input RichText"><?php echo $val ?></textarea>
+<?php
+		if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
+		{
+?>
+	<script type="text/javascript">
+		var myOpts = pt_rtf_opts["<?php echo $configSet ?>"];
+		myOpts.mode = "exact";
+		myOpts.theme = "advanced";
+		myOpts.elements = "<?php echo $name ?>";
+		tinyMCE.init(myOpts);
+	</script>
+<?php
+    	} else {
+?>
+	<script language="JavaScript1.2">
+		var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
+		oFCKeditor.BasePath	= '<?php echo ADMINURL ?>/fckeditor/' ;
+		oFCKeditor.Width = <?php echo $x ?>;
+		oFCKeditor.Height = <?php echo $rows*17 ?> ;
+<?php if ($configSet!="default"){ ?>
+		oFCKeditor.ToolbarSet = "<?php echo $configSet ?>" ;
+<?php } ?>
+		oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo ADMINURL ?>/fckconfig.php";
+		oFCKeditor.ReplaceTextarea() ;
+	</script>
+<?php
+    	}
 	}
 
 	function form_FullRichtext($name,$val,$cols=80,$rows=10,$x=410)

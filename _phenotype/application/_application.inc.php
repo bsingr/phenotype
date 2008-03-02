@@ -33,6 +33,7 @@ class PhenotypeAdminLayout extends PhenotypeLayout {}
 // [BLOCKSTOP_INHERITANCE]
 // -----------------------------------------------------------------------------------------
 
+define("PT_RTF_EDITOR", PT_RTF_EDITOR_TINYMCE);
 
 // -----------------------------------------------------------------------------------------
 // [BLOCKSTART_MYAPPLICATION] 
@@ -54,7 +55,8 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
 
 // Definition of class aliases for contenobjects, components and so on to
 // improve readability of the code
-
+// example:
+// class MyNewsObject extends PhenotypeContent_2
 
 // -----------------------------------------------------------------------------------------
 // [BLOCKSTOP_CLASSALIAS] 
