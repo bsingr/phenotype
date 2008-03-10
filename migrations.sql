@@ -24,3 +24,13 @@ ALTER TABLE `content_template` CHANGE `tpl_id` `tpl_id` INT( 11 ) NOT NULL;
 ALTER TABLE `extra_template` DROP PRIMARY KEY ,
 ADD PRIMARY KEY ( `tpl_id` , `ext_id` );
 ALTER TABLE `extra_template` CHANGE `tpl_id` `tpl_id` INT( 11 ) NOT NULL;
+
+
+ALTER TABLE `component_template` CHANGE `tpl_id` `tpl_id` INT( 11 ) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `include_template` CHANGE `tpl_id` `tpl_id` INT( 11 ) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `content_template` CHANGE `tpl_id` `tpl_id` INT( 11 ) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `extra_template` CHANGE `tpl_id` `tpl_id` INT( 11 ) NOT NULL AUTO_INCREMENT;
+

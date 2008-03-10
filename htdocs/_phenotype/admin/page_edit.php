@@ -83,7 +83,7 @@ else
 	}
 }
 //$myPage = new PhenotypePage($id,$ver_id);
-$myPage->switchLanguage($lng_id);
+//$myPage->switchLanguage($lng_id);
 
 $sql = "SELECT grp_multilanguage FROM pagegroup WHERE grp_id=" . $myPage->grp_id;
 $rs = $myDB->query($sql);

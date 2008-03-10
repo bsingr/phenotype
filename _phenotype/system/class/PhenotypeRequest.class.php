@@ -34,6 +34,13 @@ class PhenotypeRequestStandard
     global $myDB;
 
     $this->_REQUEST = $_REQUEST;
+    if (ini_get("magic_quotes_gpc")==1)
+    {
+      foreach ($this->_REQUEST AS $k=>$v)
+      {
+        $this->set($k,stripslashes($v));
+      }
+    }
 
     // check for smartURL hit
     if (defined("PT_FRONTEND"))
@@ -86,6 +93,10 @@ class PhenotypeRequestStandard
             if ($i==1)
             {
               $this->set("smartPERMID",$key);
+              if ($key=="action")
+              {
+                $this->set("action","index");
+              }
             }
           }
         }
@@ -99,23 +110,28 @@ class PhenotypeRequestStandard
 
   function get($k)
   {
-    $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+    if ($this->check($k))
+    {$v=@$this->_REQUEST[$k];
+    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     return $v;
+    }
+    return "";
   }
 
   function getHTML($k)
   {
-    $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+    $v=@$this->_REQUEST[$k];
+    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     // ToDO:Fehlt hier ein stripslashes??
     return @htmlentities($v);
+
   }
 
   function getH ($k)
   {
     return $this->getHTML($k);
   }
+
 
   function getHBR($k)
   {
@@ -124,59 +140,78 @@ class PhenotypeRequestStandard
     $html = str_replace (chr(10),"",$html);
     $html = str_replace (chr(13),"",$html);
     return $html;
+
   }
 
   function getI($k)
   {
+
     $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+
+    // if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     return (int)$v;
+
   }
 
   function getD($k,$decimals)
   {
+
     $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     $v=sprintf("%01.".$decimals."f",$v);
     return $v;
+
   }
 
   function getURL($k)
   {
+
+
     $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     return urlencode($v);
+
   }
 
   function getU($k)
   {
+
+
     $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     return utf8_encode($v);
+
   }
 
   function getS($k)
   {
+
     $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     return addslashes($v);
+
   }
 
   function getA($k)
   {
+
     $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+
+    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     $patterns = "/[^a-z0-9A-ZöäüÖÄÜß]*/";
     $v = preg_replace($patterns,"", $v);
     return $v;
+
   }
 
   function getSQL($k)
   {
+
     global $myPT;
     $v=$this->_REQUEST[$k];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
+    // if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
     return $myPT->codeSQL($v);
+
   }
 
 
@@ -192,6 +227,11 @@ class PhenotypeRequestStandard
     echo "<pre>";
     print_r ($this->_REQUEST);
     echo "</pre></br>";
+  }
+  
+  public function getParamsArray()
+  {
+    return ($this->_REQUEST);
   }
 
   public function getParamHash ()

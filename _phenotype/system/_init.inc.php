@@ -22,7 +22,7 @@ function __autoload($class_name) {
 
   // create inheritage of standard classes, if not inherited by application
 
-  $_classes = Array("PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeDataObject2","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage");
+  $_classes = Array("PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeDataObject2","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeIncludeController");
 
   if (in_array($class_name,$_classes))
   {
@@ -43,17 +43,17 @@ function __autoload($class_name) {
     }
   }
 
-  
+
   // deprecated, but still needed and ineritable
-  
+
   if ($class_name=="PhenotypeAdminLayout")
   {
     eval ("class PhenotypeAdminLayout extends PhenotypeLayout {}");
     return;
   }
-  
+
   // specific classes without standard inheritage
-  
+
   $_classes = Array ("Smarty"=>SMARTYPATH . "Smarty.class.php","PhenotypeTree"=>CLASSPATH."PhenotypeTree.class.php");
   if (array_key_exists($class_name,$_classes))
   {
@@ -224,6 +224,9 @@ define ("PT_CON_FORM_UPLOAD", 39);
 
 
 
+
+
+
 // constants for logging levels, facilities and options
 
 // the log levels:
@@ -241,8 +244,7 @@ define("PT_LOGMTH_FILE", "FILE");
 if (PT_DEBUG==1)
 {
   error_reporting(E_ALL ^ E_NOTICE); // DEVELOPMENT
-  //set_error_handler("onError");
-
+  set_error_handler(array("Phenotype","handleError"));
 }
 else
 {
@@ -251,6 +253,8 @@ else
 
 ini_set("log_errors",true);
 ini_set("error_log",TEMPPATH."logs/phperror.log");
+
+set_exception_handler(array("Phenotype","handleException"));
 
 $_PT_HTTP_CONTENTTYPES = Array(1=>"text/html;charset=iso-8859-1",2=>"text/css;charset=iso-8859-1",3=>"text/javascript;charset=iso-8859-1",4=>"text/xml;charset=iso-8859-1",5=>"application/vnd.wap.xhtml+xml;charset=iso-8859-1",21=>"text/html;charset=iso-8859-15",22=>"text/css;charset=iso-8859-15",23=>"text/javascript;charset=iso-8859-15",24=>"text/xml;charset=iso-8859-15",25=>"application/vnd.wap.xhtml+xml;charset=iso-8859-15",101=>"text/html;charset=utf-8",102=>"text/css;charset=utf-8",103=>"text/javascript;charset=utf-8",104=>"text/xml;charset=utf-8",200=>"kein Header");
 

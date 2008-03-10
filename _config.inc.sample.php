@@ -95,9 +95,10 @@ define ("UMASK",0775);
 // Einbindung der Grundklassen
 // ------------------------------------------------------
 
-require (SYSTEMPATH . "_init.inc.php");
 require (BASEPATH . "buildinfo.inc.php");
 require (CLASSPATH . "Phenotype.class.php");
+require (SYSTEMPATH . "_init.inc.php");
+
 require (CLASSPATH . "PhenotypePage.class.php");
 require (CLASSPATH . "Database.class.php");
 require (CLASSPATH . "SqlBuilder.class.php");
@@ -161,16 +162,12 @@ $myApp = new PhenotypeApplication();
 // Grundinitalisierung
 // ------------------------------------------------------
 
-$myDB = new Database();
-$myDB->connect();
+
 $myPT = new Phenotype();
 $myLog = new PhenotypeLog();
-
-// ------------------------------------------------------
-// Alternativer Request-Zugriff
-// ------------------------------------------------------
-
 $myRequest = new PhenotypeRequest();
+$myDB = new Database();
+$myDB->connect();
 
 
 

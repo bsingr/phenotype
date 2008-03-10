@@ -30,6 +30,15 @@ class Phenotype
   public $subversion = "##!BUILD_NO!##";
 
 
+  /**
+   * indicates if PHP warnings are to be caught
+   * 
+   * (only relevant if PT_DEBUG ==1)
+   *
+   * @var unknown_type
+   */
+  public $phpwarnings = true;
+
   private $_preferences = false;
 
   /**
@@ -46,6 +55,7 @@ class Phenotype
     {
       die("Bitte stellen Sie Register Globals aus !! Aus Sicherheitsgründen läuft Phenotype nicht mit dieser Einstellung");
     }
+    $this->startBuffer();
   }
 
 
@@ -53,34 +63,35 @@ class Phenotype
   {
     global $myPage;
     global $myTC;
-    
+
     // Time check initialize
     $myTC = new TCheck();
     $myTC->start();
-    
+
     if (PT_FRONTENDSESSION==1)
     {
       ini_set ("session.use_trans_sid",1);
       session_start();
     }
-    
+
     global $myRequest;
-    
-    // retrieve page id out of request 
-    
+
+    // retrieve page id out of request
+
     $pag_id = $myRequest->getI("id");
-    
+
     if ($pag_id==0)
     {
       $pag_id = PAG_ID_STARTPAGE;
+      $myRequest->set("id",$pag_id);
     }
-    
+
     // initialize page
-    
+
     $myPage = new PhenotypePage($pag_id);
-    
+
     // get language, initalize language
-    
+
     $lng_id = $myRequest->getI("lng_id");
     $myPage->switchLanguage($lng_id);
 
@@ -341,6 +352,12 @@ class Phenotype
     return $s;
   }
 
+
+  public function getFilenameOutOfPath($s)
+  {
+    $p = strrpos($s,'\\');
+    return substr($s,$p+1);
+  }
 
   function clearcache_page($id,$silent=1)
   {
@@ -839,6 +856,371 @@ class Phenotype
       }
     }
     return $oReturn;
+  }
+
+
+  public function colorcode ($html)
+  {
+    if (trim($html)=="")
+    {
+      return "";
+    }
+
+    $html = "<?php _CHEAT_SHOW_SOURCE_" . $html;
+    $html = str_replace(chr(92),"_CHR_ASCII_92_",$html);
+    $this->startBuffer();
+    highlight_string($html);
+    $html = $this->stopBuffer();
+    $html = str_replace('_CHR_ASCII_92_',chr(92),$html);
+    $html = str_replace('&lt;?php&nbsp;_CHEAT_SHOW_SOURCE_',"",$html);
+    $html = str_replace('&lt;?php _CHEAT_SHOW_SOURCE_',"",$html);
+    return $html;
+  }
+
+  /**
+   * Enter description here...
+   *
+   */
+  public function handleError($errno, $errstr, $errfile, $errline)
+  {
+    // currently only E_WARNING
+    // maybe more functionality (like collection for debug console)
+    // for E_NOTICE AND E_STRICT in future
+
+    if ($errno==E_WARNING)
+    {
+      // this method is executed via error and/or exception handler
+      // we are not in the phenotype class object context und therefore must use the global object
+      global $myPT;
+      if (is_object($myPT) AND $myPT->phpwarnings == true )
+      {
+        $myPT->displayErrorPage("PHP Warning",$errstr,$errfile,$errline);
+        exit();
+      }
+    }
+    return;
+  }
+
+
+  public function suppressPHPWarnings()
+  {
+    $this->phpwarnings = false;
+  }
+
+  public function respectPHPWarnings()
+  {
+    $this->phpwarnings = true;
+  }
+
+
+  /**
+   * Enter description here...
+   *
+   * @param unknown_type $e
+   */
+  public function handleException($e)
+  {
+
+    /*
+    final function getMessage();                // Mitteilung der Ausnahme
+    final function getCode();                   // Code der Ausnahme
+    final function getFile();                   // Quelldateiname
+    final function getLine();                   // Quelldateizeile
+    final function getTrace();                  // Array mit Ablaufverfolgung
+    final function getTraceAsString();  */
+
+    // this method is executed via error and/or exception handler
+    // we are not in the phenotype class object context und therefore must use the global object
+    global $myPT;
+    $myPT->displayErrorPage("PHP Exception",$e->getMessage(),$e->getFile(),$e->getLine());
+
+  }
+
+  public function displayErrorPage($headline,$message,$file="",$line=0,$sql="")
+  {
+    global $myRequest;
+    global $myDB;
+
+
+    // first get the current output
+    $html = $this->stopBuffer();
+    // stop output buffering again to color code the fetched buffer
+    $html = $this->colorcode($html);
+
+    // get source code
+    if ($file!="")
+    {
+      $_lines = file ($file);
+      $c = count($_lines);
+
+      $start = max(1,$line-8);
+      $stop = min($c,$line+7);
+    }
+
+    ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title><?=$this->codeH($headline)?></title>
+  <meta name="generator" content="Phenotype CMS" />
+  <style type="text/css">
+  body 
+  {
+    background-color: #fff;
+    font-family:Verdana,Arial;
+    font-size:12px;
+  }
+  em
+  {
+    font-family:Verdana,Arial;
+    font-size:12px;
+    font-style:normal;
+    font-variant:small-caps;
+    border-bottom:1px solid #CFCFCF;
+    padding: 0px 1px 0px 1px;
+    line-height:40px;
+    letter-spacing:4px;
+
+  }
+  #main
+  {
+  
+    background:#F7F7F7 none repeat scroll 0%;
+    border-bottom:1px solid #CFCFCF;
+    border-top:1px solid #CFCFCF;
+
+    width: 780px;
+    padding:10px;
+    
+    margin-left:auto;
+    margin-right:auto;
+
+  }
+  #logo
+  {
+    background-image: url ('/img/logo.png');
+    width: 780px;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+    height:50px;
+    text-align:right;
+    
+  }
+  #footer
+  {
+    font-size:10px;
+    width: 780px;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:right;
+    height:50px;
+  }
+  #header
+  {
+    color:#000;
+
+  }
+  #message
+  {
+    color: #f00;
+    font-weight: bold;
+    background-color: #fff;
+    padding: 7px;
+    #margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+
+  .request
+  {
+    font-family:Courier;  
+    list-style:none;
+    font-size:11px;
+    background-color: #fff;
+    padding: 7px;
+    #margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    overflow:auto;
+  }
+  
+  .param_key
+  {
+  display:block;
+  width:80px;
+  float:left;
+  }
+  .param_value
+  {
+  color: #cfcfcf;
+  }
+  
+  .filename
+  {
+    font-size:9px;
+  color: #cfcfcf;
+  padding: 2px;
+  line-height: 18px;
+
+  }
+  .exec_context
+  {
+  background-color: #cfcfcf;
+  font-size:9px;
+  color: #fff;
+  padding: 2px 5px 5px 10px;
+  margin: 0px;
+  line-height: 18px;
+  }  
+  .source
+  {
+    font-family:Courier;  
+    list-style:none;
+    font-size:11px;
+    background-color: #fff;
+    padding: 7px;
+    #margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    overflow:auto;
+  }
+  .current
+  {
+  background-color: #CFCFCF;
+  }  
+  .query
+  {
+  color: #cfcfcf;
+  }
+  #output 
+  {
+    font-family:Courier;
+    font-size:11px;
+    height: 300px;
+    width: auto;
+    overflow: auto;
+    border: 1px solid #CFCFCF;
+    background-color: #fff;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  </style> 
+</head>
+<body>
+<div id="logo"><img src="<?php echo ADMINFULLURL ?>img/phenotypelogo.gif" alt="Phenotype"/></div>
+<div id="main">
+<div id="header">
+<strong><?=$this->codeH($headline)?></strong>
+<div id="message"><?php echo $this->codeH($message)?></div>
+</div>
+<em>Request:</em><br/>
+<div id="request">
+<ul class="request">
+<?php foreach ($myRequest->getParamsArray() AS $k => $v){?>
+<li><span class="param_key">#<?php echo $this->codeH($k)?></span>: <span class="param_value"><?php echo $this->codeH($v)?></span></li>
+<?php }?>
+</ul>
+</div>
+<?php if ($file!=""){?>
+<div id="details">
+<em>Source:</em><br/>
+<span class="filename">[<?php echo $this->codeH($this->getFilenameOutOfPath($file))?>]</span>
+<ul class="source">
+<?php for ($i=$start;$i<=$stop;$i++){?>
+<li <?php if ($i==$line){?>class="current"<?php }?>><span>#<?php echo sprintf('%04d',$i)?>: </span><?php echo $this->colorcode($_lines[$i-1])?></li>
+<?php }?>
+</ul>
+</div>
+<?php }?>
+<?php if ($html!=""){?>
+<em>Output:</em><br/>
+<div id="output">
+<?php echo $html?></div>
+<?php }?>
+<em>Backtrace:</em><br/>
+<div id="traces">
+<?php
+$_traces =	debug_backtrace();
+// remove the first entry of the backtrace (i.e. this method)
+array_shift($_traces);
+foreach ($_traces AS $_trace)
+{
+  $_lines = file ($_trace["file"]);
+  $line = $_trace["line"];
+  $c = count($_lines);
+
+  $start = max(1,$line-2);
+  $stop = min($c,$line+2);
+
+  $type = $_trace["type"];
+  $_args = array();
+  foreach ($_trace["args"] AS $k=>$v)
+  {
+    if (is_numeric($v))
+    {
+      $_args[]=$v;
+    }
+    else
+    {
+      if (is_object($v))
+      {
+
+        $_args[]=get_class($v);
+      }
+      else
+      {
+        $_args[]='"'.$v.'"';
+      }
+    }
+  }
+  $args = implode($_args,",");
+  switch ($type)
+  {
+    case "->";
+    $context = $_trace["class"]."->".$_trace["function"]." (".$args.")";
+    break;
+    case "::";
+    $context = $_trace["class"]."->".$_trace["function"]." (".$args.")";
+    break;
+    case "":
+    //ToDO: Check next line! only copy & paste
+    $context = $_trace["function"]." (".$args.")";
+    break;
+  }
+?>
+<span class="exec_context"><?php echo $this->codeH($context)?></span><span class="filename">[<?php echo $this->getFilenameOutOfPath($_trace["file"])?>]</span>
+<ul class="source">
+<?php for ($i=$start;$i<=$stop;$i++){?>
+<li <?php if ($i==$line){?>class="current"<?php }?>><span>#<?php echo sprintf('%04d',$i)?>: </span><?php echo $this->colorcode($_lines[$i-1])?></li>
+<?php }?>
+</ul>
+<?}?>
+</div>
+<?php
+$_sql = $myDB->getQueries();
+$stop = count ($_sql);
+$start = max(1,$stop-8);
+if ($stop!=0){?>
+<div id="database">
+<em>SQL Backlog</em>
+<ul class="source">
+<?php
+for ($i=$stop;$i>=$start;$i--){?>
+<li><span>#<?php echo sprintf('%04d',$i)?>: </span><span class="query"><?php echo $this->codeH($_sql[$i-1])?></span></li>
+<?php }?>
+</ul>
+</div>
+<?php }?>
+</div>
+<div id="footer">
+<?php echo date('d.m.Y H:i');?>
+</div>
+</body>
+</html>
+    <?
+    exit();
   }
 
 }

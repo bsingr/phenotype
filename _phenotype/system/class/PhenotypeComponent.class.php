@@ -598,13 +598,6 @@ class PhenotypeComponentStandard
 		$myLayout->form_Richtext($name,$myApp->richtext_prefilter($val),$cols,$rows);
 	}
 
-	function form_FullRichtext($name,$val,$cols=80,$rows=10)
-	{
-		global $myLayout;
-		$name = $this->formid . $name;
-		$myLayout->form_FullRichtext($name,$val,$cols,$rows);
-	}
-
 	function form_HTML($name,$val,$cols=80,$rows=10)
 	{
 		global $myLayout;

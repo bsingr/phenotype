@@ -42,8 +42,12 @@ class Database
 
   function connect()
   {
-    $this->dbhandle = mysql_pconnect ( DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD) or die ("<p><font color=\"#FF0000\">Unable to connect to SQL server</font></p>");
+    global $myPT;
+    $myPT->suppressPHPWarnings();
+    $this->dbhandle = mysql_pconnect ( DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD) or $myPT->displayErrorPage("DB Exception","Unable to connect to SQL server.");
+    $myPT->respectPHPWarnings();
     $this->selectDatabase();
+    
     if (PT_DEBUG==1)
     {
       $this->debug=1;
@@ -58,11 +62,15 @@ class Database
     {
       $database = DATABASE_NAME;
     }
-    mysql_select_db ($database, $this->dbhandle) or die("<p><font color=#FF0000>Unable to select database</font></p>");
+    global $myPT;
+    $myPT->suppressPHPWarnings();
+    mysql_select_db ($database, $this->dbhandle) or $myPT->displayErrorPage("DB Exception","Unable to select database.");
+     $myPT->respectPHPWarnings();
   }
 
   function query($sql,$context="")
   {
+    
     if ($this->debug==1)
     {
       if ($context!="")
@@ -88,8 +96,10 @@ class Database
     {
       if (PT_DEBUG==1)
       {
-
+        global $myPT;
         $_traces =	debug_backtrace();
+        $myPT->displayErrorPage("SQL Error",mysql_errno($this->dbhandle)." - ".mysql_error($this->dbhandle),$_traces[0]["file"],$_traces[0]["line"],$sql);
+        
 
         $zeile = $_traces[0]["line"];
         $file = $_traces[0]["file"];
@@ -231,6 +241,11 @@ filter:alpha(opacity=95);padding-left:10px;">
   function setNextContext($context)
   {
     $this->nextcontext = $context;
+  }
+  
+  function getQueries()
+  {
+    return $this->_sql;
   }
 
 }

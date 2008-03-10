@@ -548,10 +548,7 @@ class PhenotypeLayoutStandard
 		}
 	}
 
-	function form_FullRichtext($name,$val,$cols=80,$rows=10,$x=410)
-	{
-		$this->form_Richtext($name,$val,$cols,$rows,$x,"Full");
-	}
+
 
 	// ToDO Remove
 	function overview_content_draw($sql,$con_id,$mode=1,$html="")

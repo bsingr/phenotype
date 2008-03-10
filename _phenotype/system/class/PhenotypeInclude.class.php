@@ -25,7 +25,9 @@
  */
 class PhenotypeIncludeStandard
 {
-	var $id;
+	public $id;
+	public $params;
+	public $html;
 
 	//function PhenotypeInclude($id,$params="")
 
