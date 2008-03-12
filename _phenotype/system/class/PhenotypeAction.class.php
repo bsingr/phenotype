@@ -23,7 +23,7 @@
  * @subpackage system
  *
  */
-class PhenotypeActionStandard
+class PhenotypeActionStandard extends Phenotype
 {
 	public $id;
 	public $retry = 3600; // Nach einer Stunde resetten

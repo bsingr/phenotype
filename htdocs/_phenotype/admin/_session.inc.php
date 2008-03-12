@@ -63,6 +63,6 @@ header('Pragma: no-cache');
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 header('Cache-Control: no-cache,must-revalidate');
-Header ("Content-Type: text/html;charset=iso-8859-1");
-
+//Header ("Content-Type: text/html;charset=iso-8859-1");
+Header ("Content-Type: text/html;charset=".PT_CHARSET);
 ?>

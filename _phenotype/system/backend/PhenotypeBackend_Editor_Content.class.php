@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
+// KrÃ¤mer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:
@@ -171,7 +171,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		global $myPT;
 
 		$myNav = new PhenotypeTree();
-		$nav_id_start = $myNav->addNode("Übersicht","backend.php?page=Editor,Content",0,"r_");
+		$nav_id_start = $myNav->addNode("Ãœbersicht","backend.php?page=Editor,Content",0,"r_");
 		$sql = "SELECT * FROM content ORDER BY con_rubrik, con_bez";
 		if ($myPT->getPref("edit_content.flat_tree")==1)
 		{
@@ -334,7 +334,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		global $myPT;
 
 		$myPT->startBuffer();
-		$headline = "Übersicht";
+		$headline = "Ãœbersicht";
 		if ($this->category!=""){$headline=$this->category;}
 		$this->displayHeadline($headline,"http://www.phenotype-cms.de/docs.php?v=23&con_id=2");
 
@@ -874,7 +874,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 			}
 			$myUser = new PhenotypeUser($row_conflict["usr_id"]);
-			$conflict = "Dieser Datensatz wurde ".$zustand . " von " . $myUser->getName() . " verändert.";
+			$conflict = "Dieser Datensatz wurde ".$zustand . " von " . $myUser->getName() . " verÃ¤ndert.";
 		}
 
 		if ($conflict)
@@ -944,7 +944,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 			$this->workarea_row_draw("Status",$html);
 		}
 
-		// Kompletter Status, aber keine Veränderungsmöglichkeit
+		// Kompletter Status, aber keine VerÃ¤nderungsmÃ¶glichkeit
 		if ($myCO->showstatus==2 AND $myCO->nostatus==0)
 		{
 			$myPT->startBuffer();
@@ -968,7 +968,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
             $rs= $myDB->query($sql);
             $row = mysql_fetch_array($rs);
             if ($row["con_loeschen"]==1)
-			{?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diesen Datensatz wirklich l&ouml;schen?')"><?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" tabindex="1" accesskey="s">&nbsp;&nbsp;</td>
+			{?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="LÃ¶schen" onclick="javascript:return confirm('Diesen Datensatz wirklich l&ouml;schen?')"><?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" tabindex="1" accesskey="s">&nbsp;&nbsp;</td>
           </tr>
     	</table>
 		 <?php
@@ -1010,7 +1010,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		if ($myRequest->check("delete"))
 		{
 			$myCO->delete();
-			$this->_params["info"]="Datensatz gelöscht.";
+			$this->_params["info"]="Datensatz gelÃ¶scht.";
 			$this->gotoPage("Editor","Content","select",$this->_params);
 		}
 
@@ -1092,7 +1092,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		{
 			if ($feedback==1 AND $myCO->showfeedback==1)
 			{
-				$this->_params["feedback"]="Änderungen gespeichert.";
+				$this->_params["feedback"]="Ã„nderungen gespeichert.";
 			}
 			$this->gotoPage("Editor","Content","edit",$this->_params);
 		}
@@ -1122,7 +1122,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		$_params = Array();
 		$_params["con_id"]=$myCO->content_type;
 		$_params["c"]="akt";
-		$this->_params["info"]="Datensatz gelöscht.";
+		$this->_params["info"]="Datensatz gelÃ¶scht.";
 		$this->_params = $_params;
 
 
@@ -1320,7 +1320,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 	{
 
 		
-		$_month = Array("Dezember","Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember","Januar");
+		$_month = Array("Dezember","Januar","Februar","MÃ¤rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember","Januar");
 
 		$start = @mktime (0,0,0,date("m",$date),1,date("Y",$date));
 		

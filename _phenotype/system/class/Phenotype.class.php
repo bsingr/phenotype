@@ -24,7 +24,7 @@
  * @subpackage system
  *
  */
-class Phenotype
+class PhenotypeStandard extends PhenotypeBase
 {
   public $version  = "##!PT_VERSION!##";
   public $subversion = "##!BUILD_NO!##";
@@ -38,6 +38,9 @@ class Phenotype
    * @var unknown_type
    */
   public $phpwarnings = true;
+
+  public $_debughints = Array();
+
 
   private $_preferences = false;
 
@@ -558,115 +561,7 @@ class Phenotype
     return $tplFile;
   }
 
-  function xmlencode($s,$keepquotes=0)
-  {
-    //The following are the valid XML characters and character ranges (hex values) as defined by the W3C XML
-    //language specifications 1.0: #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
 
-    // Eliminiert alle Zeichen zwischen #x01 und #x1F (HEX Schreibweise! in dezimal 01 - 31)
-    // Diese Zeichen sind in XML nicht erlaubt, sind ASCII Steuerzeichen
-    // Ausnahmen: #x9 | #xA | #xD
-    $pat = "/[\x01-\x08]/";
-    $s =  preg_replace($pat,"",$s);
-    $pat = "/[\x0B-\x0C]/";
-    $s =  preg_replace($pat,"",$s);
-    $pat = "/[\x0E-\x1F]/";
-    $s =  preg_replace($pat,"",$s);
-
-    // Kodiert alle Zeichen zwischen ASCII 127 und 159 (dezimal)
-    // auﬂerdem werden gematcht: "&'/<> (" -> #x22 in Hex Schreibweise)
-    $pat = "/[\x7F-\x9F&<>\/'\\x22\\x00]/";
-    $s =  preg_replace_callback($pat,"match2Entity",$s);
-
-    return $s;
-
-
-    // alter Ansatz: kann entfernt werden, wenn keine Probleme auftauchen
-
-    // Kodiert alle Zeichen zwischen ASCII 1 und 31 sowie 127 und 159
-    // auﬂerdem werden gematcht: &'"<>
-
-    //$pat = "/[\1-\37\177-\237&<>'\42]/";
-    //$s =  preg_replace_callback($pat,"match2Entity",$s);
-
-    // nicht im Pattern enthalten:
-    //$s = str_replace('/',"&#47;",$s);
-    //$s = str_replace(chr(0),"&#0;",$s);
-
-    // alter Ansatz: kann entfernt werden, wenn keine Probleme auftauchen
-    /*
-    $s = str_replace("&","&#38;",$s);
-    $s = str_replace("<","&#60;",$s);
-    $s = str_replace(">","&#62;",$s);
-    $s = str_replace("'","&#39;",$s);
-    $s = str_replace('"',"&#34;",$s);
-    $s = str_replace('/',"&#47;",$s);
-    */
-    return $s;
-  }
-
-  // depreceated
-  function getX($s)
-  {
-    return ($this->xmlencode($s));
-  }
-
-  function codeX($s)
-  {
-    return ($this->xmlencode($s));
-  }
-
-  // depreceated
-  function getH($s)
-  {
-    return @ htmlentities($s);
-  }
-
-  function codeH($s)
-  {
-    return @ htmlentities($s);
-  }
-
-  /**
-	 * This functions is used for encoding text before displaying it in html pages. It does an entity encode
-	 * but keeps following tags <b>, <strong>, <br>, <br/> and converts newlines to break
-	 *
-	 * @param unknown_type $s
-	 * @return string
-	 */
-  function codeHKT($s) // HTML KEEP TAGS
-  {
-    $s = nl2br($s);
-    $s = str_replace("<b>","###B###",$s);
-    $s = str_replace("<strong>","###B###",$s);
-    $s = str_replace("<br>","###BR###",$s);
-    $s = str_replace("<br/>","###BR###",$s);
-    $s = str_replace("<br />","###BR###",$s);
-    $s = str_replace("</b>","###BB###",$s);
-    $s = str_replace("</strong>","###BB###",$s);
-    $s = @ htmlentities($s);
-    $s = str_replace("###B###","<strong>",$s);
-    $s = str_replace("###BB###","</strong>",$s);
-    $s = str_replace("###BR###","<br/>",$s);
-    return $s;
-  }
-
-  // depreceated
-  function getI($s)
-  {
-    return (int)$s;
-  }
-
-  function codeI($s)
-  {
-    return (int)$s;
-  }
-
-
-  function codeSQL($s)
-  {
-    return mysql_escape_string($s);
-  }
 
   function writefile($file,$buffer)
   {
@@ -881,23 +776,40 @@ class Phenotype
    * Enter description here...
    *
    */
-  public function handleError($errno, $errstr, $errfile, $errline)
+  public static function handleError($errno, $errstr, $errfile, $errline)
   {
-    // currently only E_WARNING
-    // maybe more functionality (like collection for debug console)
-    // for E_NOTICE AND E_STRICT in future
-
-    if ($errno==E_WARNING)
+    global $myPT;
+    if ($errno==E_WARNING OR $errno == E_USER_WARNING)
     {
       // this method is executed via error and/or exception handler
       // we are not in the phenotype class object context und therefore must use the global object
-      global $myPT;
+
       if (is_object($myPT) AND $myPT->phpwarnings == true )
       {
         $myPT->displayErrorPage("PHP Warning",$errstr,$errfile,$errline);
         exit();
       }
     }
+    if ($errno==E_USER_ERROR)
+    {
+      // this method is executed via error and/or exception handler
+      // we are not in the phenotype class object context und therefore must use the global object
+
+      if (is_object($myPT) AND $myPT->phpwarnings == true )
+      {
+        $myPT->displayErrorPage("PHP Error",$errstr,$errfile,$errline);
+        exit();
+      }
+    }
+
+    $_hint = Array();
+    $_hint["message"] = $errstr;
+    $_hint["file"] = $errfile;
+    $_hint["line"] = $errline;
+
+    //print_r ($_hint);
+    $myPT->_debughints[] = $_hint;
+
     return;
   }
 
@@ -918,7 +830,7 @@ class Phenotype
    *
    * @param unknown_type $e
    */
-  public function handleException($e)
+  public static function handleException($e)
   {
 
     /*
@@ -932,11 +844,11 @@ class Phenotype
     // this method is executed via error and/or exception handler
     // we are not in the phenotype class object context und therefore must use the global object
     global $myPT;
-    $myPT->displayErrorPage("PHP Exception",$e->getMessage(),$e->getFile(),$e->getLine());
+    $myPT->displayErrorPage("PHP Exception",$e->getMessage(),$e->getFile(),$e->getLine(),"",$e);
 
   }
 
-  public function displayErrorPage($headline,$message,$file="",$line=0,$sql="")
+  public function displayErrorPage($headline,$message,$file="",$line=0,$sql="",$e = false)
   {
     global $myRequest;
     global $myDB;
@@ -944,7 +856,6 @@ class Phenotype
 
     // first get the current output
     $html = $this->stopBuffer();
-    // stop output buffering again to color code the fetched buffer
     $html = $this->colorcode($html);
 
     // get source code
@@ -960,7 +871,7 @@ class Phenotype
     ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>" />
   <title><?=$this->codeH($headline)?></title>
   <meta name="generator" content="Phenotype CMS" />
   <style type="text/css">
@@ -1115,6 +1026,7 @@ class Phenotype
 <strong><?=$this->codeH($headline)?></strong>
 <div id="message"><?php echo $this->codeH($message)?></div>
 </div>
+<?php if (is_object($myRequest)){?>
 <em>Request:</em><br/>
 <div id="request">
 <ul class="request">
@@ -1123,6 +1035,7 @@ class Phenotype
 <?php }?>
 </ul>
 </div>
+<?php }?>
 <?php if ($file!=""){?>
 <div id="details">
 <em>Source:</em><br/>
@@ -1142,8 +1055,16 @@ class Phenotype
 <em>Backtrace:</em><br/>
 <div id="traces">
 <?php
-$_traces =	debug_backtrace();
-// remove the first entry of the backtrace (i.e. this method)
+if($e)
+{
+  $_traces = $e->getTrace();
+}
+else
+{
+  $_traces =	debug_backtrace();
+}
+// remove the first towe entry of the backtrace (i.e. this method and the error handler)
+array_shift($_traces);
 array_shift($_traces);
 foreach ($_traces AS $_trace)
 {
@@ -1154,28 +1075,33 @@ foreach ($_traces AS $_trace)
   $start = max(1,$line-2);
   $stop = min($c,$line+2);
 
-  $type = $_trace["type"];
-  $_args = array();
-  foreach ($_trace["args"] AS $k=>$v)
+  $type="";
+  $args="";
+  if (!$e)
   {
-    if (is_numeric($v))
+    $type = $_trace["type"];
+    $_args = array();
+    foreach ($_trace["args"] AS $k=>$v)
     {
-      $_args[]=$v;
-    }
-    else
-    {
-      if (is_object($v))
+      if (is_numeric($v))
       {
-
-        $_args[]=get_class($v);
+        $_args[]=$v;
       }
       else
       {
-        $_args[]='"'.$v.'"';
+        if (is_object($v))
+        {
+
+          $_args[]=get_class($v);
+        }
+        else
+        {
+          $_args[]='"'.$v.'"';
+        }
       }
     }
+    $args = implode($_args,",");
   }
-  $args = implode($_args,",");
   switch ($type)
   {
     case "->";
@@ -1185,9 +1111,9 @@ foreach ($_traces AS $_trace)
     $context = $_trace["class"]."->".$_trace["function"]." (".$args.")";
     break;
     case "":
-    //ToDO: Check next line! only copy & paste
-    $context = $_trace["function"]." (".$args.")";
-    break;
+      //ToDO: Check next line! only copy & paste
+      $context = $_trace["function"]." (".$args.")";
+      break;
   }
 ?>
 <span class="exec_context"><?php echo $this->codeH($context)?></span><span class="filename">[<?php echo $this->getFilenameOutOfPath($_trace["file"])?>]</span>
@@ -1201,7 +1127,7 @@ foreach ($_traces AS $_trace)
 <?php
 $_sql = $myDB->getQueries();
 $stop = count ($_sql);
-$start = max(1,$stop-8);
+$start = max(1,$stop-10);
 if ($stop!=0){?>
 <div id="database">
 <em>SQL Backlog</em>
@@ -1211,6 +1137,36 @@ for ($i=$stop;$i>=$start;$i--){?>
 <li><span>#<?php echo sprintf('%04d',$i)?>: </span><span class="query"><?php echo $this->codeH($_sql[$i-1])?></span></li>
 <?php }?>
 </ul>
+</div>
+<?php }?>
+<?php if (count ($this->_debughints)!=0){?>
+<em>PHP Hints:</em><br/>
+<div id="hints">
+<?php foreach ($this->_debughints AS $_hint)
+{
+  if (file_exists($_hint["file"]))
+  {
+    $_lines = file ($_hint["file"]);
+    $line = $_hint["line"];
+  }
+  else
+  {
+    $_lines = Array();
+    $line=0;
+  }
+  $c = count($_lines);
+
+
+  $start = max(1,$line-2);
+  $stop = min($c,$line+2);
+?>
+<span class="exec_context"><?php echo $this->codeH($_hint["message"])?></span><span class="filename">[<?php echo $this->getFilenameOutOfPath($_hint["file"])?>]</span>
+<ul class="source">
+<?php for ($i=$start;$i<=$stop;$i++){?>
+<li <?php if ($i==$line){?>class="current"<?php }?>><span>#<?php echo sprintf('%04d',$i)?>: </span><?php echo $this->colorcode($_lines[$i-1])?></li>
+<?php }?>
+</ul>
+<?php }?>
 </div>
 <?php }?>
 </div>
@@ -1223,6 +1179,350 @@ for ($i=$stop;$i>=$start;$i--){?>
     exit();
   }
 
+  
+  public function displayDebugInfo()
+  {
+    global $myDB;
+    global $myRequest;
+    
+    $headline = "Phenotype DebugInfo";
+    ?>
+     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>" />
+  <title><?=$this->codeH($headline)?></title>
+  <meta name="generator" content="Phenotype CMS" />
+  <style type="text/css">
+  body 
+  {
+    background-color: #fff;
+    font-family:Verdana,Arial;
+    font-size:12px;
+  }
+  em
+  {
+    font-family:Verdana,Arial;
+    font-size:12px;
+    font-style:normal;
+    font-variant:small-caps;
+    border-bottom:1px solid #CFCFCF;
+    padding: 0px 1px 0px 1px;
+    line-height:40px;
+    letter-spacing:4px;
+
+  }
+  #main
+  {
+  
+    background:#F7F7F7 none repeat scroll 0%;
+    border-bottom:1px solid #CFCFCF;
+    border-top:1px solid #CFCFCF;
+
+    width: 780px;
+    padding:10px;
+    
+    margin-left:auto;
+    margin-right:auto;
+
+  }
+  #logo
+  {
+    background-image: url ('/img/logo.png');
+    width: 780px;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+    height:50px;
+    text-align:right;
+    
+  }
+  #footer
+  {
+    font-size:10px;
+    width: 780px;
+    padding:10px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:right;
+    height:50px;
+  }
+  #header
+  {
+    color:#000;
+
+  }
+  #message
+  {
+    color: #f00;
+    font-weight: bold;
+    background-color: #fff;
+    padding: 7px;
+    #margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+
+  .request
+  {
+    font-family:Courier;  
+    list-style:none;
+    font-size:11px;
+    background-color: #fff;
+    padding: 7px;
+    #margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    overflow:auto;
+  }
+  
+  .param_key
+  {
+  display:block;
+  width:80px;
+  float:left;
+  }
+  .param_value
+  {
+  color: #cfcfcf;
+  }
+  
+  .filename
+  {
+    font-size:9px;
+  color: #cfcfcf;
+  padding: 2px;
+  line-height: 18px;
+
+  }
+  .exec_context
+  {
+  background-color: #cfcfcf;
+  font-size:9px;
+  color: #fff;
+  padding: 2px 5px 5px 10px;
+  margin: 0px;
+  line-height: 18px;
+  }  
+  .source
+  {
+    font-family:Courier;  
+    list-style:none;
+    font-size:11px;
+    background-color: #fff;
+    padding: 7px;
+    #margin: 5px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    overflow:auto;
+  }
+  .current
+  {
+  background-color: #CFCFCF;
+  }  
+  .query
+  {
+  color: #cfcfcf;
+  }
+  #output 
+  {
+    font-family:Courier;
+    font-size:11px;
+    height: 300px;
+    width: auto;
+    overflow: auto;
+    border: 1px solid #CFCFCF;
+    background-color: #fff;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  </style> 
+</head>
+<body>
+<div id="logo"><img src="<?php echo ADMINFULLURL ?>img/phenotypelogo.gif" alt="Phenotype"/></div>
+<div id="main">
+<div id="header">
+<strong><?=$this->codeH($headline)?></strong>
+<div id="message"><?php echo $this->codeH($message)?></div>
+</div>
+<?php if (is_object($myRequest)){?>
+<em>Request:</em><br/>
+<div id="request">
+<ul class="request">
+<?php foreach ($myRequest->getParamsArray() AS $k => $v){?>
+<li><span class="param_key">#<?php echo $this->codeH($k)?></span>: <span class="param_value"><?php echo $this->codeH($v)?></span></li>
+<?php }?>
+</ul>
+</div>
+<?php }?>
+<div id="database">
+<em>SQL Queries</em><br/>
+<?php
+ $c = count($myDB->_sql);
+	    $border = 0.01;
+	    $context ="";
+	    for ($j=1;$j<=$c;$j++)
+	    {
+	      $i=$j-1;
+	      if ($myDB->_context[$i]!=$context)
+	      {
+	        $context = $myDB->_context[$i];
+	        echo '<span class="exec_context">'.$context.'</span><span class="filename">['.$this->getFilenameOutOfPath($myDB->_files[$i]).']</span><br/>';
+	      }
+	      /*
+	      $sql = "EXPLAIN ". $myDB->_sql[$i];
+	      $result = mysql_query ($sql, $myDB->dbhandle);
+	      if ($result)
+	      {
+	      $row = mysql_fetch_assoc($result);
+	      }
+	      */
+        
+	      $zeit = sprintf("%0.4f",$myDB->_times[$i]);
+	      /*
+	      if ($zeit>$border)
+	      {
+	        echo '<table style="color:red">';
+	      }
+	      else
+	      {
+	        echo '<table>';
+	      }*/
+	      
+	 		?>
+	 		<!--
+	 		<tr><td>Nummer:</td><td><strong><?=$i+1?></strong></td></tr>
+	 		<tr><td>SQL:</td><td><strong><?=htmlentities($myDB->_sql[$i])?></strong></td></tr>
+	 		<tr><td>Zeit:</td><td><strong><?=$zeit?></strong></td></tr>
+	 		<tr><td>Zeilen:</td><td><strong><?=$myDB->_results[$i]?></strong></td></tr>
+		 	<tr><td>Datei:</td><td><strong><?=$myDB->_files[$i]?></strong></td></tr>
+		 	<tr><td>Zeile:</td><td><strong><?=$myDB->_lines[$i]?></strong></td></tr>-->
+<ul class="source">
+<li><span>#<?php echo sprintf('%04d',$i+1)?> (<?=$zeit?>): </span><span class="query"><?php echo $this->codeH($myDB->_sql[$i])?></span></li>
+</ul>
+<?php }?>
+</div>
+<?php if (count ($this->_debughints)!=0){?>
+<em>PHP Hints:</em><br/>
+<div id="hints">
+<?php foreach ($this->_debughints AS $_hint)
+{
+  if (file_exists($_hint["file"]))
+  {
+    $_lines = file ($_hint["file"]);
+    $line = $_hint["line"];
+  }
+  else
+  {
+    $_lines = Array();
+    $line=0;
+  }
+  $c = count($_lines);
+
+
+  $start = max(1,$line-2);
+  $stop = min($c,$line+2);
+?>
+<span class="exec_context"><?php echo $this->codeH($_hint["message"])?></span><span class="filename">[<?php echo $this->getFilenameOutOfPath($_hint["file"])?>]</span>
+<ul class="source">
+<?php for ($i=$start;$i<=$stop;$i++){?>
+<li <?php if ($i==$line){?>class="current"<?php }?>><span>#<?php echo sprintf('%04d',$i)?>: </span><?php echo $this->colorcode($_lines[$i-1])?></li>
+<?php }?>
+</ul>
+<?php }?>
+</div>
+<?php }?>
+</div>
+<div id="footer">
+<?php echo date('d.m.Y H:i');?>
+</div>
+</div>
+</body>
+</html>
+<?
+return ("");
+?>
+
+     <div id="pt_dblog" style="margin:0pt;padding:1px 0pt;position:absolute;right:0px;top:30px;margin-bottom:30px;z-index:10000;background-color:#CCC;color:#000;font-size:10px;#display:none">
+     test
+      <iframe style="width:200px;height:50px">
+      hallo
+      </iframe>
+	    [<a href="#" onclick="document.getElementById('pt_dblog').style.display='none'; return false;">x</a>]<br/>
+	    <div>
+	    <strong>Request:</strong><br/>
+	    <?
+	    foreach ($myRequest->_REQUEST AS $k =>$v)
+	    {
+	      echo '<span style="display:block;width:100px;float:left">'.$this->codeH($k).'</span>: <span>'.$myRequest->getH($k).'</span><br/>';
+	    }
+	    ?><br/><br/>
+	    </div>
+	    <?
+	    $c = count($myDB->_sql);
+	    $border = 0.01;
+	    $context ="";
+	    for ($j=1;$j<=$c;$j++)
+	    {
+	      $i=$j-1;
+	      if ($myDB->_context[$i]!=$context)
+	      {
+	        $context = $myDB->_context[$i];
+	        echo '<div style="background-color:#4a0;font-weight:bold">'.$context.'</div>';
+	      }
+	      /*
+	      $sql = "EXPLAIN ". $myDB->_sql[$i];
+	      $result = mysql_query ($sql, $myDB->dbhandle);
+	      if ($result)
+	      {
+	      $row = mysql_fetch_assoc($result);
+	      }
+	      */
+
+	      $zeit = sprintf("%0.4f",$myDB->_times[$i]);
+	      if ($zeit>$border)
+	      {
+	        echo '<table style="color:red">';
+	      }
+	      else
+	      {
+	        echo '<table>';
+	      }
+	 		?>
+	 		<tr><td>Nummer:</td><td><strong><?=$i+1?></strong></td></tr>
+	 		<tr><td>SQL:</td><td><strong><?=htmlentities($myDB->_sql[$i])?></strong></td></tr>
+	 		<tr><td>Zeit:</td><td><strong><?=$zeit?></strong></td></tr>
+	 		<tr><td>Zeilen:</td><td><strong><?=$myDB->_results[$i]?></strong></td></tr>
+		 	<tr><td>Datei:</td><td><strong><?=$myDB->_files[$i]?></strong></td></tr>
+		 	<tr><td>Zeile:</td><td><strong><?=$myDB->_lines[$i]?></strong></td></tr>
+		 	<?
+		 	/*if ($result){
+		 	?>
+		 	<tr><td>Analyse:</td><td><div><table style="border:1px black solid;border-style:solid">
+		 	<?
+		 	$tr1='<tr>';
+		 	$tr2='<tr>';
+		 	foreach ($row AS $k=>$v)
+		 	{
+		 	$tr1 .= '<td style="border:1px black solid;border-style:solid"><strong>'.$k.'</strong></td>';
+		 	$tr2 .= '<td>'.$v.'</td>';
+		 	}
+		 	echo $tr1 . "</tr>";
+		 	echo $tr2 . "</tr>";
+		 	?></table></div></td></tr>
+		 	<?
+		 	}*/
+			?>
+		 	</table>
+		 	<br/><br/>
+	 		<?
+
+
+	    }
+      ?>
+	    </div>
+    <?
+  }
 }
 
 

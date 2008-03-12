@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael 
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
+// KrÃ¤mer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:
@@ -337,7 +337,7 @@ class PhenotypeAdminStandard
 	function displayCreationStatus($usr_id,$datum)
 	{
 		global $myDB;
-		if ($datum==0){return;} // Datensätze vor 2.2
+		if ($datum==0){return;} // DatensÃ¤tze vor 2.2
 		?>Angelegt am <?php echo date("d.m.Y H:i",$datum) ?><?php
 		$sql = "SELECT * FROM user WHERE usr_id = " . $usr_id;
 		$rs = $myDB->query($sql);
@@ -541,7 +541,7 @@ class PhenotypeAdminStandard
 		$code = str_replace(chr(10),'',$code);
 		$code = str_replace(chr(13),'',$code);
 
-		// Störende Spaces austauschen
+		// StÃ¶rende Spaces austauschen
 		$code = str_replace(chr(160),chr(32),$code);
 
 		// Und dann wieder aus dem HTML erzeugen
@@ -597,7 +597,7 @@ class PhenotypeAdminStandard
 			$s.= $code[$i] . ":" . ord($code[$i]) . "\n";
 		}
 		//$code = $s;
-		// Ergänzung seit 2.3
+		// ErgÃ¤nzung seit 2.3
 		$code =trim($code);
 		return ($code);
 	}
@@ -858,7 +858,7 @@ class PhenotypeAdminStandard
 		// Hinweis:
 		// Falls Includes Layouts, Seiten oder dem Includebaustein zugeordnet sind, dann
 		// werden diese Zuordnungen nicht entfernt!
-		// Das ermöglicht ein Reimportieren eines Includes ohne Datenverlust
+		// Das ermÃ¶glicht ein Reimportieren eines Includes ohne Datenverlust
 
 		global $myPT;
 		global $myDB;
@@ -889,9 +889,9 @@ class PhenotypeAdminStandard
 	function cfg_removeContent($id)
 	{
 		// Hinweis:
-		// Falls Datensätze vorhanden sind oder irgendwo auf Datensätze referenziert wird,
-		// werden diese nicht gelöscht bzw. die Referenzen aufgelöst
-		// Das ermöglicht ein Reimportieren der Contentklassen ohne Datenverlust
+		// Falls DatensÃ¤tze vorhanden sind oder irgendwo auf DatensÃ¤tze referenziert wird,
+		// werden diese nicht gelÃ¶scht bzw. die Referenzen aufgelÃ¶st
+		// Das ermÃ¶glicht ein Reimportieren der Contentklassen ohne Datenverlust
 
 		global $myPT;
 		global $myDB;
@@ -995,7 +995,7 @@ class PhenotypeAdminStandard
 		$script = '<?php
 // Phenotype Skript Konsole   
 //   
-// Für das Skript zwischendurch, um die üblichen test.php-Dateien auf dem   
+// FÃ¼r das Skript zwischendurch, um die Ã¼blichen test.php-Dateien auf dem   
 // Server zu vermeiden ...   
 
 phpinfo();   

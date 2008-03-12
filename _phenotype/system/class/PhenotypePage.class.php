@@ -800,84 +800,20 @@ class PhenotypePageStandard
 	    <li style="display:inline;"><a href="<?php echo ADMINFULLURL?>page_edit.php?id=<?php echo$this->id?>" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_edit.gif" alt="edit page" title="edit page"/></a></li>
 	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_dblog').style.display=''; return false;"><img src="<?php echo ADMINFULLURL?>img/b_debug.gif" alt="diplay debug info" title="display debug info"/></a></li>
 	    <li style="display:inline;"><a href="<?php echo $myPT->codeH($url_reload)?>"><img src="<?php echo ADMINFULLURL?>img/b_aktivieren.gif" alt="clear cache and reload page" title="clear cache and reload page"/></a></li>
-	    <li style="display:inline;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?=$info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
+	    <li style="display:inline;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?=$info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | Hi: <?php echo count($myPT->_debughints)?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
 	    <li style="display:inline;"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo"/></li>
 	    </ul>
 	    </div>
-	    <div id="pt_dblog" style="margin:0pt;padding:1px 0pt;position:absolute;right:0px;top:30px;margin-bottom:30px;z-index:10000;background-color:#CCC;color:#000;font-size:10px;display:none">
-	    [<a href="#" onclick="document.getElementById('pt_dblog').style.display='none'; return false;">x</a>]<br/>
-	    <div>
-	    <strong>Request:</strong><br/>
-	    <?
-	    foreach ($myRequest->_REQUEST AS $k =>$v)
-	    {
-	      echo '<span style="display:block;width:100px;float:left">'.$myPT->codeH($k).'</span>: <span>'.$myRequest->getH($k).'</span><br/>';
-	    }
-	    ?><br/><br/>
-	    </div>
-	    <?
-	    $c = count($myDB->_sql);
-	    $border = 0.01;
-	    $context ="";
-	    for ($j=1;$j<=$c;$j++)
-	    {
-	      $i=$j-1;
-	      if ($myDB->_context[$i]!=$context)
-	      {
-	        $context = $myDB->_context[$i];
-	        echo '<div style="background-color:#4a0;font-weight:bold">'.$context.'</div>';
-	      }
-	      /*
-	      $sql = "EXPLAIN ". $myDB->_sql[$i];
-	      $result = mysql_query ($sql, $myDB->dbhandle);
-	      if ($result)
-	      {
-	      $row = mysql_fetch_assoc($result);
-	      }
-	      */
-
-	      $zeit = sprintf("%0.4f",$myDB->_times[$i]);
-	      if ($zeit>$border)
-	      {
-	        echo '<table style="color:red">';
-	      }
-	      else
-	      {
-	        echo '<table>';
-	      }
-	 		?>
-	 		<tr><td>Nummer:</td><td><strong><?=$i+1?></strong></td></tr>
-	 		<tr><td>SQL:</td><td><strong><?=htmlentities($myDB->_sql[$i])?></strong></td></tr>
-	 		<tr><td>Zeit:</td><td><strong><?=$zeit?></strong></td></tr>
-	 		<tr><td>Zeilen:</td><td><strong><?=$myDB->_results[$i]?></strong></td></tr>
-		 	<tr><td>Datei:</td><td><strong><?=$myDB->_files[$i]?></strong></td></tr>
-		 	<tr><td>Zeile:</td><td><strong><?=$myDB->_lines[$i]?></strong></td></tr>
-		 	<?
-		 	/*if ($result){
-		 	?>
-		 	<tr><td>Analyse:</td><td><div><table style="border:1px black solid;border-style:solid">
-		 	<?
-		 	$tr1='<tr>';
-		 	$tr2='<tr>';
-		 	foreach ($row AS $k=>$v)
-		 	{
-		 	$tr1 .= '<td style="border:1px black solid;border-style:solid"><strong>'.$k.'</strong></td>';
-		 	$tr2 .= '<td>'.$v.'</td>';
-		 	}
-		 	echo $tr1 . "</tr>";
-		 	echo $tr2 . "</tr>";
-		 	?></table></div></td></tr>
-		 	<?
-		 	}*/
-			?>
-		 	</table>
-		 	<br/><br/>
-	 		<?
-
-
-	    }
-      ?>
-	    </div>
+	    
+	    <?php 
+	    $myPT->startBuffer();
+	    $myPT->displayDebugInfo();
+	    $uri =  uniqid();
+	    $myDao = new PhenotypeDataObject();
+	    $myDao->set("html",$myPT->stopBuffer());
+	    $myDao->storeData("system.debuginfo_".$uri,60);
+	    ?>
+	   <div id="pt_dblog" style="margin:0pt;padding:1px 0pt;position:absolute;right:0px;top:30px;margin-bottom:30px;z-index:10000;background-color:#CCC;color:#000;font-size:10px;width:1200px;#display:none"><iframe src="/debuginfo.php?uri=<?php echo $uri?>" width="1200" height="500"></iframe></div>
 	    <?
 	    $html = str_replace("#!#pt_debug#!#",$myPT->stopBuffer(),$html);
     }

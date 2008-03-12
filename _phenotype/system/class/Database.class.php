@@ -23,7 +23,7 @@
  * @subpackage system
  *
  */
-class Database
+class PhenotypeDatabase
 {
   var $dbhandle;
   var $debug=0;

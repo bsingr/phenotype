@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael 
-// Kr‰mer, Annemarie Komor, Jochen Rieger, Alexander
+// Kr√§mer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:

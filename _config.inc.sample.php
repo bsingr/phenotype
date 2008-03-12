@@ -8,6 +8,7 @@ define ("PT_CONFIGMODE",1);
 define ("PT_FRONTENDSESSION",0);
 define ("PT_PAGECACHE",1);
 define ("PT_PAGECACHE_CLEARONCONTENTUPDATE",1);
+define ("PT_CHARSET","iso-8859-1");
 // Bestimmt, ob Contentskins gecached von der Festplatte geholt werden dürfen
 define ("PT_CONTENTCACHE",0);
 // PW für XML-Abruf
@@ -96,6 +97,7 @@ define ("UMASK",0775);
 // ------------------------------------------------------
 
 require (BASEPATH . "buildinfo.inc.php");
+require (CLASSPATH . "PhenotypeBase.class.php");
 require (CLASSPATH . "Phenotype.class.php");
 require (SYSTEMPATH . "_init.inc.php");
 

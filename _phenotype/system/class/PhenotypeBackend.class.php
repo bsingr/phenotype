@@ -102,7 +102,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 <html>
 <head>
 <title>phenotype <?php echo $myPT->version ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="content.css" rel="stylesheet" type="text/css">

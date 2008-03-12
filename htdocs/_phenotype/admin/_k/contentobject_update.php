@@ -124,7 +124,7 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
 		$identifier = "ttp_". $row_ttp["tpl_id"]."_";
 		$mySQL = new SQLBuilder();
 		$mySQL->addField("tpl_bez",$_REQUEST[$identifier . "bez"]);
-		$sql = $mySQL->update("content_template","tpl_id =" . $row_ttp["tpl_id"]);
+		$sql = $mySQL->update("content_template","tpl_id =" . $row_ttp["tpl_id"] . " AND con_id=".$id);
 		$myDB->query($sql);
 
 		// Templates nur im Block 3
