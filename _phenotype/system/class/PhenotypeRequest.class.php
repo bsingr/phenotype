@@ -251,7 +251,7 @@ class PhenotypeRequestStandard
   {
     //ToDO: could be extended to forward POST parameter
     //currently fitting for most purposes
-    return "/reload.php?uri=".base64_encode($_SERVER["REQUEST_URI"]);
+    return SERVERFULLURL ."reload.php?uri=".base64_encode($_SERVER["REQUEST_URI"]);
   }
 }
 ?>

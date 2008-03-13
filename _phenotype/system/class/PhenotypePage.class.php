@@ -796,11 +796,11 @@ class PhenotypePageStandard
 	    ?>
 	    <div id="pt_debug" style="margin:0px;opacity:0.7;filter:alpha(opacity=60);padding:0px;position:absolute;right:0px;top:0px;z-index:10000;background-color:#000;color:#fff;font-family:Arial;font-size:12px;vertical-align:top;height:22px">
 	    <ul style="list-style-type:none;display:block;float:left">
-	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close" style="margin:0px;padding:0px"/></a></li>
+	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug').style.display='none'; document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close" style="margin:0px;padding:0px"/></a></li>
 	    <li style="display:inline;"><a href="<?php echo ADMINFULLURL?>page_edit.php?id=<?php echo$this->id?>" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_edit.gif" alt="edit page" title="edit page"/></a></li>
-	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_dblog').style.display=''; return false;"><img src="<?php echo ADMINFULLURL?>img/b_debug.gif" alt="diplay debug info" title="display debug info"/></a></li>
+	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='';document.getElementById('pt_debug_details').style.display=''; return false;"><img src="<?php echo ADMINFULLURL?>img/b_debug.gif" alt="display debug info" title="display debug info"/></a></li>
 	    <li style="display:inline;"><a href="<?php echo $myPT->codeH($url_reload)?>"><img src="<?php echo ADMINFULLURL?>img/b_aktivieren.gif" alt="clear cache and reload page" title="clear cache and reload page"/></a></li>
-	    <li style="display:inline;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?=$info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | Hi: <?php echo count($myPT->_debughints)?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
+	    <li style="display:inline;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?=$info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
 	    <li style="display:inline;"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo"/></li>
 	    </ul>
 	    </div>
@@ -813,8 +813,15 @@ class PhenotypePageStandard
 	    $myDao->set("html",$myPT->stopBuffer());
 	    $myDao->storeData("system.debuginfo_".$uri,60);
 	    ?>
-	   <div id="pt_dblog" style="margin:0pt;padding:1px 0pt;position:absolute;right:0px;top:30px;margin-bottom:30px;z-index:10000;background-color:#CCC;color:#000;font-size:10px;width:1200px;#display:none"><iframe src="/debuginfo.php?uri=<?php echo $uri?>" width="1200" height="500"></iframe></div>
+	    <div id="pt_debug_cover" style="display:none;background-color:#555555;left:0px;position:absolute;top:0px;right:0px;height:200%;z-index:9999;opacity:0.9">
+	    </div>
+	    <div id="pt_debug_details" style="display:none;position:absolute;top:50px;left:width:900px;height:85%;margin:0px;background-color: #fff;border:0px;padding:0px;z-index:10000;">
+	    <div style="float:left"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close" style="margin:0px;padding:0px"/></a></div>
+	    <iframe src="<?php echo SERVERFULLURL ?>debuginfo.php?uri=<?php echo $uri?>" style="width:900px;height:100%;border:0px;overflow: auto;"></iframe>
+	    </div>
 	    <?
+	    echo "HALLO".$myDao->bez;
+	    
 	    $html = str_replace("#!#pt_debug#!#",$myPT->stopBuffer(),$html);
     }
     echo $html;

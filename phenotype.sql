@@ -242,7 +242,7 @@ CREATE TABLE `content_template` (
 CREATE TABLE `dataobject` (
   `dao_id` int(11) NOT NULL auto_increment,
   `dao_bez` varchar(255) collate latin1_general_ci NOT NULL,
-  `dao_props` text collate latin1_general_ci NOT NULL,
+  `dao_props` longtext collate latin1_general_ci NOT NULL,
   `dao_date` int(11) NOT NULL,
   `dao_ttl` int(11) NOT NULL,
   `dao_lastbuild_time` varchar(20) collate latin1_general_ci NOT NULL,
