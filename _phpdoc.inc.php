@@ -78,6 +78,14 @@ class PhenotypeUser extends PhenotypeUserStandard  {}
  */
 class PhenotypeDataObject extends PhenotypeDataObjectStandard {}
 
+
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
+class PhenotypeSystemDataObject extends PhenotypeSystemDataObjectStandard {}
+
 // Diese Klasse wird mit dem vollständigen Umbau des Backends überflüssig !
 /**
  * @package phenotype

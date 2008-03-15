@@ -40,3 +40,4 @@ ALTER TABLE `dataobject` ADD `dao_params` VARCHAR( 255 ) NOT NULL AFTER `dao_bez
 ALTER TABLE `dataobject` ADD `dao_type` TINYINT NOT NULL ;
 ALTER TABLE `dataobject` DROP `dao_lastbuild_time`;
 ALTER TABLE `dataobject` DROP INDEX `dao_bez`  
+ALTER TABLE `dataobject` ADD `dao_clearonedit` TINYINT NOT NULL ;

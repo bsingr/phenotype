@@ -241,7 +241,7 @@ class PhenotypeRequestStandard
     {
       if (!in_array($k,$_ignore))
       {
-        $hash  .="#".$k."#".$v;
+        $hash  .= $k."#".$v."#";
       }
     }
     return $hash;

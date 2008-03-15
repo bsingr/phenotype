@@ -449,8 +449,25 @@ class PhenotypeAdminStandard
 		}
 	}
 
+	/**
+	 * @todo: displaying php code without color coding doesn't work ??
+	 *
+	 * @param unknown_type $filename
+	 * @return unknown
+	 */
 	function readPHP_HTMLArea($filename)
 	{
+ 		global $myPT;
+ 		
+ 		$buffer = file_get_contents($filename);
+ 		
+		if ($buffer=="")return('<font size="3"><pre></pre></font>');
+		if ($myPT->getPref("backend.colorcoding",1))
+		{
+		  return $myPT->colorcodePHP($buffer);
+		}
+
+    /*
 		global $myPT;
 		$fp = fopen ($filename,"r");
 		$buffer ="";
@@ -478,11 +495,29 @@ class PhenotypeAdminStandard
 		unlink($filename_bak);
 
 		return ('<font size="3">' .htmlentities($buffer) . '</font>');
+		*/
+	
 	}
 
+	/**
+	 * @todo: displaying html code without color coding doesn't work ??
+	 *
+	 * @param unknown_type $filename
+	 * @return unknown
+	 */
 	function readHTML_HTMLArea($filename)
 	{
+  
 		global $myPT;
+		$buffer = file_get_contents($filename);
+		if ($buffer=="")return('<font size="3"><pre></pre></font>');
+		if ($myPT->getPref("backend.colorcoding",1))
+		{
+		  return $myPT->colorcodeHTML($buffer);
+		}
+		return $myPT->codeH($buffer);
+		
+		/*
 		$fp = fopen ($filename,"r");
 		$buffer ="";
 		if($fp)
@@ -494,7 +529,7 @@ class PhenotypeAdminStandard
 		}
 		fclose ($fp);
 		if ($buffer=="")return('<font size="3"><pre></pre></font>');
-		$buffer = "<?php _CHEAT_SHOW_SOURCE_" . $buffer . "_CHEAT_SHOW_SOURCE_ ?>";
+		/*$buffer = "<?php _CHEAT_SHOW_SOURCE_" . $buffer . "_CHEAT_SHOW_SOURCE_ ?>";
 		$buffer = str_replace(chr(92),"_CHR_ASCII_92_",$buffer);
 		$filename_bak = TEMPPATH ."htmlarea/~" . uniqid("") . ".tmp";
 		$fp = fopen ($filename_bak,"w");
@@ -512,7 +547,9 @@ class PhenotypeAdminStandard
 		//$buffer = str_replace('#0000BB',"000000",$buffer);
 
 		unlink($filename_bak);
+		
 		return ('<font size="3">' .htmlentities($buffer) . '</font>');
+		*/
 	}
 
 	function readPHP_TextArea($filename)

@@ -7,8 +7,8 @@ define ("PT_BACKEND",1);
 define ("PT_CONFIGMODE",1);
 define ("PT_FRONTENDSESSION",0);
 define ("PT_PAGECACHE",1);
+define ("PT_INCLUDECACHE",1);
 define ("PT_PAGECACHE_CLEARONCONTENTUPDATE",1);
-define ("PT_CHARSET","iso-8859-1");
 // Bestimmt, ob Contentskins gecached von der Festplatte geholt werden dürfen
 define ("PT_CONTENTCACHE",0);
 // PW für XML-Abruf
@@ -137,13 +137,6 @@ define("PT_LOG_LOGFILE", TEMPPATH ."/logs/phenotype.log");
 define("PT_LOG_TIMEFORMAT", "d/M/Y H:i:s O");
 define("PT_LOG_CLIENTINFO_HEADER", '');
 define("PT_LOG_CLIENTINFO_SERVER", 'REMOTE_ADDR');
-
-// ------------------------------------------------------
-// Data Objects
-// ------------------------------------------------------
-
-define("PT_DATAOBJECTS_ENABLED", 0);
-// set this to 1 to enable the integration of PhenotypeDataObjects2
 
 // ------------------------------------------------------
 // Einbindung der anwendungsspezifischen Hostkonfiguration

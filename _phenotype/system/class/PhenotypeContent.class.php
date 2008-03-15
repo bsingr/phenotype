@@ -201,10 +201,6 @@ class PhenotypeContentStandard extends PhenotypeBase
     }
     $this->buildCache();
 
-    if (PT_DATAOBJECTS_ENABLED == 1) {
-      PhenotypeDataObject2::onUpdate(DAO_TYPE_CONTENT, $this->content_type, $this->id);
-    }
-
     // datatables?
     if ($this->use_datatable){$this->storeDataTable();}
     return $s;

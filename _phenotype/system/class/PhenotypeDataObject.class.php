@@ -34,8 +34,9 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
   public $bez="";
   public $paramhash="";
   public $clearOnEdit = 0;
-  
+
   public $stored = false;
+  public $loaded = false;
 
   function __construct($bez,$params=array(), $forceBuild=false,$clearOnEdit = false)
   {
@@ -43,7 +44,7 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
 
     // always delete all expired dataobjects at first
     $sql = "DELETE FROM dataobject WHERE dao_ttl <" . time() ." AND dao_ttl <>0";
-    $myDB->query($sql);
+    $myDB->query($sql,"DAO \"".$bez."\": deleting expired entries.");
 
     if ($bez=="")
     {
@@ -58,18 +59,18 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
     }
     $this->paramhash = $paramhash;
 
-    
+
     if ($clearOnEdit)
     {
       // this information is stored in the database and utilized elsewhere
       $this->clearOnEdit = 1;
     }
-    
+
     if (!$forceBuild)
     {
-      $sql = "SELECT * FROM dataobject WHERE dao_bez='". mysql_escape_string($bez)."' AND dao_params ='".mysql_escape_string($paramhash)."' AND dao_type=". 
-    $this->dao_type;
-      $rs = $myDB->query($sql);
+      $sql = "SELECT * FROM dataobject WHERE dao_bez='". mysql_escape_string($bez)."' AND dao_params ='".mysql_escape_string($paramhash)."' AND dao_type=".
+      $this->dao_type;
+      $rs = $myDB->query($sql,"DAO \"".$bez."\": initialization");
 
       if (mysql_num_rows($rs)==0)
       {
@@ -79,6 +80,7 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
       {
         $row = mysql_fetch_array($rs);
         $this->_props = unserialize($row["dao_props"]);
+        $this->loaded = true;
       }
       $this->bez = $bez;
     }
@@ -88,14 +90,18 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
       $method = "buildData" .$bez;
       if (method_exists($this,$method))
       {
-         call_user_func(array($this,$method),$params);
+        call_user_func(array($this,$method),$params);
       }
     }
 
   }
 
 
-  
+  function isLoaded()
+  {
+    return $this->loaded;
+  }
+
   function __destruct()
   {
     if ($this->stored==false)
@@ -109,25 +115,33 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
   {
     global $myDB;
 
+    $context="DAO \"".$this->bez."\": stored.";
+        
     if ($clearOnEdit!==null)
     {
-      $this->clearOnEdit = $clearOnEdit;
+      $this->clearOnEdit = 1;
     }
-
+    
+    if ($seconds!=0)
+    {
+      $seconds = time()+$seconds;
+      $context = $context ." Valid until ". (date('d.m.Y H:i',$seconds));
+    }
+        
     $sql = "DELETE FROM dataobject WHERE dao_bez='". mysql_escape_string($this->bez)."' AND dao_params ='".$this->paramhash."'";
-    $myDB->query($sql);
+
+
+    $myDB->query($sql,$context);
 
     $mySQL = new SqlBuilder();
     $mySQL->addField("dao_bez",$this->bez);
     $mySQL->addField("dao_params",$this->paramhash);
     $mySQL->addField("dao_type",$this->dao_type);
     $mySQL->addField("dao_props",serialize($this->_props));
-    if ($seconds!=0)
-    {
-      $seconds = time()+$seconds;
-    }
+
     $mySQL->addField("dao_ttl",$seconds,DB_NUMBER);
     $mySQL->addField("dao_date",time(),DB_NUMBER);
+    $mySQL->addField("dao_clearonedit",$this->clearOnEdit,DB_NUMBER);
     $sql = $mySQL->insert("dataobject");
     $myDB->query($sql);
     $this->stored = true;
