@@ -101,6 +101,13 @@ class PhenotypeAdminLayout extends PhenotypeLayout {}
  * @subpackage application
  *
  */
+class PhenotypeNavigationHelper extends PhenotypeNavigationHelperStandard {}
+
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
 class PhenotypeApplication extends PhenotypeApplicationStandard 
 {
 

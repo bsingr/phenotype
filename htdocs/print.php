@@ -13,6 +13,6 @@ $lng_id = $myRequest->getI("lng_id");
 
 $myPage = new PhenotypePage($id);
 $myPage->switchLanguage($lng_id);
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myPage->printview();
 ?>

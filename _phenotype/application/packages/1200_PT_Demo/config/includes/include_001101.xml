@@ -14,177 +14,54 @@
 	<script>&#60;?php
 class PhenotypeInclude_1101 extends PhenotypeInclude
 {
-	&#47;&#47; Seitennavigation
+  &#47;&#47; Seitennavigation
 
-	public $id = 1101;
-
-	protected $pagtree = Array(); &#47;&#47; contains ID of all superior pages 
-
-	
+  public $id = 1101;
 
 
-	function display()
-	{
-		$myNav = $this-&#62;buildFullNavigation(0,1);
-		$this-&#62;displayFlatList($myNav,1);
-	}
+  function display()
+  {
+    global $myPage;
+
+    $myHelper = new PhenotypeNavigationHelper();
 
 
-	function displayFlatList($myNav,$dunk_firstpage)
-	{
-		global $myPT;
-		global $myRequest;
-		
-		$myNav-&#62;buildTree();
+    &#47;&#47; first we must decide which pages we want to display ...
+    $_path = $myHelper-&#62;getPagesWithinPath($myPage-&#62;pag_id_mimikry,true);
 
-		global $myPage;
-		$pag_id = $myPage-&#62;pag_id_mimikry;
+    &#47;&#47; .. i.e. expand within an tree
+    $_pages = $myHelper-&#62;getTree(1,$_path);
 
-		if ($myRequest-&#62;check(&#34;pag_id_mik&#34;))
-		{
-			$pag_id= $myRequest-&#62;getI(&#34;pag_id_mik&#34;);
-		}
-		$html = &#39;&#60;ul&#62;&#39;;
+    &#47;&#47; add homepage (page with id 1 level 1
+    $_newpages = array();
+    $_newpages[1]=1;
+    $_pages = $myHelper-&#62;insertPagesBefore($_pages,$_newpages);
 
 
-		for ($i = 0; $i &#60; count($myNav-&#62;_flattree); $i ++)
-		{
-			$_node = $myNav-&#62;_flattree[$i];
+    &#47;&#47; we want to highlight all pages in the path from current page to the top ...
+    &#47;&#47; ... but not the root level (the homepage)
+    $p=array_search(1,$_path);
+    if($p!==0)
+    {
+      unset($_path[$p]);
+    }
 
+    &#47;&#47; now print out the page tree as unorderd list an highlight all pages in the path
 
-			$ebene = $_node[&#34;ebene&#34;];
+    $html .=&#39;&#60;ul&#62;&#39;;
+    foreach ($_pages AS $pag_id =&#62; $level)
+    {
+      $class=&#34;level&#34;.$level;
 
-			if ($dunk_firstpage)
-			{
-				&#47;&#47; Übergeordnete Startseite elemenieren:
-				if ($ebene&#62;1){$ebene--;}
-			}
-
-			$class = &#34;level&#34;.$ebene;
-
-			&#47;&#47; Aktiver Menüpunkt?
-					
-			if (in_array($_node[&#34;ext_id&#34;],$this-&#62;pagtree))
-			{
-				if (!($dunk_firstpage AND $_node[&#34;ext_id&#34;]==1))
-				{
-					$class.=&#34;active&#34;;
-				}
-			}
-			if ($pag_id == $_node[&#34;ext_id&#34;])
-			{
-				$class.=&#34;active&#34;;
-			}
-			$html .= &#39;&#60;li class=&#34;&#39;. $class .&#39;&#34;&#62;&#60;a href=&#34;index.php?id=&#39;.$_node[&#34;ext_id&#34;].&#39;&#34;&#62;&#39;.$myPT-&#62;codeH($_node[&#34;bez&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
-		}
-
-		$html .=&#39;&#60;&#47;ul&#62;&#39;;
-		echo $html;
-	}
-
-	function buildFullNavigation($pag_id_border=0,$expand=0)
-	{
-		global $myDB;
-		global $myPage;
-		global $myRequest;
-		$pag_id = $myPage-&#62;pag_id_mimikry;
-
-		if ($myRequest-&#62;check(&#34;pag_id_mik&#34;))
-		{
-			$pag_id = $myRequest-&#62;getI(&#34;pag_id_mik&#34;);
-		}
-
-
-		$sql = &#34;SELECT * FROM page WHERE pag_id = &#34;.$pag_id;
-		$rs_page = $myDB-&#62;query($sql);
-		$row_page = mysql_fetch_array($rs_page);
-
-		$myNav = new PhenotypeTree();
-		$pages_id = Array ();
-		$pages_bez = Array ();
-
-		$pag_id_top = $row_page[&#34;pag_id_top&#34;];
-		$pag_id_next = $pag_id_top;
-		$grp_id = $row_page[&#34;grp_id&#34;];
-
-		&#47;&#47; Zunaechst alle Seiten oberhalb der aktuellen Seite ermitteln
-		while ($pag_id_next != $pag_id_border)
-		{
-			$sql = &#34;SELECT * FROM page WHERE pag_id = &#34;.$pag_id_next.&#34; AND grp_id=&#34;.$grp_id.&#34; AND pag_status = 1&#34;;
-			$rs_page1 = $myDB-&#62;query($sql);
-			$row_page1 = mysql_fetch_array($rs_page1);
-			$pag_id_next = $row_page1[&#34;pag_id_top&#34;];
-			$pages_id[] = $row_page1[&#34;pag_id&#34;];
-			$pages_bez[] = $row_page1[&#34;pag_titel&#34;];
-		}
-
-		if ($expand==0)
-		{
-			&#47;&#47; Dann die Seiten in einen Baum hängen
-			$nav_id_top = 0;
-			for ($i = (count($pages_id) - 1); $i &#62;= 0; $i --)
-			{
-				$url = &#34;index.php?id=&#34;.$pages_id[$i];
-				$nav_id_top = $myNav-&#62;addNode($pages_bez[$i], $url, $nav_id_top, $pages_id[$i]);
-			}
-		}
-		else
-		{
-			&#47;&#47; Jetzt die Seiten aneinanderreihen und aufstocken
-			$nav_id_top=0;
-			$pag_id_tree = $pag_id_border;
-			for ($i=(count($pages_id)-1);$i&#62;=0;$i--)
-			{
-				$sql = &#34;SELECT * FROM page WHERE pag_id_top =&#34; . $pag_id_tree . &#34; AND grp_id=&#34; . $grp_id . &#34; AND pag_status = 1 ORDER BY pag_pos&#34;;
-
-				$rs = $myDB-&#62;query($sql);
-				while ($row = mysql_fetch_array($rs))
-				{
-					$url = &#34;index.php?id=&#34; . $row[&#34;pag_id&#34;];
-					
-					if ($pages_id[$i] == $row[&#34;pag_id&#34;])
-					{
-						$nav_id_newtop =$myNav-&#62;addNode($row[&#34;pag_titel&#34;],$url,$nav_id_top,$row[&#34;pag_id&#34;]);
-					}
-					else
-					{
-						if ($pag_id_tree!=$pag_id_border OR $alleseiten==1)
-						{
-							$nav_id = $myNav-&#62;addNode($row[&#34;pag_titel&#34;],$url,$nav_id_top,$row[&#34;pag_id&#34;]);
-						}
-					}
-				}
-				$nav_id_top = $nav_id_newtop;
-				$pag_id_tree = $pages_id[$i];
-			}
-		}
-
-		&#47;&#47; Jetzt alle Seiten auf gleicher Ebene
-
-		$sql = &#34;SELECT * FROM page WHERE pag_id_top = &#34;.$pag_id_top.&#34; AND grp_id=&#34;.$grp_id.&#34; AND pag_status = 1 ORDER BY pag_pos&#34;;
-
-		$rs_page1 = $myDB-&#62;query($sql);
-		while ($row_page1 = mysql_fetch_array($rs_page1))
-		{
-			$url = &#34;index.php?id=&#34;.$row_page1[&#34;pag_id&#34;];
-			$nav_id = $myNav-&#62;addNode($row_page1[&#34;pag_titel&#34;], $url, $nav_id_top, $row_page1[&#34;pag_id&#34;]);
-			&#47;&#47; Check auf untergeordnete Seite der aktuelle Seite
-			if ($row_page1[&#34;pag_id&#34;] == $pag_id)
-			{
-				$sql = &#34;SELECT * FROM page WHERE pag_id_top = &#34;.$pag_id.&#34; AND pag_status = 1 ORDER BY pag_pos&#34;;
-				$rs_page2 = $myDB-&#62;query($sql);
-				while ($row_page2 = mysql_fetch_array($rs_page2))
-				{
-					$url = &#34;page_edit.php?id=&#34;.$row_page2[&#34;pag_id&#34;];
-					$myNav-&#62;addNode($row_page2[&#34;pag_titel&#34;], $url, $nav_id, $row_page2[&#34;pag_id&#34;]);
-				}
-			}
-		}
-		
-		$this-&#62;pagtree = $pages_id;
-		
-		return $myNav;
-	}
+      if(in_array($pag_id,$_path))
+      {
+        $class.=&#34;active&#34;;
+      }
+      $html .= &#39;&#60;li class=&#34;&#39;. $class .&#39;&#34;&#62;&#60;a href=&#34;&#39;.url_for_page($pag_id).&#39;&#34;&#62;&#39;.codeH(title_of_page($pag_id)).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
+    }
+    $html .=&#39;&#60;&#47;ul&#62;&#39;;
+    echo $html;
+  }
 
 
 }

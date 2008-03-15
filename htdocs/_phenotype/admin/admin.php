@@ -32,7 +32,7 @@ if (!$mySUser->checkRight("elm_admin"))
 
 ?>
 <?php
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php

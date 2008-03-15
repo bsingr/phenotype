@@ -57,7 +57,7 @@ class PhenotypeRequestStandard
         $smartURL = preg_replace($patterns,"", $smartURL);
 
         $sql = "SELECT pag_id FROM page WHERE pag_url='". mysql_escape_string($smartURL)."'";
-        $rs = $myDB->query($sql);
+        $rs = $myDB->query($sql,"Request");
 
         if (mysql_num_rows($rs)==1)
         {

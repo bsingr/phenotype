@@ -104,7 +104,7 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
 
   function __destruct()
   {
-    if ($this->changed = true AND $this->stored==false)
+    if ($this->changed == true AND $this->stored==false)
     {
       trigger_error("Dataobject " . $this->bez. " (".$this->paramhash.")  changed, but not stored.",E_USER_NOTICE);
     }

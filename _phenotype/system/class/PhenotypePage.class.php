@@ -104,7 +104,7 @@ class PhenotypePageStandard extends PhenotypeBase
     {
       return parent::get($key);
     }
-    return @$this->_inheritageprops[$bez];
+    return $this->_inheritageprops[$key];
   }
 
   /*
@@ -310,8 +310,6 @@ class PhenotypePageStandard extends PhenotypeBase
     $id = $row["pag_id"];
     $this->id = $id;
     $this->pag_id = $id;
-
-
 
     $this->uid = $row["pag_uid"];
     $this->bez = $row["pag_bez"];
@@ -1272,7 +1270,7 @@ class PhenotypePageStandard extends PhenotypeBase
     global $myDB;
     global $myPT;
     // lokale Smartyinstanz, da die Bausteine ja auch welche nutzen koennen
-    $mySmarty = new Smarty();
+    $mySmarty = new PhenotypeSmarty();
 
     // Titel-Tags und Keywords setzen
     /*
@@ -1408,6 +1406,7 @@ class PhenotypePageStandard extends PhenotypeBase
 
     if ($this->lay_id!=0) // Keine Anzeige, wenn kein Template
     {
+      //$mySmarty->register
       $html .= $mySmarty->fetch($template);
     }
 
@@ -2259,6 +2258,11 @@ class PhenotypePageStandard extends PhenotypeBase
   {
     $this->titel = $s;
   }
+  
+  public function getTitle()
+  {
+    return ($this->titel);
+  }
 
   public function getURL($lng_id=null)
   {
@@ -2288,8 +2292,8 @@ class PhenotypePageStandard extends PhenotypeBase
       {
         $url = $PTC_LANGUAGES[$lng_id]."/".$url;
       }
-      return $url;
     }
+    $url = SERVERURL . $url;
     return $url;
   }
 

@@ -22,7 +22,7 @@ require("_config.inc.php");
 require("_session.inc.php");
 ?>
 <?php
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 $id = $myRequest->getI("id");
 ?>

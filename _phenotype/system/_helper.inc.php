@@ -1,8 +1,32 @@
 <?php
+function codeH($value)
+{
+  global $myPT;
+	return $myPT->codeH($value);
+}
+
+function codeI($value)
+{
+  global $myPT;
+	return $myPT->codeI($value);
+}
+
+function codeHBR($value)
+{
+  global $myPT;
+	return $myPT->codeHBR($value);
+}
+
 function url_for_page($pag_id,$_params=array(),$lng_id=null)
 {
   global $myPT;
 	return $myPT->url_for_page($pag_id,$_params,$lng_id);
+}
+
+function title_of_page($pag_id,$lng_id=null)
+{
+  global $myPT;
+	return $myPT->title_of_page($pag_id,$lng_id);
 }
 
 /*

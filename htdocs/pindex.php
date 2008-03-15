@@ -26,7 +26,7 @@ $id= PAG_ID_STARTPAGE;
 $lng_id = $myRequest->getI("lng_id");
 $myPage = new PhenotypePage($id,1);
 $myPage->switchLanguage($lng_id);
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 
 $cache=PT_PAGECACHE;
 

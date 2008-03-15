@@ -50,7 +50,7 @@ $sql = $mySQL->insert("include");
 $myDB->query($sql);
 $id = mysql_insert_id();
 
-$mySmarty = new Smarty();
+$mySmarty = new PhenotypeSmarty();
 
 	
 $mySmarty->template_dir = SYSTEMPATH  . "templates/";

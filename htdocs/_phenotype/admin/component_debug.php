@@ -38,7 +38,7 @@ if (!$mySUser->checkRight("superuser"))
 <body>
 <pre>
 <?php
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 
 $id = $myRequest->getI("id");

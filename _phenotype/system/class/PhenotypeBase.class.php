@@ -30,7 +30,7 @@ class PhenotypeBase
 
   public $_props = Array ();
   public $changed = false;
-  
+
   function __construct()
   {
     $this->charset = PT_CHARSET;
@@ -41,7 +41,8 @@ class PhenotypeBase
     if(array_key_exists($k,$this->_props)){return true;}
     return false;
   }
-  
+
+
 
   function set($property, $value)
   {
@@ -52,23 +53,33 @@ class PhenotypeBase
 
   function clear($property)
   {
-    unset ($this->_props[$property]);
+    if ($this->check($property))
+    {
+      unset ($this->_props[$property]);
+    }
   }
 
 
   function get($property)
   {
-    return @ ($this->_props[$property]);
+    if ($this->check($property))
+    {
+      return ($this->_props[$property]);
+    }
+    else
+    {
+      return "";
+    }
   }
 
   function getI($property)
   {
-    return @ (int) ($this->_props[$property]);
+    return  (int) ($this->get($property));
   }
 
   function getD($property, $decimals)
   {
-    return sprintf("%01.".$decimals."f", @ ($this->_props[$property]));
+    return sprintf("%01.".$decimals."f", ($this->get($property)));
   }
 
 
@@ -80,7 +91,7 @@ class PhenotypeBase
 
   function getHTML($property)
   {
-    return @ htmlentities($this->_props[$property],null,$this->charset);
+    return @ htmlentities(($this->get($property)),null,$this->charset);
   }
 
   function getH($property)
@@ -98,7 +109,7 @@ class PhenotypeBase
   }
 
 
-  
+
 
   function getU($property)
   {
@@ -130,11 +141,7 @@ class PhenotypeBase
   function getX($property)
   {
     global $myPT;
-
-
-
-    $s = @ $this->_props[$property];
-    return ($myPT->codeX($s));
+    return ($this->codeX(($this->get($property))));
   }
 
 
@@ -147,7 +154,7 @@ class PhenotypeBase
   }
 
 
-  function xmlencode($s,$keepquotes=0)
+  function xmlencode($s)
   {
     //The following are the valid XML characters and character ranges (hex values) as defined by the W3C XML
     //language specifications 1.0: #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
@@ -181,14 +188,14 @@ class PhenotypeBase
     $url = str_replace("Ö","Oe",$url);
     $url = str_replace("Ü","Ue",$url);
     $url = str_replace("ß","ss",$url);
-    
+
     // Alle Sonderzeichen, die nicht URL-typisch sind rausfiltern
     $patterns = "/[^-a-z0-9A-Z_,.\/]*/";
     $url = preg_replace($patterns,"",$url);
     return $url;
 
   }
-  
+
   function codeH($s)
   {
     return @ htmlentities($s,null,$this->charset);

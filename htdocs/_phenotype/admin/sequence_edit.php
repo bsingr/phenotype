@@ -77,7 +77,7 @@ $id = (int)$_REQUEST["id"];
 $block_nr = (int)$_REQUEST["b"];
 $toolkit = (int)$_REQUEST["t"];
 
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 
 // Befinden wir uns schon im Editbuffer-Modus?

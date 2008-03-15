@@ -20,7 +20,7 @@
 require("_config.inc.php");
 
 if (PT_BACKEND!=1){exit();}
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 
 

@@ -24,7 +24,7 @@ require("_session.inc.php");
 $myApp->onPress_Start();
 ?>
 <?php
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php

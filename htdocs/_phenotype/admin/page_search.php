@@ -48,7 +48,7 @@ $myPage = new PhenotypePage($id,$ver_id);
 $_SESSION["pag_id"]=$myPage->id;
 $_SESSION["grp_id"]=$myPage->grp_id;
 
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 ?>
 <?php

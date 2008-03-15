@@ -49,7 +49,7 @@ $sql = $mySQL->insert("content");
 $myDB->query($sql);
 $id = mysql_insert_id();
 
-$mySmarty = new Smarty();
+$mySmarty = new PhenotypeSmarty();
 
 $mySmarty->template_dir = SYSTEMPATH  . "templates/";	
 $mySmarty->compile_dir = SMARTYCOMPILEPATH;	

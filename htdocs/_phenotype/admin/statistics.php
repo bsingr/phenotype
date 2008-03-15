@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("elm_analyse"))
 }
 ?>
 <?php
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php

@@ -147,7 +147,7 @@ if (!isset($_REQUEST["editbuffer"]) OR $languagechange == 1)
 //$myPage = $myPT->getPage($id);
 
 
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 ?>
 <?php

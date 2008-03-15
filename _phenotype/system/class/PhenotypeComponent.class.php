@@ -374,7 +374,7 @@ class PhenotypeComponentStandard
 		global $myPT;
 		$myPT->startbuffer();
 	?> 
-     $mySmarty = new Smarty();
+     $mySmarty = new PhenotypeSmarty();
 		 global $myDB;
 		 global $myPT;
 		 

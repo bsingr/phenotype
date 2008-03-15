@@ -37,7 +37,7 @@ if (!$mySUser->checkRight("elm_extras"))
 <?php
 
 
-$mySmarty = new Smarty;
+$mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php

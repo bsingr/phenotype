@@ -923,6 +923,12 @@ class PhenotypeStandard extends PhenotypeBase
   public static function handleError($errno, $errstr, $errfile, $errline)
   {
     global $myPT;
+    
+    // we ignore smarty warnings
+    if ($errno==E_WARNING AND strpos($errfile,'/smarty/')!==0)
+    {
+      return;
+    }
     if ($errno==E_WARNING OR $errno == E_USER_WARNING)
     {
       // this method is executed via error and/or exception handler
@@ -1606,7 +1612,7 @@ border: 1px solid #cfcfcf;
     {
       $myDAO = $this->URLHelper;
     }
-    $token = "p".$pag_id."l".(int)$lng_id;
+    $token = "url_p".$pag_id."l".(int)$lng_id;
 
     if ($myDAO->check($token))
     {
@@ -1627,6 +1633,38 @@ border: 1px solid #cfcfcf;
     return $url;
   }
 
+  public function title_of_page($pag_id,$lng_id=null)
+  {
+    if ($this->URLHelper==false)
+    {
+      $myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+      $this->URLHelper = $myDAO;
+    }
+    else
+    {
+      $myDAO = $this->URLHelper;
+    }
+    $token = "title_p".$pag_id."l".(int)$lng_id;
+
+    if ($myDAO->check($token))
+    {
+      $title =  $myDAO->get($token);
+    }
+    else
+    {
+      $myPage = new PhenotypePage($pag_id);
+      if ($lng_id!=null)
+      {
+        $myPage->switchLanguage($lng_id);
+      }
+      $title = $myPage->getTitle();
+      $myDAO->set($token,$title);
+      $myDAO->store();
+    }
+
+
+    return $title;
+  }  
 
 }
 
