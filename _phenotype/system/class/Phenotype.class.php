@@ -854,6 +854,11 @@ class PhenotypeStandard extends PhenotypeBase
 		global $myDB;
 
 
+		if ($sql!="")
+		{
+		  $message .="\n\n".$sql;
+		}
+		
 		// first get the current output
 		$html = $this->stopBuffer();
 		$html = $this->colorcode($html);
@@ -1014,7 +1019,7 @@ em {
 	src="<?php echo ADMINFULLURL ?>img/phenotypelogo.gif" alt="Phenotype" /></div>
 <div id="main">
 <div id="header"><strong><?=$this->codeH($headline)?></strong>
-<div id="message"><?php echo $this->codeH($message)?></div>
+<div id="message"><?php echo $this->codeHBR($message)?></div>
 </div>
 		<?php if (is_object($myRequest)){?> <em>Request:</em><br />
 <div id="request">
@@ -1360,8 +1365,7 @@ border: 1px solid #cfcfcf;
 					?><span class="exec_context"><?php echo $context?></span><?
 }
 }
-?><span class="filename">[<?php echo $this->getFilenameOutOfPath($myDB->_files[$i])?>
-in line <?php echo $myDB->_lines[$i]?>]</span><br />
+?><span class="filename">[<?php echo $this->getFilenameOutOfPath($myDB->_files[$i])?> in line <?php echo $myDB->_lines[$i]?>]</span><br />
 <table class="query">
 	<tr>
 		<td rowspan="3" class="querynr" valign="top">#<?php echo sprintf('%04d',$i+1)?>:</td>
@@ -1407,111 +1411,42 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 	<?php }?>
 </ul>
 	<?php }?></div>
+	
+	<?php
+	$myDao = new PhenotypeSystemDataObject("DebugLookUpTable");
+	?>
+	<div id="database"><em>Quick Lookup</em><br />
+	<span class="exec_context">components</span>
+	<ul class="source">
+	<?php foreach ($myDao->get("components") AS $k=>$v){?>
+	<li><span>#<?php echo sprintf('%04d',$k)?>:
+	</span><?php echo $v?></li>
+	<?php }?>
+	</ul>
+	<span class="exec_context">content object classes</span>
+	<ul class="source">
+	<?php foreach ($myDao->get("content") AS $k=>$v){?>
+	<li><span>#<?php echo sprintf('%04d',$k)?>:
+	</span><?php echo $v?></li>
+	<?php }?>
+	</ul>
+			<span class="exec_context">includes</span>
+	<ul class="source">
+	<?php foreach ($myDao->get("includes") AS $k=>$v){?>
+	<li><span>#<?php echo sprintf('%04d',$k)?>:
+	</span><?php echo $v?></li>
+	<?php }?>
+	</ul>
+	</div>
 	<?php }?></div>
 <div id="footer"><?php echo date('d.m.Y H:i');?></div>
 </div>
 </body>
 </html>
-	<?
-	return ("");
-	?>
-
-<div id="pt_dblog"
-	style="margin: 0pt; padding: 1px 0pt; position: absolute; right: 0px; top: 30px; margin-bottom: 30px; z-index: 10000; background-color: #CCC; color: #000; font-size: 10px; # display: none">
-<iframe style="width: 200px; height: 50px"></iframe> [<a href="#"
-	onclick="document.getElementById('pt_dblog').style.display='none'; return false;">x</a>]<br />
-<div><strong>Request:</strong><br />
-	<?
-	foreach ($myRequest->_REQUEST AS $k =>$v)
-	{
-		echo '<span style="display:block;width:100px;float:left">'.$this->codeH($k).'</span>: <span>'.$myRequest->getH($k).'</span><br/>';
-	}
-	?><br />
-<br />
-</div>
-	<?
-	$c = count($myDB->_sql);
-	$border = 0.01;
-	$context ="";
-	for ($j=1;$j<=$c;$j++)
-	{
-		$i=$j-1;
-		if ($myDB->_context[$i]!=$context)
-		{
-			$context = $myDB->_context[$i];
-			echo '<div style="background-color:#4a0;font-weight:bold">'.$context.'</div>';
-		}
-		/*
-		 $sql = "EXPLAIN ". $myDB->_sql[$i];
-		 $result = mysql_query ($sql, $myDB->dbhandle);
-		 if ($result)
-		 {
-		 $row = mysql_fetch_assoc($result);
-		 }
-		 */
-
-		$zeit = sprintf("%0.4f",$myDB->_times[$i]);
-		if ($zeit>$border)
-		{
-			echo '<table style="color:red">';
-		}
-		else
-		{
-			echo '<table>';
-		}
-		?>
-<tr>
-	<td>Nummer:</td>
-	<td><strong><?=$i+1?></strong></td>
-</tr>
-<tr>
-	<td>SQL:</td>
-	<td><strong><?=htmlentities($myDB->_sql[$i])?></strong></td>
-</tr>
-<tr>
-	<td>Zeit:</td>
-	<td><strong><?=$zeit?></strong></td>
-</tr>
-<tr>
-	<td>Zeilen:</td>
-	<td><strong><?=$myDB->_results[$i]?></strong></td>
-</tr>
-<tr>
-	<td>Datei:</td>
-	<td><strong><?=$myDB->_files[$i]?></strong></td>
-</tr>
-<tr>
-	<td>Zeile:</td>
-	<td><strong><?=$myDB->_lines[$i]?></strong></td>
-</tr>
-		<?
-		/*if ($result){
-		 ?>
-		 <tr><td>Analyse:</td><td><div><table style="border:1px black solid;border-style:solid">
-		 <?
-		 $tr1='<tr>';
-		 $tr2='<tr>';
-		 foreach ($row AS $k=>$v)
-		 {
-		 $tr1 .= '<td style="border:1px black solid;border-style:solid"><strong>'.$k.'</strong></td>';
-		 $tr2 .= '<td>'.$v.'</td>';
-		 }
-		 echo $tr1 . "</tr>";
-		 echo $tr2 . "</tr>";
-		 ?></table></div></td></tr>
-		 <?
-		 }*/
-		?>
-</table>
-<br />
-<br />
-		<?
-
+	<?php
 
 }
-?></div>
-<?
-}
+
 }
 
 

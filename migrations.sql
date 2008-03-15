@@ -34,3 +34,9 @@ ALTER TABLE `content_template` CHANGE `tpl_id` `tpl_id` INT( 11 ) NOT NULL AUTO_
 
 ALTER TABLE `extra_template` CHANGE `tpl_id` `tpl_id` INT( 11 ) NOT NULL AUTO_INCREMENT;
 
+
+
+ALTER TABLE `dataobject` ADD `dao_params` VARCHAR( 255 ) NOT NULL AFTER `dao_bez` ;
+ALTER TABLE `dataobject` ADD `dao_type` TINYINT NOT NULL ;
+ALTER TABLE `dataobject` DROP `dao_lastbuild_time`;
+ALTER TABLE `dataobject` DROP INDEX `dao_bez`  

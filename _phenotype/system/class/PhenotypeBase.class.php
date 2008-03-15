@@ -24,7 +24,7 @@
  */
 class PhenotypeBase
 {
-  
+
   public $charset="";
 
 
@@ -92,7 +92,7 @@ class PhenotypeBase
   /*
   function getURL($property)
   {
-    return @ urlencode($this->_props[$property]);
+  return @ urlencode($this->_props[$property]);
   }
   */
 
@@ -109,7 +109,7 @@ class PhenotypeBase
     return (string) @ addslashes($this->_props[$property]);
   }
 
-  
+
   function getA($property)
   {
     throw new Exception("Deprecated call of function getA");
@@ -120,7 +120,7 @@ class PhenotypeBase
 
     return $v;
   }
-  
+
 
 
   function getX($property)
@@ -169,6 +169,15 @@ class PhenotypeBase
   function codeH($s)
   {
     return @ htmlentities($s,null,$this->charset);
+  }
+
+  function codeHBR($s)
+  {
+    $html =  @ nl2br(htmlentities($s,null,$this->charset));
+    // Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
+    $html = str_replace(chr(10), "", $html);
+    $html = str_replace(chr(13), "", $html);
+    return ($html);
   }
 
   /**

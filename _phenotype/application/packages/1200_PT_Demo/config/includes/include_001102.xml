@@ -39,11 +39,11 @@ class PhenotypeInclude_1102 extends PhenotypeInclude
 		{
 			if ($row[&#34;pag_id&#34;]==$myPage-&#62;getI(&#34;category&#34;))
 			{
-				$html .= &#39;&#60;li class=&#34;active&#34;&#62;&#60;a href=&#34;index.php?id=&#39;.$row[&#34;pag_id&#34;].&#39;&#34; class=&#34;active&#34;&#62;&#39;.$myPT-&#62;getH($row[&#34;pag_titel&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
+				$html .= &#39;&#60;li class=&#34;active&#34;&#62;&#60;a href=&#34;index.php?id=&#39;.$row[&#34;pag_id&#34;].&#39;&#34; class=&#34;active&#34;&#62;&#39;.$myPT-&#62;codeH($row[&#34;pag_titel&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
 			}
 			else
 			{
-				$html .= &#39;&#60;li&#62;&#60;a href=&#34;index.php?id=&#39;.$row[&#34;pag_id&#34;].&#39;&#34;&#62;&#39;.$myPT-&#62;getH($row[&#34;pag_titel&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
+				$html .= &#39;&#60;li&#62;&#60;a href=&#34;index.php?id=&#39;.$row[&#34;pag_id&#34;].&#39;&#34;&#62;&#39;.$myPT-&#62;codeH($row[&#34;pag_titel&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
 			}
 
 

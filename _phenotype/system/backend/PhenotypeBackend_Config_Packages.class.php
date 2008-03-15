@@ -54,7 +54,8 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 				$grp_id = $myRequest->getI("grp_id");
 				$forceBuild=false;
 				if ($filenr==0){$forceBuild=true;}
-				$myDO = new PhenotypeDataObject("system.export_pages_grp_id_".$grp_id,$forceBuild);
+				$myDO = new PhenotypeSystemDataObject("PackageExportHelper",array("type"=>"pages","grp_id"=>$grp_id),$forceBuild,true);
+				//"system.export_pages_grp_id_".$grp_id,$forceBuild);
 				$_ids = $myDO->get("objects");
 				$count = count($_ids);
 			break;			
@@ -64,7 +65,8 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 				$con_id = $myRequest->getI("con_id");
 				$forceBuild=false;
 				if ($filenr==0){$forceBuild=true;}
-				$myDO = new PhenotypeDataObject("system.export_content_con_id_".$con_id,$forceBuild);
+				$myDO = new PhenotypeSystemDataObject("PackageExportHelper",array("type"=>"content","con_id"=>$con_id),$forceBuild,true);
+				//$myDO = new PhenotypeDataObject("system.export_content_con_id_".$con_id,$forceBuild);
 				$_ids = $myDO->get("objects");
 				$count = count($_ids);
 			break;
@@ -75,7 +77,8 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 				$grp_id = $myRequest->getI("grp_id");
 				$forceBuild=false;
 				if ($filenr==0){$forceBuild=true;}
-				$myDO = new PhenotypeDataObject("system.export_media_grp_id_".$grp_id,$forceBuild);
+				$myDO = new PhenotypeSystemDataObject("PackageExportHelper",array("type"=>"media","grp_id"=>$grp_id),$forceBuild,true);
+				//$myDO = new PhenotypeDataObject("system.export_media_grp_id_".$grp_id,$forceBuild);
 				$_ids = $myDO->get("objects");
 				$count = count($_ids);
 			break;	
@@ -85,7 +88,8 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 				$sbj_id = $myRequest->getI("sbj_id");
 				$forceBuild=false;
 				if ($filenr==0){$forceBuild=true;}
-				$myDO = new PhenotypeDataObject("system.export_tickets_sbj_id_".$sbj_id,$forceBuild);
+				//$myDO = new PhenotypeDataObject("system.export_tickets_sbj_id_".$sbj_id,$forceBuild);
+				$myDO = new PhenotypeSystemDataObject("PackageExportHelper",array("type"=>"tickets","sbj_id"=>$sbj_id),$forceBuild,true);
 				$_ids = $myDO->get("objects");
 				$count = count($_ids);
 			break;			

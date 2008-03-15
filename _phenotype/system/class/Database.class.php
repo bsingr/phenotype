@@ -47,11 +47,24 @@ class PhenotypeDatabase
     $this->dbhandle = mysql_pconnect ( DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD) or $myPT->displayErrorPage("DB Exception","Unable to connect to SQL server.");
     $myPT->respectPHPWarnings();
     $this->selectDatabase();
-    
+
     if (PT_DEBUG==1)
     {
       $this->debug=1;
     }
+
+    // for more information about MySQL modes look http://dev.mysql.com/doc/refman/5.0/en/server-sql-mode.html
+    $sql = "SET @@session.sql_mode='NO_FIELD_OPTIONS';";
+    $this->query($sql,"Setting MySQL operation mode.");
+    if (PT_CHARSET=='utf-8')
+    {
+      $sql = "SET NAMES 'utf8'";
+    }
+    else
+    {
+      $sql = "SET NAMES 'latin1'";
+    }
+    $this->query($sql);
 
 
   }
@@ -65,12 +78,12 @@ class PhenotypeDatabase
     global $myPT;
     $myPT->suppressPHPWarnings();
     mysql_select_db ($database, $this->dbhandle) or $myPT->displayErrorPage("DB Exception","Unable to select database.");
-     $myPT->respectPHPWarnings();
+    $myPT->respectPHPWarnings();
   }
 
   function query($sql,$context="")
   {
-    
+
     if ($this->debug==1)
     {
       if ($context!="")
@@ -99,7 +112,7 @@ class PhenotypeDatabase
         global $myPT;
         $_traces =	debug_backtrace();
         $myPT->displayErrorPage("SQL Error",mysql_errno($this->dbhandle)." - ".mysql_error($this->dbhandle),$_traces[0]["file"],$_traces[0]["line"],$sql);
-        
+
 
         $zeile = $_traces[0]["line"];
         $file = $_traces[0]["file"];
@@ -242,7 +255,7 @@ filter:alpha(opacity=95);padding-left:10px;">
   {
     $this->nextcontext = $context;
   }
-  
+
   function getQueries()
   {
     return $this->_sql;

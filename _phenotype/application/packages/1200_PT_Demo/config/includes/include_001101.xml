@@ -75,7 +75,7 @@ class PhenotypeInclude_1101 extends PhenotypeInclude
 			{
 				$class.=&#34;active&#34;;
 			}
-			$html .= &#39;&#60;li class=&#34;&#39;. $class .&#39;&#34;&#62;&#60;a href=&#34;index.php?id=&#39;.$_node[&#34;ext_id&#34;].&#39;&#34;&#62;&#39;.$myPT-&#62;getH($_node[&#34;bez&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
+			$html .= &#39;&#60;li class=&#34;&#39;. $class .&#39;&#34;&#62;&#60;a href=&#34;index.php?id=&#39;.$_node[&#34;ext_id&#34;].&#39;&#34;&#62;&#39;.$myPT-&#62;codeH($_node[&#34;bez&#34;]).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
 		}
 
 		$html .=&#39;&#60;&#47;ul&#62;&#39;;

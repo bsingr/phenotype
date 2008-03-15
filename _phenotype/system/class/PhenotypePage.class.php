@@ -809,9 +809,10 @@ class PhenotypePageStandard
 	    $myPT->startBuffer();
 	    $myPT->displayDebugInfo();
 	    $uri =  uniqid();
-	    $myDao = new PhenotypeDataObject();
+	    $myDao = new PhenotypeSystemDataObject("DebugInfo",array("uri"=>$uri));
 	    $myDao->set("html",$myPT->stopBuffer());
-	    $myDao->storeData("system.debuginfo_".$uri,60);
+	    //$myDao->storeData("system.debuginfo_".$uri,60);
+	    $myDao->store(60);
 	    ?>
 	    <div id="pt_debug_cover" style="display:none;background-color:#555555;left:0px;position:absolute;top:0px;right:0px;height:200%;z-index:9999;opacity:0.9">
 	    </div>
@@ -820,7 +821,6 @@ class PhenotypePageStandard
 	    <iframe src="<?php echo SERVERFULLURL ?>debuginfo.php?uri=<?php echo $uri?>" style="width:900px;height:100%;border:0px;overflow: auto;"></iframe>
 	    </div>
 	    <?
-	    echo "HALLO".$myDao->bez;
 	    
 	    $html = str_replace("#!#pt_debug#!#",$myPT->stopBuffer(),$html);
     }

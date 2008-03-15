@@ -488,7 +488,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		<div id="lightbox">
 		<?php
 
-		$myDO = new PhenotypeDataObject("system.lightbox_media_usr_id_".$mySUser->id);
+		$myDO = new PhenotypeSystemDataObject("MediaLightbox",array("usr_id"=>$mySUser->id));
 
 		$_objects = $myDO->get("objects");
 
@@ -621,7 +621,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		global $myDB;
 
 
-		$myDO = new PhenotypeDataObject("system.lightbox_media_usr_id_".$mySUser->id);
+		$myDO = new PhenotypeSystemDataObject("MediaLightbox",array("usr_id"=>$mySUser->id));
 		$_objects = $myDO->get("objects");
 
 		$myPT->startBuffer();
@@ -3413,7 +3413,7 @@ function initoid()
 		$lightbox = $myRequest->getI("lightbox");
 		if ($lightbox==1)
 		{
-			$myDO = new PhenotypeDataObject("system.lightbox_media_usr_id_".$mySUser->id);
+			$myDO = new PhenotypeSystemDataObject("MediaLightbox",array("usr_id"=>$mySUser->id));
 			$_objects = $myDO->get("objects");
 		}
 

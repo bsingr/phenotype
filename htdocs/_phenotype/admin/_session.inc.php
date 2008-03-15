@@ -20,8 +20,10 @@
 <?php
 if (PT_BACKEND!=1){exit();}
 
-// Session auch ohne Cookies ermöglichen
-ini_set("session.use_trans_sid",1);
+$myPT->suppressPHPWarnings();
+
+// cookies must be enabled
+ini_set("session.use_trans_sid",0);
 @session_start();
 
 
