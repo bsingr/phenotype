@@ -296,12 +296,12 @@ class PhenotypeExtraStandard
 		$xml = '<?xml version="1.0" encoding="ISO-8859-1" ?>
 <phenotype>
 	<meta>
-		<ext_id>'.$myPT->getX($row['ext_id']).'</ext_id>
-		<ext_bez>'.$myPT->getX($row['ext_bez']).'</ext_bez>		
-		<ext_rubrik>'.$myPT->getX($row['ext_rubrik']).'</ext_rubrik>
-		<ext_description>'.$myPT->getX($row['ext_description']).'</ext_description>
+		<ext_id>'.$myPT->codeX($row['ext_id']).'</ext_id>
+		<ext_bez>'.$myPT->codeX($row['ext_bez']).'</ext_bez>		
+		<ext_rubrik>'.$myPT->codeX($row['ext_rubrik']).'</ext_rubrik>
+		<ext_description>'.$myPT->codeX($row['ext_description']).'</ext_description>
 	</meta>
-	<script>'.$myPT->getX($buffer).'</script>
+	<script>'.$myPT->codeX($buffer).'</script>
 	<templates>'."\n";
 
 		$sql = 'SELECT * FROM extra_template WHERE ext_id = ' 	. $ext_id . ' ORDER BY tpl_bez';
@@ -310,7 +310,7 @@ class PhenotypeExtraStandard
 		{
 			$file = $myPT->getTemplateFileName(PT_CFG_EXTRA, $ext_id, $row["tpl_id"]);
 			$buffer = @file_get_contents($file);
-			$xml .= '<template access="'.$myPT->getX($row['tpl_bez']).'">'.$myPT->getX($buffer).'</template>'."\n";
+			$xml .= '<template access="'.$myPT->codeX($row['tpl_bez']).'">'.$myPT->codeX($buffer).'</template>'."\n";
 		}
 
 

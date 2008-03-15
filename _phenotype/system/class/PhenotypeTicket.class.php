@@ -1019,7 +1019,7 @@ class PhenotypeTicketStandard
 
 		foreach ($_felder AS $k)
 		{
-			$xml.= '<'.$k.'>'.$myPT->getX($this->row[$k]).'</'.$k.'>'."\n";
+			$xml.= '<'.$k.'>'.$myPT->codeX($this->row[$k]).'</'.$k.'>'."\n";
 		}
 
 		$xml.='
@@ -1035,7 +1035,7 @@ class PhenotypeTicketStandard
 			$_felder = Array ("act_id","act_type","act_date","usr_id","act_comment");
 			foreach ($_felder AS $k)
 			{
-				$xml.= '<'.$k.'>'.$myPT->getX($row[$k]).'</'.$k.'>'."\n";
+				$xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
 			}
 			$xml .='<act_details>'.base64_encode($row["act_details"]).'</act_details></action>';
 		}
@@ -1097,8 +1097,8 @@ class PhenotypeTicketStandard
 			$xml .='
 		<subject>
 			<sbj_id>'.$row["sbj_id"].'</sbj_id>
-			<sbj_bez>'.$myPT->getX($row["sbj_bez"]).'</sbj_bez>
-			<sbj_description>'.$myPT->getX($row["sbj_description"]).'</sbj_description>
+			<sbj_bez>'.$myPT->codeX($row["sbj_bez"]).'</sbj_bez>
+			<sbj_description>'.$myPT->codeX($row["sbj_description"]).'</sbj_description>
 		 </subject>';
 		}
 		$xml.='

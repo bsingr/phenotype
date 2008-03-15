@@ -126,12 +126,12 @@ class PhenotypeActionStandard extends Phenotype
 		$xml = '<?xml version="1.0" encoding="ISO-8859-1" ?>
 <phenotype>
 	<meta>
-		<act_id>'.$myPT->getX($row['act_id']).'</act_id>
-		<act_bez>'.$myPT->getX($row['act_bez']).'</act_bez>		
-		<act_description>'.$myPT->getX($row['act_description']).'</act_description>
-		<act_status>'.$myPT->getX($row['act_status']).'</act_status>	
+		<act_id>'.$myPT->codeX($row['act_id']).'</act_id>
+		<act_bez>'.$myPT->codeX($row['act_bez']).'</act_bez>		
+		<act_description>'.$myPT->codeX($row['act_description']).'</act_description>
+		<act_status>'.$myPT->codeX($row['act_status']).'</act_status>	
 	</meta>
-	<script>'.$myPT->getX($buffer).'</script>
+	<script>'.$myPT->codeX($buffer).'</script>
 </phenotype>';
 
 		return $xml;

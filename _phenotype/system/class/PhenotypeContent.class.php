@@ -3630,7 +3630,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		<con_id>'.$this->content_type.'</con_id>
 		<dat_id>'.$this->id.'</dat_id>
 		<dat_id_local>'.$this->id.'</dat_id_local>
-		<importmethod>'.$myPT->getX($importmethod).'</importmethod>
+		<importmethod>'.$myPT->codeX($importmethod).'</importmethod>
 		<buildindex>1</buildindex>		
 	</meta>
 	<content>
@@ -3638,7 +3638,7 @@ class PhenotypeContentStandard extends PhenotypeBase
     $_felder = Array("dat_uid","dat_bez","usr_id_creator","dat_creationdate","usr_id","dat_date","dat_pos","dat_status","med_id_thumb","dat_fullsearch");
     foreach ($_felder AS $k)
     {
-      $xml.= '<'.$k.'>'.$myPT->getX($row[$k]).'</'.$k.'>'."\n";
+      $xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
     }
 
     $xml.='
@@ -3651,12 +3651,12 @@ class PhenotypeContentStandard extends PhenotypeBase
     {
       $xml .='
 			<component>
-				<com_id>'.$myPT->getX($row["com_id"]).'</com_id>
-				<dat_blocknr>'.$myPT->getX($row["dat_blocknr"]).'</dat_blocknr>
-				<dat_visible>'.$myPT->getX($row["dat_visible"]).'</dat_visible>
-				<dat_pos>'.$myPT->getX($row["dat_pos"]).'</dat_pos>
+				<com_id>'.$myPT->codeX($row["com_id"]).'</com_id>
+				<dat_blocknr>'.$myPT->codeX($row["dat_blocknr"]).'</dat_blocknr>
+				<dat_visible>'.$myPT->codeX($row["dat_visible"]).'</dat_visible>
+				<dat_pos>'.$myPT->codeX($row["dat_pos"]).'</dat_pos>
 				<dat_comdata>'.base64_encode($row["dat_comdata"]).'</dat_comdata>
-				<dat_fullsearch>'.$myPT->getX($row["dat_fullsearch"]).'</dat_fullsearch>
+				<dat_fullsearch>'.$myPT->codeX($row["dat_fullsearch"]).'</dat_fullsearch>
 			</component>';
     }
     $xml.='
@@ -3692,15 +3692,15 @@ class PhenotypeContentStandard extends PhenotypeBase
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
 		<ptsubversion>'.$myPT->subversion.'</ptsubversion>
-		<con_id>'.$myPT->getX($row['con_id']).'</con_id>
-		<con_bez>'.$myPT->getX($row['con_bez']).'</con_bez>		
-		<con_rubrik>'.$myPT->getX($row['con_rubrik']).'</con_rubrik>
-		<con_description>'.$myPT->getX($row['con_description']).'</con_description>
-		<con_anlegen>'.$myPT->getX($row['con_anlegen']).'</con_anlegen>
-		<con_bearbeiten>'.$myPT->getX($row['con_bearbeiten']).'</con_bearbeiten>
-		<con_loeschen>'.$myPT->getX($row['con_loeschen']).'</con_loeschen>
+		<con_id>'.$myPT->codeX($row['con_id']).'</con_id>
+		<con_bez>'.$myPT->codeX($row['con_bez']).'</con_bez>		
+		<con_rubrik>'.$myPT->codeX($row['con_rubrik']).'</con_rubrik>
+		<con_description>'.$myPT->codeX($row['con_description']).'</con_description>
+		<con_anlegen>'.$myPT->codeX($row['con_anlegen']).'</con_anlegen>
+		<con_bearbeiten>'.$myPT->codeX($row['con_bearbeiten']).'</con_bearbeiten>
+		<con_loeschen>'.$myPT->codeX($row['con_loeschen']).'</con_loeschen>
 	</meta>
-	<script>'.$myPT->getX($buffer).'</script>
+	<script>'.$myPT->codeX($buffer).'</script>
 	<templates>'."\n";
 
     $sql = 'SELECT * FROM content_template WHERE con_id = ' 	. $content_type . ' ORDER BY tpl_bez';
@@ -3709,7 +3709,7 @@ class PhenotypeContentStandard extends PhenotypeBase
     {
       $file = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $content_type, $row["tpl_id"]);
       $buffer = @file_get_contents($file);
-      $xml .= '<template access="'.$myPT->getX($row['tpl_bez']).'">'.$myPT->getX($buffer).'</template>'."\n";
+      $xml .= '<template access="'.$myPT->codeX($row['tpl_bez']).'">'.$myPT->codeX($buffer).'</template>'."\n";
     }
 
 
@@ -3952,7 +3952,7 @@ class PhenotypeContentStandard extends PhenotypeBase
     $_rss = $this->getRSSHeader($mode);
     foreach ($_rss AS $k => $v)
     {
-      $xml .='<'.$k.'>'.$myPT->getX($v) .'</'.$k.'>'."\n";
+      $xml .='<'.$k.'>'.$myPT->codeX($v) .'</'.$k.'>'."\n";
     }
 
 
@@ -3963,7 +3963,7 @@ class PhenotypeContentStandard extends PhenotypeBase
       $xml .="<image>";
       foreach ($_rss AS $k => $v)
       {
-        $xml .='<'.$k.'>'.$myPT->getX($v) .'</'.$k.'>'."\n";
+        $xml .='<'.$k.'>'.$myPT->codeX($v) .'</'.$k.'>'."\n";
       }
       $xml .="</image>";
     }
@@ -4005,10 +4005,10 @@ class PhenotypeContentStandard extends PhenotypeBase
     }
     $xml ='<item>
 	  <pubDate>'.date("r",$_rss["date"]).'</pubDate>	
-      <title>'.$myPT->getX($_rss["title"]).'</title>
-      <description>'.$myPT->getX($_rss["description"]).'</description>
-      <link>'.$myPT->getX($_rss["link"]).'</link>
-      <author>'.$myPT->getX($_rss["author"]).'</author>
+      <title>'.$myPT->codeX($_rss["title"]).'</title>
+      <description>'.$myPT->codeX($_rss["description"]).'</description>
+      <link>'.$myPT->codeX($_rss["link"]).'</link>
+      <author>'.$myPT->codeX($_rss["author"]).'</author>
     </item>';
     return $xml;
   }

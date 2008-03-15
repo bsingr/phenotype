@@ -139,26 +139,26 @@ class PhenotypeMediaObjectStandard
 		$xml = '<?xml version="1.0" encoding="ISO-8859-1" ?>
 <phenotype>
 	<meta>
-		<med_id>'.$myPT->getX($row['med_id']).'</med_id>
-		<med_type>'.$myPT->getX($row['med_type']).'</med_type>
-		<med_mimetype>'.$myPT->getX($row['med_mimetype']).'</med_mimetype>
-		<med_id_local>'.$myPT->getX($row['med_id']).'</med_id_local>
-		<importmethod>'.$myPT->getX($importmethod).'</importmethod>
-		<grp_id>'.$myPT->getX($row['grp_id']).'</grp_id>		
+		<med_id>'.$myPT->codeX($row['med_id']).'</med_id>
+		<med_type>'.$myPT->codeX($row['med_type']).'</med_type>
+		<med_mimetype>'.$myPT->codeX($row['med_mimetype']).'</med_mimetype>
+		<med_id_local>'.$myPT->codeX($row['med_id']).'</med_id_local>
+		<importmethod>'.$myPT->codeX($importmethod).'</importmethod>
+		<grp_id>'.$myPT->codeX($row['grp_id']).'</grp_id>		
 	</meta>
 	<content>
-		<med_bez>'.$myPT->getX($row['med_bez']).'</med_bez>
-		<med_bez_original>'.$myPT->getX($row['med_bez_original']).'</med_bez_original>
-		<med_keywords>'.$myPT->getX($row['med_keywords']).'</med_keywords>
-		<med_comment>'.$myPT->getX($row['med_comment']).'</med_comment>		
-		<med_physical_folder>'.$myPT->getX($row['med_physical_folder']).'</med_physical_folder>   	 
-		<med_logical_folder1>'.$myPT->getX($row['med_logical_folder1']).'</med_logical_folder1>
-		<med_logical_folder2>'.$myPT->getX($row['med_logical_folder2']).'</med_logical_folder2>
-		<med_logical_folder3>'.$myPT->getX($row['med_logical_folder3']).'</med_logical_folder3>
-		<usr_id_creator>'.$myPT->getX($row['usr_id_creator']).'</usr_id_creator>
-		<med_creationdate>'.$myPT->getX($row['med_creationdate']).'</med_creationdate>
-		<usr_id>'.$myPT->getX($row['usr_id']).'</usr_id>
-		<med_date>'.$myPT->getX($row['med_date']).'</med_date>
+		<med_bez>'.$myPT->codeX($row['med_bez']).'</med_bez>
+		<med_bez_original>'.$myPT->codeX($row['med_bez_original']).'</med_bez_original>
+		<med_keywords>'.$myPT->codeX($row['med_keywords']).'</med_keywords>
+		<med_comment>'.$myPT->codeX($row['med_comment']).'</med_comment>		
+		<med_physical_folder>'.$myPT->codeX($row['med_physical_folder']).'</med_physical_folder>   	 
+		<med_logical_folder1>'.$myPT->codeX($row['med_logical_folder1']).'</med_logical_folder1>
+		<med_logical_folder2>'.$myPT->codeX($row['med_logical_folder2']).'</med_logical_folder2>
+		<med_logical_folder3>'.$myPT->codeX($row['med_logical_folder3']).'</med_logical_folder3>
+		<usr_id_creator>'.$myPT->codeX($row['usr_id_creator']).'</usr_id_creator>
+		<med_creationdate>'.$myPT->codeX($row['med_creationdate']).'</med_creationdate>
+		<usr_id>'.$myPT->codeX($row['usr_id']).'</usr_id>
+		<med_date>'.$myPT->codeX($row['med_date']).'</med_date>
 		<binary>'.base64_encode($buffer).'</binary>
 		<versions>';
 
@@ -169,9 +169,9 @@ class PhenotypeMediaObjectStandard
 			$this->initVersion($row);
 			$buffer = file_get_contents($this->file);
 			$xml .='<version>
-	  	<ver_bez>'.$myPT->getX($row['ver_bez']).'</ver_bez>
-	  	<ver_subtype>'.$myPT->getX($row['ver_subtype']).'</ver_subtype>
-	  	<ver_mimetype>'.$myPT->getX($row['ver_mimetype']).'</ver_mimetype>
+	  	<ver_bez>'.$myPT->codeX($row['ver_bez']).'</ver_bez>
+	  	<ver_subtype>'.$myPT->codeX($row['ver_subtype']).'</ver_subtype>
+	  	<ver_mimetype>'.$myPT->codeX($row['ver_mimetype']).'</ver_mimetype>
 	  	<binary>'.base64_encode($buffer).'</binary>
 	  	</version>
 	  	';

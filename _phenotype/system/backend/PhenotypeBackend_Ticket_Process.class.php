@@ -933,11 +933,11 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<tr>
 	<td align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
 	<td valign="top" >
-	Bezeichnung: <?php echo $myPT->getH($_details["bez"]) ?><br>
-	Bereich:  <?php echo $myPT->getH($_details["subject"]) ?><br>
+	Bezeichnung: <?php echo $myPT->codeH($_details["bez"]) ?><br>
+	Bereich:  <?php echo $myPT->codeH($_details["subject"]) ?><br>
 	Zieldatum: <?php echo date('d.m.Y',$_details["enddate"]) ?><br>
 	Priorit&auml;t: <?php echo $_prio[$_details["prio"]] ?><br>
-	Bearbeiter: <?php echo $myPT->getH($_details["owner"]) ?><br>
+	Bearbeiter: <?php echo $myPT->codeH($_details["owner"]) ?><br>
 	</td>
 	</tr>	
 	<?php
@@ -960,7 +960,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_myjob.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket an <?php echo $myPT->getH($_details["newowner"]) ?> delegiert.</td>
+	<td valign="top" >Ticket an <?php echo $myPT->codeH($_details["newowner"]) ?> delegiert.</td>
 	</tr>
 
 	<?php
@@ -1161,7 +1161,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<?php
 	if ($_details["newsubject"]!=""){
 	?>
-	Bezeichnung: <?php echo $myPT->getH($_details["newsubject"]) ?><br>
+	Bezeichnung: <?php echo $myPT->codeH($_details["newsubject"]) ?><br>
 	<?php
 	}
 	?>
@@ -1244,7 +1244,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
-	<td valign="top" >Bereich: <?php echo $myPT->getH($_details["newsubject"]) ?></td>
+	<td valign="top" >Bereich: <?php echo $myPT->codeH($_details["newsubject"]) ?></td>
 	</tr>
 
 	<?php
@@ -1286,7 +1286,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_notice.gif" width="22" height="22"></td>
-	<td valign="top" >Hinweis f&uuml;r <?php echo $myPT->getH($_details["aim"]) ?></td>
+	<td valign="top" >Hinweis f&uuml;r <?php echo $myPT->codeH($_details["aim"]) ?></td>
 	</tr>
 
 	<?php
@@ -1306,7 +1306,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_request.gif" width="22" height="22"></td>
-	<td valign="top" >Anfrage f&uuml;r <?php echo $myPT->getH($_details["aim"]) ?></td>
+	<td valign="top" >Anfrage f&uuml;r <?php echo $myPT->codeH($_details["aim"]) ?></td>
 	</tr>
 
 	<?php
@@ -1419,7 +1419,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
-	<td valign="top" ><?php echo $myPT->getPref("tickets.bez_2ndorder") ?>: <?php echo $myPT->getH($_details["new2ndorder"]) ?></td>
+	<td valign="top" ><?php echo $myPT->getPref("tickets.bez_2ndorder") ?>: <?php echo $myPT->codeH($_details["new2ndorder"]) ?></td>
 	</tr>
 
 	<?php
@@ -1637,7 +1637,7 @@ if ($zeigegrafik2==1)
 			$selected ="";
 			if ($sbj_id==$row["sbj_id"]){$selected="selected";}
 			?>
-			<option value="<?php echo $row["sbj_id"] ?>" <?php echo $selected ?>><?php echo $myPT->getH($row["sbj_bez"]) ?></option>
+			<option value="<?php echo $row["sbj_id"] ?>" <?php echo $selected ?>><?php echo $myPT->codeH($row["sbj_bez"]) ?></option>
 			<?php
 		}
 
@@ -1650,7 +1650,7 @@ if ($zeigegrafik2==1)
 		{
 		?>
 		<tr>
-		<td width="100"><br><?php echo $myPT->getH($myPT->getPref("tickets.bez_2ndorder")) ?>:</td>
+		<td width="100"><br><?php echo $myPT->codeH($myPT->getPref("tickets.bez_2ndorder")) ?>:</td>
 		<td><br>
 		<select name="dat_id_2ndorder" class="listmenu" style="width: 200px" >
 		<option value="0">...</option>
@@ -1663,7 +1663,7 @@ if ($zeigegrafik2==1)
 			$selected ="";
 			if ($dat_id_2ndorder==$row["dat_id"]){$selected="selected";}
 			?>
-			<option value="<?php echo $row["dat_id"] ?>" <?php echo $selected ?>><?php echo $myPT->getH($row["dat_bez"]) ?></option>
+			<option value="<?php echo $row["dat_id"] ?>" <?php echo $selected ?>><?php echo $myPT->codeH($row["dat_bez"]) ?></option>
 			<?php
 		}
 		?>
@@ -1683,7 +1683,7 @@ if ($zeigegrafik2==1)
 			<td width="100">
 			<br>Seite:
 			</td>
-			<td ><br><p class="input"><?php echo $myPT->getH($bez) ?></p></td>
+			<td ><br><p class="input"><?php echo $myPT->codeH($bez) ?></p></td>
 			</tr>
 			<?php
 		}
@@ -1697,7 +1697,7 @@ if ($zeigegrafik2==1)
 			<td>
 			<br>Content-Datensatz:
 			</td>
-			<td ><br><p class="input"><?php echo $myPT->getH($bez) ?></p></td>
+			<td ><br><p class="input"><?php echo $myPT->codeH($bez) ?></p></td>
 			</tr>
 		<?php
 		}
@@ -1711,7 +1711,7 @@ if ($zeigegrafik2==1)
 			<td>
 			<br>Mediaobjekt:
 			</td>
-			<td ><br><p class="input"><?php echo $myPT->getH($bez) ?></p></td>
+			<td ><br><p class="input"><?php echo $myPT->codeH($bez) ?></p></td>
 			</tr>
 			<?php
 		}

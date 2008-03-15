@@ -1730,9 +1730,9 @@ class PhenotypePageStandard
     {
       $xml .='
 		<layout>
-			<lay_id>'.$myPT->getX($row["lay_id"]).'</lay_id>
-			<lay_bez>'.$myPT->getX($row["lay_bez"]).'</lay_bez>
-			<lay_description>'.$myPT->getX($row["lay_description"]).'</lay_description>
+			<lay_id>'.$myPT->codeX($row["lay_id"]).'</lay_id>
+			<lay_bez>'.$myPT->codeX($row["lay_bez"]).'</lay_bez>
+			<lay_description>'.$myPT->codeX($row["lay_description"]).'</lay_description>
 			<blocks>';
       $sql ="SELECT * FROM layout_block WHERE lay_id=".$row["lay_id"]." ORDER BY lay_blocknr";
       $rs2 = $myDB->query($sql);
@@ -1740,10 +1740,10 @@ class PhenotypePageStandard
       {
         $xml.='
 				<block>
-					<lay_blocknr>'.$myPT->getX($row2["lay_blocknr"]).'</lay_blocknr>
-					<lay_blockbez>'.$myPT->getX($row2["lay_blockbez"]).'</lay_blockbez>
-					<cog_id>'.$myPT->getX($row2["cog_id"]).'</cog_id>
-					<lay_context>'.$myPT->getX($row2["lay_context"]).'</lay_context>
+					<lay_blocknr>'.$myPT->codeX($row2["lay_blocknr"]).'</lay_blocknr>
+					<lay_blockbez>'.$myPT->codeX($row2["lay_blockbez"]).'</lay_blockbez>
+					<cog_id>'.$myPT->codeX($row2["cog_id"]).'</cog_id>
+					<lay_context>'.$myPT->codeX($row2["lay_context"]).'</lay_context>
 				</block>';
       }
       $xml.='
@@ -1755,9 +1755,9 @@ class PhenotypePageStandard
       {
         $xml.='
 				<include>
-					<inc_id>'.$myPT->getX($row2["inc_id"]).'</inc_id>
-					<lay_includenr>'.$myPT->getX($row2["lay_includenr"]).'</lay_includenr>
-					<lay_includecache>'.$myPT->getX($row2["lay_includecache"]).'</lay_includecache>
+					<inc_id>'.$myPT->codeX($row2["inc_id"]).'</inc_id>
+					<lay_includenr>'.$myPT->codeX($row2["lay_includenr"]).'</lay_includenr>
+					<lay_includecache>'.$myPT->codeX($row2["lay_includecache"]).'</lay_includecache>
 				</include>';
       }
       $xml.='
@@ -1770,14 +1770,14 @@ class PhenotypePageStandard
 
       $xml.='
 			<templates>
-				<page>'.$myPT->getX($buffer1).'</page>
-				<print>'.$myPT->getX($buffer2).'</print>
+				<page>'.$myPT->codeX($buffer1).'</page>
+				<print>'.$myPT->codeX($buffer2).'</print>
 			</templates>';
       $SQL = "SELECT * FROM layout_pagegroup WHERE lay_id=".$row["lay_id"]." ORDER BY grp_id";
       $rs2 = $myDB->query($sql);
       while ($row2=mysql_fetch_array($rs2))
       {
-        $xml .='<pagegroup grp_id="'.$myPT->getX($row2["grp_id"]).'"/>';
+        $xml .='<pagegroup grp_id="'.$myPT->codeX($row2["grp_id"]).'"/>';
       }
       $xml.='
 		</layout>';
@@ -1814,10 +1814,10 @@ class PhenotypePageStandard
       $xml .='
 		<group>
 			<grp_id>'.$row["grp_id"].'</grp_id>
-			<grp_bez>'.$myPT->getX($row["grp_bez"]).'</grp_bez>
-			<grp_description>'.$myPT->getX($row["grp_desc"]).'</grp_description>
-			<grp_statistic>'.$myPT->getX($row["grp_statistic"]).'</grp_statistic>
-		    <grp_multilanguage>'.$myPT->getX($row["grp_multilanguage"]).'</grp_multilanguage>
+			<grp_bez>'.$myPT->codeX($row["grp_bez"]).'</grp_bez>
+			<grp_description>'.$myPT->codeX($row["grp_desc"]).'</grp_description>
+			<grp_statistic>'.$myPT->codeX($row["grp_statistic"]).'</grp_statistic>
+		    <grp_multilanguage>'.$myPT->codeX($row["grp_multilanguage"]).'</grp_multilanguage>
 		</group>';
     }
     $xml.='
@@ -1976,7 +1976,7 @@ class PhenotypePageStandard
     $_fields = Array("pag_uid","pag_bez","pag_titel","pag_alttitel","pag_comment","pag_quickfinder","pag_searchtext","pag_url","pag_id_mimikry","pag_id_top","pag_pos","pag_cache","pag_status","usr_id_creator","pag_creationdate","usr_id","pag_date");
     foreach ($_fields AS $k)
     {
-      $xml.= '<'.$k.'>'.$myPT->getX($row[$k]).'</'.$k.'>'."\n";
+      $xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
     }
 
     $xml .= '<pag_props>'.base64_encode($row["pag_props_locale"]).'</pag_props>';
@@ -1996,14 +1996,14 @@ class PhenotypePageStandard
       }
       if ($row["ver_id"]==$this->ver_id){$status=1;}
       $xml .='  			<version>
-				<ver_id>'.$myPT->getX($row["ver_id"]).'</ver_id>
-				<ver_nr>'.$myPT->getX($row["ver_nr"]).'</ver_nr>
-				<lay_id>'.$myPT->getX($row["lay_id"]).'</lay_id>
-				<ver_bez>'.$myPT->getX($row["ver_bez"]).'</ver_bez>
-				<pag_fullsearch>'.$myPT->getX($row["pag_fullsearch"]).'</pag_fullsearch>
-				<script>'.$myPT->getX($buffer).'</script>
-				<inc_id1>'.$myPT->getX($row["inc_id1"]).'</inc_id1>
-				<inc_id2>'.$myPT->getX($row["inc_id2"]).'</inc_id2>
+				<ver_id>'.$myPT->codeX($row["ver_id"]).'</ver_id>
+				<ver_nr>'.$myPT->codeX($row["ver_nr"]).'</ver_nr>
+				<lay_id>'.$myPT->codeX($row["lay_id"]).'</lay_id>
+				<ver_bez>'.$myPT->codeX($row["ver_bez"]).'</ver_bez>
+				<pag_fullsearch>'.$myPT->codeX($row["pag_fullsearch"]).'</pag_fullsearch>
+				<script>'.$myPT->codeX($buffer).'</script>
+				<inc_id1>'.$myPT->codeX($row["inc_id1"]).'</inc_id1>
+				<inc_id2>'.$myPT->codeX($row["inc_id2"]).'</inc_id2>
 				<ver_status>'.$status.'</ver_status>';
 
       $sql = "SELECT * FROM pageversion_autoactivate WHERE ver_id =".$row["ver_id"];
@@ -2024,8 +2024,8 @@ class PhenotypePageStandard
     while ($row=mysql_fetch_array($rs))
     {
       $xml.='			<language>
-				<lng_id>'.$myPT->getX($row["lng_id"]).'</lng_id>
-				<pag_titel>'.$myPT->getX($row["pag_titel"]).'</pag_titel>
+				<lng_id>'.$myPT->codeX($row["lng_id"]).'</lng_id>
+				<pag_titel>'.$myPT->codeX($row["pag_titel"]).'</pag_titel>
 			</language>';
     }
     $xml.='
@@ -2038,14 +2038,14 @@ class PhenotypePageStandard
     {
       $xml .='
 			<component>
-				<com_id>'.$myPT->getX($row["com_id"]).'</com_id>
-				<ver_id>'.$myPT->getX($row["ver_id"]).'</ver_id>
-				<lng_id>'.$myPT->getX($row["lng_id"]).'</lng_id>
-				<dat_blocknr>'.$myPT->getX($row["dat_blocknr"]).'</dat_blocknr>
-				<dat_visible>'.$myPT->getX($row["dat_visible"]).'</dat_visible>
-				<dat_pos>'.$myPT->getX($row["dat_pos"]).'</dat_pos>
+				<com_id>'.$myPT->codeX($row["com_id"]).'</com_id>
+				<ver_id>'.$myPT->codeX($row["ver_id"]).'</ver_id>
+				<lng_id>'.$myPT->codeX($row["lng_id"]).'</lng_id>
+				<dat_blocknr>'.$myPT->codeX($row["dat_blocknr"]).'</dat_blocknr>
+				<dat_visible>'.$myPT->codeX($row["dat_visible"]).'</dat_visible>
+				<dat_pos>'.$myPT->codeX($row["dat_pos"]).'</dat_pos>
 				<dat_comdata>'.base64_encode($row["dat_comdata"]).'</dat_comdata>
-				<dat_fullsearch>'.$myPT->getX($row["dat_fullsearch"]).'</dat_fullsearch>
+				<dat_fullsearch>'.$myPT->codeX($row["dat_fullsearch"]).'</dat_fullsearch>
 			</component>';
     }
     $xml.='

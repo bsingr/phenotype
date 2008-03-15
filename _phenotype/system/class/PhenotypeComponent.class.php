@@ -876,12 +876,12 @@ class PhenotypeComponentStandard
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
 		<ptsubversion>'.$myPT->subversion.'</ptsubversion>	
-		<com_id>'.$myPT->getX($row['com_id']).'</com_id>
-		<com_bez>'.$myPT->getX($row['com_bez']).'</com_bez>		
-		<com_rubrik>'.$myPT->getX($row['com_rubrik']).'</com_rubrik>
-		<com_description>'.$myPT->getX($row['com_description']).'</com_description>
+		<com_id>'.$myPT->codeX($row['com_id']).'</com_id>
+		<com_bez>'.$myPT->codeX($row['com_bez']).'</com_bez>		
+		<com_rubrik>'.$myPT->codeX($row['com_rubrik']).'</com_rubrik>
+		<com_description>'.$myPT->codeX($row['com_description']).'</com_description>
 	</meta>
-	<script>'.$myPT->getX($buffer).'</script>
+	<script>'.$myPT->codeX($buffer).'</script>
 	<templates>'."\n";
 
 		$sql = 'SELECT * FROM component_template WHERE com_id = ' 	. $tool_type . ' ORDER BY tpl_bez';
@@ -890,7 +890,7 @@ class PhenotypeComponentStandard
 		{
 			$file = $myPT->getTemplateFileName(PT_CFG_COMPONENT, $tool_type, $row["tpl_id"]);
 			$buffer = @file_get_contents($file);
-			$xml .= '<template access="'.$myPT->getX($row['tpl_bez']).'">'.$myPT->getX($buffer).'</template>'."\n";
+			$xml .= '<template access="'.$myPT->codeX($row['tpl_bez']).'">'.$myPT->codeX($buffer).'</template>'."\n";
 		}
 
 
@@ -902,10 +902,10 @@ class PhenotypeComponentStandard
 		while ($row=mysql_fetch_array($rs))
 		{
 			$xml.='<group>
-			<cog_id>'.$myPT->getX($row['cog_id']).'</cog_id>
-			<cog_bez>'.$myPT->getX($row['cog_bez']).'</cog_bez>
-			<cog_description>'.$myPT->getX($row['cog_description']).'</cog_description>
-			<cog_pos>'.$myPT->getX($row['cog_pos']).'</cog_pos>
+			<cog_id>'.$myPT->codeX($row['cog_id']).'</cog_id>
+			<cog_bez>'.$myPT->codeX($row['cog_bez']).'</cog_bez>
+			<cog_description>'.$myPT->codeX($row['cog_description']).'</cog_description>
+			<cog_pos>'.$myPT->codeX($row['cog_pos']).'</cog_pos>
 		  </group>';
 
 		}

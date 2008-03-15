@@ -1222,9 +1222,9 @@ class PhenotypeMediabaseStandard
 			$xml .='
 		<group>
 			<grp_id>'.$row["grp_id"].'</grp_id>
-			<grp_bez>'.$myPT->getX($row["grp_bez"]).'</grp_bez>
-			<grp_description>'.$myPT->getX($row["grp_desc"]).'</grp_description>
-			<grp_type>'.$myPT->getX($row["grp_type"]).'</grp_type>
+			<grp_bez>'.$myPT->codeX($row["grp_bez"]).'</grp_bez>
+			<grp_description>'.$myPT->codeX($row["grp_desc"]).'</grp_description>
+			<grp_type>'.$myPT->codeX($row["grp_type"]).'</grp_type>
 		 </group>';
 		}
 		$xml.='

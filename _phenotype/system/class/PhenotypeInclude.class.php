@@ -161,15 +161,15 @@ class PhenotypeIncludeStandard
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
 		<ptsubversion>'.$myPT->subversion.'</ptsubversion>
-		<inc_id>'.$myPT->getX($row['inc_id']).'</inc_id>
-		<inc_bez>'.$myPT->getX($row['inc_bez']).'</inc_bez>		
-		<inc_rubrik>'.$myPT->getX($row['inc_rubrik']).'</inc_rubrik>
-		<inc_description>'.$myPT->getX($row['inc_description']).'</inc_description>
-		<inc_usage_layout>'.$myPT->getX($row['inc_usage_layout']).'</inc_usage_layout>
-		<inc_usage_includecomponent>'.$myPT->getX($row['inc_usage_includecomponent']).'</inc_usage_includecomponent>
-		<inc_usage_page>'.$myPT->getX($row['inc_usage_page']).'</inc_usage_page>
+		<inc_id>'.$myPT->codeX($row['inc_id']).'</inc_id>
+		<inc_bez>'.$myPT->codeX($row['inc_bez']).'</inc_bez>		
+		<inc_rubrik>'.$myPT->codeX($row['inc_rubrik']).'</inc_rubrik>
+		<inc_description>'.$myPT->codeX($row['inc_description']).'</inc_description>
+		<inc_usage_layout>'.$myPT->codeX($row['inc_usage_layout']).'</inc_usage_layout>
+		<inc_usage_includecomponent>'.$myPT->codeX($row['inc_usage_includecomponent']).'</inc_usage_includecomponent>
+		<inc_usage_page>'.$myPT->codeX($row['inc_usage_page']).'</inc_usage_page>
 	</meta>
-	<script>'.$myPT->getX($buffer).'</script>
+	<script>'.$myPT->codeX($buffer).'</script>
 	<templates>'."\n";
 
 		$sql = 'SELECT * FROM include_template WHERE inc_id = ' 	. $inc_id . ' ORDER BY tpl_bez';
@@ -178,7 +178,7 @@ class PhenotypeIncludeStandard
 		{
 			$file = $myPT->getTemplateFileName(PT_CFG_INCLUDE, $inc_id, $row["tpl_id"]);
 			$buffer = @file_get_contents($file);
-			$xml .= '<template access="'.$myPT->getX($row['tpl_bez']).'">'.$myPT->getX($buffer).'</template>'."\n";
+			$xml .= '<template access="'.$myPT->codeX($row['tpl_bez']).'">'.$myPT->codeX($buffer).'</template>'."\n";
 		}
 
 

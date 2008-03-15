@@ -319,8 +319,8 @@ class PhenotypeUserStandard
 			$xml .='
 		<role>
 			<rol_id>'.$row["rol_id"].'</rol_id>
-			<rol_bez>'.$myPT->getX($row["rol_bez"]).'</rol_bez>
-			<rol_description>'.$myPT->getX($row["rol_desc"]).'</rol_description>
+			<rol_bez>'.$myPT->codeX($row["rol_bez"]).'</rol_bez>
+			<rol_description>'.$myPT->codeX($row["rol_desc"]).'</rol_description>
 			<rol_rights>'.base64_encode($row["rol_rights"]).'</rol_rights>
 		</role>';
 		}
@@ -380,7 +380,7 @@ class PhenotypeUserStandard
 		$_felder = Array("usr_vorname","usr_nachname","usr_login","usr_pass","usr_email","usr_createdate","usr_lastlogin","usr_su","usr_status","med_id_thumb");
 		foreach ($_felder AS $k)
 		{
-			$xml.= '<'.$k.'>'.$myPT->getX($row[$k]).'</'.$k.'>'."\n";
+			$xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
 		}
 
 		$xml .='<usr_rights>'.base64_encode($row["usr_rights"]).'</usr_rights>';
