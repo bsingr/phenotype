@@ -28,6 +28,7 @@ if (!$mySUser->checkRight("elm_page"))
   Header ("Location:" . $url."?".SID);
   exit();
 }
+$myPT->clearCache();
 ?>
 <?php
 $id = $myRequest->getI("id");

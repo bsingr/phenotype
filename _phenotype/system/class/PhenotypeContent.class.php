@@ -4038,18 +4038,15 @@ class PhenotypeContentStandard extends PhenotypeBase
     return ("ajax_".$token."_doit('".$step."');");
   }
 
-  /*
-  * @return: associative Array with all properties necessary for data objects that depend on this object
-  *
-  */
-  public function getDaoData() {
-    if ( (! $this->loaded) && $this->id) {
-      $this->load($this->id);
-    }
-    $data = Array();
-    $ttl = 0;
-    return Array($data, $ttl);
+  
+  public function buildPermaID($lng_id=null)
+  {
+    
   }
-
+  
+  public function getURL($action,$pag_id=null,$lng_id=null)
+  {
+    return "undefined";
+  }
 }
 ?>

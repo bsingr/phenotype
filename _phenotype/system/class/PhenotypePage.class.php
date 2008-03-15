@@ -22,7 +22,7 @@
  * @subpackage system
  *
  */
-class PhenotypePageStandard
+class PhenotypePageStandard extends PhenotypeBase
 {
   var $id=-1;
   var $pag_id_mimikry = -1;
@@ -55,7 +55,7 @@ class PhenotypePageStandard
   var $buildingcache;
   var $includenocache = 0;
 
-  var $props = Array();
+  var $_inheritageprops = Array();
 
   var $mySmarty;
 
@@ -68,6 +68,8 @@ class PhenotypePageStandard
   public $loaded = 0;
 
   public $dat_id_sequence_data = 0;
+
+  public $multilanguage=0;
 
   //function PhenotypePage($id=0,$ver_id=0,$grp_id=0,$uid=0)
   public function __construct($id=0,$ver_id=0,$grp_id=0,$uid=0)
@@ -88,76 +90,77 @@ class PhenotypePageStandard
     return $this->loaded;
   }
 
+  /*
   function set($bez,$val)
   {
-    $this->props[$bez] = $val;
+  $this->props[$bez] = $val;
   }
+  */
 
-  function get ($bez)
+  function get ($key)
   {
-    return @$this->props[$bez];
+    // local values beat inheritage values
+    if ($this->check($key))
+    {
+      return parent::get($key);
+    }
+    return @$this->_inheritageprops[$bez];
   }
 
+  /*
   function getI ($bez)
   {
-    return @(int)($this->props[$bez]);
-    //return @stripslashes($this->props[$bez]);
+  return @(int)($this->props[$bez]);
+  //return @stripslashes($this->props[$bez]);
   }
 
   function getD ($bez,$decimals)
   {
-    return sprintf("%01.".$decimals."f",@($this->props[$bez]));
+  return sprintf("%01.".$decimals."f",@($this->props[$bez]));
   }
 
   function getQ ($bez)
   {
-    // veraltet
-    return ereg_replace('"',"&quot;",stripslashes($this->props[$bez]));
+  // veraltet
+  return ereg_replace('"',"&quot;",stripslashes($this->props[$bez]));
   }
 
   function getHTML ($bez)
   {
-    return @htmlentities(stripslashes($this->props[$bez]));
+  return @htmlentities(stripslashes($this->props[$bez]));
   }
 
   function getH ($bez)
   {
-    return $this->getHTML($bez);
+  return $this->getHTML($bez);
   }
 
   function getHBR ($bez)
   {
-    $html = nl2br($this->getHTML($bez));
-    // Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
-    $html = str_replace (chr(10),"",$html);
-    $html = str_replace (chr(13),"",$html);
-    return ($html);
+  $html = nl2br($this->getHTML($bez));
+  // Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
+  $html = str_replace (chr(10),"",$html);
+  $html = str_replace (chr(13),"",$html);
+  return ($html);
   }
 
 
   function getURL($bez)
   {
-    return @urlencode($this->props[$bez]);
+  return @urlencode($this->props[$bez]);
   }
 
   function getU($bez)
   {
-    return @utf8_encode($this->props[$bez]);
+  return @utf8_encode($this->props[$bez]);
   }
 
   function getS($bez)
   {
-    return @addslashes($this->props[$bez]);
+  return @addslashes($this->props[$bez]);
   }
 
-  function getA($bez)
-  {
-    $v=@$this->props[$bez];
-    if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    $patterns = "/[^a-z0-9A-Z]*/";
-    $v = preg_replace($patterns,"", $v);
-    return $v;
-  }
+
 
   /*
   * returns the url to access the site
@@ -206,7 +209,7 @@ class PhenotypePageStandard
     $ver_id = (int)$ver_id;
     $grp_id = (int)$grp_id;
 
-    $sql  ="SELECT page.*, pagegroup.grp_id, pagegroup.grp_statistic FROM page, pagegroup WHERE pag_url = '". $url ."'";
+    $sql  ="SELECT page.*, pagegroup.grp_id, pagegroup.grp_statistic, pagegroup.grp_multilanguage FROM page, pagegroup WHERE pag_url = '". $url ."'";
     if ($grp_id!=0) {
       $sql .= " AND grp_id=".$grp_id;
     }
@@ -248,7 +251,7 @@ class PhenotypePageStandard
     $grp_id = (int)$grp_id;
     $uid = (int)$uid;
 
-    $sql  ="SELECT page.*,pagegroup.grp_id, pagegroup.grp_statistic FROM page, pagegroup WHERE ";
+    $sql  ="SELECT page.*,pagegroup.grp_id, pagegroup.grp_statistic, pagegroup.grp_multilanguage FROM page, pagegroup WHERE ";
     if ($id!=0)
     {
       $sql.= "pag_id = " . $id;
@@ -330,10 +333,19 @@ class PhenotypePageStandard
     $this->pag_id_top = $row["pag_id_top"];
     $this->grp_id = $row["grp_id"];
 
+    $this->_inheritageprops = array();
+    // load the page properties out of the inheritation tree into props
     if ($row["pag_props_all"]!="")
     {
-      $this->props = unserialize($row["pag_props_all"]);
+      $this->_inheritageprops = unserialize($row["pag_props_all"]);
     }
+    // load the default properties
+
+    if ($row["pag_props"]!="")
+    {
+      $this->_props = unserialize($row["pag_props"]);
+    }
+
 
     $this->nextbuild = $row["pag_nextbuild".CACHENR];
     $this->printcache = $row["pag_printcache".CACHENR];
@@ -342,7 +354,7 @@ class PhenotypePageStandard
 
 
     $this->statistic = (boolean)$row["grp_statistic"];
-
+    $this->multilanguage = (boolean)$row["grp_multilanguage"];
     $sql = "SELECT * FROM pageversion WHERE pag_id = " . $id . " AND ver_id=" . $this->ver_id;
 
     $rs = $myDB->query($sql,"Page ".$id.": initialization");
@@ -462,10 +474,10 @@ class PhenotypePageStandard
     $mySQL->addField("pag_uid",$myPT->uid());
     $mySQL->addField("pag_pos",$pos,DB_NUMBER);
     $mySQL->addField("pag_id_top",$top_id,DB_NUMBER);
-		//$mySQL->addField("pag_cache",24*60*60,DB_NUMBER);
-		//Get the cache default time from the preferences XML-file | added 07/08/23 by Dominique Bös
-		$aXML = $myPT->gaGetPreferencesArray();
-		$mySQL->addField("pag_cache",$aXML["preferences"]["section_cache"]["default_cache_seconds"],DB_NUMBER);
+    //$mySQL->addField("pag_cache",24*60*60,DB_NUMBER);
+    //Get the cache default time from the preferences XML-file | added 07/08/23 by Dominique Bös
+    $aXML = $myPT->gaGetPreferencesArray();
+    $mySQL->addField("pag_cache",$aXML["preferences"]["section_cache"]["default_cache_seconds"],DB_NUMBER);
     $mySQL->addField("pag_nextbuild1",time(),DB_NUMBER);
     $mySQL->addField("pag_nextbuild2",time(),DB_NUMBER);
     $mySQL->addField("pag_nextbuild3",time(),DB_NUMBER);
@@ -821,7 +833,7 @@ class PhenotypePageStandard
 	    <iframe src="<?php echo SERVERFULLURL ?>debuginfo.php?uri=<?php echo $uri?>" style="width:900px;height:100%;border:0px;overflow: auto;"></iframe>
 	    </div>
 	    <?
-	    
+
 	    $html = str_replace("#!#pt_debug#!#",$myPT->stopBuffer(),$html);
     }
     echo $html;
@@ -1178,7 +1190,7 @@ class PhenotypePageStandard
 	</layout>
 	<pagevars>
 	<?php
-	foreach ($this->props AS $k=>$v)
+	foreach ($this->_inheritageprops AS $k=>$v)
 	{
 	?>
 	<var name="<?php echo $myPT->xmlencode($k) ?>" value="<?php echo $myPT->xmlencode($v) ?>"/>
@@ -1236,7 +1248,7 @@ class PhenotypePageStandard
 	  }
 	  else
 	  {
-			$code = '<?php $myInc = new PhenotypeInclude_' . $row["inc_id"] . '();echo $myInc->renderXML(); ?>';
+	    $code = '<?php $myInc = new PhenotypeInclude_' . $row["inc_id"] . '();echo $myInc->renderXML(); ?>';
 	    echo $code;
 	  }
 
@@ -1339,10 +1351,10 @@ class PhenotypePageStandard
         }
         else
         {
-					$html_include = '<?php $myPage->includenocache=1 ?>';// Notwendig fuer Content-Statistik
-					$html_include .= '<?php $myInc = new PhenotypeInclude_' . $row_inc["inc_id"] .'();echo $myInc->execute() ?>';
+          $html_include = '<?php $myPage->includenocache=1 ?>';// Notwendig fuer Content-Statistik
+          $html_include .= '<?php $myInc = new PhenotypeInclude_' . $row_inc["inc_id"] .'();echo $myInc->execute() ?>';
 
-					$html_include .= '<?php $myPage->includenocache=0 ?>';
+          $html_include .= '<?php $myPage->includenocache=0 ?>';
 
         }
       }
@@ -2246,6 +2258,59 @@ class PhenotypePageStandard
   public function setTitle($s)
   {
     $this->titel = $s;
+  }
+
+  public function getURL($lng_id=null)
+  {
+    global $PTC_LANGUAGES;
+    //  $url =  "index.php?id=".$this->id."&lng_id=".$lng_id;
+
+    if ($lng_id==null)
+    {
+      $lng_id=$this->lng_id;
+    }
+    if ($this->get("pag_url".$lng_id)!="")
+    {
+      $url =$this->get("pag_url".$lng_id);
+    }
+    else
+    {
+      $row = $this->row;
+      $url = $this->urlencode($this->titel);
+      while ($row["pag_id_top"]!=0)
+      {
+        $myNavPage = new PhenotypePage($row["pag_id_top"]);
+        $myNavPage->switchLanguage($this->lng_id);
+        $row = $myNavPage->row;
+        $url = $this->urlencode($myNavPage->titel) ."/" .$url;
+      }
+      if ($this->multilanguage)
+      {
+        $url = $PTC_LANGUAGES[$lng_id]."/".$url;
+      }
+      return $url;
+    }
+    return $url;
+  }
+
+  public function rebuildURLs()
+  {
+    global $myDB;
+    global $PTC_LANGUAGES;
+    $mySQL = new SQLBuilder();
+
+    $url = $this->getURL();
+    $mySQL->addField("pag_url".$k,$url);
+    foreach ($PTC_LANGUAGES AS $k =>$v)
+    {
+      if ($this->multilanguage)
+      {
+        $url = $this->getURL($k);
+      }
+      $mySQL->addField("pag_url".$k,$url);
+    }
+    $sql = $mySQL->update("page","pag_id=".$this->id);
+    $myDB->query($sql);
   }
 }
 

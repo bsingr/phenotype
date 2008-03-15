@@ -28,6 +28,7 @@ if (!$mySUser->checkRight("elm_admin") AND $id != $mySUser->id)
   Header ("Location:" . $url);
   exit();
 }
+$myPT->clearCache();
 
 $b=$_REQUEST["b"];  
 if (!$mySUser->checkRight("elm_admin"))

@@ -29,16 +29,24 @@ class PhenotypeBase
 
 
   public $_props = Array ();
-
+  public $changed = false;
+  
   function __construct()
   {
     $this->charset = PT_CHARSET;
   }
 
+  function check($k)
+  {
+    if(array_key_exists($k,$this->_props)){return true;}
+    return false;
+  }
+  
 
   function set($property, $value)
   {
     $this->_props[$property] = $value;
+    $this->changed = true;
   }
 
 
@@ -89,12 +97,8 @@ class PhenotypeBase
     return ($html);
   }
 
-  /*
-  function getURL($property)
-  {
-  return @ urlencode($this->_props[$property]);
-  }
-  */
+
+  
 
   function getU($property)
   {
@@ -106,17 +110,17 @@ class PhenotypeBase
   function getS($property)
   {
     throw new Exception("Deprecated call of function getS");
-    return (string) @ addslashes($this->_props[$property]);
+    //return (string) @ addslashes($this->_props[$property]);
   }
 
 
   function getA($property)
   {
     throw new Exception("Deprecated call of function getA");
-    $v = @$this->_props[$property];
+    //$v = @$this->_props[$property];
 
     //$patterns = "/[^a-z0-9A-Z]*/";
-    $v = preg_replace($patterns, "", $v);
+    //$v = preg_replace($patterns, "", $v);
 
     return $v;
   }
@@ -166,6 +170,25 @@ class PhenotypeBase
     return $s;
   }
 
+  function urlencode($url)
+  {
+    $url = str_replace(" ","-",$url);
+    $url = str_replace(array(" ","/","_","&","?","---","--"),"-",$url);
+    $url = str_replace("ä","ae",$url);
+    $url = str_replace("ö","oe",$url);
+    $url = str_replace("ü","ue",$url);
+    $url = str_replace("Ä","Ae",$url);
+    $url = str_replace("Ö","Oe",$url);
+    $url = str_replace("Ü","Ue",$url);
+    $url = str_replace("ß","ss",$url);
+    
+    // Alle Sonderzeichen, die nicht URL-typisch sind rausfiltern
+    $patterns = "/[^-a-z0-9A-Z_,.\/]*/";
+    $url = preg_replace($patterns,"",$url);
+    return $url;
+
+  }
+  
   function codeH($s)
   {
     return @ htmlentities($s,null,$this->charset);
@@ -205,7 +228,14 @@ class PhenotypeBase
   }
 
 
-
+  /**
+   * return a given value encoded as Integer
+   *
+   * quite useless, but who knows for what reason it will be good one day ;)
+   * 
+   * @param string value
+   * @return integer
+   */
   function codeI($s)
   {
     return (int)$s;

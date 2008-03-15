@@ -29,6 +29,7 @@ if (!$mySUser->checkRight("elm_admin"))
   Header ("Location:" . $url."?".SID);
   exit();
 }
+$myPT->clearCache();
 ?>
 <?php
 $myAdm = new PhenotypeAdmin();

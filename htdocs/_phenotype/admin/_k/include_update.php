@@ -28,6 +28,7 @@ if (!$mySUser->checkRight("superuser"))
   Header ("Location:" . $url."?".SID);
   exit();
 }
+$myPT->clearCache();
 ?>
 <?php
 $myAdm = new PhenotypeAdmin();

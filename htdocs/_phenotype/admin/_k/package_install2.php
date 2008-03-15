@@ -28,6 +28,7 @@ if (!$mySUser->checkRight("superuser"))
 {
 	exit();
 }
+$myPT->clearCache();
 ?>
 <?php
 $myAdm = new PhenotypeAdmin();

@@ -28,6 +28,7 @@ if (!$mySUser->checkRight("elm_admin"))
   Header ("Location:" . $url."?".SID);
   exit();
 }
+$myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();

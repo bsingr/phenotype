@@ -104,9 +104,9 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
 
   function __destruct()
   {
-    if ($this->stored==false)
+    if ($this->changed = true AND $this->stored==false)
     {
-      trigger_error("Dataobject " . $this->bez. " (".$this->paramhash.") never stored.",E_USER_NOTICE);
+      trigger_error("Dataobject " . $this->bez. " (".$this->paramhash.")  changed, but not stored.",E_USER_NOTICE);
     }
   }
 
@@ -114,6 +114,16 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
   function store($seconds=0,$clearOnEdit=null)
   {
     global $myDB;
+    
+    /**
+     * Since the Phenotype destructor can access data objects, it is possible that the global database object already has been destroyed
+     * If so, the database must be reconnected.
+     */
+    if (!is_object($myDB))
+    {
+      $myDB = new PhenotypeDatabase();
+      $myDB->connect();
+    }
 
     $context="DAO \"".$this->bez."\": stored.";
         
@@ -129,8 +139,6 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
     }
         
     $sql = "DELETE FROM dataobject WHERE dao_bez='". mysql_escape_string($this->bez)."' AND dao_params ='".$this->paramhash."'";
-
-
     $myDB->query($sql,$context);
 
     $mySQL = new SqlBuilder();

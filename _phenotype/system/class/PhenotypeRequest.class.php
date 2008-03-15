@@ -145,11 +145,12 @@ class PhenotypeRequestStandard
 
   function getI($k)
   {
-
-    $v=$this->_REQUEST[$k];
+    global $myPT;
+    return $myPT->codeI($this->get($k));
+    //$v=$this->_REQUEST[$k];
 
     // if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    return (int)$v;
+    //return (int)$v;
 
   }
 

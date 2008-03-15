@@ -114,6 +114,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				//$body_onload="initoid();";
 				break;
 			case "update":
+			  $myPT->clearCache();
 				$this->update($block_nr);
 				break;
 			case "preview":
@@ -129,6 +130,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				$this->fillContentArea1($this->renderUpload());
 				break;
 			case "upload2":
+			  $myPT->clearCache();
 				$this->uploadMediaObject();
 				break;
 
@@ -155,6 +157,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				}
 				break;
 			case "import2":
+			  $myPT->clearCache();
 				$this->importMediaObjects();
 				break;
 			case "ddupload":
@@ -162,6 +165,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				break;
 
 			case "rollback":
+			  $myPT->clearCache();
 				$this->fillContentArea1($this->renderRollback());
 				break;
 			case "viewsnapshot":
@@ -169,6 +173,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				return;
 				break;
 			case "installsnapshot":
+			  $myPT->clearCache();
 				$this->installSnapshot($myRequest->getI("id"),$myRequest->get("sna_type"));
 				break;
 

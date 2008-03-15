@@ -61,6 +61,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				$body_onload = $this->_jsarray["body_onload"];
 				break;
 			case "update":
+			  $myPT->clearCache();
 				$this->update();
 				break;
 			case "debug":
@@ -70,9 +71,11 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				$this->copy();
 				break;
 			case "insert":
+			  $myPT->clearCache();
 				$this->insert();
 				break;
 			case "delete":
+			  $myPT->clearCache();
 				$this->delete();
 				break;
 			case "select":
@@ -82,6 +85,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				$this->fillContentArea1($this->renderSearch());
 				break;
 			case "rollback":
+			  $myPT->clearCache();
 				$this->fillContentArea1($this->renderRollback());
 				break;
 			case "viewsnapshot":
@@ -89,6 +93,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				return;
 				break;
 			case "installsnapshot":
+			  $myPT->clearCache();
 				$this->installSnapshot($myRequest->getI("id"),$myRequest->get("sna_type"));
 				break;
 			case "form_ajax":
@@ -1046,12 +1051,6 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		{
 			$myCO->snapshot($mySUser->id);
 		}
-
-		if (PT_PAGECACHE_CLEARONCONTENTUPDATE==1)
-		{
-			$myPT->clearcache_subpages(0);
-		}
-
 
 		$action = "select";
 		$feedback=1;

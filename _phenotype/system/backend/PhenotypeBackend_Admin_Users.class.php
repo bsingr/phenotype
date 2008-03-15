@@ -86,6 +86,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 			$myDB->query($sql);
 
 			$usr_id = mysql_insert_id();
+			$myPT->clearCache();
 		}
 
 		if ($usr_id==0){$this->noAccess();}
@@ -100,6 +101,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 			}
 
 			$this->update($usr_id);
+			$myPT->clearCache();
 		}
 
 
@@ -109,6 +111,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 			$mySQL->addField("usr_status",0,DB_NUMBER);
 			$sql = $mySQL->update("user","usr_id=".$usr_id);
 			$myDB->query($sql);
+			$myPT->clearCache();
 			$this->gotoPage("Admin","Users","view");
 		}
 

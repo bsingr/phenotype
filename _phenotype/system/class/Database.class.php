@@ -43,9 +43,15 @@ class PhenotypeDatabase
   function connect()
   {
     global $myPT;
-    $myPT->suppressPHPWarnings();
+    if (is_object($myPT))
+    {
+      $myPT->suppressPHPWarnings();
+    }
     $this->dbhandle = mysql_pconnect ( DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD) or $myPT->displayErrorPage("DB Exception","Unable to connect to SQL server.");
-    $myPT->respectPHPWarnings();
+    if (is_object($myPT))
+    {
+      $myPT->respectPHPWarnings();
+    }
     $this->selectDatabase();
 
     if (PT_DEBUG==1)
@@ -76,9 +82,15 @@ class PhenotypeDatabase
       $database = DATABASE_NAME;
     }
     global $myPT;
-    $myPT->suppressPHPWarnings();
+    if (is_object($myPT))
+    {
+      $myPT->suppressPHPWarnings();
+    }
     mysql_select_db ($database, $this->dbhandle) or $myPT->displayErrorPage("DB Exception","Unable to select database.");
-    $myPT->respectPHPWarnings();
+    if (is_object($myPT))
+    {
+      $myPT->respectPHPWarnings();
+    }
   }
 
   function query($sql,$context="")

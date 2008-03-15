@@ -52,6 +52,13 @@ class PhenotypeStandard extends PhenotypeBase
 
   private $_phrases = Array();
 
+  /**
+   * Holds the URLHelper dataobject during on request
+   *
+   * @var unknown_type
+   */
+  private $URLHelper = false;
+
   function __construct()
   {
     if (ini_get("register_globals")==1)
@@ -61,6 +68,17 @@ class PhenotypeStandard extends PhenotypeBase
     $this->startBuffer();
   }
 
+  public function __destruct()
+  {
+    if ($this->URLHelper!=false)
+    {
+      $myDAO = $this->URLHelper;
+      if ($myDAO->changed)
+      {
+        $myDAO->store(0,true);
+      }
+    }
+  }
 
   public function executeFrontend()
   {
@@ -424,7 +442,11 @@ class PhenotypeStandard extends PhenotypeBase
   {
     global $myDB;
 
-    $this->clearcache_subpages(0);
+    $sql = "UPDATE page SET pag_nextbuild1 = " . (time()-1) . ", pag_nextbuild2 = " . (time()-1) . ",pag_nextbuild3 = " . (time()-1) . ",pag_nextbuild4 = " . (time()-1) . ",pag_nextbuild5 = " . (time()-1) . ",pag_nextbuild6 = " . (time()-1);
+    $myDB->query($sql);
+
+    $sql = "UPDATE page_language SET pag_nextbuild1=0,pag_nextbuild2=0,pag_nextbuild3=0,pag_nextbuild4=0,pag_nextbuild5=0,pag_nextbuild6=0,pag_printcache1=0,pag_printcache2=0,pag_printcache3=0,pag_printcache4=0,pag_printcache5=0,pag_printcache6=0,pag_xmlcache1=0,pag_xmlcache2=0,pag_xmlcache3=0,pag_xmlcache4=0,pag_xmlcache5=0,pag_xmlcache6=0";
+    $myDB->query($sql);
 
     $sql = "UPDATE content_data SET dat_cache1 = 0,dat_cache2 = 0,dat_cache3 = 0,dat_cache4 = 0,dat_cache5 = 0,dat_cache6 = 0";
     $rs = $myDB->query($sql);
@@ -434,8 +456,15 @@ class PhenotypeStandard extends PhenotypeBase
 
   }
 
+  /**
+   * @deprecated 
+   *
+   * @param unknown_type $id
+   * @param unknown_type $silent
+   */
   function clearcache_page($id,$silent=1)
   {
+    throw new Exception("Deprecated call of function clearcache_page");
     $id = (int)$id;
     $silent = (int)$silent;
 
@@ -454,6 +483,7 @@ class PhenotypeStandard extends PhenotypeBase
 
   function clearcache_subpages($id,$silent=1)
   {
+    throw new Exception("Deprecated call of function clearcache_subpages");
     if ($id==0)
     {
       global $myDB;
@@ -1560,6 +1590,43 @@ border: 1px solid #cfcfcf;
 	<?php
 
   }
+
+  // =========================================================================================================
+  // functions for url/link management
+  // =========================================================================================================
+
+  public function url_for_page($pag_id,$_params=array(),$lng_id=null)
+  {
+    if ($this->URLHelper==false)
+    {
+      $myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+      $this->URLHelper = $myDAO;
+    }
+    else
+    {
+      $myDAO = $this->URLHelper;
+    }
+    $token = "p".$pag_id."l".(int)$lng_id;
+
+    if ($myDAO->check($token))
+    {
+      $url =  $myDAO->get($token);
+    }
+    else
+    {
+      $myPage = new PhenotypePage($pag_id);
+      $url = $myPage->getURL($lng_id);
+      $myDAO->set($token,$url);
+      $myDAO->store();
+    }
+
+    foreach ($_params AS $k=>$v)
+    {
+      $url .= "/".$k."/".$v;
+    }
+    return $url;
+  }
+
 
 }
 
