@@ -46,11 +46,15 @@ if (isset($_REQUEST["delete"]))
   
 }
 
+$sql = "SELECT * FROM pagegroup WHERE grp_id=".$id;
+$rs = $myDB->query($sql);
+$row = mysql_fetch_array($rs);
 
 $mySQL = new SQLBuilder();
 
 $mySQL->addField("grp_bez",$_REQUEST["bez"]);
 $mySQL->addField("grp_description",$_REQUEST["description"]);
+$mySQL->addField("grp_smarturl_schema",$myRequest->getI("grp_smarturl_schema"));
 if (isset($_REQUEST["statistic"]))
 {
   $mySQL->addField("grp_statistic",1,DB_NUMBER);
@@ -69,6 +73,20 @@ else
 }
 $sql = $mySQL->update("pagegroup","grp_id =" . $id);
 $myDB->query($sql);
+
+if ($row["grp_smarturl_schema"]!=$myRequest->getI("grp_smarturl_schema"))
+{
+  // change of smarturl schema! a rebuild is necessary
+  $sql = "SELECT pag_id FROM page WHERE grp_id=".$id;
+  $rs = $myDB->query($sql);
+  while ($row=mysql_fetch_array($rs))
+  {
+    $myPage = new PhenotypePage($row["pag_id"]);
+    echo $myPage->smarturl_schema;
+    $myPage->rebuildURLs(); 
+  }
+}
+
 
 $url = "admin_group_edit.php?id=" . $id . "&b=1";
 Header ("Location:" . $url."&".SID);

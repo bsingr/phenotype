@@ -71,6 +71,8 @@ class PhenotypePageStandard extends PhenotypeBase
 
   public $multilanguage=0;
 
+  public $smarturl_schema = 1;
+
   //function PhenotypePage($id=0,$ver_id=0,$grp_id=0,$uid=0)
   public function __construct($id=0,$ver_id=0,$grp_id=0,$uid=0)
   {
@@ -166,6 +168,7 @@ class PhenotypePageStandard extends PhenotypeBase
   * returns the url to access the site
   * considers the link style
   *
+  * @deprecated
   */
   function getPageUrl($style = "", $dyn=false)
   {
@@ -197,6 +200,8 @@ class PhenotypePageStandard extends PhenotypeBase
   }
 
   /*
+  * @deprecated
+  *
   * initializes an object by its url
   * used for cleanUrls
   *
@@ -251,7 +256,7 @@ class PhenotypePageStandard extends PhenotypeBase
     $grp_id = (int)$grp_id;
     $uid = (int)$uid;
 
-    $sql  ="SELECT page.*,pagegroup.grp_id, pagegroup.grp_statistic, pagegroup.grp_multilanguage FROM page, pagegroup WHERE ";
+    $sql  ="SELECT page.*,pagegroup.grp_id, pagegroup.grp_statistic, pagegroup.grp_multilanguage, pagegroup.grp_smarturl_schema FROM page, pagegroup WHERE ";
     if ($id!=0)
     {
       $sql.= "pag_id = " . $id;
@@ -353,6 +358,8 @@ class PhenotypePageStandard extends PhenotypeBase
 
     $this->statistic = (boolean)$row["grp_statistic"];
     $this->multilanguage = (boolean)$row["grp_multilanguage"];
+    $this->smarturl_schema = $row["grp_smarturl_schema"];
+
     $sql = "SELECT * FROM pageversion WHERE pag_id = " . $id . " AND ver_id=" . $this->ver_id;
 
     $rs = $myDB->query($sql,"Page ".$id.": initialization");
@@ -2258,7 +2265,7 @@ class PhenotypePageStandard extends PhenotypeBase
   {
     $this->titel = $s;
   }
-  
+
   public function getTitle()
   {
     return ($this->titel);
@@ -2279,16 +2286,88 @@ class PhenotypePageStandard extends PhenotypeBase
     }
     else
     {
+      $schema = "fulltree";
+      $multilanguage = $this->multilanguage;
+      $url="";
+
+
+      switch ($this->smarturl_schema)
+      {
+        case 1:  //default
+        $schema = "fulltree";
+        break;
+        case 2:
+          $schema = "fulltree";
+          $multilanguage = 0;
+          break;
+        case 3:
+          $schema = "subtree";
+          break;
+        case 4:
+          $schema = "subtree";
+          $multilanguage = 0;
+          break;
+        case 5:
+          $schema = "flat";
+          break;
+        case 6:
+          $schema = "flat";
+          $multilanguage = 0;
+          break;
+        case 7:
+          $schema = "php";
+          $title = 0;
+          break;
+        case 8:
+          $schema = "php";
+          $multilanguage = 0;
+          break;
+      }
+
+      if ($schema == "php")
+      {
+        $url = "index.php?id=".$this->id;
+        if ($multilanguage)
+        {
+          $url .= "&lng_id=".$lng_id;
+        }
+        $url = SERVERURL . $url;
+        return $url;
+      }
+
+      
+
       $row = $this->row;
       $url = $this->urlencode($this->titel);
-      while ($row["pag_id_top"]!=0)
+      if ($schema == "fulltree" OR $schema=="subtree")
       {
-        $myNavPage = new PhenotypePage($row["pag_id_top"]);
-        $myNavPage->switchLanguage($this->lng_id);
-        $row = $myNavPage->row;
-        $url = $this->urlencode($myNavPage->titel) ."/" .$url;
+
+
+        while ($row["pag_id_top"]!=0)
+        {
+          $myNavPage = new PhenotypePage($row["pag_id_top"]);
+          $myNavPage->switchLanguage($this->lng_id);
+          $row = $myNavPage->row;
+          if ($row["pag_id_top"]!=0 OR $schema=="fulltree")
+          {
+            $url = $this->urlencode($myNavPage->titel) ."/" .$url;
+          }
+        }
       }
-      if ($this->multilanguage)
+
+      // Fallback
+      if (PT_URL_STYLE!="smartURL")
+      {
+        $url = "index.php?smartURL=".$url;
+        if ($multilanguage)
+        {
+          $url .= "&lng_id=".$lng_id;
+        }
+        $url = SERVERURL . $url;
+        return $url;
+      }
+      
+      if ($multilanguage==1)
       {
         $url = $PTC_LANGUAGES[$lng_id]."/".$url;
       }

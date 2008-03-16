@@ -46,3 +46,5 @@ ALTER TABLE `page` ADD `pag_url1` VARCHAR( 255 ) NOT NULL AFTER `pag_url` ,
 ADD `pag_url2` VARCHAR( 255 ) NOT NULL AFTER `pag_url1` ,
 ADD `pag_url3` VARCHAR( 255 ) NOT NULL AFTER `pag_url2` ,
 ADD `pag_url4` VARCHAR( 255 ) NOT NULL AFTER `pag_url3` ;
+
+ALTER TABLE `pagegroup` ADD `grp_smarturl_schema` TINYINT NOT NULL DEFAULT '1';

@@ -5,7 +5,7 @@
 // Copyright (c) 2003-2006 Nils Hagemann, Paul Sellinger,
 // Peter Sellinger.
 // -------------------------------------------------------
-// Thanks for your support: Markus Griesbach, Michael 
+// Thanks for your support: Markus Griesbach, Michael
 // Krämer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
@@ -43,7 +43,7 @@ $myAdm->menu("Konfiguration");
 ?>
 <?php
 // -------------------------------------
-// {$left} 
+// {$left}
 // -------------------------------------
 $myPT->startBuffer();
 ?>
@@ -55,12 +55,12 @@ $myAdm->explorer_draw();
 <?php
 $left = $myPT->stopBuffer();
 // -------------------------------------
-// -- {$left} 
+// -- {$left}
 // -------------------------------------
 ?>
 <?php
 // -------------------------------------
-// {$content} 
+// {$content}
 // -------------------------------------
 $myPT->startBuffer();
 $sql = "SELECT * FROM pagegroup WHERE grp_id =" . $id;
@@ -86,27 +86,61 @@ $row = mysql_fetch_array($rs);
       </tr>
     </table>
 	<?php
-	 $myLayout->tab_new();
-	 $url = "toolkit_edit.php?id=" .$id ."&b=0";	 
-	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
-	 $myLayout->tab_draw("Konfiguration");
-     $myLayout->workarea_start_draw();
-     $html = $myLayout->workarea_form_text("","bez",$row["grp_bez"]);
-	 $myLayout->workarea_row_draw("Bezeichnung",$html);		
-     $html=  $myLayout->workarea_form_textarea("","description",$row["grp_description"],8);
-     $myLayout->workarea_row_draw("Beschreibung",$html);
-     $checked="";
-	 if ($row["grp_multilanguage"]==1){$checked="checked";}
-     $html='<input type="checkbox" value="1" name="multilanguage" '.$checked .'>&nbsp;<b>ja</b><br>';
-	 $myLayout->workarea_row_draw("Mehrsprachigkeit",$html);	  
-     $checked="";
-	 if ($row["grp_statistic"]==1){$checked="checked";}
-     $html='<input type="checkbox" value="1" name="statistic" '.$checked .'>&nbsp;<b>Seitenaufrufe z&auml;hlen</b><br>';
-	 $myLayout->workarea_row_draw("Statistik",$html);
-	   // Abschlusszeile
-        $sql = "SELECT COUNT(*) AS C FROM page WHERE grp_id = " . $id;
-		$rs = $myDB->query($sql);
-		$row = mysql_fetch_array($rs);
+	$myLayout->tab_new();
+	$url = "toolkit_edit.php?id=" .$id ."&b=0";
+	$myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
+	$myLayout->tab_draw("Konfiguration");
+	$myLayout->workarea_start_draw();
+	$html = $myLayout->workarea_form_text("","bez",$row["grp_bez"]);
+	$myLayout->workarea_row_draw("Bezeichnung",$html);
+	$html=  $myLayout->workarea_form_textarea("","description",$row["grp_description"],8);
+	$myLayout->workarea_row_draw("Beschreibung",$html);
+	$checked="";
+	if ($row["grp_multilanguage"]==1){$checked="checked";}
+	$html='<input type="checkbox" value="1" name="multilanguage" '.$checked .'>&nbsp;<b>ja</b><br>';
+	$myLayout->workarea_row_draw("Mehrsprachigkeit",$html);
+	$myPT->startBuffer();
+	?>
+	<select name="grp_smarturl_schema" class="input" style="width:250px">
+  <?php
+  $_options = Array (
+  1=>"Voller Pfad  (ggf. Sprachkennzeichnung)",
+  2=>"Voller Pfad  (keine Sprachkennzeichnung)",
+  3=>"Subpfad  (ggf. Sprachkennzeichnung)",
+  4=>"Subpfad  (keine Sprachkennzeichnung)",
+  5=>"Seitentitel  (ggf. Sprachkennzeichnung)",
+  6=>"Seitentitel  (keine Sprachkennzeichnung)",
+  7=>"index.php  (ggf. Sprachkennzeichnung)",
+  8=>"index.php  (keine Sprachkennzeichnung)"
+  );
+  
+  foreach ($_options AS $k => $v)
+  {
+    $selected='';
+    if ($row["grp_smarturl_schema"]==$k)
+    {
+      $selected = 'selected="selected"';
+    }
+  ?>
+  <option value="<?php echo $k ?>" <?php echo $selected?>><?php echo codeH($v) ?></option>
+  <?php
+  }
+  ?><br><br>
+	<?php
+
+	$html = $myPT->stopBuffer();
+	$myLayout->workarea_row_draw("smartURL-Schema",$html);
+
+
+	$checked="";
+	if ($row["grp_statistic"]==1){$checked="checked";}
+	$html='<input type="checkbox" value="1" name="statistic" '.$checked .'>&nbsp;<b>Seitenaufrufe z&auml;hlen</b><br>';
+	$myLayout->workarea_row_draw("Statistik",$html);
+
+	// Abschlusszeile
+	$sql = "SELECT COUNT(*) AS C FROM page WHERE grp_id = " . $id;
+	$rs = $myDB->query($sql);
+	$row = mysql_fetch_array($rs);
 	 ?>
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
@@ -121,7 +155,7 @@ $row = mysql_fetch_array($rs);
 <?php
 $content = $myPT->stopBuffer();
 // -------------------------------------
-// -- {$content} 
+// -- {$content}
 // -------------------------------------
 ?>
 <?php

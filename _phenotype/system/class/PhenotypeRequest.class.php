@@ -32,6 +32,7 @@ class PhenotypeRequestStandard
   public function __construct()
   {
     global $myDB;
+    global $myApp;
 
     $this->_REQUEST = $_REQUEST;
     if (ini_get("magic_quotes_gpc")==1)
@@ -54,7 +55,7 @@ class PhenotypeRequestStandard
         $smartURL = preg_replace($patterns,"", $smartURL);
         // / am Ende wegfiltern
         $patterns = "/[\/]\$/";
-        $smartURL = preg_replace($patterns,"", $smartURL);
+        $smartURL = "/".preg_replace($patterns,"", $smartURL);
 
         $sql = "SELECT pag_id FROM page WHERE pag_url='". mysql_escape_string($smartURL)."'";
         $rs = $myDB->query($sql,"Request");
@@ -73,7 +74,8 @@ class PhenotypeRequestStandard
           {
             $row =mysql_fetch_array($rs);
             $this->set("id",$row["pag_id"]);
-            $params = substr($smartURL,$row["l"]+1);
+            $params = substr($smartURL,$row["l"]+2);
+            //echo $params;
             $_params = split('/',$params);
             $i=0;
             foreach ($_params AS $v)
@@ -98,6 +100,11 @@ class PhenotypeRequestStandard
                 $this->set("action","index");
               }
             }
+          }
+          else 
+          {
+            // no unique hit
+            $myApp->throw404();
           }
         }
       }
