@@ -6,7 +6,7 @@
  * if you like to have your own configs, it's recommended to copy the existing files to a subfolder of your htdocs
  * and create your own config area there to separate your changes from the system and to ease future system upgrades.
  *
- * ensure the filename and the array key in the first line (in this case default) fit together
+ * ensure the filename and the array key in the first line (in this case 'default') fit together
  * and check to use the correct array name, pt_rtf_opts for RichTextAreas, pt_code_opts for CodeAreas
  */
 pt_rtf_opts['default'] = {
