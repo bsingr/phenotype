@@ -98,7 +98,6 @@ class PhenotypeStandard extends PhenotypeBase
     global $myRequest;
 
     // retrieve page id out of request
-
     $pag_id = $myRequest->getI("id");
 
     if ($pag_id==0)
@@ -1621,7 +1620,7 @@ border: 1px solid #cfcfcf;
     else
     {
       $myPage = new PhenotypePage($pag_id);
-      $url = $myPage->getURL($lng_id);
+      $url = $myPage->buildURL($lng_id);
       $myDAO->set($token,$url);
       $myDAO->store();
     }
