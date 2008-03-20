@@ -97,6 +97,7 @@ require (BASEPATH . "buildinfo.inc.php");
 require (CLASSPATH . "PhenotypeBase.class.php");
 require (CLASSPATH . "Phenotype.class.php");
 require (SYSTEMPATH . "_init.inc.php");
+require (SYSTEMPATH . "_helper.inc.php");
 
 require (CLASSPATH . "PhenotypePage.class.php");
 require (CLASSPATH . "Database.class.php");
@@ -154,12 +155,11 @@ $myApp = new PhenotypeApplication();
 // Grundinitalisierung
 // ------------------------------------------------------
 
-
 $myPT = new Phenotype();
 $myLog = new PhenotypeLog();
-$myRequest = new PhenotypeRequest();
-$myDB = new Database();
+$myDB = new PhenotypeDatabase();
 $myDB->connect();
+$myRequest = new PhenotypeRequest();
 
 
 

@@ -50,12 +50,12 @@ class PhenotypeRequestStandard
       {
         $smartURL = $this->get("smartURL");
 
-        // / am Anfang wegfiltern
+          // / am Anfang wegfiltern
         $patterns = "/^[\/]*/";
         $smartURL = preg_replace($patterns,"", $smartURL);
         // / am Ende wegfiltern
         $patterns = "/[\/]\$/";
-        $smartURL = "/".preg_replace($patterns,"", $smartURL);
+        $smartURL = preg_replace($patterns,"", $smartURL);
 
         $sql = "SELECT pag_id FROM page WHERE pag_url='". mysql_escape_string($smartURL)."'";
         $rs = $myDB->query($sql,"Request");

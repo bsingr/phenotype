@@ -756,6 +756,8 @@ class PhenotypePageStandard extends PhenotypeBase
     require ($dateiname);
     $html = $myPT->stopBuffer();
 
+
+    
     $myTC->stop();
 
 
@@ -2271,10 +2273,24 @@ class PhenotypePageStandard extends PhenotypeBase
     return ($this->titel);
   }
 
-  public function getURL($lng_id=null)
+  /**
+   * retrieves URL of a page using the DAO cache
+   * 
+   * You should not overwerite this method. If you want to change URL behaviour
+   * stick to buildURL instead.
+   *
+   * @param integer $lng_id
+   * @return string
+   */
+  public function getURL($lng_id)
+  {
+  	global $myPT;
+	return $myPT->url_for_page($pag_id,$_params,$lng_id);
+  }
+  
+  public function buildURL($lng_id=null)
   {
     global $PTC_LANGUAGES;
-    //  $url =  "index.php?id=".$this->id."&lng_id=".$lng_id;
 
     if ($lng_id==null)
     {
@@ -2331,7 +2347,7 @@ class PhenotypePageStandard extends PhenotypeBase
         {
           $url .= "&lng_id=".$lng_id;
         }
-        $url = SERVERURL . $url;
+        $url = $url;
         return $url;
       }
 
@@ -2372,7 +2388,6 @@ class PhenotypePageStandard extends PhenotypeBase
         $url = $PTC_LANGUAGES[$lng_id]."/".$url;
       }
     }
-    $url = SERVERURL . $url;
     return $url;
   }
 
@@ -2382,18 +2397,21 @@ class PhenotypePageStandard extends PhenotypeBase
     global $PTC_LANGUAGES;
     $mySQL = new SQLBuilder();
 
-    $url = $this->getURL();
+    $url = $this->buildURL();
+    
+ 
     $mySQL->addField("pag_url".$k,$url);
     foreach ($PTC_LANGUAGES AS $k =>$v)
     {
       if ($this->multilanguage)
       {
-        $url = $this->getURL($k);
+        $url = $this-buildURL($k);
       }
       $mySQL->addField("pag_url".$k,$url);
     }
     $sql = $mySQL->update("page","pag_id=".$this->id);
     $myDB->query($sql);
+
   }
 }
 

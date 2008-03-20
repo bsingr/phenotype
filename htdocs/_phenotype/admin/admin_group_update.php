@@ -82,10 +82,11 @@ if ($row["grp_smarturl_schema"]!=$myRequest->getI("grp_smarturl_schema"))
   while ($row=mysql_fetch_array($rs))
   {
     $myPage = new PhenotypePage($row["pag_id"]);
-    echo $myPage->smarturl_schema;
+    //echo $myPage->smarturl_schema;
     $myPage->rebuildURLs(); 
   }
 }
+
 
 
 $url = "admin_group_edit.php?id=" . $id . "&b=1";

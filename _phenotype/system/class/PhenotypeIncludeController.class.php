@@ -37,9 +37,12 @@ class PhenotypeIncludeControllerStandard extends PhenotypeInclude
 
   public $props = Array ();
   
+  public $disableLayout = false;
+  
   public function execute ()
   {
     global $myRequest;
+    global $myPT;
 
     $action = $myRequest->get("action");
     if ($action=="")
@@ -57,8 +60,12 @@ class PhenotypeIncludeControllerStandard extends PhenotypeInclude
         break;
 
     }
+    $buffer_preexecution = $myPT->stopBuffer();
 
+    $myPT->startBuffer();
+	
 
+	
     $view = call_user_method($methodname,$this,$myRequest);
     if (is_null($view)){$view="Success";}
     if ($view!=false)
@@ -69,12 +76,24 @@ class PhenotypeIncludeControllerStandard extends PhenotypeInclude
         $mySmarty->assign($k,$v);
       }
       $template = $action . $view;
-      echo $template;
       $mySmarty->display ($$template);
     }
-
+    if ($this->disableLayout)
+    {
+    	echo $myPT->stopBuffer();
+    	die();
+    }
+	$buffer_execution =$myPT->stopBuffer();
+	echo $buffer_preexecution;
+	echo $buffer_execution;
+	
   }
 
+  public function disableLayout()
+  {
+  	$this->disableLayout = true;
+  }
+  
   public function __call($methodname,$params)
   {
     throw new Exception("Undefined action method ".$methodname.".");
