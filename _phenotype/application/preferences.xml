@@ -13,7 +13,7 @@
 			<!-- change this to use a config file you created custom, should in this case be in the docroot (htdocs) -->
 			<code_editor>fckEditor</code_editor>
 			<!-- possible values are tinyMCE or fckEditor -->
-			<code_editor_config_path></code_editor_config_path>
+			<code_editor_config_path>_phenotype/admin/lib/fckeditor/conf_code/</code_editor_config_path>
 			<!-- change this to use a config file you created custom, should in this case be in the docroot (htdocs) -->
 		</section>
 		<section name="edit_pages">

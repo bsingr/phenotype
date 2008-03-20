@@ -28,6 +28,20 @@ class PhenotypeAdminStandard
 {
 	var $props_explorer = Array();
 
+	/*
+	 * @var Array	contains 
+	 * shows the state of rtf editor setup.
+	 *		null => not initialized
+	 *		array() => editor included
+	 *		After inclusion of the editor, in the array will be stored which configs were loaded
+	 */
+	private $editorInit = Array();
+	
+	/*
+	 * @var	Array	contains 
+	 */
+	private $codeEditorConfigs = Array();
+	
 	//function PhenotypeAdmin ()
 	public function __construct()
 	{
@@ -353,103 +367,11 @@ class PhenotypeAdminStandard
 
 	function buildHTMLTextArea($name,$filename,$cols,$rows,$mode="PHP",$x=640)
 	{
-
-		if ($this->browserOK_HTMLArea())
-		{
-	?>
-	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  id="<?php echo $name ?>" class="input"  style="width: <?php echo $x ?>px"><?php
-	if (file_exists($filename))
-	{
-		switch ($mode)
-		{
-			case "PHP":
-				echo $this->readPHP_HTMLArea($filename);
-				break;
-			default:
-				echo $this->readHTML_HTMLArea($filename);
-				break;
-		}
-		/*if ($mode=="PHP")
-		{
-		echo $this->readPHP_HTMLArea($filename);
-		}
-		else
-		{
-		echo $this->readHTML_HTMLArea($filename);
-		}*/
-	}
-	else
-	{
-		echo'<font size="3"><pre></pre></font>';
-	}
-	?></textarea>
-	<?php
-	if ($this->whichHTMLArea()==3)
-	{
-	?>
-	<script language="JavaScript1.2">
-	var config = new HTMLArea.Config();
-	config.width = '<?php echo $x ?>px';
-	config.height = '<?php echo $rows*25 ?>px';
-	config.pageStyle = 'body { background-color: white} ';
-	config.toolbar = [['popupeditor']];
-	HTMLArea.replace('<?php echo $name ?>', config);
-	</script>
-    <?php
-	}
-	?>
-	<?php
-	if ($this->whichHTMLArea()==2)
-	{
-	?>
-	<script language="JavaScript1.2">
-	var config = new Object();
-	config.toolbar = [['popupeditor']];
-	editor_generate('<?php echo $name ?>',config);
-	</script>
-    <?php
-	}
-	?>	
-	<?php
-	if ($this->whichHTMLArea()==4)
-	{
-	?>
-	<script language="JavaScript1.2">
-	var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
-	oFCKeditor.BasePath	= '<?php echo ADMINURL ?>/fckeditor/' ;
-	oFCKeditor.Height = <?php echo $rows*20 ?> ;
-	oFCKeditor.Width = <?php echo $x ?>;
-	oFCKeditor.ToolbarSet = "Coding" ;
-	oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo ADMINURL ?>/fckconfig.php";
-	oFCKeditor.ReplaceTextarea() ;
-	</script>
-
-    <?php
-	}
-	?>		
-	<?php
-		}
-		else
-		{
-	?>
-	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  style="width:<?php echo $x ?>px" class="input"><?php
-	if (file_exists($filename))
-	{
-		if ($mode=="PHP")
-		{
-			echo $this->readPHP_TextArea($filename);
-		}
-		else
-		{
-			echo $this->readHTML_TextArea($filename);
-		}
-	}
-	?></textarea>		
-    <?php
-		}
+		global $myLayout;
+		$myLayout->form_HTMLTextarea($name,$filename,$cols,$rows,$mode,$x);
 	}
 
-	function readPHP_HTMLArea($filename)
+	function get_filecontents_highlighted($filename)
 	{
 		global $myPT;
 		$fp = fopen ($filename,"r");
@@ -462,79 +384,30 @@ class PhenotypeAdminStandard
 			}
 		}
 		fclose ($fp);
-		if ($buffer==""){return('<font size="3"><pre></pre></font>');}
+		if ($buffer=="")
+		{
+			return('<font size="3"><pre></pre></font>');
+		}
+		
+		// backslash
 		$buffer = str_replace(chr(92),"_CHR_ASCII_92_",$buffer);
-		$filename_bak = TEMPPATH ."htmlarea/~" . time() . ".tmp";
-
-
-		$fp = fopen ($filename_bak,"w");
-		fputs($fp,$buffer);
-		fclose ($fp);
-		@chown ($filename_bak,UMASK);
-		$myPT->startbuffer();
-		show_source($filename_bak);
-		$buffer = $myPT->stopbuffer();
+		
+		// highlight the source
+		// first, add the cheat php tag to activate the damn php highlighting function
+		$buffer = "<?php _CHEAT_SHOW_SOURCE_". $buffer ."_CHEAT_SHOW_SOURCE_ ?>";
+		// highlight the stuff
+		$buffer = highlight_string($buffer, true);
+		
+		// remove the fake tags added above
+		$buffer = str_replace('&lt;?php&nbsp;_CHEAT_SHOW_SOURCE_','',$buffer);
+		$buffer = str_replace('_CHEAT_SHOW_SOURCE_&nbsp;?&gt;','',$buffer);
+		
+		// replace the backslashes again
 		$buffer = str_replace('_CHR_ASCII_92_',chr(92),$buffer);
-		unlink($filename_bak);
 
 		return ('<font size="3">' .htmlentities($buffer) . '</font>');
 	}
-
-	function readHTML_HTMLArea($filename)
-	{
-		global $myPT;
-		$fp = fopen ($filename,"r");
-		$buffer ="";
-		if($fp)
-		{
-			while (!feof($fp))
-			{
-				$buffer .= fgets($fp, 4096);
-			}
-		}
-		fclose ($fp);
-		if ($buffer=="")return('<font size="3"><pre></pre></font>');
-		$buffer = "<?php _CHEAT_SHOW_SOURCE_" . $buffer . "_CHEAT_SHOW_SOURCE_ ?>";
-		$buffer = str_replace(chr(92),"_CHR_ASCII_92_",$buffer);
-		$filename_bak = TEMPPATH ."htmlarea/~" . uniqid("") . ".tmp";
-		$fp = fopen ($filename_bak,"w");
-		fputs($fp,$buffer);
-		fclose ($fp);
-		@chown ($filename_bak,UMASK);
-		$myPT->startbuffer();
-		show_source($filename_bak);
-		$buffer = $myPT->stopbuffer();
-		$buffer = str_replace('_CHR_ASCII_92_',chr(92),$buffer);
-		$buffer = str_replace('&lt;?php _CHEAT_SHOW_SOURCE_',"",$buffer);
-		$buffer = str_replace('_CHEAT_SHOW_SOURCE_?&gt;',"",$buffer);
-		// Spaeter andere Farbkodierung nachruesten
-		//$buffer = str_replace("font","bond",$buffer);
-		//$buffer = str_replace('#0000BB',"000000",$buffer);
-
-		unlink($filename_bak);
-		return ('<font size="3">' .htmlentities($buffer) . '</font>');
-	}
-
-	function readPHP_TextArea($filename)
-	{
-		$fp = fopen ($filename,"r");
-		$buffer ="";
-		if($fp)
-		{
-			while (!feof($fp))
-			{
-				$buffer .= fgets($fp, 4096);
-			}
-		}
-		fclose ($fp);
-		return htmlspecialchars($buffer);
-	}
-
-	function readHTML_TextArea($filename)
-	{
-		return $this->readPHP_TextArea($filename);
-	}
-
+	
 	function decodeRequest_HTMLArea($code)
 	{
 		// Erst alle echten Returns raus ..
@@ -611,49 +484,8 @@ class PhenotypeAdminStandard
 
 	function browserOK_HTMLArea()
 	{
-
 		return true;
-		/*
-		// Achtung Funktion falsch, da eigentlich nur MSIE 5.5 +
-		$browser = $_SERVER["HTTP_USER_AGENT"];
-		//$browser = $_ENV["HTTP_USER_AGENT"];
-
-		if( eregi("(msie) ([0-9]{1,2}.[0-9]{1,3})",$browser,$regs) )
-		{
-		return true;
-		}
-		else
-		{
-		return false;
-		}*/
 	}
-
-
-	function whichHTMLArea()
-	{
-		$version=0;
-		$agent = $_SERVER["HTTP_USER_AGENT"];
-		if ($agent==""){$agent=$_ENV["HTTP_USER_AGENT"];}
-		$agent = strtoupper($agent);
-		if (strpos($agent,"MSIE"))
-		{
-			$version = 2;
-		}
-		if (strpos($agent,"NETSCAPE"))
-		{
-			$version = 3;
-		}
-		if (strpos($agent,"FIREFOX"))
-		{
-			$version = 3;
-		}
-
-		// Override durch FCKEditor
-		$version = 4;
-
-		return $version;
-	}
-
 
 	function explorer_prepare($modul,$submodul)
 	{

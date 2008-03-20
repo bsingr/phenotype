@@ -65,10 +65,7 @@ if ($_REQUEST["b"]==0)
 // SKRIPT
 if ($_REQUEST["b"]==1)
 {
-	if ($myAdm->browserOK_HTMLArea())
 	{$skript = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));}
-	else
-	{$skript = $myAdm->decodeRequest_TextArea($myRequest->get("skript"));}
 
 	$dateiname = APPPATH . "components/PhenotypeComponent_"  .$id . ".class.php";
 

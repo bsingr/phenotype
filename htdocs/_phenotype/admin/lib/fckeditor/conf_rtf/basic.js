@@ -17,10 +17,7 @@ FCKConfig.EnterMode = 'p' ;			// p | div | br
 FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
 
 FCKConfig.ToolbarSets["Default"] = [
-['Bold','Italic','Underline','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyFull','-','OrderedList','UnorderedList','-','Link','Unlink'],
-['Paste','PasteText','PasteWord','RemoveFormat'],
-['Undo','Redo','-','Find','Replace'],
-['Print','-','Source','-','FitWindow','About']
+	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About']
 ] ;
 
 // Do not add, rename or remove styles here. Only apply definition changes.

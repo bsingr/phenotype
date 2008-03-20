@@ -29,7 +29,6 @@ class PhenotypeLayout
 	// :TODO: necessary any longer?
 	//var $props_topline = Array();
 	
-	
 	var $props_tab = Array();
 	var $props_iconbar = Array();
 	var $props_tree = Array();
@@ -697,6 +696,81 @@ class PhenotypeLayout
 		if ($br==1){$html.="<br>";}
 		return $html;
 	}
+	
+	/**
+	 * initializes the javascript editor for RichText or HTML
+	 *
+	 * @param int $mode	PT_EDITOR_RTF or PT_EDITOR_CODE. only use this constants
+	 * @param	string $configSet	refers to the configset used for this field
+	 *
+	 */
+	function init_js_editor($mode, $configSet)
+	{
+		global $myPT;
+		global $myLog;
+		
+		$key = '';
+		if ($mode == PT_EDITOR_RTF)
+		{
+			$key = "backend.rtf_editor";
+			$js_var = "pt_rtf_opts";
+			$configArray = $this->rtfEditorConfigs;
+		} elseif ($mode == PT_EDITOR_CODE)
+		{
+			$key = "backend.code_editor";
+			$js_var = "pt_code_opts";
+			$configArray = $this->codeEditorConfigs;
+		} else
+		{
+			$myLog->log("initJSEditor: Aufruf ohne Modus!", PT_LOGFACILITY_SYS, PT_LOGLVL_ERROR);
+			return false;
+		}
+		
+		// ** load the configured editor if necessary
+		if (! (array_key_exists($myPT->getPref($key), $this->editorInit) && ($this->editorInit[$myPT->getPref($key)] == 1)) )
+		{
+			if ($myPT->getPref($key) == PT_RTF_EDITOR_TINYMCE)
+			{ // TinyMCE
+?>
+	<!-- TinyMCE -->
+	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+	<!-- /TinyMCE -->
+<?php
+			} elseif ($myPT->getPref($key) == PT_RTF_EDITOR_FCKEDITOR)
+			{ // FCKEditor
+?>
+	<!-- FCKEditor -->
+	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/fckeditor/fckeditor/fckeditor.js"></script>
+	<!-- /FCKEditor -->
+<?php
+			} else
+			{
+?>
+<!-- RTF-Editor <?php echo($myPT->getPref($key)); ?> is not defined -->
+<?php
+			}
+			$this->editorInit[$myPT->getPref($key)] = 1;
+			
+			// now setup the configurations array in JS
+			if (count($configArray) == 0)
+			{
+?>
+	<script type="text/javascript">
+		var <?php echo($js_var); ?> = Object();
+	</script>
+<?php
+			}
+		}
+		
+		// ** get config for tinyMCE, fckEditor uses external config files directly
+		if (! array_key_exists($configSet, $configArray) && ($myPT->getPref($key) == PT_RTF_EDITOR_TINYMCE))
+		{
+?>
+	<script type="text/javascript" src="<?php echo(SERVERURL . $myPT->getPref($key .'_config_path') . $configSet .'.js'); ?>"></script>
+<?php
+			$configArray[$configSet] = 1;
+		}
+	}
 
 	/**
 	 * displays a textarea for code input in the workarea
@@ -714,37 +788,40 @@ class PhenotypeLayout
 		global $myAdm;
 		global $myPT;
 		
-		// ** load the configured editor if necessary
-		if (! (array_key_exists($myPT->getPref("backend.code_editor"), $this->editorInit) && ($this->editorInit[$myPT->getPref("backend.code_editor")] == 1)) )
+		$configSet = 'default'; // could be used to have different setups for code editors. currently not used and no argument for that, but build into code.
+
+		$content = $myAdm->get_filecontents_highlighted($filename);
+		
+		$this->init_js_editor(PT_EDITOR_RTF, $configSet);
+		
+		// ** now render and setup the particular editor field
+?>
+	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" style="width: <?php echo $x ?>px" class="input RichText"><?php echo $content ?></textarea>
+<?php
+		if ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_TINYMCE)
 		{
-			if ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_TINYMCE)
-			{ // TinyMCE
-?>
-	<!-- TinyMCE -->
-	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
-	<!-- /TinyMCE -->
-<?php
-			} else
-			{ // FCKEditor
-?>
-	<script type="text/javascript" src="<?php echo(ADMINURL); ?>fckeditor/fckeditor.js"></script>
-<?php
-			}
-			$this->editorInit[$myPT->getPref("backend.code_editor")] = 1;
-			
-			
-			// now setup the configurations array in JS
-			if (count($codeEditorConfigs) == 0)
-			{
 ?>
 	<script type="text/javascript">
-		var pt_code_opts = Array();
+		var myOpts = pt_code_opts["<?php echo $configSet ?>"];
+		myOpts.mode = "exact";
+		myOpts.theme = "advanced";
+		myOpts.elements = "<?php echo $name ?>";
+		tinyMCE.init(myOpts);
 	</script>
 <?php
-			}
-		}
-		
-		$myAdm->buildHTMLTextArea($name, $filename, $cols, $rows, $mode, $x);
+    	} elseif ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_FCKEDITOR)
+    	{
+?>
+	<script type="text/javascript">
+		var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
+		oFCKeditor.BasePath	= '<?php echo ADMINURL ?>lib/fckeditor/fckeditor/' ;
+		oFCKeditor.Width = <?php echo $x ?>;
+		oFCKeditor.Height = <?php echo $rows*17 ?> ;
+		oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo(SERVERURL . $myPT->getPref('backend.code_editor_config_path') . $configSet .'.js'); ?>";
+		oFCKeditor.ReplaceTextarea() ;
+	</script>
+<?php
+    	}
 	}
 
 
@@ -765,48 +842,8 @@ class PhenotypeLayout
 		
 		$val = htmlentities($val);
 		
-		// ** load the configured editor if necessary
-		if (! (array_key_exists($myPT->getPref("backend.rtf_editor"), $this->editorInit) && ($this->editorInit[$myPT->getPref("backend.rtf_editor")] == 1)) )
-		{
-			if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
-			{ // TinyMCE
-?>
-	<!-- TinyMCE -->
-	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
-	<!-- /TinyMCE -->
-<?php
-			} elseif ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_FCKEDITOR)
-			{ // FCKEditor
-?>
-	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/fckeditor/fckeditor/fckeditor.js"></script>
-<?php
-			} else
-			{
-?>
-<!-- RTF-Editor <?php echo($myPT->getPref("backend.rtf_editor")); ?> is not defined -->
-<?php
-			}
-			$this->editorInit[$myPT->getPref("backend.rtf_editor")] = 1;
-			
-			// now setup the configurations array in JS
-			if (count($rtfEditorConfigs) == 0)
-			{
-?>
-	<script type="text/javascript">
-		var pt_rtf_opts = Object();
-	</script>
-<?php
-			}
-		}
+		$this->init_js_editor(PT_EDITOR_RTF, $configSet);
 		
-		// ** get config for tinyMCE, fckEditor uses external config files directly
-		if (! array_key_exists($configSet, $this->rtfEditorConfigs) && ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE))
-		{
-?>
-	<script type="text/javascript" src="<?php echo(SERVERURL . $myPT->getPref('backend.rtf_editor_config_path') . $configSet .'.js'); ?>"></script>
-<?php
-			$this->rtfEditorConfigs[$configSet] = 1;
-		}
 		
 		// ** now render and setup the particular editor field
 ?>
