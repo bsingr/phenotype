@@ -66,10 +66,7 @@ if ($_REQUEST["b"]==0)
 // SKRIPT
 if ($_REQUEST["b"]==1)
 {
-	if ($myAdm->browserOK_HTMLArea())
-	{$skript = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));}
-	else
-	{$skript = $myAdm->decodeRequest_TextArea($myRequest->get("skript"));}
+	$skript = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
 
 	$dateiname = APPPATH . "components/PhenotypeComponent_"  .$id . ".class.php";
 
@@ -101,10 +98,7 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
 		// Templates nur im Block 3
 		if ($_REQUEST["b"]==2)
 		{
-			if ($myAdm->browserOK_HTMLArea())
-			{$html = $myAdm->decodeRequest_HTMLArea($myRequest->get($identifier . "template"));}
-			else
-			{$html = $myAdm->decodeRequest_TextArea($myRequest->get($identifier . "template"));}
+			$html = $myAdm->decodeRequest_HTMLArea($myRequest->get($identifier . "template"));
 
 			$dateiname = $myPT->getTemplateFileName(PT_CFG_COMPONENT, $id, $row_ttp["tpl_id"]);
 			$fp = fopen ($dateiname,"w");

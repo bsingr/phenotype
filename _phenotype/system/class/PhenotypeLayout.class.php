@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -22,29 +22,58 @@
  * @package phenotype
  * @subpackage system
  *
+ * the main wrapper for displaying a page in phenotype backend
  */
 class PhenotypeLayoutStandard
 {
+	// :TODO: necessary any longer?
 	//var $props_topline = Array();
 	
 	var $props_tab = Array();
 	var $props_iconbar = Array();
 	var $props_tree = Array();
-
+	
 	public $component_count = 0;
 
 	public $dhtmlwz_init = 0;
 	
 	/*
+	 * @var Array	contains 
+	 * shows the state of rtf editor setup.
+	 *		null => not initialized
+	 *		array() => editor included
+	 *		After inclusion of the editor, in the array will be stored which configs were loaded
+	 */
+	private $editorInit = Array();
+	
+	/*
+	 * @var	Array	contains 
+	 */
+	private $rtfEditorConfigs = Array();
+	private $codeEditorConfigs = Array();
+	
+
+	/*
+	 * :TODO: necessary anyl longer?
 	function topline_addEntry($bez,$url)
 	{
 		$_entry["url"]=$url;
 		$_entry["bez"]=$bez;
 		$this->props_topline[] = $_entry;
 	}
-	*/
+	 */
 
-	function tab_addEntry($bez,$url,$icon)
+	/**
+	 * adds a entry in the tab bar of the Layout
+	 *
+	 * usually used system internally
+	 * applications should check the tab options in ContentObjects and Components
+	 *
+	 * @param	string $bez	The name that is shown in the tab bar
+	 * @param	string $url	The url that is linked from the tab entry
+	 * @param	string $icon	The filename of the icon that is shown (e.g. 'b_konfig.gif')
+	 */
+	function tab_addEntry($bez, $url, $icon)
 	{
 		$_entry["url"]=$url;
 		$_entry["bez"]=$bez;
@@ -52,7 +81,13 @@ class PhenotypeLayoutStandard
 		$this->props_tab[] = $_entry;
 	}
 
-	function iconbar_addEntry($url1,$url2,$val,$alt)
+	/**
+	 * adds a  entry in the icon bar of the Layout
+	 *
+	 * :TODO: what is the icon bar? 
+	 *
+	 */
+	function iconbar_addEntry($url1, $url2, $val, $alt)
 	{
 		$_entry["url_active"]=$url2;
 		$_entry["url_inactive"]=$url1;
@@ -62,19 +97,33 @@ class PhenotypeLayoutStandard
 	}
 
 
+	/**
+	 * initilizes the tab bar
+	 *
+	 * usually used system internally
+	 */
 	function tab_new()
 	{
 		$this->props_tab = Array();
 	}
 
+	/**
+	 * initilizes the icon bar
+	 *
+	 * usually used system internally
+	 */
 	function iconbar_new()
 	{
 		$this->props_iconbar = Array();
 	}
 
 
-	// veraltet
-	
+	/**
+	 * draws the html head area of the layout
+	 *
+	 * @param string $modul	name of the modul
+	 * @deprecated
+	 */
 	function header_draw($modul)
 	{
 		global $myAdm;
@@ -97,12 +146,16 @@ class PhenotypeLayoutStandard
 <script type="text/javascript" src="phenotype.js"></script>
 <?php echo $myApp->displayBackendJavascript() ?>
 <script type="text/javascript" src="wz_dragdrop.js"></script> 
-<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
 </head>
 <?php
 	}
 
-	// veraltet
+	/**
+	 * draws the top row with the backend main navi of the layout
+	 *
+	 * @param string $modul	name of the modul
+	 * @deprecated
+	 */
 	function topline_draw($modul)
 	{
 		global $mySUser;
@@ -142,7 +195,17 @@ class PhenotypeLayoutStandard
 	
 
 	// ab hier aktuell
-
+	
+	/**
+	 * draws the tabs set in the layout
+	 *
+	 * usually used system internally in PhenotypeBackend classes
+	 *
+	 * @param	string $item	name of the currently active item, must refer to bez of the active entry
+	 * @param	string $x	width of the content area
+	 * @param	boolean $shadow_unten	show a shadow under this row?
+	 * @param	boolean $shadow_rechts	show a shadow right of this row?
+	 */
 	function tab_draw($item,$x=680,$shadow_unten=0,$shadow_rechts=1)
 	{
 	?>
@@ -185,25 +248,32 @@ class PhenotypeLayoutStandard
 	<?php
 	}
 
+	/**
+	 * draws the iconbar
+	 *
+	 * @param	string $name
+	 * @param	string $val
+	 * @param	string $formname
+	 */
 	function iconbar_draw($name,$val,$formname="form1")
 	{
 	?>
 	<input type="hidden" name="<?php echo $name ?>" value="<?php echo $val ?>">
 
 	<?php
-	$i=0;
-	foreach ($this->props_iconbar as $_entry)
-	{
-		$url = $_entry["url_inactive"];
-		$alt = $_entry["alt"];
-		$value = $_entry["value"];
-		if ($value==$val)
+		$i=0;
+		foreach ($this->props_iconbar as $_entry)
 		{
-			$url =$_entry["url_active"];
+			$url = $_entry["url_inactive"];
+			$alt = $_entry["alt"];
+			$value = $_entry["value"];
+			if ($value==$val)
+			{
+				$url =$_entry["url_active"];
+			}
+			?><a href="javascript:switch_<?php echo $name ?>('<?php echo $value ?>',<?php echo $i ?>,'<?php echo $_entry["url_active"] ?>');"><img src="img/<?php echo $url ?>" alt="<?php echo $alt ?>" width="22" height="22" border="0" align="absmiddle" name="<?php echo $name. "_img_".$i ?>"></a><?php
+			$i++;
 		}
-		?><a href="javascript:switch_<?php echo $name ?>('<?php echo $value ?>',<?php echo $i ?>,'<?php echo $_entry["url_active"] ?>');"><img src="img/<?php echo $url ?>" alt="<?php echo $alt ?>" width="22" height="22" border="0" align="absmiddle" name="<?php echo $name. "_img_".$i ?>"></a><?php
-		$i++;
-	}
 	?>
 	<script language="JavaScript">
 	function switch_<?php echo $name ?>(v,i,url)
@@ -221,10 +291,16 @@ class PhenotypeLayoutStandard
 		document.forms.<?php echo $formname ?>[fname].src='img/'+url;
 	}
 
-	  </script>
+	</script>
 	<?php
 	}
 
+	/**
+	 * draws the head line of the content area with ID of current page, online state etc..
+	 * this function is specific to page editing mode I guess
+	 *
+	 * @param	PhenotypePage $myPage
+	 */
 	function idline_page_draw($myPage)
 	{
   ?>
@@ -280,7 +356,14 @@ class PhenotypeLayoutStandard
 	<?php  
 	}
 
-	// ToDO Remove outdated
+	/**
+	 * draws the head line of the content area with ID of current content object, online state etc..
+	 * this function is specific to content object editing mode I guess
+	 *
+	 * deprecated content objects are now rendered via separate classes in PhenotypeBackend section
+	 * @param	PhenotypeContent $myCO
+	 */
+	// :TODO: Remove outdated
 	function idline_conobject_draw($myCO)
 	{
   ?>
@@ -338,6 +421,14 @@ class PhenotypeLayoutStandard
     </table>
 	<?php  
 	}
+	
+	/**
+	 * draws the head line of the content area with ID of current media object, online state etc..
+	 * this function is specific to media object editing mode I guess
+	 *
+	 * deprecated media objects are now rendered via separate classes in PhenotypeBackend section
+	 * @param	PhenotypeMediaObject $myObj
+	 */
 	// ToDO: Remove, outdatetd
 	function idline_mediaobject_draw($myObj)
 	{
@@ -378,6 +469,11 @@ class PhenotypeLayoutStandard
 	<?php  
 	}
 
+	/**
+	 * draws the html code for the start of the workarea in backend
+	 *
+	 * @param	integer $x	width of the workarea
+	 */
 	function workarea_start_draw($x=680)
 	{
   ?>
@@ -387,6 +483,10 @@ class PhenotypeLayoutStandard
   <?php
 	}
 
+	/**
+	 * draws the html code for the end of the workarea in backend
+	 *
+	 */
 	function workarea_stop_draw()
 	{
   ?>
@@ -401,6 +501,12 @@ class PhenotypeLayoutStandard
   <?php
 	}
 
+	/**
+	 * draws a row in the workarea and sorrounds the content with the necessary html code
+	 *
+	 * @param	string $bez	the label that goes in the left column
+	 * @param	string $content	all the stuff that goes into the big column on the right
+	 */
 	function workarea_row_draw($bez,$content)
 	{
 		global $mySmarty;
@@ -411,6 +517,10 @@ class PhenotypeLayoutStandard
 		$mySmarty->display("workarea_row.tpl");
 	}
 
+	/**
+	 * draws a spacer row in the workarea
+	 *
+	 */
 	function workarea_whiteline()
 	{
   ?>
@@ -422,6 +532,13 @@ class PhenotypeLayoutStandard
   <?php
 	}
 
+	/**
+	 * draws a selector for inserting new components
+	 * usually used between 2 components and at start/end of the page
+	 *
+	 * @param	integer $toolkit	number of the component toolkit (bausteingruppe)
+	 * @param	integer $pos	unique number of this selector, necessary for JS code
+	 */
 	function workarea_componentselector_draw($toolkit,$pos)
 	{
 	?>
@@ -438,15 +555,38 @@ class PhenotypeLayoutStandard
 	<?php
 	}
 
+	/**
+	 * renders a textfield in the workarea
+	 *
+	 * does not directly display the element
+	 *
+	 * @param	string $bez	label for the field
+	 * @param string $name	name of the field in html form
+	 * @param	string $val	value of the field content
+	 * @param integer $x	width of the field in px
+	 * @param boolean $br	should there be an <br> tag after the field?
+	 *
+	 * @return string		html code output
+	 */
 	function workarea_form_text($bez,$name,$val,$x=300,$br=1)
 	{
-	  $html="";
+		$html="";
 		if($bez!=""){$html = $bez.'<br>';}
 		$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities($val,null,PT_CHARSET).'">';
 		if ($br==1){$html.="<br>";}
 		return $html;
 	}
 
+	/**
+	 * renders a hidden form field in the workarea
+	 *
+	 * does not directly display the element
+	 *
+	 * @param string $name	name of the field in html form
+	 * @param	string $val	value of the field content
+	 *
+	 * @return string		html code output
+	 */
 	function workarea_form_hidden($name,$val)
 	{
 		$html="";
@@ -454,6 +594,20 @@ class PhenotypeLayoutStandard
 		return $html;
 	}
 
+	/**
+	 * renders a textarea in the workarea
+	 *
+	 * does not directly display the element
+	 *
+	 * @param	string $bez	label for the field
+	 * @param string $name	name of the field in html form
+	 * @param	string $val	value of the field content
+	 * @param integer $r	number of rows the field shows
+	 * @param integer $x	width of the field in px
+	 * @param boolean $br	should there be an <br> tag after the field?
+	 *
+	 * @return string		html code output
+	 */
 	function workarea_form_textarea($bez,$name,$val,$r=4,$x=400,$br=1)
 	{
 		$html="";
@@ -464,6 +618,19 @@ class PhenotypeLayoutStandard
 		return $html;
 	}
 
+	/**
+	 * renders a select box in the workarea from options html code
+	 *
+	 * does not directly display the element
+	 *
+	 * @param	string $bez	label for the field
+	 * @param string $name	name of the field in html form
+	 * @param	string $options	html code for the options of the select field
+	 * @param integer $x	width of the field in px
+	 * @param boolean $br	should there be an <br> tag after the field?
+	 *
+	 * @return string		html code output
+	 */
 	function workarea_form_select($bez,$name,$options,$x=200,$br=1)
 	{
 		$html="";
@@ -473,6 +640,20 @@ class PhenotypeLayoutStandard
 		return $html;
 	}
 
+	/**
+	 * renders a select box in the workarea from an array of options
+	 *
+	 * does not directly display the element
+	 *
+	 * @param	string $bez	label for the field
+	 * @param string $name	name of the field in html form
+	 * @param	string $value	key of the selected option 
+	 * @param	string $_options	named array with the options, key is the option key, value the display name of the option
+	 * @param integer $x	width of the field in px
+	 * @param boolean $br	should there be an <br> tag after the field?
+	 *
+	 * @return string		html code output
+	 */
 	function workarea_form_select2($bez,$name,$value,$_options,$x=200,$br=1)
 	{
 		$html="";
@@ -493,6 +674,19 @@ class PhenotypeLayoutStandard
 		return $html;
 	}
 
+	/**
+	 * renders a checkbox in the workarea
+	 *
+	 * does not directly display the element
+	 *
+	 * @param	string $bez	label for the field
+	 * @param string $name	name of the field in html form
+	 * @param	boolean	$val	should the checkbox be checked?
+	 * @param	string $text	text displayed with the checkbox
+	 * @param boolean $br	should there be an <br> tag after the field?
+	 *
+	 * @return string		html code output
+	 */
 	function workarea_form_checkbox($bez,$name,$val,$text,$br=1)
 	{
 		$html="";
@@ -503,52 +697,185 @@ class PhenotypeLayoutStandard
 		if ($br==1){$html.="<br>";}
 		return $html;
 	}
-
-	function form_HTMLTextarea($name,$filename,$cols,$rows,$mode="PHP",$x=640)
+	
+	/**
+	 * initializes the javascript editor for RichText or HTML
+	 *
+	 * @param int $mode	PT_EDITOR_RTF or PT_EDITOR_CODE. only use this constants
+	 * @param	string $configSet	refers to the configset used for this field
+	 *
+	 */
+	function init_js_editor($mode, $configSet)
 	{
-		global $myAdm;
-		$myAdm->buildHTMLTextArea($name,$filename,$cols,$rows,$mode,$x);
-	}
-
-
-	function form_Richtext($name,$val,$cols=80,$rows=10,$x=410,$toolbarset="")
-	{
-		$val = htmlentities($val);
-		// ohne temporaere Datei
-		global $myAdm;
-
-		if ($myAdm->browserOK_HTMLArea())
+		global $myPT;
+		global $myLog;
+		
+		$key = '';
+		if ($mode == PT_EDITOR_RTF)
 		{
-
+			$key = "backend.rtf_editor";
+			$js_var = "pt_rtf_opts";
+			$configArray = $this->rtfEditorConfigs;
+		} elseif ($mode == PT_EDITOR_CODE)
+		{
+			$key = "backend.code_editor";
+			$js_var = "pt_code_opts";
+			$configArray = $this->codeEditorConfigs;
+		} else
+		{
+			$myLog->log("initJSEditor: Aufruf without mode not valid!", PT_LOGFACILITY_SYS, PT_LOGLVL_ERROR);
+			return false;
+		}
+		
+		// ** load the configured editor if necessary
+		if (! (array_key_exists($myPT->getPref($key), $this->editorInit) && ($this->editorInit[$myPT->getPref($key)] == 1)) )
+		{
+			if ($myPT->getPref($key) == PT_RTF_EDITOR_TINYMCE)
+			{ // TinyMCE
 ?>
-	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" class="input" style="width: <?php echo $x ?>px"><?php echo $val ?></textarea>
-<?php	
-
-	  ?>
-	<script language="JavaScript1.2">
-	var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
-	oFCKeditor.BasePath	= '<?php echo ADMINURL ?>/fckeditor/' ;
-	oFCKeditor.Width = <?php echo $x ?>;
-	oFCKeditor.Height = <?php echo $rows*17 ?> ;
-	<?php if ($toolbarset!=""){ ?>
-	oFCKeditor.ToolbarSet = "<?php echo $toolbarset ?>" ;
-	<?php } ?>
-	oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo ADMINURL ?>/fckconfig.php";
-	oFCKeditor.ReplaceTextarea() ;
-	</script>	  
-	 
-	  <?php
-
+	<!-- TinyMCE -->
+	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+	<!-- /TinyMCE -->
+<?php
+			} elseif ($myPT->getPref($key) == PT_RTF_EDITOR_FCKEDITOR)
+			{ // FCKEditor
+?>
+	<!-- FCKEditor -->
+	<script type="text/javascript" src="<?php echo(ADMINURL); ?>lib/fckeditor/fckeditor/fckeditor.js"></script>
+	<!-- /FCKEditor -->
+<?php
+			} else
+			{
+?>
+<!-- RTF-Editor <?php echo($myPT->getPref($key)); ?> is not defined -->
+<?php
+			}
+			$this->editorInit[$myPT->getPref($key)] = 1;
+			
 		}
-		else
+		
+		// now setup the configurations array in JS
+		if (count($configArray) == 0)
 		{
-	?>
-	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  style="width: <?php echo $x ?>px" class="input"><?php echo $val ?></textarea>
-    <?php
+?>
+<script type="text/javascript">
+	var <?php echo($js_var); ?> = Object();
+</script>
+<?php
+		}
+		
+		// ** get config for tinyMCE, fckEditor uses external config files directly
+		if (! array_key_exists($configSet, $configArray) && ($myPT->getPref($key) == PT_RTF_EDITOR_TINYMCE))
+		{
+?>
+	<script type="text/javascript" src="<?php echo(SERVERURL . $myPT->getPref($key .'_config_path') . $configSet .'.js'); ?>"></script>
+<?php
+			$configArray[$configSet] = 1;
 		}
 	}
 
+	/**
+	 * displays a textarea for code input in the workarea
+	 *
+	 * @param string $name	name of the field in html form
+	 * @param	string $filename	filename to display in the editor
+	 * @param	integer $cols	number of characters per line the field shows
+	 * @param integer $rows	number of rows the field shows
+	 * @param string $mode	mode for the editor
+	 * @param boolean $x	the width of the field in px
+	 *
+	 */
+	function form_HTMLTextarea($name, $filename, $cols, $rows, $mode="PHP", $x=640)
+	{
+		global $myAdm;
+		global $myPT;
+		
+		$configSet = 'default'; // could be used to have different setups for code editors. currently not used and no argument for that, but build into code.
 
+		$content = $myAdm->get_filecontents_highlighted($filename);
+		
+		$this->init_js_editor(PT_EDITOR_CODE, $configSet);
+		
+		// ** now render and setup the particular editor field
+?>
+	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" style="width: <?php echo $x ?>px" class="input RichText"><?php echo $content ?></textarea>
+<?php
+		if ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_TINYMCE)
+		{
+?>
+	<script type="text/javascript">
+		var myOpts = pt_code_opts["<?php echo $configSet ?>"];
+		myOpts.mode = "exact";
+		myOpts.theme = "advanced";
+		myOpts.elements = "<?php echo $name ?>";
+		tinyMCE.init(myOpts);
+	</script>
+<?php
+    	} elseif ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_FCKEDITOR)
+    	{
+?>
+	<script type="text/javascript">
+		var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
+		oFCKeditor.BasePath	= '<?php echo ADMINURL ?>lib/fckeditor/fckeditor/' ;
+		oFCKeditor.Width = <?php echo $x ?>;
+		oFCKeditor.Height = <?php echo $rows*17 ?> ;
+		oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo(SERVERURL . $myPT->getPref('backend.code_editor_config_path') . $configSet .'.js'); ?>";
+		oFCKeditor.ReplaceTextarea() ;
+	</script>
+<?php
+    	}
+	}
+
+
+	/**
+	 * displays a textarea for richtext input in the workarea
+	 *
+	 * @param string $name	name of the field in html form
+	 * @param	string $val	value of the 
+	 * @param	integer $cols	number of characters per line the field shows
+	 * @param integer $rows	number of rows the field shows
+	 * @param boolean $x	the width of the field in px
+	 * @param string $configSet	refers a predefined configSet for the editor. The string works as part of a filename of a js file with editor opitons
+	 *
+	 */
+	function form_Richtext($name, $val, $cols=80, $rows=10, $x=410, $configSet="default")
+	{
+		global $myPT;
+		
+		$val = htmlentities($val);
+		
+		$this->init_js_editor(PT_EDITOR_RTF, $configSet);
+		
+		
+		// ** now render and setup the particular editor field
+?>
+	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" style="width: <?php echo $x ?>px" class="input RichText"><?php echo $val ?></textarea>
+<?php
+		if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
+		{
+?>
+	<script type="text/javascript">
+		var myOpts = pt_rtf_opts["<?php echo $configSet ?>"];
+		myOpts.mode = "exact";
+		myOpts.theme = "advanced";
+		myOpts.elements = "<?php echo $name ?>";
+		tinyMCE.init(myOpts);
+	</script>
+<?php
+    	} elseif ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_FCKEDITOR)
+    	{
+?>
+	<script type="text/javascript">
+		var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
+		oFCKeditor.BasePath	= '<?php echo ADMINURL ?>lib/fckeditor/fckeditor/' ;
+		oFCKeditor.Width = <?php echo $x ?>;
+		oFCKeditor.Height = <?php echo $rows*17 ?> ;
+		oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo(SERVERURL . $myPT->getPref('backend.rtf_editor_config_path') . $configSet .'.js'); ?>";
+		oFCKeditor.ReplaceTextarea() ;
+	</script>
+<?php
+    	}
+	}
 
 	// ToDO Remove
 	function overview_content_draw($sql,$con_id,$mode=1,$html="")

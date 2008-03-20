@@ -37,15 +37,9 @@ $ver_id = $_REQUEST["ver_id"];
 $ver_nr = $_REQUEST["ver_nr"];
 
   $myAdm = new PhenotypeAdmin();
-  if ($myAdm->browserOK_HTMLArea())
-  {
-    $code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
-  }
-  else
-  {
-    $code = $myAdm->decodeRequest_TextArea($myRequest->get("skript"));
-  }
-	 $scriptname = APPPATH . "pagescripts/".sprintf("%04d",$id) ."_" .sprintf("%04d", $_REQUEST["ver_id"]) .".inc.php";
+  $code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
+  
+	$scriptname = APPPATH . "pagescripts/".sprintf("%04d",$id) ."_" .sprintf("%04d", $_REQUEST["ver_id"]) .".inc.php";
 
   $mySQL = new SQLBuilder();
   $delete=0;

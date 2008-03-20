@@ -380,14 +380,8 @@ if (isset($_REQUEST["save"]))
 if ((isset($_REQUEST["savescript"]) OR isset($_REQUEST["savescript_preview"])) AND( $mySUser->checkRight("superuser")))
 {
   $myAdm = new PhenotypeAdmin();
-  if ($myAdm->browserOK_HTMLArea())
-  {
-    $code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
-  }
-  else
-  {
-    $code = $myAdm->decodeRequest_TextArea($myRequest->get("skript"));
-  }
+  $code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
+  
   $scriptname = APPPATH . "pagescripts/" .  sprintf("%04.0f", $id) . "_" . sprintf("%04.0f", $ver_id) . ".inc.php";
 
   $mySQL = new SQLBuilder();

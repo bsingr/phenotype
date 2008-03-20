@@ -32,20 +32,11 @@ if (!$mySUser->checkRight("elm_admin"))
 $myPT->clearCache();
 ?>
 <?php
-$myAdm = new PhenotypeAdmin();
-$id = $myRequest->getI("id");
-
-// Erstmal das Skript
-
-  if ($myAdm->browserOK_HTMLArea())
-  {
-    $code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
-  }
-  else
-  {
-    $code = $myAdm->decodeRequest_TextArea($myRequest->get("skript"));
-  }
+	$myAdm = new PhenotypeAdmin();
+  $code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
  
+	$id = $myRequest->getI("id");
+	
   $scriptname = "actions/PhenotypeAction_"  .$id . ".class.php";	
   $scriptname = APPPATH . $scriptname;
 

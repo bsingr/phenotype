@@ -183,10 +183,7 @@ if ($_REQUEST["b"]==0)
 if ($_REQUEST["b"]==1)
 {
 	// TEMPLATES
-	if ($myAdm->browserOK_HTMLArea())
-	{$html = $myAdm->decodeRequest_HTMLArea($myRequest->get("template_normal"));}
-	else
-	{$html = $myAdm->decodeRequest_TextArea($myRequest->get("template_normal"));}
+	$html = $myAdm->decodeRequest_HTMLArea($myRequest->get("template_normal"));
 
 	$dateiname = $myPT->getTemplateFileName(PT_CFG_LAYOUT, $id, "normal");
 	$fp = fopen ($dateiname,"w");
@@ -198,10 +195,7 @@ if ($_REQUEST["b"]==1)
 
 	//$mySQL->addField("lay_html_normal",$html);
 
-	if ($myAdm->browserOK_HTMLArea())
-	{$html = $myAdm->decodeRequest_HTMLArea($myRequest->get("template_print"));}
-	else
-	{$html = $myAdm->decodeRequest_TextArea($myRequest->get("template_print"));}
+	$html = $myAdm->decodeRequest_HTMLArea($myRequest->get("template_print"));
 
 	$dateiname = $myPT->getTemplateFileName(PT_CFG_LAYOUT, $id, "print");
 	$fp = fopen ($dateiname,"w");

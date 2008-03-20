@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael 
-// KrÃ¤mer, Annemarie Komor, Jochen Rieger, Alexander
+// Krämer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:
@@ -28,6 +28,20 @@ class PhenotypeAdminStandard
 {
 	var $props_explorer = Array();
 
+	/*
+	 * @var Array	contains 
+	 * shows the state of rtf editor setup.
+	 *		null => not initialized
+	 *		array() => editor included
+	 *		After inclusion of the editor, in the array will be stored which configs were loaded
+	 */
+	private $editorInit = Array();
+	
+	/*
+	 * @var	Array	contains 
+	 */
+	private $codeEditorConfigs = Array();
+	
 	//function PhenotypeAdmin ()
 	public function __construct()
 	{
@@ -337,7 +351,7 @@ class PhenotypeAdminStandard
 	function displayCreationStatus($usr_id,$datum)
 	{
 		global $myDB;
-		if ($datum==0){return;} // DatensÃ¤tze vor 2.2
+		if ($datum==0){return;} // Datensätze vor 2.2
 		?>Angelegt am <?php echo date("d.m.Y H:i",$datum) ?><?php
 		$sql = "SELECT * FROM user WHERE usr_id = " . $usr_id;
 		$rs = $myDB->query($sql);
@@ -353,121 +367,12 @@ class PhenotypeAdminStandard
 
 	function buildHTMLTextArea($name,$filename,$cols,$rows,$mode="PHP",$x=640)
 	{
-
-		if ($this->browserOK_HTMLArea())
-		{
-	?>
-	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  id="<?php echo $name ?>" class="input"  style="width: <?php echo $x ?>px"><?php
-	if (file_exists($filename))
-	{
-		switch ($mode)
-		{
-			case "PHP":
-				echo $this->readPHP_HTMLArea($filename);
-				break;
-			default:
-				echo $this->readHTML_HTMLArea($filename);
-				break;
-		}
-		/*if ($mode=="PHP")
-		{
-		echo $this->readPHP_HTMLArea($filename);
-		}
-		else
-		{
-		echo $this->readHTML_HTMLArea($filename);
-		}*/
-	}
-	else
-	{
-		echo'<font size="3"><pre></pre></font>';
-	}
-	?></textarea>
-	<?php
-	if ($this->whichHTMLArea()==3)
-	{
-	?>
-	<script language="JavaScript1.2">
-	var config = new HTMLArea.Config();
-	config.width = '<?php echo $x ?>px';
-	config.height = '<?php echo $rows*25 ?>px';
-	config.pageStyle = 'body { background-color: white} ';
-	config.toolbar = [['popupeditor']];
-	HTMLArea.replace('<?php echo $name ?>', config);
-	</script>
-    <?php
-	}
-	?>
-	<?php
-	if ($this->whichHTMLArea()==2)
-	{
-	?>
-	<script language="JavaScript1.2">
-	var config = new Object();
-	config.toolbar = [['popupeditor']];
-	editor_generate('<?php echo $name ?>',config);
-	</script>
-    <?php
-	}
-	?>	
-	<?php
-	if ($this->whichHTMLArea()==4)
-	{
-	?>
-	<script language="JavaScript1.2">
-	var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
-	oFCKeditor.BasePath	= '<?php echo ADMINURL ?>/fckeditor/' ;
-	oFCKeditor.Height = <?php echo $rows*20 ?> ;
-	oFCKeditor.Width = <?php echo $x ?>;
-	oFCKeditor.ToolbarSet = "Coding" ;
-	oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo ADMINURL ?>/fckconfig.php";
-	oFCKeditor.ReplaceTextarea() ;
-	</script>
-
-    <?php
-	}
-	?>		
-	<?php
-		}
-		else
-		{
-	?>
-	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>"  style="width:<?php echo $x ?>px" class="input"><?php
-	if (file_exists($filename))
-	{
-		if ($mode=="PHP")
-		{
-			echo $this->readPHP_TextArea($filename);
-		}
-		else
-		{
-			echo $this->readHTML_TextArea($filename);
-		}
-	}
-	?></textarea>		
-    <?php
-		}
+		global $myLayout;
+		$myLayout->form_HTMLTextarea($name,$filename,$cols,$rows,$mode,$x);
 	}
 
-	/**
-	 * @todo: displaying php code without color coding doesn't work ??
-	 *
-	 * @param unknown_type $filename
-	 * @return unknown
-	 */
-	function readPHP_HTMLArea($filename)
+	function get_filecontents_highlighted($filename)
 	{
- 		global $myPT;
- 		
- 		$buffer = file_get_contents($filename);
- 		
-		if ($buffer=="")return('<font size="3"><pre></pre></font>');
-		if ($myPT->getPref("backend.colorcoding",1))
-		{
-		  return $myPT->colorcodePHP($buffer);
-		}
-
-    /*
 		global $myPT;
 		$fp = fopen ($filename,"r");
 		$buffer ="";
@@ -479,106 +384,37 @@ class PhenotypeAdminStandard
 			}
 		}
 		fclose ($fp);
-		if ($buffer==""){return('<font size="3"><pre></pre></font>');}
+		if ($buffer=="")
+		{
+			return('<font size="3"><pre></pre></font>');
+		}
+		
+		// backslash
 		$buffer = str_replace(chr(92),"_CHR_ASCII_92_",$buffer);
-		$filename_bak = TEMPPATH ."htmlarea/~" . time() . ".tmp";
-
-
-		$fp = fopen ($filename_bak,"w");
-		fputs($fp,$buffer);
-		fclose ($fp);
-		@chown ($filename_bak,UMASK);
-		$myPT->startbuffer();
-		show_source($filename_bak);
-		$buffer = $myPT->stopbuffer();
+		
+		// highlight the source
+		// first, add the cheat php tag to activate the damn php highlighting function
+		$buffer = "<?php _CHEAT_SHOW_SOURCE_". $buffer ."_CHEAT_SHOW_SOURCE_ ?>";
+		// highlight the stuff
+		$buffer = highlight_string($buffer, true);
+		
+		// remove the fake tags added above
+		$buffer = str_replace('&lt;?php&nbsp;_CHEAT_SHOW_SOURCE_','',$buffer);
+		$buffer = str_replace('_CHEAT_SHOW_SOURCE_&nbsp;?&gt;','',$buffer);
+		
+		// replace the backslashes again
 		$buffer = str_replace('_CHR_ASCII_92_',chr(92),$buffer);
-		unlink($filename_bak);
 
 		return ('<font size="3">' .htmlentities($buffer) . '</font>');
-		*/
+	}
 	
-	}
-
-	/**
-	 * @todo: displaying html code without color coding doesn't work ??
-	 *
-	 * @param unknown_type $filename
-	 * @return unknown
-	 */
-	function readHTML_HTMLArea($filename)
-	{
-  
-		global $myPT;
-		$buffer = file_get_contents($filename);
-		if ($buffer=="")return('<font size="3"><pre></pre></font>');
-		if ($myPT->getPref("backend.colorcoding",1))
-		{
-		  return $myPT->colorcodeHTML($buffer);
-		}
-		return $myPT->codeH($buffer);
-		
-		/*
-		$fp = fopen ($filename,"r");
-		$buffer ="";
-		if($fp)
-		{
-			while (!feof($fp))
-			{
-				$buffer .= fgets($fp, 4096);
-			}
-		}
-		fclose ($fp);
-		if ($buffer=="")return('<font size="3"><pre></pre></font>');
-		/*$buffer = "<?php _CHEAT_SHOW_SOURCE_" . $buffer . "_CHEAT_SHOW_SOURCE_ ?>";
-		$buffer = str_replace(chr(92),"_CHR_ASCII_92_",$buffer);
-		$filename_bak = TEMPPATH ."htmlarea/~" . uniqid("") . ".tmp";
-		$fp = fopen ($filename_bak,"w");
-		fputs($fp,$buffer);
-		fclose ($fp);
-		@chown ($filename_bak,UMASK);
-		$myPT->startbuffer();
-		show_source($filename_bak);
-		$buffer = $myPT->stopbuffer();
-		$buffer = str_replace('_CHR_ASCII_92_',chr(92),$buffer);
-		$buffer = str_replace('&lt;?php _CHEAT_SHOW_SOURCE_',"",$buffer);
-		$buffer = str_replace('_CHEAT_SHOW_SOURCE_?&gt;',"",$buffer);
-		// Spaeter andere Farbkodierung nachruesten
-		//$buffer = str_replace("font","bond",$buffer);
-		//$buffer = str_replace('#0000BB',"000000",$buffer);
-
-		unlink($filename_bak);
-		
-		return ('<font size="3">' .htmlentities($buffer) . '</font>');
-		*/
-	}
-
-	function readPHP_TextArea($filename)
-	{
-		$fp = fopen ($filename,"r");
-		$buffer ="";
-		if($fp)
-		{
-			while (!feof($fp))
-			{
-				$buffer .= fgets($fp, 4096);
-			}
-		}
-		fclose ($fp);
-		return htmlspecialchars($buffer);
-	}
-
-	function readHTML_TextArea($filename)
-	{
-		return $this->readPHP_TextArea($filename);
-	}
-
 	function decodeRequest_HTMLArea($code)
 	{
 		// Erst alle echten Returns raus ..
 		$code = str_replace(chr(10),'',$code);
 		$code = str_replace(chr(13),'',$code);
 
-		// StÃ¶rende Spaces austauschen
+		// Störende Spaces austauschen
 		$code = str_replace(chr(160),chr(32),$code);
 
 		// Und dann wieder aus dem HTML erzeugen
@@ -634,7 +470,7 @@ class PhenotypeAdminStandard
 			$s.= $code[$i] . ":" . ord($code[$i]) . "\n";
 		}
 		//$code = $s;
-		// ErgÃ¤nzung seit 2.3
+		// Ergänzung seit 2.3
 		$code =trim($code);
 		return ($code);
 	}
@@ -646,51 +482,10 @@ class PhenotypeAdminStandard
 		return ($code);
 	}
 
-	function browserOK_HTMLArea()
+/*	function browserOK_HTMLArea()
 	{
-
 		return true;
-		/*
-		// Achtung Funktion falsch, da eigentlich nur MSIE 5.5 +
-		$browser = $_SERVER["HTTP_USER_AGENT"];
-		//$browser = $_ENV["HTTP_USER_AGENT"];
-
-		if( eregi("(msie) ([0-9]{1,2}.[0-9]{1,3})",$browser,$regs) )
-		{
-		return true;
-		}
-		else
-		{
-		return false;
-		}*/
-	}
-
-
-	function whichHTMLArea()
-	{
-		$version=0;
-		$agent = $_SERVER["HTTP_USER_AGENT"];
-		if ($agent==""){$agent=$_ENV["HTTP_USER_AGENT"];}
-		$agent = strtoupper($agent);
-		if (strpos($agent,"MSIE"))
-		{
-			$version = 2;
-		}
-		if (strpos($agent,"NETSCAPE"))
-		{
-			$version = 3;
-		}
-		if (strpos($agent,"FIREFOX"))
-		{
-			$version = 3;
-		}
-
-		// Override durch FCKEditor
-		$version = 4;
-
-		return $version;
-	}
-
+	}*/
 
 	function explorer_prepare($modul,$submodul)
 	{
@@ -895,7 +690,7 @@ class PhenotypeAdminStandard
 		// Hinweis:
 		// Falls Includes Layouts, Seiten oder dem Includebaustein zugeordnet sind, dann
 		// werden diese Zuordnungen nicht entfernt!
-		// Das ermÃ¶glicht ein Reimportieren eines Includes ohne Datenverlust
+		// Das ermöglicht ein Reimportieren eines Includes ohne Datenverlust
 
 		global $myPT;
 		global $myDB;
@@ -926,9 +721,9 @@ class PhenotypeAdminStandard
 	function cfg_removeContent($id)
 	{
 		// Hinweis:
-		// Falls DatensÃ¤tze vorhanden sind oder irgendwo auf DatensÃ¤tze referenziert wird,
-		// werden diese nicht gelÃ¶scht bzw. die Referenzen aufgelÃ¶st
-		// Das ermÃ¶glicht ein Reimportieren der Contentklassen ohne Datenverlust
+		// Falls Datensätze vorhanden sind oder irgendwo auf Datensätze referenziert wird,
+		// werden diese nicht gelöscht bzw. die Referenzen aufgelöst
+		// Das ermöglicht ein Reimportieren der Contentklassen ohne Datenverlust
 
 		global $myPT;
 		global $myDB;
@@ -1032,7 +827,7 @@ class PhenotypeAdminStandard
 		$script = '<?php
 // Phenotype Skript Konsole   
 //   
-// FÃ¼r das Skript zwischendurch, um die Ã¼blichen test.php-Dateien auf dem   
+// Für das Skript zwischendurch, um die üblichen test.php-Dateien auf dem   
 // Server zu vermeiden ...   
 
 phpinfo();   

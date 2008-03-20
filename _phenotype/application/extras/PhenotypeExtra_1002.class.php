@@ -74,7 +74,7 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
 	
     if ($myRequest->check("save"))
 	{
-	  if ($myAdm->browserOK_HTMLArea() AND $this->get("color")==1)
+	  if ($this->get("color")==1)
   	  {
     	$code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
   	  }
@@ -129,4 +129,4 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
   }
 
 }
- ?>
+?>
