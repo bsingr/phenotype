@@ -922,7 +922,7 @@ class PhenotypeStandard extends PhenotypeBase
   public static function handleError($errno, $errstr, $errfile, $errline)
   {
     global $myPT;
-    
+
     // we ignore smarty warnings
     if ($errno==E_WARNING AND strpos($errfile,'/smarty/')!==0)
     {
@@ -1600,7 +1600,22 @@ border: 1px solid #cfcfcf;
   // functions for url/link management
   // =========================================================================================================
 
-  public function url_for_page($pag_id,$_params=array(),$lng_id=null)
+  /**
+   * retrieve (language dependent) url of a page
+   * 
+   * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
+   * 
+   * This function is also used from the helper functions for url generation. It it a vital function for url management, 
+   * if you create/build urls you should always use this function in any (inherited) way.
+   * 
+   *
+   * @param integer $pag_id
+   * @param array[mixed] $_params
+   * @param integer $lng_id
+   * @param string smartUID
+   * @return string
+   */
+  public function url_for_page($pag_id,$_params=array(),$lng_id=null,$smartUID)
   {
     if ($this->URLHelper==false)
     {
@@ -1629,10 +1644,29 @@ border: 1px solid #cfcfcf;
     {
       $url .= "/".$k."/".$v;
     }
+    if ($smartUID!="")
+    {
+      $url .="/".$smartUID;
+    }
+    
     $url = SERVERURL . $url;
     return $url;
   }
 
+  /**
+   * retrieve (language dependent) title of a page
+   * 
+   * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
+   * 
+   * This function is also used from the helper functions for page title retrieval. It it a vital function for url management, 
+   * if you create/build urls you should always use this function in any (inherited) way.
+   * 
+   *
+   * @param integer $pag_id
+   * @param array[mixed] $_params
+   * @param integer $lng_id
+   * @return string
+   */
   public function title_of_page($pag_id,$lng_id=null)
   {
     if ($this->URLHelper==false)
@@ -1664,8 +1698,9 @@ border: 1px solid #cfcfcf;
 
 
     return $title;
-  }  
+  }
 
+  
 }
 
 

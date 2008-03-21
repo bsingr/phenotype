@@ -15,7 +15,6 @@
 <pag_comment></pag_comment>
 <pag_quickfinder></pag_quickfinder>
 <pag_searchtext></pag_searchtext>
-<pag_url>Startseite.html</pag_url>
 <pag_id_mimikry>1</pag_id_mimikry>
 <pag_id_top>0</pag_id_top>
 <pag_pos>1</pag_pos>
@@ -25,7 +24,14 @@
 <pag_creationdate>1153067027</pag_creationdate>
 <usr_id>10</usr_id>
 <pag_date>1162664748</pag_date>
-<pag_props>YTowOnt9</pag_props>
+<pag_url>Startseite</pag_url>
+<pag_url1>Startseite</pag_url1>
+<pag_url2>Startseite</pag_url2>
+<pag_url3>Startseite</pag_url3>
+<pag_url4>Startseite</pag_url4>
+<pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjE1OiJTdGFydHNlaXRlLmh0bWwiO30=</pag_props>
+<pag_props_locale>YTowOnt9</pag_props_locale>
+
 		<pageversions>  			<version>
 				<ver_id>1</ver_id>
 				<ver_nr>1</ver_nr>

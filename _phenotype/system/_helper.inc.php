@@ -17,10 +17,10 @@ function codeHBR($value)
 	return $myPT->codeHBR($value);
 }
 
-function url_for_page($pag_id,$_params=array(),$lng_id=null)
+function url_for_page($pag_id,$_params=array(),$lng_id=null,$smartUID="")
 {
   global $myPT;
-	return $myPT->url_for_page($pag_id,$_params,$lng_id);
+	return $myPT->url_for_page($pag_id,$_params,$lng_id,$smartUID);
 }
 
 function title_of_page($pag_id,$lng_id=null)

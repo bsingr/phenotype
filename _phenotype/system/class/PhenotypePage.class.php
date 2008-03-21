@@ -757,7 +757,7 @@ class PhenotypePageStandard extends PhenotypeBase
     $html = $myPT->stopBuffer();
 
 
-    
+
     $myTC->stop();
 
 
@@ -813,14 +813,14 @@ class PhenotypePageStandard extends PhenotypeBase
       $url_reload = $myRequest->getReloadUrl();
       $myPT->startBuffer();
 	    ?>
-	    <div id="pt_debug" style="margin:0px;opacity:0.7;filter:alpha(opacity=60);padding:0px;position:absolute;right:0px;top:0px;z-index:10000;background-color:#000;color:#fff;font-family:Arial;font-size:12px;vertical-align:top;height:22px">
-	    <ul style="list-style-type:none;display:block;float:left">
+	    <div id="pt_debug" style="margin:0px;opacity:0.65;filter:alpha(opacity=75);padding:0px;position:absolute;right:0px;top:0px;z-index:10000;background-color:#000;color:#fff;font-family:Arial;font-size:12px;vertical-align:top;height:22px">
+	    <ul style="list-style-type:none;display:block;margin:0px;padding:0px">
 	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug').style.display='none'; document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close" style="margin:0px;padding:0px"/></a></li>
 	    <li style="display:inline;"><a href="<?php echo ADMINFULLURL?>page_edit.php?id=<?php echo$this->id?>" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_edit.gif" alt="edit page" title="edit page"/></a></li>
 	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='';document.getElementById('pt_debug_details').style.display=''; return false;"><img src="<?php echo ADMINFULLURL?>img/b_debug.gif" alt="display debug info" title="display debug info"/></a></li>
 	    <li style="display:inline;"><a href="<?php echo $myPT->codeH($url_reload)?>"><img src="<?php echo ADMINFULLURL?>img/b_aktivieren.gif" alt="clear cache and reload page" title="clear cache and reload page"/></a></li>
-	    <li style="display:inline;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?=$info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
-	    <li style="display:inline;"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo"/></li>
+	    <li style="display:inline;line-height:22px;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?=$info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
+	    <li style="display:inline;"><a href="http://www.phenotype.de" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo"/></a></li>
 	    </ul>
 	    </div>
 	    
@@ -1837,7 +1837,8 @@ class PhenotypePageStandard extends PhenotypeBase
 			<grp_bez>'.$myPT->codeX($row["grp_bez"]).'</grp_bez>
 			<grp_description>'.$myPT->codeX($row["grp_desc"]).'</grp_description>
 			<grp_statistic>'.$myPT->codeX($row["grp_statistic"]).'</grp_statistic>
-		    <grp_multilanguage>'.$myPT->codeX($row["grp_multilanguage"]).'</grp_multilanguage>
+		  <grp_multilanguage>'.$myPT->codeX($row["grp_multilanguage"]).'</grp_multilanguage>
+		  <grp_smarturl_schema>'.$myPT->codeX($row["grp_smarturl_schema"]).'</grp_smarturl_schema>
 		</group>';
     }
     $xml.='
@@ -1865,7 +1866,8 @@ class PhenotypePageStandard extends PhenotypeBase
         $grp_description = (string)utf8_decode($_xml_group->grp_description);
         $grp_statistic = (int)utf8_decode($_xml_group->grp_statistic);
         $grp_multilanguage = (int)utf8_decode($_xml_group->grp_multilanguage);
-
+        $grp_smarturl_schema = (int)utf8_decode($_xml_group->grp_smarturl_schema);
+        
         $sql  ="DELETE FROM pagegroup WHERE grp_id=".$grp_id;
         $myDB->query($sql);
 
@@ -1873,6 +1875,7 @@ class PhenotypePageStandard extends PhenotypeBase
         $mySQL->addField("grp_id",$grp_id,DB_NUMBER);
         $mySQL->addField("grp_statistic",$grp_statistic,DB_NUMBER);
         $mySQL->addField("grp_multilanguage",$grp_multilanguage,DB_NUMBER);
+        $mySQL->addField("grp_smarturl_schema",$grp_smarturl_schema,DB_NUMBER);
         $mySQL->addField("grp_bez",$grp_bez);
         $mySQL->addField("grp_description",$grp_description);
         $sql = $mySQL->insert("pagegroup");
@@ -1993,13 +1996,29 @@ class PhenotypePageStandard extends PhenotypeBase
     $sql = "SELECT * FROM page WHERE pag_id=".$this->id;
     $rs = $myDB->query($sql);
     $row = mysql_fetch_array($rs);
-    $_fields = Array("pag_uid","pag_bez","pag_titel","pag_alttitel","pag_comment","pag_quickfinder","pag_searchtext","pag_url","pag_id_mimikry","pag_id_top","pag_pos","pag_cache","pag_status","usr_id_creator","pag_creationdate","usr_id","pag_date");
+    $_fields = Array("pag_uid","pag_bez","pag_titel","pag_alttitel","pag_comment","pag_quickfinder","pag_searchtext","pag_id_mimikry","pag_id_top","pag_pos","pag_cache","pag_status","usr_id_creator","pag_creationdate","usr_id","pag_date","pag_url","pag_url1","pag_url2","pag_url3","pag_url4");
     foreach ($_fields AS $k)
     {
       $xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
     }
 
-    $xml .= '<pag_props>'.base64_encode($row["pag_props_locale"]).'</pag_props>';
+    // urls stored in local properties
+    /*
+    $_fields = Array("pag_url1","pag_url2","pag_url3","pag_url4");
+    foreach ($_fields AS $k)
+    {
+      if ($this->get($k))
+      {
+        $xml.= '<'.$k.'>'.$myPT->codeX($this->get($k)).'</'.$k.'>'."\n";
+        if ($k=="pag_url1")
+        {
+          $xml.= '<pag_url>'.$myPT->codeX($this->get($k)).'</pag_url>'."\n";
+        }
+      }
+    }
+    */
+    $xml .= '<pag_props>'.base64_encode($row["pag_props"])."</pag_props>\n";
+    $xml .= '<pag_props_locale>'.base64_encode($row["pag_props_locale"])."</pag_props_locale>\n";
     $xml.='
 		<pageversions>';
 
@@ -2095,6 +2114,12 @@ class PhenotypePageStandard extends PhenotypeBase
     $_xml = @simplexml_load_string($buffer);
     if ($_xml)
     {
+      $ptversion = (string)utf8_decode($_xml->meta->ptversion);
+      if ($ptversion=="##!PT_VERSION!##")
+      {
+        $ptversion = "9.0.0";
+      }
+      
       $pag_id = (int)utf8_decode($_xml->meta->pag_id);
       $grp_id = (int)utf8_decode($_xml->meta->grp_id);
 
@@ -2110,15 +2135,27 @@ class PhenotypePageStandard extends PhenotypeBase
       $mySQL->addField("ver_id",$ver_id,DB_NUMBER);
       $mySQL->addField("grp_id",$grp_id,DB_NUMBER);
 
-      $_fields = Array("pag_uid","pag_bez","pag_titel","pag_alttitel","pag_comment","pag_quickfinder","pag_searchtext","pag_url");
+      $_fields = Array("pag_uid","pag_bez","pag_titel","pag_alttitel","pag_comment","pag_quickfinder","pag_searchtext","pag_url","pag_url1","pag_url2","pag_url3","pag_url4");
       foreach ($_fields AS $k)
       {
         $mySQL->addField($k,(string)utf8_decode($_xml->content->$k));
       }
 
-      $_props=(string)utf8_decode($_xml->content->pag_props);
-      $mySQL->addField("pag_props_locale",base64_decode($_props));
-
+      if ($ptversion<"2.6.0")
+      {
+        $_props=(string)utf8_decode($_xml->content->pag_props);
+        $mySQL->addField("pag_props_locale",base64_decode($_props));
+        $_props = Array();
+        $_props["pag_url1"]=(string)utf8_decode($_xml->content->pag_url);
+        $mySQL->addField("pag_props",serialize($_props));
+      }
+      else 
+      {
+        $_props=(string)utf8_decode($_xml->content->pag_props);
+        $mySQL->addField("pag_props",base64_decode($_props));
+        $_props=(string)utf8_decode($_xml->content->pag_props_locale);
+        $mySQL->addField("pag_props_locale",base64_decode($_props));
+      }
       $_fields = Array ("pag_id_mimikry","pag_id_top","pag_pos","pag_cache","pag_status","usr_id_creator","pag_creationdate","usr_id","pag_date");
       foreach ($_fields AS $k)
       {
@@ -2284,10 +2321,10 @@ class PhenotypePageStandard extends PhenotypeBase
    */
   public function getURL($lng_id)
   {
-  	global $myPT;
-	return $myPT->url_for_page($pag_id,$_params,$lng_id);
+    global $myPT;
+    return $myPT->url_for_page($pag_id,$_params,$lng_id);
   }
-  
+
   public function buildURL($lng_id=null)
   {
     global $PTC_LANGUAGES;
@@ -2351,7 +2388,7 @@ class PhenotypePageStandard extends PhenotypeBase
         return $url;
       }
 
-      
+
 
       $row = $this->row;
       $url = $this->urlencode($this->titel);
@@ -2382,7 +2419,7 @@ class PhenotypePageStandard extends PhenotypeBase
         $url = SERVERURL . $url;
         return $url;
       }
-      
+
       if ($multilanguage==1)
       {
         $url = $PTC_LANGUAGES[$lng_id]."/".$url;
@@ -2398,8 +2435,8 @@ class PhenotypePageStandard extends PhenotypeBase
     $mySQL = new SQLBuilder();
 
     $url = $this->buildURL();
-    
- 
+
+
     $mySQL->addField("pag_url".$k,$url);
     foreach ($PTC_LANGUAGES AS $k =>$v)
     {

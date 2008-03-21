@@ -15,7 +15,6 @@
 <pag_comment></pag_comment>
 <pag_quickfinder></pag_quickfinder>
 <pag_searchtext></pag_searchtext>
-<pag_url>Impressum.html</pag_url>
 <pag_id_mimikry>1</pag_id_mimikry>
 <pag_id_top>0</pag_id_top>
 <pag_pos>1</pag_pos>
@@ -25,7 +24,14 @@
 <pag_creationdate>1162651603</pag_creationdate>
 <usr_id>13</usr_id>
 <pag_date>1162718858</pag_date>
-<pag_props>YTowOnt9</pag_props>
+<pag_url>Impressum.html</pag_url>
+<pag_url1>Impressum.html</pag_url1>
+<pag_url2>Impressum.html</pag_url2>
+<pag_url3>Impressum.html</pag_url3>
+<pag_url4>Impressum.html</pag_url4>
+<pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjE0OiJJbXByZXNzdW0uaHRtbCI7fQ==</pag_props>
+<pag_props_locale>YTowOnt9</pag_props_locale>
+
 		<pageversions>  			<version>
 				<ver_id>43</ver_id>
 				<ver_nr>1</ver_nr>
@@ -43,7 +49,10 @@ Au&#38;szlig;erdem sehen Sie, dass das Men&#38;uuml; links den gleichen Baum zei
 			</version>
 
 		</pageversions>
-		<languages>
+		<languages>			<language>
+				<lng_id>0</lng_id>
+				<pag_titel></pag_titel>
+			</language>
 		</languages>
 		<sequence_data>
 			<component>

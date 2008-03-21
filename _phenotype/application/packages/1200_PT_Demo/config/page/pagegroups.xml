@@ -10,21 +10,24 @@
 			<grp_bez>Struktur</grp_bez>
 			<grp_description></grp_description>
 			<grp_statistic>1</grp_statistic>
-		    <grp_multilanguage>0</grp_multilanguage>
+		  <grp_multilanguage>0</grp_multilanguage>
+		  <grp_smarturl_schema>4</grp_smarturl_schema>
 		</group>
 		<group>
 			<grp_id>2</grp_id>
 			<grp_bez>Sonderseiten</grp_bez>
 			<grp_description></grp_description>
 			<grp_statistic>1</grp_statistic>
-		    <grp_multilanguage>0</grp_multilanguage>
+		  <grp_multilanguage>0</grp_multilanguage>
+		  <grp_smarturl_schema>4</grp_smarturl_schema>
 		</group>
 		<group>
 			<grp_id>3</grp_id>
 			<grp_bez>Dynamisch</grp_bez>
 			<grp_description></grp_description>
 			<grp_statistic>1</grp_statistic>
-		    <grp_multilanguage>0</grp_multilanguage>
+		  <grp_multilanguage>0</grp_multilanguage>
+		  <grp_smarturl_schema>4</grp_smarturl_schema>
 		</group>
 	</pagegroups>
 </phenotype>

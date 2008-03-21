@@ -94,7 +94,7 @@ class PhenotypeRequestStandard
             }
             if ($i==1)
             {
-              $this->set("smartPERMID",$key);
+              $this->set("smartUID",$key);
               if ($key=="action")
               {
                 $this->set("action","index");

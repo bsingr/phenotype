@@ -605,7 +605,7 @@ if ($mySUser->checkRight("elm_task"))
        }
        else 
        {
-         $html = $myLayout->workarea_form_text("Direktzugriff-URL (optional)","pag_url",$myPage->get("pag_url1"));
+         $html = $myLayout->workarea_form_text("Direktzugriff-URL (optional)","pag_url1",$myPage->get("pag_url1"));
          $myLayout->workarea_row_draw("URLs",$html);
        }
      }
