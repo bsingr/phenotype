@@ -28,6 +28,8 @@ class PhenotypeStandard extends PhenotypeBase
 {
   public $version  = "##!PT_VERSION!##";
   public $subversion = "##!BUILD_NO!##";
+  
+  private $includeCacheTime = 3600; // time in seconds includes will be cached
 
 
   /**
@@ -240,7 +242,7 @@ class PhenotypeStandard extends PhenotypeBase
         $myDao->set("html",$html);
         $myDao->set("title",$myPage->titel);
         // store for 1 hour
-        $myDao->store(60*60);
+        $myDao->store( 60*60);
       }
     }
     else
@@ -708,6 +710,24 @@ class PhenotypeStandard extends PhenotypeBase
         $v = utf8_decode((string)$node);
         $this->_preferences[$newtoken]=$v;
       }
+    }
+    // set default values
+    // contenttype
+    if (!array_key_exists('backend.default_contenttype', $this->_preferences)) {
+    	$this->_preferences['backend.default_contenttype'] = "text/html;charset=iso-8859-1";
+    }
+    // editorstuff
+    if (!array_key_exists('backend.rtf_editor', $this->_preferences)) {
+    	$this->_preferences['backend.rtf_editor'] = PT_RTF_EDITOR_FCKEDITOR;
+    }
+    if (!array_key_exists('backend.rtf_editor_config_path', $this->_preferences)) {
+    	$this->_preferences['backend.rtf_editor_config_path'] = "_phenotype/admin/lib/fckeditor/conf_rtf/";
+    }
+    if (!array_key_exists('backend.code_editor', $this->_preferences)) {
+    	$this->_preferences['backend.code_editor'] = PT_RTF_EDITOR_FCKEDITOR;
+    }
+    if (!array_key_exists('backend.code_editor_config_path', $this->_preferences)) {
+    	$this->_preferences['backend.code_editor_config_path'] = "_phenotype/admin/lib/fckeditor/conf_code/";
     }
   }
 
