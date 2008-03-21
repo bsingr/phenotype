@@ -10,12 +10,12 @@
  * and check to use the correct array name, pt_rtf_opts for RichTextAreas, pt_code_opts for CodeAreas
  */
 pt_rtf_opts['default'] = {
-	theme_advanced_buttons1 : "bold,italic,underline,|,bullist,numlist,|,undo,redo,link,unlink,|,code",
-	theme_advanced_buttons2 : "styleselect,formatselect,|,cut,copy,pastetext,pasteword,removeformat",
+	theme_advanced_buttons1 : "bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,|,bullist,numlist,|,link,unlink,|,cut,copy,pastetext,pasteword,removeformat",
+	theme_advanced_buttons2 : "undo,redo,|,search,replace,|,print,|,code,|,fullscreen",
 	theme_advanced_buttons3 : "",
 	theme_advanced_toolbar_location : "top",
 	theme_advanced_toolbar_align : "left",
 	theme_advanced_statusbar_location : "bottom",
-	plugins : "paste",
+	plugins : "searchreplace,paste,fullscreen,print",
 	paste_convert_middot_lists : true
 };

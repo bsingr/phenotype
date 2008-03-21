@@ -19,6 +19,6 @@ FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
 FCKConfig.TabSpaces = 0 ; // 0 means no conversion tab to spaces
 
 FCKConfig.ToolbarSets["Default"] = [
-['Undo','Redo'],['Find','Replace','Source'],
-['Print','-','FitWindow','About']
+['Undo','Redo'],['Find','Replace'],
+['Print','-','FitWindow']
 ] ;

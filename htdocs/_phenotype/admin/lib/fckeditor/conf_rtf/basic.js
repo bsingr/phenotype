@@ -17,7 +17,7 @@ FCKConfig.EnterMode = 'p' ;			// p | div | br
 FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
 
 FCKConfig.ToolbarSets["Default"] = [
-	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About']
+	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-']
 ] ;
 
 // Do not add, rename or remove styles here. Only apply definition changes.

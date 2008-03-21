@@ -20,7 +20,7 @@ FCKConfig.ToolbarSets["Default"] = [
 ['Bold','Italic','Underline','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyFull','-','OrderedList','UnorderedList','-','Link','Unlink'],
 ['Paste','PasteText','PasteWord','RemoveFormat'],
 ['Undo','Redo','-','Find','Replace'],
-['Print','-','Source','-','FitWindow','About']
+['Print','-','Source','-','FitWindow']
 ] ;
 
 // Do not add, rename or remove styles here. Only apply definition changes.
