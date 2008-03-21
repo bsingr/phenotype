@@ -28,20 +28,6 @@ class PhenotypeAdminStandard
 {
 	var $props_explorer = Array();
 
-	/*
-	 * @var Array	contains 
-	 * shows the state of rtf editor setup.
-	 *		null => not initialized
-	 *		array() => editor included
-	 *		After inclusion of the editor, in the array will be stored which configs were loaded
-	 */
-	private $editorInit = Array();
-	
-	/*
-	 * @var	Array	contains 
-	 */
-	private $codeEditorConfigs = Array();
-	
 	//function PhenotypeAdmin ()
 	public function __construct()
 	{
@@ -481,11 +467,6 @@ class PhenotypeAdminStandard
 		//$code = stripslashes($code);
 		return ($code);
 	}
-
-/*	function browserOK_HTMLArea()
-	{
-		return true;
-	}*/
 
 	function explorer_prepare($modul,$submodul)
 	{
