@@ -242,6 +242,11 @@ class PhenotypeRequestStandard
     return ($this->_REQUEST);
   }
 
+	/**
+	 * creates the parameter hash used for the include cache
+	 *
+	 * @return String	containing all relevant keys and values of the request
+	 */
   public function getParamHash ()
   {
     $_ignore = Array("PHPSESSID","cache","id","smartURL");
