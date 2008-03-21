@@ -472,6 +472,7 @@ class PhenotypePageStandard extends PhenotypeBase
   {
     global $myDB;
     global $myPT;
+    global $_PT_HTTP_CONTENTTYPES;
 
 
     $mySQL = new SQLBuilder();
@@ -501,6 +502,10 @@ class PhenotypePageStandard extends PhenotypeBase
     $mySQL->addField("pag_creationdate",time(),DB_NUMBER);
     $mySQL->addField("usr_id_creator",$_SESSION["usr_id"]);
     $mySQL->addField("grp_id",$grp_id);
+    
+    $contenttype = array_search($myPT->getPref("backend.default_contenttype"), $_PT_HTTP_CONTENTTYPES);
+    if (!$contenttype) $contenttype = 1;
+	  $mySQL->addField("pag_contenttype", $contenttype, DB_NUMBER);
 
     $sql = $mySQL->insert("page");
     $myDB->query($sql);
