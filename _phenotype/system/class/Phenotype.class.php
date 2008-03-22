@@ -29,7 +29,7 @@ class PhenotypeStandard extends PhenotypeBase
   public $version  = "##!PT_VERSION!##";
   public $subversion = "##!BUILD_NO!##";
   
-  private $includeCacheTime = 3600; // time in seconds includes will be cached
+  const INCLUDE_CACHE_TIME = 3600; // time in seconds includes will be cached
 
 
   /**
@@ -241,8 +241,8 @@ class PhenotypeStandard extends PhenotypeBase
         $html = $myInc->execute();
         $myDao->set("html",$html);
         $myDao->set("title",$myPage->titel);
-        // store for 1 hour
-        $myDao->store( 60*60);
+        // store for later in cache
+        $myDao->store(constant(get_class($this) ."::INCLUDE_CACHE_TIME"));
       }
     }
     else
