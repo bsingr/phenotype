@@ -19,6 +19,7 @@
 
 require("_config.inc.php");
 
+
 if (PT_BACKEND!=1){exit();}
 $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
@@ -51,6 +52,5 @@ if ($page!="Session")
 
 $myBP = new $cname;
 $myBP->execute($scope,$action);
-
 
 ?>

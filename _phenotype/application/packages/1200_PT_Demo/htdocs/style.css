@@ -9,7 +9,7 @@ a:hover {color:#f500ee;}
 
 div.hr {
   height: 15px;
-  background: #fff url(/img/nav-linie-stark.png) repeat-x 0px 10px;padding:5px;margin:0px;height:10px;;
+  background: #fff url(img/nav-linie-stark.png) repeat-x 0px 10px;padding:5px;margin:0px;height:10px;;
 }
 div.hr hr {
   display: none;
@@ -22,7 +22,7 @@ div.hr hr {
 /* -- frames -- */
 
 /* -- header -- */
-#header {background: url(/img/thegreenhead.jpg) center repeat-x;height:111px;}
+#header {background: url(img/thegreenhead.jpg) center repeat-x;height:111px;}
 #logo{padding-left:20px;}
 #header {padding-left: 200px;}
 #header li {list-style:none;display:inline;padding-right:40px;font-size:25px;background-color:#EEEEEE;}
@@ -32,11 +32,11 @@ div.hr hr {
 /* -- // header -- */
 
 /* -- main navigation menu -- */
-#menu {background: url(/img/menu-hg.png) repeat-x;padding-left:200px;}
+#menu {background: url(img/menu-hg.png) repeat-x;padding-left:200px;}
 #menu .container{margin:0px auto; height:55px;}
 #menu ul{margin:0;padding-top:10px;list-style-type: none;}
-#menu ul li{display: inline;padding: 10px 20px 30px 10px;background: url(/img/menu-reiter.png) no-repeat right;}
-#menu ul li.active{display: inline;padding: 10px 20px 30px 10px;background: url(/img/menu-reiter-aktiv.png) no-repeat right;}
+#menu ul li{display: inline;padding: 10px 20px 30px 10px;background: url(img/menu-reiter.png) no-repeat right;}
+#menu ul li.active{display: inline;padding: 10px 20px 30px 10px;background: url(img/menu-reiter-aktiv.png) no-repeat right;}
 #menu ul li a{color:#4A4A4A;font-weight:bold;font-size:13px;}
 #menu ul li a:hover {color:#f500ee;}
 #menu .active {color:#c100b6;}
@@ -51,13 +51,13 @@ div.hr hr {
 #navigation li {margin:5px 0px;padding:5px 0px;}
 
 #navigation li.active {font-weight:bold}
-#navigation li.level1 {padding: 1px 0px 1px 30px;background: url(/img/icon-blume01-def.png) no-repeat 0px 0px;}
-#navigation li.level2 {padding: 1px 0px 1px 50px;background: url(/img/icon-blume02-def.png) no-repeat 30px 0px;}
-#navigation li.level3 {padding: 1px 0px 1px 60px;background: url(/img/icon-blume03-def.png) no-repeat 40px 0px;}
+#navigation li.level1 {padding: 1px 0px 1px 30px;background: url(img/icon-blume01-def.png) no-repeat 0px 0px;}
+#navigation li.level2 {padding: 1px 0px 1px 50px;background: url(img/icon-blume02-def.png) no-repeat 30px 0px;}
+#navigation li.level3 {padding: 1px 0px 1px 60px;background: url(img/icon-blume03-def.png) no-repeat 40px 0px;}
 #navigation li.level4 {padding: 1px 0px 1px 60px;}
-#navigation li.level1active {padding: 1px 0px 1px 30px;background: url(/img/icon-blume01.png) no-repeat 0px 0px;}
-#navigation li.level2active {padding: 1px 0px 1px 50px;background: url(/img/icon-blume02.png) no-repeat 30px 0px;}
-#navigation li.level3active {padding: 1px 0px 1px 60px;background: url(/img/icon-blume03.png) no-repeat 40px 0px;}
+#navigation li.level1active {padding: 1px 0px 1px 30px;background: url(img/icon-blume01.png) no-repeat 0px 0px;}
+#navigation li.level2active {padding: 1px 0px 1px 50px;background: url(img/icon-blume02.png) no-repeat 30px 0px;}
+#navigation li.level3active {padding: 1px 0px 1px 60px;background: url(img/icon-blume03.png) no-repeat 40px 0px;}
 #navigation li.level4active {padding: 1px 0px 1px 60px;}
 /* -- // left navigation -- */
 
@@ -104,5 +104,5 @@ div.hr hr {
 /* -- // breadcrumb -- */	
 
 /* -- footer -- */	
-#footer {background: url(/img/footer-hg.png) top repeat-x;text-align:center;padding-top:10px;color:#717568;font-size:11px;}
+#footer {background: url(img/footer-hg.png) top repeat-x;text-align:center;padding-top:10px;color:#717568;font-size:11px;}
 /* -- // footer -- */

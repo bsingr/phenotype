@@ -502,10 +502,10 @@ class PhenotypePageStandard extends PhenotypeBase
     $mySQL->addField("pag_creationdate",time(),DB_NUMBER);
     $mySQL->addField("usr_id_creator",$_SESSION["usr_id"]);
     $mySQL->addField("grp_id",$grp_id);
-    
+
     $contenttype = array_search($myPT->getPref("backend.default_contenttype"), $_PT_HTTP_CONTENTTYPES);
     if (!$contenttype) $contenttype = 1;
-	  $mySQL->addField("pag_contenttype", $contenttype, DB_NUMBER);
+    $mySQL->addField("pag_contenttype", $contenttype, DB_NUMBER);
 
     $sql = $mySQL->insert("page");
     $myDB->query($sql);
@@ -821,10 +821,10 @@ class PhenotypePageStandard extends PhenotypeBase
 	    <div id="pt_debug" style="margin:0px;opacity:0.65;filter:alpha(opacity=75);padding:0px;padding-left:3px;position:absolute;right:0px;top:0px;z-index:10000;background-color:#000;color:#fff;font-family:Arial;font-size:12px;vertical-align:top;height:22px;}">
 	    <ul style="list-style-type:none;display:block;margin:0px;padding:0px">
 	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug').style.display='none'; document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close"  border="0"/></a></li>
-	    <li style="display:inline;"><a href="<?php echo ADMINFULLURL?>page_edit.php?id=<?php echo$this->id?>" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_edit.gif" alt="edit page" title="edit page" border="0"/></a></li>
+	    <li style="display:inline;"><a href="<?php echo ADMINFULLURL?>page_edit.php?id=<?php echo $this->id?>" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_edit.gif" alt="edit page" title="edit page" border="0"/></a></li>
 	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='';document.getElementById('pt_debug_details').style.display=''; return false;"><img src="<?php echo ADMINFULLURL?>img/b_debug.gif" alt="display debug info" title="display debug info" border="0"/></a></li>
 	    <li style="display:inline;"><a href="<?php echo $myPT->codeH($url_reload)?>"><img src="<?php echo ADMINFULLURL?>img/b_aktivieren.gif" alt="clear cache and reload page" title="clear cache and reload page" border="0"/></a></li>
-	    <li style="display:inline;line-height:22px;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?=$info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
+	    <li style="display:inline;line-height:22px;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?php echo $info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
 	    <li style="display:inline;"><a href="http://www.phenotype.de" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo" border="0"/></a></li>
 	    </ul>
 	    </div>
@@ -844,7 +844,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	    <div style="float:left"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close" style="margin:0px;padding:0px"/></a></div>
 	    <iframe src="<?php echo SERVERFULLURL ?>debuginfo.php?uri=<?php echo $uri?>" style="width:900px;height:100%;border:0px;overflow: auto;"></iframe>
 	    </div>
-	    <?
+	    <?php
 
 	    $html = str_replace("#!#pt_debug#!#",$myPT->stopBuffer(),$html);
     }
@@ -947,21 +947,10 @@ class PhenotypePageStandard extends PhenotypeBase
       }
     }
 
-
-    if (isset($_REQUEST["binfo"]))
-    {
-	?>
-	<div ID="time" STYLE="position:absolute; left:3px; top:576px;">
-	<table border="0" cellspacing="1" cellpadding="1" bgcolor="#D9E6CC">
-	<tr>
-	<td><p>Renderzeit: &nbsp;<?=sprintf("%0.4f",$myTC->getSeconds());?> sec (<?=$info?>)</p></td>
-	</tr>
-	</table>
-	</div>
-	<?
-    }
-
   }
+
+
+
 
   function displayXML($cache=1)
   {
@@ -1016,40 +1005,41 @@ class PhenotypePageStandard extends PhenotypeBase
 
     header("Content-Type: application/xml; charset=iso-8859-1");
     echo '<?xml version="1.0" encoding="ISO-8859-1"?>';
-	?>
+
+  ?>
 	<phenotype>
 	<request>
-	<session><?=session_id()?></session>
+	<session><?php echo session_id()?></session>
 	<cookies>
-	<?
+	<?php
 	foreach ($_COOKIE as $k => $v)
 	{
 	  $k = $myPT->xmlencode($k);
 	  $v = $myPT->xmlencode($v);
 	?>
-	<cookie name="<?=$k?>" value="<?=$v?>"/>
-	<?
+	<cookie name="<?php echo $k?>" value="<?php echo $v?>"/>
+	<?php
 	}
 	?>
 	</cookies>
 	<sessionvars>
-	<?
+	<?php
 	foreach ($_SESSION as $k => $v)
 	{
 	  $k = $myPT->xmlencode($k);
 	  $v = $myPT->xmlencode($v);
 	?>
-	<var name="<?=$k?>" value="<?=$v?>"/>
-	<?
+	<var name="<?php echo $k?>" value="<?php echo $v?>"/>
+	<?php
 	}
 	?>
 	</sessionvars>
 	</request>
-	<?
+	<?php
 	require ($dateiname);
 	?>
 	</phenotype>
-	<?
+	<?php
 	$myTC->stop();
 	// Jetzt die Statistik
 	if ($this->statistic==true)
@@ -1097,7 +1087,6 @@ class PhenotypePageStandard extends PhenotypeBase
   $this->printmode=0;
   return $this->render($ver_id,0);
   }*/
-
 
 
   function renderPreview($ver_id,$editbuffer=1)
@@ -1263,9 +1252,6 @@ class PhenotypePageStandard extends PhenotypeBase
 	    $code = '<?php $myInc = new PhenotypeInclude_' . $row["inc_id"] . '();echo $myInc->renderXML(); ?>';
 	    echo $code;
 	  }
-
-	?>
-	<?php
 	}
 	?>
 	</includes>
@@ -1274,6 +1260,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	$xml = $myPT->stopBuffer();
 	return ($xml);
 	//return utf8_encode($xml);
+
   }
 
 
@@ -1872,7 +1859,7 @@ class PhenotypePageStandard extends PhenotypeBase
         $grp_statistic = (int)utf8_decode($_xml_group->grp_statistic);
         $grp_multilanguage = (int)utf8_decode($_xml_group->grp_multilanguage);
         $grp_smarturl_schema = (int)utf8_decode($_xml_group->grp_smarturl_schema);
-        
+
         $sql  ="DELETE FROM pagegroup WHERE grp_id=".$grp_id;
         $myDB->query($sql);
 
@@ -2012,14 +1999,14 @@ class PhenotypePageStandard extends PhenotypeBase
     $_fields = Array("pag_url1","pag_url2","pag_url3","pag_url4");
     foreach ($_fields AS $k)
     {
-      if ($this->get($k))
-      {
-        $xml.= '<'.$k.'>'.$myPT->codeX($this->get($k)).'</'.$k.'>'."\n";
-        if ($k=="pag_url1")
-        {
-          $xml.= '<pag_url>'.$myPT->codeX($this->get($k)).'</pag_url>'."\n";
-        }
-      }
+    if ($this->get($k))
+    {
+    $xml.= '<'.$k.'>'.$myPT->codeX($this->get($k)).'</'.$k.'>'."\n";
+    if ($k=="pag_url1")
+    {
+    $xml.= '<pag_url>'.$myPT->codeX($this->get($k)).'</pag_url>'."\n";
+    }
+    }
     }
     */
     $xml .= '<pag_props>'.base64_encode($row["pag_props"])."</pag_props>\n";
@@ -2124,7 +2111,7 @@ class PhenotypePageStandard extends PhenotypeBase
       {
         $ptversion = "9.0.0";
       }
-      
+
       $pag_id = (int)utf8_decode($_xml->meta->pag_id);
       $grp_id = (int)utf8_decode($_xml->meta->grp_id);
 
@@ -2154,7 +2141,7 @@ class PhenotypePageStandard extends PhenotypeBase
         $_props["pag_url1"]=(string)utf8_decode($_xml->content->pag_url);
         $mySQL->addField("pag_props",serialize($_props));
       }
-      else 
+      else
       {
         $_props=(string)utf8_decode($_xml->content->pag_props);
         $mySQL->addField("pag_props",base64_decode($_props));

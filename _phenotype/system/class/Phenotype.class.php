@@ -71,15 +71,15 @@ class PhenotypeStandard extends PhenotypeBase
   function __construct()
   {
     global $myDB;
-    
+
     if (ini_get("register_globals")==1)
     {
       die("Bitte stellen Sie Register Globals aus !! Aus Sicherheitsgründen läuft Phenotype nicht mit dieser Einstellung");
     }
-    
+
     // start buffering the output im
     $this->startBuffer();
-    
+
     // always delete all expired dataobjects at first
     $sql = "DELETE FROM dataobject WHERE dao_ttl <" . time() ." AND dao_ttl <>0";
     $myDB->query($sql,"Phenotype: deleting expired dataobject entries.");
@@ -965,6 +965,7 @@ class PhenotypeStandard extends PhenotypeBase
   public static function handleError($errno, $errstr, $errfile, $errline)
   {
     global $myPT;
+    global $myPage;
 
     // we ignore smarty warnings
     if ($errno==E_WARNING AND strpos($errfile,'/smarty/')!==0)
@@ -1044,7 +1045,15 @@ class PhenotypeStandard extends PhenotypeBase
   {
     global $myRequest;
     global $myDB;
+    global $myApp;
 
+    if (!PT_DEBUG==1)
+    {
+      ob_clean();
+      $myApp->throw500($myPage->id);
+      exit();
+    }
+    
 
     if ($sql!="")
     {
@@ -1071,7 +1080,7 @@ class PhenotypeStandard extends PhenotypeBase
 <head>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=<?php echo PT_CHARSET?>" />
-<title><?=$this->codeH($headline)?></title>
+<title><?php echo $this->codeH($headline)?></title>
 <meta name="generator" content="Phenotype CMS" />
 <style type="text/css">
 body {
@@ -1210,7 +1219,7 @@ em {
 <div id="logo"><img
 	src="<?php echo ADMINFULLURL ?>img/phenotypelogo.gif" alt="Phenotype" /></div>
 <div id="main">
-<div id="header"><strong><?=$this->codeH($headline)?></strong>
+<div id="header"><strong><?php echo $this->codeH($headline)?></strong>
 <div id="message"><?php echo $this->codeHBR($message)?></div>
 </div>
 		<?php if (is_object($myRequest)){?> <em>Request:</em><br />
@@ -1304,7 +1313,7 @@ foreach ($_traces AS $_trace)
 	</span><?php echo $this->colorcodeHTML($_lines[$i-1])?></li>
 	<?php }?>
 </ul>
-	<?}?></div>
+	<?php }?></div>
 	<?php
 	$_sql = $myDB->getQueries();
 	$stop = count ($_sql);
@@ -1349,9 +1358,10 @@ for ($i=$stop;$i>=$start;$i--){?>
 <div id="footer"><?php echo date('d.m.Y H:i');?></div>
 </body>
 </html>
-	<?
+	<?php
 	exit();
   }
+
 
 
   public function displayDebugInfo()
@@ -1366,7 +1376,7 @@ for ($i=$stop;$i>=$start;$i--){?>
 <head>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=<?php echo PT_CHARSET?>" />
-<title><?=$this->codeH($headline)?></title>
+<title><?php echo $this->codeH($headline)?></title>
 <meta name="generator" content="Phenotype CMS" />
 <style type="text/css">
 body {
@@ -1502,7 +1512,7 @@ border: 1px solid #cfcfcf;
 </head>
 <body>
 <div id="main">
-<div id="header"><strong><?=$this->codeH($headline)?></strong></div>
+<div id="header"><strong><?php echo $this->codeH($headline)?></strong></div>
 	<?php if (is_object($myRequest)){?> <em>Request:</em><br />
 <div id="request">
 <ul class="request">
@@ -1554,7 +1564,7 @@ border: 1px solid #cfcfcf;
 		  {
 		    $context = $myDB->_context[$i];
 		    if ($context !=""){
-		      ?><span class="exec_context"><?php echo $context?></span><?
+		      ?><span class="exec_context"><?php echo $context?></span><?php
 		    }
 		  }
 ?><span class="filename">[<?php echo $this->getFilenameOutOfPath($myDB->_files[$i])?> in line <?php echo $myDB->_lines[$i]?>]</span><br />
@@ -1634,9 +1644,8 @@ border: 1px solid #cfcfcf;
 <div id="footer"><?php echo date('d.m.Y H:i');?></div>
 </div>
 </body>
-</html>
-	<?php
-
+</html><?php
+	
   }
 
   // =========================================================================================================
@@ -1744,7 +1753,7 @@ border: 1px solid #cfcfcf;
 
   public function get_image($img_id,$alt=null,$style="",$class="")
   {
-    
+
     if ($this->MediaobjectsHelper==false)
     {
       $myDAO = new PhenotypeSystemDataObject("MediaobjectsHelper",array(),false,true);
@@ -1756,12 +1765,12 @@ border: 1px solid #cfcfcf;
     }
     $token = "image". $img_id;
     // We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
-    // storage (initiated by the Phenotype destructor)    
+    // storage (initiated by the Phenotype destructor)
     if ($myDAO->check($token))
     {
-       $myImg = clone($myDAO->get($token));
+      $myImg = clone($myDAO->get($token));
     }
-    else 
+    else
     {
       $myImg = new PhenotypeImage($img_id);
       $myDAO->set($token,clone($myImg));

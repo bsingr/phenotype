@@ -23,6 +23,22 @@ exit();
   }
 
 
+  function throw500($pag_id)
+  {
+    Header("HTTP/1.0 500 Internal Server Error");
+?>
+<HTML><HEAD>
+<TITLE>500 Internal Server Error</TITLE>
+</HEAD><BODY>
+<H1>Not Found</H1>
+The requested URL <?php echo $_SERVER["REQUEST_URI"] ?> could not be processed on this server.<P>
+<HR>
+<ADDRESS>Phenotype CMS/<?php echo PT_VERSION ?> at <?php echo $_SERVER["SERVER_NAME"] ?> Port <?php echo $_SERVER["SERVER_PORT"] ?></ADDRESS>
+</BODY></HTML>
+<?php
+exit();
+  }
+
   /**
 	 * This function is used from the login screen. You should overwrite
 	 * it in your application to personalize the information text
@@ -277,19 +293,19 @@ exit();
 	*/
   /*
   private function msAmendUmlautsToURLConform($sText="") {
-    $sText = str_replace(" ","_",$sText);
-    $sText = str_replace("ü","ue",$sText);
-    $sText = str_replace("ä","ae",$sText);
-    $sText = str_replace("ö","oe",$sText);
-    $sText = str_replace("ß","ss",$sText);
-    $sText = str_replace("Ö","Oe",$sText);
-    $sText = str_replace("Ä","Ae",$sText);
-    $sText = str_replace("Ü","Ue",$sText);
+  $sText = str_replace(" ","_",$sText);
+  $sText = str_replace("ü","ue",$sText);
+  $sText = str_replace("ä","ae",$sText);
+  $sText = str_replace("ö","oe",$sText);
+  $sText = str_replace("ß","ss",$sText);
+  $sText = str_replace("Ö","Oe",$sText);
+  $sText = str_replace("Ä","Ae",$sText);
+  $sText = str_replace("Ü","Ue",$sText);
 
-    return $sText;
+  return $sText;
   }
   */
-  
+
 
 
 

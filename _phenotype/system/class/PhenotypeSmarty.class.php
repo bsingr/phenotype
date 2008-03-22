@@ -33,10 +33,11 @@ class PhenotypeSmartyStandard extends Smarty
     parent::Smarty();
     $this->register_function("url_for_page", array($this,"url_for_page"));
     $this->register_function("title_of_page", array($this,"title_of_page"));
-    
+
+    $this->register_function("pt_constant",array($this,"pt_constant"));
     // one day we will activate output escaping as default ;) currently it's too big
     //$this->register_modifier("phenotype", array($this,"default_modifier"));
-    
+
   }
 
   public function default_modifier($mixed)
@@ -47,11 +48,11 @@ class PhenotypeSmartyStandard extends Smarty
     }
     else {return $mixed;}
   }
-  
+
 
   public function url_for_page($_params)
   {
-    
+
     if (isset($_params["pag_id"]))
     {
       $pag_id = $_params["pag_id"];
@@ -63,9 +64,9 @@ class PhenotypeSmartyStandard extends Smarty
     }
   }
 
-    public function title_of_page($_params)
+  public function title_of_page($_params)
   {
-    
+
     if (isset($_params["pag_id"]))
     {
       $pag_id = $_params["pag_id"];
@@ -74,6 +75,19 @@ class PhenotypeSmartyStandard extends Smarty
     else
     {
       trigger_error("Missing mandatory parameter pag_id in smarty function title_of_page",E_USER_ERROR);
+    }
+  }
+  
+  
+  public function pt_constant($_params)
+  {
+    if (isset($_params["value"]))
+    {
+        return (constant($_params["value"]));     
+    }
+    else
+    {
+      trigger_error("Missing mandatory parameter value in smarty function pt_path",E_USER_ERROR);
     }
   }
 }

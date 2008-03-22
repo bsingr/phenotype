@@ -1,4 +1,4 @@
-<?
+<?php
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
@@ -16,8 +16,7 @@
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
-?>
-<?php
+
 /**
  * @package phenotype
  * @subpackage system
@@ -135,25 +134,35 @@ class PhenotypeDatabase
 		 	<div style="position:absolute;background-color:#FF0000;left:10px;top:500px;width:1000px;opacity:0.8;color:white;
 filter:alpha(opacity=85);padding-left:5px">
 		 	<table>
-		 	<tr><td>SQL-Fehler:</td><td><strong><?=mysql_errno($this->dbhandle)?></strong></td></tr>
-		 	<tr><td>Fehlermeldung:</td><td><strong><?=mysql_error($this->dbhandle)?></strong></td></tr>
-		 	<tr><td>SQL:</td><td><strong><?=$sql?></strong></td></tr>
-		 	<tr><td>Datei:</td><td><strong><?=$file?></strong></td></tr>
-		 	<tr><td>Zeile:</td><td><strong><?=$zeile?></strong></td></tr>
+		 	<tr><td>SQL-Fehler:</td><td><strong><?php echo mysql_errno($this->dbhandle)?></strong></td></tr>
+		 	<tr><td>Fehlermeldung:</td><td><strong><?php echo mysql_error($this->dbhandle)?></strong></td></tr>
+		 	<tr><td>SQL:</td><td><strong><?php echo $sql?></strong></td></tr>
+		 	<tr><td>Datei:</td><td><strong><?php echo $file?></strong></td></tr>
+		 	<tr><td>Zeile:</td><td><strong><?php echo $zeile?></strong></td></tr>
 		 	</table>
 		 	<br/>
 		 	
-		 	<?
+		 	<?php
 		 	foreach ($_traces AS $_trace)
 		 	{
 		 		?>
-		 		Aufruf: Zeile <strong><?=$_trace["line"]?></strong> in  <?=$_trace["file"]?><br/>
-		 		Methode: <?=$_trace["function"]?><br/><br/>
-		 		<?
+		 		Aufruf: Zeile <strong><?php echo $_trace["line"]?></strong> in  <?php echo $_trace["file"]?><br/>
+		 		Methode: <?php echo $_trace["function"]?><br/><br/>
+		 		<?php
 		 	}
 			?>
 		 	</div>
- 	 		<?
+ 	 		<?php
+      }
+      else 
+      {
+        global $myApp;
+        if (is_object($myApp))
+        {
+          ob_clean();
+          $myApp->throw500();
+        }
+       
       }
       die();
     }
@@ -185,7 +194,7 @@ filter:alpha(opacity=85);padding-left:5px">
 		<br clear="all">
 	 	<div style="position:absolute;background-color:#FFFF00;left:10px;top:500px;width:1000px;opacity:0.57;color:black;
 filter:alpha(opacity=95);padding-left:10px;">
-	 	<?
+	 	<?php
 
 	 	$c = count($this->_sql);
 
@@ -210,17 +219,17 @@ filter:alpha(opacity=95);padding-left:10px;">
 	 	  }
 	 		?>
 	 		
-	 		<tr><td>Nummer:</td><td><strong><?=$i+1?></strong></td></tr>
-	 		<tr><td>SQL:</td><td><strong><?=htmlentities($this->_sql[$i])?></strong></td></tr>
-	 		<tr><td>Zeit:</td><td><strong><?=$zeit?></strong></td></tr>
-	 		<tr><td>Zeilen:</td><td><strong><?=$this->_results[$i]?></strong></td></tr>
-		 	<tr><td>Datei:</td><td><strong><?=$this->_files[$i]?></strong></td></tr>
-		 	<tr><td>Zeile:</td><td><strong><?=$this->_lines[$i]?></strong></td></tr>
-		 	<?
+	 		<tr><td>Nummer:</td><td><strong><?php echo $i+1?></strong></td></tr>
+	 		<tr><td>SQL:</td><td><strong><?php echo htmlentities($this->_sql[$i])?></strong></td></tr>
+	 		<tr><td>Zeit:</td><td><strong><?php echo $zeit?></strong></td></tr>
+	 		<tr><td>Zeilen:</td><td><strong><?php echo $this->_results[$i]?></strong></td></tr>
+		 	<tr><td>Datei:</td><td><strong><?php echo $this->_files[$i]?></strong></td></tr>
+		 	<tr><td>Zeile:</td><td><strong><?php echo $this->_lines[$i]?></strong></td></tr>
+		 	<?php
 		 	if ($result){
 			?>
 		 	<tr><td>Analyse:</td><td><div><table style="border:1px black solid;border-style:solid">
-		 	<?
+		 	<?php
 		 	$tr1='<tr>';
 		 	$tr2='<tr>';
 		 	foreach ($row AS $k=>$v)
@@ -231,18 +240,18 @@ filter:alpha(opacity=95);padding-left:10px;">
 		 	echo $tr1 . "</tr>";
 		 	echo $tr2 . "</tr>";
 		 	?></table></div></td></tr>
-		 	<?
+		 	<?php
 		 	}
 			?>
 		 	</table>
 		 	<br/><br/>
-	 		<?
+	 		<?php
 
 
 	 	}
 		?>
 	 	</div>
-	 	<?
+	 	<?php
   }
 
   function startTransaction()
