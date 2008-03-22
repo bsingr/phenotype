@@ -38,18 +38,27 @@ class PhenotypeLayoutStandard
 	public $dhtmlwz_init = 0;
 	
 	/*
-	 * @var Array	contains 
-	 * shows the state of rtf editor setup.
-	 *		null => not initialized
-	 *		array() => editor included
-	 *		After inclusion of the editor, in the array will be stored which configs were loaded
+	 * @var Array	shows the state of rtf editor setup.
+	 *
+	 * if an editor is included in the page, in this array is stored the following:
+	 * $editorInit[editorName] = 1;
 	 */
 	private $editorInit = Array();
 	
 	/*
-	 * @var	Array	contains 
+	 * @var	Array	contains the state of the config setup for the rtfEditor
+	 *
+	 * if an editor config is included in the page, in this array is stored the following:
+	 * $rtfEditorConfigs[configSet] = 1;
 	 */
 	private $rtfEditorConfigs = Array();
+	
+	/*
+	 * @var	Array	contains the state of the config setup for the codeEditor
+	 *
+	 * if an editor config is included in the page, in this array is stored the following:
+	 * $codeEditorConfigs[configSet] = 1;
+	 */
 	private $codeEditorConfigs = Array();
 	
 
@@ -701,8 +710,8 @@ class PhenotypeLayoutStandard
 	/**
 	 * initializes the javascript editor for RichText or HTML
 	 *
-	 * @param int $mode	PT_EDITOR_RTF or PT_EDITOR_CODE. only use this constants
-	 * @param	string $configSet	refers to the configset used for this field
+	 * @param int $mode	PT_EDITOR_RTF or PT_EDITOR_CODE. only use these constants
+	 * @param	string $configSet	refers to the configset used for this editor instance
 	 *
 	 */
 	function init_js_editor($mode, $configSet)
@@ -877,7 +886,12 @@ class PhenotypeLayoutStandard
     	}
 	}
 
-	// ToDO Remove
+	/**
+	 * :TODO: remove
+	 *
+	 * @deprecated
+	 *
+	 */
 	function overview_content_draw($sql,$con_id,$mode=1,$html="")
 	{
 		global $myDB;
@@ -1776,7 +1790,12 @@ if ($mySUser->checkRight("elm_pageconfig"))
 
 	}
 
-	// ToDO: Remove
+	/**
+	 * :TODO: remove
+	 *
+	 * @deprecated
+	 *
+	 */
 	function explorer_redaktion_content_draw()
 	{
 		global $myDB;
@@ -1922,7 +1941,12 @@ if ($mySUser->checkRight("elm_pageconfig"))
 	}
 
 	
-	// ToDo: Remove
+	/**
+	 * :TODO: remove
+	 *
+	 * @deprecated
+	 *
+	 */
 	function explorer_redaktion_media_draw()
 	{
 		global $myDB;
