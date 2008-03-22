@@ -1,7 +1,7 @@
-<div class="richtext {if $box}box{/if}">
+<div>
 <a name="t{$id}"></a>
-{if $headline!=""}<h1>{$a}{$headline}{$aa}</h1>{/if}
+<h1>{$a}{$headline}{$aa}</h1>
 {$a}{$image}{$aa}
-{$text}{$link}
+<p>{$text}{$link}</p>
 </div>
 <br clear="all"/>
