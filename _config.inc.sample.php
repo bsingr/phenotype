@@ -96,7 +96,7 @@ define ("UMASK",0775);
 require (BASEPATH . "buildinfo.inc.php");
 require (CLASSPATH . "PhenotypeBase.class.php");
 require (CLASSPATH . "Phenotype.class.php");
-require (SYSTEMPATH . "_init.inc.php");
+require (SYSTEMPATH . "_autoloader.inc.php");
 require (SYSTEMPATH . "_helper.inc.php");
 
 require (CLASSPATH . "PhenotypePage.class.php");
@@ -107,24 +107,6 @@ require (CLASSPATH . "PhenotypeRequest.class.php");
 require (CLASSPATH . "TCheck.class.php");
 require (CLASSPATH . "PhenotypeLog.class.php");
 
-// ------------------------------------------------------
-// REWRITE RULES
-// ------------------------------------------------------
-
-// may(!) conflict with smartURL feature, see above
-define ("APACHE_PTWRITEHTACCESS", 0);
-
-define ("APACHE_HTACCESSHEADER","RewriteEngine on\n");
-
-define ("APACHE_REWRITE_PATH",SERVERPATH);
-define ("APACHE_REWRITE_FILE",".htaccess");
-define ("APACHE_REWRITEBASE",SERVERURL);
-
-// Maybe you need one of the following commands in your environment
-// to run Phenotype:
-//
-// - AddType application/x-httpd-php5 .php .php4 .php3 .php5
-// - php_flag register_globals off
 
 // ------------------------------------------------------
 // Logging
@@ -136,31 +118,23 @@ define("PT_LOG_TIMEFORMAT", "d/M/Y H:i:s O");
 define("PT_LOG_CLIENTINFO_HEADER", '');
 define("PT_LOG_CLIENTINFO_SERVER", 'REMOTE_ADDR');
 
+
 // ------------------------------------------------------
 // Einbindung der anwendungsspezifischen Hostkonfiguration
 // ------------------------------------------------------
 
 require (APPPATH . "_host.config.inc.php");
 
-
 // ------------------------------------------------------
-// Einbindung der Applikationsklasse
+// Grundinitialisierung
 // ------------------------------------------------------
 
+date_default_timezone_set('Etc/GMT-1');
 require (APPPATH . "_application.inc.php");
-
 $myApp = new PhenotypeApplication();
-
-// ------------------------------------------------------
-// Grundinitalisierung
-// ------------------------------------------------------
-
 $myPT = new Phenotype();
+require (SYSTEMPATH . "_init.inc.php");
 $myLog = new PhenotypeLog();
 $myDB = new PhenotypeDatabase();
 $myDB->connect();
 $myRequest = new PhenotypeRequest();
-
-
-
-?>

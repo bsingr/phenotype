@@ -283,7 +283,7 @@ $myPT->startBuffer();
 
     if ($myRequest->check("htdocs"))
     {
-    	$_files = Array (".svn","CVS",".htaccess","php.ini","_phenotype","media","index.php","pindex.php","preview.php","print.php","xmlpage.php","xmlcontent.php","404.php");
+    	$_files = Array (".svn","CVS",".htaccess","php.ini","_phenotype","media","index.php","pindex.php","preview.php","print.php","xmlpage.php","xmlcontent.php","404.php","reload.php","debuginfo.php");
 
     	$directory = SERVERPATH;
     	$fp = @opendir($directory);

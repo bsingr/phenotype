@@ -52,5 +52,51 @@
 		</section>
 		<section name="frontend">
 		</section>
+		<section name="cache">
+  <default_cache_seconds>86400</default_cache_seconds> 
+ <cachetime>
+ <cache_item1>
+  <name>kein Cache</name> 
+  <seconds>0</seconds> 
+  </cache_item1>
+ <cache_item2>
+  <name>15 Sekunden</name> 
+  <seconds>15</seconds> 
+  </cache_item2>
+ <cache_item3>
+  <name>30 Sekunden</name> 
+  <seconds>30</seconds> 
+  </cache_item3>
+ <cache_item4>
+  <name>45 Sekunden</name> 
+  <seconds>45</seconds> 
+  </cache_item4>
+ <cache_item5>
+  <name>1 Minute</name> 
+  <seconds>60</seconds> 
+  </cache_item5>
+ <cache_item6>
+  <name>2 Minuten</name> 
+  <seconds>120</seconds> 
+  </cache_item6>
+ <cache_item7>
+  <name>5 Minuten</name> 
+  <seconds>300</seconds> 
+  </cache_item7>
+ <cache_item8>
+  <name>10 Minuten</name> 
+  <seconds>600</seconds> 
+  </cache_item8>
+ <cache_item9>
+  <name>60 Minuten</name> 
+  <seconds>3600</seconds> 
+  </cache_item9>
+  <cache_item10>
+  <name>24 Stunden</name> 
+  <seconds>86400</seconds> 
+  </cache_item10>
+  </cachetime>
+  </section>
+		
 	</preferences>
 </phenotype>
