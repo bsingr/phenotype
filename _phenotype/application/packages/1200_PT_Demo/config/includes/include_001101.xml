@@ -12,6 +12,10 @@
 		<inc_usage_page>0</inc_usage_page>
 	</meta>
 	<script>&#60;?php
+&#47;**
+ * page tree navigation
+ *
+ *&#47;
 class PhenotypeInclude_1101 extends PhenotypeInclude
 {
   &#47;&#47; Seitennavigation
@@ -25,9 +29,20 @@ class PhenotypeInclude_1101 extends PhenotypeInclude
 
     $myHelper = new PhenotypeNavigationHelper();
 
+    $pag_id = $myPage-&#62;pag_id_mimikry;
+
+    &#47;&#47; ignore next view lines, they are always a special treatment for gallery detail view,
+    &#47;&#47; not necessary for a simple navigation
+
+    &#47;&#47; We imitate navigation of a given page, if we are on gallery detail view page
+    if ($pag_id==PhenotypeApplication::pag_id_galleryview)
+    {
+      $pag_id = $this-&#62;getMimikry_pag_id();
+    }
+
 
     &#47;&#47; first we must decide which pages we want to display ...
-    $_path = $myHelper-&#62;getPagesWithinPath($myPage-&#62;pag_id_mimikry,true);
+    $_path = $myHelper-&#62;getPagesWithinPath($pag_id,true);
 
     &#47;&#47; .. i.e. expand within an tree
     $_pages = $myHelper-&#62;getTree(1,$_path);
@@ -39,11 +54,14 @@ class PhenotypeInclude_1101 extends PhenotypeInclude
 
 
     &#47;&#47; we want to highlight all pages in the path from current page to the top ...
-    &#47;&#47; ... but not the root level (the homepage)
-    $p=array_search(1,$_path);
-    if($p!==0)
+    &#47;&#47; ... but not the homepage (only if we are on that page)
+    if ($pag_id!=1)
     {
-      unset($_path[$p]);
+      $p=array_search(1,$_path);
+      if($p!==false)
+      {
+        unset($_path[$p]);
+      }
     }
 
     &#47;&#47; now print out the page tree as unorderd list an highlight all pages in the path

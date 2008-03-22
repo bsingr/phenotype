@@ -17,13 +17,6 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 
-
-/* **********************
-* init.inc.php
-*
-* some helper and initialization functions that are always needed
-*/
-
 if (PT_DEBUG==1)
 {
   error_reporting(E_ALL ^ E_NOTICE); // DEVELOPMENT

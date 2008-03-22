@@ -9,102 +9,80 @@
 		<com_description></com_description>
 	</meta>
 	<script>&#60;?php
+&#47;**
+ * component to place a gallery (i.e. thumbnail preview of a gallery) within a page
+ *
+ *&#47;
 class PhenotypeComponent_1601 extends PhenotypeComponent
 {
   public $tool_type = 1601;
 
   public $bez = &#34;Galerie&#34;; &#47;&#47; erscheint im Arbeitsbereich im Redaktionsmodus
 
-
-  function setDefaultProperties()
+  function edit()
   {
-	  $this-&#62;set(&#34;variable&#34;,&#34;Wert&#34;);
+    global $myAdm;
+    $sql = &#34;SELECT dat_id AS K , dat_bez AS V FROM content_data WHERE con_id = 1601 AND dat_status=1 ORDER BY dat_bez&#34;;
+    $options = $myAdm-&#62;buildOptionsBySQL($sql,$this-&#62;get(&#34;dat_id&#34;));
+    $options = &#39;&#60;option value=&#34;0&#34;&#62;...&#60;&#47;option&#62;&#39;.$options;
+    $this-&#62;form_select(&#34;&#34;,&#34;dat_id&#34;,$options,$x=200,$br=1);
+
   }
-  
- function edit()
-    {
-        global $myAdm;
-        $sql = &#34;SELECT dat_id AS K , dat_bez AS V FROM content_data WHERE con_id = 1601 AND dat_status=1 ORDER BY dat_bez&#34;;
-        $options = $myAdm-&#62;buildOptionsBySQL($sql,$this-&#62;get(&#34;dat_id&#34;));
-        $options = &#39;&#60;option value=&#34;0&#34;&#62;...&#60;&#47;option&#62;&#39;.$options;
-        $this-&#62;form_select(&#34;&#34;,&#34;dat_id&#34;,$options,$x=200,$br=1);
 
-    }
+  function update()
+  {
+    &#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools
+    $this-&#62;fset(&#34;dat_id&#34;);
+  }
 
-    function update()
-    {
-        &#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools
-        $this-&#62;fset(&#34;dat_id&#34;);
-
-
-
-    }
- 
   function render($context)
   {
-  	global $myPT;
-  	global $myPage;
-  	global $myApp;
-  	
-  	
-    &#47;&#47; Die Variable $context kommt aus dem Layoutblock
-	&#47;&#47; und kann genutzt werden, um die Bausteine in unterschiedlichen
-	&#47;&#47; Contexten anders reagieren zu lassen
-	
-	$dat_id = $this-&#62;getI(&#34;dat_id&#34;);
-	if ($dat_id==0)
-	{
-		return;
-	}
-	
-	$myCO = new CO_Gallery($dat_id);
-	global $myPT;
-	$myPT-&#62;startBuffer();
-	
-	
-	?&#62;
-	&#60;div class=&#34;gallery&#34;&#62;
-	&#60;h1&#62;&#60;?php echo $myCO-&#62;getH(&#34;bez&#34;) ?&#62;&#60;&#47;h1&#62;
-	&#60;?php
-	
-	$_images = $myCO-&#62;get(&#34;precalc&#34;);
-	$i=0;
-	foreach ($_images AS $_image)
-	{
-		$i++;
-		?&#62;
-		&#60;div class=&#34;thumbnail&#34;&#62;&#60;a href=&#34;index.php?id=&#60;?php echo $myApp-&#62;pag_id_galleryview ?&#62;&#38;amp;gal_id=&#60;?php echo $dat_id ?&#62;&#38;amp;nr=&#60;?php echo $i ?&#62;&#38;amp;pag_id_mik=&#60;?php echo $myPage-&#62;id ?&#62;&#34;&#62;&#60;img src=&#34;&#60;?php echo MEDIABASEURL.$_image[2] ?&#62;&#34; alt=&#34;&#34; border=&#34;0&#34; &#47;&#62;&#60;&#47;a&#62;
-		
-		&#60;&#47;div&#62;
-		&#60;?php
-		if ($i%4==0)
-		{
-		?&#62;
-		&#60;div class=&#34;clear&#34;&#62;&#60;&#47;div&#62;
-		&#60;?php
-		}
-	}
-	?&#62;
-	&#60;&#47;div&#62;
-	&#60;?php
-	if ($myCO-&#62;get(&#34;desc&#34;)!=&#34;&#34;)
-	{
-	?&#62;
-	&#60;p&#62;
-	&#60;?php echo $myCO-&#62;get(&#34;desc&#34;) ?&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;
-	&#60;&#47;p&#62;
-	&#60;?php
-	}
-	?&#62;	
-	&#60;div class=&#34;clear&#34;&#62;&#60;&#47;div&#62;
-	&#60;br&#47;&#62;
-	&#60;?php
-	return $myPT-&#62;stopBuffer();
+    global $myPT;
+    global $myPage;
+    global $myApp;
+
+    $dat_id = $this-&#62;getI(&#34;dat_id&#34;);
+    if ($dat_id==0)
+    {
+      return;
+    }
+
+    $myCO = new CO_Gallery($dat_id);
+
+    &#47;&#47; get information about gallery images
+    $_images = Array();
+    foreach ($myCO-&#62;getImagesArray() AS $_image)
+    {
+      &#47;&#47; Define url for detail view of an image
+      &#47;&#47; We want to keep our navigation state, so we encode the id of the current page into the url
+      $smartUID = &#34;image&#34;.$_image[&#34;pos&#34;].&#34;,&#34;.$myPage-&#62;id.&#34;.html&#34;;
+      $_image[&#34;url_view&#34;] = url_for_page(PhenotypeApplication::pag_id_galleryview,array(&#34;gal_id&#34;=&#62;$dat_id),null,$smartUID);
+      $_images[]=$_image;
+    }
+
+    eval ($this-&#62;initRendering());
+    $mySmarty-&#62;assign(&#34;gallery&#34;,$myCO);
+    $mySmarty-&#62;assign(&#34;images&#34;,$_images);
+    $html = $mySmarty-&#62;fetch($TPL_1);
+    return $html;
   }
-  
+
+
 }
 ?&#62;</script>
 	<templates>
+<template access="TPL_1">&#60;div class=&#34;gallery&#34;&#62;
+&#60;h1&#62;{$gallery-&#62;getH(&#34;bez&#34;)}&#60;&#47;h1&#62;
+{foreach from=$images item=image}
+&#60;div class=&#34;thumbnail&#34;&#62;&#60;a href=&#34;{$image.url_view}&#34;&#62;&#60;img src=&#34;{$image.url_thumb}&#34; alt=&#34;{$image.alt}&#34; title=&#34;{$image.alt}&#34; border=&#34;0&#34; &#47;&#62;&#60;&#47;a&#62;&#60;&#47;div&#62;
+{&#47;foreach}
+{if $gallery-&#62;get(&#34;desc&#34;)!=&#34;&#34;}
+&#60;div class=&#34;clear&#34;&#62;&#60;&#47;div&#62;
+&#60;div&#62;&#60;br&#47;&#62;{$gallery-&#62;get(&#34;desc&#34;)}&#60;br&#47;&#62;&#60;&#47;div&#62;
+{&#47;if}
+&#60;div class=&#34;clear&#34;&#62;&#60;&#47;div&#62;
+&#60;br&#47;&#62;
+&#60;&#47;div&#62;</template>
    	</templates>
 	<componentgroups><group>
 			<cog_id>1</cog_id>

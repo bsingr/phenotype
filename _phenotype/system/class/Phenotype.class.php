@@ -28,7 +28,7 @@ class PhenotypeStandard extends PhenotypeBase
 {
   public $version  = "##!PT_VERSION!##";
   public $subversion = "##!BUILD_NO!##";
-  
+
   const INCLUDE_CACHE_TIME = 3600; // time in seconds includes will be cached
 
 
@@ -61,13 +61,28 @@ class PhenotypeStandard extends PhenotypeBase
    */
   private $URLHelper = false;
 
+  /**
+   * Holds the MediaobjectsHelper dataobject during on request
+   *
+   * @var unknown_type
+   */
+  private $MediaobjectsHelper = false;
+
   function __construct()
   {
+    global $myDB;
+    
     if (ini_get("register_globals")==1)
     {
       die("Bitte stellen Sie Register Globals aus !! Aus Sicherheitsgründen läuft Phenotype nicht mit dieser Einstellung");
     }
+    
+    // start buffering the output im
     $this->startBuffer();
+    
+    // always delete all expired dataobjects at first
+    $sql = "DELETE FROM dataobject WHERE dao_ttl <" . time() ." AND dao_ttl <>0";
+    $myDB->query($sql,"Phenotype: deleting expired dataobject entries.");
   }
 
   public function __destruct()
@@ -75,6 +90,14 @@ class PhenotypeStandard extends PhenotypeBase
     if ($this->URLHelper!=false)
     {
       $myDAO = $this->URLHelper;
+      if ($myDAO->changed)
+      {
+        $myDAO->store(0,true);
+      }
+    }
+    if ($this->MediaobjectsHelper!=false)
+    {
+      $myDAO = $this->MediaobjectsHelper;
       if ($myDAO->changed)
       {
         $myDAO->store(0,true);
@@ -714,20 +737,20 @@ class PhenotypeStandard extends PhenotypeBase
     // set default values
     // contenttype
     if (!array_key_exists('backend.default_contenttype', $this->_preferences)) {
-    	$this->_preferences['backend.default_contenttype'] = "text/html;charset=iso-8859-1";
+      $this->_preferences['backend.default_contenttype'] = "text/html;charset=iso-8859-1";
     }
     // editorstuff
     if (!array_key_exists('backend.rtf_editor', $this->_preferences)) {
-    	$this->_preferences['backend.rtf_editor'] = PT_RTF_EDITOR_FCKEDITOR;
+      $this->_preferences['backend.rtf_editor'] = PT_RTF_EDITOR_FCKEDITOR;
     }
     if (!array_key_exists('backend.rtf_editor_config_path', $this->_preferences)) {
-    	$this->_preferences['backend.rtf_editor_config_path'] = "_phenotype/admin/lib/fckeditor/conf_rtf/";
+      $this->_preferences['backend.rtf_editor_config_path'] = "_phenotype/admin/lib/fckeditor/conf_rtf/";
     }
     if (!array_key_exists('backend.code_editor', $this->_preferences)) {
-    	$this->_preferences['backend.code_editor'] = PT_RTF_EDITOR_FCKEDITOR;
+      $this->_preferences['backend.code_editor'] = PT_RTF_EDITOR_FCKEDITOR;
     }
     if (!array_key_exists('backend.code_editor_config_path', $this->_preferences)) {
-    	$this->_preferences['backend.code_editor_config_path'] = "_phenotype/admin/lib/fckeditor/conf_code/";
+      $this->_preferences['backend.code_editor_config_path'] = "_phenotype/admin/lib/fckeditor/conf_code/";
     }
   }
 
@@ -1657,7 +1680,6 @@ border: 1px solid #cfcfcf;
       $myPage = new PhenotypePage($pag_id);
       $url = $myPage->buildURL($lng_id);
       $myDAO->set($token,$url);
-      $myDAO->store();
     }
 
     foreach ($_params AS $k=>$v)
@@ -1668,7 +1690,7 @@ border: 1px solid #cfcfcf;
     {
       $url .="/".$smartUID;
     }
-    
+
     $url = SERVERURL . $url;
     return $url;
   }
@@ -1713,14 +1735,85 @@ border: 1px solid #cfcfcf;
       }
       $title = $myPage->getTitle();
       $myDAO->set($token,$title);
-      $myDAO->store();
     }
 
 
     return $title;
   }
 
-  
+
+  public function get_image($img_id,$alt=null,$style="",$class="")
+  {
+    
+    if ($this->MediaobjectsHelper==false)
+    {
+      $myDAO = new PhenotypeSystemDataObject("MediaobjectsHelper",array(),false,true);
+      $this->MediaobjectsHelper = $myDAO;
+    }
+    else
+    {
+      $myDAO = $this->MediaobjectsHelper;
+    }
+    $token = "image". $img_id;
+    // We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
+    // storage (initiated by the Phenotype destructor)    
+    if ($myDAO->check($token))
+    {
+       $myImg = clone($myDAO->get($token));
+    }
+    else 
+    {
+      $myImg = new PhenotypeImage($img_id);
+      $myDAO->set($token,clone($myImg));
+    }
+    if ($alt!==null)
+    {
+      $myImg->alt = $alt;
+    }
+    $myImg->style = $style;
+    $myImg->class = $class;
+    return $myImg;
+  }
+
+  /**
+   *  reserved
+   *
+   * @param unknown_type $smartURL
+   * @param unknown_type $inc_id
+   * @param unknown_type $_params
+   * @param unknown_type $symbol
+   * @return string
+   */
+  public function registerController($smartURL,$inc_id,$_params=Array(),$symbol="")
+  {
+
+  }
+
+  /**
+   * reserved
+   *
+   * @param unknown_type $smartURL
+   * @param unknown_type $pag_id
+   * @param unknown_type $_params
+   * @param unknown_type $symbol
+   */
+  public function registerSmartURL($smartURL,$pag_id,$_params=Array(),$symbol="")
+  {
+
+  }
+
+  /**
+   * reserved
+   *
+   * @param unknown_type $symbol
+   * @param unknown_type $smartURL
+   * @param unknown_type $_params
+   */
+  public function registerSymbol($symbol,$smartURL,$_params=Array())
+  {
+
+  }
+
 }
 
 

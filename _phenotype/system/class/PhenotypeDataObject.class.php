@@ -42,10 +42,6 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
   {
     global $myDB;
 
-    // always delete all expired dataobjects at first
-    $sql = "DELETE FROM dataobject WHERE dao_ttl <" . time() ." AND dao_ttl <>0";
-    $myDB->query($sql,"DAO \"".$bez."\": deleting expired entries.");
-
     if ($bez=="")
     {
       throw new Exception ("Cannot create unnamed dataobject");

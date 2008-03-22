@@ -11,277 +11,179 @@
 		<con_bearbeiten>1</con_bearbeiten>
 		<con_loeschen>1</con_loeschen>
 	</meta>
-	<script>&#60;?php 
+	<script>&#60;?php
+&#47;**
+ * Simple example gallery
+ * 
+ * This very simple gallery can contain up to 20 images. 
+ * This content object class also demonstrates the drag &#38; drop sorting possibilites
+ *
+ *&#47;
 class PhenotypeContent_1601 extends PhenotypeContent
 {
-	&#47;&#47; WDR 2 Galerie
-	var $content_type = 1601;
-	var $skins = Array (); &#47;&#47; erlaubte Skins #
 
-	&#47;&#47; Mehrere Tabs
-	var $_blocks = Array (&#34;Eigenschaften&#34;, &#34;Upload&#34;);
-	var $_icons = Array (&#34;b_konfig.gif&#34;, &#34;b_konfig.gif&#34;);
+  var $content_type = 1601;
 
-	function setDefaultProperties()
-	{
-		$this-&#62;set(&#34;bez&#34;, &#34;Neue Galerie&#34;);
-		$this-&#62;set(&#34;anzahl&#34;, 0);
-	}
+  &#47;&#47; tab configuration
+  var $_blocks = Array (&#34;Eigenschaften&#34;, &#34;Bild 1-10&#34;,&#34;Bild 11-20&#34;);
+  var $_icons = Array (&#34;b_konfig.gif&#34;, &#34;b_items.gif&#34;,&#34;b_items.gif&#34;);
 
-	function init($row, $block_nr = 0)
-	{
-		parent :: init($row, $block_nr);
+  &#47;**
+   * mark all images as visible on default
+   * 
+   * This method is always called when a new object of this type is created.
+   *
+   *&#47;
+  function setDefaultProperties()
+  {
+    $this-&#62;set(&#34;bez&#34;, &#34;Neue Galerie&#34;);
+    $this-&#62;set(&#34;ddimageorder&#34;,Array());
 
-		&#47;&#47; Reiter mit den Anzahl der Bilder mitwachsen lassen
-		$anzahl = $this-&#62;getI(&#34;maximage&#34;);
-		$seiten = floor($anzahl &#47; 10) + 1;
-		for ($i = 1; $i &#60;= $seiten; $i ++)
-		{
-			$this-&#62;_blocks[] = ($i -1) * 10 + 1 . &#34;-&#34; . $i * 10;
-			$this-&#62;_icons[] = &#34;b_konfig.gif&#34;;
-		}
+    for ($i=1;$i&#60;=20;$i++)
+    {
+      $this-&#62;set(&#34;view&#34;.$i,1);
+    }
+  }
 
-		&#47;&#47; Hier das Formular und damit auch die Updatefunktion initialisieren
-		if ($block_nr == 0)
-		{
-			$this-&#62;form_headline(&#34;Meta&#34;);
-			$this-&#62;form_textfield(&#34;Bezeichnung&#34;, &#34;bez&#34;, 400);
-			$this-&#62;form_richtext(&#34;Beschreibung&#34;, &#34;desc&#34;, 400, 10);
+  function init($row, $block_nr = 0)
+  {
+    parent :: init($row, $block_nr);
 
 
-			if ($anzahl &#62; 0)
-			{
-				$this-&#62;form_headline(&#34;Bildreihenfolge&#34;);
-				$_position = Array ();
-				for ($i = 1; $i &#60;= $anzahl; $i ++)
-				{
-					if ($this-&#62;get(&#34;view&#34;.$i)==1)
-					{
-						$_position[] = $i;
-					}
-				}
-				$this-&#62;set(&#34;ddimageorder&#34;, $_position);
-				$this-&#62;form_ddpositioner(&#34;&#34;, &#34;ddimageorder&#34;, count($_position), &#34;dd_thumb&#34;);
-			}
-		}
-
-		if ($block_nr == 1)
-		{
-			$this-&#62;form_ddupload(&#34;Bilderupload&#34;, &#34;bilder&#34;, 300, 250);
-			$this-&#62;form_comment(&#34;&#34;, &#34;Die Bilder werden in alphabetischer Reihenfolge einsortiert.&#60;br&#47;&#62;Bitte nur JPEGs hochladen. Maximale Uploadgröße 512kb.&#60;br&#47;&#62;&#60;br&#47;&#62;Thumbnails werden automatisch generiert. Manuelle Thumbnails &#60;br&#47;&#62;müssen mit dem Namen &#39;t_bildname&#39; versehen werden.&#34;);
-		}
-
-		if ($block_nr &#62; 1)
-		{
-			$uplift = ($block_nr -2) * 10;
-			for ($i = 1; $i &#60;= 10; $i ++)
-			{
-				$this-&#62;form_headline(&#34;Bild &#34;. ($i + $uplift));
-				$this-&#62;form_textfield(&#34;Titel&#47;Alt-Text&#34;, &#34;titel&#34;. ($i + $uplift), 400);
-				$this-&#62;form_textarea(&#34;Beschreibung&#34;, &#34;text&#34;. ($i + $uplift), 400, 2);
-				$this-&#62;form_image_selector(&#34;Bild&#34;, &#34;image&#34;. ($i + $uplift), &#34;Galerie&#34;, 1);
-				$this-&#62;form_checkbox(&#34;&#34;,&#34;view&#34;. ($i + $uplift),&#34;anzeigen&#34;);
-			}
-		}
-
-	}
-
-	function attachKeyFields()
-	{
-		$img_id = $this-&#62;getI(&#34;image1_img_id&#34;);
-		if ($img_id == 0){$img_id=4;}
-		$this-&#62;setThumbnail($img_id);
-	}
-
-	function store()
-	{
-		global $mySUser;
-		global $myRequest;
-
-		$this-&#62;precalcImages();
-
-		if ($myRequest-&#62;getI(&#34;b&#34;) == 1)
-		{
-			$anzahl = $this-&#62;getI(&#34;maximage&#34;);
-			&#47;&#47; Nachsehen, ob neue Bilder hinzugefügt wurden
-			$pfad = TEMPPATH.&#34;contentupload&#47;&#34;.$this-&#62;content_type.&#34;&#47;&#34;.$mySUser-&#62;id.&#34;&#47;bilder&#47;&#34;;
-			$fp = @ opendir($pfad);
-			$_files = Array ();
-			if ($fp)
-			{
-				while ($file = readdir($fp))
-				{
-					if ($file != &#34;.&#34; &#38;&#38; $file != &#34;..&#34;)
-					{
-						if (substr($file, 0, 2) != &#34;t_&#34;)
-						{
-							$_files[] = $file;
-						}
-					}
-				}
-			}
-
-			if (count($_files != 0))
-			{
-				asort($_files);
-				$myMB = new PhenotypeMediabase();
-				$i = $this-&#62;get(&#34;maximage&#34;);
-				foreach ($_files AS $file)
-				{
-					$i ++;
-					if (!file_exists($pfad.&#34;t_&#34;.$file))
-					{
-						$myMB-&#62;createThumbnailFromJpeg($pfad.$file, $pfad.&#34;t_&#34;.$file, 100);
-					}
-					$med_id = $myMB-&#62;import($file, 0, &#34;Galerie&#47;Upload &#34;.$this-&#62;id, $pfad);
-					$this-&#62;set(&#34;image&#34;.$i.&#34;_img_id&#34;, $med_id);
-					$this-&#62;set(&#34;view&#34;.$i,1);
-
-					$myMB-&#62;importImageVersionFromUrl($pfad.&#34;t_&#34;.$file,&#34;thumb&#34;,$med_id);
-					&#47;&#47;$med_id = $myMB-&#62;import(&#34;t_&#34;.$file, 0, &#34;Galerie&#47;WDR 2&#47;&#34;.$this-&#62;id, $pfad);
-					&#47;&#47;$this-&#62;set(&#34;small&#34;.$i.&#34;_img_id&#34;, $med_id);
-				}
-				$this-&#62;precalcImages();
-			}
-
-			&#47;&#47; Auf die erste Seite mit einem neuen Bild springen,
-			&#47;&#47; falls neue Bilder hinzugefügt wurden
-			if ($this-&#62;getI(&#34;maximage&#34;)!=$anzahl)
-			{
-				$seiten = floor(($anzahl+1) &#47; 10) + 1;
-				$this-&#62;setAlternateUpdateUrl(&#34;content_edit.php?id=&#34;.$this-&#62;id.&#34;&#38;uid=&#34;.$this-&#62;uid.&#34;&#38;b=&#34;. ($seiten +1));
-			}
+    switch ($block_nr)
+    {
+      case 0:
+        $this-&#62;form_headline(&#34;Meta&#34;);
+        $this-&#62;form_textfield(&#34;Bezeichnung&#34;, &#34;bez&#34;, 400);
+        $this-&#62;form_richtext(&#34;Beschreibung&#34;, &#34;desc&#34;, 405, 10);
 
 
-			&#47;&#47; Ordner anschließend leeren
-			$pfad = TEMPPATH.&#34;contentupload&#47;&#34;.$this-&#62;content_type.&#34;&#47;&#34;.$mySUser-&#62;id.&#34;&#47;bilder&#47;&#34;;
-			$fp = @ opendir($pfad);
-			if ($fp)
-			{
-				while ($file = readdir($fp))
-				{
-					if ($file != &#34;.&#34; &#38;&#38; $file != &#34;..&#34;)
-					{
-						unlink ($pfad . $file);
-					}
-				}
-			}
-		}
+        $_position = Array ();
+        &#47;&#47; First retrieve the last stored image order, but take only those which are still marked as visible
+        foreach ($this-&#62;get(&#34;ddimageorder&#34;) AS $i)
+        {
+          $img_id = $this-&#62;getI(&#34;image&#34;.$i.&#34;_img_id&#34;);
+          if ($img_id!=0 AND $this-&#62;getI(&#34;view&#34;.$i))
+          {
+            $_position[]=$i;
+          }
+        }
+        &#47;&#47; Then append images not yet in the position array
+        for ($i=1;$i&#60;=20;$i++)
+        {
+          $img_id = $this-&#62;getI(&#34;image&#34;.$i.&#34;_img_id&#34;);
+          if ($img_id!=0 AND $this-&#62;getI(&#34;view&#34;.$i) AND !in_array($i,$_position))
+          {
+            $_position[]=$i;
+          }
+        }
 
-		if ($myRequest-&#62;getI(&#34;b&#34;) == 0 AND is_array($this-&#62;get(&#34;ddimageorder&#34;)))
-		{
+        if (count($_position)!=0)
+        {
+          $this-&#62;form_headline(&#34;Bildreihenfolge&#34;);
+          $this-&#62;set(&#34;ddimageorder&#34;, $_position);
+          $this-&#62;form_ddpositioner(&#34;&#34;, &#34;ddimageorder&#34;, count($_position), &#34;dd_thumb&#34;);
+        }
 
-			$_position = $this-&#62;get(&#34;ddimageorder&#34;);
-
-			$_images = Array ();
-
-			&#47;&#47; Zunächst die sichtbaren Bildern auf die vorderen Plätze verteilen
-			foreach ($_position AS $pos)
-			{
-				$img_id = $this-&#62;getI(&#34;image&#34;.$pos.&#34;_img_id&#34;);
-				$titel = $this-&#62;get(&#34;titel&#34;.$pos);
-				$text = $this-&#62;get(&#34;text&#34;.$pos);
-				$_image = Array ($img_id,$titel,$text,1);
-				$_images[]=$_image;
-			}
-
-			&#47;&#47; Dann die nicht angezeigen Bilder ans Ende hängen
-			$n=$this-&#62;getI(&#34;maximage&#34;);
-			for ($i = 1; $i &#60;= $n; $i ++)
-			{
-				if ($this-&#62;getI(&#34;view&#34;.$i)==0)
-				{
-					$img_id = $this-&#62;getI(&#34;image&#34;.$i.&#34;_img_id&#34;);
-					$titel = $this-&#62;get(&#34;titel&#34;.$i);
-					$text = $this-&#62;get(&#34;text&#34;.$i);
-					$_image = Array ($img_id,$titel,$text,0);
-					$_images[]=$_image;
-				}
-			}
-
-			&#47;&#47; Jetzt die Bilder wieder verteilen
-			$i=0;
-			foreach ($_images AS $_image)
-			{
-				$i++;
-				$this-&#62;set(&#34;image&#34;.$i.&#34;_img_id&#34;,$_image[0]);
-				$this-&#62;set(&#34;titel&#34;.$i,$_image[1]);
-				$this-&#62;set(&#34;text&#34;.$i,$_image[2]);
-				$this-&#62;set(&#34;view&#34;.$i,$_image[3]);
-			}
-			$this-&#62;precalcImages();
-			
-			&#47;*
-			$_ids = Array ();
-			foreach ($_position AS $pos)
-			{
-			$_ids[] = $this-&#62;get(&#34;image&#34;.$pos.&#34;_img_id&#34;);
-			}
-			for ($i = 1; $i &#60;= $this-&#62;getI(&#34;maximage&#34;); $i ++)
-			{
-			$this-&#62;set(&#34;image&#34;.$i.&#34;_img_id&#34;, $_ids[$i -1]);
-			}
-
-			$this-&#62;precalcImages();
-			*&#47;
-		}
-
-		parent :: store();
-	}
-
-	function precalcImages()
-	{
-		&#47;&#47; to minimze db queries when displaying the gallery an array with all necessary
-		&#47;&#47; informations is precalculated and stored as a content object property
-		
-		$j = 0;
-		$max = 0;
-		$_images = Array ();
-		for ($i = 1; $i &#60;= 50; $i ++)
-		{
-			if ($this-&#62;getI(&#34;image&#34;.$i.&#34;_img_id&#34;) != 0 AND $this-&#62;getI(&#34;view&#34;.$i)==1)
-			{
-				$j ++;
-
-				$titel = $this-&#62;get(&#34;titel&#34;.$i);
-				$text = $this-&#62;get(&#34;text&#34;. $i);
-
-				$myImg = new PhenotypeImage($this-&#62;getI(&#34;image&#34;.$i.&#34;_img_id&#34;));
-				$big = $myImg-&#62;physical_folder.&#34;&#47;&#34;.$myImg-&#62;filename;
-
-				$x = $myImg-&#62;x;
-				$y=$myImg-&#62;y;
-				
-				$myImg-&#62;selectVersion(&#34;thumb&#34;);
-				$small = $myImg-&#62;physical_folder.&#34;&#47;&#34;.$myImg-&#62;filename;
-
-				$_image = Array ($titel, $text, $small,$big,$x,$y);
-				$_images[$j] = $_image;
-
-				$max = $i;
-			}
-		}
-		$this-&#62;set(&#34;anzahl&#34;, $j);
-		$this-&#62;set(&#34;maximage&#34;, $max);
-		$this-&#62;set(&#34;precalc&#34;, $_images);
-	}
-
-	function dd_thumb($i)
-	{
-
-		if ($this-&#62;getI(&#34;image&#34;.$i.&#34;_img_id&#34;) != 0)
-		{
-			$big = $this-&#62;getI(&#34;image&#34;.$i.&#34;_img_id&#34;);
-			$myImg = new PhenotypeImage($big);
-			$myImg-&#62;display_maxX(250);
-		}
-		else
-		{
-			echo &#34;Kein Bild zugeordnet.&#34;;
-		}
+        break;
+      default:
 
 
-	}
+        for ($i = 1; $i &#60;= 10; $i ++)
+        {
+          $j = (($block_nr-1)*10)+$i;
+
+          $this-&#62;form_headline(&#34;Bild &#34;. $j);
+          $this-&#62;form_textfield(&#34;Titel&#47;Alt-Text&#34;, &#34;titel&#34;. $j, 400);
+          $this-&#62;form_textarea(&#34;Beschreibung&#34;, &#34;text&#34;. $j, 400, 2);
+          $this-&#62;form_image_selector(&#34;Bild&#34;, &#34;image&#34;. $j, &#34;Galerie&#34;, 1);
+          $this-&#62;form_checkbox(&#34;&#34;,&#34;view&#34;. $j,&#34;anzeigen&#34;);
+        }
+
+        break;
+    }
+  }
+
+  &#47;**
+   * Use thumbnail of the first image of this gallery as identifying thumbnail within the edit view
+   * 
+   * this method ist always called upon store after editing.
+   *&#47;
+  function attachKeyFields()
+  {
+    $img_id = $this-&#62;getI(&#34;image1_img_id&#34;);
+    if ($img_id == 0){$img_id=4;}
+    $this-&#62;setThumbnail($img_id);
+  }
+
+  &#47;**
+   * retrieve an Array with display information for all images of this gallery
+   *
+   * @return array
+   *&#47;
+  function getImagesArray()
+  {
+    $_images = Array();
+    $i=0;
+    foreach ($this-&#62;get(&#34;ddimageorder&#34;) AS $nr)
+    {
+      $_image = $this-&#62;getImageArrayForImageNumber($nr);
+      if ($_image)
+      {
+        $i++;
+        $_image[&#34;pos&#34;]=$i;
+        $_images[] = $_image;
+      }
+    }
+    return ($_images);
+  }
+
+  &#47;**
+   * retrieve an Array with display information for image with given number
+   *&#47;
+  function getImageArrayForImageNumber($nr)
+  {
+    $img_id = $this-&#62;getI(&#34;image&#34;.$nr.&#34;_img_id&#34;);
+    if ($img_id!=0 AND ($this-&#62;getI(&#34;view&#34;.$i)==1 OR $visible==false))
+    {
+      $myImg = get_image($img_id);
+      $_image = Array();
+      $_params = Array(&#34;id&#34;=&#62;$this-&#62;id);
+      $_image[&#34;nr&#34;]=$nr;
+      $_image[&#34;url_detail&#34;]=$myImg-&#62;url;
+      $_image[&#34;x&#34;]=$myImg-&#62;x;
+      $_image[&#34;y&#34;]=$myImg-&#62;y;
+      $myImg-&#62;selectVersion(&#34;thumb&#34;);
+      $_image[&#34;url_thumb&#34;]=$myImg-&#62;url;
+      $_image[&#34;title&#34;]=$this-&#62;get(&#34;titel&#34;.$nr);
+      $_image[&#34;alt&#34;]=$this-&#62;get(&#34;titel&#34;.$nr);
+      $_image[&#34;text&#34;]=$this-&#62;get(&#34;text&#34;.$nr);
+
+      $_images[] = $_image;
+      return $_image;
+    }
+    return false;
+  }
+  
+  function getImageArray($pos)
+  {
+   $_posarray = $this-&#62;get(&#34;ddimageorder&#34;); 
+   $nr = $_posarray[$pos-1];
+   return $this-&#62;getImageArrayForImageNumber($nr);
+  }
+
+
+  &#47;**
+   * Display thumbnail of an image drag &#38; drop position i
+   *
+   * @param integer $i
+   *&#47;
+  function dd_thumb($i)
+  {
+    $img_id = $this-&#62;getI(&#34;image&#34;.$i.&#34;_img_id&#34;);
+    $myImg = new PhenotypeImage($img_id);
+    $myImg-&#62;display_thumb();
+  }
 
 }
 ?&#62;</script>

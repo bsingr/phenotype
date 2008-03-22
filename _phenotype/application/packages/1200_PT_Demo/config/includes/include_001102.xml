@@ -34,15 +34,31 @@ class PhenotypeInclude_1102 extends PhenotypeInclude
 		$myHelper = new PhenotypeNavigationHelper();
 		
 		$_pages = $myHelper-&#62;getSubPages(1);
+		
+		
+		$pag_id_navigation = $pag_id = $myPage-&#62;pag_id_mimikry;
+
+    &#47;&#47; ignore next view lines, they are always a special treatment for gallery detail view, 
+    &#47;&#47; not necessary for a simple navigation
+    
+    &#47;&#47; We imitate navigation of a given page, if we are on gallery detail view page
+    if ($pag_id_navigation==PhenotypeApplication::pag_id_galleryview)
+    {
+      $pag_id_navigation = $this-&#62;getMimikry_pag_id();
+    }
+    
+    $_path = $myHelper-&#62;getPagesWithinPath($pag_id_navigation);
 
 		$html = &#39;&#60;ul&#62;&#39;;
 		foreach ($_pages AS $pag_id)
 		{
 		  $class=&#39;&#39;;
-		  if ($myPage-&#62;getI(&#34;category&#34;)==$pag_id)
+		  
+		  if (in_array($pag_id,$_path))
 		  {
 	       $class=&#39; class=&#34;active&#34;&#39;;
 		  }
+		  
 		  $html .= &#39;&#60;li class=&#34;active&#34;&#62;&#60;a href=&#34;&#39; .url_for_page($pag_id) .&#39;&#34;&#39;.$class.&#39;&#62;&#39;.codeH(title_of_page($pag_id)).&#39;&#60;&#47;a&#62;&#60;&#47;li&#62;&#39;;
 		}
 		$html.= &#39;&#60;&#47;ul&#62;&#39;;

@@ -23,6 +23,33 @@ class PhenotypeComponent extends PhenotypeComponentStandard {}
  */
 class PhenotypeContent extends PhenotypeContentStandard {}
 
+
+
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
+class PhenotypeImage extends PhenotypeImageStandard {}
+
+
+
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
+class PhenotypeDocument extends PhenotypeDocumentStandard {}
+
+
+
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
+class PhenotypeMediaobject extends PhenotypeMediaObjectStandard  {}
+
 /**
  * @package phenotype
  * @subpackage application

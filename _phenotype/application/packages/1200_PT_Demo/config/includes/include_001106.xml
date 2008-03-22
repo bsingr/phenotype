@@ -12,82 +12,97 @@
 		<inc_usage_page>0</inc_usage_page>
 	</meta>
 	<script>&#60;?php
+&#47;**
+ * gallery detail view
+ *
+ *&#47;
 class PhenotypeInclude_1106 extends PhenotypeInclude
 {
-	&#47;&#47; Galerie Detailansicht
 
-	public $id = 1106;
+  public $id = 1106;
 
-	function display()
-	{
-		global $myDB;
-		global $myApp;
-		global $myPage;
-		global $myRequest;
-		
-		$pag_id = $myPage-&#62;id;
-		$pag_id_mik = $myRequest-&#62;getI(&#34;pag_id_mik&#34;);
+  function display()
+  {
+    global $myDB;
+    global $myApp;
+    global $myPage;
+    global $myRequest;
 
-		&#47;&#47; Initialisieren des Smartyzugriffs
-		eval ($this-&#62;initRendering());
 
-		$gal_id = (int)$_REQUEST[&#34;gal_id&#34;];
-		$sql = &#34;SELECT * FROM content_data WHERE dat_id=&#34; . $gal_id . &#34; AND con_id = &#34; .$myApp-&#62;con_id_gallery . &#34; AND dat_status = 1&#34;;
-		$rs = $myDB-&#62;query($sql);
-		if (mysql_num_rows($rs)!=0)
-		{
-			$row = mysql_fetch_array($rs);
-			$myCO = new CO_Gallery();
-			$myCO-&#62;init($row);
+    $gal_id = $myRequest-&#62;getI(&#34;gal_id&#34;);
 
-			$anzahl = $myCO-&#62;get(&#34;anzahl&#34;);
-			$_images = $myCO-&#62;get(&#34;precalc&#34;);
+    &#47;&#47; We expect urls like xxxx&#47;imageA,B.html
+    &#47;&#47; We want A and B
 
-			$page = 1;
-			if (isset($_REQUEST[&#34;page&#34;]))
-			{
-				$page = (int)$_REQUEST[&#34;page&#34;];
-			}
+    $_smartUID = split(&#34;,&#34;,$myRequest-&#62;get(&#34;smartUID&#34;));
 
-			$nr = (int)$_REQUEST[&#34;nr&#34;];
-			if ($nr&#62;$anzahl){$nr=$anzahl;}
-			if ($nr&#60;1){$nr=1;}
-			$_images = $myCO-&#62;get(&#34;precalc&#34;);
-			$_image = $_images[$nr];
-	
-			?&#62;
-&#60;div &#62;
-&#60;h1&#62;&#60;?php echo $myCO-&#62;getH(&#34;bez&#34;) ?&#62;&#60;&#47;h1&#62;
-&#60;h2&#62;&#60;?php echo $_image[0] ?&#62;&#60;&#47;h2&#62;
+    $patterns = &#34;&#47;[^0-9]*&#47;&#34;;
+    $nr = preg_replace($patterns,&#34;&#34;,$_smartUID[0]);
+    $pag_id_mik = preg_replace($patterns,&#34;&#34;,$_smartUID[1]);
 
-&#60;br &#47;&#62;        
-&#60;div class=&#34;center&#34;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php echo $gal_id ?&#62;&#38;page=&#60;?php echo $page ?&#62;&#38;nr=&#60;?php echo $nr+1 ?&#62;&#38;pag_id_mik=&#60;?php echo $pag_id_mik ?&#62;&#34;&#62;&#60;?php } ?&#62;&#60;img src=&#34;&#60;?php echo MEDIABASEURL.&#34;&#47;&#34;.$_image[3] ?&#62;&#34; alt=&#34;&#60;?php echo $_image[0] ?&#62;&#34; title=&#34;&#60;?php echo $_image[0] ?&#62;&#34; class=&#34;GalImg&#34;&#47;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;&#47;a&#62;&#60;?php } ?&#62;&#60;&#47;div&#62;
+    $url_overview = url_for_page($pag_id_mik);
 
-&#60;&#47;div&#62;
 
-&#60;div&#62;
+    $myCO = new CO_Gallery($gal_id);
+    if ($myCO-&#62;isLoaded() AND $myCO-&#62;status==1)
+    {
+      $c = count ($myCO-&#62;getImagesArray());
+      &#47;&#47; Initialisieren des Smartyzugriffs
+      eval ($this-&#62;initRendering());
+      $mySmarty-&#62;assign(&#34;gallery&#34;,$myCO);
+
+      &#47;&#47; get Image information
+      $_image = $myCO-&#62;getImageArray($nr);
+      $mySmarty-&#62;assign(&#34;image&#34;,$_image);
+
+      $url_forward =&#34;&#34;;
+      $url_backward =&#34;&#34;;
+      if ($nr&#62;1)
+      {
+        $smartUID = &#34;image&#34;.($nr-1).&#34;,&#34;.$pag_id_mik.&#34;.html&#34;;
+        $url_backward = url_for_page(PhenotypeApplication::pag_id_galleryview,array(&#34;gal_id&#34;=&#62;$myCO-&#62;id),null,$smartUID);
+      }
+      if ($nr&#60;$c)
+      {
+        $smartUID = &#34;image&#34;.($nr+1).&#34;,&#34;.$pag_id_mik.&#34;.html&#34;;
+        $url_forward = url_for_page(PhenotypeApplication::pag_id_galleryview,array(&#34;gal_id&#34;=&#62;$myCO-&#62;id),null,$smartUID);
+      }
+      $mySmarty-&#62;assign(&#34;url_forward&#34;,$url_forward);
+      $mySmarty-&#62;assign(&#34;url_backward&#34;,$url_backward);
+      $mySmarty-&#62;assign(&#34;url_overview&#34;,$url_overview);
+      $mySmarty-&#62;display($TPL_1);
+    }
+  }
+}
+?&#62;</script>
+	<templates>
+<template access="TPL_1">&#60;div &#62;
+&#60;h1&#62;{$gallery-&#62;getH(&#34;bez&#34;)}&#60;&#47;h1&#62;
+&#60;h2&#62;{$image.title}&#60;&#47;h2&#62;
 &#60;br&#47;&#62;
-&#60;?php echo $_image[1] ?&#62;
+
+  &#60;div class=&#34;center&#34;&#62;
+  {if $url_forward}&#60;a href=&#34;{$url_forward|escape}&#34;&#62;{&#47;if}
+  &#60;img src=&#34;{$image.url_detail|escape}&#34; alt=&#34;{$image.alt|escape}&#34; title=&#34;{$image.alt|escape}&#34; class=&#34;GalImg&#34;&#47;&#62;
+  {if $url_forward}&#60;&#47;a&#62;{&#47;if}
+  &#60;&#47;div&#62;
+
+&#60;br&#47;&#62;
+{$image.text}
 &#60;br&#47;&#62;
 &#60;br&#47;&#62;
-    &#60;table cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; width=&#34;&#60;?php echo $_image[4] ?&#62;&#34; class=&#34;tableBausteineBackground&#34;&#62;
+    &#60;table cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; width=&#34;{$image.x}&#34; class=&#34;tableBausteineBackground&#34;&#62;
         &#60;tr&#62;
-            &#60;td &#62;&#60;?php if ($nr&#62;1){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php echo $gal_id ?&#62;&#38;page=&#60;?php echo $page ?&#62;&#38;nr=&#60;?php echo $nr-1 ?&#62;&#38;pag_id_mik=&#60;?php echo $pag_id_mik ?&#62;&#34;&#62;Bild zur&#38;uuml;ck&#60;&#47;a&#62;&#60;?php }else{ ?&#62;&#38;nbsp;&#60;?php } ?&#62;&#60;&#47;td&#62;
+            &#60;td&#62;
+            {if $url_backward}&#60;a href=&#34;{$url_backward|escape}&#34;&#62;Bild zur&#38;uuml;ck&#60;&#47;a&#62;{else}&#38;nbsp;{&#47;if}
+            &#60;&#47;td&#62;
             &#60;td &#62;&#38;nbsp;&#60;&#47;td&#62;
-&#60;td align=&#34;right&#34;&#62;&#60;?php if ($nr&#60;$anzahl){ ?&#62;&#60;a href=&#34;index.php?id=&#60;?php echo $pag_id ?&#62;&#38;amp;&#38;amp;gal_id=&#60;?php echo $gal_id ?&#62;&#38;page=&#60;?php echo $page ?&#62;&#38;nr=&#60;?php echo $nr+1 ?&#62;&#38;pag_id_mik=&#60;?php echo $pag_id_mik ?&#62;&#34;&#62;Bild vor&#60;&#47;a&#62;&#60;?php }else{ ?&#62;&#38;nbsp;&#60;?php } ?&#62;&#60;&#47;td&#62;
+            &#60;td align=&#34;right&#34;&#62;{if $url_forward}&#60;a href=&#34;{$url_forward|escape}&#34;&#62;Bild vor&#60;&#47;a&#62;{else}&#38;nbsp;{&#47;if}&#60;&#47;td&#62;
         &#60;&#47;tr&#62;
     &#60;&#47;table&#62;
     
 
-	&#60;p&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;
-&#60;a href=&#34;index.php?id=&#60;?php echo $pag_id_mik ?&#62;&#34;&#62;zur&#38;uuml;ck zur &#38;Uuml;bersicht&#60;&#47;a&#62;
-&#60;&#47;p&#62;
-&#60;&#47;div&#62;      
-			&#60;?php
-			}
-		}
-}
-?&#62;</script>
-	<templates>
+&#60;p&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;&#60;a href=&#34;{$url_overview}&#34;&#62;zur&#38;uuml;ck zur &#38;Uuml;bersicht&#60;&#47;a&#62;&#60;&#47;p&#62;
+&#60;&#47;div&#62;</template>
    	</templates>
 </phenotype>

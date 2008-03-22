@@ -75,7 +75,7 @@ define ("SMARTYPATH", SYSTEMPATH . "smarty/libs/");
 define ("CLASSPATH", SYSTEMPATH . "class/");
 
 // ------------------------------------------------------
-// Cache
+// Multicache
 // ------------------------------------------------------
 
 define ("CACHEPATH", BASEPATH . "_phenotype/cache/");
@@ -87,7 +87,6 @@ define ("CACHECOUNT",1);
 // ------------------------------------------------------
 
 define ("UMASK",0775);
-
 
 // ------------------------------------------------------
 // Einbindung der Grundklassen
@@ -130,12 +129,13 @@ require (APPPATH . "_host.config.inc.php");
 // Grundinitialisierung
 // ------------------------------------------------------
 
+
+$myDB = new PhenotypeDatabase();
+$myDB->connect();
 date_default_timezone_set('Etc/GMT-1');
 require (APPPATH . "_application.inc.php");
 $myApp = new PhenotypeApplication();
 $myPT = new Phenotype();
 require (SYSTEMPATH . "_init.inc.php");
 $myLog = new PhenotypeLog();
-$myDB = new PhenotypeDatabase();
-$myDB->connect();
 $myRequest = new PhenotypeRequest();

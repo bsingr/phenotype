@@ -10,32 +10,46 @@
 // So you're free to customize Phenotype like you want or to try something new before
 // you commit your changes to our svn repository.
 
+class PhenotypeInclude extends PhenotypeIncludeStandard
+{
+  public function getMimikry_pag_id()
+  {
+    global $myRequest;
+    // We expect urls like xxxx/imageA,B.html
+    // We want B
+    $_smartUID = split(",",$myRequest->get("smartUID"));
+    $patterns = "/[^0-9]*/";
+    $pag_id = (int)preg_replace($patterns,"",$_smartUID[1]);
+    return $pag_id;
+  }
+}
+
 // -----------------------------------------------------------------------------------------
 // [BLOCKSTOP_INHERITANCE]
 // -----------------------------------------------------------------------------------------
 
 
 // -----------------------------------------------------------------------------------------
-// [BLOCKSTART_MYAPPLICATION] 
+// [BLOCKSTART_MYAPPLICATION]
 // -----------------------------------------------------------------------------------------
 
-class PhenotypeApplication extends PhenotypeApplicationStandard 
+class PhenotypeApplication extends PhenotypeApplicationStandard
 {
-	// Please define all fixed IDs here as variables like "public $rol_id_xyz = 1" or "public $pag_id_news = 1" ...
+  // Please define all fixed IDs here as variables like "const $rol_id_xyz = 1" or "const $pag_id_news = 1" ...
 
-	public $pag_id_galleryview = 44;
-	public $con_id_gallery = 1601;
-	
-	public $contact_email_to = "";
-	public $contact_email_from = "";
+  const pag_id_galleryview = 44;
+  const con_id_gallery = 1601;
+
+  public $contact_email_to = "";
+  public $contact_email_from = "";
 }
 
 // -----------------------------------------------------------------------------------------
-// [BLOCKSTOP_MYAPPLICATION] 
+// [BLOCKSTOP_MYAPPLICATION]
 // -----------------------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------------------
-// [BLOCKSTART_CLASSALIAS] 
+// [BLOCKSTART_CLASSALIAS]
 // -----------------------------------------------------------------------------------------
 
 // Definition of class aliases for contenobjects, components and so on to
@@ -44,7 +58,7 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
 class CO_Gallery extends PhenotypeContent_1601 {}
 
 // -----------------------------------------------------------------------------------------
-// [BLOCKSTOP_CLASSALIAS] 
+// [BLOCKSTOP_CLASSALIAS]
 // -----------------------------------------------------------------------------------------
 
 
