@@ -94,6 +94,7 @@ define ("UMASK",0775);
 // ------------------------------------------------------
 
 require (BASEPATH . "buildinfo.inc.php");
+require (SYSTEMPATH . "_constants.inc.php");
 require (CLASSPATH . "PhenotypeBase.class.php");
 require (CLASSPATH . "Phenotype.class.php");
 require (SYSTEMPATH . "_autoloader.inc.php");
