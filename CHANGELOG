@@ -18,3 +18,38 @@ r212 - 2007/10/30
 - changed creation of content template ids: now uses separated numbers for every object
 - changed creation of extra template ids: now uses separated numbers for every object
 - added sql migration scripts with alter table statements for the case you won't dump your development DB
+
+r216 - 2008/02/23
+- (internal) integrated constants for the sequence entry types (like form_newline, form_textfield,..) instead of hardcoded ints
+
+r222 - 2008/03/01
+- bugfix: importing packages with templates now works. this was broken cause of the new method of creating template ids
+
+r242 - 2008/03/20
+##Update of Richtext Editor Integration##
+- integrated TinyMCE3 as an option
+- upgraded FCKEditor to latest stable version
+- created a unified configuration management that is accessed from within phenotype with a configSet name. Rest of editor configuration happens in static javascript files.
+- separated configs for code(html) editing and rtf editing. config of tinyMCE and fckEditor is separated as well
+
+- additional
++ (internal) code cleanup in PhenotypeLayout and PhenotypeAdmin. Now in PhenotypeAdmin the encoding/decoding is done and ALL rendering in PhenotypeLayout
++ (internal) removed old functions from PhenotypeAdmin (whichHTMLArea, readPHP_HTMLArea, readHTML_HTMLArea, readPHP_TextArea, readHTML_TextArea)
++ (internal) buildHTMLTextArea is available in PhenotypeAdmin for compatibility reasons, but should not be used longer
++ (internal) lots of phpDoc in PhenotypeLayout
+
+r248 - 2008/03/21
+- added preference backend.default_contenttype for default http header setting of new pages
+- added check for missing preference entries (backwards compatibility)
+
+r256 - 2008/03/22
+- (internal) separated constants and initialization
+- (internal) constants have NO dependencies, can be included early
+- (internal) initialization is done later
+
+r259 - 2008/03/22
+- updated pt_core to newest elements
+- removed pt_base
+
+r263 - 2008/03/22
+- new sql dump, compatible with sql strict mode and only with core package contents
