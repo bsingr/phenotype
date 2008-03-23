@@ -59,11 +59,15 @@ class PhenotypeNavigationHelperStandard
 	 *
 	 * @return Array	contains ids of all child pages ordered by pag_pos
 	 */
-  public function getSubPages($pag_id,$status=true)
+  public function getSubPages($pag_id, $status=true, $grp_id=0)
   {
     global $myDB;
 
     $token = "subpages_".$pag_id."_status_".(int)$status;
+    if ($grp_id)
+    {
+    	$token .= "_". (int)$grp_id;
+		}
 
     if ($this->hasToken($token))
     {
@@ -78,6 +82,11 @@ class PhenotypeNavigationHelperStandard
       $sql .=" AND pag_status=1";
     }
 
+    if ($grp_id)
+    {
+      $sql .=" AND grp_id=$grp_id";
+		}
+		
     $sql .= " ORDER BY pag_pos";
 
     $rs = $myDB->query($sql);
@@ -151,10 +160,14 @@ class PhenotypeNavigationHelperStandard
 	 *
 	 * @return Array	flat array. keys are the pag_ids of the pages, associated values show the level of the page
 	 */
-  public function getTree($pag_id_top,$_expand=Array(),$maxdepth=999)
+  public function getTree($pag_id_top, $_expand=Array(), $maxdepth=999, $grp_id=0)
   {
     $expand = implode("#",$_expand);
     $token = "tree_".$pag_id_top."_".$expand."_depth_".(int)$maxdepth;
+    if ($grp_id)
+    {
+    	$token .= "_". (int)$grp_id;
+		}
  
     if ($this->hasToken($token))
     {
@@ -164,24 +177,24 @@ class PhenotypeNavigationHelperStandard
     $level=1;
     $this->_pages = Array();
     $this->_path = $_expand;
-    foreach ($this->getSubPages($pag_id_top) AS $pag_id)
+    foreach ($this->getSubPages($pag_id_top, true, $grp_id) AS $pag_id)
     {
       $this->_pages[$pag_id]= $level;
       if (in_array($pag_id,$_expand))
       {
         if ($level<$maxdepth)
         {
-          $this->appendPages($pag_id,$level,$maxdepth);
+          $this->appendPages($pag_id, $level, $maxdepth, $grp_id);
         }
       }
     }
-    return $this->storeDaoValue($token,$this->_pages);
+    return $this->storeDaoValue($token, $this->_pages);
   }
 
-  private function appendPages($pag_id,$level,$maxdepth)
+  private function appendPages($pag_id, $level, $maxdepth, $grp_id)
   {
     $level++;
-    foreach ($this->getSubPages($pag_id) AS $pag_id)
+    foreach ($this->getSubPages($pag_id, true, $grp_id) AS $pag_id)
     {
       $this->_pages[$pag_id]= $level;
 
