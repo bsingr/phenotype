@@ -92,64 +92,85 @@ $myPT->startBuffer();
     <?php
     $myLayout->workarea_start_draw();
 		?>
-		<form action="package_cleanup2.php" method="post">
+		<form name="cleanup_form" id="cleanup_form" action="package_cleanup2.php" method="post">
 		<?php
 		$html = "";
+		$checkers = Array();
 		$html .= $myLayout->workarea_form_checkbox("", "pages", 0,"alle Seiten löschen");
+		$checkers[] = "pages";
 		$html .= $myLayout->workarea_form_checkbox("", "pagegroups", 0,"alle Seitengruppen löschen");
+		$checkers[] = "pagegroups";
 		$html .= $myLayout->workarea_form_checkbox("", "layouts", 0,"alle Layouts löschen");
+		$checkers[] = "layouts";
 		$myLayout->workarea_row_draw("Seiten", $html);
 
 		
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "components", 0,"alle Bausteine löschen");
+		$checkers[] = "components";
 		$html .= $myLayout->workarea_form_checkbox("", "componentgroups", 0,"alle Bausteingruppen löschen");
+		$checkers[] = "componentgroups";
 		$myLayout->workarea_row_draw("Bausteine", $html);
 
 		
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "includes", 0,"alle Includes löschen");
+		$checkers[] = "includes";
 		$myLayout->workarea_row_draw("Includes", $html);
 
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "content", 0,"alle Contentobjekte löschen");
+		$checkers[] = "content";
 		$html .= $myLayout->workarea_form_checkbox("", "contentdata", 0,"alle Content-Datensätze löschen");
+		$checkers[] = "contentdata";
 		$html .= $myLayout->workarea_form_checkbox("", "contentcache", 0,"Contencache leeren");
+		$checkers[] = "contentcache";
 		$myLayout->workarea_row_draw("Content", $html);
 
 
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "mediabase", 0,"Mediabase komplett reinigen");
+		$checkers[] = "mediabase";
 		$myLayout->workarea_row_draw("Media", $html);
 
 		
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "roles", 0,"alle Rollen löschen");
+		$checkers[] = "roles";
 		$html .= $myLayout->workarea_form_checkbox("", "user", 0,"alle User (außer dem Angemeldeten!) löschen");
+		$checkers[] = "user";
 		$myLayout->workarea_row_draw("Benutzer & Rechte", $html);
 	
 		
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "extras", 0,"alle Extraobjekte löschen");
+		$checkers[] = "extras";
 		$myLayout->workarea_row_draw("Extras", $html);
 
 		
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "ticketsubjects", 0,"alle Aufgabenbereiche löschen");
+		$checkers[] = "ticketsubjects";
 		$html .= $myLayout->workarea_form_checkbox("", "tickets", 0,"alle Aufgaben löschen");
+		$checkers[] = "tickets";
 		$myLayout->workarea_row_draw("Aufgaben", $html);
 
 		
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "actions", 0,"alle Aktionen löschen");
+		$checkers[] = "actions";
 		$myLayout->workarea_row_draw("Aktionen", $html);
 
 		
 		$html = "";
 		$html .= $myLayout->workarea_form_checkbox("", "dircache", 0,"Cache komplett leeren");
+		$checkers[] = "dircache";
 		$html .= $myLayout->workarea_form_checkbox("", "dirtemp", 0,"Temporäre Dateien löschen und Struktur zurücksetzen.");
+		$checkers[] = "dirtemp";
 		$html .= $myLayout->workarea_form_checkbox("", "htdocs", 0,"unbekannte Dateien und Ordner aus dem Webroot entfernen.");
+		$checkers[] = "htdocs";
 		$html .= $myLayout->workarea_form_checkbox("", "storage", 0,"Storage-Ordner komplett leeren");
+		$checkers[] = "storage";
 		$myLayout->workarea_row_draw("Verzeichnisse", $html);		
 
 		
@@ -161,12 +182,27 @@ $myPT->startBuffer();
 		$html .= $myLayout->workarea_form_checkbox("", "dataobject", 0,"Dataobjects löschen");
 		$html .= $myLayout->workarea_form_checkbox("", "snapshots", 0,"Snapshots löschen");
 		$myLayout->workarea_row_draw("Anwendung", $html);
+		
+		$checkersCode = "'". implode("','", $checkers) ."'";
 		?>
+<script type="text/javascript">
+	var allChecked = false;
+	function checkAll() {
+		if (allChecked == true) {
+			allChecked = false;
+		} else {
+			allChecked = true;
+		}
+		for (var i = 0; i < document.forms['cleanup_form'].elements.length; i++) {
+			document.forms['cleanup_form'].elements[i].checked = allChecked;
+		}
+	}
+</script>
 	    <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite">
-			&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Start">&nbsp;&nbsp;
+            <td align="right" class="windowFooterWhite"><a onclick="checkAll();" style="margin-right:30px;">Alles/Nichts markieren</a>
+			<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Start">&nbsp;&nbsp;
             </td>
           </tr>
         </table>		
