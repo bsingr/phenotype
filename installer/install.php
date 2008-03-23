@@ -29,6 +29,7 @@ $reqs[] = array('type' => "phpExt", 'pattern' => "mysql", 'importance' => "requi
 $reqs[] = array('type' => "phpSetting", 'pattern' => "memory_limit", 'importance' => "recommended", 'message' => "Memory Limit >= 16 MB");
 $reqs[] = array('type' => "phpSetting", 'pattern' => "register_globals", 'importance' => "required", 'message' => "Register Globals = Off");
 $reqs[] = array('type' => "phpSetting", 'pattern' => "safe_mode", 'importance' => "recommended", 'message' => "Safe Mode = Off");
+$reqs[] = array('type' => "apacheMod", 'pattern' => "mod_rewrite", 'importance' => "recommended", 'message' => "Apache mod_rewrite (necessary for smartURLs)");
 $reqs[] = array('type' => "filePermission", 'pattern' => "", 'mode' => "rw", 'importance' => "required", 'message' => "read/write permissions in root (needed for installer to write config file)");
 $reqs[] = array('type' => "filePermission", 'pattern' => "htdocs", 'mode' => "rw", 'importance' => "recommended", 'message' => "read/write permissions in htdocs");
 $reqs[] = array('type' => "filePermission", 'pattern' => "htdocs/media", 'mode' => "rw", 'importance' => "required", 'message' => "read/write permissions in htdocs/media");
@@ -178,7 +179,11 @@ foreach ($reqs as $myReq) {
 		case "phpSetting":
 			$statement='return(isSettingOk("'. $myReq["pattern"] .'"));';
 			break;
-
+		
+		case "apacheMod":
+			$statement = 'return(checkForApacheModule("'. $myReq["pattern"] .'"));';
+			break;
+		
 		default:
 			$statement = "";
 			$actionError = 1;
@@ -409,13 +414,18 @@ function writeConfigFile() {
 		echo ("<p>writing htaccess file...</p>");
 		$htaccess = "";
 		foreach ($templateHTAccess as $line) {
-			$exp = '/^RewriteBase .+$/';
-			$sub = 'RewriteBase '. dget('serverurl');
+			$exp = '/^\s*RewriteBase .+$/';
+			$sub = "\tRewriteBase ". dget('serverurl');
 			$htaccess .= preg_replace($exp, $sub, $line);
 		}
 		file_put_contents(HTACCESS_FILE, $htaccess);
 	} else {
-		echo ("<p>NOT writing htaccess file because mod_rewrite is missing in your apache configuration. Because of this, the phenotype smartURL feature will be disabled. If you like to use this feature, please have a look into the file htaccess_smartURL_sample in the Phenotype root.</p>");
+?>
+		<p>
+			<strong>smartURL feature is disabled.</strong> - NOT writing htaccess file because mod_rewrite is missing in your apache configuration.<br />
+			The phenotype smartURL feature will be disabled, but you can use Phenotype with old-style idURLs. If you like to use smartURLs, please have a look into the file htaccess_smartURL_sample in the Phenotype root or visit <a href="http://phenotype.de/wiki/howto:smarturl">smartURL - PhenotypeWiki</a>.
+		</p>
+<?php
 	}
 	
 	$exps = Array();
