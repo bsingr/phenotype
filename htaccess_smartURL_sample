@@ -1,15 +1,17 @@
-RewriteEngine On
+<IfModule mod_rewrite.c>
+	RewriteEngine On
 
-# Define the rewrite base.
-RewriteBase /guug/website/phenotype/htdocs/
+	# Define the rewrite base.
+	RewriteBase /phenotype-svn/trunk/htdocs/
 
-# Don't rewrite requests for any files, directories, or symbolic
-# links (shortcuts) that exist on the filesystem.
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-l
-RewriteCond %{REQUEST_URI} !_phenotype*
-
-
-# Send requests to index.php, appending the query string part.
-RewriteRule ^(.*)$ index.php?smartURL=$1  [QSA,L]
+	# Don't rewrite requests for any files, directories, or symbolic
+	# links (shortcuts) that exist on the filesystem.
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteCond %{REQUEST_URI} !_phenotype*
+	
+	
+	# Send requests to index.php, appending the query string part.
+	RewriteRule ^(.*)$ index.php?smartURL=$1  [QSA,L]
+</IfModule>
