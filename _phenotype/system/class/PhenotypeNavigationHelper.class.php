@@ -50,7 +50,15 @@ class PhenotypeNavigationHelperStandard
     }
 
   }
-
+	
+	/**
+	 * finds all direct subPages of a page
+	 * 
+	 * @param int $pag_id	id of the page of which the subpages should be found
+	 * @param boolean $status	defines if all pages are shown or only those with status online
+	 *
+	 * @return Array	contains ids of all child pages ordered by pag_pos
+	 */
   public function getSubPages($pag_id,$status=true)
   {
     global $myDB;
@@ -82,6 +90,15 @@ class PhenotypeNavigationHelperStandard
     return $this->storeDaoValue($token,$_pages);
   }
 
+	/**
+	 * shows the path from the given page to the top of the tree
+	 *
+	 * gets recursively all parent pages of a given page until the top node
+	 *
+	 * @param int	$pag_id	id of the page to find the path for
+	 *
+	 * @return Array	contains ids of all pages from top to the given page. element 0 is the top page.
+	 */
   public function getPagesWithinPath($pag_id)
   {
     $token = "path_".$pag_id;
@@ -101,6 +118,13 @@ class PhenotypeNavigationHelperStandard
     return $this->storeDaoValue($token,$_pages);
   }
 
+	/**
+	 * gets the parent of a given page
+	 *
+	 * @param int $pag_id	id of the page to find the parent for
+	 *
+	 * @return int	id of the parent page. 0 if there is no parent
+	 */
   public function getParentPage($pag_id)
   {
     global $myDB;
@@ -118,7 +142,15 @@ class PhenotypeNavigationHelperStandard
     return $this->storeDaoValue($token,(int)$row["pag_id_top"]);
   }
 
-
+	/**
+	 * finds recursively all pages below a given page
+	 *
+	 * @param int $pag_id_top	pag_id of start node for the tree
+	 * @param Array $_expand	:TODO: what is this?
+	 * @param int $maxdepth	maximum depths of the tree, recursion stops at this level
+	 *
+	 * @return Array	flat array. keys are the pag_ids of the pages, associated values show the level of the page
+	 */
   public function getTree($pag_id_top,$_expand=Array(),$maxdepth=999)
   {
     $expand = implode("#",$_expand);
