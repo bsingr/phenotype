@@ -93,7 +93,29 @@ exit();
   /**
 	 * Get format definitions for image editing mask in the mediabase
 	 *
-	 * An array of arrays will be returned. 
+	 * An array of arrays will be returned.
+	 *
+	 * The fields in the array have the following meanings:
+	 * name
+	 *	Name der Version, die im Editor angezeigt wird
+	 * size_method
+	 *	1 => frei - völlig freie Wahl des Bildausschnitts bzgl Position und Größe, keine Skalierung des Bildmaterials
+	 *	2 => fixer Ausschnitt - Nur Auswahl des Ausschnitts, keine Skalierung möglich.
+	 *	3 => Verhältnis - Seitenverhältnis vorgegeben, Rest kann frei gewählt werden, keine Skalierung.
+	 *	4 => fixe Zielgröße - Ziel X,Y vorgegeben, Ausschnitt verschiebbar und proportional skalierbar
+	 *	5 => Zielrahmen - vorgegebener Zielrahmen. Freie Wahl des Ausschnitts, dann Skalierung auf maximale Größe die noch in den Rahmen passt.
+	 * x/y
+	 *	Breite und Höhe des Bildes, hieraus errechnet sich auch die AspectRatio Angabe z.B. für mode 3
+	 * sharpening
+	 *	Stärke mit der das Bild geschärft wird
+	 * quality
+	 *	JPG Qualität für die Version
+	 * versionaction
+	 *	0 => vorhandene Version mit gleichen Namen überschreiben
+	 *	1 => neue Version anlegen
+	 * newversion
+	 *	Name der anzulegenden Version
+	 *
 	 * 
 	 * @param PhenotypeMediaObject
 	 * @return array Array with format definitions 
