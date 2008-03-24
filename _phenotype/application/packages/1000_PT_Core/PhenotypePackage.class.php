@@ -6,7 +6,7 @@ class PhenotypePackage extends PhenotypePackageStandard
 	
 	function getDescription()
 	{
-		return ("Grundpaket - Phenotype wird standardmäßig mit diesem Paket installiert.");
+		return ("Grundelemente - Phenotype wird standardmäßig mit diesem Paket installiert.\nVersion 2.6 vom 24.03.2008");
 	}
 }
 ?>
