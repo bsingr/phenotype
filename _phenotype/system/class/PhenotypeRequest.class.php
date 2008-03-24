@@ -50,31 +50,42 @@ class PhenotypeRequestStandard
       {
         $smartURL = $this->get("smartURL");
 
-          // / am Anfang wegfiltern
+        // / am Anfang wegfiltern
         $patterns = "/^[\/]*/";
         $smartURL = preg_replace($patterns,"", $smartURL);
         // / am Ende wegfiltern
         $patterns = "/[\/]\$/";
         $smartURL = preg_replace($patterns,"", $smartURL);
 
-        $sql = "SELECT pag_id FROM page WHERE pag_url='". mysql_escape_string($smartURL)."'";
+        $sql = "SELECT pag_id, pag_url1, pag_url2, pag_url3, pag_url4 FROM page WHERE pag_url='". mysql_escape_string($smartURL)."' OR pag_url1='". mysql_escape_string($smartURL)."' OR pag_url2='". mysql_escape_string($smartURL)."' OR pag_url3='". mysql_escape_string($smartURL)."' OR pag_url4='". mysql_escape_string($smartURL)."'";
         $rs = $myDB->query($sql,"Request");
-
         if (mysql_num_rows($rs)==1)
         {
-          $row =mysql_fetch_array($rs);
+          $row = mysql_fetch_array($rs);
+          $lng_id=1;
+          for ($i=1;$i<=4;$i++)
+          {
+            if ($row["pag_url".$i]==$smartURL)
+            {
+              $lng_id=$i;
+              break;
+            }
+          }
           $this->set("id",$row["pag_id"]);
+          $this->set("lng_id",$lng_id);
         }
         else
         {
           // check for param rewrite
-          $sql = "SELECT pag_id, LENGTH(pag_url) AS l FROM page WHERE pag_url !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url,'/')) ORDER BY l LIMIT 0,1";
+
+          $sql = "SELECT pag_id, LENGTH(pag_url) AS L FROM page WHERE pag_url !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url,'/'))=1  ORDER BY L LIMIT 0,1";
+
           $rs = $myDB->query($sql);
           if (mysql_num_rows($rs)==1)
           {
             $row =mysql_fetch_array($rs);
             $this->set("id",$row["pag_id"]);
-            $params = substr($smartURL,$row["l"]+1);
+            $params = substr($smartURL,$row["L"]+1);
             //echo $params;
             $_params = split('/',$params);
             $i=0;
@@ -101,7 +112,7 @@ class PhenotypeRequestStandard
               }
             }
           }
-          else 
+          else
           {
             // no unique hit
             $myApp->throw404();
@@ -236,13 +247,13 @@ class PhenotypeRequestStandard
     print_r ($this->_REQUEST);
     echo "</pre></br>";
   }
-  
+
   public function getParamsArray()
   {
     return ($this->_REQUEST);
   }
 
-	/**
+  /**
 	 * creates the parameter hash used for the include cache
 	 *
 	 * @return String	containing all relevant keys and values of the request

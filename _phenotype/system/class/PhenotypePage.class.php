@@ -2400,22 +2400,13 @@ class PhenotypePageStandard extends PhenotypeBase
         }
       }
 
-      // Fallback
-      if (PT_URL_STYLE!="smartURL")
-      {
-        $url = "index.php?smartURL=".$url;
-        if ($multilanguage)
-        {
-          $url .= "&lng_id=".$lng_id;
-        }
-        $url =  $url;
-        return $url;
-      }
-
       if ($multilanguage==1)
       {
         $url = $PTC_LANGUAGES[$lng_id]."/".$url;
       }
+     
+
+
     }
     return $url;
   }
@@ -2434,7 +2425,7 @@ class PhenotypePageStandard extends PhenotypeBase
     {
       if ($this->multilanguage)
       {
-        $url = $this-buildURL($k);
+        $url = $this->buildURL($k);
       }
       $mySQL->addField("pag_url".$k,$url);
     }

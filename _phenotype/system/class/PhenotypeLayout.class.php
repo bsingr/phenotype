@@ -2536,7 +2536,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 			$nav_id_roles    = $myNav->addNode("Rollen","admin_roles.php",0,"Rollen");
 			$nav_id_cache    = $myNav->addNode("Cache","admin_cache.php",0,"Cache");
 			$nav_id_layout    = $myNav->addNode("Layout","layout.php",0,"Layout");
-			$nav_id_pages    = $myNav->addNode("Seiten","admin_pages.php",0,"Seiten");
+			//$nav_id_pages    = $myNav->addNode("Seiten","admin_pages.php",0,"Seiten");
 			$nav_id_groups   = $myNav->addNode("Seitengruppen","admin_groups.php",0,"Seitengruppen");
 			$nav_id_content  = $myNav->addNode("Content","admin_content.php",0,"Content");
 			$nav_id_media    = $myNav->addNode("Media","admin_media.php",0,"Media");

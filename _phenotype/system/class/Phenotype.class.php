@@ -1053,7 +1053,7 @@ class PhenotypeStandard extends PhenotypeBase
       $myApp->throw500($myPage->id);
       exit();
     }
-    
+
 
     if ($sql!="")
     {
@@ -1645,7 +1645,7 @@ border: 1px solid #cfcfcf;
 </div>
 </body>
 </html><?php
-	
+
   }
 
   // =========================================================================================================
@@ -1669,6 +1669,15 @@ border: 1px solid #cfcfcf;
    */
   public function url_for_page($pag_id,$_params=array(),$lng_id=null,$smartUID)
   {
+    // if no language id is ommited, take context into account
+
+    if ($lng_id==null)
+    {
+      global $myPage;
+      $lng_id = $myPage->lng_id;
+    }
+
+
     if ($this->URLHelper==false)
     {
       $myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
@@ -1686,9 +1695,25 @@ border: 1px solid #cfcfcf;
     }
     else
     {
-      $myPage = new PhenotypePage($pag_id);
-      $url = $myPage->buildURL($lng_id);
+      $myTempPage = new PhenotypePage($pag_id);
+      $url = $myTempPage->buildURL($lng_id);
       $myDAO->set($token,$url);
+    }
+
+
+    // Fallback, if smartURL is disabled
+    if (PT_URL_STYLE!="smartURL")
+    {
+      $url = SERVERURL . "index.php?smartURL=".$url;
+      foreach ($_params AS $k=>$v)
+      {
+        $url .= "&".$k."=".$v;
+      }
+      if ($smartUID!="")
+      {
+        $url .="&smartUID=".$smartUID;
+      }
+      return $url;
     }
 
     foreach ($_params AS $k=>$v)

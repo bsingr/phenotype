@@ -74,7 +74,7 @@ else
 $sql = $mySQL->update("pagegroup","grp_id =" . $id);
 $myDB->query($sql);
 
-if ($row["grp_smarturl_schema"]!=$myRequest->getI("grp_smarturl_schema"))
+if ($row["grp_smarturl_schema"]!=$myRequest->getI("grp_smarturl_schema") OR $row["grp_multilanguage"] !=$myRequest->getI("grp_multilanguage"))
 {
   // change of smarturl schema! a rebuild is necessary
   $sql = "SELECT pag_id FROM page WHERE grp_id=".$id;
