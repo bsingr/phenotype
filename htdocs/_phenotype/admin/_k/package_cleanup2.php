@@ -586,7 +586,7 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
     <name>kein Cache</name> 
     <seconds>0</seconds> 
     </cache_item1>
-    cache_item2>
+    <cache_item2>
     <name>15 Sekunden</name> 
     <seconds>15</seconds> 
     </cache_item2>

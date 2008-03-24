@@ -2408,7 +2408,7 @@ class PhenotypePageStandard extends PhenotypeBase
         {
           $url .= "&lng_id=".$lng_id;
         }
-        $url = SERVERURL . $url;
+        $url =  $url;
         return $url;
       }
 
