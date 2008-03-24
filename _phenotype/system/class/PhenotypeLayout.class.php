@@ -145,7 +145,7 @@ class PhenotypeLayoutStandard
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype 2.5 - <?php echo $modul ?></title>
+<title>phenotype <?php echo PT_VERSION ?> - <?php echo $modul ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">

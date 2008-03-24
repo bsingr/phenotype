@@ -14,7 +14,7 @@
 // www.phenotype-cms.de - documentation & support
 // www.sellinger-server.de - inventors of phenotype
 // -------------------------------------------------------
-// Version 2.5 vom 02.03.2007
+// Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 ?>
 <?php
