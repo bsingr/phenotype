@@ -1,6 +1,6 @@
 -- MySQL dump 10.11
 --
--- Host: localhost    Database: phenotype-test
+-- Host: localhost    Database: phenotype-svn
 -- ------------------------------------------------------
 -- Server version	5.0.51a
 
@@ -116,7 +116,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `component_template` WRITE;
 /*!40000 ALTER TABLE `component_template` DISABLE KEYS */;
-INSERT INTO `component_template` VALUES (2,1001,'TPL_TOPIMAGE'),(1,1001,'TPL_DEFAULT');
+INSERT INTO `component_template` VALUES (1,1001,'TPL_DEFAULT'),(2,1001,'TPL_TOPIMAGE');
 /*!40000 ALTER TABLE `component_template` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,11 +210,13 @@ CREATE TABLE `content_data` (
   `dat_key3` varchar(100) collate latin1_general_ci default NULL,
   `dat_key4` varchar(100) collate latin1_general_ci default NULL,
   `dat_key5` varchar(100) collate latin1_general_ci default NULL,
+  `dat_key6` varchar(100) collate latin1_general_ci default NULL,
   `dat_ikey1` int(11) NOT NULL default '0',
   `dat_ikey2` int(11) NOT NULL default '0',
   `dat_ikey3` int(11) NOT NULL default '0',
   `dat_ikey4` int(11) NOT NULL default '0',
   `dat_ikey5` int(11) NOT NULL default '0',
+  `dat_ikey6` int(11) NOT NULL default '0',
   `dat_fullsearch` text collate latin1_general_ci NOT NULL,
   `med_id_thumb` int(11) NOT NULL default '0',
   PRIMARY KEY  (`dat_id`),
@@ -225,6 +227,7 @@ CREATE TABLE `content_data` (
   KEY `dat_ikey4` (`dat_ikey4`),
   KEY `dat_ikey5` (`dat_ikey5`),
   KEY `default_select` (`con_id`,`dat_status`),
+  KEY `dat_ikey6` (`dat_ikey6`),
   FULLTEXT KEY `dat_fullsearch` (`dat_fullsearch`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 SET character_set_client = @saved_cs_client;
@@ -304,7 +307,7 @@ CREATE TABLE `dataobject` (
   `dao_type` tinyint(4) NOT NULL,
   `dao_clearonedit` tinyint(4) NOT NULL,
   PRIMARY KEY  (`dao_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -726,7 +729,7 @@ CREATE TABLE `page` (
   PRIMARY KEY  (`pag_id`),
   UNIQUE KEY `ver_id` (`ver_id`),
   FULLTEXT KEY `pag_fullsearch` (`pag_fullsearch`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -735,6 +738,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
+INSERT INTO `page` VALUES (1,'41d1b7423d6618a0a7574487a3fbb89e',1,1,1,1,'Startseite','Phenotype 2.6 Startseite','','',1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,'','',1206375124,13,13,1206374344,1206375049,1206375241,1206375241,1206375241,1206375241,1206375241,1206375241,0,'0.0319','1',1,1,'Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','a:1:{s:8:\"pag_url1\";s:0:\"\";}','a:0:{}','a:0:{}','Phenotype 2.6 Startseite|Phenotype 2.6 Startseite|Phenotype 2.6 Startseite||||Phenotype 2.6|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>|',1,0,0,'');
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -802,6 +806,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `page_statistics` WRITE;
 /*!40000 ALTER TABLE `page_statistics` DISABLE KEYS */;
+INSERT INTO `page_statistics` VALUES (1,20080324,4);
 /*!40000 ALTER TABLE `page_statistics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -851,7 +856,7 @@ CREATE TABLE `pageversion` (
   `pag_exec_script` tinyint(4) NOT NULL default '0',
   `pag_fullsearch` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`ver_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -860,6 +865,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `pageversion` WRITE;
 /*!40000 ALTER TABLE `pageversion` DISABLE KEYS */;
+INSERT INTO `pageversion` VALUES (1,1,1,1,'Version 1',0,0,0,'Phenotype 2.6 Startseite|Phenotype 2.6 Startseite|Phenotype 2.6 Startseite||||Phenotype 2.6|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>|');
 /*!40000 ALTER TABLE `pageversion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -937,7 +943,7 @@ CREATE TABLE `sequence_data` (
   `usr_id` int(11) NOT NULL default '0',
   KEY `con_id` (`dat_id`,`lng_id`),
   KEY `page_select` (`pag_id`,`ver_id`,`lng_id`,`dat_visible`,`dat_blocknr`,`dat_editbuffer`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -946,6 +952,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `sequence_data` WRITE;
 /*!40000 ALTER TABLE `sequence_data` DISABLE KEYS */;
+INSERT INTO `sequence_data` VALUES (1,1,1,1,0,1,1,1,1,1001,'a:8:{s:8:\"headline\";s:13:\"Phenotype 2.6\";s:4:\"text\";s:409:\"<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>\";s:6:\"img_id\";s:1:\"0\";s:3:\"alt\";s:0:\"\";s:15:\"bildausrichtung\";s:5:\"links\";s:7:\"linkbez\";s:0:\"\";s:7:\"linkurl\";s:0:\"\";s:10:\"linktarget\";s:5:\"_self\";}','Phenotype 2.6|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>',13),(1,1,1,1,0,0,1,1,1,1001,'a:8:{s:8:\"headline\";s:13:\"Phenotype 2.6\";s:4:\"text\";s:409:\"<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>\";s:6:\"img_id\";s:1:\"0\";s:3:\"alt\";s:0:\"\";s:15:\"bildausrichtung\";s:5:\"links\";s:7:\"linkbez\";s:0:\"\";s:7:\"linkurl\";s:0:\"\";s:10:\"linktarget\";s:5:\"_self\";}','Phenotype 2.6|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>',0);
 /*!40000 ALTER TABLE `sequence_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1177,7 +1184,7 @@ CREATE TABLE `user` (
   `usr_su` tinyint(4) NOT NULL default '0',
   `med_id_thumb` int(11) NOT NULL default '0',
   PRIMARY KEY  (`usr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -1186,7 +1193,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (13,1,'starter','ph1c2fSo4Tg/2','Starter','','',1128621734,1161455573,'a:4:{s:13:\"elm_redaktion\";i:0;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:0;s:5:\"rol_1\";i:1;}','a:21:{s:13:\"elm_redaktion\";i:1;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:1;s:5:\"rol_1\";i:1;s:14:\"elm_pageconfig\";i:1;s:17:\"elm_pagestatistic\";i:1;s:13:\"elm_mediabase\";i:1;s:11:\"elm_analyse\";i:1;s:9:\"elm_admin\";i:1;s:17:\"access_mediagrp_1\";i:1;s:17:\"access_mediagrp_2\";i:1;s:17:\"access_mediagrp_3\";i:1;s:8:\"ext_1001\";i:1;s:8:\"ext_1002\";i:1;s:12:\"access_grp_1\";i:1;s:12:\"pag_id_grp_1\";s:1:\"0\";s:12:\"access_grp_2\";i:1;s:12:\"pag_id_grp_2\";s:1:\"0\";s:12:\"access_grp_3\";i:1;s:12:\"pag_id_grp_3\";s:1:\"0\";s:8:\"elm_page\";i:1;}','a:0:{}',1,0),(1,0,'','','System','','',1128535703,0,'a:0:{}','a:0:{}','a:0:{}',0,0),(2,0,'','','Importer','','',1128535744,0,'a:0:{}','a:0:{}','a:0:{}',0,0),(3,0,'','','WWW','','',1129560752,0,'a:0:{}','a:0:{}','a:0:{}',0,0),(10,1,'Nils','','Nils','Hagemann','',1093456701,0,'a:4:{s:13:\"elm_redaktion\";i:0;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:0;s:5:\"rol_1\";i:1;}','a:21:{s:13:\"elm_redaktion\";i:1;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:1;s:5:\"rol_1\";i:1;s:14:\"elm_pageconfig\";i:1;s:17:\"elm_pagestatistic\";i:1;s:13:\"elm_mediabase\";i:1;s:11:\"elm_analyse\";i:1;s:9:\"elm_admin\";i:1;s:17:\"access_mediagrp_1\";i:1;s:17:\"access_mediagrp_2\";i:1;s:17:\"access_mediagrp_3\";i:1;s:8:\"ext_1001\";i:1;s:8:\"ext_1002\";i:1;s:12:\"access_grp_1\";i:1;s:12:\"pag_id_grp_1\";s:1:\"0\";s:12:\"access_grp_2\";i:1;s:12:\"pag_id_grp_2\";s:1:\"0\";s:12:\"access_grp_3\";i:1;s:12:\"pag_id_grp_3\";s:1:\"0\";s:8:\"elm_page\";i:1;}','a:0:{}',1,1),(11,1,'Paul','','Paul','Sellinger','',1098392296,0,'a:4:{s:13:\"elm_redaktion\";i:0;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:0;s:5:\"rol_1\";i:1;}','a:21:{s:13:\"elm_redaktion\";i:1;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:1;s:5:\"rol_1\";i:1;s:14:\"elm_pageconfig\";i:1;s:17:\"elm_pagestatistic\";i:1;s:13:\"elm_mediabase\";i:1;s:11:\"elm_analyse\";i:1;s:9:\"elm_admin\";i:1;s:17:\"access_mediagrp_1\";i:1;s:17:\"access_mediagrp_2\";i:1;s:17:\"access_mediagrp_3\";i:1;s:8:\"ext_1001\";i:1;s:8:\"ext_1002\";i:1;s:12:\"access_grp_1\";i:1;s:12:\"pag_id_grp_1\";s:1:\"0\";s:12:\"access_grp_2\";i:1;s:12:\"pag_id_grp_2\";s:1:\"0\";s:12:\"access_grp_3\";i:1;s:12:\"pag_id_grp_3\";s:1:\"0\";s:8:\"elm_page\";i:1;}','a:0:{}',1,3),(12,1,'Peter','','Peter','Sellinger','',1098392353,0,'a:4:{s:13:\"elm_redaktion\";i:0;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:0;s:5:\"rol_1\";i:1;}','a:21:{s:13:\"elm_redaktion\";i:1;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:1;s:5:\"rol_1\";i:1;s:14:\"elm_pageconfig\";i:1;s:17:\"elm_pagestatistic\";i:1;s:13:\"elm_mediabase\";i:1;s:11:\"elm_analyse\";i:1;s:9:\"elm_admin\";i:1;s:17:\"access_mediagrp_1\";i:1;s:17:\"access_mediagrp_2\";i:1;s:17:\"access_mediagrp_3\";i:1;s:8:\"ext_1001\";i:1;s:8:\"ext_1002\";i:1;s:12:\"access_grp_1\";i:1;s:12:\"pag_id_grp_1\";s:1:\"0\";s:12:\"access_grp_2\";i:1;s:12:\"pag_id_grp_2\";s:1:\"0\";s:12:\"access_grp_3\";i:1;s:12:\"pag_id_grp_3\";s:1:\"0\";s:8:\"elm_page\";i:1;}','a:0:{}',1,2),(14,1,'Markus','','Markus','Griesbach','',1153063063,0,'a:0:{}','a:0:{}','a:0:{}',1,11),(15,1,'michel','','Michael','Krämer','',1161453219,1161453705,'a:4:{s:13:\"elm_redaktion\";i:0;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:0;s:5:\"rol_1\";i:1;}','a:21:{s:13:\"elm_redaktion\";i:1;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:1;s:5:\"rol_1\";i:1;s:14:\"elm_pageconfig\";i:1;s:17:\"elm_pagestatistic\";i:1;s:13:\"elm_mediabase\";i:1;s:11:\"elm_analyse\";i:1;s:9:\"elm_admin\";i:1;s:17:\"access_mediagrp_1\";i:1;s:17:\"access_mediagrp_2\";i:1;s:17:\"access_mediagrp_3\";i:1;s:8:\"ext_1001\";i:1;s:8:\"ext_1002\";i:1;s:12:\"access_grp_1\";i:1;s:12:\"pag_id_grp_1\";s:1:\"0\";s:12:\"access_grp_2\";i:1;s:12:\"pag_id_grp_2\";s:1:\"0\";s:12:\"access_grp_3\";i:1;s:12:\"pag_id_grp_3\";s:1:\"0\";s:8:\"elm_page\";i:1;}','a:0:{}',1,13);
+INSERT INTO `user` VALUES (13,1,'starter','ph1c2fSo4Tg/2','Starter','','',1128621734,1161455573,'a:4:{s:13:\"elm_redaktion\";i:0;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:0;s:5:\"rol_1\";i:1;}','a:21:{s:13:\"elm_redaktion\";i:1;s:11:\"elm_content\";i:0;s:10:\"elm_extras\";i:1;s:5:\"rol_1\";i:1;s:14:\"elm_pageconfig\";i:1;s:17:\"elm_pagestatistic\";i:1;s:13:\"elm_mediabase\";i:1;s:11:\"elm_analyse\";i:1;s:9:\"elm_admin\";i:1;s:17:\"access_mediagrp_1\";i:1;s:17:\"access_mediagrp_2\";i:1;s:17:\"access_mediagrp_3\";i:1;s:8:\"ext_1001\";i:1;s:8:\"ext_1002\";i:1;s:12:\"access_grp_1\";i:1;s:12:\"pag_id_grp_1\";s:1:\"0\";s:12:\"access_grp_2\";i:1;s:12:\"pag_id_grp_2\";s:1:\"0\";s:12:\"access_grp_3\";i:1;s:12:\"pag_id_grp_3\";s:1:\"0\";s:8:\"elm_page\";i:1;}','a:0:{}',1,0),(1,0,'','','System','','',1128535703,0,'a:0:{}','a:0:{}','a:0:{}',0,0),(2,0,'','','Importer','','',1128535744,0,'a:0:{}','a:0:{}','a:0:{}',0,0),(3,0,'','','WWW','','',1129560752,0,'a:0:{}','a:0:{}','a:0:{}',0,0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1222,4 +1229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2008-03-22 21:22:23
+-- Dump completed on 2008-03-24 16:26:40

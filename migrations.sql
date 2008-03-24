@@ -50,3 +50,10 @@ ALTER TABLE `pagegroup` ADD `grp_smarturl_schema` TINYINT NOT NULL DEFAULT '1';
 
 
 ALTER TABLE `page` ADD `pag_props` TEXT NOT NULL AFTER `pag_url4` ;
+
+
+
+--- content data key changes with version 2.6 (r271)
+ALTER TABLE `content_data` ADD `dat_key6` VARCHAR( 100 ) DEFAULT NULL AFTER `dat_key5` ;
+ALTER TABLE `content_data` ADD `dat_ikey6` INT DEFAULT '0' NOT NULL AFTER `dat_ikey5` ;
+ALTER TABLE `content_data` ADD INDEX ( `dat_ikey6` ) ;

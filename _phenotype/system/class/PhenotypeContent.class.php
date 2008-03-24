@@ -491,36 +491,90 @@ class PhenotypeContentStandard extends PhenotypeBase
     $this->load($id);
   }
 
-  function setKey1($s)
+	/**
+	 * sets key field1 in the data table. There is a VARCHAR key1 and a INT key1, you can choose to set a specific one or both
+	 *
+	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
+	 * @param const int $type optional param. shows if to set the varchar key (with DB_STRING), the int ikey (with DB_NUMBER) or both. omit param to set both keys
+	 */
+  function setKey1($val, $type=0)
   {
-    $this->mySQL->addField("dat_key1", $s);
-    $this->mySQL->addField("dat_ikey1", (int) ($s));
+  	$this->setKey(1, $val, $type);
   }
 
-  function setKey2($s)
+	/**
+	 * sets key field2 in the data table. There is a VARCHAR key2 and a INT key2, you can choose to set a specific one or both
+	 *
+	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
+	 * @param const int $type optional param. shows if to set the varchar key (with DB_STRING), the int ikey (with DB_NUMBER) or both. omit param to set both keys
+	 */
+  function setKey2($val, $type=0)
   {
-    $this->mySQL->addField("dat_key2", $s);
-    $this->mySQL->addField("dat_ikey2", (int) ($s));
+  	$this->setKey(2, $val, $type);
   }
 
-  function setKey3($s)
+	/**
+	 * sets key field3 in the data table. There is a VARCHAR key3 and a INT key3, you can choose to set a specific one or both
+	 *
+	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
+	 * @param const int $type optional param. shows if to set the varchar key (with DB_STRING), the int ikey (with DB_NUMBER) or both. omit param to set both keys
+	 */
+  function setKey3($val, $type=0)
   {
-    $this->mySQL->addField("dat_key3", $s);
-    $this->mySQL->addField("dat_ikey3", (int) ($s));
+  	$this->setKey(3, $val, $type);
   }
 
-  function setKey4($s)
+	/**
+	 * sets key field4 in the data table. There is a VARCHAR key4 and a INT key4, you can choose to set a specific one or both
+	 *
+	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
+	 * @param const int $type optional param. shows if to set the varchar key (with DB_STRING), the int ikey (with DB_NUMBER) or both. omit param to set both keys
+	 */
+  function setKey4($val, $type=0)
   {
-    $this->mySQL->addField("dat_key4", $s);
-    $this->mySQL->addField("dat_ikey4", (int) ($s));
+  	$this->setKey(4, $val, $type);
   }
 
-  function setKey5($s)
+	/**
+	 * sets key field5 in the data table. There is a VARCHAR key5 and a INT key5, you can choose to set a specific one or both
+	 *
+	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
+	 * @param const int $type optional param. shows if to set the varchar key (with DB_STRING), the int ikey (with DB_NUMBER) or both. omit param to set both keys
+	 */
+  function setKey5($val, $type=0)
   {
-    $this->mySQL->addField("dat_key5", $s);
-    $this->mySQL->addField("dat_ikey5", (int) ($s));
+  	$this->setKey(5, $val, $type);
   }
 
+	/**
+	 * sets key field6 in the data table. There is a VARCHAR key6 and a INT key6, you can choose to set a specific one or both
+	 *
+	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
+	 * @param const int $type optional param. shows if to set the varchar key (with DB_STRING), the int ikey (with DB_NUMBER) or both. omit param to set both keys
+	 */
+  function setKey6($val, $type=0)
+  {
+  	$this->setKey(6, $val, $type);
+  }
+
+	/**
+	 * sets a key field in the data table. There is a VARCHAR field and a separate INT field for every key in the DB, you can choose to set a specific one or both
+	 *
+	 * @param int $num	number of the key field
+	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
+	 * @param const int $type optional param. shows if to set the varchar key (with DB_STRING), the int ikey (with DB_NUMBER) or both. omit param to set both keys
+	 */
+	private function setKey($num, $value, $type=0)
+	{
+		if ($type == 0 || $type == DB_STRING)
+		{
+	    $this->mySQL->addField("dat_key". $num, (string)$value);
+		}
+		if ($type == 0 || $type == DB_NUMBER)
+		{
+	    $this->mySQL->addField("dat_ikey". $num, (int)$value);
+		}
+	}
 
   function buildFullText()
   {
