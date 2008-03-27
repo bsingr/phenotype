@@ -71,7 +71,10 @@ class PhenotypeDatabase
     }
     $this->query($sql);
 
-
+    $sql = "DELETE FROM dataobject WHERE dao_ttl <" . time() ." AND dao_ttl <>0";
+    $this->query($sql);
+    
+    
   }
 
   function selectDatabase($database="")

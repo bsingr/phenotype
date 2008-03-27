@@ -79,10 +79,6 @@ class PhenotypeStandard extends PhenotypeBase
 
     // start buffering the output im
     $this->startBuffer();
-
-    // always delete all expired dataobjects at first
-    $sql = "DELETE FROM dataobject WHERE dao_ttl <" . time() ." AND dao_ttl <>0";
-    $myDB->query($sql,"Phenotype: deleting expired dataobject entries.");
   }
 
   public function __destruct()

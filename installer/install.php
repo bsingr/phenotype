@@ -49,67 +49,66 @@ define("INDEXPHP_WORKING", "index_postinstall.php");
 define("SQL_DUMP", "phenotype.sql");
 
 /*
-* renders page header
-*
-*/
+ * renders page header
+ *
+ */
 function pageHeader() {
-?>
+	?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
-	<meta http-equiv="Content-Style-Type" content="text/css">
-	<title>Phenotype Installer</title>
-	<link rel="stylesheet" href="css/installer.css" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>Phenotype Installer</title>
+<link rel="stylesheet" href="css/installer.css" type="text/css">
 </head>
 <body>
 
-<div id="header">
-	<!-- Kontakt & Impressum -->
-	<div id="kopfNaviContainer">
-		<div id="kopfNavi">
-			
-			<div id="entry"><!--Version ##!PT_VERSION!## vom ##!BUILD_DATE!##--></div>
-		</div><!-- // kopfNavi -->
-	</div><!-- // kopfNaviContainer -->
-  <div id="logo"><a href="http://www.phenotype.de"><img src="img/phenotype_cms_logo.gif" border="0" alt="" /></a>
-  </div><!-- // logo -->
-  <div id="topnavicontainer">
-		<div id="topnavi">
-		</div>
-	</div><!-- // topnavi -->
-</div><!-- // header -->
+<div id="header"><!-- Kontakt & Impressum -->
+<div id="kopfNaviContainer">
+<div id="kopfNavi">
+
+<div id="entry"><!--Version ##!PT_VERSION!## vom ##!BUILD_DATE!##--></div>
+</div>
+<!-- // kopfNavi --></div>
+<!-- // kopfNaviContainer -->
+<div id="logo"><a href="http://www.phenotype.de"><img
+	src="img/phenotype_cms_logo.gif" border="0" alt="" /></a></div>
+<!-- // logo -->
+<div id="topnavicontainer">
+<div id="topnavi"></div>
+</div>
+<!-- // topnavi --></div>
+<!-- // header -->
 <div id="searchlineContainer">
-	<div id="searchline">
-	</div><!-- // searchline -->
-</div><!-- // searchlineContainer -->
+<div id="searchline"></div>
+<!-- // searchline --></div>
+<!-- // searchlineContainer -->
 
-	<div id="MainFrameBox">
+<div id="MainFrameBox">
 
-		<div id="ContentFrameBox">
-<?php
+<div id="ContentFrameBox"><?php
 }
 
 
 /*
-* renders page footer
-*
-*/
+ * renders page footer
+ *
+ */
 function pageFooter() {
-?>
-		</div>
-	</div>
+	?></div>
+</div>
 </body>
 </html>
-<?php
+	<?php
 
 }
 
 
 /*
-* controls what to do
-*
-*/
+ * controls what to do
+ *
+ */
 function doAction($action) {
 
 	switch ($action)
@@ -124,28 +123,39 @@ function doAction($action) {
 	}
 
 	?>
-	<br><br/>
-	This is the Phenotype installer. Please be aware of the fact that <strong>the software is available only in German</strong> at the moment, even if the installer is already in English.<br /><br />
-	<strong>Problems?</strong> Please post your questions and problems in the forum on the <a href="http://www.phenotype.de/forum/" target="_blank">Phenotype forum</a>.<br /><br /><br /><br />
+<br>
+<br />
+This is the Phenotype installer. Please be aware of the fact that
+<strong>the software is available only in German</strong>
+at the moment, even if the installer is already in English.
+<br />
+<br />
+<strong>Problems?</strong>
+Please post your questions and problems in the forum on the
+<a href="http://www.phenotype.de/forum/" target="_blank">Phenotype forum</a>
+.
+<br />
+<br />
+<br />
+<br />
 	<?php
 }
 
 
 /*
-* the system checks
-*
-* checks all dependencies and requirements for the target system
-*
-*/
+ * the system checks
+ *
+ * checks all dependencies and requirements for the target system
+ *
+ */
 function doActionCheck() {
 	global $reqs;
 
-?>
-			<H2>Phenotype Installer</H2>
-			<p>Version <?php echo PT_VERSION ?></p>
-			<p>Checking the system...</p>
-			<p>
-<?php			
+	?>
+<H2>Phenotype Installer</H2>
+<p>Version <?php echo PT_VERSION ?></p>
+<p>Checking the system...</p>
+<p><?php			
 $errors = 0;
 $warnings = 0;
 
@@ -179,11 +189,11 @@ foreach ($reqs as $myReq) {
 		case "phpSetting":
 			$statement='return(isSettingOk("'. $myReq["pattern"] .'"));';
 			break;
-		
+
 		case "apacheMod":
 			$statement = 'return(checkForApacheModule("'. $myReq["pattern"] .'"));';
 			break;
-		
+
 		default:
 			$statement = "";
 			$actionError = 1;
@@ -210,35 +220,40 @@ foreach ($reqs as $myReq) {
 				$errors++;
 			}
 		}
-	}
-	else
-	{
-		echo ("checking for ".$myReq["message"]."... Requirement can't be verified.&nbsp;<span class='bad'>NOT OK -> ERROR</span><BR />");
-		$errors++;
-	}
+}
+else
+{
+	echo ("checking for ".$myReq["message"]."... Requirement can't be verified.&nbsp;<span class='bad'>NOT OK -> ERROR</span><BR />");
+	$errors++;
+}
 }
 
-?>			</p><?php
+?></p>
+<?php
 
 if ($errors) {
 	$msg = "check NOT OK, please correct the errors shown above ($errors errors)";
-?>			<p><?php echo $msg ?></p>
-			<p>If you are sure to meet all requirements you can go on without passing the check,<br />
-					even if <strong>THIS IS NOT RECOMMENDED</strong> - Step 2: <a href="install.php?action=install">install Phenotype</a></p>	
-			<br/>
-			<br/>
-<?php
+	?>
+<p><?php echo $msg ?></p>
+<p>If you are sure to meet all requirements you can go on without
+passing the check,<br />
+even if <strong>THIS IS NOT RECOMMENDED</strong> - Step 2: <a
+	href="install.php?action=install">install Phenotype</a></p>
+<br />
+<br />
+	<?php
 } else {
 	$msg = "check OK";
 	if ($warnings) {
 		$msg .= ", but there were warnings. Please check the warnings shown above that might lead to malfunctions ($warnings warnings)";
 	}
-?>			<p><?php echo $msg ?></p>
-			<p>Go on with 2: <a href="install.php?action=install">install Phenotype</a></p>	
-			<br/>
-			<br/>
-			
-<?php
+	?>
+<p><?php echo $msg ?></p>
+<p>Go on with 2: <a href="install.php?action=install">install Phenotype</a></p>
+<br />
+<br />
+
+	<?php
 }
 
 
@@ -247,9 +262,9 @@ if ($errors) {
 
 
 /*
-* the installation process
-*
-*/
+ * the installation process
+ *
+ */
 function doActionInstall() {
 	global $data;
 	global $errors;
@@ -292,7 +307,7 @@ function doActionInstall() {
 			writeConfigFile();
 
 			copyIndexPHP();
-			
+				
 			if (cget("demo")) {
 				installDemoPackage();
 			}
@@ -300,54 +315,61 @@ function doActionInstall() {
 			echo("<p>done</p><br/><br/>");
 
 			?>
-			<form method="post" action="install.php">
-			<input type="hidden" name="action" value="removeandlogin"/>
-			<table>
-			<tr><td class="headline" colspan="2">Remove installer and login to backend</td></tr>
-			<tr><td><input type="submit" value="go" /> user: <strong>starter</strong> password: <strong>deleteme</strong></td></tr>
-			<tr><td class="headline" colspan="2">Remove installer and login to backend</td></tr>
-			</table>
-			</form>
+<form method="post" action="install.php"><input type="hidden"
+	name="action" value="removeandlogin" />
+<table>
+	<tr>
+		<td class="headline" colspan="2">Remove installer and login to backend</td>
+	</tr>
+	<tr>
+		<td><input type="submit" value="go" /> user: <strong>starter</strong>
+		password: <strong>deleteme</strong></td>
+	</tr>
+	<tr>
+		<td class="headline" colspan="2">Remove installer and login to backend</td>
+	</tr>
+</table>
+</form>
 			<?php
-		}
+}
 
+} else {
+	// not submitted yet, initialize form without error messages
+	$data['db_host'] = "localhost";
+	$data['db_user'] = "";
+	$data['db_pass'] = "";
+	$data['db_name'] = "";
+
+	$dirname = dirname($_SERVER["SCRIPT_FILENAME"]);
+	if (! strlen($dirname)) {
+		$erros['basepath'] = "Unfortunately we could not determine the base path of your installation. Please fill in the path values manually.";
 	} else {
-		// not submitted yet, initialize form without error messages
-		$data['db_host'] = "localhost";
-		$data['db_user'] = "";
-		$data['db_pass'] = "";
-		$data['db_name'] = "";
-
-		$dirname = dirname($_SERVER["SCRIPT_FILENAME"]);
-		if (! strlen($dirname)) {
-			$erros['basepath'] = "Unfortunately we could not determine the base path of your installation. Please fill in the path values manually.";
-		} else {
-			$myDirs = explode("/", $dirname);
-			array_pop($myDirs);
-			array_pop($myDirs);
-			$data['basepath'] = implode("/", $myDirs) ."/";
+		$myDirs = explode("/", $dirname);
+		array_pop($myDirs);
+		array_pop($myDirs);
+		$data['basepath'] = implode("/", $myDirs) ."/";
 			
-			$urlprefix = dirname($_SERVER['PHP_SELF']);
-			$myDirs = explode("/", $urlprefix);
-			array_pop($myDirs);
-			//array_pop($myDirs);
-			$urlprefix = implode("/", $myDirs);
-			$data['serverurl'] = $urlprefix ."/";
-	
-	
-			$data['fqdn'] = $_SERVER["HTTP_HOST"];
-		}
+		$urlprefix = dirname($_SERVER['PHP_SELF']);
+		$myDirs = explode("/", $urlprefix);
+		array_pop($myDirs);
+		//array_pop($myDirs);
+		$urlprefix = implode("/", $myDirs);
+		$data['serverurl'] = $urlprefix ."/";
 
-		renderInstallForm();
+
+		$data['fqdn'] = $_SERVER["HTTP_HOST"];
 	}
+
+	renderInstallForm();
+}
 
 }
 
 
 /*
-* initializes the DB
-*
-*/
+ * initializes the DB
+ *
+ */
 function initDB() {
 	global $data;
 
@@ -382,6 +404,14 @@ function initDB() {
 	echo("<br/><br/>Now inserting Queries: <br/><br/>");
 	$sql = file_get_contents(SQL_DUMP);
 	$_sql = explode(";\n",$sql);
+	if (count($_sql)==1)
+	{
+		$_sql = explode(";".chr(10),$sql);
+	}
+	if (count($_sql)==1)
+	{
+		$_sql = explode(";".chr(13),$sql);
+	}
 	foreach ($_sql AS $sql)
 	{
 		echo " ok ";
@@ -401,9 +431,9 @@ function initDB() {
 
 
 /*
-* writes the config file with the collected and tested data
-*
-*/
+ * writes the config file with the collected and tested data
+ *
+ */
 function writeConfigFile() {
 
 	// write the htaccess file if mod_rewrite available
@@ -420,63 +450,66 @@ function writeConfigFile() {
 		}
 		file_put_contents(HTACCESS_FILE, $htaccess);
 	} else {
-?>
-		<p>
-			<strong>smartURL feature is disabled.</strong> - NOT writing htaccess file because mod_rewrite is missing in your apache configuration.<br />
-			The phenotype smartURL feature will be disabled, but you can use Phenotype with old-style idURLs. If you like to use smartURLs, please have a look into the file htaccess_smartURL_sample in the Phenotype root or visit <a href="http://phenotype.de/wiki/howto:smarturl">smartURL - PhenotypeWiki</a>.
-		</p>
-<?php
-	}
-	
-	$exps = Array();
-	$subs = Array();
+		?>
+<p><strong>smartURL feature is disabled.</strong> - NOT writing htaccess
+file because mod_rewrite is missing in your apache configuration.<br />
+The phenotype smartURL feature will be disabled, but you can use
+Phenotype with old-style idURLs. If you like to use smartURLs, please
+have a look into the file htaccess_smartURL_sample in the Phenotype root
+or visit <a href="http://phenotype.de/wiki/howto:smarturl">smartURL -
+PhenotypeWiki</a>.</p>
+		<?php
+}
 
-	// basepath
-	$exps[] = '/^define \("BASEPATH",.+\);/';
-	$subs[] = 'define ("BASEPATH","'. dget('basepath') .'");';
+$exps = Array();
+$subs = Array();
 
-	// server url
-	$exps[] = '/^define \("SERVERURL",.+\);/';
-	$subs[] = 'define ("SERVERURL","'. dget('serverurl') .'");';
+// basepath
+$exps[] = '/^define \("BASEPATH",.+\);/';
+$subs[] = 'define ("BASEPATH","'. dget('basepath') .'");';
 
-	// serverfullurl
-	$exps[] = '/^define \("SERVERFULLURL",.+\);/';
-	$subs[] = 'define ("SERVERFULLURL","http://'. dget('fqdn') .'". SERVERURL);';
+// server url
+$exps[] = '/^define \("SERVERURL",.+\);/';
+$subs[] = 'define ("SERVERURL","'. dget('serverurl') .'");';
 
-	// db host
-	$exps[] = '/^define \("DATABASE_SERVER",.+\);/';
-	$subs[] = 'define ("DATABASE_SERVER","'. dget('db_host') .'");';
+// serverfullurl
+$exps[] = '/^define \("SERVERFULLURL",.+\);/';
+$subs[] = 'define ("SERVERFULLURL","http://'. dget('fqdn') .'". SERVERURL);';
 
-	// db user
-	$exps[] = '/^define \("DATABASE_USER",.+\);/';
-	$subs[] = 'define ("DATABASE_USER","'. dget('db_user') .'");';
+// db host
+$exps[] = '/^define \("DATABASE_SERVER",.+\);/';
+$subs[] = 'define ("DATABASE_SERVER","'. dget('db_host') .'");';
 
-	// db pass
-	$exps[] = '/^define \("DATABASE_PASSWORD",.+\);/';
-	$subs[] = 'define ("DATABASE_PASSWORD","'. dget('db_pass') .'");';
+// db user
+$exps[] = '/^define \("DATABASE_USER",.+\);/';
+$subs[] = 'define ("DATABASE_USER","'. dget('db_user') .'");';
 
+// db pass
+$exps[] = '/^define \("DATABASE_PASSWORD",.+\);/';
+$subs[] = 'define ("DATABASE_PASSWORD","'. dget('db_pass') .'");';
+
+// db name
+$exps[] = '/^define \("DATABASE_NAME",.+\);/';
+$subs[] = 'define ("DATABASE_NAME","'. dget('db_name') .'");';
+
+if (! $modRewriteAvailable) {
+	// configure for ids instead of smartURLs
 	// db name
-	$exps[] = '/^define \("DATABASE_NAME",.+\);/';
-	$subs[] = 'define ("DATABASE_NAME","'. dget('db_name') .'");';
-	
-	if (! $modRewriteAvailable) {
-		// configure for ids instead of smartURLs
-		// db name
-		$exps[] = '/^define \("PT_URL_STYLE",.+\);/';
-		$subs[] = 'define ("PT_URL_STYLE","idURL");';
-	}
+	$exps[] = '/^define \("PT_URL_STYLE",.+\);/';
+	$subs[] = 'define ("PT_URL_STYLE","idURL");';
+}
 
-	$templateConfig = file(SAMPLE_CONFIG_FILE);
+$templateConfig = file(SAMPLE_CONFIG_FILE);
 
-	echo ("<p>writing config file...</p>");
-	$config = "";
-	foreach ($templateConfig as $line) {
-		$config .= preg_replace($exps, $subs, $line);
-	}
+echo ("<p>writing config file...</p>");
+$config = "";
+foreach ($templateConfig as $line) {
+	$config .= preg_replace($exps, $subs, $line);
+}
 
-	file_put_contents(CONFIG_FILE, $config);
+file_put_contents(CONFIG_FILE, $config);
 
-	copy (SAMPLE_HOST_CONFIG, HOST_CONFIG);
+copy (SAMPLE_HOST_CONFIG, HOST_CONFIG);
 
 }
 
@@ -484,14 +517,14 @@ function writeConfigFile() {
 function checkForApacheModule($mod_name) {
 	if (function_exists("apache_get_modules")) {
 		$myMods = apache_get_modules();
-		
+
 		while ($curMod = array_shift($myMods) ) {
 			if ($curMod == $mod_name) {
 				return true;
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -514,10 +547,10 @@ function removeInstaller() {
 }
 
 /*
-*
-* @return: boolean (if data is ok or not)
-*
-*/
+ *
+ * @return: boolean (if data is ok or not)
+ *
+ */
 function checkPathData() {
 	global $data;
 	global $errors;
@@ -581,10 +614,10 @@ function checkPathData() {
 
 
 /*
-*
-* @return: boolean (if data is ok or not)
-*
-*/
+ *
+ * @return: boolean (if data is ok or not)
+ *
+ */
 function checkDBData() {
 	global $data;
 	global $errors;
@@ -708,56 +741,123 @@ function isSettingOK($setting)
 }
 
 /*
-* display install form
-*
-*/
+ * display install form
+ *
+ */
 function renderInstallForm() {
 
-?>
-	<form action="install.php" method="get">
-	<input type="hidden" name="installSubmit" value="1" />
-	<input type="hidden" name="action" value="install" />
-	<input type="hidden" name="checkbox" value="1" />
-	<table>
-		<tr><td class="headline" colspan="2">Database Setup (ATTENTION, this database will be truncated if necessary!)</td></tr>
-		<tr><td><br/></td></tr>
-		<tr><td class="key">DB Host</td><td class="value"><input type="text" name="db_host" value="<?php echo dget('db_host') ?>" />&nbsp;<span class="bad"><?php echo eget('db_host') ?></span></td></tr>
-		<tr><td class="key">DB User</td><td class="value"><input type="text" name="db_user" value="<?php echo dget('db_user') ?>" />&nbsp;<span class="bad"><?php echo eget('db_user') ?></span></td></tr>
-		<tr><td class="key">DB Passwort</td><td class="value"><input type="text" name="db_pass" value="<?php echo dget('db_pass') ?>" />&nbsp;<span class="bad"><?php echo eget('db_pass') ?></span></td></tr>
-		<tr><td class="key">DB Name</td><td class="value"><input type="text" name="db_name" value="<?php echo dget('db_name') ?>" />&nbsp;<span class="bad"><?php echo eget('db_name') ?></span></td></tr>
-		<tr><td class="key">truncate DB and initialize?*</td><td class="value"><input type="checkbox" name="db_truncate" value="1" <?php echo cget("db_truncate") ?>/>&nbsp;<br/></td></tr>
-		<tr><td><br/></td></tr>
-		<tr><td class="headline" colspan="2">The following line usually dont have to be customized!</td></tr>
-<?php
-if (strlen(eget('db'))) {
-?>
-		<tr><td class="headline" colspan="2"><span class="bad"><?php echo eget('db') ?></span></td></tr>
-<?php
+	?>
+<form action="install.php" method="get"><input type="hidden"
+	name="installSubmit" value="1" /> <input type="hidden" name="action"
+	value="install" /> <input type="hidden" name="checkbox" value="1" />
+<table>
+	<tr>
+		<td class="headline" colspan="2">Database Setup (ATTENTION, this
+		database will be truncated if necessary!)</td>
+	</tr>
+	<tr>
+		<td><br />
+		</td>
+	</tr>
+	<tr>
+		<td class="key">DB Host</td>
+		<td class="value"><input type="text" name="db_host"
+			value="<?php echo dget('db_host') ?>" />&nbsp;<span class="bad"><?php echo eget('db_host') ?></span></td>
+	</tr>
+	<tr>
+		<td class="key">DB User</td>
+		<td class="value"><input type="text" name="db_user"
+			value="<?php echo dget('db_user') ?>" />&nbsp;<span class="bad"><?php echo eget('db_user') ?></span></td>
+	</tr>
+	<tr>
+		<td class="key">DB Passwort</td>
+		<td class="value"><input type="text" name="db_pass"
+			value="<?php echo dget('db_pass') ?>" />&nbsp;<span class="bad"><?php echo eget('db_pass') ?></span></td>
+	</tr>
+	<tr>
+		<td class="key">DB Name</td>
+		<td class="value"><input type="text" name="db_name"
+			value="<?php echo dget('db_name') ?>" />&nbsp;<span class="bad"><?php echo eget('db_name') ?></span></td>
+	</tr>
+	<tr>
+		<td class="key">truncate DB and initialize?*</td>
+		<td class="value"><input type="checkbox" name="db_truncate" value="1"
+		<?php echo cget("db_truncate") ?> />&nbsp;<br />
+		</td>
+	</tr>
+	<tr>
+		<td><br />
+		</td>
+	</tr>
+	<tr>
+		<td class="headline" colspan="2">The following line usually dont have
+		to be customized!</td>
+	</tr>
+	<?php
+	if (strlen(eget('db'))) {
+		?>
+	<tr>
+		<td class="headline" colspan="2"><span class="bad"><?php echo eget('db') ?></span></td>
+	</tr>
+	<?php
 }
 ?>
-		<tr><td><br/></td></tr>
-		<tr><td class="key">Phenotype Basepath</td><td class="value"><input type="text" name="basepath" value="<?php echo dget('basepath') ?>"  size="50"/>&nbsp;<span class="bad"><?php echo eget('basepath') ?></span></td></tr>
-		<tr><td class="key">Phenotype BaseURL**</td><td class="value"><input type="text" name="serverurl" value="<?php echo dget('serverurl') ?>" size="50"/>&nbsp;<span class="bad"><?php echo eget('serverurl') ?></span></td></tr>
-		<tr><td class="key">Webserver Hostname (FQDN)</td><td class="value"><input type="text" name="fqdn" value="<?php echo dget('fqdn') ?>" size="50" />&nbsp;<span class="bad"><?php echo eget('fqdn') ?></span></td></tr>
-		<tr><td><br/></td></tr>
-		<tr><td class="key"><img src="img/demo.jpg" style="border: 1px solid blue"/></td><td class="value"><input type="checkbox" name="demo" value="1" <?php echo cget("demo") ?>/> Install Demo Package?</td></tr>
-		<tr><td class="headline" colspan="2"><input type="submit" value="go" /></td></tr>
-	</table>
-	<br/><br/>* If you dont check the box the installer will only save the account data to access the db, the db itself wont be modified.
-	<br/><br/>** Is always the relative path from the webserver docroot to the htdocs folder of Phenotype. Usually, you should configure your Webserver to use the Phenotype htdocs folder as docroot, then you simply have to enter / here.
-	</form>
-<?php
+	<tr>
+		<td><br />
+		</td>
+	</tr>
+	<tr>
+		<td class="key">Phenotype Basepath</td>
+		<td class="value"><input type="text" name="basepath"
+			value="<?php echo dget('basepath') ?>" size="50" />&nbsp;<span
+			class="bad"><?php echo eget('basepath') ?></span></td>
+	</tr>
+	<tr>
+		<td class="key">Phenotype BaseURL**</td>
+		<td class="value"><input type="text" name="serverurl"
+			value="<?php echo dget('serverurl') ?>" size="50" />&nbsp;<span
+			class="bad"><?php echo eget('serverurl') ?></span></td>
+	</tr>
+	<tr>
+		<td class="key">Webserver Hostname (FQDN)</td>
+		<td class="value"><input type="text" name="fqdn"
+			value="<?php echo dget('fqdn') ?>" size="50" />&nbsp;<span
+			class="bad"><?php echo eget('fqdn') ?></span></td>
+	</tr>
+	<tr>
+		<td><br />
+		</td>
+	</tr>
+	<tr>
+		<td class="key"><img src="img/demo.jpg" style="border: 1px solid blue" /></td>
+		<td class="value"><input type="checkbox" name="demo" value="1"
+		<?php echo cget("demo") ?> /> Install Demo Package?</td>
+	</tr>
+	<tr>
+		<td class="headline" colspan="2"><input type="submit" value="go" /></td>
+	</tr>
+</table>
+<br />
+<br />
+* If you dont check the box the installer will only save the account
+data to access the db, the db itself wont be modified. <br />
+<br />
+** Is always the relative path from the webserver docroot to the htdocs
+folder of Phenotype. Usually, you should configure your Webserver to use
+the Phenotype htdocs folder as docroot, then you simply have to enter /
+here.</form>
+		<?php
 }
 
 
 function installDemoPackage()
 {
-	
+
 	global $myDB;
 	global $myPT;
 	global $myApp;
 	global $myAdm;
-	
+
 	require (CONFIG_FILE);
 	$myAdm = new PhenotypeAdmin();
 	require (PACKAGEPATH."1200_PT_Demo/PhenotypePackage.class.php");
@@ -766,19 +866,26 @@ function installDemoPackage()
 	$myPak->globalInstallStructure(0);
 	$html = $myPT->stopBuffer();
 	?>
-	Installation of Demo package (Structure)<br/>
-	<table width="600">
-	<tr><td class="headline" colspan="2"><pre><?php echo $html ?></pre></td></tr>
-	</table><br/>
-	<?php	
+Installation of Demo package (Structure)
+<br />
+<table width="600">
+	<tr>
+		<td class="headline" colspan="2"><pre><?php echo $html ?></pre></td>
+	</tr>
+</table>
+<br />
+	<?php
 	$myPT->startBuffer();
 	$myPak->globalInstallData();
 	$html = $myPT->stopBuffer();
 	?>
-	Installation of Demo package (Structure)<br/>
-	<table width="600">
-	<tr><td class="headline" colspan="2"><pre><?php echo $html ?></pre></td></tr>
-	</table>	
+Installation of Demo package (Structure)
+<br />
+<table width="600">
+	<tr>
+		<td class="headline" colspan="2"><pre><?php echo $html ?></pre></td>
+	</tr>
+</table>
 	<?php
 }
 
@@ -814,8 +921,8 @@ function removeDirComplete ($dir,$keep=0,$debug=0)
 }
 
 /*
-* get value from _REQUEST
-*/
+ * get value from _REQUEST
+ */
 function rget($key) {
 	if (isset($_REQUEST["$key"])) {
 		return ($_REQUEST["$key"]);
@@ -825,8 +932,8 @@ function rget($key) {
 }
 
 /*
-* get value from $data
-*/
+ * get value from $data
+ */
 function dget($key) {
 	global $data;
 	if (isset($data["$key"])) {
@@ -841,7 +948,7 @@ function cget($key)
 {
 	if ($_REQUEST[$key]==1)
 	{
-			return "checked";
+		return "checked";
 	}
 	if ($_REQUEST["checkbox"]!="1")
 	{
@@ -850,8 +957,8 @@ function cget($key)
 }
 
 /*
-* get value from $errors
-*/
+ * get value from $errors
+ */
 function eget($key) {
 	global $errors;
 	if (isset($errors["$key"])) {

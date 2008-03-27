@@ -319,36 +319,6 @@ LOCK TABLES `dataobject` WRITE;
 /*!40000 ALTER TABLE `dataobject` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `dataobject2`
---
-
-DROP TABLE IF EXISTS `dataobject2`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-CREATE TABLE `dataobject2` (
-  `dao_id` int(11) NOT NULL auto_increment,
-  `dao_type` varchar(255) collate latin1_general_ci NOT NULL,
-  `dao_dat_type` varchar(255) collate latin1_general_ci NOT NULL,
-  `dao_dat_id` int(11) NOT NULL default '0',
-  `dao_props` text collate latin1_general_ci NOT NULL,
-  `dao_build_ts` int(11) NOT NULL default '0',
-  `dao_expire_ts` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`dao_id`),
-  KEY `type` (`dao_type`),
-  KEY `dat_type` (`dao_dat_type`),
-  KEY `dat_id` (`dao_dat_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
-SET character_set_client = @saved_cs_client;
-
---
--- Dumping data for table `dataobject2`
---
-
-LOCK TABLES `dataobject2` WRITE;
-/*!40000 ALTER TABLE `dataobject2` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dataobject2` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `extra`

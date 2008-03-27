@@ -129,13 +129,13 @@ require (APPPATH . "_host.config.inc.php");
 // Grundinitialisierung
 // ------------------------------------------------------
 
-
-$myDB = new PhenotypeDatabase();
-$myDB->connect();
 date_default_timezone_set('Etc/GMT-1');
 require (APPPATH . "_application.inc.php");
-$myApp = new PhenotypeApplication();
 $myPT = new Phenotype();
+$myDB = new PhenotypeDatabase();
+$myDB->connect();
+$myApp = new PhenotypeApplication();
 require (SYSTEMPATH . "_init.inc.php");
 $myLog = new PhenotypeLog();
 $myRequest = new PhenotypeRequest();
+
