@@ -87,7 +87,7 @@ $row = mysql_fetch_array($rs);
     </table>
 	<?php
 	$myLayout->tab_new();
-	$url = "toolkit_edit.php?id=" .$id ."&b=0";
+	$url = "admin_group_edit.php?id=" .$id ."&b=0";
 	$myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
 	$myLayout->tab_draw("Konfiguration");
 	$myLayout->workarea_start_draw();
