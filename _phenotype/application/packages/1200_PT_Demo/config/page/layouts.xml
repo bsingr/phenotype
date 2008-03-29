@@ -43,8 +43,8 @@
   &#60;meta name=&#34;author&#34; content=&#34;Nils Hagemann&#34;&#47;&#62;
   &#60;meta name=&#34;keywords&#34; content=&#34;{$keywords|escape}&#34;&#47;&#62;
   &#60;meta name=&#34;generator&#34; content=&#34;Phenotype CMS 2.6&#34; &#47;&#62;
-  &#60;base href=&#34;{pt_constant value=&#34;SERVERURL&#34;}&#34;&#47;&#62;
-  &#60;link href=&#34;{pt_constant value=&#34;SERVERURL&#34;}style.css&#34; rel=&#34;stylesheet&#34; type=&#34;text&#47;css&#34; &#47;&#62; 
+  &#60;base href=&#34;{pt_constant value=&#34;SERVERFULLURL&#34;}&#34;&#47;&#62;
+  &#60;link href=&#34;{pt_constant value=&#34;SERVERFULLURL&#34;}style.css&#34; rel=&#34;stylesheet&#34; type=&#34;text&#47;css&#34; &#47;&#62; 
 &#60;&#47;head&#62;
 
 &#60;body&#62;
