@@ -1552,7 +1552,6 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 			 var error=0;
 			 function ajax_<?php echo $a[2] ?>_doit(date){
-			   alert(date);
 			   ajax_<?php echo $a[2] ?>.resetData();
 			   ajax_<?php echo $a[2] ?>.requestFile = "backend.php";
 			   ajax_<?php echo $a[2] ?>.method = "GET";
