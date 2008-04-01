@@ -86,6 +86,7 @@ class PhenotypeRequestStandard
             $row =mysql_fetch_array($rs);
             $this->set("id",$row["pag_id"]);
             $params = substr($smartURL,$row["L"]+1);
+            $this->set("smartURLParams", $params);
             //echo $params;
             $_params = split('/',$params);
             $i=0;
