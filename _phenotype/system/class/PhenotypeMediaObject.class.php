@@ -29,6 +29,7 @@ class PhenotypeMediaObjectStandard
 	public $ver_id =0;
 	public $type = 0;
 	public $bez;
+	public $ver_bez;
 	public $alt;
 	public $suffix;
 	public $mimetype;
@@ -106,6 +107,7 @@ class PhenotypeMediaObjectStandard
 	{
 
 		$this->ver_id = $row["ver_id"];
+		$this->ver_bez = $row["ver_bez"];
 		if ($this->type == MB_IMAGE)
 		{
 			$this->filename = sprintf("%06.0f", $this->id) .",".$this->ver_id."." . $row["ver_subtype"];
