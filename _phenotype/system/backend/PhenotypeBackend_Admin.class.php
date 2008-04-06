@@ -25,6 +25,8 @@
 class PhenotypeBackend_Admin_Standard extends PhenotypeBackend
 {
 	
+  public $tmxfile = "Admin";
+  
 	function execute()
 	{
 		Header("Location: admin.php");

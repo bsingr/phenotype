@@ -24,6 +24,7 @@
  */
 class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 {
+	public $tmxfile = "Admin_Users";
 
 	public $pwstatus = 0; // shows wether the user changed his password or not
 
@@ -34,7 +35,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		global $myRequest;
 		global $myDB;
 
-		$this->setPageTitle("Phenotype ".$myPT->version. " Administration");
+		$this->setPageTitle("Phenotype ".$myPT->version. " ".localeH("Admin"));
 
 		$this->selectMenuItem(6);
 
@@ -78,8 +79,8 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		if ($action=="insert" AND $this->checkRight("elm_admin"))
 		{
 			$mySQL = new SQLBuilder();
-			$mySQL->addField("usr_vorname","Neuer");
-			$mySQL->addField("usr_nachname","Benutzer");
+			$mySQL->addField("usr_vorname",localeH("value_newuser_surname"));
+			$mySQL->addField("usr_nachname",localeH("value_newuser_lastname"));
 			$mySQL->addField("usr_status",1,DB_NUMBER);
 			$mySQL->addField("usr_createdate",time());
 			$sql = $mySQL->insert("user");
@@ -153,51 +154,51 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">	
 		<?php
 
-		$this->displayHeadline($usr_id." Benutzer / ". $row["usr_vorname"] . " " . $row["usr_nachname"],"http://www.phenotype-cms.de/docs.php?v=23&t=8");
+		$this->displayHeadline($usr_id." ".localeH("User") ." / ". $row["usr_vorname"] . " " . $row["usr_nachname"],"http://www.phenotype-cms.de/docs.php?v=23&t=8");
 
 
 
 
 		$this->tab_new();
 		$url = "backend.php?page=Admin,Users,edit&amp;id=" .$usr_id ."&b=0";
-		$this->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
+		$this->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
 
 
 		$b=0;
 		if ($this->checkRight("elm_admin"))
 		{
 			$url = "backend.php?page=Admin,Users,edit&amp;id=" .$usr_id ."&b=1";
-			$this->tab_addEntry("Rechte",$url,"b_utilisation.gif");
+			$this->tab_addEntry(locale("Rights"),$url,"b_utilisation.gif");
 			$b=$_REQUEST["b"];
 		}
 
 		switch ($b)
 		{
 			case 0:
-				$this->tab_draw("Konfiguration");
+				$this->tab_draw(localeH("Config"));
 				$this->workarea_start_draw();
-				$html = $this->workarea_form_text("Vorname","vorname",$row["usr_vorname"]);
-				$html .= $this->workarea_form_text("Nachname","nachname",$row["usr_nachname"]);
-				$html .= $this->workarea_form_text("Email","email",$row["usr_email"]);
-				$this->workarea_row_draw("Name",$html);
-				$html = $this->workarea_form_text("Benutzerkennung","login",$row["usr_login"]);
-				$html .= 'Passwort (Zum &Auml;ndern 2x eingeben)<br><input name="pass1" type="password" class="input" value="pass" size="10">&nbsp;<input name="pass2" type="password" class="input" value="pass" size="10">';
+				$html = $this->workarea_form_text(localeH("Surname"),"vorname",$row["usr_vorname"]);
+				$html .= $this->workarea_form_text(localeH("Lastname"),"nachname",$row["usr_nachname"]);
+				$html .= $this->workarea_form_text(localeH("Email"),"email",$row["usr_email"]);
+				$this->workarea_row_draw(localeH("headline_name"),$html);
+				$html = $this->workarea_form_text(localeH("Username"),"login",$row["usr_login"]);
+				$html .= localeH("Password (for change enter 2 times)").'<br><input name="pass1" type="password" class="input" value="pass" size="10">&nbsp;<input name="pass2" type="password" class="input" value="pass" size="10">';
 
 				switch ($this->pwstatus)
 				{
-					case 1: $html.= "<br><b>Passwort&auml;nderung fehlgeschlagen.</b><br>";
+					case 1: $html.= "<br><b>".localeH("msg_password_change_failure")."</b><br>";
 					break;
 
-					case 2: $html.=  "<br><b>Das Passwort wurde ge&auml;ndert.</b><br>";
+					case 2: $html.=  "<br><b>".localeH("msg_password_change_success")."</b><br>";
 					break;
 				}
 
 
-				$this->workarea_row_draw("Login",$html);
+				$this->workarea_row_draw(locale("headline_login"),$html);
 
 				$html = $this->workarea_form_image("userbild",$row["med_id_thumb"],"_users",1);
 
-				$this->workarea_row_draw("Foto",$html);
+				$this->workarea_row_draw(locale("Photo"),$html);
 
 
 				$_prefs = $myApp->getUserPrefList();
@@ -207,7 +208,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 					$checked="";if ($preferences[$k]==1){$checked='checked="checked"';}
 					$html .= '<input type="checkbox" name="'.$k.'" value="1" '.$checked.'/>'.$this->getH($v)."<br/>";
 				}
-				if ($html!=""){$this->workarea_row_draw("Präferenzen",$html);}
+				if ($html!=""){$this->workarea_row_draw(locale("Preferences"),$html);}
 
 				if (isset($allerechte["elm_task"]) )
 				{
@@ -220,26 +221,26 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 						$checked="";if ($preferences[$k]==1){$checked='checked="checked"';}
 						$html .= '<input type="checkbox" name="'.$k.'" value="1" '.$checked.'/> '.$this->getH($v)."<br/>";
 					}
-					$this->workarea_row_draw("Ticket-Einstellungen",$html);
+					$this->workarea_row_draw(localeH("Ticket-Preferences"),$html);
 
 				}
 
 
-				$html=  "Angelegt am " . date("d.m.Y",$row["usr_createdate"]) . "<br>";
+				$html=  localeH("created at") . " " . date("d.m.Y",$row["usr_createdate"]) . "<br>";
 				if ($row["usr_lastlogin"]==0)
 				{
-					$html .= "Noch nie angemeldet.";
+					$html .= localeH("Never logged in.");
 				}
 				else
 				{
-					$html.=  "Letzter Login am " . date("d.m.Y H:i",$row["usr_lastlogin"]);
+					$html.=  localeH("Last login on")." " . date("d.m.Y H:i",$row["usr_lastlogin"]);
 				}
-				$this->workarea_row_draw("Status",$html);
+				$this->workarea_row_draw(locale("State"),$html);
 
 				break;
 
 			case 1:
-				$this->tab_draw("Rechte");
+				$this->tab_draw(locale("Rights"));
 				$this->workarea_start_draw();
 
 				$sql = "SELECT * FROM role ORDER by rol_bez";
@@ -261,10 +262,10 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 
 				if ($row["usr_su"]==1)
 				{
-					$html .='<input type="checkbox" value="" checked disabled> <b>SuperUser</b>';
+					$html .='<input type="checkbox" value="" checked disabled> <b>'.localeH("Superuser").'</b>';
 				}
 
-				$this->workarea_row_draw("Rollen",$html);
+				$this->workarea_row_draw(locale("Roles"),$html);
 				$myPT->startbuffer();
 		 ?>
 		 <table border="0" cellspacing="0" cellpadding="0">
@@ -286,7 +287,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 <input name="access_grp_<?php echo $row_grp["grp_id"] ?>" type="checkbox" value="1" <?php echo $checked ?>> <?php echo $row_grp["grp_bez"] ?>&nbsp;&nbsp;
          </td><td>
 		 <select name="pag_id_grp_<?php echo $row_grp["grp_id"] ?>" class="input" style="width:250px">
-		 <option value="0">* alle Seiten * </option>
+		 <option value="0"><?php echo localeH("value_allpages");?></option>
 		 <?php
 		 $sql = "SELECT pag_id AS K, pag_bez AS V FROM page WHERE grp_id = " . $row_grp["grp_id"] . " ORDER BY V";
 		 echo $myAdm->buildOptionsBySQL($sql,$rechte["pag_id_grp_" . $row_grp["grp_id"]]);
@@ -298,7 +299,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 </table>
 		 <?php
 		 $html = $myPT->stopBuffer();
-		 $this->workarea_row_draw("Seitengruppen",$html);
+		 $this->workarea_row_draw(locale("pagegroups "),$html);
 
 		 $sql = "SELECT * FROM content ORDER by con_pos, con_bez";
 		 $rs = $myDB->query($sql);
@@ -316,7 +317,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 	$html .='<input name="con_'.$row_content["con_id"]. '" type="checkbox" value="1"  '.$checked .'> '.$row_content["con_bez"] .'<br>';
 
 		 }
-		 $this->workarea_row_draw("Contentobjekte",$html);
+		 $this->workarea_row_draw(locale("contentobjects"),$html);
 
 
 		 // Mediagruppen
@@ -346,7 +347,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 </table>
 		 <?php
 		 $html = $myPT->stopBuffer();
-		 $this->workarea_row_draw("Mediagruppen",$html);
+		 $this->workarea_row_draw(locale("mediagroups"),$html);
 
 		 $sql = "SELECT * FROM extra ORDER by ext_bez";
 		 $rs = $myDB->query($sql);
@@ -365,7 +366,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 
 		 }
 
-		 $this->workarea_row_draw("Extras",$html);
+		 $this->workarea_row_draw(locale("extras"),$html);
 
 
 		 $sql = "SELECT * FROM ticketsubject ORDER by sbj_bez";
@@ -383,13 +384,13 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 	}
 		 	$html .='<input name="sbj_'.$row_subject["sbj_id"]. '" type="checkbox" value="1"  '.$checked .'> '.$row_subject["sbj_bez"] .'<br>';
 		 }
-		 $this->workarea_row_draw("Aufgabenbereiche",$html);
+		 $this->workarea_row_draw(locale("task subjects"),$html);
 
 		 break;
 		}
 
 		// Abschlusszeile
-		$this->workarea_row_deletesave("Diesen Benutzer wirklich l&ouml;schen?");
+		$this->workarea_row_deletesave(localeH("Really delete this user?"));
 
 
 		$this->workarea_stop_draw();
@@ -407,13 +408,13 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 
 		global $myDB;
 
-		$this->displayHeadline("Übersicht Benutzer","http://www.phenotype-cms.de/docs.php?v=23&t=8");
+		$this->displayHeadline(locale("headline_users"),"http://www.phenotype-cms.de/docs.php?v=23&t=8");
 
 		$_table = array(
-		25 =>"ID",
+		25 =>localeH("ID"),
 		60 =>" ",
-		449=>"Bezeichnung",
-		50=>"Aktion"
+		449=>localeH("Name"),
+		50=>localeH("Action")
 		);
 
 		$this->displayContentTableHead($_table);
@@ -435,11 +436,11 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 			if ($row["med_id_thumb"]!=0)
 			{
 				$myImg = new PhenotypeImage($row["med_id_thumb"]);
-				$image_thumb .= $myImg->render_maxX(60,"Benutzer anzeigen");
+				$image_thumb .= $myImg->render_maxX(60,localeH("view user"));
 			}
 			else
 			{
-				$image_thumb .= '<img src="img/t_user.gif" alt="Benutzer anzeigen" width="60" height="40" border="0"/>';
+				$image_thumb .= '<img src="img/t_user.gif" alt="'.localeH("view user").'" width="60" height="40" border="0"/>';
 			}
 			$image_thumb .= '</a></span>';
 			$html_link ='';
@@ -448,7 +449,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 			$row["usr_id"],
 			$image_thumb,
 			$row["usr_vorname"]. " ". $row["usr_nachname"],
-			$html_link = '<a href="backend.php?page=Admin,Users,edit&amp;id='.$row["usr_id"].'&amp;b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>',
+			$html_link = '<a href="backend.php?page=Admin,Users,edit&amp;id='.$row["usr_id"].'&amp;b=0"><img src="img/b_edit.gif" alt="'.localeH("edit user").'" width="22" height="22" border="0" align="absmiddle"></a>',
 			);
 
 			$this->displayContentTableRow($_row,$_html,$_align);
@@ -457,7 +458,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 
 		$this->displayContentTableFoot();
 
-		$this->displayContentTableButton("Neuen Benutzer anlegen","backend.php?page=Admin,Users,insert");
+		$this->displayContentTableButton(localeH("Create new user"),"backend.php?page=Admin,Users,insert");
 
 		return $myPT->stopBuffer();
 	}
@@ -636,7 +637,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 				}
 			}
 			if ($mediazugriff==1){$_rechte["elm_mediabase"]=1;}
-				
+
 
 			$sql = "SELECT * FROM role";
 			$rs = $myDB->query($sql);

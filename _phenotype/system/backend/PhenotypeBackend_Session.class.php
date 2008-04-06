@@ -25,6 +25,11 @@
 class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 {
 
+  // PhenotypeBackend_Session-Classes don't have their own localization file. It's because some session/login/rights related functions
+  // are located in the PhenotypeBackendStandard class.
+  
+  public $tmxfile = "Phenotype";
+  
 	function execute($scope,$action)
 	{
 		if ($scope=="" AND $action=="cover")
@@ -61,7 +66,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 	"http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?php echo $myPT->version ?></title>
+		<title>Phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -94,16 +99,16 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 		                <td colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
 		                </tr>
 		              <tr>
-		                <td class="padding20">Benutzername:</td>
+		                <td class="padding20"><?php echo localeH("Username");?>:</td>
 		                <td><input type="text" name="user" style="width: 200px" class="input"></td>
 		              </tr>
 		              <tr>
-		                <td class="padding20">Passwort:</td>
+		                <td class="padding20"><?php echo localeH("Password");?>:</td>
 		                <td><input type="password" name="pass" style="width: 200px" class="input"></td>
 		              </tr>
 		              <tr>
 		                <td height="30">&nbsp;</td>
-		                <td><input name="Submit" type="submit" class="buttonGrey2" value="Anmelden" style="width:102px"></td>
+		                <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("Login");?>" style="width:102px"></td>
 		              </tr>
 		          </table></td>
 		          <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -140,7 +145,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo $myPT->version ?></title>
+<title>Phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -165,22 +170,22 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
             <td class="windowFooterGrey2">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="bottom">
-                  <td height="145" colspan="2" style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert">Falsche Benutzer-/Password-Kombination.</div></td>
+                  <td height="145" colspan="2" style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert"><?php echo localeHBR("msg_login_error");?></div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
                   <td colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
                 </tr>
                 <tr>
-                  <td class="padding20">Benutzername:</td>
+                  <td class="padding20"><?php echo localeH("Username");?>:</td>
                   <td><input type="text" name="user" style="width: 200px" class="input"></td>
                 </tr>
                 <tr>
-                  <td class="padding20">Passwort:</td>
+                  <td class="padding20"><?php echo localeH("Password");?>:</td>
                   <td><input type="password" name="pass" style="width: 200px" class="input"></td>
                 </tr>
                 <tr>
                   <td height="30">&nbsp;</td>
-                  <td><input name="Submit" type="submit" class="buttonGrey2" value="Anmelden" style="width:102px"></td>
+                  <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("Login");?>" style="width:102px"></td>
                 </tr>
             </table></td>
             <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>

@@ -27,6 +27,8 @@ if (PT_CONFIGMODE!=1){exit();}
 
 class PhenotypeBackend_Config_Standard extends PhenotypeBackend
 {
+  public $tmxfile = "Config";
+  
 	function execute()
 	{
 		Header("Location: config.php");

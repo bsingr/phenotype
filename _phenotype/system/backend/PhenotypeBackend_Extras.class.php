@@ -24,6 +24,8 @@
  */
 class PhenotypeBackend_Extras_Standard extends PhenotypeBackend
 {
+  public $tmxfile = "Extras";
+  
 	function execute()
 	{
 		Header("Location: extras.php");

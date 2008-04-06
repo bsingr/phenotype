@@ -24,6 +24,8 @@
  */
 class PhenotypeBackend_Editor_Pages_Standard extends PhenotypeBackend_Editor
 {
+  public $tmxfile = "Editor_Pages";
+  
 	function execute()
 	{
 		Header("Location: pagegroup_select.php");

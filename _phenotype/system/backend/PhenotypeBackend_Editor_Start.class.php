@@ -24,6 +24,8 @@
  */
 class PhenotypeBackend_Editor_Start_Standard extends PhenotypeBackend_Editor
 {
+  public $tmxfile = "Editor";
+  
 	function execute()
 	{
 		Header("Location: start.php");

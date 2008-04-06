@@ -25,6 +25,8 @@
 class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 {
 
+  public $tmxfile = "Editor_Media";
+  
 	// Following variables determines the focus of the media browser, they should not get lost during
 	// the work with the mediabase and are passed with every link. The parameter are named like
 	// the variables except for pagenr (p) and itemcount (a).
@@ -96,7 +98,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		// -- media browser setup
 
 
-		$this->setPageTitle("Phenotype ".$myPT->version. " Media");
+		$this->setPageTitle("Phenotype ".$myPT->version. locale("Mediabase"));
 
 		$this->selectMenuItem(2);
 		$this->selectLayout(1);
@@ -144,7 +146,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				// starting text for rad upload plus, shortcut to avoid rewrite hazzle
 				if ($block_nr==98)
 				{
-					echo '<br\>&nbsp;Drag & Drop - Upload';
+					echo '<br\>&nbsp;'.localeH("Drag & Drop - Upload");
 					exit();
 				}
 				if ($block_nr==1)
@@ -213,16 +215,16 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		$url = "backend.php?page=Editor,Pages";
 		if ($this->checkRight("elm_page"))
 		{
-			$this->tab_addEntry("Seiten",$url,"b_site.gif");
+			$this->tab_addEntry(locale("Pages"),$url,"b_site.gif");
 		}
 		if ($this->checkRight("elm_content"))
 		{
 			$url = "backend.php?page=Editor,Content";
-			$this->tab_addEntry("Content",$url,"b_content.gif");
+			$this->tab_addEntry(locale("Content"),$url,"b_content.gif");
 		}
 		$url = "backend.php?page=Editor,Media,browse&grp_id=0&folder=&type=0&sortorder=1&p=1&a=10";
 
-		$this->tab_addEntry("Media",$url,"b_media.gif");
+		$this->tab_addEntry(locale("Media"),$url,"b_media.gif");
 		$this->tab_draw("Media",$x=260,1);
 
 		$this->displayMediagroupSelector();
@@ -256,10 +258,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				  <input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
 				  <input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
 				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">
-	              Gruppe:</td>
+	              <?php echo localeH("Group");?>:</td>
 	              <td>
 	              <select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
-	              <option value="0">alle</a>
+	              <option value="0"><?php echo localeH("all");?></a>
 	              <?php
 	              foreach ($this->_mediagroups AS $k=>$v)
 	              echo $this->optionTag($k,$v,$this->grp_id);
@@ -391,10 +393,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td colspan="2" class="padding10"><strong>Suche Media nach:</strong></td>
+                <td colspan="2" class="padding10"><strong><?php echo localeH("Search Media");?>:</strong></td>
               </tr>
               <tr>
-                <td class="padding10"> Bezeichnung </td>
+                <td class="padding10"><?php echo localeH("Name");?></td>
                 <td>
 	  			<form action="backend.php" method="post">
 	            <input type="hidden" name="page" value ="Editor,Media,search">
@@ -408,11 +410,11 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
                 </td>
               </tr>
               <tr>
-                <td class="padding10"> ID </td>
+                <td class="padding10"><?php echo localeH("ID");?></td>
                 <td><input type="text" name="i" style="width: 100px" class="input"></td>
               </tr>
               <tr>
-                <td class="padding10"> Volltext </td>
+                <td class="padding10"><?php echo localeH("Fulltext");?></td>
                 <td><input type="text" name="v" style="width: 100px" class="input"></td>
               </tr>
               <tr>
@@ -444,7 +446,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	  			<form action="backend.php" method="post">
 	            <input type="hidden" name="page" value ="Editor,Media,upload">
 	            <tr>
-	              <td class="windowTabTypeOnly"><strong>Neue Dateien: </strong></td>
+	              <td class="windowTabTypeOnly"><strong><?php echo localeH("New Files");?></strong></td>
 	              <td class="windowTabTypeOnly">
 				  <input type="hidden" name="grp_id" value="<?php echo $this->grp_id ?>">	
 	              <input type="hidden" name="folder" value="<?php echo $myPT->codeH($this->folder) ?>">
@@ -518,7 +520,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			$this->tab_new();
 			$url = "backend.php?page=Editor,Media,browse&grp_id=0&folder=&type=0&sortorder=1&p=1&a=10";
 			$this->tab_addEntry("Sammelbox",$url,"b_pinadd.gif");
-			$this->tab_draw("Sammelbox",$x=260,1);
+			$this->tab_draw(locale("Lightbox"),$x=260,1);
 
 
 		?>
@@ -633,24 +635,24 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 		$this->displayJS_Lightbox();
 
-		$headline = "Übersicht";
+		$headline = locale("Overview");
 		$this->displayHeadline($headline,"http://www.phenotype-cms.de/docs.php?v=23&t=4");
 
 		$this->displayEAIF();
 
 		$this->tab_new();
 		$url = "backend.php?page=Editor,Media,browse&grp_id=".$this->grp_id."&folder=".$this->folder ."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount;
-		$this->tab_addEntry("Alle Dateien",$url ."&type=0","b_all_files.gif");
-		$this->tab_addEntry("Bilder",$url ."&type=1","b_media.gif");
-		$this->tab_addEntry("Dokumente",$url ."&type=2","b_content.gif");
+		$this->tab_addEntry(locale("All Files"),$url ."&type=0","b_all_files.gif");
+		$this->tab_addEntry(locale("Images"),$url ."&type=1","b_media.gif");
+		$this->tab_addEntry(locale("Documents"),$url ."&type=2","b_content.gif");
 
 		switch ($this->type)
 		{
-			case  1: $tab = "Bilder";
+			case  1: $tab = locale("Images");
 			break;
-			case  2: $tab = "Dokumente";
+			case  2: $tab = locale("Documents");
 			break;
-			default: $tab = "Alle Dateien";
+			default: $tab = locale("All Files");
 			break;
 		}
 
@@ -740,12 +742,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			      <input type="hidden" name="type" value="<?php echo $this->type ?>">				   				   
 			      <input type="hidden" name="p" value="<?php echo $p ?>">		  
 				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">		              
-		          <input name="sortorder" type="radio" value="1" <?php if ($this->sortorder==1){echo"checked";} ?> onclick="document.forms.formsort.submit();">Datum
-				  <input name="sortorder" type="radio" value="2" <?php if ($this->sortorder==2){echo"checked";} ?> onclick="document.forms.formsort.submit();">Bezeichnung
-				  <input name="sortorder" type="radio" value="3" <?php if ($this->sortorder==3){echo"checked";} ?> onclick="document.forms.formsort.submit();">ID</td>
+		          <input name="sortorder" type="radio" value="1" <?php if ($this->sortorder==1){echo"checked";} ?> onclick="document.forms.formsort.submit();"><?php echo localeH("Date");?>
+				  <input name="sortorder" type="radio" value="2" <?php if ($this->sortorder==2){echo"checked";} ?> onclick="document.forms.formsort.submit();"><?php echo localeH("Name");?>
+				  <input name="sortorder" type="radio" value="3" <?php if ($this->sortorder==3){echo"checked";} ?> onclick="document.forms.formsort.submit();"><?php echo localeH("ID");?></td>
 	              <td class="padding10"><select name="a" class="listmenu" onchange="document.forms.formsort.submit();">
 				    <?php for ($i=1;$i<=5;$i++){ ?>
-	                <option value="<?php echo ($i*10) ?>" <?php if ($this->itemcount==($i*10)){echo "selected";} ?>><?php echo ($i*10) ?> Medien / Seite anzeigen</option>
+	                <option value="<?php echo ($i*10) ?>" <?php if ($this->itemcount==($i*10)){echo "selected";} ?>><?php echo ($i*10) ?> <?php echo localeH("objects/page");?></option>
 					<?php } ?>
 					<input type="hidden" name="a2" value="<?php echo $this->itemcount ?>">
 					</select></form></td>
@@ -845,16 +847,16 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	                </tr>
 	              </table>
 	              
-	                <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row["med_id"] ?>&grp_id=<?php echo $this->grp_id ?>&folder=<?php echo $myPT->codeH($this->folder) ?>&type=<?php echo $this->type ?>&sortorder=<?php echo $this->sortorder ?>&p=<?php echo $this->pagenr ?>&a=<?php echo $this->itemcount ?>"><img src="img/b_edit.gif" width="22" height="22" border="0" align="absmiddle"> bearbeiten<br>
-	                </a> Ordner: <?php echo $row["med_logical_folder1"] ?><br>
+	                <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row["med_id"] ?>&grp_id=<?php echo $this->grp_id ?>&folder=<?php echo $myPT->codeH($this->folder) ?>&type=<?php echo $this->type ?>&sortorder=<?php echo $this->sortorder ?>&p=<?php echo $this->pagenr ?>&a=<?php echo $this->itemcount ?>"><img src="img/b_edit.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("edit");?><br/>
+	                </a> <?php echo localeH("Folder");?>: <?php echo $row["med_logical_folder1"] ?><br>
 					<?php
 					if ($row["med_type"]==MB_IMAGE)
 					{
-						echo "Gr&ouml;&szlig;e: (" . $row["med_x"] ." x " . $row["med_y"] .")<br>";
+						echo localeH("Size")." (" . $row["med_x"] ." x " . $row["med_y"] .")<br>";
 					}
 					else
 					{
-						echo "<br>";
+						echo "</br>";
 					}
 				    ?>
 	                <strong><?php echo $myPT->cutString($row["med_bez"],32,18); ?></strong>
@@ -976,21 +978,21 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		if ($minuten <10 AND $row_conflict["usr_id"]!=$mySUser->id)
 		{
 			$zustand="";
+			$myUser = new PhenotypeUser($row_conflict["usr_id"]);
 			switch ($minuten)
 			{
 				case 0:
-					$zustand = "gerade";
+					$conflict = locale("msg_recordchange_0",array($myUser->getName()));
 					break;
 				case 1:
-					$zustand = "vor 1 Minute";
+					$conflict = locale("msg_recordchange_1",array($myUser->getName()));
 					break;
 				default:
-					$zustand = "vor " . $minuten . " Minuten ";
+					$conflict = locale("msg_recordchange_n",array($myUser->getName(),$minuten));
 					break;
 
 			}
-			$myUser = new PhenotypeUser($row_conflict["usr_id"]);
-			$conflict = "Dieser Datensatz wurde ".$zustand . " von " . $myUser->getName() . " verändert.";
+				
 		}
 
 		if ($conflict)
@@ -1010,7 +1012,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		$this->tab_new();
 
 		$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=0&folder=".urlencode($_REQUEST["folder"])."&type=".$_REQUEST["type"]."&sortorder=".$_REQUEST["sortorder"]."&p=".$_REQUEST["p"]."&a=".$_REQUEST["a"];
-		$this->tab_addEntry("Eigenschaften", $url, "b_konfig.gif");
+		$this->tab_addEntry(locale("Properties"), $url, "b_konfig.gif");
 
 
 
@@ -1019,7 +1021,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		if ($blocknr_versionen==1)
 		{
 			$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=1&folder=".urlencode($_REQUEST["folder"])."&type=".$_REQUEST["type"]."&sortorder=".$_REQUEST["sortorder"]."&p=".$_REQUEST["p"]."&a=".$_REQUEST["a"];
-			$this->tab_addEntry("Versionen", $url, "b_version.gif");
+			$this->tab_addEntry(locale("Versions"), $url, "b_version.gif");
 			$blocknr_versionen = 1;
 		}
 
@@ -1029,7 +1031,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 
 			$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=2&folder=".urlencode($_REQUEST["folder"])."&type=".$_REQUEST["type"]."&sortorder=".$_REQUEST["sortorder"]."&p=".$_REQUEST["p"]."&a=".$_REQUEST["a"];
-			$this->tab_addEntry("Bearbeiten", $url, "b_edit.gif");
+			$this->tab_addEntry(locale("Edit"), $url, "b_edit.gif");
 
 		}
 
@@ -1091,12 +1093,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		global $myRequest;
 		global $myPT;
 
-		$this->tab_draw("Eigenschaften");
+		$this->tab_draw(locale("Properties"));
 
 		$this->workarea_start_draw();
-		$html = $this->workarea_form_text("Titel", "bez", $myObj->bez);
-		$html .= $this->workarea_form_text("Alternate", "alt", $myObj->alt);
-		$this->workarea_row_draw("Bezeichnung", $html);
+		$html = $this->workarea_form_text(locale("Title"), "bez", $myObj->bez);
+		$html .= $this->workarea_form_text(locale("Alternate"), "alt", $myObj->alt);
+		$this->workarea_row_draw(locale("Name"), $html);
 		if ($myObj->type == MB_IMAGE)
 		{
 			$myPT->startBuffer();
@@ -1107,7 +1109,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
   			?></a><br><br><input name="userfile" type="file" class="input"><?php
 
   			$html = $myPT->stopBuffer();
-  			$this->workarea_row_draw("Bild (".$myObj->x."x".$myObj->y.")", $html);
+  			$this->workarea_row_draw(locale("Image (%1x%2)",array($myObj->x,$myObj->y)), $html);
 		}
 		else
 		{
@@ -1117,7 +1119,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			<br><br><input name="userfile" type="file" class="input">
   			<?php
   			$html = $myPT->stopBuffer();
-  			$this->workarea_row_draw("Dokument", $html);
+  			$this->workarea_row_draw(locale("Document"), $html);
 		}
 
 
@@ -1180,36 +1182,36 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		</select>&nbsp;<input name="folder3_new" type="text" class="input" value="" style="width:200px" onfocus="document.forms.editform.folder3.selectedIndex=0;"><br>
 		<?php
 		$html = $myPT->stopBuffer();
-		$this->workarea_row_draw("Ordner", $html);
+		$this->workarea_row_draw(locale("Folder"), $html);
 
 		$html = $this->workarea_form_textarea("", "keywords", $myObj->keywords);
-		$this->workarea_row_draw("Keywords", $html);
+		$this->workarea_row_draw(locale("Keywords"), $html);
 
 		$html = $this->workarea_form_textarea("", "comment", $myObj->comment, 10);
-		$this->workarea_row_draw("Kommentar", $html);
+		$this->workarea_row_draw(locale("Comment"), $html);
 
 		$sql = "SELECT grp_bez,grp_type FROM mediagroup WHERE grp_id=".$myObj->grp_id;
 		$rs = $myDB->query($sql);
 		$row = mysql_fetch_array($rs);
-		$this->workarea_row_draw("Mediagruppe", $row["grp_bez"]);
+		$this->workarea_row_draw(locale("Mediagroup"), $row["grp_bez"]);
 		$grp_type = $row["grp_type"];
-		$this->workarea_row_draw("Mimetype", $myObj->mimetype);
+		$this->workarea_row_draw(locale("Mimetype"), $myObj->mimetype);
 
 		if ($myObj->versioncount == 0 AND $grp_type == 2) // nur bei manueller Versionierung
 		{
 			$myPT->startBuffer();
-			?><p>Bezeichnung</p><input name="ver_bez" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile" type="file" class="input"><br><br/><?php
+			?><p><?php echo localeH("Name");?></p><input name="ver_bez" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile" type="file" class="input"><br><br/><?php
 
 
 
 			$html = $myPT->stopBuffer();
-			$this->workarea_row_draw("Neue Version anlegen", $html);
+			$this->workarea_row_draw(locale("Versions"), $html);
 		}
 		else
 		{
 			if ($grp_type != 1 OR $myObj->versioncount > 0)
 			{
-				$this->workarea_row_draw("Versionen", $myObj->versioncount);
+				$this->workarea_row_draw(locale("Versions"), $myObj->versioncount);
 			}
 		}
 
@@ -1218,14 +1220,14 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		echo "<br>";
 		$myAdm->displayChangeStatus($myObj->usr_id, $myObj->cdate);
 		$html = $myPT->stopBuffer();
-		$this->workarea_row_draw("Status", $html);
+		$this->workarea_row_draw(locale("State"), $html);
 		?>
    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
 		    &nbsp;
 			</td>
-            <td align="right" class="windowFooterWhite">	<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses <?php if ($type==MB_IMAGE){echo "Bild";}else{echo "Dokument";} ?> wirklich l&ouml;schen?')"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite">	<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php if ($type==MB_IMAGE){echo localeH("Really delete this image?");}else{echo localeH("Really delete this document?");} ?>')"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 		<?php
@@ -1276,7 +1278,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	 		<a href="<?php echo $myObj->url ?> " target="_blank"><?php echo $myObj->filename ?></a>
 			<?php
 			}
-			?></a></td><td><?php if ($grp_type == 2 OR $mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin")){ ?><input type="image" src="img/b_delete.gif" name="ver<?php echo $row["ver_id"] ?>_delete"><?php }else echo"&nbsp;"; ?></td></tr></table><br/><p>Bezeichnung</p><input name="ver<?php echo $row["ver_id"] ?>_bez" type="text" class="input" value="<?php echo htmlentities($bez) ?>" style="width:250px"><?php
+			?></a></td><td><?php if ($grp_type == 2 OR $mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin")){ ?><input type="image" src="img/b_delete.gif" name="ver<?php echo $row["ver_id"] ?>_delete"><?php }else echo"&nbsp;"; ?></td></tr></table><br/><p><?php echo localeH("Name");?></p><input name="ver<?php echo $row["ver_id"] ?>_bez" type="text" class="input" value="<?php echo htmlentities($bez) ?>" style="width:250px"><?php
 			$html = $myPT->stopBuffer();
 			if ($myObj->type == MB_IMAGE)
 			{
@@ -1287,13 +1289,13 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		if ($grp_type == 2) // manuelle Versionen
 		{
 			$myPT->startBuffer();
-			?><p>Bezeichnung</p><input name="ver_bez1" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile1" type="file" class="input"><br><br/>
-<p>Bezeichnung</p><input name="ver_bez2" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile2" type="file" class="input"><br><br/>
-<p>Bezeichnung</p><input name="ver_bez3" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile3" type="file" class="input"><br><br/>
+			?><p><?php echo localeH("Name");?></p><input name="ver_bez1" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile1" type="file" class="input"><br><br/>
+<p><?php echo localeH("Name");?></p><input name="ver_bez2" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile2" type="file" class="input"><br><br/>
+<p><?php echo localeH("Name");?></p><input name="ver_bez3" type="text" class="input" value="" style="width:175px"><br/><br/><input name="versionfile3" type="file" class="input"><br><br/>
 			<?php
 			$html = $myPT->stopBuffer();
 
-			$this->workarea_row_draw("Neue Versionen anlegen", $html);
+			$this->workarea_row_draw(locale("Versions"), $html);
 		}
 		?>
    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -1309,7 +1311,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		$this->workarea_stop_draw();
 	}
 
-
+  /*
 	function displayEdit_OIE($myObj)
 	{
 		global $myDB;
@@ -1393,7 +1395,7 @@ function initoid()
   <?php
 
 	}
-
+  */
 
 	function displayEdit_Painter($myObj)
 	{
@@ -1407,7 +1409,7 @@ function initoid()
 
 
 		$_images =Array();
-		$_images[0]["bez"] = "Original";
+		$_images[0]["bez"] = locale("Original");
 		$_images[0]["url"] = $myObj->url;
 		$_images[0]["tag"] = $myObj->render_thumbX(60);
 		$_images[0]["x"]=$myObj->x;
@@ -1465,7 +1467,7 @@ function initoid()
 
 
 		$url_versionselect = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=2&folder=".$this->folder."&type=".$this->type."&sortorder=".$this->sortorder."&p=".$this->pagenr."&a=".$this->itemcount."&ver_id=";
-		$this->tab_draw("Bearbeiten");
+		$this->tab_draw(locale("Edit"));
 
 		?>
 		<script type="text/javascript">
@@ -1678,11 +1680,11 @@ function initoid()
 				  Y
 				  <input type="text" class="input" onchange="painter_changeCropParameters(false);" name="size_y" style="width:35px">
 				   &nbsp;<select name="size_method" class="listmenu" onchange="painter_changeCropParameters(false);">
-	                <option value="1" selected>frei</option>
-	                <option value="2" >fixer Ausschnitt</option>
-	                <option value="3" >Verhältnis</option>
-	                <option value="4" >fixe Zielgröße</option>
-	                <option value="5" >Zielrahmen</option>
+	                <option value="1" selected><?php echo localeH("free");?></option>
+	                <option value="2" ><?php echo localeH("fixed selection");?></option>
+	                <option value="3" ><?php echo localeH("fixed ratio");?></option>
+	                <option value="4" ><?php echo localeH("fixed size");?></option>
+	                <option value="5" ><?php echo localeH("target frame");?></option>
 				  </select>
 				  </td>
 	              <td class="padding10"> 
@@ -1704,12 +1706,12 @@ function initoid()
 				  <option value="20">20</option>
 				  <option value="10">10</option>
 				  </select>
-	              &nbsp;Schärfen: <select name="size_sharpening" class="listmenu">
-	                <option value="0" >ohne</option>
-	                <option value="1" >leicht</option>
-	                <option value="2" >normal</option>
-	                <option value="3" >mittel</option>
-	                <option value="4" >stark</option>
+	              &nbsp;<?php echo localeH("Sharpen");?>: <select name="size_sharpening" class="listmenu">
+	                <option value="0" ><?php echo localeH("none");?></option>
+	                <option value="1" ><?php echo localeH("light");?></option>
+	                <option value="2" ><?php echo localeH("normal");?></option>
+	                <option value="3" ><?php echo localeH("strong");?></option>
+	                <option value="4" ><?php echo localeH("very strong");?></option>
 				  </select>
 				  </td>					
 	            </tr>
@@ -1752,9 +1754,9 @@ function initoid()
 	            <tr>
 
 	              <td class="padding10">
-	              Aktion:&nbsp;<select name="size_versionaction" class="listmenu">
-	                <option value="0">Version überschreiben</option>
-	                <option value="1" <?php if ($ver_id==0){echo 'selected="selected"';} ?>>neue Version:</option>
+	              <?php echo localeH("Action");?>:&nbsp;<select name="size_versionaction" class="listmenu">
+	                <option value="0"><?php echo localeH("Overwrite version");?></option>
+	                <option value="1" <?php if ($ver_id==0){echo 'selected="selected"';} ?>><?php echo localeH("New version");?>:</option>
 				  </select>
 	  			  <input type="text" class="input" name="size_newversion" style="width:200px" >		  
 				
@@ -1785,7 +1787,7 @@ function initoid()
             <td class="windowFooterWhite">
         <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="Vorschau" onclick="preview(<?php echo $myObj->id ?>,<?php echo $ver_id ?>)">
             </td>
-            <td align="right" class="windowFooterWhite"><?php if ($ver_id!=0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:if (confirm('Diese Version wirklich l&ouml;schen?')){document.forms.editform.deleteversion.value=1;document.forms.editform.submit();}"><?php } ?> <input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" onclick="document.forms.editform.submit();">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($ver_id!=0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:if (confirm('<?php echo localeH("Really delete this version?");?>')){document.forms.editform.deleteversion.value=1;document.forms.editform.submit();}"><?php } ?> <input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" onclick="document.forms.editform.submit();">&nbsp;&nbsp;</td>
           </tr>
         </table>
       		</td>
@@ -1851,7 +1853,7 @@ function initoid()
 ?>
     <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Suche</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Search");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -1859,13 +1861,13 @@ function initoid()
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20" class="tableHead">ID</td>
-			<td width="70" class="tableHead">Abbildung</td>
-            <td class="tableHead">Bezeichnung</td>
-			<td width="80" class="tableHead">Gruppe/Ordner</td>
-     		<td width="80" class="tableHead">Benutzer</td>
+            <td width="20" class="tableHead"><?php echo localeH("ID");?></td>
+			<td width="70" class="tableHead"><?php echo localeH("Thumb");?></td>
+            <td class="tableHead"><?php echo localeH("Name");?></td>
+			<td width="80" class="tableHead"><?php echo localeH("Group/Folder");?></td>
+     		<td width="80" class="tableHead"><?php echo localeH("User");?></td>
 			<td width="10" class="tableHead">&nbsp;</td>
-            <td width="20" align="right" class="tableHead">Aktion</td>
+            <td width="20" align="right" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
 		  <tr>
             <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -1939,7 +1941,7 @@ function initoid()
 			<td class="tableBody"><?php echo $_mediagroups[$row_data["grp_id"]] ?> / <?php echo $row_data["med_logical_folder1"] ?></td>
 		    <td class="tableBody"><?php if($row_data["med_date"]!=0){echo date('d.m.Y H:i',$row_data["med_date"]);} ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td>&nbsp;</td>
-			<td align="right" nowrap class="tableBody"><a href="#" onclick="lightbox_switch(<?php echo $row_data["med_id"] ?>,0);return false;"><img src="img/b_pinadd.gif" alt="Objekt in Sammelbox legen / aus Sammelbox nehmen" title="Objekt in Sammelbox legen / aus Sammelbox nehmen" width="22" height="22" border="0" align="absmiddle"></a> <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>&folder=<?php echo urlencode($row_data["med_logical_folder1"]) ?>&type=0&sortorder=1&p=1&a=10"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
+			<td align="right" nowrap class="tableBody"><a href="#" onclick="lightbox_switch(<?php echo $row_data["med_id"] ?>,0);return false;"><img src="img/b_pinadd.gif" alt="<?php echo localeH("Put into / Take out of lightbox");?>" title="<?php echo localeH("Put into / Take out of lightbox");?>" width="22" height="22" border="0" align="absmiddle"></a> <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>&folder=<?php echo urlencode($row_data["med_logical_folder1"]) ?>&type=0&sortorder=1&p=1&a=10"><img src="img/b_edit.gif" alt="<?php echo localeH("edit");?>" width="22" height="22" border="0" align="absmiddle"></a></td>
             
             </tr>
           <tr>
@@ -1998,26 +2000,26 @@ function initoid()
 		<input type="hidden" name="b" value="1">
 				   
 		<?php
-		$headline = "Mediaobjekte hochladen";
+		$headline = locale("Upload files");
 		$this->displayHeadline($headline);
 
 		$this->tab_new();
 		$url = "backend.php?page=Editor,Media,upload&grp_id=".$this->grp_id."&folder=".urlencode($this->folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount;
-		$this->tab_addEntry("Eigenschaften", $url, "b_konfig.gif");
-		$this->tab_draw("Eigenschaften");
+		$this->tab_addEntry(locale("Properties"), $url, "b_konfig.gif");
+		$this->tab_draw(locale("Properties"));
 
 		$this->workarea_start_draw();
-		$html = $this->workarea_form_text("Titel","bez","");
-		$html .= $this->workarea_form_text("Alternate","alt","");
-		$this->workarea_row_draw("Bezeichnung",$html);
+		$html = $this->workarea_form_text(locale("Title"),"bez","");
+		$html .= $this->workarea_form_text(locale("Alternate"),"alt","");
+		$this->workarea_row_draw(locale("Name"),$html);
 
 		$myPT->startBuffer();
   		?>
   		<input name="userfile" type="file" class="input"><br>
-  		<input type="checkbox" value="1" name="documentonly"> Bilder als Dokumente handhaben    		
+  		<input type="checkbox" value="1" name="documentonly"> <?php echo localeH("handle images like documents");?>    		
   		<?php
   		$html = $myPT->stopBuffer();
-  		$this->workarea_row_draw("Bild / Dokument",$html);
+  		$this->workarea_row_draw(locale("Image / Document"),$html);
   		$myPT->startBuffer();
 		?>
 
@@ -2043,13 +2045,13 @@ function initoid()
 		</select>&nbsp;<input name="folder1_new" type="text" class="input" value="" style="width:200px" onfocus="document.forms.editform.folder1.selectedIndex=0;">
 		<?php
 		$html = $myPT->stopBuffer();
-		$this->workarea_row_draw("Ordner",$html);
+		$this->workarea_row_draw(locale("Folder"),$html);
 
 		$html = $this->workarea_form_textarea("","keywords","",$r=4,$x=400,$br=1);
-		$this->workarea_row_draw("Keywords",$html);
+		$this->workarea_row_draw(locale("Keywords"),$html);
 
 		$html = $this->workarea_form_textarea("","comment","",$r=4,$x=400,$br=1);
-		$this->workarea_row_draw("Kommentar",$html);
+		$this->workarea_row_draw(locale("Comment"),$html);
 
 		$myPT->startBuffer();
 		?>
@@ -2066,14 +2068,14 @@ function initoid()
 		}
 
 		$html = $myPT->stopBuffer();
-		$this->workarea_row_draw("Mediagruppe",$html);
+		$this->workarea_row_draw(locale("Mediagroup"),$html);
 		?>
    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
 		    &nbsp;
 			</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="Hochladen">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Upload");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 		<?php
@@ -2118,7 +2120,7 @@ function initoid()
 		<input type="hidden" name="b" value="1">
 				   
 		<?php
-		$headline = "Mediaobjekte importieren";
+		$headline = locale("Import files");
 		$this->displayHeadline($headline);
 
 		$this->tab_new();
@@ -2126,7 +2128,7 @@ function initoid()
 		$this->tab_addEntry("Upload", $url, "b_konfig.gif");
 		$url = "backend.php?page=Editor,Media,import&grp_id=".$this->grp_id."&folder=".urlencode($this->folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount."&b=1";
 		$this->tab_addEntry("Import", $url, "b_konfig.gif");
-		$this->tab_draw("Upload");
+		$this->tab_draw(locale("Upload"));
 
 		$this->workarea_start_draw();
 
@@ -2246,41 +2248,6 @@ function initoid()
 					'; // end $content =
 
 			echo $content;
-
-
-			return;
-			
-			// The following code is never executed.  Can be removed if no problem with the upper solution occurs
-			if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE"))
-			{
-            ?>
-			document.write ('<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" width= "400" height= "400" cobase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">');
-			<?php
-			}
-			else
-			{
-			?>
-			document.write ('<object type="application/x-java-applet;version=1.4.1" width= "400" height= "400" >');
-			<?php	
-			}
-			?>
-			document.write ('<param name="archive" value="<?php echo ADMINFULLURL ?>dndplus.jar">');
-			document.write ('<param name="code" value="com.radinks.dnd.DNDAppletPlus">');
-			document.write ('<param name="name" value="Rad Upload Plus">');
-		   	document.write ('<param name = "url" value = "<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,ddupload&usr_id=<?php echo $mySUser->id ?>&PHPSESSID=<?php echo session_id() ?>">'); 
-		   	document.write ('<param name = "url" value = "<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,ddupload&usr_id=<?php echo $mySUser->id ?>&PHPSESSID=<?php echo session_id() ?>">'); 
-   			document.write ('<param name = "message" value="<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,import&b=98">');
- 		  	<?php
- 		  	if (isset ($_SERVER['PHP_AUTH_USER']))
- 		  	{
- 		  		?>
- 		  		document.write ('<?php echo printf('<param name="chap" value="%s">', base64_encode($_SERVER['PHP_AUTH_USER'].":".$_SERVER['PHP_AUTH_PW'])); ?>');
- 		  		<?php
- 		  	}
-			?>
-			document.write ('</object>');
-			<?php
-
 		}
 		else // DND Lite
 		{
@@ -2344,19 +2311,19 @@ function initoid()
 		<input type="hidden" name="objecttype" value="<?php echo $type ?>">	
 				   
 		<?php
-		$headline = "Mediaobjekte importieren";
+		$headline = locale("Import files");
 		$this->displayHeadline($headline);
 
 		$this->tab_new();
 		$url = "backend.php?page=Editor,Media,import&grp_id=".$this->grp_id."&folder=".urlencode($this->folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount;
-		$this->tab_addEntry("Upload", $url, "b_konfig.gif");
+		$this->tab_addEntry(locale("Upload"), $url, "b_konfig.gif");
 		$url = "backend.php?page=Editor,Media,import&grp_id=".$this->grp_id."&folder=".urlencode($this->folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount."&b=1";
-		$this->tab_addEntry("Import", $url, "b_konfig.gif");
-		$this->tab_draw("Import");
+		$this->tab_addEntry(locale("Import"), $url, "b_konfig.gif");
+		$this->tab_draw(locale("Import"));
 		$this->workarea_start_draw();
 
 
-		$this->workarea_row_headline("Dateien");
+		$this->workarea_row_headline(locale("Files"));
 		if (!file_exists(MEDIABASEPATH . "/import" ))
 		{
 			mkdir (MEDIABASEPATH . "/import" ,UMASK);
@@ -2421,9 +2388,9 @@ function initoid()
 
 
 				$name = "keywords_".sha1($file);
-				$html .= $this->workarea_form_text("Keywords",$name,$keywords);
+				$html .= $this->workarea_form_text(locale("Keywords"),$name,$keywords);
 				$name = "comment_".sha1($file);
-				$html .= $this->workarea_form_textarea("Kommentar",$name,$comment,6);
+				$html .= $this->workarea_form_textarea(locale("Comment"),$name,$comment,6);
 
 				//$this->workarea_row_draw("",$html);
 				?>
@@ -2453,12 +2420,12 @@ function initoid()
 		}
 		if ($n==0)
 		{
-			$this->workarea_row_draw("","Keine Dateien zum Importieren vorhanden.");
+			$this->workarea_row_draw("",locale("Nothing to import."));
 		}
 
 
 
-		$this->workarea_row_headline("Gemeinsame Eigenschaften",true);
+		$this->workarea_row_headline(locale("Shared properties"),true);
 
 		// Mediagroup
 
@@ -2477,16 +2444,16 @@ function initoid()
 		}
 
 		$html = $myPT->stopBuffer();
-		$this->workarea_row_draw("Mediagruppe",$html);
+		$this->workarea_row_draw(locale("Mediagroup"),$html);
 
 		// handling of images/documents
 
 		$myPT->startBuffer();
 		?>
-		<input type="checkbox" value="1" name="documentonly"> Bilder als Dokumente handhaben    		
+		<input type="checkbox" value="1" name="documentonly"> <?php echo localeH("handle images like documents");?>    		
 		<?php
 		$html = $myPT->stopBuffer();
-		$this->workarea_row_draw("Bild / Dokument",$html);
+		$this->workarea_row_draw(locale("Image / Document"),$html);
 
 		$myPT->startBuffer();
 
@@ -2515,20 +2482,20 @@ function initoid()
 		</select>&nbsp;<input name="folder1_new" type="text" class="input" value="" style="width:250px" onfocus="document.forms.editform.folder1.selectedIndex=0;">
 		<?php
 		$html = $myPT->stopBuffer();
-		$this->workarea_row_draw("Ordner",$html);
+		$this->workarea_row_draw(locale("Folder"),$html);
 
 		$html = $this->workarea_form_textarea("","keywords","",$r=4,$x=400,$br=1);
-		$this->workarea_row_draw("Keywords",$html);
+		$this->workarea_row_draw(locale("Keywords"),$html);
 
 		$html = $this->workarea_form_textarea("","comment","",$r=4,$x=400,$br=1);
-		$this->workarea_row_draw("Kommentar",$html);
+		$this->workarea_row_draw(locale("Comment"),$html);
 
 		$myPT->startBuffer();
 		?>
-		<input type="checkbox" value="1" name="lightbox"> Medien in die Sammelbox aufnehmen    		
+		<input type="checkbox" value="1" name="lightbox"> <?php echo localeH("add objects to lightbox");?>   		
 		<?php
 		$html = $myPT->stopBuffer();
-		$this->workarea_row_draw("Sammelbox",$html);
+		$this->workarea_row_draw(locale("Lightbox"),$html);
 
 		?>
    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -2536,7 +2503,7 @@ function initoid()
             <td class="windowFooterWhite">
 		    &nbsp;
 			</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="Importieren">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Import");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 		<?php
@@ -2593,7 +2560,7 @@ function initoid()
 				break;
 		}
 
-		$myLog->log("Mediaobjekt " . $img_id . " bearbeitet.",PT_LOGFACILITY_SYS);
+		$myLog->log("Mediaobject " . $img_id . " edited.",PT_LOGFACILITY_SYS);
 
 		// Snapshot
 		if ($myPT->getIPref("edit_media.build_snapshot")==1)
@@ -2760,12 +2727,12 @@ function initoid()
 		{
 			$myMB = new PhenotypeMediabase();
 			$myMB->deleteMediaObject($id);
-			$this->_params["info"]="Mediaobjekt gelöscht.";
+			$this->_params["info"]=locale("Object deleted.");
 			$this->gotoPage("Editor","Media","browse",$this->_params);
 		}
 
 
-		$this->_params["feedback"]="Änderungen gespeichert.";
+		$this->_params["feedback"]=locale("Changes saved.");
 
 		$sql = "SELECT grp_bez,grp_type FROM mediagroup WHERE grp_id=".$myObj->grp_id;
 		$rs = $myDB->query($sql);
@@ -2836,7 +2803,7 @@ function initoid()
 			$isize = getimagesize($_FILES[$fname]["tmp_name"]);
 			if ($isize[2] < 1 OR $isize[2] > 3)
 			{
-				$this->_params["error"]="Datei wurde nicht ausgetauscht! Eine Bilddokument kann nur durch Bilder vom Typ JPG/GIF/PNG ersetzt werden.";
+				$this->_params["error"]=locale("msg_error_object_not_saved");
 				$this->_params["feedback"]="";
 				$size=0;
 			}
@@ -2878,7 +2845,7 @@ function initoid()
 			$myMB->setMediaGroup($myObj->grp_id);
 
 
-			$this->_params["info"]="Erste Version hinzugefügt.";
+			$this->_params["info"]=locale("First version added");
 			$this->_params["feedback"]="";
 			$this->_params["b"]=1;
 
@@ -2887,7 +2854,7 @@ function initoid()
 				$rc = $myMB->uploadImageVersion($fname, $myRequest->get("ver_bez"), $id);
 				if ($rc == false)
 				{
-					$this->_params["alert"] = "Fehler beim Hochladen einer Bildversion. Achtung! Versionen eines Bildes müssen immer vom Typ JPEG, GIF oder PNG sein.";
+					$this->_params["alert"] = locale("msg_error_imageversionupload");
 					$this->_params["feedback"]="";
 					$this->_params["info"]="";
 				}
@@ -2932,7 +2899,7 @@ function initoid()
 			$this->noAccess();
 		}
 
-		$this->_params["feedback"]="Änderungen gespeichert.";
+		$this->_params["feedback"]=locale("Changes saved.");
 
 		$sql = "SELECT * FROM mediaversion WHERE med_id = ".$id;
 		$rs = $myDB->query($sql);
@@ -2942,7 +2909,7 @@ function initoid()
 
 			if ($bez=="")
 			{
-				$this->_params["alert"] .= "Ungültiger Versionsname.<br/>";
+				$this->_params["alert"] .= locale("illegal versionname")."<br/>";
 				$this->_params["feedback"]="";
 			}
 			if ($bez != $row["ver_bez"] AND $bez!="")
@@ -2955,7 +2922,7 @@ function initoid()
 				$row2 = mysql_fetch_array($rs2);
 				if ($row2["C"]!=0)
 				{
-					$this->_params["alert"] .=  "Versionsbezeichnung <b>" . $row["ver_bez"] . "</b> kann nicht nach <b>" . $bez . "</b> geändert werden. Versionsname bereits vorhanden.\n";
+					$this->_params["alert"] .=  locale("msg_error_versionnamechange",array($row["ver_bez"],$bez));
 					$this->_params["feedback"]="";
 				}
 				else
@@ -2971,7 +2938,7 @@ function initoid()
 			{
 				$myMB = new PhenotypeMediabase();
 				$myMB->deleteMediaObjectVersion($id, $row["ver_id"]);
-				$this->_params["info"]="Version gelöscht.";
+				$this->_params["info"]=locale("Version deleted.");
 				$this->_params["feedback"]="";
 			}
 		}
@@ -2990,7 +2957,7 @@ function initoid()
 					$rc = $myMB->uploadImageVersion($fname, $myRequest->get("ver_bez".$i), $id);
 					if ($rc == false)
 					{
-						$this->_params["alert"] .= "Fehler beim Hochladen einer Bildversion. Achtung! Versionen eines Bildes müssen immer vom Typ JPEG, GIF oder PNG sein.";
+						$this->_params["alert"] .= locale("msg_error_imageversionupload");
 						$this->_params["feedback"]="";
 					}
 				} else
@@ -3016,7 +2983,7 @@ function initoid()
 		{
 			$myMB = new PhenotypeMediabase();
 			$myMB->deleteMediaObjectVersion($img_id,$ver_id);
-			$this->_params["info"]="Version gelöscht";
+			$this->_params["info"]=locale("Version deleted.");
 			$this->_params["ver_id"]=0;
 			return;
 		}
@@ -3073,11 +3040,11 @@ function initoid()
 							$row = mysql_fetch_array($rs);
 							$ver_bez = $row["ver_bez"];
 						}
-						$this->_params["feedback"]="Änderungen gespeichert.";
+						$this->_params["feedback"]=locale("Changes saved");
 					}
 					else
 					{
-						$this->_params["alert"] = "Original kann nicht überschrieben werden. Es wird eine neue Version angelegt<br/>";
+						$this->_params["alert"] = locale("msg_error_overwrite_original")."<br/>";
 					}
 				}
 			}
@@ -3125,7 +3092,7 @@ function initoid()
 
 		if ($size==false)
 		{
-			$this->_params["error"] = "Probleme beim Öffnen der Ausgangsdatei. Bildformat wird nicht unterstützt.";
+			$this->_params["error"] = locale("msg_error_readimage");
 			return;
 		}
 
@@ -3141,7 +3108,7 @@ function initoid()
 				$sourceImage = imagecreatefrompng($myObj->file);
 				break;
 			default:
-				$this->_params["error"] = "Unbekannter Mimetype (".$size["mime"]."). Bildformat wird nicht unterstüzt. Operation abgebrochen.";
+				$this->_params["error"] = locale("msg_error_unknown_mimetype",array($size["mime"]));
 				return;
 				break;
 		}
@@ -3171,7 +3138,7 @@ function initoid()
 
 			if ($zw==0 OR $zh==0)
 			{
-				$this->_params["alert"]="Fehlerhafte Formatwahl. Keine gültige Größe für Zielrahmen angegeben. Skalierung wurde nicht durchgeführt.";
+				$this->_params["alert"]=locale("msg_error_wrongscalingparams");
 				//$this->gotoPage("Editor","Media","edit",$_params);
 			}
 			else
@@ -3340,7 +3307,7 @@ function initoid()
 
 		if (!$id) // Hochladen fehlgeschlagen
 		{
-			$this->_params["error"]="Upload fehlgeschlagen!";
+			$this->_params["error"]=locale("Upload failed!");
 			$this->gotoPage("Editor","Media","browse",$this->_params);
 		}
 
@@ -3379,7 +3346,7 @@ function initoid()
 		$this->_params["type"]=0;
 		$this->_params["sortorder"]=1;
 		$this->_params["p"]=1;
-		$this->_params["info"]="Dokument hochgeladen.";
+		$this->_params["info"]=locale("Document upload succesful");
 		$this->gotoPage("Editor","Media","browse",$this->_params);
 	}
 
@@ -3642,11 +3609,11 @@ function initoid()
 		$this->tab_new();
 
 		$url = "backend.php?page=Editor,Media,edit&id=" .$myObj->id . "&uid=". $myObj->uid."&b=0";
-		$this->tab_addEntry("Bearbeiten",$url,"b_edit_b.gif");
+		$this->tab_addEntry(locale("Edit"),$url,"b_edit_b.gif");
 
 		$url = "backend.php?page=Editor,Media,rollback&id=" .$myObj->id . "&uid=". $myObj->uid."&b=0";
-		$this->tab_addEntry("Rollback",$url,"b_rollback.gif");
-		$this->tab_draw("Rollback");
+		$this->tab_addEntry(locale("Rollback"),$url,"b_rollback.gif");
+		$this->tab_draw(locale("Rollback"));
 
 		$this->listSnapshots("MO",$dat_id,"Editor","Media");
 
@@ -3665,13 +3632,13 @@ function initoid()
 			$_params["id"]=$myObj->id;
 			$_params["uid"]=$myObj->uid;
 			$_params["b"]=0;
-			$_params["info"]="Snapshot eingespielt.";
+			$_params["info"]=locale("snapshot installed");
 			$this->_params = $_params;
 			$this->gotoPage("Editor","Media","edit",$this->_params);
 		}
 		else
 		{
-			$_params["error"]="Fehler beim Rollback.";
+			$_params["error"]=locale("Error during rollback.");
 			$this->_params = $_params;
 			$this->gotoPage("Editor","Media","",$this->_params);
 		}

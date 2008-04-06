@@ -129,7 +129,10 @@ require (APPPATH . "_host.config.inc.php");
 // Grundinitialisierung
 // ------------------------------------------------------
 
+if (function_exists("date_default_timezone_set"))
+{
 date_default_timezone_set('Etc/GMT-1');
+}
 require (APPPATH . "_application.inc.php");
 $myPT = new Phenotype();
 $myDB = new PhenotypeDatabase();

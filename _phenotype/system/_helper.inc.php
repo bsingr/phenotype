@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
+// Krï¿½mer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:
@@ -42,6 +42,13 @@ function codeHBR($value)
   global $myPT;
   return $myPT->codeHBR($value);
 }
+
+function codeX($value,$utf8=false)
+{
+  global $myPT;
+  return $myPT->codeX($value,$utf8);
+}
+
 
 function url_for_page($pag_id,$_params=array(),$lng_id=null,$smartUID="")
 {
@@ -83,3 +90,20 @@ function url_for_symbol($symbol,$params = Array())
 return PhenotypeHelper::url_for_symbol($symbol,$params);
 }
 */
+function locale($token,$_params=Array())
+{
+	global $myPT;
+	return $myPT->locale($token,$_params);
+}
+
+function localeH($token,$_params=Array())
+{
+	global $myPT;
+	return $myPT->localeH($token,$_params);
+}
+
+function localeHBR($token,$_params=Array())
+{
+	global $myPT;
+	return $myPT->localeHBR($token,$_params);
+}

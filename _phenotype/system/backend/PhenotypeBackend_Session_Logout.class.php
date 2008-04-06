@@ -24,6 +24,12 @@
  */
 class PhenotypeBackend_Session_Logout_Standard extends PhenotypeBackend_Session
 {
+  
+  // PhenotypeBackend_Session-Classes don't have their own localization file. It's because some session/login/rights related functions
+  // are located in the PhenotypeBackendStandard class.
+  
+  public $tmxfile = "Phenotype";
+  
 	function execute()
 	{
 		global $myLog;

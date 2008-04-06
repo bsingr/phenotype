@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:body><tmx:tu tuid="Really delete this record?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this record?</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Record deleted.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Record deleted.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Record not found.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Record not found.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Record copied.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Record copied.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			  </tmx:body>
+</tmx:tmx>

@@ -24,6 +24,8 @@
  */
 class PhenotypeBackend_Analyze_Pages_Standard extends PhenotypeBackend
 {
+  public $tmxfile = "Analyze";
+  
 	function execute()
 	{
 		Header("Location: statistics.php?grp_id=-1");

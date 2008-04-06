@@ -24,6 +24,8 @@
  */
 class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 {
+	
+	public $tmxfile = "Editor";
 
 	function execute()
 	{
@@ -61,7 +63,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 ?>
 		<br><table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Aufgaben</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("tasks");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -123,7 +125,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 	?>
 		<br><table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Aufgaben</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("tasks");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -166,12 +168,12 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			<tr>
 	        <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	          <tr>
-	            <td width="20" class="tableHead">ID</td>
-	            <td width="70" class="tableHead">Abbildung</td>
-	            <td class="tableHead">Bezeichnung</td>
-	            <td width="120" class="tableHead">Benutzer</td>
-	            <td width="30" class="tableHead">Status</td>
-	            <td width="50" align="right" class="tableHead">Aktion</td>
+	            <td width="20" class="tableHead"><?php echo localeH("ID");?></td>
+	            <td width="70" class="tableHead"><?php echo localeH("Thumb");?></td>
+	            <td class="tableHead"><?php echo localeH("Name");?></td>
+	            <td width="120" class="tableHead"><?php echo localeH("User");?></td>
+	            <td width="30" class="tableHead"><?php echo localeH("State");?></td>
+	            <td width="50" align="right" class="tableHead"><?php echo localeH("Action");?></td>
 	            </tr>
 			  <tr>
 	            <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -226,7 +228,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
 			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('<?php echo localeH("Really delete record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -273,11 +275,11 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 	            if ($mySUser->checkRight("elm_task"))
 	            {
 				?>
-				<a href="javascript:ticketWizard(0,0,<?php echo $myCO->id ?>,0,0,0)"><img src="img/b_newtask.gif" alt="Neue Aufgabe einstellen" title="Neue Aufgabe einstellen" width="22" height="22" border="0"></a>
+				<a href="javascript:ticketWizard(0,0,<?php echo $myCO->id ?>,0,0,0)"><img src="img/b_newtask.gif" alt="<?php echo localeH("Create new task");?>" title="<?php echo localeH("Create new task");?>" width="22" height="22" border="0"></a>
 				<?php
 	            }
 				?>
-				<a href="backend.php?page=Editor,Content,copy&id=<?php echo $myCO->id ?>"><img src="img/b_copy.gif" alt="Datensatz kopieren" title="Datensatz kopieren" width="22" height="22" border="0"></a>
+				<a href="backend.php?page=Editor,Content,copy&id=<?php echo $myCO->id ?>"><img src="img/b_copy.gif" alt="<?php echo localeH("Copy record");?>" title="<?php echo localeH("Copy record");?>" width="22" height="22" border="0"></a>
 				
 				<?php
 				$tausend = floor($myCO->id /1000);
@@ -285,17 +287,17 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 				$url = "backend.php?page=Editor,Content,debug&id=" . $myCO->id;
 				if ($mySUser->checkRight("superuser")){
 		   		?>
-				<a href="<?php echo $url ?>" target="_blank"><img src="img/b_debug.gif" alt="Debug-Skin anzeigen" title="Debug-Skin anzeigen" width="22" height="22" border="0"></a>
+				<a href="<?php echo $url ?>" target="_blank"><img src="img/b_debug.gif" alt="<?php echo localeH("Display debug skin");?>" title="<?php echo localeH("Display debug skin");?>" width="22" height="22" border="0"></a>
 				<?php
 				}
 				$url = "backend.php?page=Editor,Content,rollback&id=" . $myCO->id;
 				if ($mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin") OR $mySUser->checkRight("elm_rollback")){
 		   		?>
-				<a href="<?php echo $url ?>" ><img src="img/b_rollback.gif" alt="Snapshot einspielen" title="Snapshot einspielen" width="22" height="22" border="0"></a>
+				<a href="<?php echo $url ?>" ><img src="img/b_rollback.gif" alt="<?php echo localeH("Install snapshot");?>" title="<?php echo localeH("Install snapshot");?>" width="22" height="22" border="0"></a>
 				<?php
 				}
 				?>
-				<a href="http://www.phenotype-cms.de/docs.php?v=23&t=2" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>
+				<a href="http://www.phenotype-cms.de/docs.php?v=23&t=2" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>
 				</td>
 	          </tr>
 	        </table></td>
@@ -331,17 +333,17 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			if ($mySUser->checkRight("elm_task"))
 			{
 			?>
-			<a href="javascript:ticketWizard(0,0,0,<?php echo $myObj->id ?>,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" width="22" height="22" border="0"></a>&nbsp;
+			<a href="javascript:ticketWizard(0,0,0,<?php echo $myObj->id ?>,0,0)"><img src="img/b_newtask.gif" alt="<?php echo localeH("Create new task");?>" width="22" height="22" border="0"></a>&nbsp;
 			<?php
 			}
 			$url = "backend.php?page=Editor,Media,rollback&id=" . $myObj->id;
 				
 				if ($mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin") OR $mySUser->checkRight("elm_rollback")){
 		   		?>
-				<a href="<?php echo $url ?>" ><img src="img/b_rollback.gif" alt="Snapshot einspielen" title="Snapshot einspielen" width="22" height="22" border="0"></a>
+				<a href="<?php echo $url ?>" ><img src="img/b_rollback.gif" alt="<?php echo localeH("Install snapshot");?>" title="<?php echo localeH("Install snapshot");?>" width="22" height="22" border="0"></a>
 				<?php
 				}
-				?><a href="#" onclick="lightbox_switch(<?php echo $myObj->id ?>,0);return false;"><img src="img/b_pinadd.gif" alt="Objekt in Sammelbox legen / aus Sammelbox nehmen" title="Objekt in Sammelbox legen / aus Sammelbox nehmen" width="22" height="22" border="0" ></a> <a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" title="Hilfe aufrufen" width="22" height="22" border="0"></a>
+				?><a href="#" onclick="lightbox_switch(<?php echo $myObj->id ?>,0);return false;"><img src="img/b_pinadd.gif" alt="<?php echo localeH("Put into / Take out of lightbox");?>" title="<?php echo localeH("Put into / Take out of lightbox");?>" width="22" height="22" border="0" ></a> <a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" title="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>
 			</td>
           </tr>
         </table></td>

@@ -23,6 +23,8 @@
  */
 class PhenotypeBackendStandard extends PhenotypeLayout
 {
+	public $tmxfile = "Phenotype";
+	
 	public $lay_nr = 1;
 	public $menu_item = 0;
 
@@ -57,6 +59,14 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 	const layout_blank       = 2;
 		
 
+	function __construct()
+	{
+		global $myPT;
+	
+		$myPT->loadTMX($this->tmxfile, PT_LOCALE);
+	}
+	
+	
 	function execute($scope,$action)
 	{
 		global $myRequest;
@@ -101,7 +111,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo $myPT->version ?></title>
+<title>Phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -126,23 +136,23 @@ class PhenotypeBackendStandard extends PhenotypeLayout
             <td class="windowFooterGrey2">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="bottom">
-                  <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert">Kein Zugriff!<br>
+                  <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert"><?php echo localeHBR("msg_no_access");?><br>
                   </div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
                   <td colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
                 </tr>
                 <tr>
-                  <td class="padding20">Benutzername:</td>
+                  <td class="padding20"><?php echo localeH("Username");?>:</td>
                   <td><input type="text" name="user" style="width: 200px" class="input"></td>
                 </tr>
                 <tr>
-                  <td class="padding20">Passwort:</td>
+                  <td class="padding20"><?php echo localeH("Password");?>:</td>
                   <td><input type="password" name="pass" style="width: 200px" class="input"></td>
                 </tr>
                 <tr>
                   <td height="30">&nbsp;</td>
-                  <td><input name="Submit" type="submit" class="buttonGrey2" value="Anmelden" style="width:102px"></td>
+                  <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("Login");?>" style="width:102px"></td>
                 </tr>
             </table></td>
             <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -178,7 +188,7 @@ exit();
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo $myPT->version ?></title>
+<title>Phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -203,22 +213,22 @@ exit();
             <td class="windowFooterGrey2">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="bottom">
-                  <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert">Session abgelaufen! Bitte melden Sie sich erneut an.</div></td>
+                  <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert"><?php echo localeHBR("msg_session_timeout");?></div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
                   <td colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
                 </tr>
                 <tr>
-                  <td class="padding20">Benutzername:</td>
+                  <td class="padding20"><?php echo localeH("Username");?>:</td>
                   <td><input type="text" name="user" style="width: 200px" class="input"></td>
                 </tr>
                 <tr>
-                  <td class="padding20">Passwort:</td>
+                  <td class="padding20"><?php echo localeH("Password");?>:</td>
                   <td><input type="password" name="pass" style="width: 200px" class="input"></td>
                 </tr>
                 <tr>
                   <td height="30">&nbsp;</td>
-                  <td><input name="Submit" type="submit" class="buttonGrey2" value="Anmelden" style="width:102px"></td>
+                  <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("Login");?>" style="width:102px"></td>
                 </tr>
             </table></td>
             <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -396,36 +406,36 @@ exit();
 	{
 		$_menu = Array();
 
-		$_menu[1] = Array ("Start","backend.php?page=Editor,Start");
+		$_menu[1] = Array (locale("Start"),"backend.php?page=Editor,Start");
 
 		if ($this->checkRight("elm_redaktion"))
 		{
-			$_menu[2] = Array ("Redaktion","backend.php?page=Editor");
+			$_menu[2] = Array (locale("Editor"),"backend.php?page=Editor");
 		}
 
-		if ($this->checkRight("elm_extras"))
+		if ($this->checkRight(locale("Extras")))
 		{
 			$_menu[3] = Array ("Extras","backend.php?page=Extras");
 		}
 
 		if ($this->checkRight("elm_analyse"))
 		{
-			$_menu[4] = Array ("Analyse","backend.php?page=Analyze,Pages");
+			$_menu[4] = Array (locale("Analyze"),"backend.php?page=Analyze,Pages");
 		}
 
 		if ($this->checkRight("elm_task"))
 		{
-			$_menu[5] = Array ("Aufgaben","backend.php?page=Ticket,Assess");
+			$_menu[5] = Array (locale("Tasks"),"backend.php?page=Ticket,Assess");
 		}
 
-		$_menu[6] = Array ("Admin","backend.php?page=Admin");
+		$_menu[6] = Array (locale("Admin"),"backend.php?page=Admin");
 
 		if ($this->checkRight("superuser"))
 		{
-			$_menu[7] = Array ("Konfiguration","backend.php?page=Config");
+			$_menu[7] = Array (locale("Config"),"backend.php?page=Config");
 		}
 
-		$_menu[8] = Array ("Info","backend.php?page=Info");
+		$_menu[8] = Array (locale("Info"),"backend.php?page=Info");
 
 		echo '<table width="100%"  border="0" cellspacing="0" cellpadding="0">
 	<tr>
@@ -449,7 +459,7 @@ exit();
 
 		echo '</tr>
 	</table></td>
-	<td align="right" nowrap class="top">Benutzer: '.$this->getUserName(). '<a href="backend.php?page=Session,Logout"><img src="img/topbuttonclose.gif" width="30" height="27" border="0" align="absmiddle" alt=""></a></td>
+	<td align="right" nowrap class="top">'.localeH("User").': '.$this->getUserName(). '<a href="backend.php?page=Session,Logout"><img src="img/topbuttonclose.gif" width="30" height="27" border="0" align="absmiddle" alt=""></a></td>
 	</tr>
 	<tr>
 	<td height="32" colspan="3" class="topShadow">&nbsp;</td>
@@ -486,7 +496,7 @@ exit();
 	      <tr>
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	            <tr>
-	              <td class="windowError"><h1>Fehler</h1>
+	              <td class="windowError"><h1><?php echo localeH("Error");?></h1>
 				    <p><?php echo $myPT->codeHKT($text) ?></p></td>
 	              </tr>
 	        </table></td>
@@ -508,7 +518,7 @@ exit();
 	      <tr>
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	            <tr>
-	              <td class="windowAlert"><h1>Hinweis</h1>
+	              <td class="windowAlert"><h1><?php echo localeH("Alert");?></h1>
 				    <p><?php echo $myPT->codeHKT($text) ?></p></td>
 	              </tr>
 	        </table></td>
@@ -530,7 +540,7 @@ exit();
 	      <tr>
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	            <tr>
-	              <td class="windowInfo"><h1>Hinweis</h1>
+	              <td class="windowInfo"><h1><?php echo localeH("Info");?></h1>
 				    <p><?php echo $myPT->codeHKT($text) ?></p></td>
 	              </tr>
 	        </table></td>
@@ -553,7 +563,7 @@ exit();
 	      <tr>
 	        <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 	            <tr>
-	              <td class="windowFeedback"><h1>Info</h1>
+	              <td class="windowFeedback"><h1><?php echo localeH("Feedback");?></h1>
 				    <p><?php echo $myPT->codeHKT($text) ?></p></td>
 	              </tr>
 	        </table></td>
@@ -701,7 +711,7 @@ exit();
 		 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('<?php echo $confirmstring ?>')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo $confirmstring ?>')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
     <?php
@@ -771,11 +781,11 @@ exit();
         <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           <tr>
 	          <tr>
-	            <td width="20" class="tableHead">ID</td>
-	            <td width="120" class="tableHead">Datum</td>
-	            <td width="80" class="tableHead">vor</td>
-	            <td width="*" class="tableHead">Benutzer</td>
-	            <td width="50" align="right" class="tableHead">Aktion</td>
+	            <td width="20" class="tableHead"><?php echo localeH("ID");?></td>
+	            <td width="120" class="tableHead"><?php echo localeH("Date");?></td>
+	            <td width="80" class="tableHead"><?php echo localeH("before");?></td>
+	            <td width="*" class="tableHead"><?php echo localeH("User");?></td>
+	            <td width="50" align="right" class="tableHead"><?php echo localeH("Action");?></td>
 	            </tr>
 			  <tr>
             </tr>
@@ -802,12 +812,12 @@ exit();
 				}
 				else
 				{
-					echo floor($stunden). " Stunden";
+					echo floor($stunden). " ".locale("hours");
 				}
 			}
 			else
 			{
-				echo floor($minuten). " Minuten";
+				echo floor($minuten). " ".locale("minutes");
 			}
 
 			?></td>
