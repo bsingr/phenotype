@@ -21,6 +21,7 @@
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
+$myPT->loadTMX("Config");
 
 if (!$mySUser->checkRight("superuser"))
 {

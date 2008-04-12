@@ -20,6 +20,7 @@
 <?php
 require("_config.inc.php");
 require("_session.inc.php");
+$myPT->loadTMX("Editor_Pages");
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php

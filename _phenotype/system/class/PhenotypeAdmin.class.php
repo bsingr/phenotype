@@ -49,28 +49,28 @@ class PhenotypeAdminStandard
 
 		switch ($modul)
 		{
-			case "Start":	
+			case locale("Start"):	
 				$nr=1;
 			break;
-			case "Redaktion":	
+			case locale("Editor"):	
 				$nr=2;
 			break;	
-			case "Extras":	
+			case locale("Extras"):	
 				$nr=3;
 			break;	
-			case "Analyse":	
+			case locale("Analyze"):	
 				$nr=4;
 			break;	
-			case "Aufgaben":	
+			case locale("Tasks"):	
 				$nr=5;
 			break;	
-			case "Admin":	
+			case locale("Admin"):	
 				$nr=6;
 			break;	
-			case "Konfiguration":	
+			case locale("Config"):	
 				$nr=7;
 			break;													
-			case "Info":	
+			case locale("Info"):	
 				$nr=8;
 			break;
 		}
@@ -253,7 +253,7 @@ class PhenotypeAdminStandard
 		{
 			$myLayout->displayTreeNavi($myNav,$pag_id);
 		}
-		if ($mode==0) // Seite nicht highliten
+		if ($mode==0) // Seite nicht highligten
 		{
 			$myLayout->displayTreeNavi($myNav,"");
 		}
@@ -323,14 +323,19 @@ class PhenotypeAdminStandard
 	function displayChangeStatus($usr_id,$datum)
 	{
 		global $myDB;
-		?>Letzte &Auml;nderung am <?php echo date("d.m.Y H:i",$datum) ?><?php
+		
+		
 		$sql = "SELECT * FROM user WHERE usr_id = " . $usr_id;
 		$rs = $myDB->query($sql);
 		$row = mysql_fetch_array($rs);
 		if (mysql_num_rows($rs)!=0)
 		{
-	?>
-	 durch <?php echo $row["usr_vorname"] ?><?php if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";} ?><?php echo $row["usr_nachname"] ?>.<?php
+		  $user = $row["usr_vorname"]. " " . $row["usr_nachname"];
+		  echo localeH("msg_last_change_by_user",array($datum,$user));
+		}
+		else 
+		{
+		  echo localeH("msg_last_change_anonymous",array($datum));
 		}
 	}
 
@@ -344,8 +349,12 @@ class PhenotypeAdminStandard
 		$row = mysql_fetch_array($rs);
 		if (mysql_num_rows($rs)!=0)
 		{
-	?>
-	 durch <?php echo $row["usr_vorname"] ?><?php if ($row["usr_vorname"]!="" AND $row["usr_nachname"]!=""){echo" ";} ?><?php echo $row["usr_nachname"] ?>.<?php
+		  $user = $row["usr_vorname"]. " " . $row["usr_nachname"];
+		  echo localeH("msg_creation_date_by_user",array($datum,$user));
+		}
+		else 
+		{
+		  echo localeH("msg_creation_date_anonymous",array($datum));
 		}
 	}
 
@@ -488,15 +497,15 @@ class PhenotypeAdminStandard
 	function explorer_draw()
 	{
 		global $myLayout;
-		if ($this->explorer_get("modul")=="Redaktion")
+		if ($this->explorer_get("modul")==locale("Editor"))
 		{
 			switch ($this->explorer_get("submodul"))
 			{
-				case "Content";
+				case locale("Content");
 				$myLayout->explorer_redaktion_content_draw();
 				break;
 
-				case "Media":
+				case locale("Media"):
 					$myLayout->explorer_redaktion_media_draw();
 					break;
 
@@ -505,15 +514,15 @@ class PhenotypeAdminStandard
 					break;
 			}
 		}
-		if ($this->explorer_get("modul")=="Konfiguration")
+		if ($this->explorer_get("modul")==locale("Config"))
 		{
 			$myLayout->explorer_konfiguration_draw($this->explorer_get("submodul"));
 		}
-		if ($this->explorer_get("modul")=="Admin")
+		if ($this->explorer_get("modul")==locale("Admin"))
 		{
 			$myLayout->explorer_admin_draw($this->explorer_get("submodul"));
 		}
-		if ($this->explorer_get("modul")=="Aufgaben")
+		if ($this->explorer_get("modul")==locale("Tasks"))
 		{
 			$myLayout->explorer_aufgaben_draw();
 		}
@@ -806,10 +815,9 @@ class PhenotypeAdminStandard
 		}
 
 		$script = '<?php
-// Phenotype Skript Konsole   
+// Phenotype Script Console   
 //   
-// Für das Skript zwischendurch, um die üblichen test.php-Dateien auf dem   
-// Server zu vermeiden ...   
+// For simple php test actions to avoid the usally forgotten test.php files on the server ...   
 
 phpinfo();   
     

@@ -43,9 +43,9 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="About">
+			<tmx:tu tuid="Info">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Info</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -71,16 +71,23 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Info">
+			<tmx:tu tuid="Feedback">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Info</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Feedback">
+			<tmx:tu tuid="Notice">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Info</tmx:seg>
+        <tmx:seg></tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Attention">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -445,6 +452,13 @@
 			<tmx:tu tuid="Changes saved">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Changes saved</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Layout">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

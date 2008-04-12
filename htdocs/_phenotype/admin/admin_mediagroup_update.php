@@ -19,8 +19,8 @@
 ?>
 <?php
 require("_config.inc.php");
-
 require("_session.inc.php");
+$myPT->loadTMX("Admin");
 ?>
 <?php
 if (!$mySUser->checkRight("elm_admin"))

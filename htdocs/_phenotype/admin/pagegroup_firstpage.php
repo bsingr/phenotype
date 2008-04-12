@@ -20,9 +20,10 @@
 <?php
 require("_config.inc.php");
 require("_session.inc.php");
+$myPT->loadTMX("Editor_Pages");
 ?>
 <?php
-// ToDO: richtiges Recht?
+// :ToDO: richtiges Recht?
 if (!$mySUser->checkRight("elm_pageconfig"))
 {
   $url = "noaccess.php";

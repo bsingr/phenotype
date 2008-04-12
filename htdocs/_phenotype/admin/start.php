@@ -21,7 +21,7 @@
 
 require("_config.inc.php");
 require("_session.inc.php");
-
+$myPT->loadTMX("Editor");
 $myApp->onPress_Start();
 ?>
 <?php

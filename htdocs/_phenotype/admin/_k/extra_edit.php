@@ -21,8 +21,7 @@
 require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
-?>
-<?php
+$myPT->loadTMX("Extras");
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";

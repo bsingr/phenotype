@@ -20,6 +20,7 @@
 <?php
 require("_config.inc.php");
 require("_session.inc.php");
+$myPT->loadTMX("Editor_Pages");
 ?>
 <?php
 if (!$mySUser->checkRight("elm_page"))
@@ -43,7 +44,7 @@ $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo PT_VERSION ?></title>
+<title>Phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -64,7 +65,7 @@ body {
   <tr>
     <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTitle">Automatischer Versionswechsel </td>
+        <td class="windowTitle"><?php echo localeH("Automatic version change");?> </td>
         <td align="right" class="windowTitle"></td>
       </tr>
     </table>
@@ -72,7 +73,7 @@ body {
   <tr>
     <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td colspan="2" valign="top" class="tableBody">Version:<br>
+          <td colspan="2" valign="top" class="tableBody"><?php echo localeH("Version");?>:<br>
                 <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
       <input type="hidden" name="ver_id" value="<?php echo $_REQUEST["ver_id_editing"] ?>">
       <select name="ver_id_2bactivated" class="input" style="width: 170px">
@@ -86,7 +87,7 @@ body {
         </tr>
         <tr>
           <td colspan="2" valign="top" class="tableBody">
-          Umschaltzeitpunkt:<br>
+          <?php echo localeH("Switching time");?>:<br>
                                                                                                                                    <input type="text" value="<?php echo date('d.m.Y H:i') ?>" name="datum" class="input" style="width: 120px"><br>
           </td>
         </tr>
@@ -97,7 +98,7 @@ body {
   <tr>
     <td class="windowFooterWhite"><table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td align="right" class="windowTitle"><input name="Submit" type="submit" class="buttonWhite" value="Eintragen" style="width:102px"></td>
+        <td align="right" class="windowTitle"><input name="Submit" type="submit" class="buttonWhite" value="<?php echo localeH("Insert");?>" style="width:102px"></td>
       </tr>
     </table></td>
   </tr>

@@ -23,7 +23,16 @@
  */
 class PhenotypeBackendStandard extends PhenotypeLayout
 {
-	public $tmxfile = "Phenotype";
+  
+  /**
+   * Name of TMX-File to load for localization, e.g. "Phenotype".
+   *
+   * Please leave the default value empty, since PhenotypeBackend-Classes might be constructed elsewhere and you don't want to loose
+   * your TMX scope then.
+   * 
+   * @var string
+   */
+	public $tmxfile = "";
 	
 	public $lay_nr = 1;
 	public $menu_item = 0;
@@ -61,9 +70,11 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 
 	function __construct()
 	{
-		global $myPT;
-	
-		$myPT->loadTMX($this->tmxfile, PT_LOCALE);
+	  global $myPT;
+		if ($this->tmxfile!="")
+		{
+			$myPT->loadTMX($this->tmxfile, PT_LOCALE);
+		}
 	}
 	
 	
@@ -413,9 +424,10 @@ exit();
 			$_menu[2] = Array (locale("Editor"),"backend.php?page=Editor");
 		}
 
-		if ($this->checkRight(locale("Extras")))
+		
+		if ($this->checkRight("elm_extras"))
 		{
-			$_menu[3] = Array ("Extras","backend.php?page=Extras");
+			$_menu[3] = Array (locale("Extras"),"backend.php?page=Extras");
 		}
 
 		if ($this->checkRight("elm_analyse"))

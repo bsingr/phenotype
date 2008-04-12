@@ -232,5 +232,236 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_last_change_anonymous">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>msg_last_change_anonymous</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_last_change_by_user ">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_creation_date_by_user">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>msg_creation_date_by_user</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_creation_date_anonymous">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>msg_creation_date_anonymous</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Insert component">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Insert component</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Assign Image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Assign Image</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Change Image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Change Image</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove Image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove Image</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Alternate">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Alternate</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_align_left">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>msg_align_left</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_align_center">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>msg_align_center</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_align_right">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>msg_align_right</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove Document">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove Document</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Assign Document">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Assign Document</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_selected_image_not_found">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>msg_selected_image_not_found</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Document assigned">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Document assigned</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Change Document">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Change Document</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Change Document/Image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Change Document/Image</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove Document/Image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove Document/Image</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Assign Document/Image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Assign Document/Image</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Document No.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Document No.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Document/Image assigned">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Document/Image assigned</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select Link">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select Link</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Reset Link">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Reset Link</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add Link">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Add Link</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Link type">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Link type</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Linkname">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Linkname</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Link text">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Link text</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Source">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Source</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="same window">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>same window</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="new window">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>new window</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add first page in group">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Add first page in group</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Search Pages">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Search Pages</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

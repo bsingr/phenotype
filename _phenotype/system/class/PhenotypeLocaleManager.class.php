@@ -40,11 +40,13 @@ class PhenotypeLocaleManagerStandard
     $_token["Phenotype"][]="Analyze";
     $_token["Phenotype"][]="Tasks";
     $_token["Phenotype"][]="Admin";
-    $_token["Phenotype"][]="Info";    
+    $_token["Phenotype"][]="Info";
     $_token["Phenotype"][]="Config";
     $_token["Phenotype"][]="Error";
     $_token["Phenotype"][]="Alert";
     $_token["Phenotype"][]="Feedback";
+    $_token["Phenotype"][]="Notice";
+    $_token["Phenotype"][]="Attention";
     $_token["Phenotype"][]="Delete";
     $_token["Phenotype"][]="Save";
     $_token["Phenotype"][]="ID";
@@ -97,6 +99,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Phenotype"][]="Comment";
     $_token["Phenotype"][]="User";
     $_token["Phenotype"][]="Changes saved";
+    $_token["Phenotype"][]="Layout";
 
     // sessions, rights & login
 
@@ -108,7 +111,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Phenotype"][]="Login";
 
     // snapshot & rollback
-    
+
     $_token["Phenotype"][]="Install snapshot";
     $_token["Phenotype"][]="install snapshot";
     $_token["Phenotype"][]="msg_snapshot_contentobject";
@@ -116,7 +119,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Phenotype"][]="Rollback";
     $_token["Phenotype"][]="snapshot installed";
     $_token["Phenotype"][]="Error during rollback.";
-    
+
     $_token["Editor"][]="msg_recordchange_0";
     $_token["Editor"][]="msg_recordchange_1";
     $_token["Editor"][]="msg_recordchange_n";
@@ -150,6 +153,112 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor"][]="Mediabase";
     $_token["Editor"][]="Date";
     $_token["Editor"][]="Thumb";
+    $_token["Editor"][]="msg_last_change_anonymous";
+    $_token["Editor"][]="msg_last_change_by_user ";
+    $_token["Editor"][]="msg_creation_date_by_user";
+    $_token["Editor"][]="msg_creation_date_anonymous";
+    $_token["Editor"][]="Insert component";
+    $_token["Editor"][]="Assign Image";
+    $_token["Editor"][]="Change Image";
+    $_token["Editor"][]="Remove Image";
+    $_token["Editor"][]="Alternate";
+    $_token["Editor"][]="msg_align_left";
+    $_token["Editor"][]="msg_align_center";
+    $_token["Editor"][]="msg_align_right";
+    $_token["Editor"][]="Remove Document";
+    $_token["Editor"][]="Assign Document";
+    $_token["Editor"][]="msg_selected_image_not_found";
+    $_token["Editor"][]="Document assigned";
+    $_token["Editor"][]="Change Document";
+    $_token["Editor"][]="Change Document/Image";
+    $_token["Editor"][]="Remove Document/Image";
+    $_token["Editor"][]="Assign Document/Image";
+    $_token["Editor"][]="Document No.";
+    $_token["Editor"][]="Document/Image assigned";
+    $_token["Editor"][]="Select Link";
+    $_token["Editor"][]="Reset Link";
+    $_token["Editor"][]="Add Link";
+    $_token["Editor"][]="Link type";
+    $_token["Editor"][]="Linkname";
+    $_token["Editor"][]="Link text";
+    $_token["Editor"][]="Source";
+    $_token["Editor"][]="same window";
+    $_token["Editor"][]="new window";
+    $_token["Editor"][]="Add first page in group";
+    $_token["Editor"][]="Search Pages";
+
+    // Editor / Pages
+
+    $_token["Editor_Pages"][]="Script";
+    $_token["Editor_Pages"][]="Versions";
+    $_token["Editor_Pages"][]="Alternate Title";
+    $_token["Editor_Pages"][]="Cache";
+    $_token["Editor_Pages"][]="Standard";
+    $_token["Editor_Pages"][]="Navigation Behaviour";
+    $_token["Editor_Pages"][]="Invisible";
+    $_token["Editor_Pages"][]="Mimikry";
+    $_token["Editor_Pages"][]="Title%n(multilanguage)";
+    $_token["Editor_Pages"][]="Page name";
+    $_token["Editor_Pages"][]="Version Name";
+    $_token["Editor_Pages"][]="Comment";
+    $_token["Editor_Pages"][]="Meta";
+    $_token["Editor_Pages"][]="msg_editquickfinder1";
+    $_token["Editor_Pages"][]="msg_editquickfinder2";
+    $_token["Editor_Pages"][]="Search terms";
+    $_token["Editor_Pages"][]="Search";
+    $_token["Editor_Pages"][]="URLs%n(multilanguage)";
+    $_token["Editor_Pages"][]="smartURL (optional)";
+    $_token["Editor_Pages"][]="URLs";
+    $_token["Editor_Pages"][]="UID";
+    $_token["Editor_Pages"][]="Really delete this page?";
+    $_token["Editor_Pages"][]="Stats";
+    $_token["Editor_Pages"][]="Date";
+    $_token["Editor_Pages"][]="PIs";
+    $_token["Editor_Pages"][]="Chart";
+    $_token["Editor_Pages"][]="marks the average value";
+    $_token["Editor_Pages"][]="msg_pagescript";
+    $_token["Editor_Pages"][]="This page does not contain a script.";
+    $_token["Editor_Pages"][]="Pagscript";
+    $_token["Editor_Pages"][]="Includes";
+    $_token["Editor_Pages"][]="HTTP-Header";
+    $_token["Editor_Pages"][]="Last Page Impression";
+    $_token["Editor_Pages"][]="never before";
+    $_token["Editor_Pages"][]="Page is regenerated on next call.";
+    $_token["Editor_Pages"][]="Page valid until";
+    $_token["Editor_Pages"][]="Stats: (Day/Month/Total)";
+    $_token["Editor_Pages"][]="Access time";
+    $_token["Editor_Pages"][]="Build %1 sec (Cache %2)";
+    $_token["Editor_Pages"][]="Cache %1 sec";
+    $_token["Editor_Pages"][]="Cache-State";
+    $_token["Editor_Pages"][]="Preview";
+    $_token["Editor_Pages"][]="No.";
+    $_token["Editor_Pages"][]="Add Version Change";
+    $_token["Editor_Pages"][]="Activate";
+    $_token["Editor_Pages"][]="Add New Version";
+    $_token["Editor_Pages"][]="List of automatic version changes";
+    $_token["Editor_Pages"][]="Time";
+    $_token["Editor_Pages"][]="msg_move_component_upward";
+    $_token["Editor_Pages"][]="msg_move_component_downward";
+    $_token["Editor_Pages"][]="Delete component";
+    $_token["Editor_Pages"][]="Add new page";
+    $_token["Editor_Pages"][]="How to name the new page?";
+    $_token["Editor_Pages"][]="Where to locate the new page within the page tree?";
+    $_token["Editor_Pages"][]="After current page, same level";
+    $_token["Editor_Pages"][]="Before current page, same level";
+    $_token["Editor_Pages"][]="Under current page, lower level";
+    $_token["Editor_Pages"][]="Which template should be used?";
+    $_token["Editor_Pages"][]="Automatic version change";
+    $_token["Editor_Pages"][]="Switching time";
+    $_token["Editor_Pages"][]="msg_pagechange_0";
+    $_token["Editor_Pages"][]="msg_pagechange_1";
+    $_token["Editor_Pages"][]="msg_pagechange_n";
+    $_token["Editor_Pages"][]="msg_firstedit_other_language";
+    $_token["Editor_Pages"][]="Today";
+    $_token["Editor_Pages"][]="No Include";
+    $_token["Editor_Pages"][]="Includes%n(Pre/Post)";
+    $_token["Editor_Pages"][]="Vars";
+    $_token["Editor_Pages"][]="Monitor";
+    $_token["Editor_Pages"][]="visible";
 
     // Editor / Content
 

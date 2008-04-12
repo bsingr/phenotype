@@ -20,7 +20,7 @@
 <?php
 require("_config.inc.php");
 require("_session.inc.php");
-
+$myPT->loadTMX("Editor");
 ?>
 <?php
 $id = (int)$_REQUEST["id"];

@@ -20,8 +20,8 @@
 <?php
 require("_config.inc.php");
 require("_session.inc.php");
-?>
-<?php
+$myPT->loadTMX("Admin");
+
 if (!$mySUser->checkRight("elm_admin"))
 {
   $url = "noaccess.php";

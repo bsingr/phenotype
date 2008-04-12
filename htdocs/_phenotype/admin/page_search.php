@@ -20,6 +20,7 @@
 <?php
 require("_config.inc.php");
 require("_session.inc.php");
+$myPT->loadTMX("Editor_Pages");
 
 ?>
 <?php
@@ -52,12 +53,12 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 ?>
 <?php
-$myAdm->header("Redaktion");
+$myAdm->header(locale("Editor"));
 ?>
 
 <body>
 <?php
-$myAdm->menu("Redaktion");
+$myAdm->menu(locale("Editor"));
 ?>
 <?php
 // -------------------------------------
@@ -66,7 +67,7 @@ $myAdm->menu("Redaktion");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Redaktion","Seiten");
+$myAdm->explorer_prepare(locale("Editor"),locale("Pages"));
 $myAdm->explorer_set("pag_id",$_REQUEST["id"]);
 $myAdm->explorer_draw();
 ?>
@@ -130,7 +131,7 @@ if ($mySUser->checkRight("elm_page"))
 ?>
     <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Seiten</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Pages");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -138,12 +139,12 @@ if ($mySUser->checkRight("elm_page"))
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20" class="tableHead">ID</td>
-		    <td class="tableHead">Bezeichnung</td>
-			<td width="50" class="tableHead">Gruppe</td>
-      		<td width="120" class="tableHead">Benutzer</td>
-            <td width="30" class="tableHead">Status</td>
-            <td width="50" align="right" class="tableHead">Aktion</td>
+            <td width="20" class="tableHead"><?php echo localeH("ID");?></td>
+		    <td class="tableHead"><?php echo localeH("Name");?></td>
+			<td width="50" class="tableHead"><?php echo localeH("Group");?></td>
+      		<td width="120" class="tableHead"><?php echo localeH("User");?></td>
+            <td width="30" class="tableHead"><?php echo localeH("State");?></td>
+            <td width="50" align="right" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
 		  <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>

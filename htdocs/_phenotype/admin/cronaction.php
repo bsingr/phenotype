@@ -19,7 +19,7 @@
 ?>
 <?php
 require("_config.inc.php");
-
+$myPT->loadTMX("Phenotype");
 
 ?>
 <?php

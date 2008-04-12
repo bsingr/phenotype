@@ -152,6 +152,7 @@ class PhenotypeSystemDataObjectStandard extends PhenotypeDataObject
 
 
 		$file = SYSTEMPATH . "tmx/".$name . "_" . $locale .".tmx";
+	
 		if (file_exists($file))
 		{
 			PhenotypeLocaleManager::addTokens($this,$file,$locale);

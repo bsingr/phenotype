@@ -18,7 +18,9 @@
 // -------------------------------------------------------
 ?>
 <?php
+// :ToDO: Check, wether this this script is still necessary
 require("_config.inc.php");
+$myPT->loadTMX("Phenotype");
 ?>
 <?php
 session_start();

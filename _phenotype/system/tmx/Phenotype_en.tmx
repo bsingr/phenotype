@@ -25,9 +25,9 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Admin</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="About">
+			<tmx:tu tuid="Info">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Info</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Config">
       <tmx:tuv xml:lang="en">
@@ -41,13 +41,17 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Alert</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Info">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Info</tmx:seg>
-      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Feedback">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Info</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Notice">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Attention">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete">
       <tmx:tuv xml:lang="en">
@@ -256,6 +260,10 @@
 			<tmx:tu tuid="Changes saved">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Changes saved</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Layout">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Username">
       <tmx:tuv xml:lang="en">

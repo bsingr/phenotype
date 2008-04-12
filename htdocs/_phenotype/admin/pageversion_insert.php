@@ -20,6 +20,8 @@
 <?php
 require("_config.inc.php");
 require("_session.inc.php");
+$myPT->loadTMX("Editor_Pages");
+$myPT->loadTMX("Editor_Pages");
 ?>
 <?php
 if (!$mySUser->checkRight("elm_page"))
@@ -41,7 +43,7 @@ $row = mysql_fetch_array($rs);
 $mySQL = new SQLBuilder();
 $mySQL->addField("ver_nr",($row["pag_ver_nr_max"]+1),DB_NUMBER);
 $mySQL->addField("pag_id",$id,DB_NUMBER);   
-$mySQL->addField("ver_bez","Neue Version");
+$mySQL->addField("ver_bez",locale("New version"));
 $sql = $mySQL->insert("pageversion");	
 $myDB->query($sql);
 

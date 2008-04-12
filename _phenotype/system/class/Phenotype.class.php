@@ -1857,9 +1857,8 @@ border: 1px solid #cfcfcf;
 	}
 
 
-	public function loadTMX($token,$locale)
-	{
-
+	public function loadTMX($token,$locale=PT_LOCALE)
+  {
 		$myDAO = new PhenotypeSystemDataObject("TMXHelper",array("name"=>$token,"locale"=>$locale));
 
 		$this->TMXHelper = $myDAO;
@@ -1876,6 +1875,10 @@ border: 1px solid #cfcfcf;
 		for ($i=0;$i<=count($_params);$i++)
 		{
 			$s = str_replace("%".($i+1),$_params[$i],$s);
+		}
+		if ($s=="")
+		{
+		  $s="#".$token."#";
 		}
 		return $s;
 		

@@ -145,7 +145,7 @@ class PhenotypeLayoutStandard
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo PT_VERSION ?> - <?php echo $modul ?></title>
+<title>Phenotype <?php echo PT_VERSION ?> - <?php echo $modul ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -193,7 +193,7 @@ class PhenotypeLayoutStandard
 	?>
 	</tr>
 	</table></td>
-	<td align="right" nowrap class="top">Benutzer: <?php echo $mySUser->getName() ?><a href="logout.php"><img src="img/topbuttonclose.gif" width="30" height="27" border="0" align="absmiddle"></a></td>
+	<td align="right" nowrap class="top"><?php echo localeH("User");?>: <?php echo $mySUser->getName() ?><a href="logout.php"><img src="img/topbuttonclose.gif" width="30" height="27" border="0" align="absmiddle"></a></td>
 	</tr>
 	<tr>
 	<td height="32" colspan="3" class="topShadow">&nbsp;</td>
@@ -464,7 +464,7 @@ class PhenotypeLayoutStandard
 			<a href="javascript:ticketWizard(0,0,0,<?php echo $myObj->id ?>,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" width="22" height="22" border="0"></a>&nbsp;
 			<?php
 			}
-			?><a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>
+			?><a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>
 			</td>
           </tr>
         </table></td>
@@ -554,7 +554,7 @@ class PhenotypeLayoutStandard
   <tr>
             <td nowrap width="160" class="narrowingLeft"><a name="pos<?php echo $this->component_count ?>"></a><img src="img/i_add_item.gif" width="22" height="22" align="absbottom">
                 <select name="addtool_<?php echo $pos ?>" onchange="addnew(<?php echo $pos ?>)" class="listmenu" style="width:130px">
-                  <option selected>Baustein einf&uuml;gen</option>
+                  <option selected><?php echo localeH("Insert component");?></option>
 				  <?php @readfile(APPPATH . "components/toolkit" . $toolkit . ".inc.html"); ?>
               </select></td>
             <td width="18"><img src="img/narrowing.gif" width="18" height="26" align="absbottom"></td>
@@ -908,12 +908,12 @@ class PhenotypeLayoutStandard
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20" class="tableHead">ID</td>
-            <td width="70" class="tableHead">Abbildung</td>
-            <td class="tableHead">Bezeichnung</td>
-            <td width="120" class="tableHead">Benutzer</td>
-            <td width="30" class="tableHead">Status</td>
-            <td width="50" align="right" class="tableHead">Aktion</td>
+            <td width="20" class="tableHead"><?php echo localeH("ID");?></td>
+            <td width="70" class="tableHead"><?php echo localeH("Thumb");?></td>
+            <td class="tableHead"><?php echo localeH("Name");?></td>
+            <td width="120" class="tableHead"><?php echo localeH("User");?></td>
+            <td width="30" class="tableHead"><?php echo localeH("State");?></td>
+            <td width="50" align="right" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
 		  <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -964,7 +964,7 @@ class PhenotypeLayoutStandard
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
 			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="content_delete.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="content_delete.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('<?php echo localeH("Really delete record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -984,8 +984,7 @@ class PhenotypeLayoutStandard
 	 <?php echo $html ?>
 	 <?php if ($row["con_anlegen"]==1){ ?>
       <tr>
-        <td class="windowFooterGrey2"><a href="content_insert.php?id=<?php echo $con_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen
-            Datensatz hinzuf&uuml;gen</a></td>
+        <td class="windowFooterGrey2"><a href="content_insert.php?id=<?php echo $con_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new record");?></a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
 	  <?php } ?>
@@ -1092,8 +1091,7 @@ class PhenotypeLayoutStandard
 	   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_image(
-"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,<?php echo $x ?>,<?php echo $y ?>)'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
-hinzuf&uuml;gen</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,<?php echo $x ?>,<?php echo $y ?>)'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Assign Image");?></a></td>
 </tr>
 </table>
 	 <?php
@@ -1105,7 +1103,7 @@ hinzuf&uuml;gen</a></td>
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_image(
-"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,<?php echo $x ?>,<?php echo $y ?>)'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Bild &auml;ndern</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,<?php echo $x ?>,<?php echo $y ?>)'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Change Image");?></a></td>
                   </tr>
                 </table>
        <?php
@@ -1114,8 +1112,7 @@ hinzuf&uuml;gen</a></td>
        <div id="<?php echo $name ?>panel" <?php echo $style ?>>
 	   <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_image('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
-                        entfernen</a></td>
+                    <td nowrap><a href="javascript:reset_image('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Remove Image");?></a></td>
                   </tr>
                 </table>
      <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
@@ -1135,14 +1132,14 @@ hinzuf&uuml;gen</a></td>
  <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-				Alt-Text:<br>
+				<?php echo localeH("Alternate");?>:<br>
 				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
      <?php
      echo "Ausrichtung:<br>";
      $this->iconbar_new();
-     $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","links","Linksb&uuml;ndig");
-     $this->iconbar_addentry("b_picture_center.gif","b_picture_center_active.gif","mittig","Mittig");
-     $this->iconbar_addentry("b_textpic_right.gif","b_textpic_right_active.gif","rechts","Rechtsb&uuml;ndig");
+     $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","links",locale("msg_align_left"));
+     $this->iconbar_addentry("b_picture_center.gif","b_picture_center_active.gif","mittig",locale("msg_align_center"));
+     $this->iconbar_addentry("b_textpic_right.gif","b_textpic_right_active.gif","rechts",locale("msg_align_right"));
      $this->iconbar_draw($name."img_align",$align,"editform");
      //$this->workarea_form_iconbar($name_org."bildausrichtung",$align);
      echo "<br>";
@@ -1176,8 +1173,7 @@ return $myPT->stopBuffer();
        <div id="<?php echo $name ?>panel" <?php echo $style ?>>
 	   <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_image('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Bild
-                        entfernen</a></td>
+                    <td nowrap><a href="javascript:reset_image('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Remove image");?></a></td>
                   </tr>
                 </table>
      <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
@@ -1196,7 +1192,7 @@ return $myPT->stopBuffer();
  <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-				Alt-Text:<br>
+				<?php echo localeH("Alternate");?>:<br>
 				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
      <?php
      echo "Ausrichtung:<br>";
@@ -1243,8 +1239,7 @@ return $myPT->stopBuffer();
                 </table>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
-                        entfernen</a></td>
+                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Remove Document");?></a></td>
                   </tr>
                 </table>
      <table id="<?php echo $name ?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
@@ -1259,7 +1254,7 @@ return $myPT->stopBuffer();
                 }
                 else 
                 {
-                	echo "Fehlerhafte Zuordnung. Dokument Nr. " . $med_id . " nicht vorhanden.";
+                	echo localeH("msg_selected_image_not_found",Array($med_id));
                 }
                 ?>
      </td></tr></table>
@@ -1269,14 +1264,13 @@ return $myPT->stopBuffer();
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_document(
-"editform","<?php echo $name ?>","-1",1,"")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
-hinzuf&uuml;gen</a></td>
+"editform","<?php echo $name ?>","-1",1,"")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Assign Document");?></a></td>
 </tr>
 </table>
      <table id="<?php echo $name ?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-               Dokument hinzugef&uuml;gt.
+               <?php echo localeH("Document assigned.");?>
      </td></tr></table>
 <?php
     }
@@ -1317,13 +1311,12 @@ return $myPT->stopBuffer();
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_document(
-"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Dokument &auml;ndern</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Change Document");?></a></td>
                   </tr>
                 </table>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
-                        entfernen</a></td>
+                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Remove Document");?></a></td>
                   </tr>
                 </table>
      <table id="<?php echo $name ?>panel" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
@@ -1338,7 +1331,7 @@ return $myPT->stopBuffer();
                 }
                 else 
                 {
-                	echo "Fehlerhafte Zuordnung! Dokument Nr. " . $med_id . " nicht vorhanden.";
+                	echo localeH("msg_selected_image_not_found",Array($med_id));
                 }
                 ?>
      </td></tr></table>
@@ -1348,14 +1341,13 @@ return $myPT->stopBuffer();
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_document(
-"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument
-hinzuf&uuml;gen</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Assign Document");?></a></td>
 </tr>
 </table>
      <table id="<?php echo $name ?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-               Dokument hinzugef&uuml;gt.
+               <?php echo localeH("Document assigned.");?>
      </td></tr></table>
 <?php
     }
@@ -1398,13 +1390,12 @@ return $myPT->stopBuffer();
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_media(
-"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild &auml;ndern</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Change Document/Image");?></a></td>
                   </tr>
                 </table>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_media('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild
-                        entfernen</a></td>
+                    <td nowrap><a href="javascript:reset_media('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Remove Document/Image");?></a></td>
                   </tr>
                 </table>
                 <?php
@@ -1418,7 +1409,7 @@ return $myPT->stopBuffer();
                 <td nowrap>
                 <?php
                 $myDoc = new PhenotypeDocument($med_id);
-                echo '<a href="'.$myDoc->url.'" target="_blank">Dokument Nr. ' . $myDoc->id . " - " . $myDoc->bez."</a>";
+                echo '<a href="'.$myDoc->url.'" target="_blank">'. localeH("Document No.") .' ' . $myDoc->id . " - " . $myDoc->bez."</a>";
                 ?>
      </td></tr></table>
 				<?php
@@ -1437,14 +1428,13 @@ return $myPT->stopBuffer();
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_media(
-"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument / Bild
-hinzuf&uuml;gen</a></td>
+"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,"<?php echo $doctype2 ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Assign Document/Image");?></a></td>
 </tr>
 </table>
      <table id="<?php echo $name ?>panel" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
               <tr>
                 <td nowrap>
-               Dokument / Bild hinzugef&uuml;gt.
+               <?php echo localeH("Document/Image assigned.");?>
      </td></tr></table>
 <?php
     }
@@ -1482,7 +1472,7 @@ return $myPT->stopBuffer();
        <div id="<?php echo $name ?>panel">
 	   <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Dokument entfernen</a></td>
+                    <td nowrap><a href="javascript:reset_document('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Remove Document");?></a></td>
                   </tr>
                 </table>
      <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
@@ -1490,7 +1480,7 @@ return $myPT->stopBuffer();
                 <td nowrap>
      <?php
      $myDoc = new PhenotypeDocument($med_id);
-     echo "Dokument Nr. " . $myDoc->id . " - " . $myDoc->bez;
+     echo localeH("Document No.") . " ". $myDoc->id . " - " . $myDoc->bez;
                 ?>
  </td></tr></table>
  </div>
@@ -1525,12 +1515,12 @@ return $myPT->stopBuffer();
 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_link(
-"editform","<?php echo $name ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Referenz ausw&auml;hlen</a></td>
+"editform","<?php echo $name ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Select Link");?></a></td>
                   </tr>
                 </table>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_link('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Link zur&uuml;cksetzen</a></td>
+                    <td nowrap><a href="javascript:reset_link('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Reset Link");?></a></td>
                   </tr>
                 </table>
     <?php }
@@ -1542,14 +1532,14 @@ return $myPT->stopBuffer();
   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:addlink(
-"editform","<?php echo $name ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> Link hinzuf&uuml;gen</a></td>
+"editform","<?php echo $name ?>")'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Add Link");?></a></td>
 </tr>
 </table>
 <?php if ($pageselector==true){ ?>
 <table width="408" border="0" cellpadding="0" cellspacing="0" style="visibility: hidden;display:none" id="<?php echo $name ?>select">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_link(
-"editform","<?php echo $name ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> Referenz ausw&auml;hlen</a></td>
+"editform","<?php echo $name ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Select Link");?></a></td>
                   </tr>
                 </table>
                 <?php }else{ ?>
@@ -1564,7 +1554,7 @@ return $myPT->stopBuffer();
      <?php
      if ($linktype!==false)
      {
-     	echo $this->workarea_form_select2("Linktyp",$name."type",$linktype,$linktype_options,100);
+     	echo $this->workarea_form_select2(locale("Link type"),$name."type",$linktype,$linktype_options,100);
      }
      else 
      {
@@ -1572,7 +1562,7 @@ return $myPT->stopBuffer();
      }
      if ($bez!==false)
      {
-     echo $this->workarea_form_text("Linkbezeichnung",$name."bez",$bez);
+     echo $this->workarea_form_text(locale("Linkname"),$name."bez",$bez);
      }
      else 
      {
@@ -1580,7 +1570,7 @@ return $myPT->stopBuffer();
      }
      if ($linktext!==false)
      {
-     echo $this->workarea_form_textarea("Linktext",$name."text",$linktext,3,300);
+     echo $this->workarea_form_textarea(locale("Link text"),$name."text",$linktext,3,300);
      }
      else 
      {
@@ -1588,13 +1578,13 @@ return $myPT->stopBuffer();
      }
      if ($linksource!==false)
      {
-     echo $this->workarea_form_text("Quelle",$name."source",$linksource,100);
+     echo $this->workarea_form_text(locale("Source"),$name."source",$linksource,100);
      }
      else 
      {
      	echo $this->workarea_form_hidden($name."source","");
      }
-     echo $this->workarea_form_text("URL",$name."url",$url);
+     echo $this->workarea_form_text(locale("URL"),$name."url",$url);
      ?>
      <table cellpadding="0" cellspacing="0" border="0" style="padding-top:4px">
      <tr>
@@ -1654,17 +1644,17 @@ return $myPT->stopBuffer();
 		$url = "pagegroup_select.php";
 		if ($mySUser->checkRight("elm_page"))
 		{
-			$this->tab_addEntry("Seiten",$url,"b_site.gif");
+			$this->tab_addEntry(locale("Pages"),$url,"b_site.gif");
 		}
 		if ($mySUser->checkRight("elm_content"))
 		{
 			$url = "backend.php?page=Editor,Content";
-			$this->tab_addEntry("Content",$url,"b_content.gif");
+			$this->tab_addEntry(locale("Content"),$url,"b_content.gif");
 		}
 		if ($mySUser->checkRight("elm_mediabase"))
 		{
 			$url = "backend.php?page=Editor,Media";
-			$this->tab_addEntry("Media",$url,"b_media.gif");
+			$this->tab_addEntry(locale("Media"),$url,"b_media.gif");
 		}
 		$this->tab_draw("Seiten",$x=260,1)
 ?>
@@ -1672,7 +1662,7 @@ return $myPT->stopBuffer();
         <tr>
           <td class="windowHeaderGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="padding10"><form action="pagegroup_select.php" method="post" name="formGrp">Gruppe:</td>
+              <td class="padding10"><form action="pagegroup_select.php" method="post" name="formGrp"><?php echo localeH("Group");?>:</td>
               <td><select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
 <?php
 $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
@@ -1715,13 +1705,13 @@ if ($mySUser->checkRight("elm_pageconfig"))
        
 
         <tr>
-          <td class="windowFooterGrey2"><a href="javascript:pageWizard(<?php echo $_REQUEST["id"] ?>,<?php echo $myPage->hasChilds() ?>)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Seite hinzuf&uuml;gen </a></td>
+          <td class="windowFooterGrey2"><a href="javascript:pageWizard(<?php echo $_REQUEST["id"] ?>,<?php echo $myPage->hasChilds() ?>)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new page");?> </a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
 <?php }else{ ?>
 <table width="260" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td class="windowFooterGrey2"><a href="pagegroup_insertfirstpage.php?grp_id=<?php echo $grp_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Erste Seite hinzuf&uuml;gen </a></td>
+          <td class="windowFooterGrey2"><a href="pagegroup_insertfirstpage.php?grp_id=<?php echo $grp_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add first page in group");?></a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
 <?php } ?>	
@@ -1751,10 +1741,10 @@ if ($mySUser->checkRight("elm_pageconfig"))
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td colspan="2" class="padding10"><strong>Suche Seiten nach:</strong></td>
+                <td colspan="2" class="paddig10"><strong>Suche Seiten nach:</strong></td>
               </tr>
               <tr>
-                <td class="padding10"> Bezeichnung </td>
+                <td class="padding10"> <?php echo localeH("Search Pages");?> </td>
                 <td>
                 <form action="page_search.php" method="post">
  	  		    <input type="hidden" name="id" value="<?php echo $id ?>">
@@ -1762,12 +1752,12 @@ if ($mySUser->checkRight("elm_pageconfig"))
                 </td>
               </tr>
               <tr>
-                <td class="padding10"> ID </td>
+                <td class="padding10"> <?php echo localeH("ID");?> </td>
                 <td><input type="text" name="i" style="width: 100px" class="input">
                 </td>
               </tr>
               <tr>
-                <td class="padding10"> Volltext </td>
+                <td class="padding10"> <?php echo localeH("Fulltext");?> </td>
                 <td><input type="text" name="v" style="width: 100px" class="input">
                 </td>
               </tr>
@@ -1807,20 +1797,20 @@ if ($mySUser->checkRight("elm_pageconfig"))
 		$url = "pagegroup_select.php";
 		if ($mySUser->checkRight("elm_page"))
 		{
-			$this->tab_addEntry("Seiten",$url,"b_site.gif");
+			$this->tab_addEntry(locale("Pages"),$url,"b_site.gif");
 		}
 		$url = "content.php?r=-1";
-		$this->tab_addEntry("Content",$url,"b_content.gif");
+		$this->tab_addEntry(locale("Content"),$url,"b_content.gif");
 		if ($mySUser->checkRight("elm_mediabase"))
 		{
 			$url = "mediabase.php?folder=-1&type=-1&sortorder=1&p=1&a=10";
-			$this->tab_addEntry("Media",$url,"b_media.gif");
+			$this->tab_addEntry(locale("Media"),$url,"b_media.gif");
 		}
-		$this->tab_draw("Content",$x=260,1);
+		$this->tab_draw(locale("Content"),$x=260,1);
 
 
 		$myNav = new PhenotypeTree();
-		$nav_id_start = $myNav->addNode("&Uuml;bersicht","content.php?r=-1",0,"");
+		$nav_id_start = $myNav->addNode(locale("Overview"),"content.php?r=-1",0,"");
 		$sql = "SELECT * FROM content ORDER BY con_rubrik, con_bez";
 		if ($myPT->getPref("edit_content.flat_tree")==1)
 		{
@@ -1886,10 +1876,10 @@ if ($mySUser->checkRight("elm_pageconfig"))
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td colspan="3" class="padding10"><strong>Suche Content <?php echo $contenttype ?> nach:</strong></td>
+              <td colspan="3" class="padding10"><strong><?php echo localeH("Search Content");?> <?php echo $contenttype ?> <?php echo localeH("for");?>:</strong></td>
             </tr>
             <tr>
-              <td class="padding10">Bezeichnung</td>
+              <td class="padding10"><?php echo localeH("Name");?></td>
               <td>
 			  <form action="content_select.php" method="post">
  	  		  <input type="hidden" name="t" value="<?php echo $myAdm->explorer_get("con_id") ?>">
@@ -1899,12 +1889,12 @@ if ($mySUser->checkRight("elm_pageconfig"))
 			  px" class="input"></td>
             </tr>
             <tr>
-              <td class="padding10"> ID </td>
+              <td class="padding10"> <?php echo localeH("ID");?> </td>
               <td><input type="text" style="width: 100
 			  px" name="i" class="input"></td>
             </tr>
             <tr>
-              <td class="padding10"> Volltext </td>
+              <td class="padding10"> <?php echo localeH("Fulltext");?> </td>
               <td><input type="text" style="width: 100
 			  px" name="v" class="input"></td>
             </tr>
@@ -1925,7 +1915,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
 			{
 		?>
 		<tr>
-          <td class="windowFooterGrey2"><a href="content_insert.php?id=<?php echo $myAdm->explorer_get("con_id") ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen Datensatz hinzuf&uuml;gen </a></td>
+          <td class="windowFooterGrey2"><a href="content_insert.php?id=<?php echo $myAdm->explorer_get("con_id") ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new record");?> </a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
 		<?php
@@ -1956,20 +1946,20 @@ if ($mySUser->checkRight("elm_pageconfig"))
 		$url = "pagegroup_select.php";
 		if ($mySUser->checkRight("elm_page"))
 		{
-			$this->tab_addEntry("Seiten",$url,"b_site.gif");
+			$this->tab_addEntry(locale("Pages"),$url,"b_site.gif");
 		}
 		if ($mySUser->checkRight("elm_content"))
 		{
 			$url = "content.php?r=-1";
-			$this->tab_addEntry("Content",$url,"b_content.gif");
+			$this->tab_addEntry(locale("Content"),$url,"b_content.gif");
 		}
 		$url = "mediabase.php?folder=-1&type=-1&sortorder=1&p=1&a=10";
-		$this->tab_addEntry("Media",$url,"b_media.gif");
-		$this->tab_draw("Media",$x=260,1);
+		$this->tab_addEntry(locale("Media"),$url,"b_media.gif");
+		$this->tab_draw(locale("Media"),$x=260,1);
 ?>
 <?php
 $myNav = new PhenotypeTree();
-$nav_id_top = $myNav->addNode("&Uuml;bersicht","mediabase.php?folder=-1&type=-1&sortorder=1&p=1&a=20",0,"-1");
+$nav_id_top = $myNav->addNode(locale("Overview"),"mediabase.php?folder=-1&type=-1&sortorder=1&p=1&a=20",0,"-1");
 global $myDB;
 $myMB = new PhenotypeMediabase();
 $_folder = $myMB->getFullLogicalFolder();
@@ -2145,7 +2135,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
   <table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <form action="mediabase_upload.php" method="post">
             <tr>
-              <td class="windowTabTypeOnly"><strong>Neue Dateien: </strong></td>
+              <td class="windowTabTypeOnly"><strong><?php echo localeH("New Files");?>: </strong></td>
               <td class="windowTabTypeOnly">
 			    
       <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
@@ -2166,7 +2156,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
       <input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
       <input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">	
 	  <input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">	  
-	  <input name="import" type="submit" class="buttonWhite" id="import2" style="width:102px" value="Importieren"></form></td>
+	  <input name="import" type="submit" class="buttonWhite" id="import2" style="width:102px" value="<?php echo localeH("Import");?>"></form></td>
             </tr>
           </table>
 		  </td>
@@ -2182,10 +2172,10 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td colspan="2" class="padding10"><strong>Suche Media nach:</strong></td>
+                <td colspan="2" class="padding10"><strong><?php echo localeH("Search Media");?>:</strong></td>
               </tr>
               <tr>
-                <td class="padding10"> Bezeichnung </td>
+                <td class="padding10"> <?php echo localeH("Name");?> </td>
                 <td>
                 <form action="media_search.php" method="post">
  	  		    <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
@@ -2198,11 +2188,11 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
                 </td>
               </tr>
               <tr>
-                <td class="padding10"> ID </td>
+                <td class="padding10"> <?php echo localeH("ID");?> </td>
                 <td><input type="text" name="i" style="width: 100px" class="input"></td>
               </tr>
               <tr>
-                <td class="padding10"> Volltext </td>
+                <td class="padding10"> <?php echo localeH("Fulltext");?> </td>
                 <td><input type="text" name="v" style="width: 100px" class="input"></td>
               </tr>
               <tr>
@@ -2293,14 +2283,14 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 				$this->displayTreeNavi($myNav,$myAdm->explorer_get("con_id"));
 				*/
 				break;
-			case "Tools":
-				$this->tab_draw("Tools",$x=260,1);
+			case locale("Tools"):
+				$this->tab_draw(locale("Tools"),$x=260,1);
 				$myNav = new PhenotypeTree();
-				$nav_id_layout    = $myNav->addNode("Konsole","config_console.php",0,"Konsole");
+				$nav_id_layout    = $myNav->addNode(locale("Console"),"config_console.php",0,locale("Console"));
 				$this->displayTreeNavi($myNav,$myAdm->explorer_get("too_id"));
 				break;
-			case "Extras":
-				$this->tab_draw("Extras",$x=260,1);
+			case locale("Extras"):
+				$this->tab_draw(locale("Extras"),$x=260,1);
 				$myNav = new PhenotypeTree();
 				$sql = "SELECT * FROM extra ORDER BY ext_bez";
 				$rs = $myDB->query($sql);
@@ -2316,15 +2306,15 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 
 
 			default:
-				$this->tab_draw("Seiten",$x=260,1);
+				$this->tab_draw(locale("Pages"),$x=260,1);
 
 
 				$myNav = new PhenotypeTree();
 				//$nav_id_layout    = $myNav->addNode("Layout","layout.php",0,"Layout");
-				$nav_id_bausteine = $myNav->addNode("Bausteine","components.php",0,"Bausteine");
-				$nav_id_bgruppen  = $myNav->addNode("Bausteingruppen","toolkit.php",0,"Bausteingruppen");
-				$nav_id_includes  = $myNav->addNode("Includes","includes.php?r=-1",0,"Includes");
-				$nav_id_skripte   = $myNav->addNode("Seitenskripte","pagescripts.php",0,"Seitenskripte");
+				$nav_id_bausteine = $myNav->addNode(locale("Components"),"components.php",0,"Bausteine");
+				$nav_id_bgruppen  = $myNav->addNode(locale("Componentgroups"),"toolkit.php",0,"Bausteingruppen");
+				$nav_id_includes  = $myNav->addNode(locale("Includes"),"includes.php?r=-1",0,"Includes");
+				$nav_id_skripte   = $myNav->addNode(locale("Pagescripts"),"pagescripts.php",0,"Seitenskripte");
 
 				switch ($submodul)
 				{
@@ -2345,7 +2335,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 							$this->displayTreeNavi($myNav,$submodul);
 						}
 						break;
-					case "Bausteine":
+					case locale("Components"):
 						$sql = "SELECT * FROM component ORDER BY com_rubrik,com_bez";
 						$rs = $myDB->query($sql);
 						$rubrik = "";
@@ -2396,7 +2386,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 						break;
 						*/
 						break;
-					case "Bausteingruppen":
+					case locale("Componentgroups"):
 						$sql = "SELECT * FROM componentgroup ORDER BY cog_bez";
 						$rs = $myDB->query($sql);
 						while ($row=mysql_fetch_array($rs))
@@ -2413,7 +2403,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 						}
 
 						break;
-					case "Includes":
+					case locale("Includes"):
 
 						$sql = "SELECT * FROM include ORDER BY inc_rubrik,inc_bez";
 						$rs = $myDB->query($sql);
@@ -2448,7 +2438,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 							}
 						}
 						break;
-					case "Seitenskripte":
+					case locale("Pagescripts"):
 						$sql = "SELECT * FROM page LEFT JOIN pageversion ON page.pag_id = pageversion.pag_id WHERE pag_exec_script=1 ORDER BY grp_id,page.pag_id,pageversion.ver_id";
 						$rs = $myDB->query($sql);
 						while ($row=mysql_fetch_array($rs))
@@ -2495,13 +2485,13 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 
 	$this->tab_new();
 	$url = "packages.php";
-	$this->tab_addEntry("Packages",$url,"b_items.gif");
-	$this->tab_draw("Packages",$x=260,1);
+	$this->tab_addEntry(locale("Packages"),$url,"b_items.gif");
+	$this->tab_draw(locale("Packages"),$x=260,1);
 
 	$myNav = new PhenotypeTree();
-	$myNav->addNode("Paket installieren","packages.php",0,"install");
-	$myNav->addNode("Paket exportieren","package_export.php",0,"export");
-	$myNav->addNode("Cleanup","package_cleanup.php",0,"cleanup");
+	$myNav->addNode(locale("Install Package"),"packages.php",0,"install");
+	$myNav->addNode(locale("Export Package"),"package_export.php",0,"export");
+	$myNav->addNode(locale("Cleanup"),"package_cleanup.php",0,"cleanup");
 
 	$this->displayTreeNavi($myNav,$myAdm->explorer_get("packagemode"));
 	?>
@@ -2524,35 +2514,35 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 		global $mySUser;
 
 		$url = "admin.php";
-		$this->tab_addEntry("Administration",$url,"b_konfig.gif");
+		$this->tab_addEntry(locale("Admin"),$url,"b_konfig.gif");
 
-		$this->tab_draw("Administration",$x=260,1);
+		$this->tab_draw(locale("Admin"),$x=260,1);
 
 
 		$myNav = new PhenotypeTree();
-		$nav_id_users    = $myNav->addNode("Benutzer","backend.php?page=Admin,Users,view",0,"Benutzer");
+		$nav_id_users    = $myNav->addNode(locale("Users"),"backend.php?page=Admin,Users,view",0,locale("User"));
 		if ($myAdm->explorer_get("littleadmin")!=1)
 		{
-			$nav_id_roles    = $myNav->addNode("Rollen","admin_roles.php",0,"Rollen");
-			$nav_id_cache    = $myNav->addNode("Cache","admin_cache.php",0,"Cache");
-			$nav_id_layout    = $myNav->addNode("Layout","layout.php",0,"Layout");
+			$nav_id_roles    = $myNav->addNode(locale("Roles"),"admin_roles.php",0,locale("Roles"));
+			$nav_id_cache    = $myNav->addNode(locale("Cache"),"admin_cache.php",0,locale("Cache"));
+			$nav_id_layout    = $myNav->addNode(locale("Layout"),"layout.php",0,locale("Layout"));
 			//$nav_id_pages    = $myNav->addNode("Seiten","admin_pages.php",0,"Seiten");
-			$nav_id_groups   = $myNav->addNode("Seitengruppen","admin_groups.php",0,"Seitengruppen");
-			$nav_id_content  = $myNav->addNode("Content","admin_content.php",0,"Content");
-			$nav_id_media    = $myNav->addNode("Media","admin_media.php",0,"Media");
-			$nav_id_mediagroups   = $myNav->addNode("Mediagruppen","admin_mediagroups.php",0,"Mediagruppen");
+			$nav_id_groups   = $myNav->addNode(locale("Pagegroups"),"admin_groups.php",0,locale("Pagegroups"));
+			$nav_id_content  = $myNav->addNode(locale("Content"),"admin_content.php",0,locale("Content"));
+			$nav_id_media    = $myNav->addNode(locale("Media"),"admin_media.php",0,locale("Media"));
+			$nav_id_mediagroups   = $myNav->addNode(locale("Mediagroups"),"admin_mediagroups.php",0,locale("Mediagroups"));
 
 
-			$nav_id_subject   = $myNav->addNode("Aufgabenbereiche","admin_subject.php",0,"Aufgabenbereiche");
+			$nav_id_subject   = $myNav->addNode(locale("Task subjects"),"admin_subject.php",0,locale("Task subjects"));
 
-			$nav_id_action   = $myNav->addNode("Aktionen","admin_actions.php",0,"Aktionen");
+			$nav_id_action   = $myNav->addNode(locale("Actions"),"admin_actions.php",0,locale("Actions"));
 			//$nav_id_export   = $myNav->addNode("Export","admin_export.php",0,"Export");
 			//$nav_id_cron     = $myNav->addNode("Wartung","admin_cron.php",0,"Wartung");
 		}
 
 		switch ($submodul)
 		{
-			case "Benutzer":
+			case locale("Users"):
 				$sql = "SELECT * FROM user WHERE usr_status = 1 ORDER BY usr_nachname";
 
 				// Im eingeschränkten Modus nur den angemeldeten Benutzer zeigen
@@ -2575,7 +2565,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 					$this->displayTreeNavi($myNav,$submodul);
 				}
 				break;
-			case "Rollen":
+			case locale("Roles"):
 				$sql = "SELECT * FROM role ORDER BY rol_bez";
 
 				$rs = $myDB->query($sql);
@@ -2593,7 +2583,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 					$this->displayTreeNavi($myNav,$submodul);
 				}
 				break;
-			case "Layout":
+			case locale("Layout"):
 				$sql = "SELECT * FROM layout ORDER BY lay_bez";
 				$rs = $myDB->query($sql);
 				while ($row=mysql_fetch_array($rs))
@@ -2611,7 +2601,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 				}
 				break;
 
-			case "Seitengruppen":
+			case locale("Pagegroups"):
 				$sql = "SELECT * FROM pagegroup ORDER BY grp_bez";
 
 				$rs = $myDB->query($sql);
@@ -2629,7 +2619,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 				}
 				break;
 
-			case "Aufgabenbereiche":
+			case locale("Task subjects"):
 				$sql = "SELECT * FROM ticketsubject ORDER BY sbj_bez";
 
 				$rs = $myDB->query($sql);
@@ -2648,7 +2638,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 				break;
 
 
-			case "Aktionen":
+			case locale("Actions"):
 				$sql = "SELECT * FROM action ORDER BY act_bez";
 
 				$rs = $myDB->query($sql);
@@ -2680,7 +2670,10 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 	<?php
 	}
 
-
+  /**
+   * :TODO: Check if used anywhere
+   *
+   */
 	function explorer_aufgaben_draw()
 	{
 		global $myDB;
@@ -2801,21 +2794,21 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 	  <?php
 	  $this->tab_new();
 	  $url = "javascript:document.forms.form1.p" .$nr . "_mode.value=1;document.forms.form1.submit();";
-	  $this->tab_addEntry("Abrufe",$url,"b_clicks.gif");
+	  $this->tab_addEntry(locale("PIs"),$url,"b_clicks.gif");
 	  $url = "javascript:document.forms.form1.p" .$nr . "_mode.value=2;document.forms.form1.submit();";
-	  $this->tab_addEntry("Verlauf",$url,"b_tracking.gif");
+	  $this->tab_addEntry(locale("Trend"),$url,"b_tracking.gif");
 	  if ($mode==1)
 	  {
-	  	$this->tab_draw("Abrufe",$x=400);
+	  	$this->tab_draw(locale("PIs"),$x=400);
 	  }
 	  else
 	  {
-	  	$this->tab_draw("Verlauf",$x=400);
+	  	$this->tab_draw(locale("Trend"),$x=400);
 	  }
 	  ?>
 	  <?php
 	  // Pruefung, welche Monate sich in der Statistik befinden
-	  $_monat = Array("Januar","Februar","M&auml;rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember");
+	  $_monat = Array(locale("January"),locale("February"),locale("March"),locale("April"),locale("May"),locale("June"),locale("July"),locale("August"),locale("September"),locale("October"),locale("November"),locale("December"));
 	  $sql = "SELECT MIN(sta_datum) AS start FROM page_statistics";
 	  $rs = $myDB->query($sql);
 	  $row = mysql_fetch_array($rs);
@@ -2859,14 +2852,14 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
           <td class="windowHeaderGrey2"><table border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td nowrap class="padding10">
-                  Tagesansicht<br>
+                  <?php echo localeH("Day view");?><br>
 				  <?php
 				  $checked="";
 				  if ($scope=="2"){$checked="checked";}
 				  ?>
                   <input type="radio" name="p<?php echo $nr ?>_scope" value="2" <?php echo $checked; ?> onclick="document.forms.form1.p<?php echo $nr ?>_newscope.value=2;document.forms.form1.submit();">
                   <input name="p<?php echo $nr ?>_datum" type="text" class="input" style="width: 45px" value="<?php echo date("d.m.y",$datum) ?>"><input type="image" src="img/transparent.gif" alt="" width="1" height="1" border="0" align="absmiddle" name="p<?php echo $nr ?>_dtfocus"><input type="image" src="img/b_minus.gif" alt="ein Tag zur&uuml;ck" width="18" height="18" border="0" align="absmiddle" name="p<?php echo $nr ?>_minus"><input type="image" src="img/b_plus.gif" alt="ein Tag vor" width="18" height="18" border="0" align="absmiddle" name="p<?php echo $nr ?>_plus"></td>
-                <td nowrap class="padding10">Monatsansicht<br>
+                <td nowrap class="padding10"><?php echo localeH("Month view");?><br>
 				  <?php
 				  $checked="";
 				  if ($scope=="1"){$checked="checked";}
@@ -2889,7 +2882,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 					   ?>
                     </select></td>
                 <td nowrap class="padding10">
-				Auflistung<br><select name="p<?php echo $nr ?>_anzahl" class="listmenu" onChange="document.forms.form1.submit();">
+				<?php echo localeH("Listing");?><br><select name="p<?php echo $nr ?>_anzahl" class="listmenu" onChange="document.forms.form1.submit();">
                     <?php
                     for ($i=10;$i<=50;$i=$i+10)
                     {
@@ -2964,9 +2957,9 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
         <tr>
           <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td align="center" class="tableHead">Abrufe</td>
-                <td class="tableHead">Seite</td>
-                <td width="200" class="tableHead">Diagramm ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> Mittelwert )</td>
+                <td align="center" class="tableHead"><?php echo localeH("PIs");?></td>
+                <td class="tableHead"><?php echo localeH("Page");?></td>
+                <td width="200" class="tableHead"><?php echo localeH("Chart");?> ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> <?php echo localeH("Average value");?> )</td>
                 </tr>			  
 			  	  <style>
 	  /* Dynamisierung der x-Position für den Mittelwert */
@@ -3069,7 +3062,7 @@ $myDB->query($sql);
                   $checked="";
                   if ($scope=="3"){$checked="checked";}
 				  ?>
-                  <input type="radio" name="p<?php echo $nr ?>_scope" value="3" <?php echo $checked; ?> onclick="document.forms.form1.p<?php echo $nr ?>_newscope.value=3;document.forms.form1.submit();"><strong>Gesamtsicht</strong>
+                  <input type="radio" name="p<?php echo $nr ?>_scope" value="3" <?php echo $checked; ?> onclick="document.forms.form1.p<?php echo $nr ?>_newscope.value=3;document.forms.form1.submit();"><strong><?php echo localeH("Overview");?></strong>
                   </td>					
                 <td nowrap class="padding10">
 <input name="p<?php echo $nr ?>_datum" type="hidden" class="input" style="width: 50px" value="<?php echo date("d.m.y",$datum) ?>">				
@@ -3090,9 +3083,9 @@ if ($scope==1)
         <tr>
           <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td align="center" class="tableHead">Datum</td>
-                <td class="tableHead">Abrufe</td>
-                <td width="200" class="tableHead">Diagramm ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> Mittelwert )</td>
+                <td align="center" class="tableHead"><?php echo localeH("Date");?></td>
+                <td class="tableHead"><?php echo localeH("PIs");?></td>
+                <td width="200" class="tableHead"><?php echo localeH("Chart");?> ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> <?php echo localeH("Average value");?> )</td>
                 <td class="tableHead">&nbsp;</td>
               </tr>			
 <?php
@@ -3146,7 +3139,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 	</style>
  <?php
  $color="red";
- $tag="<strong>heute</strong>";
+ $tag="<strong>".locale("today")."</strong>";
  for ($i=0;$i<=$c_entry;$i++)
  {
  	$vdatum = mktime( 0,0,0,date('m',$startdatum),date('d',$startdatum)-$i,date('Y',$startdatum));
@@ -3155,7 +3148,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
  	if ($tag==date('d.m.Y'))
  	{
  		$color="red";
- 		$tag="<strong>heute</strong>";
+ 		$tag="<strong>".locale("today")."</strong>";
  	}
 
  	$pi=$_pi[$i];
@@ -3183,9 +3176,9 @@ if ($scope==3)
         <tr>
           <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td align="center" class="tableHead">Monat</td>
-                <td class="tableHead">Abrufe</td>
-                <td width="185" class="tableHead">Diagramm ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> Mittelwert )</td>
+                <td align="center" class="tableHead"><?php echo localeH("Month");?></td>
+                <td class="tableHead"><?php echo localeH("PIs");?></td>
+                <td width="185" class="tableHead"><?php echo localeH("Chart");?> ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> <?php echo localeH("Average value");?> )</td>
                 <td class="tableHead">&nbsp;</td>
               </tr>			
 <?php

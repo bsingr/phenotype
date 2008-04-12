@@ -20,7 +20,7 @@
 <?php
 require("_config.inc.php");
 require("_session.inc.php");
-
+$myPT->loadTMX("Editor_Pages");
 ?>
 <?php
 if (!$mySUser->checkRight("elm_page"))
@@ -149,9 +149,10 @@ if (!isset($_REQUEST["editbuffer"]) OR $languagechange == 1)
 
 $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
+
 ?>
 <?php
-$myAdm->header("Redaktion");
+$myAdm->header(locale("Editor"));
 ?>
 <?php
 
@@ -173,7 +174,7 @@ if ($block_nr>0 AND $block_nr<77)
   ?>
   </script>
 <?php
-$myAdm->menu("Redaktion");
+$myAdm->menu(locale("Editor"));
 ?>
 <?php
 // -------------------------------------
@@ -182,7 +183,7 @@ $myAdm->menu("Redaktion");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Redaktion","Seiten");
+$myAdm->explorer_prepare(locale("Editor"),locale("Pages"));
 $myAdm->explorer_set("pag_id",$_REQUEST["id"]);
 $myAdm->explorer_draw();
 ?>
@@ -259,21 +260,22 @@ $minuten = (int)((time()-$datum)/60);
 if ($minuten <10 AND $row_conflict["usr_id"]!=$mySUser->id)
 {
   $zustand="";
-  switch ($minuten)
-  {
-    case 0:
-      $zustand = "gerade";
-      break;
-    case 1:
-      $zustand = "vor 1 Minute";
-      break;
-    default:
-      $zustand = "vor " . $minuten . " Minuten ";
-      break;
+    $myUser = new PhenotypeUser($row_conflict["usr_id"]);
+ switch ($minuten)
+      {
+        case 0:
+          $conflict = locale("msg_pagechange_0",array($myUser->getName()));
+          break;
+        case 1:
+          $conflict = locale("msg_pagechange_1",array($myUser->getName()));
+          break;
+        default:
+          $conflict = locale("msg_pagechange_n",array($myUser->getName(),$minuten));
+          break;
 
-  }
-  $myUser = new PhenotypeUser($row_conflict["usr_id"]);
-  $conflict = "Diese Seite wurde ".$zustand . " von " . $myUser->getName() . " verändert.";
+      }
+
+
 }
 
 if ($conflict)
@@ -283,7 +285,7 @@ if ($conflict)
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td class="windowAlert"><h1>Achtung!</h1>
+              <td class="windowAlert"><h1><php echo localeH("Attention")?>!</h1>
 			    <p><?php echo $conflict ?></p></td>
               </tr>
         </table></td>
@@ -304,8 +306,8 @@ if ($language_copy)
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td class="windowInfo"><h1>Hinweis!</h1>
-			    <p>Diese Seite wurde in der Sprache <strong><?php echo $PTC_LANGUAGES[$_SESSION["lng_id"]] ?></strong> bisher nicht bearbeitet. Es wurde eine aktuelle Kopie der Standardsprache erstellt.</p></td>
+              <td class="windowInfo"><h1><php echo localeH("Notice")?>!</h1>
+			    <p><?php echo localeH("msg_firstedit_other_language",array($PTC_LANGUAGES[$_SESSION["lng_id"]]));?></p></td>
               </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -344,7 +346,7 @@ if ($mySUser->checkRight("elm_task"))
 	?>
 		<br><table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Aufgaben</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Tasks");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -392,7 +394,7 @@ if ($mySUser->checkRight("elm_task"))
      $url = "page_edit.php?id=" .$myPage->id ."&b=0&ver_id=" . $ver_id;
      if ($mySUser->checkRight("elm_pageconfig"))
      {
-       $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
+       $myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
      }
 
      // Versionentab
@@ -402,20 +404,20 @@ if ($mySUser->checkRight("elm_task"))
      if ((mysql_num_rows($rs)>1) OR ($block_nr==99))
      {
        $url = "page_edit.php?id=" .$myPage->id ."&b=99&ver_id=" . $ver_id;
-       $myLayout->tab_addEntry("Versionen",$url,"b_version.gif");
+       $myLayout->tab_addEntry(locale("Versions"),$url,"b_version.gif");
      }
      //if ($mySUser->checkRight("elm_pageconfig"))
      if ($mySUser->checkRight("elm_admin") OR $mySUser->checkRight("superuser"))
      {
        $url = "page_edit.php?id=" .$myPage->id ."&b=88&ver_id=" . $ver_id;
-       $myLayout->tab_addEntry("Skript",$url,"b_skript.gif");
+       $myLayout->tab_addEntry(locale("Script"),$url,"b_skript.gif");
      }
      if ($mySUser->checkRight("elm_pagestatistic"))
      {
        if ($myPage->statistic==true)
        {
          $url = "page_edit.php?id=" .$myPage->id ."&b=77&ver_id=" . $ver_id;
-         $myLayout->tab_addEntry("Statistik",$url,"b_statistic.gif");
+         $myLayout->tab_addEntry(locale("Stats") ,$url,"b_statistic.gif");
        }
      }
      ?>
@@ -425,16 +427,16 @@ if ($mySUser->checkRight("elm_task"))
     // Konfigurationstab
     if ($block_nr==0 AND $mySUser->checkRight("elm_pageconfig"))
     {
-      $myLayout->tab_draw("Konfiguration");
+      $myLayout->tab_draw(locale("Config"));
       $myLayout->workarea_start_draw();
 
       // Eigenschaften
       //$html = $myLayout->workarea_form_text("Titel","titel",$myPage->titel);
-      $html = $myLayout->workarea_form_text("Titel","titel",stripslashes($myPage->titel)); // Changed by Dominique Bös - 2007/08/19
+      $html = $myLayout->workarea_form_text(locale("Title"),"titel",stripslashes($myPage->titel)); // Changed by Dominique Bös - 2007/08/19
 
       if ($myPT->getPref("edit_pages.show_alternative_title")==1)
       {
-        $html.= $myLayout->workarea_form_text("Alternativtitel","alttitel",$myPage->alttitel);
+        $html.= $myLayout->workarea_form_text(locale("Alternate Title"),"alttitel",$myPage->alttitel);
       }
       else
       {
@@ -469,7 +471,7 @@ if ($mySUser->checkRight("elm_task"))
         }
       }
       $_options = $myAdm->buildOptionsByNamedArray($_options,$myPage->lay_id);
-      $html.=$myLayout->workarea_form_select("Layout","template_id",$_options);
+      $html.=$myLayout->workarea_form_select(locale("Layout"),"template_id",$_options);
 
       // Jetzt ausgewählte Seitenvariablen
       if (count($myApp->getEditablePageVars())!=0)
@@ -489,16 +491,16 @@ if ($mySUser->checkRight("elm_task"))
         $options[$sValue["seconds"]] = $sValue["name"];
       }
       $options=$myAdm->buildOptionsByNamedArray($options,$myPage->row["pag_cache"]);
-      $html.=$myLayout->workarea_form_select("Cache","cache",$options,100);
+      $html.=$myLayout->workarea_form_select(locale("Cache"),"cache",$options,100);
 
       // Navigation
       $myPT->startbuffer();
      ?>
-     Navigations-Verhalten:<br>
+     <?php echo localeH("Navigation Behaviour");?>:<br>
      <select name="pag_id_mimikry" style="width: 200px" class="listmenu">
-     <option value="<?php echo $myPage->pag_id ?>">Standard</option>
+     <option value="<?php echo $myPage->pag_id ?>"><?php echo localeH("Standard");?></option>
      <option value="<?php echo $myPage->pag_id ?>">- - - - - - - - - - - - - - - - - - -</option>
-     <!--<option value="-1">Unsichtbar</option>
+     <!--<option value="-1"><?php echo localeH("Invisible");?></option>
      <option value="<?php echo $myPage->pag_id ?>">- - - - - - - - - - - - - - - - - - -</option>-->
      <?php
      $sql = "SELECT * FROM page WHERE pag_id <> 0 AND pag_id_mimikry = pag_id ORDER BY grp_id, pag_bez";
@@ -519,7 +521,7 @@ if ($mySUser->checkRight("elm_task"))
        {
          $selected = "selected";
        }
-       ?><option value="<?php echo $row_page["pag_id"] ?>" <?php echo $selected ?>>Mimikry -> <?php echo $row_page["pag_bez"] ?></option><?php
+       ?><option value="<?php echo $row_page["pag_id"] ?>" <?php echo $selected ?>><?php echo localeH("Mimikry");?> -> <?php echo $row_page["pag_bez"] ?></option><?php
      }
      ?>
      </select>
@@ -558,17 +560,17 @@ if ($mySUser->checkRight("elm_task"))
          }
        }
 
-       $myLayout->workarea_row_draw("Titel<br/>(mehrsprachig)",$html);
+       $myLayout->workarea_row_draw(locale("Title%n(multilanguage)"),$html);
      }
 
      // Meta
 
      //$html = $myLayout->workarea_form_text("Seitenbezeichnung","bez",$myPage->bez);
-     $html = $myLayout->workarea_form_text("Seitenbezeichnung","bez",stripslashes($myPage->bez)); // Changed by Dominique Bös - 2007/08/19
-     $html.= $myLayout->workarea_form_text("Name der Version","ver_bez",$myPage->ver_bez);
-     //$html.=   $myLayout->workarea_form_textarea("Kommentar","comment",$myPage->row["pag_comment"]);
-     $html.=   $myLayout->workarea_form_textarea("Kommentar","comment",stripslashes($myPage->row["pag_comment"])); // Changed by Dominique Bös - 2007/08/19
-     $myLayout->workarea_row_draw("Meta",$html);
+     $html = $myLayout->workarea_form_text(locale("Page name"),"bez",stripslashes($myPage->bez)); // Changed by Dominique Bös - 2007/08/19
+     $html.= $myLayout->workarea_form_text(locale("Version name"),"ver_bez",$myPage->ver_bez);
+     //$html.=   $myLayout->workarea_form_textarea(locale("Comment"),"comment",$myPage->row["pag_comment"]);
+     $html.=   $myLayout->workarea_form_textarea(locale("Comment"),"comment",stripslashes($myPage->row["pag_comment"])); // Changed by Dominique Bös - 2007/08/19
+     $myLayout->workarea_row_draw(locale("Meta"),$html);
 
 
      // Suche
@@ -578,14 +580,14 @@ if ($mySUser->checkRight("elm_task"))
        $myPT->startBuffer();
      ?>
      <input name="usequickfinder" type="checkbox" value="1" <?php if ($myPage->row["pag_quickfinder"]!="") echo"checked"; ?>>
-                    Seite unter:
+                    <?php echo localeH("msg_editquickfinder1");?>
                     <input name="quickfinder" type="text" class="feld" value="<?php echo $myPage->row["pag_quickfinder"] ?>" size="30" />
-                    im Quickfinder anlegen. <br><br>
+                    <?php echo localeH("msg_editquickfinder2");?><br><br>
      <?php
      $html = $myPT->stopBuffer();
      }
-     $html.=   $myLayout->workarea_form_textarea("Suchbegriffe","searchtext",$myPage->row["pag_searchtext"]);
-     $myLayout->workarea_row_draw("Suche",$html);
+     $html.=   $myLayout->workarea_form_textarea(locale("Search terms"),"searchtext",$myPage->row["pag_searchtext"]);
+     $myLayout->workarea_row_draw(locale("Search"),$html);
 
 
      
@@ -601,19 +603,19 @@ if ($mySUser->checkRight("elm_task"))
         
          }
 
-         $myLayout->workarea_row_draw("URLs<br/>(mehrsprachig)",$html);
+         $myLayout->workarea_row_draw(locale("URLs%n(multilanguage)"),$html);
        }
        else 
        {
-         $html = $myLayout->workarea_form_text("Direktzugriff-URL (optional)","pag_url1",$myPage->get("pag_url1"));
-         $myLayout->workarea_row_draw("URLs",$html);
+         $html = $myLayout->workarea_form_text(locale("smartURL (optional)"),"pag_url1",$myPage->get("pag_url1"));
+         $myLayout->workarea_row_draw(locale("URLs"),$html);
        }
      }
      
 
      if ($mySUser->checkRight("superuser"))
      {
-       $myLayout->workarea_row_draw("UID",$myPage->uid."<br>");
+       $myLayout->workarea_row_draw(locale("UID"),$myPage->uid."<br>");
      }
      // Status
      $myPT->startBuffer();
@@ -625,15 +627,15 @@ if ($mySUser->checkRight("elm_task"))
      $myAdm->displayChangeStatus($myPage->row["usr_id"],$myPage->row["pag_date"]);
      $html = $myPT->stopBuffer() . "<br><br>";
 
-     $myLayout->workarea_row_draw("Status",$html);
+     $myLayout->workarea_row_draw(locale("State"),$html);
      // Abschlusszeile
 ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
-        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="Vorschau">
+        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="<?php echo localeH("Preview");?>">
             </td>
-            <td align="right" class="windowFooterWhite">    <?php if ($myPage->hasChilds()==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Seite wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite">    <?php if ($myPage->hasChilds()==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this page?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 
@@ -645,7 +647,7 @@ if ($mySUser->checkRight("elm_task"))
 
     if ($block_nr==77 AND $mySUser->checkRight("elm_pagestatistic")) // Statistik
     {
-      $myLayout->tab_draw("Statistik");
+      $myLayout->tab_draw(locale("Stats"));
       $myLayout->workarea_start_draw();
 
       $datum = mktime( 12 ,00,00,date('m'),date('d')-14,date('Y'));
@@ -687,14 +689,14 @@ if ($mySUser->checkRight("elm_task"))
     </style>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="tableHead">Datum</td>
-            <td align="center" class="tableHead">Abrufe</td>
-            <td width="500" class="tableHead">Diagramm ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> zeigt den Mittelwert an)</td>
+            <td class="tableHead"><?php echo localeH("Date");?></td>
+            <td align="center" class="tableHead"><?php echo localeH("PIs");?></td>
+            <td width="500" class="tableHead"><?php echo localeH("Chart");?> ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> <?php echo localeH("marks the average value");?>)</td>
             </tr>
           <tr>
       <?php
       $color="red";
-      $tag="<strong>heute</strong>";
+      $tag="<strong>".localeH("Today")."</strong>";
       for ($i=0;$i<=14;$i++)
       {
         $datum = mktime( 12 ,00,00,date('m'),date('d')-$i,date('Y'));
@@ -734,7 +736,7 @@ if ($mySUser->checkRight("elm_task"))
     if ($block_nr==88 AND $mySUser->checkRight("elm_pageconfig"))
     {
       //
-      $myLayout->tab_draw("Skript");
+      $myLayout->tab_draw(locale("Script"));
       $myLayout->workarea_start_draw();
 
       if ($mySUser->checkRight("superuser")==1)
@@ -761,20 +763,20 @@ if ($mySUser->checkRight("elm_task"))
         $scriptname = "pagescripts/" .  sprintf("%04.0f", $myPage->id) . "_" . sprintf("%04.0f", $myPage->ver_id) . ".inc.php";
         if (file_exists(APPPATH.$scriptname))
         {
-          $html = "Dieser Seite ist das Skript " . $scriptname . " zugeordnet.";
+          $html = localeH("msg_pagescript",array($scriptname));
         }
         else
         {
-          $html = "Diese Seite enth&auml;lt kein Skript.";
+          $html = localeH("This page does not contain a script.");
         }
-        $myLayout->workarea_row_draw("Seitenskript",$html);
+        $myLayout->workarea_row_draw(locale("Pagscript"),$html);
       }
 		?>	
              <?php
              $sql = "SELECT * FROM include WHERE inc_usage_page = 1 ORDER BY inc_rubrik,inc_bez";
              $rs = $myDB->query($sql);
              $_includes = Array();
-             $_includes[0] = "kein Include";
+             $_includes[0] = locale("No Include");
              $rubrik = "";
              while ($row=mysql_fetch_array($rs))
              {
@@ -790,7 +792,7 @@ if ($mySUser->checkRight("elm_task"))
              $html = $myLayout->workarea_form_select("","inc_id1",$options);
              $options = $myAdm->buildOptionsbyNamedArray($_includes,$myPage->inc_id2);
              $html.=  $myLayout->workarea_form_select("","inc_id2",$options);
-             $myLayout->workarea_row_draw("Includes<br>(Pre/Post)",$html);
+             $myLayout->workarea_row_draw(locale("Includes%n(Pre/Post)"),$html);
           ?>
           <?php
           $html = '<table border="0" cellspacing="0" cellpadding="0">';
@@ -841,17 +843,17 @@ if ($mySUser->checkRight("elm_task"))
           }
 
           $html .= '</table><input type="hidden" name="varanzahl" value="'.($n).'"';
-          $myLayout->workarea_row_draw("Variablen",$html);
+          $myLayout->workarea_row_draw(locale("Vars"),$html);
 
           // HTTP-Header
           $options = $myAdm->buildOptionsbyNamedArray($_PT_HTTP_CONTENTTYPES,$myPage->row["pag_contenttype"]);
           $html=  $myLayout->workarea_form_select("","contenttype",$options);
-          $myLayout->workarea_row_draw("HTTP-Header",$html);
+          $myLayout->workarea_row_draw(locale("HTTP-Header"),$html);
 
-          $html ="Letzter Seitabruf:<br>";
+          $html = localeH("Last Page Impression").":<br>";
           if ($myPage->row["pag_lastfetch"]==0)
           {
-            $html .= "noch nie<br>";
+            $html .= localeH("never before")."<br>";
           }
           else
           {
@@ -864,11 +866,11 @@ if ($mySUser->checkRight("elm_task"))
             $datum =$myPage->row["pag_nextbuild1"];
             if ($datum<time())
             {
-              $html .="Seite wird beim n&auml;chsten Abruf neu gerendert.<br>";
+              $html .=locale("Page is regenerated on next call.")."<br>";
             }
             else
             {
-              $html .="Seite g&uuml;ltig bis:<br>" . date("d.m H:i",$datum) . "<br>";
+              $html .= locale("Page valid until")   ."<br/>". date("d.m H:i",$datum) . "</br>";
             }
           }
 
@@ -890,7 +892,7 @@ if ($mySUser->checkRight("elm_task"))
             $row = mysql_fetch_array($rs);
             $views_heute = $row["views"];
             if ($views_heute==""){$views_heute=0;}
-            $html .="Statistik: (Tag/Monat/Gesamt)<br> " . $views_heute . " / " . $views_monat . " / " . $views_gesamt ." <br>";
+            $html .= locale("Stats: (Day/Month/Total)") . $views_heute . " / " . $views_monat . " / " . $views_gesamt ." <br>";
           }
 
 
@@ -898,44 +900,44 @@ if ($mySUser->checkRight("elm_task"))
           $cache = $myPage->row["pag_lastcache_time"];
           if ($build!=1 OR $cache!=1)
           {
-            $html .= "Zugriffzeit:<br>";
+            $html .= locale("Access time") .":<br>";
           }
           if ($build!=1)
           {
-            $html.="Build " . $build . " sec (Cache ".$myPage->row["pag_lastcachenr"].")<br>";
+            $html.= locale("Build %1 sec (Cache %2)",array($build,$myPage->row["pag_lastcachenr"]))."</br>";
           }
           if ($cache!=1)
           {
-            $html.="Cache " . $cache . " sec<br>";
+            $html.= locale("Cache %1 sec",array($cache))."</br>";
           }
 
           if (CACHECOUNT >1)
           {
-            $html .="Cache-Status:<br>";
+            $html .= localeH("Cache-State").":</br>";
             for ($i=1;$i<=CACHECOUNT;$i++)
             {
               $datum =$myPage->row["pag_nextbuild".$i];
               $html .= $i . ": ";
               if ($datum<time())
               {
-                $html .="Seite wird beim n&auml;chsten Abruf neu gerendert.<br>";
+                $html .= locale("Page is regenerated on next call.")."<br>";
               }
               else
               {
-                $html .="Seite g&uuml;ltig bis " . date("d.m H:i",$datum) . "<br>";
+                $html .=localeH("Page valid until") . date("d.m H:i",$datum) . "<br>";
               }
             }
           }
 
-          $myLayout->workarea_row_draw("Monitor",$html);
+          $myLayout->workarea_row_draw(localeH("Monitor"),$html);
           ?>
 
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
-        <input name="savescript_preview" type="submit" style="width:102px"class="buttonWhite" value="Vorschau">
+        <input name="savescript_preview" type="submit" style="width:102px"class="buttonWhite" value="<?php echo localeH("Preview");?>">
             </td>
-            <td align="right" class="windowFooterWhite"><input name="savescript" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="savescript" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Delete");?>">&nbsp;&nbsp;</td>
           </tr>
         </table
         <?php
@@ -957,7 +959,7 @@ if ($mySUser->checkRight("elm_task"))
         <tr>
           <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td class="windowTitle">Übersicht </td>
+                <td class="windowTitle"><?php echo localeH("Overview");?> </td>
                 </tr>
           </table></td>
           <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -977,11 +979,11 @@ if ($mySUser->checkRight("elm_task"))
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="40" valign="top" class="tableHead">ID</td>
-            <td width="40" valign="top" class="tableHead">Nr.</td>
-            <td class="tableHead">Bezeichnung</td>
-            <td width="40" class="tableHead">Status</td>
-            <td width="100" class="tableHead">Aktion</td>
+            <td width="40" valign="top" class="tableHead"><?php echo localeH("ID");?></td>
+            <td width="40" valign="top" class="tableHead"><?php echo localeH("No.");?></td>
+            <td class="tableHead"><?php echo localeH("Name");?></td>
+            <td width="40" class="tableHead"><?php echo localeH("State");?></td>
+            <td width="100" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
            <tr>
             <td colspan="5" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -1009,7 +1011,7 @@ while ($row = mysql_fetch_array($rs))
             <td class="tableBody"><p class="blue"><strong>
 <?php echo $row["ver_bez"] ?></strong></p></td>
             <td class="tableBody"><img src="img/i_online.gif" width="30" height="22"></td>
-            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo $_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="Versionswechsel einstellen" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo $_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="<?php echo localeH("Add Version Change");?>n" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
            <tr>
             <td colspan="5" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -1021,7 +1023,7 @@ while ($row = mysql_fetch_array($rs))
             <td class="tableBody"><p><?php echo $row["ver_nr"] ?></p></td>
             <td class="tableBody"><p><?php echo $row["ver_bez"] ?></p></td>
             <td class="tableBody"><img src="img/i_offline.gif" width="30" height="22"></td>
-            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo $_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="Versionswechsel einstellen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_delete.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>&ver_id_editing=<?php echo $_REQUEST["ver_id"] ?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_activate.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_aktivieren.gif" alt="aktivieren" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit");?>" width="22" height="22" border="0" align="absmiddle"></a> <a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo $_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="<?php echo localeH("Add Version Change");?>" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_delete.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>&ver_id_editing=<?php echo $_REQUEST["ver_id"] ?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_activate.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_aktivieren.gif" alt="<?php echo localeH("Activate");?>" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
            <tr>
             <td colspan="5" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -1035,7 +1037,7 @@ while ($row = mysql_fetch_array($rs))
     </table>
       <table width="680" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td class="windowFooterGrey2"><a href="pageversion_insert.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo $_REQUEST["ver_id"] ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Version hinzuf&uuml;gen </a>
+          <td class="windowFooterGrey2"><a href="pageversion_insert.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo $_REQUEST["ver_id"] ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add New Version");?></a>
 </td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
@@ -1051,7 +1053,7 @@ while ($row = mysql_fetch_array($rs))
         <tr>
           <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td class="windowTitle">Liste der automatischen Versionswechsel </td>
+                <td class="windowTitle"><?php echo localeH("List of automatic version changes");?> </td>
                 </tr>
           </table></td>
           <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -1072,10 +1074,10 @@ while ($row = mysql_fetch_array($rs))
         <tr>
           <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="60" class="tableHead">Datum</td>
-                <td width="40" class="tableHead">Uhrzeit</td>
-                <td class="tableHead">Bezeichnung</td>
-                <td width="100" class="tableHead">Aktion</td>
+                <td width="60" class="tableHead"><?php echo localeH("Date");?></td>
+                <td width="40" class="tableHead"><?php echo localeH("Time");?></td>
+                <td class="tableHead"><?php echo localeH("Name");?></td>
+                <td width="100" class="tableHead"><?php echo localeH("Action");?></td>
               </tr>
  <?php
  $sql = "SELECT * FROM  pageversion_autoactivate LEFT JOIN pageversion ON pageversion_autoactivate.ver_id = pageversion.ver_id WHERE pageversion_autoactivate.pag_id = " . $myPage->id . " ORDER BY ver_date";
@@ -1102,7 +1104,7 @@ while ($row = mysql_fetch_array($rs))
       </table>
       <table width="680" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td class="windowFooterGrey2"><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,0,<?php echo $_REQUEST["ver_id"] ?>);" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Automatischen Versionswechsel eintragen</a></td>
+          <td class="windowFooterGrey2"><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,0,<?php echo $_REQUEST["ver_id"] ?>);" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add Version Change");?></a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
         <tr>
@@ -1157,7 +1159,7 @@ while ($row = mysql_fetch_array($rs))
       $myComponent->init($row);
       ?>
       <tr>
-            <td class="padding30"><strong><?php echo $myComponent->bez ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>>sichtbar
+            <td class="padding30"><strong><?php echo $myComponent->bez ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>><?php echo localeH("visible");?>
             </td>
             <td>&nbsp;</td>
             <td class="formarea">
@@ -1171,11 +1173,11 @@ while ($row = mysql_fetch_array($rs))
 			if ($i>1)
 			{
 			?>
-			<input type="image" src="img/b_up.gif" alt="Baustein nach oben verschieben" width="18" height="18" border="0" name="<?php echo $row["dat_id"] ?>_moveup"><br>
+			<input type="image" src="img/b_up.gif" alt="<?php echo localeH("msg_move_component_upward");?>" width="18" height="18" border="0" name="<?php echo $row["dat_id"] ?>_moveup"><br>
 			<?php
 			}
 			?>
-                <input type="image" src="img/b_delete.gif" alt="Baustein l&ouml;schen" width="22" height="22" border="0"  name="<?php echo $row["dat_id"] ?>_delete">
+                <input type="image" src="img/b_delete.gif" alt="<?php echo localeH("Delete Component");?>" width="22" height="22" border="0"  name="<?php echo $row["dat_id"] ?>_delete">
 			<?php
 			if ($mySUser->checkRight("superuser"))
 			{
@@ -1188,7 +1190,7 @@ while ($row = mysql_fetch_array($rs))
               if ($i<$n)
               {
 			  ?>
-              <br><input type="image" src="img/b_down.gif" alt="Baustein nach unten verschieben" width="18" height="18" border="0" name="<?php echo $row["dat_id"] ?>_movedown">
+              <br><input type="image" src="img/b_down.gif" alt="<?php echo localeH("msg_move_component_downward");?>" width="18" height="18" border="0" name="<?php echo $row["dat_id"] ?>_movedown">
 			  <?php
               }
 			  ?>
@@ -1221,7 +1223,7 @@ while ($row = mysql_fetch_array($rs))
             <td class="windowFooterWhite">
         <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="Vorschau">
             </td>
-            <td align="right" class="windowFooterWhite">    <?php if ($myPage->hasChilds()==0 AND $mySUser->checkRight("elm_pageconfig")){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Seite wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite">    <?php if ($myPage->hasChilds()==0 AND $mySUser->checkRight("elm_pageconfig")){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this page?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
     <?php

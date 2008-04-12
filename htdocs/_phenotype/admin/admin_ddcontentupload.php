@@ -20,7 +20,7 @@
 <?php
 require("_config.inc.php");
 //require("_session.inc.php");
-//DEFINE ("MEDIABASEPATH","D:\WWW\_\www_evo\phenotype\application\mediabase");
+$myPT->loadTMX("Admin");
 ?>
 <html>
 <head>
