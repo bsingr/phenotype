@@ -37,11 +37,11 @@ $myAdm = new PhenotypeAdmin();
 $id = $_REQUEST["id"];
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -50,7 +50,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Includes");
+$myAdm->explorer_prepare(locale("Config"),locale("Includes"));
 $myAdm->explorer_set("inc_id",$id);
 $myAdm->explorer_draw();
 
@@ -79,7 +79,7 @@ $row = mysql_fetch_array($rs);
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo $id ?> Includes / <?php echo $row["inc_bez"] ?></td>
+            <td class="windowTitle"><?php echo $id ?> <?php echo localeH("Includes");?> / <?php echo $row["inc_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=17" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -93,51 +93,51 @@ $row = mysql_fetch_array($rs);
 	<?php
 	 $myLayout->tab_new();
 	 $url = "include_edit.php?id=" .$id ."&b=0&r=" . $_REQUEST["r"];	 
-	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
+	 $myLayout->tab_addEntry(locale("Configuration"),$url,"b_konfig.gif");
 	 $url = "include_edit.php?id=" .$id ."&b=1&r=" . $_REQUEST["r"];	  
-	 $myLayout->tab_addEntry("Skript",$url,"b_script.gif");
+	 $myLayout->tab_addEntry(locale("Script"),$url,"b_script.gif");
 	 $url = "include_edit.php?id=" .$id ."&b=2&r=" . $_REQUEST["r"];	  
 	 $sql = "SELECT * FROM include_template WHERE inc_id = " . $id . " ORDER BY tpl_bez";
 	 $rs = $myDB->query($sql);
 	 $c= mysql_num_rows($rs);
 	 if ($c>0)
 	 {
-	   $myLayout->tab_addEntry("Templates",$url,"b_template.gif");
+	   $myLayout->tab_addEntry(locale("Templates"),$url,"b_template.gif");
 	 }
 	 $url = "include_edit.php?id=" .$id ."&b=3&r=" . $_REQUEST["r"];	 
-	 $myLayout->tab_addEntry("Info",$url,"b_utilisation.gif");		
+	 $myLayout->tab_addEntry(locale("Usage"),$url,"b_utilisation.gif");		
 	 
 	 // switch which tab to draw
 	 switch ($_REQUEST["b"])
 	 {
 	   case 0:
 	   	 // default tab
-	     $myLayout->tab_draw("Konfiguration");
+	     $myLayout->tab_draw(locale("Config"));
 	     $myLayout->workarea_start_draw();
          $html = $myLayout->workarea_form_text("","bez",$row["inc_bez"]);
-	     $myLayout->workarea_row_draw("Bezeichnung",$html);
+	     $myLayout->workarea_row_draw(locale("Name"),$html);
          $html = $myLayout->workarea_form_text("","rubrik",$row["inc_rubrik"]);
-	     $myLayout->workarea_row_draw("Rubrik",$html);		 
+	     $myLayout->workarea_row_draw(locale("Category"),$html);		 
 	     $html=  $myLayout->workarea_form_textarea("","description",$row["inc_description"],8);
-	     $myLayout->workarea_row_draw("Beschreibung",$html);
+	     $myLayout->workarea_row_draw(locale("Description"),$html);
 		 
 			 $sql = "SELECT * FROM include_template WHERE inc_id = " . $id . " ORDER BY tpl_bez";
 			 $rs = $myDB->query($sql);
 			 $c= mysql_num_rows($rs);
 			 $myPT->startBuffer();
 			 ?>
-			 <input name="usage_template" type="checkbox" value="1" <?php if ($row["inc_usage_layout"]=="1") echo"checked"; ?>> kann in einem Layout genutzt werden.<br>
-				     <input name="usage_tool" type="checkbox" value="1" <?php if ($row["inc_usage_includecomponent"]=="1") echo"checked"; ?>> kann mit dem "Includes"-Baustein platziert werden<br>
-<input name="usage_page" type="checkbox" value="1" <?php if ($row["inc_usage_page"]=="1") echo"checked"; ?>> kann einer Seite zugeordnet werden.<br>
+			 <input name="usage_template" type="checkbox" value="1" <?php if ($row["inc_usage_layout"]=="1") echo"checked"; ?>> <?php echo localeH("can be used in layouts");?><br>
+				     <input name="usage_tool" type="checkbox" value="1" <?php if ($row["inc_usage_includecomponent"]=="1") echo"checked"; ?>> <?php echo localeH("can be selected with the include component");?><br>
+<input name="usage_page" type="checkbox" value="1" <?php if ($row["inc_usage_page"]=="1") echo"checked"; ?>> <?php echo localeH("can be used in a page");?><br>
          <?php
 			 $html =$myPT->stopBuffer();
-			 $myLayout->workarea_row_draw("Anwendung",$html);
+			 $myLayout->workarea_row_draw(locale("Utilization"),$html);
 		 
 			 $myPT->startBuffer();
 			 if ($c==0)
 			 {
          ?>
-			 <input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> Template einf&uuml;gen<br>
+			 <input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Add Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> <?php echo localeH("Add Template");?><br>
 			 <?php
 			 }
 			 while ($row_ttp=mysql_fetch_array($rs))
@@ -145,7 +145,7 @@ $row = mysql_fetch_array($rs);
 			   $identifier = "ttp_". $row_ttp["tpl_id"];
 				 ?>
 				 <strong>$</strong><input name="<?php echo $identifier ?>_bez" type="text" class="input" style="width: 150px" value="<?php echo $row_ttp["tpl_bez"] ?>" size="30">&nbsp;
-<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"><br>
+<input type="image" src="img/b_minus_b.gif" alt="<?php echo localeH("Delete Template");?>" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Delete Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"><br>
 				 <?php
 			 }
 			 $html = $myPT->stopBuffer();
@@ -154,7 +154,7 @@ $row = mysql_fetch_array($rs);
 		 
 	   case 1:
 	   	 // script tab
-	     $myLayout->tab_draw("Skript");
+	     $myLayout->tab_draw(locale("Script"));
 	     $myLayout->workarea_start_draw();
 		 //$scriptname = "includes/"  .sprintf("%04.0f", $id) . ".inc.php";	
 		 $scriptname = "includes/PhenotypeInclude_". $id . ".class.php";	
@@ -177,7 +177,7 @@ $row = mysql_fetch_array($rs);
 		 break;		 
 		 
 		 case 2:
-		    $myLayout->tab_draw("Templates");
+		    $myLayout->tab_draw(locale("Templates"));
 	       $myLayout->workarea_start_draw();
 
 					 $sql = "SELECT * FROM include_template WHERE inc_id = " . $id . " ORDER BY tpl_bez";
@@ -200,7 +200,7 @@ $row = mysql_fetch_array($rs);
 					  <td  width="300"><strong><?php echo $scriptname; ?></strong></td>
 					  <td width="335" align="right" >
 					  <strong>$</strong><input name="<?php echo $identifier ?>_bez" type="text" class="input" style="width: 150px" value="<?php echo $row_ttp["tpl_bez"] ?>" size="30">&nbsp;
-<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus">
+<input type="image" src="img/b_minus_b.gif" alt="<?php echo localeH("Delete Template");?>" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Delete Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus">
                       </td>
 					  <td width="15">&nbsp;</td>
 					  </tr>
@@ -221,7 +221,7 @@ $row = mysql_fetch_array($rs);
 		 break;		 
 		 
 		 case 3:
-		    $myLayout->tab_draw("Info");
+		    $myLayout->tab_draw(locale("Usage"));
 	        $myLayout->workarea_start_draw();			
 			?>
 			<?php
@@ -232,9 +232,9 @@ $row = mysql_fetch_array($rs);
 			{
 			   $html  .= "- " .$row["lay_bez"] . "<br>";
 			}
-		    $myLayout->workarea_row_draw("Layout",$html);
+		    $myLayout->workarea_row_draw(locale("Layout"),$html);
 			// Verwendung im Includes-Baustein
-			$sql ="SELECT * FROM sequence_data WHERE com_id = 12 AND dat_editbuffer = 0 AND pag_id!=0";
+			$sql ="SELECT * FROM sequence_data WHERE com_id = 1003 AND dat_editbuffer = 0 AND pag_id!=0";
 			$rs = $myDB->query($sql);
 			$html="";
 			while ($row = mysql_fetch_array($rs))
@@ -242,12 +242,12 @@ $row = mysql_fetch_array($rs);
 			   $_props = unserialize($row["dat_comdata"]);
 			   if ($_props["inc_id"]==$id)
 			   {
-			   		$html  .= "- Seite " .$row["pag_id"] . "<br>";
+			   		$html  .= "- ". locale("Page")." " .$row["pag_id"] . "<br>";
 			   }
 			}
-			$myLayout->workarea_row_draw("Includes-Baustein",$html);
+			$myLayout->workarea_row_draw(locale("Include component"),$html);
 
-			$myLayout->workarea_row_draw("Seiten","");
+			$myLayout->workarea_row_draw(locale("Pages"),"");
 		 break;				 
 	}
 	?>
@@ -262,7 +262,7 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses Include wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this include?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php

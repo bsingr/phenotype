@@ -34,7 +34,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("inc_bez","Neues Include");
+$mySQL->addField("inc_bez",locale("New include"));
 $mySQL->addField("inc_rubrik",$_REQUEST["r"]);
 
 // ID unter 1000 ermitteln

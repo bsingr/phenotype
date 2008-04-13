@@ -36,11 +36,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Layout");
+$myAdm->explorer_prepare(locale("Admin"),locale("Layout"));
 $myAdm->explorer_draw();
 
 
@@ -70,7 +70,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Layout  konfigurieren </td>
+            <td class="windowTitle"><?php echo localeH("Configure Layout");?> </td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=18" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -92,10 +92,10 @@ $myPT->startBuffer();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="25" class="tableHead">Nr.</td>
+              <td width="25" class="tableHead"><?php echo localeH("No.");?></td>
               <td width="60" class="tableHead">&nbsp;</td>
-              <td width="449" class="tableHead">Bezeichnung</td>
-              <td width="50" class="tableHead">Aktion</td>
+              <td width="449" class="tableHead"><?php echo localeH("Name");?></td>
+              <td width="50" class="tableHead">A<?php echo localeH("Action");?></td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -120,7 +120,7 @@ $myPT->startBuffer();
 	   if ($row_check["C"]==0)
 	   {
 ?>   
-<a href="layout_delete.php?id=<?php echo $row["lay_id"] ?>" onclick="javascript:return confirm('Dieses Layout wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Layout l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<a href="layout_delete.php?id=<?php echo $row["lay_id"] ?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this layout?");?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete");?>" width="22" height="22" border="0" align="absmiddle"></a>
 <?php
        }else
 	   {
@@ -143,7 +143,7 @@ $myPT->startBuffer();
     </table>
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowFooterGrey2"><a href="layout_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neues Layout anlegen</a></td>
+        <td class="windowFooterGrey2"><a href="layout_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Create new layout");?></a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
       <tr>

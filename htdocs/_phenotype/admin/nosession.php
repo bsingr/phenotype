@@ -19,6 +19,7 @@
 ?>
 <?php
 require("_config.inc.php");
+$myPT->loadTMX("Phenotype");
 session_start();
 session_destroy();
 $_SESSION["usr_id"]="";

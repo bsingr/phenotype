@@ -36,11 +36,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Extras");
+$myAdm->explorer_prepare(locale("Config"),locale("Extras"));
 
 $myAdm->explorer_draw();
 
@@ -72,7 +72,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Extraobjekte  konfigurieren </td>
+            <td class="windowTitle"><?php echo localeH("Configure Extras");?> </td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=16" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -94,10 +94,10 @@ $myPT->startBuffer();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="25" class="tableHead">Nr.</td>
+              <td width="25" class="tableHead"><?php echo localeH("No.");?></td>
               <td width="60" class="tableHead">&nbsp;</td>
-              <td width="449" class="tableHead">Bezeichnung</td>
-              <td width="50" class="tableHead">Aktion</td>
+              <td width="449" class="tableHead"><?php echo localeH("Name");?></td>
+              <td width="50" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -111,11 +111,11 @@ $myPT->startBuffer();
 			
             <tr>
               <td class="tableBody"><?php echo sprintf("%02d",$row["ext_id"]) ?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="extra_edit.php?id=<?php echo $row["ext_id"] ?>&b=0"><img src="img/t_script.gif" alt="Contentobjekt bearbeiten" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="extra_edit.php?id=<?php echo $row["ext_id"] ?>&b=0"><img src="img/t_script.gif" alt="<?php echo localeH("Edit");?>" width="60" height="40" border="0"></a></span></td>
               <td class="tableBody"><?php echo $row["ext_bez"] ?></td>
-              <td align="right" nowrap class="tableBody"><a href="extra_edit.php?id=<?php echo $row["ext_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Contentobjekt bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+              <td align="right" nowrap class="tableBody"><a href="extra_edit.php?id=<?php echo $row["ext_id"] ?>&b=0"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit");?>" width="22" height="22" border="0" align="absmiddle"></a>
 
-<a href="extra_delete.php?id=<?php echo $row["ext_id"] ?>" onclick="javascript:return confirm('Dieses Extra wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<a href="extra_delete.php?id=<?php echo $row["ext_id"] ?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this Extra?");?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete");?>" width="22" height="22" border="0" align="absmiddle"></a>
 </td>
             </tr>
             <tr>
@@ -130,7 +130,7 @@ $myPT->startBuffer();
     </table>
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowFooterGrey2"><a href="extra_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neues Extra anlegen</a></td>
+        <td class="windowFooterGrey2"><a href="extra_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Create new Extra");?></a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
       <tr>

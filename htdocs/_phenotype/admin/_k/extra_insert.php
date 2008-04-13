@@ -34,7 +34,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("ext_bez","Neues Extra");
+$mySQL->addField("ext_bez",locale("New extra"));
 
 
 // ID unter 1000 ermitteln

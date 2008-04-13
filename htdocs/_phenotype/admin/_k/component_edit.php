@@ -37,11 +37,11 @@ $myAdm = new PhenotypeAdmin();
 $id = $_REQUEST["id"];
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -50,7 +50,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Bausteine");
+$myAdm->explorer_prepare(locale("Config"),locale("Components"));
 $myAdm->explorer_set("com_id",$id);
 $myAdm->explorer_draw();
 
@@ -77,7 +77,7 @@ $row = mysql_fetch_array($rs);
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo $id ?> Bausteine / <?php echo $row["com_bez"] ?></td>
+            <td class="windowTitle"><?php echo $id ?> <?php echo localeH("Components");?> / <?php echo $row["com_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=14" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -91,31 +91,31 @@ $row = mysql_fetch_array($rs);
 	<?php
 	 $myLayout->tab_new();
 	 $url = "component_edit.php?id=" .$id ."&b=0";	 
-	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
+	 $myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
 	 $url = "component_edit.php?id=" .$id ."&b=1";	 
-	 $myLayout->tab_addEntry("Skript",$url,"b_script.gif");
+	 $myLayout->tab_addEntry(locale("Script"),$url,"b_script.gif");
 	 $url = "component_edit.php?id=" .$id ."&b=2";	 
 	 $sql = "SELECT * FROM component_template WHERE com_id = " . $id . " ORDER BY tpl_bez";
 	 $rs = $myDB->query($sql);
 	 $c= mysql_num_rows($rs);
 	 if ($c>0)
 	 {
-	   $myLayout->tab_addEntry("Templates",$url,"b_template.gif");
+	   $myLayout->tab_addEntry(locale("Templates"),$url,"b_template.gif");
 	 }
 	 $url = "component_edit.php?id=" .$id ."&b=3";	 
-	 $myLayout->tab_addEntry("Info",$url,"b_utilisation.gif");	
+	 $myLayout->tab_addEntry(locale("Usage"),$url,"b_utilisation.gif");	
 	 
 	 switch ($_REQUEST["b"])
 	 {
 	   case 0: 
-	     $myLayout->tab_draw("Konfiguration");
+	     $myLayout->tab_draw(locale("Config"));
 	     $myLayout->workarea_start_draw();
          $html = $myLayout->workarea_form_text("","bez",$row["com_bez"]);
-	     $myLayout->workarea_row_draw("Bezeichnung",$html);
+	     $myLayout->workarea_row_draw(locale("Name"),$html);
 		 $html = $myLayout->workarea_form_text("","rubrik",$row["com_rubrik"]);
-	     $myLayout->workarea_row_draw("Rubrik",$html);		 
+	     $myLayout->workarea_row_draw(locale("Category"),$html);		 
 	     $html=  $myLayout->workarea_form_textarea("","description",$row["com_description"],8);
-	     $myLayout->workarea_row_draw("Beschreibung",$html);
+	     $myLayout->workarea_row_draw(locale("Description"),$html);
 		 
 		 $sql = "SELECT * FROM component_template WHERE com_id = " . $id . " ORDER BY tpl_bez";
 		 $rs = $myDB->query($sql);
@@ -125,7 +125,7 @@ $row = mysql_fetch_array($rs);
 		 {
 		 
          ?>
-			 <input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> Template einf&uuml;gen<br>
+			 <input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Add Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> <?php echo localeH("Add Template");?><br>
 		 <?php
 		 }
 		 while ($row_ttp=mysql_fetch_array($rs))
@@ -133,11 +133,11 @@ $row = mysql_fetch_array($rs);
 		   $identifier = "ttp_". $row_ttp["tpl_id"];
 		 ?>
 		 <strong>$</strong><input name="<?php echo $identifier ?>_bez" type="text" class="input" style="width: 150px" value="<?php echo $row_ttp["tpl_bez"] ?>" size="30">&nbsp;
-<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"><br>
+<input type="image" src="img/b_minus_b.gif" alt="<?php echo localeH("Remove Template");?>" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Remove Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"><br>
 		 <?php
 		 }
 		 $html = $myPT->stopBuffer();
-		 $myLayout->workarea_row_draw("Templates",$html);
+		 $myLayout->workarea_row_draw(locale("Templates"),$html);
 		 break;
 		 
 	   case 1:
@@ -162,7 +162,7 @@ $row = mysql_fetch_array($rs);
 		 break;
 
 		 case 2:
-		    $myLayout->tab_draw("Templates");
+		    $myLayout->tab_draw(locale("Templates"));
 	       $myLayout->workarea_start_draw();
 
 					 $sql = "SELECT * FROM component_template WHERE com_id = " . $id . " ORDER BY tpl_bez";
@@ -185,7 +185,7 @@ $row = mysql_fetch_array($rs);
 					  <td  width="300"><strong><?php echo $scriptname; ?></strong></td>
 					  <td width="335" align="right" >
 					  <strong>$</strong><input name="<?php echo $identifier ?>_bez" type="text" class="input" style="width: 150px" value="<?php echo $row_ttp["tpl_bez"] ?>" size="30">&nbsp;
-<input type="image" src="img/b_minus_b.gif" alt="Template-Zugriff l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Template-Zugriff hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus">
+<input type="image" src="img/b_minus_b.gif" alt="<?php echo localeH("Remove Template");?>" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Remove Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus">
                       </td>
 					  <td width="15">&nbsp;</td>
 					  </tr>
@@ -242,7 +242,7 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diesen Baustein wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this component?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php

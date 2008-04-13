@@ -36,11 +36,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Packages");
+$myAdm->explorer_prepare(locale("Config"),locale("Packages"));
 $myAdm->explorer_set("packagemode","cleanup");
 $myAdm->explorer_draw();
 
@@ -70,7 +70,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Cleanup</td>
+            <td class="windowTitle"><?php echo localeH("Cleanup");?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=21" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -97,92 +97,92 @@ $myPT->startBuffer();
 		<?php
 		$html = "";
 		$checkers = Array();
-		$html .= $myLayout->workarea_form_checkbox("", "pages", 0,"alle Seiten löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "pages", 0,locale("delete all pages"));
 		$checkers[] = "pages";
-		$html .= $myLayout->workarea_form_checkbox("", "pagegroups", 0,"alle Seitengruppen löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "pagegroups", 0,locale("delete alle page groups"));
 		$checkers[] = "pagegroups";
-		$html .= $myLayout->workarea_form_checkbox("", "layouts", 0,"alle Layouts löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "layouts", 0,locale("delete all layouts"));
 		$checkers[] = "layouts";
-		$myLayout->workarea_row_draw("Seiten", $html);
+		$myLayout->workarea_row_draw(locale("Pages"), $html);
 
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "components", 0,"alle Bausteine löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "components", 0,locale("delete all components"));
 		$checkers[] = "components";
-		$html .= $myLayout->workarea_form_checkbox("", "componentgroups", 0,"alle Bausteingruppen löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "componentgroups", 0,locale("delete all component groups"));
 		$checkers[] = "componentgroups";
-		$myLayout->workarea_row_draw("Bausteine", $html);
+		$myLayout->workarea_row_draw(locale("Components"), $html);
 
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "includes", 0,"alle Includes löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "includes", 0,locale("delete all includes"));
 		$checkers[] = "includes";
-		$myLayout->workarea_row_draw("Includes", $html);
+		$myLayout->workarea_row_draw(locale("Includes"), $html);
 
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "content", 0,"alle Contentobjekte löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "content", 0,locale("delete all content object classes"));
 		$checkers[] = "content";
-		$html .= $myLayout->workarea_form_checkbox("", "contentdata", 0,"alle Content-Datensätze löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "contentdata", 0,locale("delete alle content object records"));
 		$checkers[] = "contentdata";
-		$html .= $myLayout->workarea_form_checkbox("", "contentcache", 0,"Contencache leeren");
+		$html .= $myLayout->workarea_form_checkbox("", "contentcache", 0,locale("delete content cache files"));
 		$checkers[] = "contentcache";
-		$myLayout->workarea_row_draw("Content", $html);
+		$myLayout->workarea_row_draw(locale("Content"), $html);
 
 
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "mediabase", 0,"Mediabase komplett reinigen");
+		$html .= $myLayout->workarea_form_checkbox("", "mediabase", 0,locale("clean mediabase totally"));
 		$checkers[] = "mediabase";
-		$myLayout->workarea_row_draw("Media", $html);
+		$myLayout->workarea_row_draw(locale("Media"), $html);
 
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "roles", 0,"alle Rollen löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "roles", 0,locale("delete all roles"));
 		$checkers[] = "roles";
-		$html .= $myLayout->workarea_form_checkbox("", "user", 0,"alle User (außer dem Angemeldeten!) löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "user", 0,locale("delete all users (except the one currently logged in)"));
 		$checkers[] = "user";
-		$myLayout->workarea_row_draw("Benutzer & Rechte", $html);
+		$myLayout->workarea_row_draw(locale("User & Roles"), $html);
 	
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "extras", 0,"alle Extraobjekte löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "extras", 0,locale("delete all extrase"));
 		$checkers[] = "extras";
-		$myLayout->workarea_row_draw("Extras", $html);
+		$myLayout->workarea_row_draw(locale("Extras"), $html);
 
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "ticketsubjects", 0,"alle Aufgabenbereiche löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "ticketsubjects", 0,locale("delete all ticket subjects"));
 		$checkers[] = "ticketsubjects";
-		$html .= $myLayout->workarea_form_checkbox("", "tickets", 0,"alle Aufgaben löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "tickets", 0,locale("delete all tickets"));
 		$checkers[] = "tickets";
-		$myLayout->workarea_row_draw("Aufgaben", $html);
+		$myLayout->workarea_row_draw(locale("Tasks"), $html);
 
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "actions", 0,"alle Aktionen löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "actions", 0,locale("delete all actions"));
 		$checkers[] = "actions";
-		$myLayout->workarea_row_draw("Aktionen", $html);
+		$myLayout->workarea_row_draw(locale("Actions"), $html);
 
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "dircache", 0,"Cache komplett leeren");
+		$html .= $myLayout->workarea_form_checkbox("", "dircache", 0,locale("delete all cache files"));
 		$checkers[] = "dircache";
-		$html .= $myLayout->workarea_form_checkbox("", "dirtemp", 0,"Temporäre Dateien löschen und Struktur zurücksetzen.");
+		$html .= $myLayout->workarea_form_checkbox("", "dirtemp", 0,locale("remove temporary files and reset directory structure"));
 		$checkers[] = "dirtemp";
-		$html .= $myLayout->workarea_form_checkbox("", "htdocs", 0,"unbekannte Dateien und Ordner aus dem Webroot entfernen.");
+		$html .= $myLayout->workarea_form_checkbox("", "htdocs", 0,locale("remove unknown files in webroot folder"));
 		$checkers[] = "htdocs";
-		$html .= $myLayout->workarea_form_checkbox("", "storage", 0,"Storage-Ordner komplett leeren");
+		$html .= $myLayout->workarea_form_checkbox("", "storage", 0,locale("delete all files in storage folder"));
 		$checkers[] = "storage";
-		$myLayout->workarea_row_draw("Verzeichnisse", $html);		
+		$myLayout->workarea_row_draw(locale("Folders"), $html);		
 
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "application", 0,"_application.inc.php und preferences.xml zurücksetzen");
-		$html .= $myLayout->workarea_form_checkbox("", "hostconfig", 0,"_host.config.inc.php leeren");
-		$html .= $myLayout->workarea_form_checkbox("", "backend", 0,"Backendklassen löschen");
-		$html .= $myLayout->workarea_form_checkbox("", "languagemaps", 0,"Languagemaps löschen");
-		$html .= $myLayout->workarea_form_checkbox("", "dataobject", 0,"Dataobjects löschen");
-		$html .= $myLayout->workarea_form_checkbox("", "snapshots", 0,"Snapshots löschen");
-		$myLayout->workarea_row_draw("Anwendung", $html);
+		$html .= $myLayout->workarea_form_checkbox("", "application", 0,locale("reset _application.inc.php and preferences.xml"));
+		$html .= $myLayout->workarea_form_checkbox("", "hostconfig", 0,locale("clean _host.config.inc.php"));
+		$html .= $myLayout->workarea_form_checkbox("", "backend", 0,locale("delete application specific backend classes"));
+		//$html .= $myLayout->workarea_form_checkbox("", "languagemaps", 0,"Languagemaps löschen");
+		$html .= $myLayout->workarea_form_checkbox("", "dataobject", 0,locale("delete dataobjects"));
+		$html .= $myLayout->workarea_form_checkbox("", "snapshots", 0,locale("delete snapshots"));
+		$myLayout->workarea_row_draw(locale("Application"), $html);
 		
 		$checkersCode = "'". implode("','", $checkers) ."'";
 		?>
@@ -202,8 +202,8 @@ $myPT->startBuffer();
 	    <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><a onclick="checkAll();" style="margin-right:30px;">Alles/Nichts markieren</a>
-			<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Start">&nbsp;&nbsp;
+            <td align="right" class="windowFooterWhite"><a onclick="checkAll();" style="margin-right:30px;"><?php echo localeH("Select/Deselect all");?></a>
+			<input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Start");?>">&nbsp;&nbsp;
             </td>
           </tr>
         </table>		

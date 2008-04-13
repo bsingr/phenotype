@@ -36,11 +36,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 function cleanupPages()
@@ -88,7 +88,7 @@ function cleanupPages()
 		{
 			if ($file != "." && $file != ".." && $file != ".svn")
 			{
-				echo "Entferne Seitenskript ".$file . "<br/>";
+				echo locale("Remove pagescript %1",array($file))."<br/>";
 				unlink ($directory . $file);
 			}
 		}
@@ -119,7 +119,7 @@ function cleanupLayouts()
 	$rs = $myDB->query($sql);
 	while ($row=mysql_fetch_array($rs))
 	{
-		echo "Entferne Layout " . $row["lay_id"] . "<br/>";
+	  echo locale("Remove layout %1",array($row["lay_id"]))."<br/>";
 		$myAdm->cfg_removeLayout($row["lay_id"]);
 
 	}
@@ -148,7 +148,7 @@ function cleanupComponents()
 	$rs = $myDB->query($sql);
 	while ($row=mysql_fetch_array($rs))
 	{
-		echo "Entferne Baustein " . $row["com_id"] . "<br/>";
+    echo locale("Remove component %1",array($row["com_id"]))."<br/>";
 		$myAdm->cfg_removeComponent($row["com_id"]);
 
 	}
@@ -170,7 +170,7 @@ function cleanupComponentgroups()
 	$rs = $myDB->query($sql);
 	while ($row=mysql_fetch_array($rs))
 	{
-		echo "Entferne Bausteingruppe " . $row["cog_id"] . "<br/>";
+		echo locale("Remove component group %1",array($row["cog_id"]))."<br/>";
 		$myAdm->cfg_removeComponentgroup($row["cog_id"]);
 
 	}
@@ -188,9 +188,8 @@ function cleanupIncludes()
 	$rs = $myDB->query($sql);
 	while ($row=mysql_fetch_array($rs))
 	{
-		echo "Entferne Include " . $row["inc_id"] . "<br/>";
+	  echo locale("Remove include %1",array($row["inc_id"]))."<br/>";
 		$myAdm->cfg_removeInclude($row["inc_id"]);
-
 	}
 
 	$sql = "TRUNCATE table include_template";

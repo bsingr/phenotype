@@ -34,7 +34,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("con_bez","Neues Contentobjekt");
+$mySQL->addField("con_bez",locale("New content object class"));
 
 // ID unter 1000 ermitteln
 $sql = "SELECT MAX(con_id) AS ID FROM content WHERE con_id<1000";

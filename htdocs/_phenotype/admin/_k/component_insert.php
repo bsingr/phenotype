@@ -37,7 +37,7 @@ $myPT->clearCache();
 
 
 $mySQL = new SQLBuilder();
-$mySQL->addField("com_bez","Neuer Baustein");
+$mySQL->addField("com_bez",locale("New component"));
 
 // ID unter 1000 ermitteln
 $sql = "SELECT MAX(com_id) AS ID FROM component WHERE com_id<1000";

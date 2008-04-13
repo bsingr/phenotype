@@ -36,11 +36,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Includes");
+$myAdm->explorer_prepare(locale("Config"),locale("Includes"));
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
@@ -70,7 +70,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Includes  konfigurieren </td>
+            <td class="windowTitle"><?php echo localeH("Configure includes");?> </td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=17" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -92,11 +92,11 @@ $myPT->startBuffer();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="25" class="tableHead">Nr.</td>
+              <td width="25" class="tableHead"><?php echo localeH("No.");?></td>
               <td width="60" class="tableHead">&nbsp;</td>
-			  <td width="100" class="tableHead">Rubrik</td>
-              <td width="349" class="tableHead">Bezeichnung</td>
-              <td width="50" class="tableHead">Aktion</td>
+			  <td width="100" class="tableHead"><?php echo localeH("Category");?></td>
+              <td width="349" class="tableHead"><?php echo localeH("Name");?></td>
+              <td width="50" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -118,10 +118,10 @@ $myPT->startBuffer();
 			
             <tr>
               <td class="tableBody"><?php echo $row["inc_id"] ?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="include_edit.php?id=<?php echo $row["inc_id"] ?>&r=<?php echo $row["inc_rubrik"] ?>&b=0"><img src="img/t_include.gif" alt="Baustein anzeigen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="include_edit.php?id=<?php echo $row["inc_id"] ?>&r=<?php echo $row["inc_rubrik"] ?>&b=0"><img src="img/t_include.gif" alt="<?php echo localeH("Edit");?>" width="60" height="40" border="0"></a></span></td>
               <td class="tableBody"><?php echo $row["inc_rubrik"] ?></td>
               <td class="tableBody"><?php echo $row["inc_bez"] ?></td>
-              <td align="right" nowrap class="tableBody"><a href="include_edit.php?id=<?php echo $row["inc_id"] ?>&r=<?php echo $row["inc_rubrik"] ?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+              <td align="right" nowrap class="tableBody"><a href="include_edit.php?id=<?php echo $row["inc_id"] ?>&r=<?php echo $row["inc_rubrik"] ?>&b=0"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit");?>" width="22" height="22" border="0" align="absmiddle"></a>
 <?php
        $sql = "SELECT COUNT(*) AS C FROM layout_include WHERE inc_id = " . $row["inc_id"];
 	   $rs_check = $myDB->query($sql);
@@ -134,7 +134,7 @@ $myPT->startBuffer();
         {echo urlencode("Neue Rubrik");}
 		else
 		{echo $_REQUEST["r"];}
-		?>" onclick="javascript:return confirm('Dieses Include wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+		?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this include?");?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete");?>" width="22" height="22" border="0" align="absmiddle"></a>
 <?php
        }else
 	   {
@@ -160,10 +160,10 @@ $myPT->startBuffer();
         <td class="windowFooterGrey2"><a href="include_insert.php?r=
 		<?php
         if ($_REQUEST["r"]==-1)
-        {echo urlencode("Neue Rubrik");}
+        {echo urlencode(locale("New category"));}
 		else
 		{echo $_REQUEST["r"];}
-		?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neues Include anlegen</a></td>
+		?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Create new include");?></a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
       <tr>

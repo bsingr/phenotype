@@ -34,13 +34,13 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("lay_bez","Neues Layout");
+$mySQL->addField("lay_bez",locale("New layout"));
 $sql = $mySQL->insert("layout");
 $myDB->query($sql);
 $id = mysql_insert_id();
 
 $mySQL = new SQLBuilder();
-$mySQL->addField("lay_blockbez","Block 1");
+$mySQL->addField("lay_blockbez",locale("Block 1"));
 $mySQL->addField("lay_id",$id,DB_NUMBER);
 $mySQL->addField("lay_blocknr",1,DB_NUMBER);
 $mySQL->addField("cog_id",1,DB_NUMBER);

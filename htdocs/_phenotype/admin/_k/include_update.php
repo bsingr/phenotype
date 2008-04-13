@@ -62,7 +62,7 @@ $mySQL = new SQLBuilder();
 
 // Konfiguration
 $rubrik = $_REQUEST["rubrik"];
-if ($rubrik==""){$rubrik="Neue Rubrik";}
+if ($rubrik==""){$rubrik=locale("New category");}
 if ($_REQUEST["b"]==0)
 {
 

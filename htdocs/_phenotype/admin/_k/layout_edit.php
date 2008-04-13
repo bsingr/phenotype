@@ -37,11 +37,11 @@ $myAdm = new PhenotypeAdmin();
 $id = $_REQUEST["id"];
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -50,7 +50,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Layout");
+$myAdm->explorer_prepare(locale("Admin"),locale("Layout"));
 $myAdm->explorer_set("lay_id",$id);
 $myAdm->explorer_draw();
 ?>
@@ -76,7 +76,7 @@ $row = mysql_fetch_array($rs);
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo $id ?> Layout / <?php echo $row["lay_bez"] ?></td>
+            <td class="windowTitle"><?php echo $id ?> <?php echo localeH("Layout");?> / <?php echo $row["lay_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=18" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -90,23 +90,23 @@ $row = mysql_fetch_array($rs);
 	<?php
 	 $myLayout->tab_new();
 	 $url = "layout_edit.php?id=" .$id ."&b=0";	 
-	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
+	 $myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
 	 $url = "layout_edit.php?id=" .$id ."&b=1";	 
-	 $myLayout->tab_addEntry("Templates",$url,"b_template.gif");
+	 $myLayout->tab_addEntry(locale("Templates"),$url,"b_template.gif");
 
 
 	 $url = "layout_edit.php?id=" .$id ."&b=2";	 
-	 $myLayout->tab_addEntry("Info",$url,"b_utilisation.gif");	
+	 $myLayout->tab_addEntry(locale("Usage"),$url,"b_utilisation.gif");	
 	 
 	 switch ($_REQUEST["b"])
 	 {
 	   case 0: 
-	     $myLayout->tab_draw("Konfiguration");
+	     $myLayout->tab_draw(locale("Config"));
 	     $myLayout->workarea_start_draw();
          $html = $myLayout->workarea_form_text("","bez",$row["lay_bez"]);
-	     $myLayout->workarea_row_draw("Bezeichnung",$html);
+	     $myLayout->workarea_row_draw(locale("Name"),$html);
 	     $html=  $myLayout->workarea_form_textarea("","description",$row["lay_description"],8);
-	     $myLayout->workarea_row_draw("Beschreibung",$html);
+	     $myLayout->workarea_row_draw(locale("Description"),$html);
 		 
 		 // Platzhalter
 		 $myPT->startbuffer();
@@ -128,12 +128,12 @@ $row = mysql_fetch_array($rs);
 		 if ($c==0){
 		 ?>			
 		 <tr><td>
-					 <input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="block_plus"> Platzhalter einf&uuml;gen</td></tr>
+					 <input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="block_plus"> <?php echo localeH("Add placeholder");?></td></tr>
 		 <?php
 		 }else{
 		 ?>		 
 		 
-		 <tr><td>Smarty-Zugriff&nbsp;&nbsp;&nbsp;</td><td>Bezeichnung </td><td>Bausteingruppe&nbsp;</td><td>Context</td><td>&nbsp;</td></tr>
+		 <tr><td><?php echo localeH("Smarty-Access");?>&nbsp;&nbsp;&nbsp;</td><td><?php echo localeH("Name");?> </td><td><?php echo localeH("Component group");?>&nbsp;</td><td>Context</td><td>&nbsp;</td></tr>
 		 <?php
 		
 		 while ($row_block=mysql_fetch_array($rs))
@@ -177,7 +177,7 @@ $row = mysql_fetch_array($rs);
 					 ?>
 					 </select>
 					 </td>
-					 <td><input type="image" src="img/b_minus_b.gif" alt="Platzhalter l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"></td>
+					 <td><input type="image" src="img/b_minus_b.gif" alt="<?php echo localeH("Remove placeholder");?>" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Remove placeholder");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"></td>
 					 </tr>
 					 <?php
 					 }
@@ -188,7 +188,7 @@ $row = mysql_fetch_array($rs);
 		 </table>
 		 <?php
 		 $html = $myPT->stopBuffer();
-		 $myLayout->workarea_row_draw("Platzhalter",$html);
+		 $myLayout->workarea_row_draw(locale("Placeholder"),$html);
 		 
  		 // Includes
 		 $myPT->startbuffer();
@@ -220,11 +220,11 @@ $row = mysql_fetch_array($rs);
 					 if ($c==0){
 					 ?>
 					 <tr><td>
-					 <input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="include_plus"> Include einf&uuml;gen</td></tr>
+					 <input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="include_plus"> <?php echo localeH("Add inlcude");?></td></tr>
 					 <?php
 					 }else{
 					 ?>
-					<table border="0" cellspacing="2" cellpadding="2"> <tr><td>Smarty-Zugriff&nbsp;&nbsp;&nbsp;</td><td>Bezeichnung</td><td>Cache</td><td>&nbsp;</td></tr>
+					<table border="0" cellspacing="2" cellpadding="2"> <tr><td><?php echo localeH("Smarty-Access");?>&nbsp;&nbsp;&nbsp;</td><td><?php echo localeH("Name");?></td><td><?php echo localeH("Cache");?></td><td>&nbsp;</td></tr>
 					 <?php } ?>					 
 					 <?php
 					 while ($row_inc=mysql_fetch_array($rs))
@@ -254,12 +254,12 @@ $row = mysql_fetch_array($rs);
                      </select>&nbsp;</td>
 					 <td>
 					 <select name="<?php echo $identifier ?>_cache" class="input">
-					 <option value="1" <?php if ($row_inc["lay_includecache"]==1){echo "selected";} ?>>wie Seite</option>
-					 <option value="0" <?php if ($row_inc["lay_includecache"]==0){echo "selected";} ?>>nie</option>
+					 <option value="1" <?php if ($row_inc["lay_includecache"]==1){echo "selected";} ?>><?php echo localeH("same like page");?></option>
+					 <option value="0" <?php if ($row_inc["lay_includecache"]==0){echo "selected";} ?>><?php echo localeH("never");?></option>
 					 </select>
 					 </td>
 					 <td>
-					 <input type="image" src="img/b_minus_b.gif" alt="Platzhalter l&ouml;schen" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="Platzhalter hinzuf&uuml;gen" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"></td>
+					 <input type="image" src="img/b_minus_b.gif" alt="<?php echo localeH("Remove include");?>" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Remove include");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"></td>
 					 </tr>
 					 <?php
 					 }
@@ -274,11 +274,11 @@ $row = mysql_fetch_array($rs);
 		 $_groups = Array();
 		 if (mysql_num_rows($rs)==0)
 		 {
-		   $html='<input type="radio" name="allgroups" value="1" onclick="selectallgroups();" checked> alle &nbsp;<input type="radio" name="allgroups" value="0" onclick="selectedgroups();"> selektiv:<br><br>';		   
+		   $html='<input type="radio" name="allgroups" value="1" onclick="selectallgroups();" checked> '.localeH("all").' &nbsp;<input type="radio" name="allgroups" value="0" onclick="selectedgroups();"> '.localeH("selective").':<br><br>';		   
 		 }
 		 else
 		 {
-		   $html='<input type="radio" name="allgroups" value="1" onclick="selectallgroups();"> alle &nbsp;<input type="radio" name="allgroups" value="0" onclick="selectedgroups();" checked > selektiv:<br><br>';		 
+		   $html='<input type="radio" name="allgroups" value="1" onclick="selectallgroups();"> '.localeH("all").' &nbsp;<input type="radio" name="allgroups" value="0" onclick="selectedgroups();" checked > '.localeH("selective").':<br><br>';		 
            while ($row=mysql_fetch_array($rs))
 		   {
 		     $_groups[]=$row["grp_id"];
@@ -319,18 +319,18 @@ $row = mysql_fetch_array($rs);
 		 <?php
 		 $js = $myPT->stopBuffer();
          $html .=$js;
-		 $myLayout->workarea_row_draw("Seitengruppen",$html);	
+		 $myLayout->workarea_row_draw(locale("Pagegroups"),$html);	
 		 break;
 		 
 	   case 1:
-	     $myLayout->tab_draw("Templates");
+	     $myLayout->tab_draw(locale("Templates"));
 	     $myLayout->workarea_start_draw();
 		 $scriptname = "page_templates/"  .sprintf("%04.0f", $id) . ".normal.tpl";
 		 $scriptname = $myPT->getTemplateFileName(PT_CFG_LAYOUT, $id, "normal", "templates/");
 		 ?>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="tableBody">Normalansicht:<br><br>
+            <td class="tableBody"><?php echo localeH("Default view");?>:<br><br>
 			<strong><?php echo $scriptname; ?></strong><br>
 			<?php
 			$scriptname = APPPATH .$scriptname;
@@ -347,7 +347,7 @@ $row = mysql_fetch_array($rs);
 		 ?>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="tableBody">Druckansicht:<br><br>
+            <td class="tableBody"><?php echo localeH("Print view");?>:<br><br>
 			<strong><?php echo $scriptname; ?></strong><br>
 			<?php
 			$scriptname = APPPATH . $scriptname;
@@ -363,7 +363,7 @@ $row = mysql_fetch_array($rs);
 		 break;
 
 		 case 2:
-		    $myLayout->tab_draw("Info");
+		    $myLayout->tab_draw(locale("Usage"));
 	        $myLayout->workarea_start_draw();			
 			$myPT->startBuffer();
 			?>
@@ -375,11 +375,11 @@ $row = mysql_fetch_array($rs);
 					 if ($c==0)
 					 {
 					 ?>
-					 Das layout wird in keiner Seite genutzt.
+					 <?php echo localeH("This Layout is not used in any page.");?>
 					 <?php
 					 }else{
 					 ?>
-					 Das layout wird in <?php echo $row["C"] ?> Seiten verwendet:
+					 <?php echo localeH("This layout is used in %1 pages",array($row["C"]));?>:
 					 <br>
 					 <br>
 					 <?php
@@ -409,7 +409,7 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Dieses Layout wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this layout?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php
