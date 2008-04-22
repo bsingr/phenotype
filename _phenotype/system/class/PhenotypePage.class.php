@@ -1287,7 +1287,11 @@ class PhenotypePageStandard extends PhenotypeBase
     $mySmarty->assign("alttitel","#!#alttitle#!#");
     $mySmarty->assign("alttitle","#!#alttitle#!#");
     $mySmarty->assign("keywords","#!#keywords#!#");
-    $mySmarty->assign("pt_debug","#!#pt_debug#!#");
+    
+    if (PT_DEBUG==1)
+    {
+	  	$mySmarty->assign("pt_debug","#!#pt_debug#!#");
+	  }
 
     // Bloecke
     $sql = "SELECT * FROM layout_block WHERE lay_id = " . $this->lay_id . " ORDER BY lay_blocknr";

@@ -26,10 +26,10 @@
  */
 class PhenotypeStandard extends PhenotypeBase
 {
-  public $version  = "##!PT_VERSION!##";
-  public $subversion = "##!BUILD_NO!##";
+ 	public $version  = "##!PT_VERSION!##";
+ 	public $subversion = "##!BUILD_NO!##";
 
-  const INCLUDE_CACHE_TIME = 3600; // time in seconds includes will be cached
+ 	const INCLUDE_CACHE_TIME = 3600; // time in seconds includes will be cached
 
 
   /**
@@ -39,9 +39,9 @@ class PhenotypeStandard extends PhenotypeBase
 	 *
 	 * @var unknown_type
 	 */
-  public $phpwarnings = true;
+	public $phpwarnings = true;
 
-  public $_debughints = Array();
+	public $_debughints = Array();
 
 
   private $_preferences = false;
@@ -1658,12 +1658,13 @@ border: 1px solid #cfcfcf;
    * 
    *
    * @param integer $pag_id
-   * @param array[mixed] $_params
+   * @param array[mixed] $_params optional, defaults to null
    * @param integer $lng_id
    * @param string smartUID
+   * @param boolean fullUrl	should the function return a fully qualified url including hostname? optional, defaults to false
    * @return string
    */
-  public function url_for_page($pag_id,$_params=array(),$lng_id=null,$smartUID)
+  public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fullUrl=false)
   {
     // if no language id is ommited, take context into account
 
@@ -1695,16 +1696,26 @@ border: 1px solid #cfcfcf;
       $url = $myTempPage->buildURL($lng_id);
       $myDAO->set($token,$url);
     }
-
-
+    
+		if ($fullUrl)
+		{
+ 	  	$base = SERVERFULLURL;
+ 	  } else
+ 	  {
+			$base = SERVERURL;
+ 	  }
+ 	  
     // Fallback, if smartURL is disabled
-    if (PT_URL_STYLE!="smartURL")
+    if (PT_URL_STYLE != "smartURL")
     {
-      $url = SERVERURL . "index.php?smartURL=".$url;
-      foreach ($_params AS $k=>$v)
-      {
-        $url .= "&".$k."=".$v;
-      }
+ 	    $url = $base . "index.php?smartURL=".$url;
+ 	    if (is_array($_params))
+ 	    {
+				foreach ($_params AS $k=>$v)
+				{
+					$url .= "&".$k."=".$v;
+				}
+			}
       if ($smartUID!="")
       {
         $url .="&smartUID=".$smartUID;
@@ -1712,16 +1723,19 @@ border: 1px solid #cfcfcf;
       return $url;
     }
 
-    foreach ($_params AS $k=>$v)
-    {
-      $url .= "/".$k."/".$v;
-    }
-    if ($smartUID!="")
+		if (is_array($_params))
+		{
+			foreach ($_params AS $k=>$v)
+			{
+				$url .= "/".$k."/".$v;
+			}
+		}
+    if ($smartUID != "")
     {
       $url .="/".$smartUID;
     }
 
-    $url = SERVERURL . $url;
+    $url = $base . $url;
     return $url;
   }
 

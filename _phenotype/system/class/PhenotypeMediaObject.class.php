@@ -89,7 +89,7 @@ class PhenotypeMediaObjectStandard
 	function selectVersion($name)
 	{
 		global $myDB;
-		$sql = "SELECT * FROM mediaversion WHERE med_id = " . $this->id . " AND ver_bez='" .addslashes($name)."'";
+		$sql = "SELECT * FROM mediaversion WHERE med_id = " . $this->id . " AND ver_bez='" .addslashes($name)."'"; //:TODO: is addslashes apropriate here?
 		$rs = $myDB->query($sql);
 		if (mysql_num_rows($rs)!=0)
 		{
