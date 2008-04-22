@@ -1551,13 +1551,14 @@ class PhenotypeContentStandard extends PhenotypeBase
 			 var ajax_<?php echo $a[2] ?> = new sack();
 
 			 var error=0;
-			 function ajax_<?php echo $a[2] ?>_doit(date){
+			 function ajax_<?php echo $a[2] ?>_doit(date,timestamp){
 			   ajax_<?php echo $a[2] ?>.resetData();
 			   ajax_<?php echo $a[2] ?>.requestFile = "backend.php";
 			   ajax_<?php echo $a[2] ?>.method = "GET";
 			   ajax_<?php echo $a[2] ?>.element = 'divajax_<?php echo $a[2] ?>';
 			   ajax_<?php echo $a[2] ?>.setVar("page","Editor,Content,selector_date");
 			   ajax_<?php echo $a[2] ?>.setVar("d",date);
+			   ajax_<?php echo $a[2] ?>.setVar("t",timestamp);
 			   ajax_<?php echo $a[2] ?>.setVar("e",'<?php echo $a[2] ?>');
 			   ajax_<?php echo $a[2] ?>.runAJAX();
 			 }
@@ -1567,7 +1568,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			   hide('divajax_<?php echo $a[2] ?>');
 			 }
 			</script>
-			<script type="text/javascript">ajax_<?php echo $a[2] ?>_doit(<?php echo $val ?>)</script>
+			<script type="text/javascript">ajax_<?php echo $a[2] ?>_doit(<?php echo $val ?>, 1)</script>
              </p>
              </td>
              </tr>
