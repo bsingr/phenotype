@@ -732,7 +732,7 @@ class PhenotypeLayoutStandard
 			$configArray = $this->codeEditorConfigs;
 		} else
 		{
-			$myLog->log("initJSEditor: Aufruf without mode not valid!", PT_LOGFACILITY_SYS, PT_LOGLVL_ERROR);
+			$myLog->log("initJSEditor: method call without mode not valid!", PT_LOGFACILITY_SYS, PT_LOGLVL_ERROR);
 			return false;
 		}
 		

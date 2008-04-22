@@ -1670,12 +1670,13 @@ border: 1px solid #cfcfcf;
    * 
    *
    * @param integer $pag_id
-   * @param array[mixed] $_params
+   * @param array[mixed] $_params optional, defaults to null
    * @param integer $lng_id
    * @param string smartUID
+   * @param boolean fullUrl	should the function return a fully qualified url including hostname? optional, defaults to false
    * @return string
    */
-	public function url_for_page($pag_id,$_params=array(),$lng_id=null,$smartUID)
+  public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fullUrl=false)
 	{
 		// if no language id is ommited, take context into account
 
@@ -1708,14 +1709,24 @@ border: 1px solid #cfcfcf;
 			$myDAO->set($token,$url);
 		}
 
+		if ($fullUrl)
+		{
+ 	  	$base = SERVERFULLURL;
+ 	  } else
+ 	  {
+			$base = SERVERURL;
+ 	  }
 
 		// Fallback, if smartURL is disabled
 		if (PT_URL_STYLE!="smartURL")
 		{
-			$url = SERVERURL . "index.php?smartURL=".$url;
+ 	    $url = $base . "index.php?smartURL=".$url;
+ 	    if (is_array($_params))
+ 	    {
 			foreach ($_params AS $k=>$v)
 			{
 				$url .= "&".$k."=".$v;
+			}
 			}
 			if ($smartUID!="")
 			{
@@ -1724,16 +1735,19 @@ border: 1px solid #cfcfcf;
 			return $url;
 		}
 
+		if (is_array($_params))
+		{
 		foreach ($_params AS $k=>$v)
 		{
 			$url .= "/".$k."/".$v;
+		}
 		}
 		if ($smartUID!="")
 		{
 			$url .="/".$smartUID;
 		}
 
-		$url = SERVERURL . $url;
+    $url = $base . $url;
 		return $url;
 	}
 

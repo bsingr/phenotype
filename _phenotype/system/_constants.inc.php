@@ -107,10 +107,10 @@ define ("PT_CON_FORM_UPLOAD", 39);
 define("PT_LOGFACILITY_SYS", "SYSTEM");
 define("PT_LOGFACILITY_APP", "APPLICATION");
 
-define("PT_LOGLVL_ERROR", "ERROR");
-define("PT_LOGLVL_WARNING", "WARNING");
-define("PT_LOGLVL_INFO", "INFO");
-define("PT_LOGLVL_DEBUG", "DEBUG");
+define("PT_LOGLVL_ERROR", 1);
+define("PT_LOGLVL_WARNING", 2);
+define("PT_LOGLVL_INFO", 3);
+define("PT_LOGLVL_DEBUG", 4);
 
 define("PT_LOGMTH_FILE", "FILE");
 

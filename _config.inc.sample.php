@@ -15,8 +15,8 @@ define ("PT_XMLACCESS","changeit");
 // PFADE und URLs - Teil 1
 // ------------------------------------------------------
 
-define ("BASEPATH","C:/Programme/xampp/htdocs/srv_basis/");
-define ("SERVERURL","/srv_basis/htdocs/");
+define ("BASEPATH","/Users/www/default/phenotype-svn/trunk/");
+define ("SERVERURL","/phenotype-svn/trunk/htdocs/");
 define ("SERVERFULLURL","http://localhost" . SERVERURL);
 
 // smartURL uses free configurable URLs for every page instead of index.php?id=xx
@@ -29,8 +29,8 @@ define ("PT_URL_STYLE", "smartURL");
 
 define ("DATABASE_SERVER", 		"localhost");
 define ("DATABASE_USER", 		"root");
-define ("DATABASE_PASSWORD", 	"");	
-define ("DATABASE_NAME",		"phenotype");	
+define ("DATABASE_PASSWORD", 	"root01");	
+define ("DATABASE_NAME",		"phenotype-svn");	
 
 // ------------------------------------------------------
 // Sprach-Setup
@@ -75,7 +75,7 @@ define ("SMARTYPATH", SYSTEMPATH . "smarty/libs/");
 define ("CLASSPATH", SYSTEMPATH . "class/");
 
 // ------------------------------------------------------
-// Multicache
+// Cache
 // ------------------------------------------------------
 
 define ("CACHEPATH", BASEPATH . "_phenotype/cache/");
@@ -87,6 +87,7 @@ define ("CACHECOUNT",1);
 // ------------------------------------------------------
 
 define ("UMASK",0775);
+
 
 // ------------------------------------------------------
 // Einbindung der Grundklassen
@@ -129,16 +130,13 @@ require (APPPATH . "_host.config.inc.php");
 // Grundinitialisierung
 // ------------------------------------------------------
 
-if (function_exists("date_default_timezone_set"))
-{
-date_default_timezone_set('Etc/GMT-1');
-}
-require (APPPATH . "_application.inc.php");
-$myPT = new Phenotype();
+
 $myDB = new PhenotypeDatabase();
 $myDB->connect();
+date_default_timezone_set('Etc/GMT-1');
+require (APPPATH . "_application.inc.php");
 $myApp = new PhenotypeApplication();
+$myPT = new Phenotype();
 require (SYSTEMPATH . "_init.inc.php");
 $myLog = new PhenotypeLog();
 $myRequest = new PhenotypeRequest();
-
