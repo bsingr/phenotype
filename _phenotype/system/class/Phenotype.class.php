@@ -1664,7 +1664,7 @@ border: 1px solid #cfcfcf;
    * @param boolean fullUrl	should the function return a fully qualified url including hostname? optional, defaults to false
    * @return string
    */
-  public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fullUrl=false)
+  public function url_for_page($pag_id, $_params=null, $lng_id=null, $smartUID="", $fullUrl=false)
   {
     // if no language id is ommited, take context into account
 
