@@ -50,10 +50,10 @@ function codeX($value,$utf8=false)
 }
 
 
-function url_for_page($pag_id,$_params=array(),$lng_id=null,$smartUID="")
+function url_for_page($pag_id, $_params=null, $lng_id=null, $smartUID="", $fullUrl=false)
 {
   global $myPT;
-  return $myPT->url_for_page($pag_id,$_params,$lng_id,$smartUID);
+  return $myPT->url_for_page($pag_id, $_params, $lng_id, $smartUID, $fullUrl);
 }
 
 function title_of_page($pag_id,$lng_id=null)
