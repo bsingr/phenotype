@@ -18,7 +18,7 @@
   <!-- <property name="revision" value="131" /> -->
 
 	
-  <property name="buildNo" value="r${revision}-0001" />
+  <property name="buildNo" value="r${revision}" />
   <property name="buildId" value="Phenotype ${ptVersion}, build ${buildNo} PHP${php.version}@${buildOS}/${host.arch}(${host.name})" />
   
 	<!-- directory setup -->

@@ -67,7 +67,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `component` WRITE;
 /*!40000 ALTER TABLE `component` DISABLE KEYS */;
-INSERT INTO `component` VALUES (1003,'Include','## Baustein 1003 - Include','System'),(1002,'HTML','## Baustein 1002 - HTML','System'),(1001,'Richtextabsatz','## Baustein 1001 - Richtextabsatz\n\nMit diesem Bausteinen können bereits die meisten Anforderungen einer einfachen Website abegedeckt werden. Ein Absatz besteht aus Überschrift, Text, Bild und Link.\n\n','Textbausteine');
+INSERT INTO `component` VALUES (1002,'HTML','## Baustein 1002 - HTML','System'),(1003,'Include','## Baustein 1003 - Include','System'),(1001,'Richtextabsatz','## Baustein 1001 - Richtextabsatz\n\nMit diesem Bausteinen können bereits die meisten Anforderungen einer einfachen Website abegedeckt werden. Ein Absatz besteht aus Überschrift, Text, Bild und Link.\n\n','Textbausteine');
 /*!40000 ALTER TABLE `component` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +220,6 @@ CREATE TABLE `content_data` (
   `dat_fullsearch` text collate latin1_general_ci NOT NULL,
   `med_id_thumb` int(11) NOT NULL default '0',
   PRIMARY KEY  (`dat_id`),
-  KEY `con_id` (`con_id`),
   KEY `dat_ikey1` (`dat_ikey1`),
   KEY `dat_ikey2` (`dat_ikey2`),
   KEY `dat_ikey3` (`dat_ikey3`),
@@ -306,8 +305,9 @@ CREATE TABLE `dataobject` (
   `dao_ttl` int(11) NOT NULL,
   `dao_type` tinyint(4) NOT NULL,
   `dao_clearonedit` tinyint(4) NOT NULL,
-  PRIMARY KEY  (`dao_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  PRIMARY KEY  (`dao_id`),
+  KEY `dao_lookup` (`dao_bez`,`dao_params`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -316,9 +316,40 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `dataobject` WRITE;
 /*!40000 ALTER TABLE `dataobject` DISABLE KEYS */;
+INSERT INTO `dataobject` VALUES (1,'MediaLightbox','#usr_id#13','a:1:{s:7:\"objects\";a:0:{}}',1208954993,0,1,0);
 /*!40000 ALTER TABLE `dataobject` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `dataobject2`
+--
+
+DROP TABLE IF EXISTS `dataobject2`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `dataobject2` (
+  `dao_id` int(11) NOT NULL auto_increment,
+  `dao_type` varchar(255) collate latin1_general_ci NOT NULL,
+  `dao_dat_type` varchar(255) collate latin1_general_ci NOT NULL,
+  `dao_dat_id` int(11) NOT NULL default '0',
+  `dao_props` text collate latin1_general_ci NOT NULL,
+  `dao_build_ts` int(11) NOT NULL default '0',
+  `dao_expire_ts` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`dao_id`),
+  KEY `type` (`dao_type`),
+  KEY `dat_type` (`dao_dat_type`),
+  KEY `dat_id` (`dao_dat_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `dataobject2`
+--
+
+LOCK TABLES `dataobject2` WRITE;
+/*!40000 ALTER TABLE `dataobject2` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dataobject2` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `extra`
@@ -572,7 +603,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `media` WRITE;
 /*!40000 ALTER TABLE `media` DISABLE KEYS */;
-INSERT INTO `media` VALUES (1,1,'Nils Hagemann',0,'I0610420','nils.jpg',1,'jpg','',60,75,1,'','','','_system','','',0,0,1093458207,1),(2,1,'Peter Sellinger',0,'I0610420','peter.jpg',1,'jpg','',60,71,1,'','','','_system','','',0,0,1093458201,1),(3,1,'Paul Sellinger',0,'I0610420','paul.jpg',1,'jpg','',60,77,1,'','','','_system','','',0,0,1093458195,1),(4,1,'bild.jpg',0,'I0610420','bild.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(5,1,'event.jpg',0,'I0610420','event.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(6,1,'job.jpg',0,'I0610420','job.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(7,1,'konfiguration.jpg',0,'I0610420','konfiguration.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(8,1,'news.jpg',0,'I0610420','news.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(9,1,'promofeld.gif',0,'I0610420','promofeld.gif',1,'gif','',60,40,0,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(10,1,'shop.gif',0,'I0610420','shop.gif',1,'gif','',60,40,0,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(11,1,'Markus Griesbach',0,'I0610420','maggus.jpg',1,'jpg','',60,75,1,'','','','_system','','',10,1153063188,1153063202,10),(13,1,'Michel',0,'I0610420','michel.jpg',1,'jpg','',60,76,1,'','','','_system','','',15,1161453837,1161453837,15);
+INSERT INTO `media` VALUES (1,1,'Nils Hagemann',0,'I0610420','nils.jpg',1,'jpg','',60,75,1,'','','','_system','','',0,0,1093458207,1),(2,1,'Peter Sellinger',0,'I0610420','peter.jpg',1,'jpg','',60,71,1,'','','','_system','','',0,0,1093458201,1),(3,1,'Paul Sellinger',0,'I0610420','paul.jpg',1,'jpg','',60,77,1,'','','','_system','','',0,0,1093458195,1),(4,1,'bild.jpg',0,'I0610420','bild.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(5,1,'event.jpg',0,'I0610420','event.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(6,1,'job.jpg',0,'I0610420','job.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(7,1,'konfiguration.jpg',0,'I0610420','konfiguration.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(8,1,'news.jpg',0,'I0610420','news.jpg',1,'jpg','',60,40,1,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(9,1,'promofeld.gif',0,'I0610420','promofeld.gif',1,'gif','',60,40,0,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(10,1,'shop.gif',0,'I0610420','shop.gif',1,'gif','',60,40,0,'','','Thumbnails für Contentobjekte','_system','','',0,0,1098390582,1),(11,1,'Markus Griesbach',0,'I0610420','maggus.jpg',1,'jpg','',60,75,1,'','','','_system','','',10,1153063188,1153063202,10);
 /*!40000 ALTER TABLE `media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -698,6 +729,11 @@ CREATE TABLE `page` (
   `pag_redirect` varchar(250) collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`pag_id`),
   UNIQUE KEY `ver_id` (`ver_id`),
+  KEY `pag_url` (`pag_url`),
+  KEY `pag_url1` (`pag_url1`),
+  KEY `pag_url2` (`pag_url2`),
+  KEY `pag_url3` (`pag_url3`),
+  KEY `pag_url4` (`pag_url4`),
   FULLTEXT KEY `pag_fullsearch` (`pag_fullsearch`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0;
 SET character_set_client = @saved_cs_client;
@@ -708,7 +744,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `page` WRITE;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
-INSERT INTO `page` VALUES (1,'41d1b7423d6618a0a7574487a3fbb89e',1,1,1,1,'Startseite','Phenotype 2.6 Startseite','','',1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,'','',1206375124,13,13,1206374344,1206375049,1206375241,1206375241,1206375241,1206375241,1206375241,1206375241,0,'0.0319','1',1,1,'Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','a:1:{s:8:\"pag_url1\";s:0:\"\";}','a:0:{}','a:0:{}','Phenotype 2.6 Startseite|Phenotype 2.6 Startseite|Phenotype 2.6 Startseite||||Phenotype 2.6|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>|',1,0,0,'');
+INSERT INTO `page` VALUES (1,'41d1b7423d6618a0a7574487a3fbb89e',1,1,1,1,'Startseite','Phenotype 2.6 Startseite','','',1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,'','',1208955186,13,13,1206374344,1208955061,0,0,0,0,0,0,0,'0.0596','',1,0,'Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','Phenotype-2.6-Startseite','a:1:{s:8:\"pag_url1\";s:0:\"\";}','a:0:{}','a:0:{}','Phenotype 2.6 Startseite|Phenotype 2.6 Startseite|Phenotype 2.6 Startseite||||Phenotype 2.6a|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>|',1,0,0,'');
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -751,6 +787,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `page_language` WRITE;
 /*!40000 ALTER TABLE `page_language` DISABLE KEYS */;
+INSERT INTO `page_language` VALUES (1,0,'',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 /*!40000 ALTER TABLE `page_language` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -776,7 +813,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `page_statistics` WRITE;
 /*!40000 ALTER TABLE `page_statistics` DISABLE KEYS */;
-INSERT INTO `page_statistics` VALUES (1,20080324,4);
+INSERT INTO `page_statistics` VALUES (1,20080423,1);
 /*!40000 ALTER TABLE `page_statistics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -835,7 +872,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `pageversion` WRITE;
 /*!40000 ALTER TABLE `pageversion` DISABLE KEYS */;
-INSERT INTO `pageversion` VALUES (1,1,1,1,'Version 1',0,0,0,'Phenotype 2.6 Startseite|Phenotype 2.6 Startseite|Phenotype 2.6 Startseite||||Phenotype 2.6|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>|');
+INSERT INTO `pageversion` VALUES (1,1,1,1,'Version 1',0,0,0,'Phenotype 2.6 Startseite|Phenotype 2.6 Startseite|Phenotype 2.6 Startseite||||Phenotype 2.6a|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>|');
 /*!40000 ALTER TABLE `pageversion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -922,7 +959,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `sequence_data` WRITE;
 /*!40000 ALTER TABLE `sequence_data` DISABLE KEYS */;
-INSERT INTO `sequence_data` VALUES (1,1,1,1,0,1,1,1,1,1001,'a:8:{s:8:\"headline\";s:13:\"Phenotype 2.6\";s:4:\"text\";s:409:\"<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>\";s:6:\"img_id\";s:1:\"0\";s:3:\"alt\";s:0:\"\";s:15:\"bildausrichtung\";s:5:\"links\";s:7:\"linkbez\";s:0:\"\";s:7:\"linkurl\";s:0:\"\";s:10:\"linktarget\";s:5:\"_self\";}','Phenotype 2.6|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>',13),(1,1,1,1,0,0,1,1,1,1001,'a:8:{s:8:\"headline\";s:13:\"Phenotype 2.6\";s:4:\"text\";s:409:\"<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>\";s:6:\"img_id\";s:1:\"0\";s:3:\"alt\";s:0:\"\";s:15:\"bildausrichtung\";s:5:\"links\";s:7:\"linkbez\";s:0:\"\";s:7:\"linkurl\";s:0:\"\";s:10:\"linktarget\";s:5:\"_self\";}','Phenotype 2.6|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>',0);
+INSERT INTO `sequence_data` VALUES (1,1,1,1,0,1,1,1,1,1001,'a:8:{s:8:\"headline\";s:14:\"Phenotype 2.6a\";s:4:\"text\";s:409:\"<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>\";s:6:\"img_id\";s:1:\"0\";s:3:\"alt\";s:0:\"\";s:15:\"bildausrichtung\";s:5:\"links\";s:7:\"linkbez\";s:0:\"\";s:7:\"linkurl\";s:0:\"\";s:10:\"linktarget\";s:5:\"_self\";}','Phenotype 2.6a|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>',13),(1,1,1,1,0,0,1,1,1,1001,'a:8:{s:8:\"headline\";s:14:\"Phenotype 2.6a\";s:4:\"text\";s:409:\"<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>\";s:6:\"img_id\";s:1:\"0\";s:3:\"alt\";s:0:\"\";s:15:\"bildausrichtung\";s:5:\"links\";s:7:\"linkbez\";s:0:\"\";s:7:\"linkurl\";s:0:\"\";s:10:\"linktarget\";s:5:\"_self\";}','Phenotype 2.6a|<p>Willkommen bei Phenotype - Ihr System wurde installiert.</p>\r\n<p>Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter / Passwort: deleteme<br />\r\n<a href=\"_phenotype/admin/\">Zum Redaktionssystem</a></p>\r\n<p>Weitere Informationen &uuml;ber Phenotype auf <a href=\"http://www.phenotype.de\">phenotype.de</a> und im <a href=\"http://phenotype.de/wiki/\">Phenotype-Wiki</a></p>',0);
 /*!40000 ALTER TABLE `sequence_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1199,4 +1236,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2008-03-24 16:26:40
+-- Dump completed on 2008-04-23 13:03:27
