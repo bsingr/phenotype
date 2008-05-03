@@ -205,7 +205,7 @@ function cleanupContent()
 	$rs = $myDB->query($sql);
 	while ($row=mysql_fetch_array($rs))
 	{
-		echo "Entferne Contentobject " . $row["con_id"] . "<br/>";
+		echo locale("Remove contentobject %1",array($row["con_id"])) . "<br/>";
 		$myAdm->cfg_removeContent($row["con_id"]);
 
 	}
@@ -226,7 +226,7 @@ function cleanupActions()
 	$rs = $myDB->query($sql);
 	while ($row=mysql_fetch_array($rs))
 	{
-		echo "Entferne Aktion " . $row["act_id"] . "<br/>";
+	  echo locale("Remove action %1",array($row["act_id"])) . "<br/>";
 		$myAdm->cfg_removeAction($row["act_id"]);
 
 	}
@@ -297,7 +297,7 @@ function cleanupExtras()
 	$rs = $myDB->query($sql);
 	while ($row=mysql_fetch_array($rs))
 	{
-		echo "Entferne Extraobjekt " . $row["ext_id"] . "<br/>";
+		echo locale("Remove extra %1",array($row["ext_id"])) . "<br/>";
 		$myAdm->cfg_removeExtra($row["ext_id"]);
 	}
 
@@ -401,12 +401,12 @@ function cleanupWebroot()
 			{
 				if (is_dir($dir . '/' . $file))
 				{
-					echo  '<p style="color:red">'.$file . ' - Verzeichnis wird gelöscht</p>';
+					echo  '<p style="color:red">'.$file . ' - '.locale("Folder gets deleted").'</p>';
 					$myAdm->removeDirComplete($dir . '/' . $file,0);
 				}
 				else
 				{
-					echo  '<p style="color:red">'. $file . ' - Datei wird gelöscht</p>';					unlink ($dir . '/' . $file);
+					echo  '<p style="color:red">'. $file . ' - '.locale("File gets deleted").'</p>';					unlink ($dir . '/' . $file);
 				}
 			}
 		}
@@ -434,13 +434,13 @@ function cleanupStorage()
 			{
 				if ($file != ".svn")
 				{
-					echo  '<p style="color:red">'.$file . ' - Verzeichnis wird gelöscht</p>';
+					echo  '<p style="color:red">'.$file . ' - '.locale("Folder gets deleted").'</p>';
 					$myAdm->removeDirComplete($dir . '/' . $file,0);
 				}
 			}
 			else
 			{
-				echo  '<p style="color:red">'. $file . ' - Datei wird gelöscht</p>';					
+				echo  '<p style="color:red">'. $file . ' - '.locale("File gets deleted").'</p>';					
 				unlink ($dir . '/' . $file);
 			}
 			
@@ -662,7 +662,7 @@ function cleanupBackend()
 		{
 			if ($file != "." && $file != ".." && $file != ".svn")
 			{
-				echo "Entferne Backendklasse ".$file . "<br/>";
+				echo locale("Remove backend class %1",array($file)). "<br/>";
 				unlink ($directory . $file);
 			}
 		}
@@ -681,7 +681,7 @@ function cleanupLanguageMaps()
 		{
 			if ($file != "." && $file != ".." && $file != ".svn")
 			{
-				echo "Entferne Languagemap ".$file . "<br/>";
+				echo locale("Remove language map %1",array($file)) . "<br/>";
 				unlink ($directory . $file);
 			}
 		}
@@ -710,7 +710,7 @@ function cleanupSnapshots()
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Packages");
+$myAdm->explorer_prepare(locale("Configuration"),locale("Packages"));
 $myAdm->explorer_set("packagemode","cleanup");
 $myAdm->explorer_draw();
 
@@ -731,7 +731,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Cleanup</td>
+            <td class="windowTitle"><?php echo localeH("Cleanup");?></td>
             <td align="right" class="windowTitle"><!--<a href="http://www.phenotype-cms.de/docs.php?v=23&t=21" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>

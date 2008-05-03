@@ -37,11 +37,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -50,7 +50,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Packages");
+$myAdm->explorer_prepare(locale("Config"),locale("Packages"));
 $myAdm->explorer_set("packagemode","export");
 $myAdm->explorer_draw();
 
@@ -71,7 +71,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Paket exportieren</td>
+            <td class="windowTitle"><?php echo localeH("Export package");?></td>
             <td align="right" class="windowTitle"><!--<a href="http://www.phenotype-cms.de/docs.php?v=23&t=21" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
@@ -178,7 +178,7 @@ $myPT->startBuffer();
     		}
     		else
     		{
-    			echo '<font color="red">skipping ' . $file . ' XML-Fehler</font><br/>';
+    			echo '<font color="red">skipping ' . $file . ' XML-Error</font><br/>';
     			if (PT_DEBUG==1)
     			{
     				$file = "data/content/_debug_data_" . sprintf("%06d",$dat_id) . "_".$importmethod.".xml";
@@ -298,12 +298,12 @@ $myPT->startBuffer();
     				{
     					if (is_dir($directory . $file))
     					{
-    						echo "Kopiere Verzeichnis " . $file . "<br/>";
+    						echo "Copy Folder " . $file . "<br/>";
     						$myAdm->copyDirComplete($directory . $file,$dir."htdocs/".$file);
     					}
     					else
     					{
-    						echo "Kopiere Datei " . $file . "<br/>";
+    						echo "Copy File " . $file . "<br/>";
     						copy ($directory . $file,$dir."htdocs/". $file);
     						chmod ($dir."htdocs/". $file,UMASK);
     					}
@@ -328,12 +328,12 @@ $myPT->startBuffer();
 
     				if (is_dir($directory . $file))
     				{
-    					echo "Kopiere Verzeichnis " . $file . "<br/>";
+    					echo "Copy Folder " . $file . "<br/>";
     					$myAdm->copyDirComplete($directory . $file,$dir."storage/".$file);
     				}
     				else
     				{
-    					echo "Kopiere Datei " . $file . "<br/>";
+    					echo "Copy File " . $file . "<br/>";
     					copy ($directory . $file,$dir."storage/". $file);
     					chmod ($dir."storage/". $file,UMASK);
     				}
@@ -358,7 +358,7 @@ $myPT->startBuffer();
     			$filecheck = str_replace('.',"_",$file);
     			if ($myRequest->check("backend_".$filecheck))
     			{
-    				echo "Kopiere Backendklasse " . $file . "<br/>";
+    				echo "Copy backend class " . $file . "<br/>";
     				copy ($directory . $file,$dir."config/backend/". $file);
     				chmod ($dir."config/backend/". $file,UMASK);
     			}
@@ -383,7 +383,7 @@ $myPT->startBuffer();
     			$filecheck = str_replace('.',"_",$file);
     			if ($myRequest->check("lmap_".$filecheck))
     			{
-    				echo "Kopiere Languagemap " . $file . "<br/>";
+    				echo "Copy languagemap " . $file . "<br/>";
     				copy ($directory . $file,$dir."config/languagemaps/". $file);
     				chmod ($dir."config/languagemaps/". $file,UMASK);
     			}
@@ -407,7 +407,7 @@ $myPT->startBuffer();
     		{
     			$fcounter++;
 					?><br/>
-					<strong>Seiten der Seitengruppe <?php echo $id ?></strong><br/>
+					<strong><?php echo localeH("Pages from page group");?> <?php echo $id ?></strong><br/>
 					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=pages&grp_id=<?php echo $id ?>&fcounter=<?php echo $fcounter ?>" width="495" height="100" frameborder="0"></iframe>
 					<br/>
 					<?php
@@ -442,7 +442,7 @@ $myPT->startBuffer();
     		{
     			$fcounter++;
 					?><br/>
-					<strong>Datensätze der Contentklasse <?php echo $id ?></strong><br/>
+					<strong><?php echo localeH("Records from content class");?> <?php echo $id ?></strong><br/>
 					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=content&con_id=<?php echo $id ?>&importmethod=<?php echo $importmethod ?>&fcounter=<?php echo $fcounter ?>" width="495" height="100" frameborder="0"></iframe>
 					<br/>
 					<?php
@@ -485,7 +485,7 @@ $myPT->startBuffer();
     		{
     			$fcounter++;
     			?><br/>
-					<strong>Mediaobjekte der Mediagruppe <?php echo $id ?></strong><br/>
+					<strong><?php echo localeH("Mediaobjects from media group");?> <?php echo $id ?></strong><br/>
 					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=media&grp_id=<?php echo $id ?>&importmethod=<?php echo $importmethod ?>&fcounter=<?php echo $fcounter ?>" width="495" height="100" frameborder="0"></iframe>
 					<br/>
 					<?php
@@ -532,7 +532,7 @@ $myPT->startBuffer();
     		{
     			$fcounter++;
 					?><br/>
-					<strong>Aufgaben des Aufgabenbereichs <?php echo $id ?></strong><br/>
+					<strong><?php echo localeH("Tasks from ticket subject");?> <?php echo $id ?></strong><br/>
 					<iframe src="backend.php?page=Config,Packages,ajaxexport&type=tickets&sbj_id=<?php echo $id ?>&fcounter=<?php echo $fcounter ?>" width="495" height="100" frameborder="0"></iframe>
 					<br/>
 					<?php
@@ -617,14 +617,14 @@ $myPT->startBuffer();
     {
     	if ($targetfolder=="")
     	{
-    		echo '<font color="red">Kein Zielordner angegeben. Paket nicht kopiert..</font><br/>';
+    		echo '<font color="red">'.locale("No target folder specified. Package not copied.").'</font><br/>';
     	}
     	else
     	{
     		$targetfolder = PACKAGEPATH . $targetfolder."/";
     		if (file_exists($targetfolder) && (!$myRequest->check("forceCopy")))
     		{
-    			echo '<font color="red">Zielordner existiert bereits. Paket nicht kopiert.</font><br/>';
+    			echo '<font color="red">'.locale("Target folder already existing. Package not copied.").'</font><br/>';
     		}
     		else
     		{
@@ -662,12 +662,12 @@ function copyPackageDir($fromDir, $toDir) {
 			{
 				if (is_dir($fromDir . $file))
 				{
-					echo "Kopiere Verzeichnis " . $file . "<br/>";
+					echo "Copy Folder " . $file . "<br/>";
 					$myAdm->copyDirComplete($fromDir . $file, $toDir . $file);
 				}
 				else
 				{
-					echo "Kopiere Datei " . $file . "<br/>";
+					echo "Copy File " . $file . "<br/>";
 					copy ($fromDir. $file, $toDir . $file);
 					chmod ($toDir . $file,UMASK);
 				}

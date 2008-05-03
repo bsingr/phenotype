@@ -69,7 +69,7 @@ switch ($type)
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?php echo $myPT->version ?></title>
+		<title>Phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -86,19 +86,19 @@ switch ($type)
 		<table width="490" cellpadding="0" cellspacing="0" border="0">
 		</tr>
 		<td class="formarea" width="490">
-		<strong>Users</strong><br/>
+		<strong><?php echo localeH("Users");?></strong><br/>
 		<iframe src="package_install2.php?type=users&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/><br/>
-		<strong>Media</strong><br/>
+		<strong><?php echo localeH("Media");?></strong><br/>
 		<iframe src="package_install2.php?type=media&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/><br/>
-		<strong>Pages</strong><br/>
+		<strong><?php echo localeH("Pages");?></strong><br/>
 		<iframe src="package_install2.php?type=pages&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/><br/>
-		<strong>Content</strong><br/>
+		<strong><?php echo localeH("Content");?></strong><br/>
 		<iframe src="package_install2.php?type=content&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/><br/>
-		<strong>Tickets</strong><br/>
+		<strong><?php echo localeH("Tickets");?></strong><br/>
 		<iframe src="package_install2.php?type=tickets&id=<?php echo $id ?>" width="495" height="100" frameborder="0"></iframe>
 		<br/>
 		</td></tr>
@@ -113,7 +113,7 @@ switch ($type)
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?php echo $myPT->version ?></title>
+		<title>Phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">

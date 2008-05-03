@@ -44,11 +44,11 @@ $myPak = new PhenotypePackage();
 
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -57,7 +57,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Packages");
+$myAdm->explorer_prepare(locale("Config"),locale("Packages"));
 $myAdm->explorer_set("id",$myRequest->get("id"));
 $myAdm->explorer_set("packagemode","install");
 $myAdm->explorer_draw();
@@ -84,7 +84,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Package <?php echo $id ?></td>
+            <td class="windowTitle"><?php echo localeH("Package");?> <?php echo $id ?></td>
             <td align="right" class="windowTitle"><!--<a href="http://www.phenotype-cms.de/docs.php?v=23&t=21" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
@@ -100,8 +100,8 @@ $myPT->startBuffer();
 	<?php
 	$myLayout->tab_new();
 	$url = "package_edit.php?id=" .$id ."&b=0";
-	$myLayout->tab_addEntry("Protokoll",$url,"b_konfig.gif");
-	$myLayout->tab_draw("Protokoll");
+	$myLayout->tab_addEntry(locale("Journal"),$url,"b_konfig.gif");
+	$myLayout->tab_draw(locale("Journal"));
 	$myLayout->workarea_start_draw();
 	if ($myRequest->getI("structure")==1)
 	{
@@ -109,7 +109,7 @@ $myPT->startBuffer();
 		$myPT->startBuffer();
 		$myPak->globalInstallStructure($myRequest->getI("hostconfig"));
 		$html = $myPT->stopBuffer();
-		$myLayout->workarea_row_draw("Struktur",$html);
+		$myLayout->workarea_row_draw(locale("Structure"),$html);
 	}
 	if ($myRequest->getI("data")==1)
 	{
@@ -121,7 +121,7 @@ $myPT->startBuffer();
 		{
 			$html = '<iframe src="package_install2.php?id='.$id.'" width="500" height="650" frameborder="0"></iframe>';
 		}
-		$myLayout->workarea_row_draw("Daten",$html);
+		$myLayout->workarea_row_draw(locale("Data"),$html);
 	}
  ?>
  	 

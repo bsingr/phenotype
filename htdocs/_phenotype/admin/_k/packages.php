@@ -37,11 +37,11 @@ $myAdm = new PhenotypeAdmin();
 
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -50,7 +50,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Packages");
+$myAdm->explorer_prepare(locale("Config"),locale("Packages"));
 $myAdm->explorer_set("packagemode","install");
 $myAdm->explorer_draw();
 
@@ -71,7 +71,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Pakete installieren</td>
+            <td class="windowTitle"><?php echo localeH("Install Package");?></td>
             <td align="right" class="windowTitle"><!--<a href="http://www.phenotype-cms.de/docs.php?v=23&t=21" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
@@ -93,10 +93,10 @@ $myPT->startBuffer();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="25" class="tableHead">Nr.</td>
+              <td width="25" class="tableHead"><?php echo localeH("No.");?></td>
               <td width="60" class="tableHead">&nbsp;</td>
-              <td width="449" class="tableHead">Bezeichnung</td>
-              <td width="50" class="tableHead">Aktion</td>
+              <td width="449" class="tableHead"><?php echo localeH("Name");?></td>
+              <td width="50" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -114,9 +114,9 @@ if ($fp)
 		?>
 	        <tr>
               <td class="tableBody"><?php echo $i ?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="package_edit.php?id=<?php echo urlencode($file) ?>&b=0"><img src="img/t_script.gif" alt="Package auswählen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="package_edit.php?id=<?php echo urlencode($file) ?>&b=0"><img src="img/t_script.gif" alt="<?php echo localeH("Select Package");?>" width="60" height="40" border="0"></a></span></td>
               <td class="tableBody"><?php echo $file ?></td>
-              <td align="right" nowrap class="tableBody"><a href="package_edit.php?id=<?php echo urlencode($file) ?>&b=0"><img src="img/b_edit.gif" alt="Package auswählen" width="22" height="22" border="0" align="absmiddle"></a>
+              <td align="right" nowrap class="tableBody"><a href="package_edit.php?id=<?php echo urlencode($file) ?>&b=0"><img src="img/b_edit.gif" alt="<?php echo localeH("Select Package");?>" width="22" height="22" border="0" align="absmiddle"></a>
 			</td>
             </tr>
             <tr>

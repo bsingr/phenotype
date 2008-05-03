@@ -36,11 +36,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Seitenskripte");
+$myAdm->explorer_prepare(locale("Config"),locale("Page scripts"));
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
@@ -71,7 +71,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Seitenskripte bearbeiten </td>
+            <td class="windowTitle"><?php echo localeH("Edit page scripts");?> </td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=19" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -93,10 +93,10 @@ $myPT->startBuffer();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="25" class="tableHead">Seite</td>
+              <td width="25" class="tableHead"><?php echo localeH("Page");?></td>
               <td width="60" class="tableHead">&nbsp;</td>
-              <td width="449" class="tableHead">Bezeichnung</td>
-              <td width="50" class="tableHead">Aktion</td>
+              <td width="449" class="tableHead"><?php echo localeH("Name");?></td>
+              <td width="50" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -119,9 +119,9 @@ $myPT->startBuffer();
 			
             <tr>
               <td class="tableBody"><?php echo $nr ?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="pagescript_edit.php?id=<?php echo $row["pag_id"] ?>&ver_nr=<?php echo $row["ver_nr"] ?>&ver_id=<?php echo $row["ver_id"] ?>&b=0"><img src="img/t_skript.gif" alt="Baustein anzeigen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="pagescript_edit.php?id=<?php echo $row["pag_id"] ?>&ver_nr=<?php echo $row["ver_nr"] ?>&ver_id=<?php echo $row["ver_id"] ?>&b=0"><img src="img/t_skript.gif" alt="<?php echo localeH("Edit Pagescript");?>" width="60" height="40" border="0"></a></span></td>
               <td class="tableBody"><?php echo $bez ?></td>
-              <td align="right" nowrap class="tableBody"><a href="pagescript_edit.php?id=<?php echo $row["pag_id"] ?>&ver_nr=<?php echo $row["ver_nr"] ?>&ver_id=<?php echo $row["ver_nr"] ?>&b=0"><img src="img/b_edit.gif" alt="Seitenskript bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+              <td align="right" nowrap class="tableBody"><a href="pagescript_edit.php?id=<?php echo $row["pag_id"] ?>&ver_nr=<?php echo $row["ver_nr"] ?>&ver_id=<?php echo $row["ver_nr"] ?>&b=0"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit Pagescript");?>" width="22" height="22" border="0" align="absmiddle"></a>
 </td>
             </tr>
             <tr>

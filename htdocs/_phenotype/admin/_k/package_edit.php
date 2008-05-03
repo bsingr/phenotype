@@ -37,11 +37,11 @@ $myAdm = new PhenotypeAdmin();
 $id = $_REQUEST["id"];
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Config"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -50,7 +50,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Konfiguration","Packages");
+$myAdm->explorer_prepare(locale("Config"),locale("Packages"));
 $myAdm->explorer_set("id",$myRequest->get("id"));
 $myAdm->explorer_set("packagemode","install");
 $myAdm->explorer_draw();
@@ -79,7 +79,7 @@ $myPak = new PhenotypePackage();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Package <?php echo $id ?></td>
+            <td class="windowTitle"><?php echo localeH("Package");?> <?php echo $id ?></td>
             <td align="right" class="windowTitle"><!--<a href="http://www.phenotype-cms.de/docs.php?v=23&t=21" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
@@ -95,28 +95,28 @@ $myPak = new PhenotypePackage();
 	<?php
 	 $myLayout->tab_new();
 	 $url = "package_edit.php?id=" .$id ."&b=0";	 
-	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
-	 $myLayout->tab_draw("Konfiguration");
+	 $myLayout->tab_addEntry(locale("Configuration"),$url,"b_konfig.gif");
+	 $myLayout->tab_draw(locale("Configuration"));
      $myLayout->workarea_start_draw();
-     $myLayout->workarea_row_draw("Bezeichnung",$myPak->bez);	 
-	 $myLayout->workarea_row_draw("Beschreibung",$myPak->getDescription());	  
-	 $html .= $myLayout->workarea_form_checkbox("", "structure", 1,"Strukturdateien installieren<br/><br/>(Bausteine, Includes, Seitengruppen, Mediagruppen, Contentobjekte, Aufgabenbereiche, Aktionen, Extras, Rollen, Applikationsdateien, Backendklassen, Languagemaps, Webroot, Storage)<br/>");
+     $myLayout->workarea_row_draw(locale("Name"),$myPak->bez);	 
+	 $myLayout->workarea_row_draw(locale("Description"),$myPak->getDescription());	  
+	 $html .= $myLayout->workarea_form_checkbox("", "structure", 1,locale("msg_install_structure_files")."<br/>");
 	 
 	 $file = PACKAGEPATH.$myRequest->get("id")."/_host.config.inc.php";
 	
 	 if (file_exists($file))
 	 {
-	 	$html .= $myLayout->workarea_form_checkbox("", "hostconfig", 0,"_host.config.inc.php überschreiben<br/>");
+	 	$html .= $myLayout->workarea_form_checkbox("", "hostconfig", 0,locale("overwrite _host.config.inc.php")."<br/>");
 	 }
 	 $html .="<br/>";
-	 $html .= $myLayout->workarea_form_checkbox("", "data", 1,"Daten installieren");
-	 $html .= $myLayout->workarea_form_checkbox("", "dataajax", 0,"Ajax-Installer verwenden.<br/><br/>(Seiten, Contentdatensätze, Mediaobjekte, Aufgaben, Benutzer)<br/><br/>");
+	 $html .= $myLayout->workarea_form_checkbox("", "data", 1,locale("install data"));
+	 $html .= $myLayout->workarea_form_checkbox("", "dataajax", 0,locale("msg_use_ajax_installer")."<br/><br/>");
 	$myLayout->workarea_row_draw("Optionen", $html);
  ?>
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Installieren" onclick="javascript:return confirm('Dieses Paket wirklich installieren?')">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Install");?>" onclick="javascript:return confirm('<?php echo localeH("Really install this package?");?>')">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php
