@@ -36,11 +36,11 @@ $myAdm = new PhenotypeAdmin();
 $id = $myRequest->getI("id");
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Aktionen");
+$myAdm->explorer_prepare(locale("Admin"),locale("Actions"));
 $myAdm->explorer_set("act_id",$id);
 $myAdm->explorer_draw();
 ?>
@@ -75,7 +75,7 @@ $row = mysql_fetch_array($rs);
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo $id ?> Aktion / <?php echo $row["act_bez"] ?></td>
+            <td class="windowTitle"><?php echo $id ?> <?php echo localeH("Action");?> / <?php echo $row["act_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=9" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -89,13 +89,13 @@ $row = mysql_fetch_array($rs);
 	<?php
 	 $myLayout->tab_new();
 	 $url = "admin_action_edit.php?id=" .$id ."&b=0";	 
-	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
-	 $myLayout->tab_draw("Konfiguration");
+	 $myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
+	 $myLayout->tab_draw(locale("Config"));
      $myLayout->workarea_start_draw();
      $html = $myLayout->workarea_form_text("","bez",$row["act_bez"]);
-	 $myLayout->workarea_row_draw("Bezeichnung",$html);		
+	 $myLayout->workarea_row_draw(locale("Name"),$html);		
      $html=  $myLayout->workarea_form_textarea("","description",$row["act_description"],8);
-     $myLayout->workarea_row_draw("Beschreibung",$html);	  
+     $myLayout->workarea_row_draw(locale("Description"),$html);	  
      /* Moegliche Erweiterung
 	 $myPT->startBuffer();
 	 ?>
@@ -162,17 +162,17 @@ $row = mysql_fetch_array($rs);
 	 $myLayout->workarea_whiteline();
 	 $myPT->startBuffer();
 	 ?>
-	 <input name="status" type="checkbox" value="1" <?php if ($row["act_status"]=="1") echo"checked"; ?>> online. <br>
-	 <br><?php if ($row["act_lastrun"]!=0){ ?>Letzter Lauf: <?php echo date('d.m.Y H:i',$row["act_lastrun"]) ?><br><?php } ?>
-	 <?php if ($row["act_nextrun"]!=0){ ?>N&auml;chster Lauf: <?php echo date('d.m.Y H:i',$row["act_nextrun"]) ?><?php }else{ ?>N&auml;chster Lauf: sofort<?php } ?>
+	 <input name="status" type="checkbox" value="1" <?php if ($row["act_status"]=="1") echo"checked"; ?>> <?php echo localeH("online");?>. <br>
+	 <br><?php if ($row["act_lastrun"]!=0){ ?><?php echo localeH("Last run");?>: <?php echo date('d.m.Y H:i',$row["act_lastrun"]) ?><br><?php } ?>
+	 <?php if ($row["act_nextrun"]!=0){ ?><?php echo localeH("Next run");?>: <?php echo date('d.m.Y H:i',$row["act_nextrun"]) ?><?php }else{ ?><?php echo localeH("Next run: immediately");?><?php } ?>
      <?php
 	 $html = $myPT->stopBuffer();
-	 $myLayout->workarea_row_draw("Status",$html);		
+	 $myLayout->workarea_row_draw(locale("State"),$html);		
 	 ?>	
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input name="reset" type="submit" class="buttonWhite" style="width:102px" value="Reset" onclick="javascript:return confirm('Diese Aktion wirklich zurücksetzen?')">&nbsp;&nbsp;<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Aktion wirklich l&ouml;schen?')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="reset" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Reset");?>" onclick="javascript:return confirm('<?php echo localeH("Really reset this action?");?>')">&nbsp;&nbsp;<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this action?");?>')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Delete");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php

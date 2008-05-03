@@ -35,11 +35,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -48,7 +48,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Aufgabenbereiche");
+$myAdm->explorer_prepare(locale("Admin"),locale("Task subjects"));
 $myAdm->explorer_draw();
 
 

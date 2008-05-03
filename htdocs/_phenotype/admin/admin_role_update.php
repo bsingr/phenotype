@@ -42,17 +42,21 @@ $_rechte = Array();
 
 $_element = Array();
 //$_element["Redaktion / Seiten - Allgemein"]="page";
-$_element["Redaktion / Seiten - Erzeugen und Konfigurieren"]="pageconfig";
-$_element["Redaktion / Seiten - KEINE Bausteine auswählen/verändern/löschen"]="pagenocomponent";
-$_element["Redaktion / Seiten - Statistik"]="pagestatistic";
-$_element["Redaktion / Content"]="content";
-$_element["Redaktion / Media"]="mediabase";
-$_element["Analysemodus"]="analyse";
+$_element[locale("Editor / Pages - Create and configure pages")]="pageconfig";
+$_element[locale("Editor / Pages - CANNOT insert/remove/change components")]="pagenocomponent";
+$_element[locale("Editor / Pages - Stats")]="pagestatistic";
+$_element[locale("Editor / Content")]="content";
+$_element[locale("Editor / Mediabase")]="mediabase";
+$_element[locale("Analyze")]="analyse";
+			
 
-$_element["Aufgaben"]="task";
+$_element[locale("Tasks")]="task";
 
-$_element["Adminmodus"]="admin";
-$_element["Rollback"]="rollback";
+$_element[locale("Admin rights")]="admin";
+$_element[locale("Rollback")]="rollback";
+
+
+
 
 $html = "";
 foreach ($_element AS $key => $val)

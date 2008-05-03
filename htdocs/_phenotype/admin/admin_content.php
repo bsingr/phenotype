@@ -35,11 +35,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -48,7 +48,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Content");
+$myAdm->explorer_prepare(locale("Admin"),locale("Content"));
 $myAdm->explorer_draw();
 
 
@@ -69,7 +69,7 @@ $myPT->startBuffer();
 <input type="hidden" name="action_id" value="6">
 <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Datensätze löschen</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Delete records");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -98,7 +98,7 @@ $myPT->startBuffer();
 		 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" onclick="javascript:return confirm('Datensätze unwiderruflich löschen?');" value="Ausf&uuml;hren"></td>
+            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" onclick="javascript:return confirm('<?php echo localeH("Delete records irrevocably");?>');" value="<?php echo localeH("Execute");?>"></td>
           </tr>
         </table>
 		<?php	$myLayout->workarea_stop_draw();
@@ -109,7 +109,7 @@ $myPT->startBuffer();
 <input type="hidden" name="action_id" value="3">
 <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Contentbase neu indizieren</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Build Content Index");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -133,12 +133,12 @@ $myPT->startBuffer();
 	<?php
 
 	$html = $myPT->stopBuffer(); 
-	$myLayout->workarea_row_draw("Contentobjekt",$html);	
+	$myLayout->workarea_row_draw(locale("Content objects"),$html);	
 	?>
 		 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" onclick="javascript:return confirm('Contentobjekte neu indizieren?');" value="Ausf&uuml;hren"></td>
+            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" onclick="javascript:return confirm('<?php echo localeH("Rebuild index?");?>');" value="<?php echo localeH("Execute");?>"></td>
           </tr>
         </table>
 		<?php	$myLayout->workarea_stop_draw();

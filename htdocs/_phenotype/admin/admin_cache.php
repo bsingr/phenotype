@@ -35,11 +35,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -48,7 +48,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Cache");
+$myAdm->explorer_prepare(locale("Admin"),locale("Cache"));
 $myAdm->explorer_draw();
 
 
@@ -69,7 +69,7 @@ $myPT->startBuffer();
 <input type="hidden" name="action_id" value="1">
 <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Seitencache zur&uuml;cksetzen </strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Clear page cache");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -88,7 +88,7 @@ $myPT->startBuffer();
 	<?php echo $row1["grp_bez"] ?> :<br>
 	<input type="checkbox" name="grp_id_<?php echo $row1["grp_id"] ?>" value="1" checked>&nbsp;
     <select name="pag_id_grp_id_<?php echo $row1["grp_id"] ?>" class="input" style="width:250px">
-	<option value="0">* alle Seiten *</option>
+	<option value="0"><?php echo localeH("* all pages *");?></option>
 	 <?php
 	 $sql = "SELECT * FROM page WHERE grp_id=".$row1["grp_id"]." ORDER BY pag_bez";
 	 $rs2 = $myDB->query($sql);
@@ -104,12 +104,12 @@ $myPT->startBuffer();
 	<?php
 	}
 	$html = $myPT->stopBuffer(); 
-	$myLayout->workarea_row_draw("Seitengruppen",$html);	
+	$myLayout->workarea_row_draw(locale("Pagegroups"),$html);	
 	?>
 		 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" onclick="javascript:return confirm('Seitencache zur&uuml;cksetzen?');" value="Ausf&uuml;hren"></td>
+            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" onclick="javascript:return confirm('<?php echo localeH("Clear page cache");?>');" value="<?php echo localeH("Execute");?>"></td>
           </tr>
         </table>
 		<?php	$myLayout->workarea_stop_draw();

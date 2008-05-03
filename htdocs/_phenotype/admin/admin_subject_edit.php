@@ -36,11 +36,11 @@ $myAdm = new PhenotypeAdmin();
 $id = $myRequest->getI("id");
 ?>
 <?php
-$myAdm->header("Konfiguration");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Aufgabenbereiche");
+$myAdm->explorer_prepare(locale("Admin"),locale("Task subjects"));
 $myAdm->explorer_set("sbj_id",$id);
 $myAdm->explorer_draw();
 ?>

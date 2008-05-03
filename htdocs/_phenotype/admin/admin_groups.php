@@ -34,11 +34,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -47,7 +47,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Seitengruppen");
+$myAdm->explorer_prepare(locale("Admin"),locale("Pagegroups"));
 $myAdm->explorer_draw();
 
 
@@ -68,7 +68,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">&Uuml;bersicht Seitengruppen</td>
+            <td class="windowTitle"><?php echo localeH("Overview Pagegroups");?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=10" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -90,10 +90,10 @@ $myPT->startBuffer();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="25" class="tableHead">Nr.</td>
+              <td width="25" class="tableHead"><?php echo localeH("No.");?></td>
               <td width="60" class="tableHead">&nbsp;</td>
-              <td width="449" class="tableHead">Bezeichnung</td>
-              <td width="50" class="tableHead">Aktion</td>
+              <td width="449" class="tableHead"><?php echo localeH("Name");?></td>
+              <td width="50" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -107,9 +107,9 @@ $myPT->startBuffer();
 			
             <tr>
               <td class="tableBody"><?php echo sprintf("%02d",$row["grp_id"]) ?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="admin_group_edit.php?id=<?php echo $row["grp_id"] ?>&b=0"><img src="img/t_pagegroup.gif" alt="Seitengruppe anzeigen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="admin_group_edit.php?id=<?php echo $row["grp_id"] ?>&b=0"><img src="img/t_pagegroup.gif" alt="<?php echo localeH("View Pagegroup");?>" width="60" height="40" border="0"></a></span></td>
               <td class="tableBody"><?php echo $row["grp_bez"] ?></td>
-              <td align="right" nowrap class="tableBody"><a href="admin_group_edit.php?id=<?php echo $row["grp_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a>
+              <td align="right" nowrap class="tableBody"><a href="admin_group_edit.php?id=<?php echo $row["grp_id"] ?>&b=0"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit Pagegroup");?>" width="22" height="22" border="0" align="absmiddle"></a>
 <?php
        $sql = "SELECT COUNT(*) AS C FROM page WHERE grp_id = " . $row["grp_id"];
 	   $rs_check = $myDB->query($sql);
@@ -117,7 +117,7 @@ $myPT->startBuffer();
 	   if ($row_check["C"]==0)
 	   {
 ?>   
-<a href="admin_group_delete.php?id=<?php echo $row["grp_id"] ?>" onclick="javascript:return confirm('Diese Seitengruppe wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<a href="admin_group_delete.php?id=<?php echo $row["grp_id"] ?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this pagegroup?");?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete");?>" width="22" height="22" border="0" align="absmiddle"></a>
 <?php
        }else
 	   {
@@ -140,7 +140,7 @@ $myPT->startBuffer();
     </table>
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowFooterGrey2"><a href="admin_group_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Seitengruppen anlegen</a></td>
+        <td class="windowFooterGrey2"><a href="admin_group_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new pagegroup");?></a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
       <tr>

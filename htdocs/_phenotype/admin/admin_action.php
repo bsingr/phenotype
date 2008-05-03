@@ -35,7 +35,7 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
@@ -44,22 +44,22 @@ $submodul="";
 $header = "Protokoll";
 switch ($action_id)
 {
-  case 1: $submodul="Cache";
+  case 1: $submodul=locale("Cache");
   break;
-  case 2: $submodul="Media";
+  case 2: $submodul=locale("Media");
   break;
-  case 3: $submodul="Content"; // Neu Indizieren
+  case 3: $submodul=locale("Content"); // Neu Indizieren
   break;
-  case 4: $submodul="Seiten";
+  case 4: $submodul=locale("Pages");
   break;    
-  case 5: $submodul="Media"; // Drag & Drop Upload
-          $header = "Drag & Drop - Upload";
+  case 5: $submodul=locale("Media"); // Drag & Drop Upload
+          $header = locale("Drag & Drop upload");
   break;      
-  case 6: $submodul="Content"; // Löschen
+  case 6: $submodul=locale("Content"); // Löschen
   break;  
 }
 
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 
 ?>
 <?php
@@ -69,7 +69,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin",$submodul);
+$myAdm->explorer_prepare(locale("Admin"),$submodul);
 $myAdm->explorer_draw();
 
 
@@ -91,7 +91,7 @@ $myPT->startBuffer();
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowTitle"><?php echo $header ?></td>
-            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=9" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
+            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=9" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -112,14 +112,14 @@ $myPT->startBuffer();
 <?php
 if ($action_id==1)
 {
- echo "<strong>Nachfolgende Seiten werden beim n&auml;chsten Aufruf neu gerendert:</strong>";
+ echo "<strong>".locale("Following pages will be rendered upon next page impression:")."</strong>";
  $sql = "SELECT * FROM pagegroup ORDER by grp_bez";
  $rs = $myDB->query($sql);
  while ($row=mysql_fetch_array($rs))
  {
    if (isset($_REQUEST["grp_id_".$row["grp_id"]]))
    {
-     echo "<br><br>Seitengruppe " . $row["grp_bez"] . ":<br>";
+     echo "<br><br>" .locale("Pagegroup"). " ". $row["grp_bez"] . ":<br>";
 	 $id = $_REQUEST["pag_id_grp_id_".$row["grp_id"]];
 	 if ($id==0)
 	 {
@@ -145,7 +145,7 @@ if ($action_id==1)
 
 if ($action_id==2)
 {
-  echo "<strong>Nachfolgende Mediaobjekte werden gel&ouml;scht:</strong><br><br>";
+  echo "<strong>".locale("Following media objects will be deleted:")."</strong><br><br>";
   set_time_limit(0);
   $folder = $_REQUEST["folder"];
   //$sql = "SELECT * FROM media WHERE med_logical_folder ='" . $folder . "'";
@@ -162,7 +162,7 @@ if ($action_id==2)
 
 if ($action_id==3)
 {
-  echo "<strong>Nachfolgende Contentobjekt-Datensätze werden neu indiziert:</strong><br><br>";	
+  echo "<strong>".locale("The index of following content object records is regenerated:")."</strong><br><br>";	
   $sql = "SELECT * FROM content_data WHERE con_id=" . $_REQUEST["con_id"];
   $rs = $myDB->query($sql);
   $cname =  "PhenotypeContent_" . $_REQUEST["con_id"];
@@ -176,7 +176,7 @@ if ($action_id==3)
   }
 }
 
-
+/*
 if ($action_id==4)
 {
   echo "<strong>Zombie-Versionen nachfolgender Seiten werden gel&ouml;scht:</strong><br><br>";
@@ -194,6 +194,7 @@ while ($row=mysql_fetch_array($rs))
 	$myDB->query($sql);
   }
 }
+*/
 }
 ?>
 
@@ -226,14 +227,14 @@ if ($action_id==5)
 		?>	
    		</object>
 
-		<p>Ziehen Sie per Drag & Drop die hochzuladenden<br>Dateien in den Kasten.</p>
+		<p><?php echo localeH("Drag & drop your files into the box.");?>.</p>
 <?php
 }
 ?>
 <?php
 if ($action_id==6)
 {
-  echo "<strong>Nachfolgende Contentobjekt-Datensätze werden gel&ouml;scht:</strong><br><br>";	
+  echo "<strong>".locale("Following content object records are deleted:")."</strong><br><br>";	
   $sql = "SELECT * FROM content_data WHERE con_id=" . $_REQUEST["con_id"];
   $rs = $myDB->query($sql);
   $cname =  "PhenotypeContent_" . $_REQUEST["con_id"];

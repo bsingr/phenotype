@@ -35,11 +35,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -48,7 +48,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Aktionen");
+$myAdm->explorer_prepare(locale("Admin"),locale("Actions"));
 $myAdm->explorer_draw();
 
 
@@ -69,7 +69,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">&Uuml;bersicht Aktionen</td>
+            <td class="windowTitle"><?php echo localeH("Overview Actions");?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=9" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -91,11 +91,11 @@ $myPT->startBuffer();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="25" class="tableHead">Nr.</td>
+              <td width="25" class="tableHead"><?php echo localeH("No.");?></td>
               <td width="60" class="tableHead">&nbsp;</td>
-              <td width="419" class="tableHead">Bezeichnung</td>
-			  <td width="30" class="tableHead">Status</td>
-              <td width="50" class="tableHead">Aktion</td>
+              <td width="419" class="tableHead"><?php echo localeH("Name");?></td>
+			  <td width="30" class="tableHead"><?php echo localeH("Status");?></td>
+              <td width="50" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
             <tr>
               <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -113,14 +113,14 @@ $myPT->startBuffer();
               <td class="tableBody"><?php echo $row["act_bez"] ?></td>
 			              <td class="tableBody">
 			<?php if ($row["act_status"]==1){ ?>
-			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
+			<img src="img/i_online.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22">
 			<?php }else{ ?>
-			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
+			<img src="img/i_offline.gif" alt="<?php echo localeH("Status: offline");?>" width="30" height="22">
 			<?php } ?>
 			</td>
-              <td align="right" nowrap class="tableBody"><a href="admin_action_edit.php?id=<?php echo $row["act_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Aktion anzeigen" width="22" height="22" border="0" align="absmiddle"></a>
+              <td align="right" nowrap class="tableBody"><a href="admin_action_edit.php?id=<?php echo $row["act_id"] ?>&b=0"><img src="img/b_edit.gif" alt="<?php echo localeH("View Action");?>" width="22" height="22" border="0" align="absmiddle"></a>
 
-<a href="admin_action_delete.php?id=<?php echo $row["act_id"] ?>" onclick="javascript:return confirm('Diese Aktion wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Aktion l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<a href="admin_action_delete.php?id=<?php echo $row["act_id"] ?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this action?");?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete aciton");?>" width="22" height="22" border="0" align="absmiddle"></a>
 </td>
             </tr>
             <tr>
@@ -135,7 +135,7 @@ $myPT->startBuffer();
     </table>
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowFooterGrey2"><a href="admin_action_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Aktion anlegen</a></td>
+        <td class="windowFooterGrey2"><a href="admin_action_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new action");?></a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
       <tr>

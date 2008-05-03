@@ -33,7 +33,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("act_bez","Neue Aktion");
+$mySQL->addField("act_bez",locale("New action"));
 
 // ID unter 1000 ermitteln
 $sql = "SELECT MAX(act_id) AS ID FROM action WHERE act_id<1000";

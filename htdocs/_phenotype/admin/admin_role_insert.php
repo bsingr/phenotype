@@ -33,7 +33,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("rol_bez","Neue Rolle");
+$mySQL->addField("rol_bez",locale("New Role"));
 $sql = $mySQL->insert("role");
 $myDB->query($sql);
 

@@ -36,11 +36,11 @@ $myAdm = new PhenotypeAdmin();
 $id = $myRequest->getI("id");
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Konfiguration");
+$myAdm->menu(locale("Config"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Konfiguration");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Seitengruppen");
+$myAdm->explorer_prepare(locale("Admin"),locale("Pagegroups"));
 $myAdm->explorer_set("grp_id",$id);
 $myAdm->explorer_draw();
 ?>
@@ -75,8 +75,8 @@ $row = mysql_fetch_array($rs);
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo $id ?> Seitengruppe / <?php echo $row["grp_bez"] ?></td>
-            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=10" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
+            <td class="windowTitle"><?php echo $id ?> <?php echo localeH("Pagegroup");?> / <?php echo $row["grp_bez"] ?></td>
+            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=10" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -89,30 +89,30 @@ $row = mysql_fetch_array($rs);
 	<?php
 	$myLayout->tab_new();
 	$url = "admin_group_edit.php?id=" .$id ."&b=0";
-	$myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
-	$myLayout->tab_draw("Konfiguration");
+	$myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
+	$myLayout->tab_draw(locale("Config"));
 	$myLayout->workarea_start_draw();
 	$html = $myLayout->workarea_form_text("","bez",$row["grp_bez"]);
-	$myLayout->workarea_row_draw("Bezeichnung",$html);
-	$html=  $myLayout->workarea_form_textarea("","description",$row["grp_description"],8);
-	$myLayout->workarea_row_draw("Beschreibung",$html);
+	$myLayout->workarea_row_draw(locale("Name"),$html);
+	$html=  $myLayout->workarea_form_textarea("",locale("Description"),$row["grp_description"],8);
+	$myLayout->workarea_row_draw(locale("Description"),$html);
 	$checked="";
 	if ($row["grp_multilanguage"]==1){$checked="checked";}
-	$html='<input type="checkbox" value="1" name="multilanguage" '.$checked .'>&nbsp;<b>ja</b><br>';
-	$myLayout->workarea_row_draw("Mehrsprachigkeit",$html);
+	$html='<input type="checkbox" value="1" name="multilanguage" '.$checked .'>&nbsp;<b>'.locale("yes").'</b><br>';
+	$myLayout->workarea_row_draw(locale("Multi language"),$html);
 	$myPT->startBuffer();
 	?>
 	<select name="grp_smarturl_schema" class="input" style="width:250px">
   <?php
   $_options = Array (
-  1=>"Voller Pfad  (ggf. Sprachkennzeichnung)",
-  2=>"Voller Pfad  (keine Sprachkennzeichnung)",
-  3=>"Subpfad  (ggf. Sprachkennzeichnung)",
-  4=>"Subpfad  (keine Sprachkennzeichnung)",
-  5=>"Seitentitel  (ggf. Sprachkennzeichnung)",
-  6=>"Seitentitel  (keine Sprachkennzeichnung)",
-  7=>"index.php  (ggf. Sprachkennzeichnung)",
-  8=>"index.php  (keine Sprachkennzeichnung)"
+  1=>locale("Full path  (possibly language tokens)"),
+  2=>locale("Full path  (no language tokens)"),
+  3=>locale("Sub path  (possibly language tokens)"),
+  4=>locale("Sub path  (no language tokens)"),
+  5=>locale("Page titles  (possibly language tokens)"),
+  6=>locale("Page titles  (no language tokens)"),
+  7=>locale("index.php  (possibly language tokens)"),
+  8=>locale("index.php  (no language tokens)")
   );
   
   foreach ($_options AS $k => $v)
@@ -130,13 +130,13 @@ $row = mysql_fetch_array($rs);
 	<?php
 
 	$html = $myPT->stopBuffer();
-	$myLayout->workarea_row_draw("smartURL-Schema",$html);
+	$myLayout->workarea_row_draw(locale("smartURL-Schema"),$html);
 
 
 	$checked="";
 	if ($row["grp_statistic"]==1){$checked="checked";}
-	$html='<input type="checkbox" value="1" name="statistic" '.$checked .'>&nbsp;<b>Seitenaufrufe z&auml;hlen</b><br>';
-	$myLayout->workarea_row_draw("Statistik",$html);
+	$html='<input type="checkbox" value="1" name="statistic" '.$checked .'>&nbsp;<b>'.locale("count page impressions").'</b><br>';
+	$myLayout->workarea_row_draw(locale("Stats"),$html);
 
 	// Abschlusszeile
 	$sql = "SELECT COUNT(*) AS C FROM page WHERE grp_id = " . $id;
@@ -146,7 +146,7 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Seitengruppe wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this page group?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php

@@ -33,7 +33,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("grp_bez","Neue Seitengruppe");
+$mySQL->addField("grp_bez",locale("New Page Group"));
 $sql = $mySQL->insert("pagegroup");
 $myDB->query($sql);
 

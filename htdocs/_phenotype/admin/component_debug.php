@@ -32,7 +32,7 @@ if (!$mySUser->checkRight("superuser"))
 
 <html>
 <head>
-	<title>Untitled</title>
+	<title>Phenotype component debug view</title>
 </head>
 
 <body>

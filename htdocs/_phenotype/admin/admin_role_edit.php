@@ -36,11 +36,11 @@ $myAdm = new PhenotypeAdmin();
 $id = $myRequest->getI("id");
 ?>
 <?php
-$myAdm->header("Admin");
+$myAdm->header(locale("Admin"));
 ?>
 <body>
 <?php
-$myAdm->menu("Admin");
+$myAdm->menu(locale("Admin"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Admin");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Admin","Rollen");
+$myAdm->explorer_prepare(locale("Admin"),locale("Roles"));
 $myAdm->explorer_set("rol_id",$id);
 $myAdm->explorer_draw();
 ?>
@@ -85,7 +85,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo $id ?> Rolle / <?php echo $row["rol_bez"] ?></td>
+            <td class="windowTitle"><?php echo $id ?> <?php echo localeH("Role");?> / <?php echo $row["rol_bez"] ?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=12" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -99,31 +99,31 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 	<?php
 	$myLayout->tab_new();
 	$url = "admin_user_edit.php?id=" .$id ."&b=0";
-	$myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
+	$myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
 
 	switch ($_REQUEST["b"])
 	{
 		case 0:
-			$myLayout->tab_draw("Konfiguration");
+			$myLayout->tab_draw(locale("Config"));
 			$myLayout->workarea_start_draw();
 			$html = $myLayout->workarea_form_text("","bez",$row["rol_bez"]);
-			$myLayout->workarea_row_draw("Bezeichnung",$html);
+			$myLayout->workarea_row_draw(locale("Name"),$html);
 			$html=  $myLayout->workarea_form_textarea("","description",$row["rol_description"],8);
-			$myLayout->workarea_row_draw("Beschreibung",$html);
+			$myLayout->workarea_row_draw(locale("Description"),$html);
 
 			$_element = Array();
 			//$_element["Redaktion / Seiten - Allgemein"]="page";
-			$_element["Redaktion / Seiten - Erzeugen und Konfigurieren"]="pageconfig";
-			$_element["Redaktion / Seiten - KEINE Bausteine auswählen/verändern/löschen"]="pagenocomponent";
-			$_element["Redaktion / Seiten - Statistik"]="pagestatistic";
-			$_element["Redaktion / Content"]="content";
-			$_element["Redaktion / Media"]="mediabase";
-			$_element["Analysemodus"]="analyse";
+			$_element[locale("Editor / Pages - Create and configure pages")]="pageconfig";
+			$_element[locale("Editor / Pages - CANNOT insert/remove/change components")]="pagenocomponent";
+			$_element[locale("Editor / Pages - Stats")]="pagestatistic";
+			$_element[locale("Editor / Content")]="content";
+			$_element[locale("Editor / Mediabase")]="mediabase";
+			$_element[locale("Analyze")]="analyse";
 
-			$_element["Aufgaben"]="task";
+			$_element[locale("Tasks")]="task";
 
-			$_element["Adminmodus"]="admin";
-			$_element["Rollback"]="rollback";
+			$_element[locale("Admin rights")]="admin";
+			$_element[locale("Rollback")]="rollback";
 
 			$html = "";
 			foreach ($_element AS $key => $val)
@@ -139,7 +139,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 				$html .='<input name="elm_'.$val. '" type="checkbox" value="1"  '.$checked .'> '.$key .'<br>';
 			}
 
-			$myLayout->workarea_row_draw("Elementarrechte",$html);
+			$myLayout->workarea_row_draw(locale("Elementary rights"),$html);
 			$myPT->startbuffer();
 		 ?>
 		 <table border="0" cellspacing="0" cellpadding="0">
@@ -161,7 +161,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 		 <input name="access_grp_<?php echo $row_grp["grp_id"] ?>" type="checkbox" value="1" <?php echo $checked ?>> <?php echo $row_grp["grp_bez"] ?>&nbsp;&nbsp;
          </td><td>
 		 <select name="pag_id_grp_<?php echo $row_grp["grp_id"] ?>" class="input" style="width:250px">
-		 <option value="0">* alle Seiten * </option>
+		 <option value="0"><?php echo localeH("* all pages *");?></option>
 		 <?php
 		 $sql = "SELECT pag_id AS K, pag_bez AS V FROM page WHERE grp_id = " . $row_grp["grp_id"] . " ORDER BY V";
 		 echo $myAdm->buildOptionsBySQL($sql,$rechte["pag_id_grp_" . $row_grp["grp_id"]]);
@@ -173,7 +173,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 		 </table>
 		 <?php
 		 $html = $myPT->stopBuffer();
-		 $myLayout->workarea_row_draw("Seitengruppen",$html);
+		 $myLayout->workarea_row_draw(locale("Pagegroups"),$html);
 
 		 $sql = "SELECT * FROM content ORDER by con_pos, con_bez";
 		 $rs = $myDB->query($sql);
@@ -192,7 +192,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 
 		 }
 
-		 $myLayout->workarea_row_draw("Contentobjekte",$html);
+		 $myLayout->workarea_row_draw(locale("Content objects"),$html);
 
 
 	 	// Mediagruppen
@@ -222,7 +222,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 		 </table>
 		 <?php
 		 $html = $myPT->stopBuffer();
-		 $myLayout->workarea_row_draw("Mediagruppen",$html);
+		 $myLayout->workarea_row_draw(locale("Mediagroups"),$html);
 		 
 			
 		 
@@ -243,7 +243,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 
 		 }
 
-		 $myLayout->workarea_row_draw("Extras",$html);
+		 $myLayout->workarea_row_draw(locale("Extras"),$html);
 
 
 		 $sql = "SELECT * FROM ticketsubject ORDER by sbj_bez";
@@ -261,7 +261,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 		 	}
 		 	$html .='<input name="sbj_'.$row_subject["sbj_id"]. '" type="checkbox" value="1"  '.$checked .'> '.$row_subject["sbj_bez"] .'<br>';
 		 }
-		 $myLayout->workarea_row_draw("Aufgabenbereiche",$html);
+		 $myLayout->workarea_row_draw(locale("Task subjects"),$html);
 
 		 break;
 	}
@@ -274,7 +274,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diese Rolle wirklich l&ouml;schen?')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this role?");?>')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Delete");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php

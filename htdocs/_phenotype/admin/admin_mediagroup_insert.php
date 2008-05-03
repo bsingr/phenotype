@@ -33,7 +33,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("grp_bez","Neue Mediagruppe");
+$mySQL->addField("grp_bez",locale("New mediagroup"));
 $sql = $mySQL->insert("mediagroup");
 $myDB->query($sql);
 
