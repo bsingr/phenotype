@@ -36,11 +36,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Redaktion");
+$myAdm->header(locale("Editor"));
 ?>
 <body>
 <?php
-$myAdm->menu("Redaktion");
+$myAdm->menu(locale("Editor"));
 ?>
 <?php
 // -------------------------------------
@@ -49,7 +49,7 @@ $myAdm->menu("Redaktion");
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare("Redaktion","Seiten");
+$myAdm->explorer_prepare(locale("Editor"),locale("Pages"));
 $myAdm->explorer_set("pag_id",-1);
 $myAdm->explorer_set("grp_id",$_REQUEST["grp_id"]);
 $myAdm->explorer_draw();

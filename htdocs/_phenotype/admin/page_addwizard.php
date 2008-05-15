@@ -59,7 +59,7 @@ body {
     <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTitle"><?php echo localeH("Add new page");?></td>
-        <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
+        <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>--></td>
       </tr>
     </table></td>
     </tr>
@@ -69,7 +69,7 @@ body {
     <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td colspan="5" valign="top" class="tableBody"><?php echo localeHBR("<strong>How</strong> to name the new page?");?> <br>
-              <input name="bez" type="text" class="input" style="width: 300px" value="Neue Seite">
+              <input name="bez" type="text" class="input" style="width: 300px" value="<?php echo localeH("New Page");?>">
           </td>
           </tr>
         <tr>
@@ -84,14 +84,14 @@ body {
         </tr>
         <tr>
           <td colspan="5" valign="top" class="tableCellMedia"><input name="insertorder" type="radio" value="1" checked>
-                  <img src="img/i_classification_bottom.gif" alt="unter der aktivierten Seite" width="25" height="35" align="absmiddle">&nbsp; <?php echo localeH("After current page, same level");?></td>
+                  <img src="img/i_classification_bottom.gif" alt="<?php echo localeH("After current page, same level");?>" width="25" height="35" align="absmiddle">&nbsp; <?php echo localeH("After current page, same level");?></td>
           </tr>
         <tr>
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
         </tr>
         <tr>
           <td colspan="5" valign="top" class="tableCellMedia"><input name="insertorder" type="radio" value="2">
-                  <img src="img/i_classification_top.gif" alt="&uuml;ber der aktivierten Seite" width="25" height="35" align="absmiddle"> &nbsp;<?php echo localeH("Before current page, same level");?></td>
+                  <img src="img/i_classification_top.gif" alt="<?php echo localeH("Before current page, same level");?>" width="25" height="35" align="absmiddle"> &nbsp;<?php echo localeH("Before current page, same level");?></td>
         </tr>
         <tr>
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -99,7 +99,7 @@ body {
 		<?php if ($_REQUEST["c"]==0){ ?>
         <tr>
           <td colspan="5" valign="top" class="tableCellMedia"><input name="insertorder" type="radio" value="3">
-                  <img src="img/i_classification_sub.gif" alt="&uuml;ber der aktivierten Seite" width="30" height="35" align="absmiddle"> <?php echo localeH("Under current page, lower level");?></td>
+                  <img src="img/i_classification_sub.gif" alt="<?php echo localeH("Under current page, lower level");?>" width="30" height="35" align="absmiddle"> <?php echo localeH("Under current page, lower level");?></td>
         </tr>
 		<?php } ?>
         <tr>

@@ -25,18 +25,18 @@ $myPT->loadTMX("Editor_Pages");
 <?php
 if ($_REQUEST["cop"]==1)
 {
-  $titel = "Seite kopieren";
+  $titel = locale("Copy page");
 }
 else
 {
-  $titel = "Seite umhängen";
+  $titel = locale("Reallocate page");
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo PT_VERSION ?></title>
+<title>Phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -71,12 +71,12 @@ self.focus();
 <?php
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 $url = "selector_page.php?b=0&id=".$_REQUEST["id"];
-$myLayout->tab_addEntry("Seiten",$url,"b_site.gif");
+$myLayout->tab_addEntry(locale("Pages"),$url,"b_site.gif");
 $url = "selector_page.php?b=1&id=".$_REQUEST["id"];
 //$myLayout->tab_addEntry("Content",$url,"b_content.gif");
 //$url = "selector_page.php?b=2";
 //$myLayout->tab_addEntry("WWW",$url,"b_extern.gif");
-$myLayout->tab_draw("Seiten",350,0,0)
+$myLayout->tab_draw(locale("Pages"),350,0,0)
 ?>
 <?php
 $rechte = $mySUser->getRights();
@@ -111,7 +111,7 @@ $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
         <tr>
           <td class="windowHeaderGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="padding10">Gruppe:</td>
+              <td class="padding10"><?php echo localeH("Group");?>:</td>
               <td><form action="selector_page.php" method="post" name="formGrp">
 			  <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
 			  <input type="hidden" name="cop" value="<?php echo $_REQUEST["cop"] ?>">
@@ -167,7 +167,7 @@ $top_id = $rechte["pag_id_grp_" . $grp_id];
 ?>	  
 <table width="350" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="windowFooterGrey2"><a href="selector_page2.php?id=<?php echo $_REQUEST["id"] ?>&cop=<?php echo $_REQUEST["cop"] ?>&id2=<?php echo $row["pag_id"] ?>"><img src="img/b_teaserlink2.gif" width="22" height="22" border="0" align="absmiddle"> Seite auswählen </a></td>
+    <td class="windowFooterGrey2"><a href="selector_page2.php?id=<?php echo $_REQUEST["id"] ?>&cop=<?php echo $_REQUEST["cop"] ?>&id2=<?php echo $row["pag_id"] ?>"><img src="img/b_teaserlink2.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Select page");?> </a></td>
   </tr>
 </table>
 </form>

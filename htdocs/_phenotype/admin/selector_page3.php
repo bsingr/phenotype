@@ -44,7 +44,7 @@ if (!$mySUser->checkRight("elm_pageconfig"))
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo PT_VERSION ?></title>
+<title>Phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -73,8 +73,8 @@ self.close();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td class="windowError"><h1>Fehler</h1>
-			    <p><br><br>Eine Seite kann nicht unter sich selbst eingeordnet werden.<br><br><br></p></td>
+              <td class="windowError"><h1><?php echo localeH("Error");?></h1>
+			    <p><br><br><?php echo localeH("A page cannot get reallocated below itself.");?><br><br><br></p></td>
               </tr>
         </table></td>
             </tr>

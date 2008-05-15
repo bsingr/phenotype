@@ -45,7 +45,7 @@ if (!$mySUser->checkRight("elm_pageconfig"))
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo PT_VERSION ?></title>
+<title>Phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">

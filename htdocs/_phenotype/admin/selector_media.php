@@ -26,7 +26,7 @@ $myPT->loadTMX("Editor_Media");
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo $myPT->version ?></title>
+<title>Phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -67,7 +67,7 @@ self.focus();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Medienauswahl</td>
+            <td class="windowTitle"><?php echo localeH("Media selection");?></td>
             <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
@@ -78,9 +78,9 @@ self.focus();
   <tr>
     <td class="windowHeaderGrey2"><table border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td class="padding10">Ordner:</td>
+          <td class="padding10"><?php echo localeH("Folder");?>:</td>
           <td>          <select name="folder" class="feld" onchange="document.forms.form1.submit();">
-          <option value="-1">(alle)</option>
+          <option value="-1">(<?php echo localeH("all");?>)</option>
           <?php
           $myMB = new PhenotypeMediabase();
                           // Hot fix - check groups
@@ -310,7 +310,7 @@ self.focus();
                 <?php
                 if ($row["med_type"]==MB_IMAGE)
                     {
-                      echo "Gr&ouml;&szlig;e: (" . $row["med_x"] ." x " . $row["med_y"] .")<br>";
+                      echo locale("Size").": (" . $row["med_x"] ." x " . $row["med_y"] .")<br>";
                     }
                     else
                     {
@@ -321,11 +321,11 @@ self.focus();
                 <?php
                 if ($row["med_type"]==MB_IMAGE){
                 ?>
-                <a href="javascript:select_image(<?php echo $row["med_id"] ?>,'<?php echo $myIMG->thumburl ?>',<?php echo $tx ?>,<?php echo $ty ?>);self.close();"><img src="img/b_media.gif" alt="Bild &uuml;bernehmen" width="22" height="22" border="0" align="absmiddle"> &uuml;bernehmen</a>
+                <a href="javascript:select_image(<?php echo $row["med_id"] ?>,'<?php echo $myIMG->thumburl ?>',<?php echo $tx ?>,<?php echo $ty ?>);self.close();"><img src="img/b_media.gif" alt="<?php echo localeH("Select image");?>" width="22" height="22" border="0" align="absmiddle"> &uuml;bernehmen</a>
                 <?php
                 }else{
                 ?>
-                 <a href="javascript:select_document(<?php echo $row["med_id"] ?>);self.close();"><img src="img/b_media.gif" alt="Dokument &uuml;bernehmen" width="22" height="22" border="0" align="absmiddle"> &uuml;bernehmen</a>
+                 <a href="javascript:select_document(<?php echo $row["med_id"] ?>);self.close();"><img src="img/b_media.gif" alt="<?php echo localeH("Select document");?>" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Select document");?></a>
                 <?php
                 }?>
                 </td>
@@ -370,10 +370,10 @@ self.focus();
 <input type="hidden" name="p" value="1">
 <input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
 <input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">
-<td class="windowFooterWhite"><input type="submit" class="buttonWhite" value="Hochladen" style="width:102px"></td></form>
+<td class="windowFooterWhite"><input type="submit" class="buttonWhite" value="<?php echo localeH("Upload");?>" style="width:102px"></td></form>
         <td align="right" class="windowFooterWhite"><table border="0" cellpadding="0" cellspacing="1">
           <tr>
-            <td align="center">Seite: </td>
+            <td align="center"><?php echo localeH("Page");?>: </td>
             <?php
             $max=ceil($anzahl/(12));
             //echo $anzahl;
@@ -387,7 +387,7 @@ self.focus();
             if ($p>1)
             {
             ?>
-            <td align="center"><a href="selector_media.php<?php echo $url ?>&p=<?php echo $p-1 ?>&a=12" class="tabmenuType">zur&uuml;ck</a></td>
+            <td align="center"><a href="selector_media.php<?php echo $url ?>&p=<?php echo $p-1 ?>&a=12" class="tabmenuType"><?php echo localeH("back");?></a></td>
             <td align="center">&nbsp;</td>
             <?php
             }

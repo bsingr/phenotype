@@ -44,13 +44,13 @@ $myAdm = new PhenotypeAdmin();
 <?php
 
 
-$myAdm->header("Extras");
+$myAdm->header(locale("Extras"));
 ?>
 <body>
 <?php
 
 
-$myAdm->menu("Extras");
+$myAdm->menu(locale("Extras"));
 ?>
 <?php
 
@@ -64,14 +64,14 @@ $myPT->startBuffer();
 
 
 $url = "extras.php";
-$myLayout->tab_addEntry("Extras", $url, "b_script.gif");
-$myLayout->tab_draw("Extras", $x = 260, 1);
+$myLayout->tab_addEntry(locale("Extras"), $url, "b_script.gif");
+$myLayout->tab_draw(locale("Extras"), $x = 260, 1);
 ?>
 <?php
 
 
 $myNav = new PhenotypeTree();
-$nav_id = $myNav->addNode("&Uuml;bersicht", "extras.php", 0, "");
+$nav_id = $myNav->addNode(locale("Overview"), "extras.php", 0, "");
 $sql = "SELECT * FROM extra ORDER BY ext_bez";
 $rs = $myDB->query($sql);
 while ($row = mysql_fetch_array($rs))
@@ -122,7 +122,7 @@ $myExtra = new $cname ();
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowTitle"><?php echo $myExtra->bez ?></td>
-            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=5" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
+            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=5" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -137,15 +137,15 @@ $myExtra = new $cname ();
 
 $myLayout->tab_new();
 $url = "extra_start.php?id=".$id;
-$myLayout->tab_addEntry("Start", $url, "b_script.gif");
+$myLayout->tab_addEntry(locale("Start"), $url, "b_script.gif");
 if ($myExtra->configure_tab == 1)
 {
 	$url = "extra_setup.php?id=".$id;
-	$myLayout->tab_addEntry("Konfiguration", $url, "b_konfig.gif");
+	$myLayout->tab_addEntry(locale("Config"), $url, "b_konfig.gif");
 };
 $url = "extra_info.php?id=".$id;
-$myLayout->tab_addEntry("Info", $url, "b_utilisation.gif");
-$myLayout->tab_draw("Start");
+$myLayout->tab_addEntry(locale("Info"), $url, "b_utilisation.gif");
+$myLayout->tab_draw(locale("Start"));
 
 $myExtra->execute($myRequest);
 ?>	

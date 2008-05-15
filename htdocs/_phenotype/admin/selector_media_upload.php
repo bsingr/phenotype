@@ -29,7 +29,7 @@ $myAdm = new PhenotypeAdmin();
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo PT_VERSION ?></title>
+<title>Phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -63,8 +63,8 @@ self.focus();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Mediaobjekt hochladen</td>
-            <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
+            <td class="windowTitle"><?php echo localeH("Upload mediaobject");?></td>
+            <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -78,20 +78,20 @@ self.focus();
 <?php				
 $myLayout->tab_new();
 $url = "mediabase_upload.php";
-$myLayout->tab_addEntry("Eigenschaften",$url,"b_konfig.gif");
-$myLayout->tab_draw("Eigenschaften",495,0,1);
+$myLayout->tab_addEntry(locale("Properties"),$url,"b_konfig.gif");
+$myLayout->tab_draw(locale("Properties"),495,0,1);
 
 $myLayout->workarea_start_draw(495);
-$html = $myLayout->workarea_form_text("Titel","bez","");
-$html .= $myLayout->workarea_form_text("Alternate","alt","");
-$myLayout->workarea_row_draw("Bezeichnung",$html); 
+$html = $myLayout->workarea_form_text(locale("Title"),"bez","");
+$html .= $myLayout->workarea_form_text(locale("Alternate"),"alt","");
+$myLayout->workarea_row_draw(locale("Name"),$html); 
 $myPT->startBuffer();
   ?>
   <input name="userfile" type="file" class="input"><br>
-  <input type="checkbox" value="1" name="documentonly"> Bilder als Dokumente handhaben    		
+  <input type="checkbox" value="1" name="documentonly"> <?php echo localeH("treat images like documents");?>    		
   <?php
   $html = $myPT->stopBuffer();
-  $myLayout->workarea_row_draw("Bild / Dokument",$html); 
+  $myLayout->workarea_row_draw(locale("Image / Document"),$html); 
 
 
 $myPT->startBuffer();
@@ -136,13 +136,13 @@ else
 }
 
 $html = $myPT->stopBuffer();
-$myLayout->workarea_row_draw("Ordner",$html); 
+$myLayout->workarea_row_draw(locale("Folder"),$html); 
 
 $html = $myLayout->workarea_form_textarea("","keywords","",$r=5,$x=300,$br=1);
-$myLayout->workarea_row_draw("Keywords",$html); 
+$myLayout->workarea_row_draw(locale("Keywords"),$html); 
 
 $html = $myLayout->workarea_form_textarea("","comment","",$r=5,$x=300,$br=1);
-$myLayout->workarea_row_draw("Kommentar",$html); 
+$myLayout->workarea_row_draw(locale("Comment"),$html); 
 
 // determine mediagroups of current user
 $_mediagroups = Array();
@@ -171,14 +171,14 @@ foreach ($_mediagroups AS $k=>$v)
 }
 
 $html = $myPT->stopBuffer();
-$myLayout->workarea_row_draw("Mediagruppe",$html);
+$myLayout->workarea_row_draw(locale("Mediagroup"),$html);
 ?>
    <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
 		    &nbsp;
 			</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="Hochladen">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Upload");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 <?php

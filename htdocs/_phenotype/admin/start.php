@@ -29,11 +29,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Start");
+$myAdm->header(locale("Start"));
 ?>
 <body>
 <?php
-$myAdm->menu("Start");
+$myAdm->menu(locale("Start"));
 ?>
 <?php
 // -------------------------------------
@@ -48,7 +48,7 @@ $rechte = $mySUser->getRights();
 if ($mySUser->checkRight("elm_page"))
 {
 	$url = "backend.php?page=Editor,Start";
-	$myLayout->tab_addEntry("Seiten",$url,"b_site.gif");
+	$myLayout->tab_addEntry(locale("Pages"),$url,"b_site.gif");
 	$myLayout->tab_draw("Seiten",$x=260,"1");
 
 	$sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
@@ -74,7 +74,7 @@ if ($mySUser->checkRight("elm_page"))
         <tr>
           <td class="windowHeaderGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="padding10"><form action="pagegroup_select.php" method="post" name="formGrp">Gruppe:</td>
+              <td class="padding10"><form action="pagegroup_select.php" method="post" name="formGrp"><?php echo localeH("Group");?>:</td>
               <td><select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
 <?php
 echo $html;
@@ -117,11 +117,11 @@ if ($mySUser->checkRight("elm_content"))
 {
 	$myLayout->tab_new();
 	$url = "backend.php?page=Editor,Content";
-	$myLayout->tab_addEntry("Content",$url,"b_content.gif");
-	$myLayout->tab_draw("Content",$x=260,1);
+	$myLayout->tab_addEntry(locale("Content"),$url,"b_content.gif");
+	$myLayout->tab_draw(locale("Content"),$x=260,1);
 
 	$myNav = new PhenotypeTree();
-	$nav_id = $myNav->addNode("&Uuml;bersicht","backend.php?page=Editor,Content",0,"");
+	$nav_id = $myNav->addNode(locale("Overview"),"backend.php?page=Editor,Content",0,"");
 	$sql = "SELECT * FROM content ORDER BY con_pos, con_bez";
 	$rs = $myDB->query($sql);
 	while ($row = mysql_fetch_array($rs))
@@ -152,12 +152,12 @@ if ($mySUser->checkRight("elm_mediabase"))
 {
 	$myLayout->tab_new();
 	$url = "backend.php?page=Editor,Media";
-	$myLayout->tab_addEntry("Media",$url,"b_media.gif");
-	$myLayout->tab_draw("Media",$x=260,1);
+	$myLayout->tab_addEntry(locale("Media"),$url,"b_media.gif");
+	$myLayout->tab_draw(locale("Media"),$x=260,1);
 ?>
 <?php
 $myNav = new PhenotypeTree();
-$nav_id =   $myNav->addNode("&Uuml;bersicht","backend.php?page=Editor,Media",0,"-1");
+$nav_id =   $myNav->addNode(locale("Overview"),"backend.php?page=Editor,Media",0,"-1");
 global $myDB;
 $myMB = new PhenotypeMediabase();
 $_folder = $myMB->getLogicalRootFolder();
@@ -190,8 +190,8 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">&Uuml;bersicht</td>
-            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=3" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
+            <td class="windowTitle"><?php echo localeH("Overview");?></td>
+            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=3" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -233,7 +233,7 @@ if ($mySUser->checkRight("elm_page"))
 ?>
     <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Seiten</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Pages");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -241,11 +241,11 @@ if ($mySUser->checkRight("elm_page"))
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20" class="tableHead">ID</td>
-		    <td class="tableHead">Bezeichnung</td>
-      		<td width="120" class="tableHead">Benutzer</td>
-            <td width="30" class="tableHead">Status</td>
-            <td width="50" align="right" class="tableHead">Aktion</td>
+            <td width="20" class="tableHead"><?php echo localeH("ID");?></td>
+		    <td class="tableHead"><?php echo localeH("Name");?></td>
+      		<td width="120" class="tableHead"><?php echo localeH("User");?></td>
+            <td width="30" class="tableHead"><?php echo localeH("State");?></td>
+            <td width="50" align="right" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
 		  <tr>
             <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -263,12 +263,12 @@ if ($mySUser->checkRight("elm_page"))
             <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["pag_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
 			<?php if ($row_data["pag_status"]==1){ ?>
-			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
+			<img src="img/i_online.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22">
 			<?php }else{ ?>
-			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
+			<img src="img/i_offline.gif" alt="<?php echo localeH("Status offline");?>" width="30" height="22">
 			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $row_data["pag_id"] ?>"><img src="img/b_edit.gif" alt="Seite bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="right" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $row_data["pag_id"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit page");?>" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
           <tr>
             <td colspan="5" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -367,7 +367,7 @@ if ($mySUser->checkRight("elm_content"))
 ?>
     <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Content</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Content");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -375,13 +375,13 @@ if ($mySUser->checkRight("elm_content"))
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20" class="tableHead">ID</td>
-			<td width="70" class="tableHead">Abbildung</td>
-            <td class="tableHead">Bezeichnung</td>
-            <td class="tableHead">Typ</td>
-			<td width="120" class="tableHead">Benutzer</td>
-            <td width="30" class="tableHead">Status</td>
-            <td width="50" align="right" class="tableHead">Aktion</td>
+            <td width="20" class="tableHead"><?php echo localeH("ID");?></td>
+			<td width="70" class="tableHead"><?php echo localeH("Thumb");?></td>
+            <td class="tableHead"><?php echo localeH("Name");?></td>
+            <td class="tableHead"><?php echo localeH("Type");?></td>
+			<td width="120" class="tableHead"><?php echo localeH("User");?></td>
+            <td width="30" class="tableHead"><?php echo localeH("Status");?></td>
+            <td width="50" align="right" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
 		  <tr>
             <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -413,12 +413,12 @@ if ($mySUser->checkRight("elm_content"))
             <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["dat_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
 			<?php if ($row_data["dat_status"]==1){ ?>
-			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
+			<img src="img/i_online.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22">
 			<?php }else{ ?>
-			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
+			<img src="img/i_offline.gif" alt="<?php echo localeH("Status: offline");?>" width="30" height="22">
 			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?php if ($row_data["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row_data["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('Den Datensatz wirklich l&ouml;schen?')"><img src="img/b_delete.gif" alt="Datensatz l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row_data["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row_data["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('<?php echo localeH("Really delete this record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -456,7 +456,7 @@ if ($mySUser->checkRight("elm_mediabase"))
 ?>
     <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowTabTypeOnly"><strong>Media</strong></td>
+        <td class="windowTabTypeOnly"><strong><?php echo localeH("Media");?></strong></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
       </tr>
     </table>
@@ -464,12 +464,12 @@ if ($mySUser->checkRight("elm_mediabase"))
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20" class="tableHead">ID</td>
-			<td width="70" class="tableHead">Abbildung</td>
-            <td class="tableHead">Bezeichnung</td>
-     		<td width="120" class="tableHead">Benutzer</td>
+            <td width="20" class="tableHead"><?php echo localeH("ID");?></td>
+			<td width="70" class="tableHead"><?php echo localeH("Thumb");?></td>
+            <td class="tableHead"><?php echo localeH("Name");?></td>
+     		<td width="120" class="tableHead"><?php echo localeH("User");?></td>
 			<td width="30" class="tableHead">&nbsp;</td>
-            <td width="50" align="right" class="tableHead">Aktion</td>
+            <td width="50" align="right" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
 		  <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -542,7 +542,7 @@ if ($mySUser->checkRight("elm_mediabase"))
             <td class="tableBody"><?php echo $row_data["med_bez"] ?></td>
 		    <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["med_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td>&nbsp;</td>
-			<td align="right" nowrap class="tableBody"><a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>"><img src="img/b_edit.gif" alt="Datensatz bearbeiten" width="22" height="22" border="0" align="absmiddle"></a></td>
+			<td align="right" nowrap class="tableBody"><a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit");?>" width="22" height="22" border="0" align="absmiddle"></a></td>
             
             </tr>
           <tr>

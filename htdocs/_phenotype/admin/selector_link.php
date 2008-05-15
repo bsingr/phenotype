@@ -52,8 +52,8 @@ self.focus();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">Linkauswahl</td>
-            <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
+            <td class="windowTitle"><?php echo localeH("Link selection");?></td>
+            <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
       </tr>
@@ -61,12 +61,12 @@ self.focus();
 <?php
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 $url = "selector_link.php?b=0";
-$myLayout->tab_addEntry("Seiten",$url,"b_site.gif");
+$myLayout->tab_addEntry(locale("Seiten"),$url,"b_site.gif");
 $url = "selector_link.php?b=1";
 //$myLayout->tab_addEntry("Content",$url,"b_content.gif");
 //$url = "selector_link.php?b=2";
 //$myLayout->tab_addEntry("WWW",$url,"b_extern.gif");
-$myLayout->tab_draw("Seiten",350,0,0)
+$myLayout->tab_draw(locale("Seiten"),350,0,0)
 ?>
 <?php
 $rechte = $mySUser->getRights();
@@ -101,7 +101,7 @@ $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
         <tr>
           <td class="windowHeaderGrey2"><table border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="padding10">Gruppe:</td>
+              <td class="padding10"><?php echo localeH("Group");?>:</td>
               <td><form action="selector_link.php" method="post" name="formGrp"><select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
 <?php
   echo $html;
@@ -155,7 +155,7 @@ $top_id = $rechte["pag_id_grp_" . $grp_id];
 ?>	  
 <table width="350" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="windowFooterGrey2"><a href="javascript:select_link('<?php echo $row["pag_titel"] ?>','index.php?id=<?php echo $row["pag_id"] ?>','_self');self.close();"><img src="img/b_teaserlink2.gif" width="22" height="22" border="0" align="absmiddle"> Link setzen </a></td>
+    <td class="windowFooterGrey2"><a href="javascript:select_link('<?php echo $row["pag_titel"] ?>','index.php?id=<?php echo $row["pag_id"] ?>','_self');self.close();"><img src="img/b_teaserlink2.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Select link");?> </a></td>
   </tr>
 </table>
 <?php

@@ -50,7 +50,7 @@ $sql = "SELECT dat_comdata FROM sequence_data WHERE dat_id = " . $id;
 $rs = $myDB->query($sql);
 if (mysql_num_rows($rs)==0)
 {
-  echo("<br><br>Datensatz nicht gefunden.");
+  echo("<br><br>".localeH("Record not found."));
 }
 else
 {

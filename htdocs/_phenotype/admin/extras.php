@@ -35,11 +35,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Extras");
+$myAdm->header(locale("Extras"));
 ?>
 <body>
 <?php
-$myAdm->menu("Extras");
+$myAdm->menu(locale("Extras"));
 ?>
 <?php
 // -------------------------------------
@@ -49,12 +49,12 @@ $myPT->startBuffer();
 ?>
 <?php
 $url = "extras.php";
-$myLayout->tab_addEntry("Extras",$url,"b_script.gif");
-$myLayout->tab_draw("Extras",$x=260,1);
+$myLayout->tab_addEntry(locale("Extras"),$url,"b_script.gif");
+$myLayout->tab_draw(locale("Extras"),$x=260,1);
 ?>
 <?php
 $myNav = new PhenotypeTree();
-$nav_id = $myNav->addNode("&Uuml;bersicht","extras.php",0,"");
+$nav_id = $myNav->addNode(locale("Overview"),"extras.php",0,"");
 $sql = "SELECT * FROM extra ORDER BY ext_bez";
 $rs = $myDB->query($sql);
 while ($row = mysql_fetch_array($rs))

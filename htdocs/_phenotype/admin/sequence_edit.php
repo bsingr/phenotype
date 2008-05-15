@@ -27,7 +27,7 @@ if (isset($_REQUEST["close"]))
 
 <html>
 <head>
-	<title>Phenotype <?php echo PT_VERSION ?> - Redaktion</title>
+	<title>Phenotype <?php echo PT_VERSION ?> - <?php echo localeH("Editor");?></title>
 </head>
 
 <body>
@@ -52,7 +52,7 @@ $myPT->loadTMX("Editor_Pages");
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Phenotype <?php echo PT_VERSION ?> - Redaktion</title>
+<title>Phenotype <?php echo PT_VERSION ?> - <?php echo localeH("Editor");?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -98,7 +98,7 @@ $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowTitle"><?php echo $_REQUEST["bez"] ?> </td>
-            <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
+            <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>--></td>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -154,7 +154,7 @@ $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
             <td class="windowFooterWhite">
         &nbsp;
             </td>
-            <td align="right" class="windowFooterWhite"> <input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"> <input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
     <?php

@@ -34,18 +34,18 @@ if (!$mySUser->checkRight("elm_pageconfig"))
 <?php
 if ($_REQUEST["cop"]==1)
 {
-  $titel = "Seite kopieren";
+  $titel = locale("Copy page");
 }
 else
 {
-  $titel = "Seite umhängen";
+  $titel = locale("Reallocate page");
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>phenotype <?php echo PT_VERSION ?></title>
+<title>Phenotype <?php echo PT_VERSION ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -74,7 +74,7 @@ body {
     <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTitle"><?php echo $titel ?></td>
-        <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
+        <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>--></td>
       </tr>
     </table></td>
     </tr>
@@ -86,8 +86,7 @@ body {
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
         <tr>
-          <td colspan="5" valign="top" class="tableBody"><p><strong>Wie</strong> soll die
-              Seite im Navigationsbaum eingeordnet werden?</p>
+          <td colspan="5" valign="top" class="tableBody"><p><?php echo localeHBR("<strong>Where</strong> to locate the new page within the page tree?");?></p>
           </td>
           </tr>
         <tr>
@@ -95,16 +94,14 @@ body {
         </tr>
         <tr>
           <td colspan="5" valign="top" class="tableCellMedia"><input name="insertorder" type="radio" value="1" checked>
-                  <img src="img/i_classification_bottom.gif" alt="unter der aktivierten Seite" width="25" height="35" align="absmiddle">&nbsp; Nach
-                  ausgewählter Seite, gleiche Ebene</td>
+                  <img src="img/i_classification_bottom.gif" alt="<?php echo localeH("After current page, same level");?>" width="25" height="35" align="absmiddle">&nbsp; <?php echo localeH("After current page, same level");?></td>
           </tr>
         <tr>
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
         </tr>
         <tr>
           <td colspan="5" valign="top" class="tableCellMedia"><input name="insertorder" type="radio" value="2">
-                  <img src="img/i_classification_top.gif" alt="&uuml;ber der aktivierten Seite" width="25" height="35" align="absmiddle"> &nbsp;Vor
-                  ausgewählter Seite, gleiche Ebene</td>
+                  <img src="img/i_classification_top.gif" alt="<?php echo localeH("Before current page, same level");?>" width="25" height="35" align="absmiddle"> &nbsp;<?php echo localeH("Before current page, same level");?></td>
         </tr>
         <tr>
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -112,8 +109,7 @@ body {
 		<?php if ($_REQUEST["c"]==0){ ?>
         <tr>
           <td colspan="5" valign="top" class="tableCellMedia"><input name="insertorder" type="radio" value="3">
-                  <img src="img/i_classification_sub.gif" alt="&uuml;ber der aktivierten Seite" width="30" height="35" align="absmiddle"> Unterhalb
-                  der Seite, eine Ebene tiefer</td>
+                  <img src="img/i_classification_sub.gif" alt="<?php echo localeH("Under current page, lower level");?>" width="30" height="35" align="absmiddle"> <?php echo localeH("Under current page, lower level");?></td>
         </tr>
 		<?php } ?>
         <tr>
@@ -130,7 +126,7 @@ body {
   <tr>
     <td class="windowFooterWhite"><table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td align="right" class="windowTitle"><input name="Submit" type="submit" class="buttonWhite" value="Speichern" style="width:102px"></td>
+        <td align="right" class="windowTitle"><input name="Submit" type="submit" class="buttonWhite" value="<?php echo localeH("Save");?>" style="width:102px"></td>
       </tr>
     </table></td>
     </tr>

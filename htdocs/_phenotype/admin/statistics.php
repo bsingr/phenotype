@@ -35,11 +35,11 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 ?>
 <?php
-$myAdm->header("Analyse");
+$myAdm->header(locale("Analyze"));
 ?>
 <body>
 <?php
-$myAdm->menu("Analyse");
+$myAdm->menu(locale("Analyze"));
 ?>
 <?php
 // -------------------------------------
@@ -49,8 +49,8 @@ $myPT->startBuffer();
 ?>
 <?php
 $url = "statistics.php?grp_id=-1"; 
-$myLayout->tab_addEntry("Seiten",$url,"b_site.gif");
-$myLayout->tab_draw("Seiten",$x=180,"1");
+$myLayout->tab_addEntry(locale("Pages"),$url,"b_site.gif");
+$myLayout->tab_draw(locale("Pages"),$x=180,"1");
 ?>
 <?php
 $curl="";
@@ -67,7 +67,7 @@ $sql = "SELECT * FROM pagegroup WHERE grp_statistic = 1 ORDER BY grp_bez";
 $rs = $myDB->query($sql);
 
 $myNav = new PhenotypeTree();
-$nav_id  = $myNav->addNode("&Uuml;bersicht","statistics.php?grp_id=-1".$curl,0,"-1");
+$nav_id  = $myNav->addNode(locale("Overview"),"statistics.php?grp_id=-1".$curl,0,"-1");
 while ($row = mysql_fetch_array($rs))
 {
   $myNav->addNode($row["grp_bez"],"statistics.php?grp_id=".$row["grp_id"].$curl,$nav_id,$row["grp_id"]);
@@ -97,7 +97,7 @@ if (mysql_num_rows($rs)!=0)
 {
   $myLayout->tab_new();
   $url = "#";
-  $myLayout->tab_addEntry("Content",$url,"b_content.gif");
+  $myLayout->tab_addEntry(locale("Content"),$url,"b_content.gif");
   // $myLayout->tab_draw("Content",$x=140,1);
   $myNav = new PhenotypeTree();
 
