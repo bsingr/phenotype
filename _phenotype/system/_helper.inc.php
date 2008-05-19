@@ -63,6 +63,17 @@ function title_of_page($pag_id,$lng_id=null)
 }
 
 
+/**
+ * page description ("page_bez" in DB page)
+ * added 2008/05/19 by Dominique Bös
+ */
+function description_of_page($pag_id,$lng_id=null)
+{
+  global $myPT;
+  return $myPT->description_of_page($pag_id,$lng_id);
+}
+
+
 function get_image($img_id,$alt=null,$style="",$class="")
 {
   global $myPT;

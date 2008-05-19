@@ -33,6 +33,7 @@ class PhenotypeSmartyStandard extends Smarty
     parent::Smarty();
     $this->register_function("url_for_page", array($this,"url_for_page"));
     $this->register_function("title_of_page", array($this,"title_of_page"));
+    $this->register_function("description_of_page", array($this,"description_of_page")); // added 2008/05/19 by Dominique Bös
 
     $this->register_function("pt_constant",array($this,"pt_constant"));
     // one day we will activate output escaping as default ;) currently it's too big
@@ -76,6 +77,27 @@ class PhenotypeSmartyStandard extends Smarty
     else
     {
       trigger_error("Missing mandatory parameter pag_id in smarty function title_of_page",E_USER_ERROR);
+    }
+  }
+  
+  
+  /**
+   * Returns the page description field ("page_bez" in DB page)
+   * 
+	 * added 2008/05/19 by Dominique Bös
+   * @return string page description
+   */
+  public function description_of_page($_params)
+  {
+
+    if (isset($_params["pag_id"]))
+    {
+      $pag_id = $_params["pag_id"];
+      return description_of_page($pag_id);
+    }
+    else
+    {
+      trigger_error("Missing mandatory parameter pag_id in smarty function description_of_page",E_USER_ERROR);
     }
   }
   

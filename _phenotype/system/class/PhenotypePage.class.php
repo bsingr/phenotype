@@ -2435,6 +2435,18 @@ class PhenotypePageStandard extends PhenotypeBase
     $myDB->query($sql);
 
   }
+
+  /**
+   * Returns the page description field ("page_bez" in DB page)
+   * 
+	 * added 2008/05/19 by Dominique Bös
+   * @return string page description
+   */
+  public function getPageDescription()
+  {
+    return ($this->bez);
+  }
+
 }
 
 ?>

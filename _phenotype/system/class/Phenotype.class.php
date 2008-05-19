@@ -1798,6 +1798,55 @@ border: 1px solid #cfcfcf;
 	}
 
 
+  /**
+   * retrieve (language dependent) page description of a page
+	 * page description ("page_bez" in DB page)
+   * 
+   * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
+   * 
+   * This function is also used from the helper functions for page title retrieval. It it a vital function for url management, 
+   * if you create/build urls you should always use this function in any (inherited) way.
+   * 
+	 * added 2008/05/19 by Dominique Bös
+   *
+   * @param integer $pag_id
+   * @param array[mixed] $_params
+   * @param integer $lng_id
+   * @return string
+   */
+  public function description_of_page($pag_id,$lng_id=null)
+  {
+    if ($this->URLHelper==false)
+    {
+      $myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+      $this->URLHelper = $myDAO;
+    }
+    else
+    {
+      $myDAO = $this->URLHelper;
+    }
+    $token = "pageDescription_p".$pag_id."l".(int)$lng_id;
+
+    if ($myDAO->check($token))
+    {
+      $title =  $myDAO->get($token);
+    }
+    else
+    {
+      $myPage = new PhenotypePage($pag_id);
+      if ($lng_id!=null)
+      {
+        $myPage->switchLanguage($lng_id);
+      }
+      $title = $myPage->getPageDescription();
+      $myDAO->set($token,$title);
+    }
+
+
+    return $title;
+  }
+
+
 	public function get_image($img_id,$alt=null,$style="",$class="")
 	{
 
