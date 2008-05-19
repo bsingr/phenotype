@@ -117,7 +117,7 @@ class PhenotypeNavigationHelperStandard
     }
     $pag_id_parent = $this->getParentPage($pag_id);
     $_pages = Array();
-    $_pages[]=$pag_id;
+    $_pages[]=(int)$pag_id;
     while ($pag_id_parent !=0)
     {
       $_pages[] = $pag_id_parent;
@@ -202,7 +202,7 @@ class PhenotypeNavigationHelperStandard
       {
         if ($level<$maxdepth)
         {
-          $this->appendPages($pag_id,$level);
+          $this->appendPages($pag_id,$level, $maxdepth, $grp_id);
         }
       }
     }
