@@ -581,7 +581,8 @@ class PhenotypeLayoutStandard
 	{
 		$html="";
 		if($bez!=""){$html = $bez.'<br>';}
-		$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities($val,null,PT_CHARSET).'">';
+		//$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities($val,null,PT_CHARSET).'">';
+		$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities(stripcslashes($val),ENT_COMPAT,PT_CHARSET).'">'; //added 08/05/27 by Dominique Bös
 		if ($br==1){$html.="<br>";}
 		return $html;
 	}
