@@ -1742,10 +1742,10 @@ if ($mySUser->checkRight("elm_pageconfig"))
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td colspan="2" class="paddig10"><strong>Suche Seiten nach:</strong></td>
+                <td colspan="2" class="paddig10"><strong><?php echo localeH("Search Pages");?>:</strong></td>
               </tr>
               <tr>
-                <td class="padding10"> <?php echo localeH("Search Pages");?> </td>
+                <td class="padding10"> <?php echo localeH("Page name");?> </td>
                 <td>
                 <form action="page_search.php" method="post">
  	  		    <input type="hidden" name="id" value="<?php echo $id ?>">
@@ -1764,7 +1764,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
               </tr>
               <tr>
                 <td class="padding10">&nbsp;</td>
-                <td><input name="Submit" type="submit" class="buttonGrey2" value="Senden" style="width:102px">
+                <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("send");?>" style="width:102px">
                 </form>
                 </td>
               </tr>
@@ -1901,7 +1901,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
             </tr>
             <tr>
               <td class="padding10">&nbsp;</td>
-              <td><input name="Submit" type="submit" class="buttonGrey2" value="Senden" style="width:102px"></form></td>
+              <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("send");?>" style="width:102px"></form></td>
             </tr>
           </table></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
@@ -2198,7 +2198,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
               </tr>
               <tr>
                 <td class="padding10">&nbsp;</td>
-                <td><input name="Submit" type="submit" class="buttonGrey2" value="Senden" style="width:102px">
+                <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("send");?>" style="width:102px">
                 </form>
                 </td>
               </tr>

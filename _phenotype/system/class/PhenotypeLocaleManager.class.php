@@ -373,6 +373,30 @@ class PhenotypeLocaleManagerStandard
     $_token["Admin_Users"][]="Create new user";
 
 
+    // Admin tasks
+    $_token["Ticket_Assess"][]="task overview";
+    $_token["Ticket_Assess"][]="create new task";
+    $_token["Ticket_Assess"][]="searchresult";
+    $_token["Ticket_Assess"][]="search for";
+    $_token["Ticket_Assess"][]="fulltext search for";
+    $_token["Ticket_Assess"][]="search for id";
+    $_token["Ticket_Assess"][]="all";
+    $_token["Ticket_Assess"][]="mine";
+    $_token["Ticket_Assess"][]="questions";
+    $_token["Ticket_Assess"][]="notices";
+    $_token["Ticket_Assess"][]="closed";
+    $_token["Ticket_Assess"][]="marked";
+    $_token["Ticket_Assess"][]="my tasks";
+    $_token["Ticket_Assess"][]="order ABCD";
+    $_token["Ticket_Assess"][]="order importance";
+    $_token["Ticket_Assess"][]="order priority";
+    $_token["Ticket_Assess"][]="order date";
+    $_token["Ticket_Assess"][]="order last change";
+    $_token["Ticket_Assess"][]="order title";
+    $_token["Ticket_Assess"][]="order assigned to";
+    $_token["Ticket_Assess"][]="order reported by";
+    
+    
     // Info
 
     $_token["Info"][]="headline_copyright";

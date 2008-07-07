@@ -42,7 +42,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 		$this->checkRight("elm_task",true);
 
-		$this->setPageTitle("Phenotype ".$myPT->version. " Aufgaben");
+		$this->setPageTitle("Phenotype ".$myPT->version. " " . localeH("Tasks"));
 
 		$this->selectMenuItem(5);
 		$this->selectLayout(1);
@@ -128,7 +128,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 
 
-		$headline = "Aufgabenübersicht";
+		$headline = localeH("task overview");
 
 
 		// --------------------------------------------------------------------------------------------
@@ -140,22 +140,22 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 		if ($action=="search")
 		{
-			$headline = "Suchergebnis - ";
+			$headline = localeH("searchresult")." - ";
 
 			$suchparameter ="&suche=1&s=" . urlencode($myRequest->get("s"))."&v=" . urlencode($myRequest->get("v"))."&i=" . urlencode($myRequest->get("i"));
 			if ($_REQUEST["s"]!="")
 			{
-				$headline .=" Suche nach " . $myRequest->get("s");
+				$headline .= localeH("search for")." " . $myRequest->get("s");
 				$sql_suche = " AND tik_bez LIKE '%".addslashes($myRequest->get("s"))."%'";
 			}
 			if ($_REQUEST["v"]!="")
 			{
-				$headline .=" Volltextsuche nach " . $myRequest->get("v");
+				$headline .= localeH("fulltext search for")." " . $myRequest->get("v");
 				$sql_suche = " AND tik_fulltext LIKE '%".addslashes($myRequest->get("v"))."%'";
 			}
 			if ($_REQUEST["i"]!="")
 			{
-				$headline .=" Suche nach Ticket ID " . $myRequest->get("id");
+				$headline .= localeH("search for id")." " . $myRequest->get("id");
 				$sql_suche = " AND ticket.tik_id =" . (int)$_REQUEST["i"];
 			}
 		}
@@ -196,34 +196,34 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 			$sql = "SELECT COUNT(*) AS C FROM ticket WHERE tik_status=1" . $sql_suche . $sql_2ndorder;
 			$rs = $myDB->query($sql);
 			$row = mysql_fetch_array($rs);
-			$block0="Alle (" . $row["C"] .")";
+			$block0=localeH("all")." (" . $row["C"] .")";
 
 			$sql = "SELECT COUNT(*) AS C FROM ticket WHERE tik_status=1 AND (ticket.usr_id_owner = " .$mySUser->id . ")" . $sql_suche  . $sql_2ndorder;
 			$rs = $myDB->query($sql);
 			$row = mysql_fetch_array($rs);
-			$block1="Meine (" . $row["C"] .")";
+			$block1=localeH("mine")." (" . $row["C"] .")";
 
 			$sql = $sql_join . "WHERE (tik_status = 1 OR (tik_status = 0 AND  tik_closingdate > ". (time()-(3600*12*$nrofdays_listing_closedtickets)) .")) AND tik_request =1" . $sql_suche  . $sql_2ndorder;
 			$rs = $myDB->query($sql);
-			$block2="Fragen (" . mysql_num_rows($rs) .")";
+			$block2=localeH("questions")." (" . mysql_num_rows($rs) .")";
 			$n2 = mysql_num_rows($rs);
 
 			$sql = $sql_join . "WHERE (tik_status = 1 OR (tik_status = 0 AND  tik_closingdate > ". (time()-(3600*12*$nrofdays_listing_closedtickets)) .")) AND (tik_markup =1 OR tik_request=1)" . $sql_suche  . $sql_2ndorder;
 			$rs = $myDB->query($sql);
-			$block3="Hinweise (" . mysql_num_rows($rs) .")";
+			$block3=localeH("notices")." (" . mysql_num_rows($rs) .")";
 			$n3 = mysql_num_rows($rs);
 
 			if ($myPT->getIPref("tickets.tab_closedtickets")==1)
 			{
 				$sql = $sql_join . "WHERE (tik_status = 0)" . $sql_suche  . $sql_2ndorder;
 				$rs = $myDB->query($sql);
-				$block4="Geschlossen (" . mysql_num_rows($rs) .")";
+				$block4=localeH("closed")." (" . mysql_num_rows($rs) .")";
 				$n4 = mysql_num_rows($rs);
 			}
 			
 			$sql = $sql_join . "WHERE (tik_status = 1 OR (tik_status = 0 AND  tik_closingdate > ". (time()-(3600*12*$nrofdays_listing_closedtickets)) .")) AND (tik_pin =1 )" . $sql_suche  . $sql_2ndorder;
 			$rs = $myDB->query($sql);
-			$block5="Gemerkt (" . mysql_num_rows($rs) .")";
+			$block5=localeH("marked")." (" . mysql_num_rows($rs) .")";
 			$n5 = mysql_num_rows($rs);			
 		}
 		else
@@ -231,36 +231,36 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 			$sql = "SELECT COUNT(*) AS C FROM ticket WHERE sbj_id = " . $sbj_id . " AND tik_status=1" . $sql_suche;
 			$rs = $myDB->query($sql);
 			$row = mysql_fetch_array($rs);
-			$block0="Alle Aufgaben (" . $row["C"] .")";
+			$block0=localeH("all")." ".localeH("tasks")." (" . $row["C"] .")";
 
 			$sql = "SELECT COUNT(*) AS C FROM ticket WHERE sbj_id = " . $sbj_id . " AND tik_status=1 AND (ticket.usr_id_owner = " .$mySUser->id . ")" . $sql_suche;
 			$rs = $myDB->query($sql);
 			$row = mysql_fetch_array($rs);
-			$block1="Meine Aufgaben (" . $row["C"] .")";
+			$block1=localeH("my tasks")." (" . $row["C"] .")";
 
 			// Hinweise und Fragen von geschlossenen Tickets bleiben in der Detailsicht immer stehen
 
 			$sql = $sql_join . "WHERE tik_status = 1 AND ticket.sbj_id = ". $sbj_id ." AND tik_request =1" . $sql_suche;
 			$rs = $myDB->query($sql);
-			$block2="Fragen (" . mysql_num_rows($rs) .")";
+			$block2=localeH("questions")." (" . mysql_num_rows($rs) .")";
 			$n2 = mysql_num_rows($rs);
 
 			$sql = $sql_join . "WHERE tik_status = 1 AND ticket.sbj_id = ". $sbj_id ." AND (tik_markup =1 OR tik_request=1)" . $sql_suche;
 			$rs = $myDB->query($sql);
-			$block3="Hinweise (" . mysql_num_rows($rs) .")";
+			$block3=localeH("notices")." (" . mysql_num_rows($rs) .")";
 			$n3 = mysql_num_rows($rs);
 			
 			if ($myPT->getPref("tickets.tab_closedtickets")==1)
 			{
 				$sql = $sql_join . "WHERE tik_status = 0 AND ticket.sbj_id = ". $sbj_id . $sql_suche;
 				$rs = $myDB->query($sql);
-				$block4="Geschlossen (" . mysql_num_rows($rs) .")";
+				$block4=localeH("closed")." (" . mysql_num_rows($rs) .")";
 				$n4 = mysql_num_rows($rs);
 			}
 			
 			$sql = $sql_join . "WHERE tik_status = 1 AND ticket.sbj_id = ". $sbj_id ." AND (tik_pin =1)" . $sql_suche;
 			$rs = $myDB->query($sql);
-			$block5="Gemerkt (" . mysql_num_rows($rs) .")";
+			$block5=localeH("marked")." (" . mysql_num_rows($rs) .")";
 			$n5 = mysql_num_rows($rs);			
 			
 		}
@@ -328,21 +328,21 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 	              		{
 	          			?>
 	                   	<input name="sortorder" type="radio" value="1" <?php if($sortorder==1){echo"checked";} ?> onclick="document.forms.formsort.submit();">
-		                ABCD
+		                <?php echo localeH("order ABCD") ?>
 		                <input type="radio" name="sortorder" value="2" <?php if($sortorder==2){echo"checked";} ?> onclick="document.forms.formsort.submit();">
-		                Wichtigkeit
+		                <?php echo localeH("order importance") ?>
 		                <input type="radio" name="sortorder" value="3" <?php if($sortorder==3){echo"checked";} ?> onclick="document.forms.formsort.submit();">
-		                Dringlichkeit
+		                <?php echo localeH("order priority") ?>
 		                <input type="radio" name="sortorder" value="4" <?php if($sortorder==4){echo"checked";} ?> onclick="document.forms.formsort.submit();"> 
-		                Datum
+		                <?php echo localeH("order date") ?>
 		                <input type="radio" name="sortorder" value="5" <?php if($sortorder==5){echo"checked";} ?> onclick="document.forms.formsort.submit();"> 
-		                letzte &Auml;nderung
+		                <?php echo localeH("order last change") ?>
 		                <input type="radio" name="sortorder" value="6" <?php if($sortorder==6){echo"checked";} ?> onclick="document.forms.formsort.submit();">
-		                Bezeichnung
+		                <?php echo localeH("order title") ?>
 		                <input type="radio" name="sortorder" value="7" <?php if($sortorder==7){echo"checked";} ?> onclick="document.forms.formsort.submit();">
-		                Bearbeiter		
+		                <?php echo localeH("order assigned to") ?>
 		                <input type="radio" name="sortorder" value="8" <?php if($sortorder==8){echo"checked";} ?> onclick="document.forms.formsort.submit();">
-		                Einsteller			
+		                <?php echo localeH("order reported by") ?>
 	           	   <?php
 	              		}
 				?>

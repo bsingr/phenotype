@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:body><tmx:tu tuid="task overview">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task Overview</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="create new task">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create new task</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="searchresult">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="search for">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="fulltext search for">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Fulltext search for</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="search for id">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Search for Ticket ID</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="all">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>All</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="mine">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Mine</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="questions">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Questions</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="notices">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Notices</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="closed">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Closed</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="marked">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Marked</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="my tasks">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>My tasks</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order ABCD">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>ABCD</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order importance">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>importance</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order priority">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>priority</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order date">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>date</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order last change">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>last change</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order title">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>title</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order assigned to">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>assigned to</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order reported by">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>reported by</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			  </tmx:body>
+</tmx:tmx>

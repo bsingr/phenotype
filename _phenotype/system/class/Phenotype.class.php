@@ -1942,6 +1942,7 @@ border: 1px solid #cfcfcf;
 		if ($s=="")
 		{
 		  $s="#".$token."#";
+		//  echo "Unbekannter TOKEN: ".$s."<br>";
 		}
 		return $s;
 		

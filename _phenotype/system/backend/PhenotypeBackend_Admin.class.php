@@ -47,19 +47,19 @@ class PhenotypeBackend_Admin_Standard extends PhenotypeBackend
 
 
 		$myNav = new PhenotypeTree();
-		$nav_id_users    = $myNav->addNode("Benutzer","backend.php?page=Admin,Users,view",0,"users");
+		$nav_id_users    = $myNav->addNode(locale("users"),"backend.php?page=Admin,Users,view",0,"users");
 
 		if ($this->checkRight("elm_admin"))
 		{
-			$nav_id_roles    = $myNav->addNode("Rollen","admin_roles.php",0,"Rollen");
-			$nav_id_cache    = $myNav->addNode("Cache","admin_cache.php",0,"Cache");
-			$nav_id_layout    = $myNav->addNode("Layout","layout.php",0,"Layout");
-			$nav_id_pages    = $myNav->addNode("Seiten","admin_pages.php",0,"Seiten");
-			$nav_id_groups   = $myNav->addNode("Seitengruppen","admin_groups.php",0,"Seitengruppen");
-			$nav_id_content  = $myNav->addNode("Content","admin_content.php",0,"Content");
-			$nav_id_media    = $myNav->addNode("Media","admin_media.php",0,"Media");
-			$nav_id_mediagroups   = $myNav->addNode("Mediagruppen","admin_mediagroups.php",0,"Mediagruppen");
-			$nav_id_subject   = $myNav->addNode("Aufgabenbereiche","admin_subject.php",0,"Aufgabenbereiche");
+			$nav_id_roles    = $myNav->addNode(locale("Roles"),"admin_roles.php",0,"Rollen");
+			$nav_id_cache    = $myNav->addNode("eeCache","admin_cache.php",0,"Cache");
+			$nav_id_layout    = $myNav->addNode("eeLayout","layout.php",0,"Layout");
+			$nav_id_pages    = $myNav->addNode("eeSeiten","admin_pages.php",0,"Seiten");
+			$nav_id_groups   = $myNav->addNode(locale("pagegroups"),"admin_groups.php",0,"Seitengruppen");
+			$nav_id_content  = $myNav->addNode(locale("contentobjects"),"admin_content.php",0,"Content");
+			$nav_id_media    = $myNav->addNode("Meeedia","admin_media.php",0,"Media");
+			$nav_id_mediagroups   = $myNav->addNode(locale("mediagroups"),"admin_mediagroups.php",0,"Mediagruppen");
+			$nav_id_subject   = $myNav->addNode(locale("task subjects"),"admin_subject.php",0,"Aufgabenbereiche");
 			$nav_id_action   = $myNav->addNode("Aktionen","admin_actions.php",0,"Aktionen");
 		}
 

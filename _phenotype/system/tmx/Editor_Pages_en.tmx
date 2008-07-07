@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:body><tmx:tu tuid="Script">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Versions">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Alternate Title">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Cache">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Standard">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Navigation Behaviour">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Invisible">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Mimikry">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Title%n(multilanguage)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Page name">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Version Name">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Comment">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Meta">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_editquickfinder1">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_editquickfinder2">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Search terms">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Search">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="URLs%n(multilanguage)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="smartURL (optional)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="URLs">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="UID">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this page?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Stats">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Date">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="PIs">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Chart">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="marks the average value">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_pagescript">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="This page does not contain a script.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Pagscript">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Includes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="HTTP-Header">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Last Page Impression">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="never before">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Page is regenerated on next call.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Page valid until">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Stats: (Day/Month/Total)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Access time">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Build %1 sec (Cache %2)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Cache %1 sec">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Cache-State">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Preview">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="No.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add Version Change">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Activate">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add New Version">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="List of automatic version changes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Time">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_move_component_upward">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_move_component_downward">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete component">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add new page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="How to name the new page?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Where to locate the new page within the page tree?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="After current page, same level">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Before current page, same level">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Under current page, lower level">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Which template should be used?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Automatic version change">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Switching time">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_pagechange_0">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_pagechange_1">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_pagechange_n">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_firstedit_other_language">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Today">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="No Include">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Includes%n(Pre/Post)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Vars">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Monitor">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="visible">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			  </tmx:body>
+</tmx:tmx>
