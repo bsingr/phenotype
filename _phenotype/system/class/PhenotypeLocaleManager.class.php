@@ -103,7 +103,8 @@ class PhenotypeLocaleManagerStandard
     $_token["Phenotype"][]="User";
     $_token["Phenotype"][]="Changes saved";
     $_token["Phenotype"][]="Layout";
-
+    $_token["Phenotype"][]="create new task";
+    
     // sessions, rights & login
 
     $_token["Phenotype"][]="Username";
@@ -159,7 +160,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor"][]="Date";
     $_token["Editor"][]="Thumb";
     $_token["Editor"][]="msg_last_change_anonymous";
-    $_token["Editor"][]="msg_last_change_by_user ";
+    $_token["Editor"][]="msg_last_change_by_user";
     $_token["Editor"][]="msg_creation_date_by_user";
     $_token["Editor"][]="msg_creation_date_anonymous";
     $_token["Editor"][]="Insert component";
@@ -191,7 +192,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor"][]="new window";
     $_token["Editor"][]="Add first page in group";
     $_token["Editor"][]="Search Pages";
-
+    
     // Editor / Pages
 
     $_token["Editor_Pages"][]="Script";
@@ -204,7 +205,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor_Pages"][]="Mimikry";
     $_token["Editor_Pages"][]="Title%n(multilanguage)";
     $_token["Editor_Pages"][]="Page name";
-    $_token["Editor_Pages"][]="Version Name";
+    $_token["Editor_Pages"][]="Version name";
     $_token["Editor_Pages"][]="Comment";
     $_token["Editor_Pages"][]="Meta";
     $_token["Editor_Pages"][]="msg_editquickfinder1";
@@ -252,6 +253,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor_Pages"][]="Delete component";
     $_token["Editor_Pages"][]="Add new page";
     $_token["Editor_Pages"][]="How to name the new page?";
+    $_token["Editor_Pages"][]="New Page";
     $_token["Editor_Pages"][]="Where to locate the new page within the page tree?";
     $_token["Editor_Pages"][]="After current page, same level";
     $_token["Editor_Pages"][]="Before current page, same level";
@@ -265,11 +267,14 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor_Pages"][]="msg_firstedit_other_language";
     $_token["Editor_Pages"][]="Today";
     $_token["Editor_Pages"][]="No Include";
+    $_token["Editor_Pages"][]="No Template";
     $_token["Editor_Pages"][]="Includes%n(Pre/Post)";
     $_token["Editor_Pages"][]="Vars";
     $_token["Editor_Pages"][]="Monitor";
     $_token["Editor_Pages"][]="visible";
     $_token["Editor_Pages"][]="send";
+    $_token["Editor_Pages"][]="copy page";
+    $_token["Editor_Pages"][]="move page";
     
     // Editor / Content
 
@@ -386,7 +391,6 @@ class PhenotypeLocaleManagerStandard
 
     // Admin tasks
     $_token["Ticket_Assess"][]="task overview";
-    $_token["Ticket_Assess"][]="create new task";
     $_token["Ticket_Assess"][]="searchresult";
     $_token["Ticket_Assess"][]="search for";
     $_token["Ticket_Assess"][]="fulltext search for";

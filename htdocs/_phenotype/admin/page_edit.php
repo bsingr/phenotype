@@ -529,7 +529,7 @@ if ($mySUser->checkRight("elm_task"))
      $html.= $myPT->stopBuffer();
 
 
-     $myLayout->workarea_row_draw("Eigenschaften",$html);
+     $myLayout->workarea_row_draw(localeH("Properties"),$html);
 
      // Mehrsprachigkeit der Titel
      if ($multilanguage==1)

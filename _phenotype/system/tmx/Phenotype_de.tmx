@@ -479,10 +479,17 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Layout">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Layout</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Layout</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="create new task">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create new task</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Neue Aufgabe einstellen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Username">
       <tmx:tuv xml:lang="en">

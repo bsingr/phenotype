@@ -71,7 +71,7 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Version Name">
+			<tmx:tu tuid="Version name">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Version Name</tmx:seg>
       </tmx:tuv>
@@ -94,14 +94,14 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_editquickfinder1">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Save under</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_editquickfinder2">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>in Quickfinder</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -407,6 +407,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New Page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New Page</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Where to locate the new page within the page tree?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Where to locate the new page within the page tree?</tmx:seg>
@@ -498,6 +505,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="No Template">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>no template</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Includes%n(Pre/Post)">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Includes%n(Pre/Post)</tmx:seg>
@@ -528,7 +542,21 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="send">
       <tmx:tuv xml:lang="en">
+        <tmx:seg>Send</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="copy page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>copy page</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="move page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>move page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

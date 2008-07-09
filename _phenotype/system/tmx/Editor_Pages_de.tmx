@@ -71,12 +71,12 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Version Name">
+			<tmx:tu tuid="Version name">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Version Name</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Name der Version</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Comment">
       <tmx:tuv xml:lang="en">
@@ -94,17 +94,17 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_editquickfinder1">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Save under</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Seite unter</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_editquickfinder2">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>in Quickfinder</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>im Quickfinder anlegen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Search terms">
       <tmx:tuv xml:lang="en">
@@ -391,18 +391,25 @@
         <tmx:seg>Delete component</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Baustein löschen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Add new page">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Add new page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Neue Seite hinzufügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="How to name the new page?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>How to name the new page?</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Wie soll die Seite benannt werden?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New Page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New Page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
@@ -412,21 +419,21 @@
         <tmx:seg>Where to locate the new page within the page tree?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Wo soll die neue Seite im Navigationsbaum eingeordnet werden?</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="After current page, same level">
       <tmx:tuv xml:lang="en">
         <tmx:seg>After current page, same level</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Nach aktiver Seite, gleiche Ebene</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Before current page, same level">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Before current page, same level</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Vor aktiver Seite, gleiche Ebene</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Under current page, lower level">
       <tmx:tuv xml:lang="en">
@@ -440,7 +447,7 @@
         <tmx:seg>Which template should be used?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Welches Template soll verwendet werden?</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Automatic version change">
       <tmx:tuv xml:lang="en">
@@ -498,6 +505,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="No Template">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>no template</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>kein Template</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Includes%n(Pre/Post)">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Includes%n(Pre/Post)</tmx:seg>
@@ -532,6 +546,20 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Senden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="copy page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>copy page</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Seite kopieren</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="move page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>move page</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Seite umhängen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

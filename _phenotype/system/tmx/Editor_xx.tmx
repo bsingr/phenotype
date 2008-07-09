@@ -253,16 +253,16 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_last_change_by_user ">
+			<tmx:tu tuid="msg_last_change_by_user">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Last change: %1 by %2</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_creation_date_by_user">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>msg_creation_date_by_user</tmx:seg>
+        <tmx:seg>Created: %1 by %2</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

@@ -68,7 +68,7 @@ body {
   <tr>
     <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td colspan="5" valign="top" class="tableBody"><?php echo localeHBR("<strong>How</strong> to name the new page?");?> <br>
+          <td colspan="5" valign="top" class="tableBody"><?php echo localeHBR("How to name the new page?");?> <br>
               <input name="bez" type="text" class="input" style="width: 300px" value="<?php echo localeH("New Page");?>">
           </td>
           </tr>
@@ -76,7 +76,7 @@ body {
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
         <tr>
-          <td colspan="5" valign="top" class="tableBody"><p><?php echo localeHBR("<strong>Where</strong> to locate the new page within the page tree?");?></p>
+          <td colspan="5" valign="top" class="tableBody"><p><?php echo localeHBR("Where to locate the new page within the page tree?");?></p>
           </td>
           </tr>
         <tr>
@@ -106,7 +106,7 @@ body {
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
         <tr>
-          <td colspan="5" valign="top" class="tableBody"><?php echo localeHBR("<strong>Which</strong> template should be used?");?></td>
+          <td colspan="5" valign="top" class="tableBody"><?php echo localeHBR("Which template should be used?");?></td>
           </tr>
 		<tr>
 		<td colspan="5" valign="top" class="tableBody">
@@ -132,7 +132,7 @@ body {
 		 
 		 $sql = "SELECT lay_id AS K, lay_bez AS V FROM layout ORDER BY lay_bez";
 		 $rs = $myDB->query($sql);
-		 $_options[0]="kein Template";
+		 $_options[0]= localeH("No Template");
 		 while ($row=mysql_fetch_array($rs))
 		 {
 		 	if (!in_array($row["K"],$_layout_deny))

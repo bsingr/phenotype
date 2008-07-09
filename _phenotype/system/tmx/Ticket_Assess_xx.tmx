@@ -8,13 +8,6 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="create new task">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Create new task</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="searchresult">
       <tmx:tuv xml:lang="en">
         <tmx:seg></tmx:seg>

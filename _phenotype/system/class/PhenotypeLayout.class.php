@@ -338,7 +338,7 @@ class PhenotypeLayoutStandard
 			if ($mySUser->checkRight("elm_task"))
 			{
 			?>
-			<a href="javascript:ticketWizard(<?php echo $myPage->id ?>,<?php echo $myPage->ver_id ?>,0,0,0,0)"><img src="img/b_newtask.gif" alt="neue Aufgabe einstellen" title="neue Aufgabe einstellen" width="22" height="22" border="0"></a>
+			<a href="javascript:ticketWizard(<?php echo $myPage->id ?>,<?php echo $myPage->ver_id ?>,0,0,0,0)"><img src="img/b_newtask.gif" alt="<?php echo localeH("create new task") ?>" title="<?php echo localeH("create new task") ?>" width="22" height="22" border="0"></a>
 			<?php
 			}
 			?>
@@ -346,13 +346,13 @@ class PhenotypeLayoutStandard
 			if ($mySUser->checkRight("elm_pageconfig"))
 			{
 			?>
-<a href="javascript:page_copy(<?php echo $myPage->id ?>)"><img src="img/b_copy.gif" alt="Seite kopieren" title="Seite kopieren" width="22" height="22" border="0"></a> 
-<a href="javascript:page_move(<?php echo $myPage->id ?>)"><img src="img/b_reasign.gif" alt="Seite umh&auml;ngen" title="Seite umh&auml;ngen" width="22" height="22" border="0"></a>
+<a href="javascript:page_copy(<?php echo $myPage->id ?>)"><img src="img/b_copy.gif" alt="<?php echo localeH("copy page") ?>" title="<?php echo localeH("copy page") ?>" width="22" height="22" border="0"></a> 
+<a href="javascript:page_move(<?php echo $myPage->id ?>)"><img src="img/b_reasign.gif" alt="<?php echo localeH("move page") ?>" title="<?php echo localeH("move page") ?>" width="22" height="22" border="0"></a>
             <?php
 			}
 			?>
-<a href="pageversion_insert.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo $myPage->ver_id ?>"><img src="img/b_newversion.gif" alt="neue Version erstellen" title="neue Version erstellen" width="22" height="22" border="0"></a> 
-<a href="http://www.phenotype-cms.de/docs.php?v=23&t=1" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
+<a href="pageversion_insert.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo $myPage->ver_id ?>"><img src="img/b_newversion.gif" alt="<?php echo localeH("Add New Version") ?>" title="<?php echo localeH("Add New Version") ?>" width="22" height="22" border="0"></a> 
+<a href="http://www.phenotype-cms.de/docs.php?v=23&t=1" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help") ?>" title="<?php echo localeH("Help") ?>" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
