@@ -41,6 +41,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Action</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Type">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Type</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Edit record">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Edit record</tmx:seg>

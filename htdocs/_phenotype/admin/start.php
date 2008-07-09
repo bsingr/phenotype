@@ -380,7 +380,7 @@ if ($mySUser->checkRight("elm_content"))
             <td class="tableHead"><?php echo localeH("Name");?></td>
             <td class="tableHead"><?php echo localeH("Type");?></td>
 			<td width="120" class="tableHead"><?php echo localeH("User");?></td>
-            <td width="30" class="tableHead"><?php echo localeH("Status");?></td>
+            <td width="30" class="tableHead"><?php echo localeH("State");?></td>
             <td width="50" align="right" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
 		  <tr>

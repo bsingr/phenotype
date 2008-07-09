@@ -285,7 +285,7 @@ if ($conflict)
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td class="windowAlert"><h1><php echo localeH("Attention")?>!</h1>
+              <td class="windowAlert"><h1><?php echo localeH("Attention")?>!</h1>
 			    <p><?php echo $conflict ?></p></td>
               </tr>
         </table></td>
@@ -306,7 +306,7 @@ if ($language_copy)
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td class="windowInfo"><h1><php echo localeH("Notice")?>!</h1>
+              <td class="windowInfo"><h1><?php echo localeH("Notice")?>!</h1>
 			    <p><?php echo localeH("msg_firstedit_other_language",array($PTC_LANGUAGES[$_SESSION["lng_id"]]));?></p></td>
               </tr>
         </table></td>

@@ -126,7 +126,7 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
-      </tmx:tuv>letzte Änderung</tmx:tu>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="order title">
       <tmx:tuv xml:lang="en">
         <tmx:seg>title</tmx:seg>

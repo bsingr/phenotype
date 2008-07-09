@@ -130,6 +130,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor"][]="User";
     $_token["Editor"][]="State";
     $_token["Editor"][]="Action";
+    $_token["Editor"][]="Type";
     $_token["Editor"][]="Edit record";
     $_token["Editor"][]="Really delete record?";
     $_token["Editor"][]="Delete record";
