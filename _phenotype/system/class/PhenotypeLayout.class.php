@@ -3140,7 +3140,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 	</style>
  <?php
  $color="red";
- $tag="<strong>".locale("today")."</strong>";
+ $tag="<strong>".locale("Today")."</strong>";
  for ($i=0;$i<=$c_entry;$i++)
  {
  	$vdatum = mktime( 0,0,0,date('m',$startdatum),date('d',$startdatum)-$i,date('Y',$startdatum));
@@ -3149,7 +3149,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
  	if ($tag==date('d.m.Y'))
  	{
  		$color="red";
- 		$tag="<strong>".locale("today")."</strong>";
+ 		$tag="<strong>".locale("Today")."</strong>";
  	}
 
  	$pi=$_pi[$i];

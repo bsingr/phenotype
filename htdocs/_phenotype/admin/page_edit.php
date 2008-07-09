@@ -1221,7 +1221,7 @@ while ($row = mysql_fetch_array($rs))
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
-        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="Vorschau">
+        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="<?php echo localeH("Preview");?>">
             </td>
             <td align="right" class="windowFooterWhite">    <?php if ($myPage->hasChilds()==0 AND $mySUser->checkRight("elm_pageconfig")){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this page?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>

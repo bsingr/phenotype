@@ -101,9 +101,29 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>PIs</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Trend">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Trend</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Day view">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Daily view</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Month view">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Monthly view</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Listing">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Listing</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Chart">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Chart</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Average value">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Average value</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="marks the average value">
       <tmx:tuv xml:lang="en">
@@ -280,6 +300,10 @@
 			<tmx:tu tuid="visible">
       <tmx:tuv xml:lang="en">
         <tmx:seg>visible</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="send">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Send</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

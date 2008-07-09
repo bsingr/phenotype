@@ -69,7 +69,9 @@ class PhenotypeLocaleManagerStandard
     $_token["Phenotype"][]="offline";
     $_token["Phenotype"][]="Changes saved.";
     $_token["Phenotype"][]="Copy of";
-    $_token["Phenotype"][]="December";
+    $_token["Phenotype"][]="Day";
+    $_token["Phenotype"][]="Month";
+    $_token["Phenotype"][]="Year";
     $_token["Phenotype"][]="January";
     $_token["Phenotype"][]="February";
     $_token["Phenotype"][]="March";
@@ -79,8 +81,9 @@ class PhenotypeLocaleManagerStandard
     $_token["Phenotype"][]="July";
     $_token["Phenotype"][]="August";
     $_token["Phenotype"][]="September";
-    $_token["Phenotype"][]="Oktober";
+    $_token["Phenotype"][]="October";
     $_token["Phenotype"][]="November";
+    $_token["Phenotype"][]="December";
     $_token["Phenotype"][]="day_short_monday";
     $_token["Phenotype"][]="day_short_tuesday";
     $_token["Phenotype"][]="day_short_wednesday";
@@ -141,6 +144,7 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor"][]="Put into / Take out of lightbox";
     $_token["Editor"][]="Content";
     $_token["Editor"][]="Pages";
+    $_token["Editor"][]="Page";
     $_token["Editor"][]="Media";
     $_token["Editor"][]="Search Content";
     $_token["Editor"][]="for";
@@ -215,7 +219,12 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor_Pages"][]="Stats";
     $_token["Editor_Pages"][]="Date";
     $_token["Editor_Pages"][]="PIs";
+    $_token["Editor_Pages"][]="Trend";
+    $_token["Editor_Pages"][]="Day view";
+    $_token["Editor_Pages"][]="Month view";
+    $_token["Editor_Pages"][]="Listing";
     $_token["Editor_Pages"][]="Chart";
+    $_token["Editor_Pages"][]="Average value";
     $_token["Editor_Pages"][]="marks the average value";
     $_token["Editor_Pages"][]="msg_pagescript";
     $_token["Editor_Pages"][]="This page does not contain a script.";
@@ -260,7 +269,8 @@ class PhenotypeLocaleManagerStandard
     $_token["Editor_Pages"][]="Vars";
     $_token["Editor_Pages"][]="Monitor";
     $_token["Editor_Pages"][]="visible";
-
+    $_token["Editor_Pages"][]="send";
+    
     // Editor / Content
 
     $_token["Editor_Content"][]="Really delete this record?";

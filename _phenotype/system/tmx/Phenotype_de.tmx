@@ -246,12 +246,26 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Kopie von</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="December">
+			<tmx:tu tuid="Day">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>December</tmx:seg>
+        <tmx:seg>Day</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>Dezember</tmx:seg>
+        <tmx:seg>Tag</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Month">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Month</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Monat</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Year">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Year</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Jahr</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="January">
       <tmx:tuv xml:lang="en">
@@ -316,9 +330,9 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>September</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Oktober">
+			<tmx:tu tuid="October">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Oktober</tmx:seg>
+        <tmx:seg>October</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Oktober</tmx:seg>
@@ -329,6 +343,13 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>November</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="December">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>December</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Dezember</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="day_short_monday">
       <tmx:tuv xml:lang="en">

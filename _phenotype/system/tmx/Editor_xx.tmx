@@ -73,7 +73,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Type">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Type</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -144,6 +144,13 @@
 			<tmx:tu tuid="Pages">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Pages</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

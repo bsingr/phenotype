@@ -85,6 +85,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Pages</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Page</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Media">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Media</tmx:seg>
