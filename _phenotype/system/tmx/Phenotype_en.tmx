@@ -47,11 +47,11 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Notice">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Notice</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Attention">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Attention</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete">
       <tmx:tuv xml:lang="en">
@@ -279,7 +279,103 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="create new task">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Create new task</tmx:seg>
+        <tmx:seg>create new task</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Actions">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Actions</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Cache">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Cache</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Content">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Content</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Content objects">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Content objects</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Contentobjects">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Contentobjects</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Description">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Description</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Help">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Help</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Includes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Includes</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Media</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Mediagroup">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Mediagroup</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Mediagroups">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Mediagroups</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Name">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Name</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="No.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>No.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Pagegroup">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Pagegroup</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Pagegroups">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Pagegroups</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="pagegroups">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>pagegroups</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Pages">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Pages</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Rights">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Rights</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Role">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Role</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Roles">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Roles</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Roles">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Roles</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Status">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Status</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Task subjects">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task subjects</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Users">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Users</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Username">
       <tmx:tuv xml:lang="en">
@@ -311,15 +407,15 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="install snapshot">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>install snapshot</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_snapshot_contentobject">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_snapshot_contentobject</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_snapshot_mediaobject">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_snapshot_mediaobject</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Rollback">
       <tmx:tuv xml:lang="en">

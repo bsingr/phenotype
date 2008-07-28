@@ -131,7 +131,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_pagescript">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_pagescript</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="This page does not contain a script.">
       <tmx:tuv xml:lang="en">
@@ -215,11 +215,11 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_move_component_upward">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_move_component_upward</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_move_component_downward">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_move_component_downward</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete component">
       <tmx:tuv xml:lang="en">
@@ -267,19 +267,19 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_pagechange_0">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_pagechange_0</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_pagechange_1">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_pagechange_1</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_pagechange_n">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_pagechange_n</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_firstedit_other_language">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_firstedit_other_language</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Today">
       <tmx:tuv xml:lang="en">

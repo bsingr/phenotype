@@ -227,7 +227,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_error_wrongformat">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_error_wrongformat</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Upload failed!">
       <tmx:tuv xml:lang="en">

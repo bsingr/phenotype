@@ -11,9 +11,10 @@ class PhenotypeLog {
 	// currently, facility is ignored
 	function log($message, $facility=PT_LOGFACILITY_APP, $level=PT_LOGLVL_INFO) {
 		global $mySUser;
-		
+
+	
 		if (PT_LOG_LEVEL >= $level || $level == 1) // log errors always
-		{
+		{		
 			if (PT_LOG_METHOD == PT_LOGMTH_FILE) {
 				// log to file
 				
@@ -45,6 +46,7 @@ class PhenotypeLog {
 				}
 				
 				$logMsg = $remote_addr ."\t". date(PT_LOG_TIMEFORMAT, time()) ."\t$userId\t$facility\t$levelName\t". $message ."\n";
+				
 				return error_log($logMsg, 3, PT_LOG_LOGFILE);
 			}
 		}

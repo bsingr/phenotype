@@ -55,26 +55,28 @@ class PhenotypeStandard extends PhenotypeBase
 	//private $_phrases = Array();
 
 	/**
-   * Holds the URLHelper dataobject during one request
-   *
-   * @var unknown_type
-   */
+	 * Holds the URLHelper dataobject during one request
+	 *
+	 * @var unknown_type
+	 */
 	private $URLHelper = false;
 
 	/**
-   * Holds the MediaobjectsHelper dataobject during one request
-   *
-   * @var unknown_type
-   */
+	 * Holds the MediaobjectsHelper dataobject during one request
+	 *
+	 * @var unknown_type
+	 */
 	private $MediaobjectsHelper = false;
 
 	/**
-   * Holds the TMXHelper dataobject during one request
-   *
-   * @var unknown_type
-   */
+	 * Holds the TMXHelper dataobject during one request
+	 *
+	 * @var unknown_type
+	 */
 	private $TMXHelper = false;
 
+	private $tmxsection = '';
+	
 	function __construct()
 	{
 		global $myDB;
@@ -234,12 +236,12 @@ class PhenotypeStandard extends PhenotypeBase
 
 
 	/**
-   * Enter description here...
-   *
-   * @param integer ID of the include to be executed
-   * @param boolean should the include cache be used (which means paying attention to the request parameters)
-   * @param integer can be used to forward the rendering context (1-9) of a component block from the layout
-   */
+	 * Enter description here...
+	 *
+	 * @param integer ID of the include to be executed
+	 * @param boolean should the include cache be used (which means paying attention to the request parameters)
+	 * @param integer can be used to forward the rendering context (1-9) of a component block from the layout
+	 */
 	function executeInclude($inc_id,$use_include_cache=false,$context=1,$silent=false)
 	{
 		global $myRequest;
@@ -287,8 +289,8 @@ class PhenotypeStandard extends PhenotypeBase
 	}
 
 	/* *****************
-	* Allgemeine Funktionen
-	* *****************/
+	 * Allgemeine Funktionen
+	 * *****************/
 	function cutLeft($s,$n)
 	{
 		$l = strlen($s);
@@ -303,8 +305,8 @@ class PhenotypeStandard extends PhenotypeBase
 	}
 
 	/* *****************
-	* Datums- und Kalenderfunktionen
-	* *****************/
+	 * Datums- und Kalenderfunktionen
+	 * *****************/
 	function nextWeekDay($datum,$mode=0)
 	{
 
@@ -462,9 +464,9 @@ class PhenotypeStandard extends PhenotypeBase
 	}
 
 	/**
-   * clear every object / page which might be in any cache (pagecache, contentcache, includecache)
-   *
-   */
+	 * clear every object / page which might be in any cache (pagecache, contentcache, includecache)
+	 *
+	 */
 	function clearCache()
 	{
 		global $myDB;
@@ -484,11 +486,11 @@ class PhenotypeStandard extends PhenotypeBase
 	}
 
 	/**
-   * @deprecated 
-   *
-   * @param unknown_type $id
-   * @param unknown_type $silent
-   */
+	 * @deprecated
+	 *
+	 * @param unknown_type $id
+	 * @param unknown_type $silent
+	 */
 	function clearcache_page($id,$silent=1)
 	{
 		throw new Exception("Deprecated call of function clearcache_page");
@@ -532,8 +534,8 @@ class PhenotypeStandard extends PhenotypeBase
 
 
 	/* ********************
-	* Kodierungsfunktionen
-	* ********************/
+	 * Kodierungsfunktionen
+	 * ********************/
 	function strip_tags($s)
 	{
 		global $myApp;
@@ -799,29 +801,29 @@ class PhenotypeStandard extends PhenotypeBase
 
 
 	/*
-	function loadLanguageMap($mapfile,$prefix="")
-	{
-	$file = SYSTEMPATH . "languagemaps/".$mapfile;
-	$_xml = simplexml_load_file($file);
+	 function loadLanguageMap($mapfile,$prefix="")
+	 {
+	 $file = SYSTEMPATH . "languagemaps/".$mapfile;
+	 $_xml = simplexml_load_file($file);
 
-	$language = $this->getPref("backend.language");
+	 $language = $this->getPref("backend.language");
 
-	foreach ($_xml->phrases->section AS $_xml_section)
-	{
-	$name = utf8_decode((string)$_xml_section["name"]);
-	if ($prefix !=""){$name = $prefix .".".$name;}
-	foreach ($_xml_section->phrase AS $_xml_phrase)
-	{
-	$token = $name .".".utf8_decode((string)$_xml_phrase["name"]);
-	$v = utf8_decode((string)$_xml_phrase->$language);
-	if ($v==""){$v = utf8_decode((string)$_xml_phrase->en);}
-	$this->_phrases[$token]=$v;
+	 foreach ($_xml->phrases->section AS $_xml_section)
+	 {
+	 $name = utf8_decode((string)$_xml_section["name"]);
+	 if ($prefix !=""){$name = $prefix .".".$name;}
+	 foreach ($_xml_section->phrase AS $_xml_phrase)
+	 {
+	 $token = $name .".".utf8_decode((string)$_xml_phrase["name"]);
+	 $v = utf8_decode((string)$_xml_phrase->$language);
+	 if ($v==""){$v = utf8_decode((string)$_xml_phrase->en);}
+	 $this->_phrases[$token]=$v;
 
-	}
+	 }
 
-	}
-	}
-	*/
+	 }
+	 }
+	 */
 
 	function displayContentXML($con_id,$mode="")
 	{
@@ -1035,12 +1037,12 @@ class PhenotypeStandard extends PhenotypeBase
 	{
 
 		/*
-		final function getMessage();                // Mitteilung der Ausnahme
-		final function getCode();                   // Code der Ausnahme
-		final function getFile();                   // Quelldateiname
-		final function getLine();                   // Quelldateizeile
-		final function getTrace();                  // Array mit Ablaufverfolgung
-		final function getTraceAsString();  */
+		 final function getMessage();                // Mitteilung der Ausnahme
+		 final function getCode();                   // Code der Ausnahme
+		 final function getFile();                   // Quelldateiname
+		 final function getLine();                   // Quelldateizeile
+		 final function getTrace();                  // Array mit Ablaufverfolgung
+		 final function getTraceAsString();  */
 
 		// this method is executed via error and/or exception handler
 		// we are not in the phenotype class object context und therefore must use the global object
@@ -1119,7 +1121,7 @@ em {
 }
 
 #logo {
-	background-image: url (               '/img/logo.png' );
+	background-image: url (                 '/img/logo.png' );
 	width: 780px;
 	padding: 10px;
 	margin-left: auto;
@@ -1368,16 +1370,16 @@ for ($i=$stop;$i>=$start;$i--){?>
 </html>
 	<?php
 	exit();
-	}
+}
 
 
 
-	public function displayDebugInfo()
-	{
-		global $myDB;
-		global $myRequest;
+public function displayDebugInfo()
+{
+	global $myDB;
+	global $myRequest;
 
-		$headline = "Phenotype DebugInfo";
+	$headline = "Phenotype DebugInfo";
 	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -1504,17 +1506,16 @@ em {
 .querynr {
 	color: #000;
 	width: 60px;
-	}
-.querydetails
-{
-width:720px;
-font-size: 9px;
-font-family: Verdana, Arial;
 }
 
-.querydetails td, th
-{
-border: 1px solid #cfcfcf;
+.querydetails {
+	width: 720px;
+	font-size: 9px;
+	font-family: Verdana, Arial;
+}
+
+.querydetails td,th {
+	border: 1px solid #cfcfcf;
 }
 </style>
 </head>
@@ -1573,9 +1574,10 @@ border: 1px solid #cfcfcf;
 				$context = $myDB->_context[$i];
 				if ($context !=""){
 					?><span class="exec_context"><?php echo $context?></span><?php
-				}
-			}
-?><span class="filename">[<?php echo $this->getFilenameOutOfPath($myDB->_files[$i])?> in line <?php echo $myDB->_lines[$i]?>]</span><br />
+}
+}
+?><span class="filename">[<?php echo $this->getFilenameOutOfPath($myDB->_files[$i])?>
+in line <?php echo $myDB->_lines[$i]?>]</span><br />
 <table class="query">
 	<tr>
 		<td rowspan="3" class="querynr" valign="top">#<?php echo sprintf('%04d',$i+1)?>:</td>
@@ -1591,7 +1593,8 @@ border: 1px solid #cfcfcf;
 	</tr>
 	<?php } ?>
 </table>
-<br /><br/>
+<br />
+<br />
 	<?php }?></div>
 	<?php if (count ($this->_debughints)!=0){?>
 <div id="hints"><em>PHP Hints:</em><br />
@@ -1621,348 +1624,355 @@ border: 1px solid #cfcfcf;
 	<?php }?>
 </ul>
 	<?php }?></div>
-	
+
 	<?php
 	$myDao = new PhenotypeSystemDataObject("DebugLookUpTable");
 	?>
-	<div id="database"><em>Quick Lookup</em><br />
-	<span class="exec_context">components</span>
-	<ul class="source">
-	<?php foreach ($myDao->get("components") AS $k=>$v){?>
-	<li><span>#<?php echo sprintf('%04d',$k)?>:
-	</span><?php echo $v?></li>
+<div id="database"><em>Quick Lookup</em><br />
+<span class="exec_context">components</span>
+<ul class="source">
+<?php foreach ($myDao->get("components") AS $k=>$v){?>
+	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
 	<?php }?>
-	</ul>
-	<span class="exec_context">content object classes</span>
-	<ul class="source">
-	<?php foreach ($myDao->get("content") AS $k=>$v){?>
-	<li><span>#<?php echo sprintf('%04d',$k)?>:
-	</span><?php echo $v?></li>
+</ul>
+<span class="exec_context">content object classes</span>
+<ul class="source">
+<?php foreach ($myDao->get("content") AS $k=>$v){?>
+	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
 	<?php }?>
-	</ul>
-			<span class="exec_context">includes</span>
-	<ul class="source">
-	<?php foreach ($myDao->get("includes") AS $k=>$v){?>
-	<li><span>#<?php echo sprintf('%04d',$k)?>:
-	</span><?php echo $v?></li>
+</ul>
+<span class="exec_context">includes</span>
+<ul class="source">
+<?php foreach ($myDao->get("includes") AS $k=>$v){?>
+	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
 	<?php }?>
-	</ul>
-	</div>
+</ul>
+</div>
 	<?php }?></div>
 <div id="footer"><?php echo date('d.m.Y H:i');?></div>
 </div>
 </body>
-</html><?php
+</html>
+	<?php
 
+}
+
+// =========================================================================================================
+// functions for url/link management
+// =========================================================================================================
+
+/**
+ * retrieve (language dependent) url of a page
+ *
+ * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
+ *
+ * This function is also used from the helper functions for url generation. It it a vital function for url management,
+ * if you create/build urls you should always use this function in any (inherited) way.
+ *
+ *
+ * @param integer $pag_id
+ * @param array[mixed] $_params optional, defaults to null
+ * @param integer $lng_id
+ * @param string smartUID
+ * @param boolean fullUrl	should the function return a fully qualified url including hostname? optional, defaults to false
+ * @return string
+ */
+public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fullUrl=false)
+{
+	// if no language id is ommited, take context into account
+
+	if ($lng_id==null)
+	{
+		global $myPage;
+		$lng_id = $myPage->lng_id;
 	}
 
-	// =========================================================================================================
-	// functions for url/link management
-	// =========================================================================================================
 
-	/**
-   * retrieve (language dependent) url of a page
-   * 
-   * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
-   * 
-   * This function is also used from the helper functions for url generation. It it a vital function for url management, 
-   * if you create/build urls you should always use this function in any (inherited) way.
-   * 
-   *
-   * @param integer $pag_id
-   * @param array[mixed] $_params optional, defaults to null
-   * @param integer $lng_id
-   * @param string smartUID
-   * @param boolean fullUrl	should the function return a fully qualified url including hostname? optional, defaults to false
-   * @return string
-   */
-  public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fullUrl=false)
+	if ($this->URLHelper==false)
 	{
-		// if no language id is ommited, take context into account
+		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+		$this->URLHelper = $myDAO;
+	}
+	else
+	{
+		$myDAO = $this->URLHelper;
+	}
+	$token = "url_p".$pag_id."l".(int)$lng_id;
 
-		if ($lng_id==null)
-		{
-			global $myPage;
-			$lng_id = $myPage->lng_id;
-		}
+	if ($myDAO->check($token))
+	{
+		$url =  $myDAO->get($token);
+	}
+	else
+	{
+		$myTempPage = new PhenotypePage($pag_id);
+		$url = $myTempPage->buildURL($lng_id);
+		$myDAO->set($token,$url);
+	}
 
+	if ($fullUrl)
+	{
+		$base = SERVERFULLURL;
+	} else
+	{
+		$base = SERVERURL;
+	}
 
-		if ($this->URLHelper==false)
+	// Fallback, if smartURL is disabled
+	if (PT_URL_STYLE!="smartURL")
+	{
+		$url = $base . "index.php?smartURL=".$url;
+		if (is_array($_params))
 		{
-			$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
-			$this->URLHelper = $myDAO;
-		}
-		else
-		{
-			$myDAO = $this->URLHelper;
-		}
-		$token = "url_p".$pag_id."l".(int)$lng_id;
-
-		if ($myDAO->check($token))
-		{
-			$url =  $myDAO->get($token);
-		}
-		else
-		{
-			$myTempPage = new PhenotypePage($pag_id);
-			$url = $myTempPage->buildURL($lng_id);
-			$myDAO->set($token,$url);
-		}
-
-		if ($fullUrl)
-		{
- 	  	$base = SERVERFULLURL;
- 	  } else
- 	  {
-			$base = SERVERURL;
- 	  }
-
-		// Fallback, if smartURL is disabled
-		if (PT_URL_STYLE!="smartURL")
-		{
- 	    $url = $base . "index.php?smartURL=".$url;
- 	    if (is_array($_params))
- 	    {
 			foreach ($_params AS $k=>$v)
 			{
 				$url .= "&".$k."=".$v;
 			}
-			}
-			if ($smartUID!="")
-			{
-				$url .="&smartUID=".$smartUID;
-			}
-			return $url;
 		}
-
-		if (is_array($_params))
+		if ($smartUID!="")
 		{
+			$url .="&smartUID=".$smartUID;
+		}
+		return $url;
+	}
+
+	if (is_array($_params))
+	{
 		foreach ($_params AS $k=>$v)
 		{
 			$url .= "/".$k."/".$v;
 		}
-		}
-		if ($smartUID!="")
-		{
-			$url .="/".$smartUID;
-		}
-
-    $url = $base . $url;
-		return $url;
 	}
-
-	/**
-   * retrieve (language dependent) title of a page
-   * 
-   * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
-   * 
-   * This function is also used from the helper functions for page title retrieval. It it a vital function for url management, 
-   * if you create/build urls you should always use this function in any (inherited) way.
-   * 
-   *
-   * @param integer $pag_id
-   * @param array[mixed] $_params
-   * @param integer $lng_id
-   * @return string
-   */
-	public function title_of_page($pag_id,$lng_id=null)
+	if ($smartUID!="")
 	{
-		if ($this->URLHelper==false)
-		{
-			$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
-			$this->URLHelper = $myDAO;
-		}
-		else
-		{
-			$myDAO = $this->URLHelper;
-		}
-		$token = "title_p".$pag_id."l".(int)$lng_id;
-
-		if ($myDAO->check($token))
-		{
-			$title =  $myDAO->get($token);
-		}
-		else
-		{
-			$myPage = new PhenotypePage($pag_id);
-			if ($lng_id!=null)
-			{
-				$myPage->switchLanguage($lng_id);
-			}
-			$title = $myPage->getTitle();
-			$myDAO->set($token,$title);
-		}
-
-
-		return $title;
+		$url .="/".$smartUID;
 	}
 
+	$url = $base . $url;
+	return $url;
+}
 
-  /**
-   * retrieve (language dependent) page description of a page
-	 * page description ("page_bez" in DB page)
-   * 
-   * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
-   * 
-   * This function is also used from the helper functions for page title retrieval. It it a vital function for url management, 
-   * if you create/build urls you should always use this function in any (inherited) way.
-   * 
-	 * added 2008/05/19 by Dominique Bös
-   *
-   * @param integer $pag_id
-   * @param array[mixed] $_params
-   * @param integer $lng_id
-   * @return string
-   */
-  public function description_of_page($pag_id,$lng_id=null)
-  {
-    if ($this->URLHelper==false)
-    {
-      $myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
-      $this->URLHelper = $myDAO;
-    }
-    else
-    {
-      $myDAO = $this->URLHelper;
-    }
-    $token = "pageDescription_p".$pag_id."l".(int)$lng_id;
-
-    if ($myDAO->check($token))
-    {
-      $title =  $myDAO->get($token);
-    }
-    else
-    {
-      $myPage = new PhenotypePage($pag_id);
-      if ($lng_id!=null)
-      {
-        $myPage->switchLanguage($lng_id);
-      }
-      $title = $myPage->getPageDescription();
-      $myDAO->set($token,$title);
-    }
-
-
-    return $title;
-  }
-
-
-	public function get_image($img_id,$alt=null,$style="",$class="")
+/**
+ * retrieve (language dependent) title of a page
+ *
+ * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
+ *
+ * This function is also used from the helper functions for page title retrieval. It it a vital function for url management,
+ * if you create/build urls you should always use this function in any (inherited) way.
+ *
+ *
+ * @param integer $pag_id
+ * @param array[mixed] $_params
+ * @param integer $lng_id
+ * @return string
+ */
+public function title_of_page($pag_id,$lng_id=null)
+{
+	if ($this->URLHelper==false)
 	{
-
-		if ($this->MediaobjectsHelper==false)
-		{
-			$myDAO = new PhenotypeSystemDataObject("MediaobjectsHelper",array(),false,true);
-			$this->MediaobjectsHelper = $myDAO;
-		}
-		else
-		{
-			$myDAO = $this->MediaobjectsHelper;
-		}
-		$token = "image". $img_id;
-		// We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
-		// storage (initiated by the Phenotype destructor)
-		if ($myDAO->check($token))
-		{
-			$myImg = clone($myDAO->get($token));
-		}
-		else
-		{
-			$myImg = new PhenotypeImage($img_id);
-			$myDAO->set($token,clone($myImg));
-		}
-		if ($alt!==null)
-		{
-			$myImg->alt = $alt;
-		}
-		$myImg->style = $style;
-		$myImg->class = $class;
-		return $myImg;
+		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+		$this->URLHelper = $myDAO;
 	}
-
-	/**
-   *  reserved
-   *
-   * @param unknown_type $smartURL
-   * @param unknown_type $inc_id
-   * @param unknown_type $_params
-   * @param unknown_type $symbol
-   * @return string
-   */
-	public function registerController($smartURL,$inc_id,$_params=Array(),$symbol="")
+	else
 	{
-
+		$myDAO = $this->URLHelper;
 	}
+	$token = "title_p".$pag_id."l".(int)$lng_id;
 
-	/**
-   * reserved
-   *
-   * @param unknown_type $smartURL
-   * @param unknown_type $pag_id
-   * @param unknown_type $_params
-   * @param unknown_type $symbol
-   */
-	public function registerSmartURL($smartURL,$pag_id,$_params=Array(),$symbol="")
+	if ($myDAO->check($token))
 	{
-
+		$title =  $myDAO->get($token);
 	}
-
-	/**
-   * reserved
-   *
-   * @param unknown_type $symbol
-   * @param unknown_type $smartURL
-   * @param unknown_type $_params
-   */
-	public function registerSymbol($symbol,$smartURL,$_params=Array())
+	else
 	{
-
-	}
-
-
-	public function loadTMX($token,$locale=PT_LOCALE)
-  {
-		$myDAO = new PhenotypeSystemDataObject("TMXHelper",array("name"=>$token,"locale"=>$locale));
-
-		$this->TMXHelper = $myDAO;
-	}
-
-	public function locale($token,$_params=Array())
-	{
-		$myDAO = $this->TMXHelper;
-		// :TODO: check when migration to UTF8
-		$s = utf8_decode($this->TMXHelper->get($token));
-		$s = str_replace("%r","\n",$s);
-		$s = str_replace("%l","\n",$s);
-		$s = str_replace("%n","\n",$s);
-		for ($i=0;$i<=count($_params);$i++)
+		$myPage = new PhenotypePage($pag_id);
+		if ($lng_id!=null)
 		{
-			$s = str_replace("%".($i+1),$_params[$i],$s);
+			$myPage->switchLanguage($lng_id);
 		}
-		if ($s=="")
-		{
-		  $s="#".$token."#";
-		//  echo "Unbekannter TOKEN: ".$s."<br>";
-		}
-		return $s;
-		
-		//// %1 %2 usw. %ln für Linefeed
-		//return "test";
+		$title = $myPage->getTitle();
+		$myDAO->set($token,$title);
 	}
 
-	public function localeH($token,$_params=Array())
+
+	return $title;
+}
+
+
+/**
+ * retrieve (language dependent) page description of a page
+ * page description ("page_bez" in DB page)
+ *
+ * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
+ *
+ * This function is also used from the helper functions for page title retrieval. It it a vital function for url management,
+ * if you create/build urls you should always use this function in any (inherited) way.
+ *
+ * added 2008/05/19 by Dominique Bös
+ *
+ * @param integer $pag_id
+ * @param array[mixed] $_params
+ * @param integer $lng_id
+ * @return string
+ */
+public function description_of_page($pag_id,$lng_id=null)
+{
+	if ($this->URLHelper==false)
 	{
-		
-		$s= $this->locale($token,$_params);
-		return htmlentities($s);
+		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+		$this->URLHelper = $myDAO;
 	}
-	
-		public function localeHBR($token,$_params=Array())
+	else
 	{
-		
-		$s= $this->localeH($token,$_params);
-		return nl2br($s);
+		$myDAO = $this->URLHelper;
 	}
+	$token = "pageDescription_p".$pag_id."l".(int)$lng_id;
+
+	if ($myDAO->check($token))
+	{
+		$title =  $myDAO->get($token);
+	}
+	else
+	{
+		$myPage = new PhenotypePage($pag_id);
+		if ($lng_id!=null)
+		{
+			$myPage->switchLanguage($lng_id);
+		}
+		$title = $myPage->getPageDescription();
+		$myDAO->set($token,$title);
+	}
+
+
+	return $title;
+}
+
+
+public function get_image($img_id,$alt=null,$style="",$class="")
+{
+
+	if ($this->MediaobjectsHelper==false)
+	{
+		$myDAO = new PhenotypeSystemDataObject("MediaobjectsHelper",array(),false,true);
+		$this->MediaobjectsHelper = $myDAO;
+	}
+	else
+	{
+		$myDAO = $this->MediaobjectsHelper;
+	}
+	$token = "image". $img_id;
+	// We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
+	// storage (initiated by the Phenotype destructor)
+	if ($myDAO->check($token))
+	{
+		$myImg = clone($myDAO->get($token));
+	}
+	else
+	{
+		$myImg = new PhenotypeImage($img_id);
+		$myDAO->set($token,clone($myImg));
+	}
+	if ($alt!==null)
+	{
+		$myImg->alt = $alt;
+	}
+	$myImg->style = $style;
+	$myImg->class = $class;
+	return $myImg;
+}
+
+/**
+ *  reserved
+ *
+ * @param unknown_type $smartURL
+ * @param unknown_type $inc_id
+ * @param unknown_type $_params
+ * @param unknown_type $symbol
+ * @return string
+ */
+public function registerController($smartURL,$inc_id,$_params=Array(),$symbol="")
+{
+
+}
+
+/**
+ * reserved
+ *
+ * @param unknown_type $smartURL
+ * @param unknown_type $pag_id
+ * @param unknown_type $_params
+ * @param unknown_type $symbol
+ */
+public function registerSmartURL($smartURL,$pag_id,$_params=Array(),$symbol="")
+{
+
+}
+
+/**
+ * reserved
+ *
+ * @param unknown_type $symbol
+ * @param unknown_type $smartURL
+ * @param unknown_type $_params
+ */
+public function registerSymbol($symbol,$smartURL,$_params=Array())
+{
+
+}
+
+
+public function loadTMX($section,$locale=PT_LOCALE)
+{
+	$myDAO = new PhenotypeSystemDataObject("TMXHelper",array("name"=>$section,"locale"=>$locale));
+
+	$this->TMXHelper = $myDAO;
+	$this->tmxsection = $section;
+}
+
+public function locale($token,$_params=Array())
+{
+	global $myLog;
+	$myDAO = $this->TMXHelper;
+	// :TODO: check when migration to UTF8
+	$s = utf8_decode($this->TMXHelper->get($token));
+	$s = str_replace("%r","\n",$s);
+	$s = str_replace("%l","\n",$s);
+	$s = str_replace("%n","\n",$s);
+	$s = str_replace("%bb","<strong>",$s);
+	$s = str_replace("%bs","</strong>",$s);
+	for ($i=0;$i<=count($_params);$i++)
+	{
+		$s = str_replace("%".($i+1),$_params[$i],$s);
+	}
+	if ($s=="")
+	{
+		$s="#".$token."#";
+		$myLog->log("Unknown i8ln token ".$s." for section \"" . $this->tmxsection."\"",PT_LOGFACILITY_SYS,PT_LOGLVL_INFO);
+		// Nur während der Entwicklung
+		global $myDB;
+		$sql = "DELETE FROM tokens WHERE token='".$token."' AND section='".$this->tmxsection."'";
+		$myDB->query($sql);
+		$sql = "INSERT INTO tokens (token, section )VALUES ('".$token."','".$this->tmxsection."')";
+		$myDB->query($sql);
+	}
+			return $s;
+	//// %1 %2 usw. %ln für Linefeed
+	//return "test";
+}
+
+public function localeH($token,$_params=Array())
+{
+
+	$s= $this->locale($token,$_params);
+	return htmlentities($s);
+}
+
+public function localeHBR($token,$_params=Array())
+{
+
+	$s= $this->localeH($token,$_params);
+	return nl2br($s);
+}
 
 }
 

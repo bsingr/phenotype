@@ -130,6 +130,7 @@ class PhenotypeSystemDataObjectStandard extends PhenotypeDataObject
 		$locale = $_params["locale"];
 		$name = $_params["name"];
 
+		
 		if ($name!="Phenotype")
 		{
 			$file = SYSTEMPATH . "tmx/Phenotype_" . $locale .".tmx";
@@ -157,7 +158,7 @@ class PhenotypeSystemDataObjectStandard extends PhenotypeDataObject
 		{
 			PhenotypeLocaleManager::addTokens($this,$file,$locale);
 		}
-
+		
 	}
 
 }

@@ -176,29 +176,7 @@ if ($action_id==3)
   }
 }
 
-/*
-if ($action_id==4)
-{
-  echo "<strong>Zombie-Versionen nachfolgender Seiten werden gel&ouml;scht:</strong><br><br>";
-// Versionen bereinigen
-$sql = "SELECT DISTINCT (pag_id) FROM pageversion";
-$rs = $myDB->query($sql);
-while ($row=mysql_fetch_array($rs))
-{
-  $sql = "SELECT * FROM page WHERE pag_id = " . $row["pag_id"];
-  $rs_check = $myDB->query($sql);
-  if (mysql_num_rows($rs_check)==0)
-  {
-    echo "- ". $row["pag_id"] .": " . $row["pag_bez"] . "<br>";
-	$sql = "DELETE FROM pageversion WHERE pag_id  =" . $row["pag_id"];
-	$myDB->query($sql);
-  }
-}
-*/
-}
-?>
 
-<?php
 if ($action_id==5)
 {
 ;

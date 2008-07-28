@@ -181,7 +181,7 @@
         <tmx:seg>Pagegroups </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>Seitengruppen </tmx:seg>
+        <tmx:seg>Seitengruppen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="contentobjects">
       <tmx:tuv xml:lang="en">

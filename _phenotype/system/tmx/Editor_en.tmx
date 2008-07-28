@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
-  <tmx:body><tmx:tu tuid="msg_recordchange_0">
+  <tmx:body><tmx:tu tuid="%bbWhere%bs to locate the new page within the page tree?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>%bbWhere%bs to locate the new page within the page tree?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Copy page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Copy page</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Edit page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Edit page</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New version">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New version</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Reallocate page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Reallocate page</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this record?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this record?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Status: offline">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Status: offline</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Status: online">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Status: online</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="URL">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>URL</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_recordchange_0">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>msg_recordchange_0</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_recordchange_1">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_recordchange_1</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_recordchange_n">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_recordchange_n</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="tasks">
       <tmx:tuv xml:lang="en">
@@ -147,11 +183,11 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_last_change_by_user">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Last change: %1 by %2</tmx:seg>
+        <tmx:seg>msg_last_change_by_user</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_creation_date_by_user">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Created: %1 by %2</tmx:seg>
+        <tmx:seg>msg_creation_date_by_user</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_creation_date_anonymous">
       <tmx:tuv xml:lang="en">
