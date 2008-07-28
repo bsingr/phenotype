@@ -111,7 +111,7 @@ if ($pag_id!=""){$myAdm->showNavi($pag_id,$top_id,false);}
 <?php
 }
 // Content
-?>	    
+?>    
 <?php
 if ($mySUser->checkRight("elm_content"))
 {
@@ -263,9 +263,12 @@ if ($mySUser->checkRight("elm_page"))
             <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["pag_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
 			<?php if ($row_data["pag_status"]==1){ ?>
-			<img src="img/i_online.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22">
+			<a href="page_setstatus.php?id=<?php echo $row_data["pag_id"] ?>&status=offline">
+			  <img src="img/i_online.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22" border="0">
 			<?php }else{ ?>
-			<img src="img/i_offline.gif" alt="<?php echo localeH("Status offline");?>" width="30" height="22">
+			<a href="page_setstatus.php?id=<?php echo $row_data["pag_id"] ?>&status=online">
+			  <img src="img/i_offline.gif" alt="<?php echo localeH("Status offline");?>" width="30" height="22" border="0">
+			</a>
 			<?php } ?>
 			</td>
             <td align="right" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $row_data["pag_id"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit page");?>" width="22" height="22" border="0" align="absmiddle"></a></td>
