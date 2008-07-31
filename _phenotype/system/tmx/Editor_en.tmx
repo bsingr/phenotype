@@ -309,5 +309,17 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Search Pages</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Insert">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Insert</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Versions">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Versions</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Version">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Version</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

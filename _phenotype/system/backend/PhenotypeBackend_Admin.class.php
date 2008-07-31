@@ -47,7 +47,7 @@ class PhenotypeBackend_Admin_Standard extends PhenotypeBackend
 
 
 		$myNav = new PhenotypeTree();
-		$nav_id_users    = $myNav->addNode(locale("users"),"backend.php?page=Admin,Users,view",0,"users");
+		$nav_id_users    = $myNav->addNode(locale("Users"),"backend.php?page=Admin,Users,view",0,"users");
 
 		if ($this->checkRight("elm_admin"))
 		{

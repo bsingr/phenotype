@@ -49,6 +49,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>count page impressions</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete records">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Delete records</tmx:seg>
@@ -124,6 +128,14 @@
 			<tmx:tu tuid="Multi language">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Multi language</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New mediagroup">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New action">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="none">
       <tmx:tuv xml:lang="en">

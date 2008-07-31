@@ -137,7 +137,7 @@ $row = mysql_fetch_array($rs);
 		 {
 		 
          ?>
-			 <input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Add template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> <?php echo localeH("Add template");?><br>
+			 <input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Add Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> <?php echo localeH("Add Template");?><br>
 		 <?php
 		 }
 		 while ($row_ttp=mysql_fetch_array($rs))

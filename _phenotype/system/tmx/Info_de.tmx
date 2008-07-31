@@ -62,7 +62,7 @@ Deutschen Patent- und Markenamt, München.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_radinks">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_radinks</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>* zum Umgehen der Größenbeschränkung muss eine Einzellizenz erworben werden.</tmx:seg>

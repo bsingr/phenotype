@@ -93,6 +93,22 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Configure Layout</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Configure content object classes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Configure content object classes</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Content object class">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Content object class</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create new content object class">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create new content object class</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Create new component">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Create new component</tmx:seg>
@@ -277,9 +293,21 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>New category</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New component">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New component</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New extra">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New extra</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="New include">
       <tmx:tuv xml:lang="en">
         <tmx:seg>New include</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New content object class">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New content object</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="overwrite">
       <tmx:tuv xml:lang="en">
@@ -320,6 +348,10 @@
 			<tmx:tu tuid="Really delete this component?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this component?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this content object?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this content object?</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this Extra?">
       <tmx:tuv xml:lang="en">

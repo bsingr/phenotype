@@ -2221,11 +2221,11 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 		global $myAdm;
 
 		$url = "config.php";
-		$this->tab_addEntry("Seiten",$url,"b_site.gif");
+		$this->tab_addEntry(localeH("Pages"),$url,"b_site.gif");
 		$url = "config_content.php?r=-1";
-		$this->tab_addEntry("Content",$url,"b_content.gif");
+		$this->tab_addEntry(localeH("Content"),$url,"b_content.gif");
 		$url = "config_extras.php";
-		$this->tab_addEntry("Extras",$url,"b_konfig.gif");
+		$this->tab_addEntry(localeH("Extras"),$url,"b_konfig.gif");
 
 		// Reserved for future upgrades
 		//$url = "config_tools.php";
@@ -2233,7 +2233,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 
 		switch ($submodul)
 		{
-			case "Content":
+			case locale("Content"):
 
 				$this->tab_draw("Content",$x=260,1);
 				$myNav = new PhenotypeTree();

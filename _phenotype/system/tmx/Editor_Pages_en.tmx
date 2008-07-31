@@ -321,5 +321,9 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>move page</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select page</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

@@ -3,7 +3,7 @@
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="* all pages *">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>* all pages *</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
@@ -84,6 +84,13 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Anlegen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete records">
       <tmx:tuv xml:lang="en">
@@ -214,6 +221,20 @@
 			<tmx:tu tuid="Multi language">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Multi language</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New mediagroup">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New action">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>

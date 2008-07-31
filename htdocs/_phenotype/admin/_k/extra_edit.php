@@ -22,6 +22,7 @@ require("_config.inc.php");
 require("_session.inc.php");
 if (PT_CONFIGMODE!=1){exit();}
 $myPT->loadTMX("Extras");
+$myPT->loadTMX("Config");
 if (!$mySUser->checkRight("superuser"))
 {
   $url = "noaccess.php";
@@ -125,7 +126,7 @@ $row = mysql_fetch_array($rs);
 		 {
 		 
          ?>
-			 <input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Add template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> <?php echo localeH("Add template");?><br>
+			 <input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Add Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="ttp_plus"> <?php echo localeH("Add Template");?><br>
 		 <?php
 		 }
 		 while ($row_ttp=mysql_fetch_array($rs))
@@ -133,7 +134,7 @@ $row = mysql_fetch_array($rs);
 		   $identifier = "ttp_". $row_ttp["tpl_id"];
 		 ?>
 		 <strong>$</strong><input name="<?php echo $identifier ?>_bez" type="text" class="input" style="width: 150px" value="<?php echo $row_ttp["tpl_bez"] ?>" size="30">&nbsp;
-<input type="image" src="img/b_minus_b.gif" alt="<?php echo localeH("Remove template");?>" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Remove template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"><br>
+<input type="image" src="img/b_minus_b.gif" alt="<?php echo localeH("Remove Template");?>" width="18" height="18" border="0" align="absmiddle" value="-" name="<?php echo $identifier ?>_minus"><input type="image" src="img/b_plus_b.gif" alt="<?php echo localeH("Remove Template");?>" width="18" height="18" border="0" align="absmiddle" value="+" name="<?php echo $identifier ?>_plus"><br>
 		 <?php
 		 }
 		 $html = $myPT->stopBuffer();

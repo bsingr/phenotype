@@ -56,7 +56,7 @@ PhenoType CMS ist a registered trademark, filed under number 303 28 492 at the D
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_radinks">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_radinks</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

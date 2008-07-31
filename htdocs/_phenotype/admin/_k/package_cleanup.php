@@ -144,7 +144,7 @@ $myPT->startBuffer();
 	
 		
 		$html = "";
-		$html .= $myLayout->workarea_form_checkbox("", "extras", 0,locale("delete all extrase"));
+		$html .= $myLayout->workarea_form_checkbox("", "extras", 0,locale("delete all extras"));
 		$checkers[] = "extras";
 		$myLayout->workarea_row_draw(locale("Extras"), $html);
 

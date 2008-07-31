@@ -95,7 +95,7 @@ $myPT->startBuffer();
               <td width="25" class="tableHead"><?php echo localeH("No.");?></td>
               <td width="60" class="tableHead">&nbsp;</td>
               <td width="449" class="tableHead"><?php echo localeH("Name");?></td>
-              <td width="50" class="tableHead">A<?php echo localeH("Action");?></td>
+              <td width="50" class="tableHead"><?php echo localeH("Action");?></td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>

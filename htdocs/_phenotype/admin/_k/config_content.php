@@ -72,7 +72,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo localeH("Configure content objects classes");?> </td>
+            <td class="windowTitle"><?php echo localeH("Configure content object classes");?> </td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=15" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>

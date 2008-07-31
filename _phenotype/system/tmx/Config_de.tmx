@@ -3,721 +3,777 @@
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="Add inlcude">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Add inlcude</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Add new component group">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Add new component group</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Add Template">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Add Template</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="append">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>append</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Application">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Application</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Backend classes">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Backend classes</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="can be selected with the include component">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>can be selected with the include component</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="can be used in a page">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>can be used in a page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="can be used in layouts">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>can be used in layouts</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Category">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Category</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="clean mediabase totally">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>clean mediabase totally</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="clean _host.config.inc.php">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>clean _host.config.inc.php</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Cleanup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Cleanup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Component group">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Component group</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Componentgroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Componentgroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Componentgroups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Componentgroups</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Components">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Components</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Configuration">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Configuration</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Configure componentgroups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Configure componentgroups</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Configure components">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Configure components</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Configure Extras">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Configure Extras</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Configure includes">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Configure includes</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Configure Layout">
       <tmx:tuv xml:lang="en">
+        <tmx:seg>Configure Layout</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Configure content object classes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Configure content object classes</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Contentobjekte konfigurieren</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Content object class">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Content object class</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Contentobjekt</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Anlegen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create new content object class">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create new content object class</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Create new component">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Create new component</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Neues Contentobjekt anlegen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Create new Extra">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Create new Extra</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Create new include">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Create new include</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Create new layout">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Create new layout</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Data">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Data</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Default view">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Default view</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all actions">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all actions</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all cache files">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all cache files</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all component groups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all component groups</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all components">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all components</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all content object classes">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all content object classes</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all extras">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all extras</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all files in storage folder">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all files in storage folder</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all includes">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all includes</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all layouts">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all layouts</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all pages">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all pages</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all roles">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all roles</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all ticket subjects">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all ticket subjects</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all tickets">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all tickets</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete all users (except the one currently logged in)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete all users (except the one currently logged in)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete alle content object records">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete alle content object records</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete alle page groups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete alle page groups</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete application specific backend classes">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete application specific backend classes</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete component">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Delete component</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete component group">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Delete component group</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete content cache files">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete content cache files</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete dataobjects">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete dataobjects</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="delete snapshots">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>delete snapshots</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Edit component">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Edit component</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Edit page scripts">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Edit page scripts</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Export Package">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Export Package</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Files within webroot">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Files within webroot</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Folders">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Folders</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Include component">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Include component</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Install">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Install</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="install data">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>install data</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Install Package">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Install Package</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Language maps">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Language maps</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Layouts">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Layouts</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="media objects">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>media objects</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Mediabase">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Mediabase</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Meta">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Meta</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Method">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Method</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_install_structure_files">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_install_structure_files</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_use_ajax_installer">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_use_ajax_installer</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="New category">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>New category</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New component">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New component</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Neuer Baustein</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New extra">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New extra</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Neues Extra</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="New include">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>New include</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Neues Include</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New content object class">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New content object</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Neues Contentobjekt</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="overwrite">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>overwrite</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Package">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Package</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Packages">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Packages</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Page">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Page scripts">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Page scripts</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Pagescripts">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Pagescripts</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Placeholder">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Placeholder</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Print view">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Print view</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this component group?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Really delete this component group?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this component?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Really delete this component?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this content object?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this content object?</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Dieses Contentobject wirklich löschen?</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this Extra?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Really delete this Extra?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this include?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Really delete this include?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really install this package?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Really install this package?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Records">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Records</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Remove placeholder">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Remove placeholder</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="remove temporary files and reset directory structure">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>remove temporary files and reset directory structure</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="remove unknown files in webroot folder">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>remove unknown files in webroot folder</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="reset _application.inc.php and preferences.xml">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>reset _application.inc.php and preferences.xml</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Script">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Script</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Select Package">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Select Package</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Select/Deselect all">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Select/Deselect all</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="selective">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>selective</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Smarty-Access">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Smarty-Access</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Storage folder">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Storage folder</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Structures">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Structures</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Templates">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Templates</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="This layout is used in %1 pages">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>This layout is used in %1 pages</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Tools">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Tools</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Usage">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Usage</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="use AJAX exporter">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>use AJAX exporter</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="User &amp; Roles">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>User &amp; Roles</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Utilization">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Utilization</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="View component">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>View component</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>

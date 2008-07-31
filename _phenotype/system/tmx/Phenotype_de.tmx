@@ -80,14 +80,14 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Notice">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Notice</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Attention">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Attention</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
@@ -248,21 +248,21 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Day">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Day</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Month">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Month</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Year">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Year</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
@@ -332,7 +332,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="October">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>October</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
@@ -479,182 +479,182 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Layout">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Layout</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="create new task">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>create new task</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Actions">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Actions</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Cache">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Cache</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Content">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Content</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Content objects">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Content objects</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Contentobjects">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Contentobjects</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Description">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Description</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Help">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Help</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Includes">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Includes</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Media">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Media</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Mediagroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Mediagroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Mediagroups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Mediagroups</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Name">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Name</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="No.">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>No.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Pagegroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Pagegroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Pagegroups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Pagegroups</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="pagegroups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>pagegroups</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Pages">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Pages</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Rights">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Rights</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Role">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Role</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Roles">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Roles</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Roles">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Roles</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Status">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Status</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Task subjects">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Task subjects</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Users">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Users</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg></tmx:seg>
@@ -710,21 +710,21 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="install snapshot">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>install snapshot</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Snapshot installieren</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_snapshot_contentobject">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_snapshot_contentobject</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Snapshot %1 des Contentobjekts %2 eingespielt.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_snapshot_mediaobject">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>msg_snapshot_mediaobject</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Snapshot %1 des Mediaobjekts %2 eingespielt.</tmx:seg>

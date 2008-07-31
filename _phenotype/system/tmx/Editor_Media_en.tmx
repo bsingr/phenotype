@@ -33,10 +33,6 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Size</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Versions">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Versions</tmx:seg>
-      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Alternate">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Alternate</tmx:seg>
@@ -60,10 +56,6 @@
 			<tmx:tu tuid="Create new version">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Create new version</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Versions">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Versions</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this image?">
       <tmx:tuv xml:lang="en">

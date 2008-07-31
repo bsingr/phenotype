@@ -10,14 +10,14 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="searchresult">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>searchresult</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="search for">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>search for</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
