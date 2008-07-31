@@ -160,8 +160,6 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="Status: offline";
 		$_token["Editor"][]="Status: online";
 		$_token["Editor"][]="URL";
-
-
 		$_token["Editor"][]="msg_recordchange_0";
 		$_token["Editor"][]="msg_recordchange_1";
 		$_token["Editor"][]="msg_recordchange_n";
@@ -230,7 +228,10 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="new window";
 		$_token["Editor"][]="Add first page in group";
 		$_token["Editor"][]="Search Pages";
-
+		$_token["Editor"][]="Insert";
+		$_token["Editor"][]="Versions";
+		$_token["Editor"][]="Version";
+		
 		// Editor / Pages
 
 		$_token["Editor_Pages"][]="Script";
@@ -313,7 +314,8 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Pages"][]="send";
 		$_token["Editor_Pages"][]="copy page";
 		$_token["Editor_Pages"][]="move page";
-
+		$_token["Editor_Pages"][]="Select page";
+		
 		// Editor / Content
 
 		$_token["Editor_Content"][]="Really delete this record?";
@@ -330,14 +332,12 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="objects/page";
 		$_token["Editor_Media"][]="Folder";
 		$_token["Editor_Media"][]="Size";
-		$_token["Editor_Media"][]="Versions";
 		$_token["Editor_Media"][]="Alternate";
 		$_token["Editor_Media"][]="Image (%1x%2)";
 		$_token["Editor_Media"][]="Mediagroup";
 		$_token["Editor_Media"][]="Mimetype";
 		$_token["Editor_Media"][]="Create new versions";
 		$_token["Editor_Media"][]="Create new version";
-		$_token["Editor_Media"][]="Versions";
 		$_token["Editor_Media"][]="Really delete this image?";
 		$_token["Editor_Media"][]="Really delete this document?";
 		$_token["Editor_Media"][]="Original";
@@ -399,6 +399,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Cleanup Mediabase";
 		$_token["Admin"][]="Clear page cache";
 		$_token["Admin"][]="count page impressions";
+		$_token["Admin"][]="Create";
 		$_token["Admin"][]="Delete records";
 		$_token["Admin"][]="Delete records irrevocably";
 		$_token["Admin"][]="Edit mediagroup";
@@ -418,6 +419,8 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="index.php (possibly language tokens)";
 		$_token["Admin"][]="manual";
 		$_token["Admin"][]="Multi language";
+		$_token["Admin"][]="New mediagroup";
+		$_token["Admin"][]="New action";
 		$_token["Admin"][]="none";
 		$_token["Admin"][]="Overview Actions";
 		$_token["Admin"][]="Overview mediagroups";
@@ -527,6 +530,10 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Configure Extras";
 		$_token["Config"][]="Configure includes";
 		$_token["Config"][]="Configure Layout";
+		$_token["Config"][]="Configure content object classes";
+		$_token["Config"][]="Content object class";
+		$_token["Config"][]="Create";
+		$_token["Config"][]="Create new content object class";
 		$_token["Config"][]="Create new component";
 		$_token["Config"][]="Create new Extra";
 		$_token["Config"][]="Create new include";
@@ -573,7 +580,10 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="msg_install_structure_files";
 		$_token["Config"][]="msg_use_ajax_installer";
 		$_token["Config"][]="New category";
+		$_token["Config"][]="New component";
+		$_token["Config"][]="New extra";
 		$_token["Config"][]="New include";
+		$_token["Config"][]="New content object class";
 		$_token["Config"][]="overwrite";
 		$_token["Config"][]="Package";
 		$_token["Config"][]="Packages";
@@ -584,6 +594,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Print view";
 		$_token["Config"][]="Really delete this component group?";
 		$_token["Config"][]="Really delete this component?";
+		$_token["Config"][]="Really delete this content object?";
 		$_token["Config"][]="Really delete this Extra?";
 		$_token["Config"][]="Really delete this include?";
 		$_token["Config"][]="Really install this package?";
