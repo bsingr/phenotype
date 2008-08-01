@@ -141,7 +141,7 @@ $row = mysql_fetch_array($rs);
 		 break;
 		 
 	   case 1:
-	     $myLayout->tab_draw("Skript");
+	     $myLayout->tab_draw(locale("Script"));
 	     $myLayout->workarea_start_draw();
 		 $scriptname = "components/PhenotypeComponent_"  .$id . ".class.php";
 		 ?>

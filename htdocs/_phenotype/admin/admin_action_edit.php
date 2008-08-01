@@ -172,7 +172,7 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input name="reset" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Reset");?>" onclick="javascript:return confirm('<?php echo localeH("Really reset this action?");?>')">&nbsp;&nbsp;<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this action?");?>')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Delete");?>">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="reset" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Reset");?>" onclick="javascript:return confirm('<?php echo localeH("Really reset this action?");?>')">&nbsp;&nbsp;<input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this action?");?>')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php

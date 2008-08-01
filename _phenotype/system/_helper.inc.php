@@ -124,3 +124,9 @@ function localeFullTime($timestamp)
 	global $myPT;
 	return $myPT->localeFullTime($timestamp);
 }
+
+function localeDate($timestamp)
+{
+	global $myPT;
+	return $myPT->localeDate($timestamp);
+}

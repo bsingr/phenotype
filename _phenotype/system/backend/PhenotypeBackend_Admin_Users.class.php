@@ -226,14 +226,14 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 				}
 
 
-				$html=  localeH("created at") . " " . date("d.m.Y",$row["usr_createdate"]) . "<br>";
+				$html=  localeH("created at") . " " . localeDate($row["usr_createdate"]) . "<br>";
 				if ($row["usr_lastlogin"]==0)
 				{
 					$html .= localeH("Never logged in.");
 				}
 				else
 				{
-					$html.=  localeH("Last login on")." " . date("d.m.Y H:i",$row["usr_lastlogin"]);
+					$html.=  localeH("Last login on")." " . localeDate($row["usr_lastlogin"]);
 				}
 				$this->workarea_row_draw(locale("State"),$html);
 

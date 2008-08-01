@@ -2890,7 +2890,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
                     	$selected ="";
                     	if ($i==$anzahl){$selected="selected";}
 					?>
-                    <option value="<?php echo $i ?>" <?php echo $selected ?>><?php echo $i ?> Zeilen</option>
+                    <option value="<?php echo $i ?>" <?php echo $selected ?>><?php echo $i ?> <?php echo localeH("Rows") ?></option>
 					<?php
                     }
 					?>  
@@ -2900,7 +2900,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
                     	$selected ="";
                     	if ($i==$anzahl){$selected="selected";}
 					?>
-                    <option value="<?php echo $i ?>" <?php echo $selected ?>><?php echo $i ?> Zeilen</option>
+                    <option value="<?php echo $i ?>" <?php echo $selected ?>><?php echo $i ?> <?php echo localeH("Rows") ?></option>
 					<?php
                     }
 					?>  					                                                                                                   
@@ -3302,7 +3302,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			if ($p>1)
 			{
 			?>
-            <td align="center"><a href="<?php echo $url.($p-1) ?>" class="tabmenuType"><?php echo localeH("back") ?></a></td>
+            <td align="center"><a href="<?php echo $url.($p-1) ?>" class="tabmenuType"><?php echo localeH("prev") ?></a></td>
 	        <td align="center">&nbsp;</td>
 			<?php
 			}

@@ -1973,6 +1973,19 @@ public function localeHBR($token,$_params=Array())
 	return nl2br($s);
 }
 
+public function localeDate($timestamp)
+{
+	switch (PT_LOCALE)
+	{
+		case "de":
+			return date("d.m.Y",$timestamp);
+			break;
+		default:
+			return date("m/d/Y",$timestamp);
+			break;
+	}
+}
+
 public function localeFulltime($timestamp)
 {
 	switch (PT_LOCALE)

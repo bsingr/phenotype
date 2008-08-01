@@ -93,7 +93,7 @@ $row = mysql_fetch_array($rs);
 	<?php
 	 $myLayout->tab_new();
 	 $url = "include_edit.php?id=" .$id ."&b=0&r=" . $_REQUEST["r"];	 
-	 $myLayout->tab_addEntry(locale("Configuration"),$url,"b_konfig.gif");
+	 $myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
 	 $url = "include_edit.php?id=" .$id ."&b=1&r=" . $_REQUEST["r"];	  
 	 $myLayout->tab_addEntry(locale("Script"),$url,"b_script.gif");
 	 $url = "include_edit.php?id=" .$id ."&b=2&r=" . $_REQUEST["r"];	  
