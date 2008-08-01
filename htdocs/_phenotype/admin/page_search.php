@@ -160,7 +160,7 @@ while ($row_data=mysql_fetch_array($rs_data))
 
             <td class="tableBody"><?php echo $row_data["pag_bez"] ?></td>
 			<td class="tableBody"><?php echo $_pagegroups[$row_data["grp_id"]] ?></td>
-            <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["pag_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
+            <td class="tableBody"><?php echo localeFullTime($row_data["pag_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
 			<?php if ($row_data["pag_status"]==1){ ?>
 			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">

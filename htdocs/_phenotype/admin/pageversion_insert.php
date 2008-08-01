@@ -21,7 +21,6 @@
 require("_config.inc.php");
 require("_session.inc.php");
 $myPT->loadTMX("Editor_Pages");
-$myPT->loadTMX("Editor_Pages");
 ?>
 <?php
 if (!$mySUser->checkRight("elm_page"))
@@ -66,7 +65,7 @@ $mySQL->addField("inc_id1",$row["inc_id1"],DB_NUMBER);
 $mySQL->addField("inc_id2",$row["inc_id2"],DB_NUMBER); 
 $mySQL->addField("pag_exec_script",$row["pag_exec_script"],DB_NUMBER); 
 $mySQL->addField("pag_fullsearch",$row["pag_fullsearch"]);
-$mySQL->addField("ver_bez","Neue Version - Kopie von " . $row["ver_bez"]);
+$mySQL->addField("ver_bez",locale("New version - Copy of") ." " . $row["ver_bez"]);
 $sql = $mySQL->update("pageversion","ver_id=" . $ver_id_newversion);	
 $myDB->query($sql);
 

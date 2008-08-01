@@ -298,7 +298,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
             </tr>
             <tr>
               <td class="padding10">&nbsp;</td>
-              <td><input name="Submit" type="submit" class="buttonGrey2" value="Senden" style="width:102px"></form></td>
+              <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("Send")?>" style="width:102px"></form></td>
             </tr>
           </table></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
@@ -392,7 +392,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		 	{
 		 	?>
 		      <tr>
-		        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $row["con_id"] ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"><?php echo localeH("Add new record");?></a></td>
+		        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $row["con_id"] ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new record");?></a></td>
 		        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 		      </tr>
 			<?php 
@@ -482,7 +482,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				if ($myCO->tab_alle)
 				{
 		      	?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=alle" class="tabmenuType<?php if($order=="alle"){echo"Active";} ?>">Alle</a></td><?php
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=alle" class="tabmenuType<?php if($order=="alle"){echo"Active";} ?>"><?php echo locale("All") ?></a></td><?php
 				}
 				if ($myCO->tab_id)
 				{
@@ -613,7 +613,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 	 	{
 	 	?>
 	      <tr>
-	        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $this->con_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"><?php echo localeH("Add new record");?></a></td>
+	        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $this->con_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new record");?></a></td>
 	        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 	      </tr>
 		<?php 

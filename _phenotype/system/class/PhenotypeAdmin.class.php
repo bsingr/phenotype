@@ -331,11 +331,11 @@ class PhenotypeAdminStandard
 		if (mysql_num_rows($rs)!=0)
 		{
 		  $user = $row["usr_vorname"]. " " . $row["usr_nachname"];
-		  echo localeH("msg_last_change_by_user",array($datum,$user));
+		  echo localeH("msg_last_change_by_user",array(localeFullTime($datum),$user));
 		}
 		else 
 		{
-		  echo localeH("msg_last_change_anonymous",array($datum));
+		  echo localeH("msg_last_change_anonymous",array(localeFullTime($datum)));
 		}
 	}
 
@@ -343,18 +343,18 @@ class PhenotypeAdminStandard
 	{
 		global $myDB;
 		if ($datum==0){return;} // Datensätze vor 2.2
-		?>Angelegt am <?php echo date("d.m.Y H:i",$datum) ?><?php
+		
 		$sql = "SELECT * FROM user WHERE usr_id = " . $usr_id;
 		$rs = $myDB->query($sql);
 		$row = mysql_fetch_array($rs);
 		if (mysql_num_rows($rs)!=0)
 		{
 		  $user = $row["usr_vorname"]. " " . $row["usr_nachname"];
-		  echo localeH("msg_creation_date_by_user",array($datum,$user));
+		  echo localeH("msg_creation_date_by_user",array(localeFullTime($datum),$user));
 		}
 		else 
 		{
-		  echo localeH("msg_creation_date_anonymous",array($datum));
+		  echo localeH("msg_creation_date_anonymous",array(localeFullTime($datum)));
 		}
 	}
 

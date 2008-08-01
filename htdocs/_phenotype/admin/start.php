@@ -47,9 +47,9 @@ $rechte = $mySUser->getRights();
 
 if ($mySUser->checkRight("elm_page"))
 {
-	$url = "backend.php?page=Editor,Start";
+	$url = "backend.php?page=Editor,Pages";
 	$myLayout->tab_addEntry(locale("Pages"),$url,"b_site.gif");
-	$myLayout->tab_draw("Seiten",$x=260,"1");
+	$myLayout->tab_draw(locale("Pages"),$x=260,"1");
 
 	$sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
 	$html = "";

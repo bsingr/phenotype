@@ -496,7 +496,7 @@ if ($mySUser->checkRight("elm_task"))
       // Navigation
       $myPT->startbuffer();
      ?>
-     <?php echo localeH("Navigation Behaviour");?>:<br>
+     <?php echo localeH("Navigation Behaviour");?><br>
      <select name="pag_id_mimikry" style="width: 200px" class="listmenu">
      <option value="<?php echo $myPage->pag_id ?>"><?php echo localeH("Standard");?></option>
      <option value="<?php echo $myPage->pag_id ?>">- - - - - - - - - - - - - - - - - - -</option>
@@ -892,7 +892,7 @@ if ($mySUser->checkRight("elm_task"))
             $row = mysql_fetch_array($rs);
             $views_heute = $row["views"];
             if ($views_heute==""){$views_heute=0;}
-            $html .= locale("Stats: (Day/Month/Total)") . $views_heute . " / " . $views_monat . " / " . $views_gesamt ." <br>";
+            $html .= locale("Stats: (Day/Month/Total)") ." ". $views_heute . " / " . $views_monat . " / " . $views_gesamt ." <br>";
           }
 
 
@@ -947,7 +947,7 @@ if ($mySUser->checkRight("elm_task"))
     // Ende Block Skript
     if ($block_nr==99)
     {
-      $myLayout->tab_draw("Versionen");
+      $myLayout->tab_draw(locale("Versions"));
     ?>
           <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>

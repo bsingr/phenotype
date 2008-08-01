@@ -76,7 +76,7 @@ class PhenotypeStandard extends PhenotypeBase
 	private $TMXHelper = false;
 
 	private $tmxsection = '';
-	
+
 	function __construct()
 	{
 		global $myDB;
@@ -1121,7 +1121,7 @@ em {
 }
 
 #logo {
-	background-image: url (                 '/img/logo.png' );
+	background-image: url (                   '/img/logo.png' );
 	width: 780px;
 	padding: 10px;
 	margin-left: auto;
@@ -1955,10 +1955,9 @@ public function locale($token,$_params=Array())
 		$sql = "INSERT INTO tokens (token, section )VALUES ('".$token."','".$this->tmxsection."')";
 		$myDB->query($sql);
 	}
-			return $s;
-	//// %1 %2 usw. %ln für Linefeed
-	//return "test";
+	return $s;
 }
+
 
 public function localeH($token,$_params=Array())
 {
@@ -1974,7 +1973,17 @@ public function localeHBR($token,$_params=Array())
 	return nl2br($s);
 }
 
+public function localeFulltime($timestamp)
+{
+	switch (PT_LOCALE)
+	{
+		case "de":
+			return date("d.m.Y H:i",$timestamp);
+			break;
+		default:
+			return date("m/d/Y H:i",$timestamp);
+			break;
+	}
+}
 }
 
-
-?>

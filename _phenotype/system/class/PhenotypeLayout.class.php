@@ -1657,7 +1657,7 @@ return $myPT->stopBuffer();
 			$url = "backend.php?page=Editor,Media";
 			$this->tab_addEntry(locale("Media"),$url,"b_media.gif");
 		}
-		$this->tab_draw("Seiten",$x=260,1)
+		$this->tab_draw(locale("Pages"),$x=260,1)
 ?>
       <table width="260" border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -1742,7 +1742,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td colspan="2" class="paddig10"><strong><?php echo localeH("Search Pages");?>:</strong></td>
+                <td colspan="2" class="padding10"><strong><?php echo localeH("Search Pages");?>:</strong></td>
               </tr>
               <tr>
                 <td class="padding10"> <?php echo localeH("Page name");?> </td>

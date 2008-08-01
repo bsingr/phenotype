@@ -118,3 +118,9 @@ function localeHBR($token,$_params=Array())
 	global $myPT;
 	return $myPT->localeHBR($token,$_params);
 }
+
+function localeFullTime($timestamp)
+{
+	global $myPT;
+	return $myPT->localeFullTime($timestamp);
+}
