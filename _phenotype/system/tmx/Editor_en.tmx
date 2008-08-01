@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
-  <tmx:body><tmx:tu tuid="%bbWhere%bs to locate the new page within the page tree?">
+  <tmx:body><tmx:tu tuid="Where to locate the new page within the page tree?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>%bbWhere%bs to locate the new page within the page tree?</tmx:seg>
       </tmx:tuv></tmx:tu>
@@ -289,6 +289,14 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Link text</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Link selection">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Link selection</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select link">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select link</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Source">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Source</tmx:seg>
@@ -305,6 +313,14 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Add first page in group</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="send">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Send</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Preview">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Preview</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Search Pages">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Search Pages</tmx:seg>
@@ -320,6 +336,18 @@
 			<tmx:tu tuid="Version">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Version</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="back">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Back</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="next">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Next</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="select">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>select</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

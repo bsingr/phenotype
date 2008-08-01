@@ -61,12 +61,12 @@ self.focus();
 <?php
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 $url = "selector_link.php?b=0";
-$myLayout->tab_addEntry(locale("Seiten"),$url,"b_site.gif");
+$myLayout->tab_addEntry(locale("Pages"),$url,"b_site.gif");
 $url = "selector_link.php?b=1";
 //$myLayout->tab_addEntry("Content",$url,"b_content.gif");
 //$url = "selector_link.php?b=2";
 //$myLayout->tab_addEntry("WWW",$url,"b_extern.gif");
-$myLayout->tab_draw(locale("Seiten"),350,0,0)
+$myLayout->tab_draw(locale("Pages"),350,0,0)
 ?>
 <?php
 $rechte = $mySUser->getRights();

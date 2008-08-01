@@ -120,7 +120,7 @@ $myPT->startBuffer();
 			</td>
               <td align="right" nowrap class="tableBody"><a href="admin_action_edit.php?id=<?php echo $row["act_id"] ?>&b=0"><img src="img/b_edit.gif" alt="<?php echo localeH("View Action");?>" width="22" height="22" border="0" align="absmiddle"></a>
 
-<a href="admin_action_delete.php?id=<?php echo $row["act_id"] ?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this action?");?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete aciton");?>" width="22" height="22" border="0" align="absmiddle"></a>
+<a href="admin_action_delete.php?id=<?php echo $row["act_id"] ?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this action?");?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete Action");?>" width="22" height="22" border="0" align="absmiddle"></a>
 </td>
             </tr>
             <tr>

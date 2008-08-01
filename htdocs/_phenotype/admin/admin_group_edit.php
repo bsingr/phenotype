@@ -105,14 +105,14 @@ $row = mysql_fetch_array($rs);
 	<select name="grp_smarturl_schema" class="input" style="width:250px">
   <?php
   $_options = Array (
-  1=>locale("Full path  (possibly language tokens)"),
-  2=>locale("Full path  (no language tokens)"),
-  3=>locale("Sub path  (possibly language tokens)"),
-  4=>locale("Sub path  (no language tokens)"),
-  5=>locale("Page titles  (possibly language tokens)"),
-  6=>locale("Page titles  (no language tokens)"),
-  7=>locale("index.php  (possibly language tokens)"),
-  8=>locale("index.php  (no language tokens)")
+  1=>locale("Full path (possibly language tokens)"),
+  2=>locale("Full path (no language tokens)"),
+  3=>locale("Sub path (possibly language tokens)"),
+  4=>locale("Sub path (no language tokens)"),
+  5=>locale("Page titles (possibly language tokens)"),
+  6=>locale("Page titles (no language tokens)"),
+  7=>locale("index.php (possibly language tokens)"),
+  8=>locale("index.php (no language tokens)")
   );
   
   foreach ($_options AS $k => $v)
@@ -146,7 +146,7 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this page group?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this pagegroup?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php

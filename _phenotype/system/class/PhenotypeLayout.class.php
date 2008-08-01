@@ -2145,7 +2145,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
       <input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
       <input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">		  
 	  <input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">	
-	  <input name="upload" type="submit" class="buttonWhite" id="upload" style="width:102px" value="Hochladen"></td>
+	  <input name="upload" type="submit" class="buttonWhite" id="upload" style="width:102px" value="<?php echo localeH("Upload");?>"></td>
             </tr>
 			</form>
             <tr>
@@ -3292,7 +3292,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
       <tr>
         <td align="right" class="windowFooterWhite"><table border="0" cellpadding="0" cellspacing="1">
           <tr>
-            <td align="center">Seite: </td>
+            <td align="center"><?php echo localeH("Page") ?>: </td>
 			<?php
 			$max=ceil($anzahl/$itemcount);
 			$start = $p-3;
@@ -3302,7 +3302,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			if ($p>1)
 			{
 			?>
-            <td align="center"><a href="<?php echo $url.($p-1) ?>" class="tabmenuType">zur&uuml;ck</a></td>
+            <td align="center"><a href="<?php echo $url.($p-1) ?>" class="tabmenuType"><?php echo localeH("back") ?></a></td>
 	        <td align="center">&nbsp;</td>
 			<?php
 			}
@@ -3320,7 +3320,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			{
 			?>
 	        <td align="center">&nbsp;</td>
-            <td align="center"><a href="<?php echo $url.($p+1) ?>" class="tabmenuType">vor</a></td>
+            <td align="center"><a href="<?php echo $url.($p+1) ?>" class="tabmenuType"><?php echo localeH("next") ?></a></td>
 			<?php
 			}
 			?>

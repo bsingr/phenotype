@@ -221,9 +221,17 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>delete snapshots</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete template">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Delete template</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Edit component">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Edit component</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Edit content object">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Edit content object</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Edit page scripts">
       <tmx:tuv xml:lang="en">
@@ -289,6 +297,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>msg_use_ajax_installer</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="never">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="New category">
       <tmx:tuv xml:lang="en">
         <tmx:seg>New category</tmx:seg>
@@ -300,6 +312,10 @@
 			<tmx:tu tuid="New extra">
       <tmx:tuv xml:lang="en">
         <tmx:seg>New extra</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New layout">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New layout</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="New include">
       <tmx:tuv xml:lang="en">
@@ -361,6 +377,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this include?</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this layout?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this layout?</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really install this package?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really install this package?</tmx:seg>
@@ -373,6 +393,14 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Remove placeholder</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove include">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove include</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove template">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove template</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="remove temporary files and reset directory structure">
       <tmx:tuv xml:lang="en">
         <tmx:seg>remove temporary files and reset directory structure</tmx:seg>
@@ -384,6 +412,10 @@
 			<tmx:tu tuid="reset _application.inc.php and preferences.xml">
       <tmx:tuv xml:lang="en">
         <tmx:seg>reset _application.inc.php and preferences.xml</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="same like page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Script">
       <tmx:tuv xml:lang="en">
@@ -416,6 +448,10 @@
 			<tmx:tu tuid="Templates">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Templates</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="This Layout is not used in any page.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="This layout is used in %1 pages">
       <tmx:tuv xml:lang="en">

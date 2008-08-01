@@ -53,6 +53,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Create</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete Action">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete records">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Delete records</tmx:seg>
@@ -129,13 +133,29 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Multi language</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="New mediagroup">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="New action">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>New action</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New layout">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New layout</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New mediagroup">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New mediagroup</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New Page Group">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New Pagegroup</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New Role">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New Role</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Next run: immediately">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Next run: immediately</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="none">
       <tmx:tuv xml:lang="en">
@@ -165,6 +185,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>"Page titles (possibly language tokens)</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this action?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this action?</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this folders with all images and documents irrevocably?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this folders with all images and documents irrevocably?</tmx:seg>
@@ -172,10 +196,6 @@
 			<tmx:tu tuid="Really delete this mediagroup?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this mediagroup?</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Really delete this page group?">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Really delete this page group?</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this pagegroup?">
       <tmx:tuv xml:lang="en">
@@ -185,6 +205,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this role?</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really reset this action?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really reset this action?</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Rebuild index?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Rebuild index?</tmx:seg>
@@ -193,9 +217,29 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Remove Image</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Reset">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Reset</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="smartURL-Schema">
       <tmx:tuv xml:lang="en">
         <tmx:seg>smartURL-Schema</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="State">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>State</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Stats">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Stats</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Status: offline">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Status: online">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Sub path (no language tokens)">
       <tmx:tuv xml:lang="en">
@@ -204,6 +248,18 @@
 			<tmx:tu tuid="Sub path (possibly language tokens)">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Sub path (possibly language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="This Layout is not used in any page.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Versioning">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Versioning</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="View Action">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="View mediagroup">
       <tmx:tuv xml:lang="en">
@@ -216,14 +272,6 @@
 			<tmx:tu tuid="yes">
       <tmx:tuv xml:lang="en">
         <tmx:seg>yes</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Stats">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Stats</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Versioning">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Versioning</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

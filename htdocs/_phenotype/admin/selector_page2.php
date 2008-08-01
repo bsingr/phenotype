@@ -86,7 +86,7 @@ body {
           <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
         <tr>
-          <td colspan="5" valign="top" class="tableBody"><p><?php echo localeHBR("<strong>Where</strong> to locate the new page within the page tree?");?></p>
+          <td colspan="5" valign="top" class="tableBody"><p><?php echo localeHBR("Where to locate the new page within the page tree?");?></p>
           </td>
           </tr>
         <tr>

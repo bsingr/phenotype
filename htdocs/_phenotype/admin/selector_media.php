@@ -321,7 +321,7 @@ self.focus();
                 <?php
                 if ($row["med_type"]==MB_IMAGE){
                 ?>
-                <a href="javascript:select_image(<?php echo $row["med_id"] ?>,'<?php echo $myIMG->thumburl ?>',<?php echo $tx ?>,<?php echo $ty ?>);self.close();"><img src="img/b_media.gif" alt="<?php echo localeH("Select image");?>" width="22" height="22" border="0" align="absmiddle"> &uuml;bernehmen</a>
+                <a href="javascript:select_image(<?php echo $row["med_id"] ?>,'<?php echo $myIMG->thumburl ?>',<?php echo $tx ?>,<?php echo $ty ?>);self.close();"><img src="img/b_media.gif" alt="<?php echo localeH("Select image");?>" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("select");?></a>
                 <?php
                 }else{
                 ?>
@@ -405,7 +405,7 @@ self.focus();
             {
             ?>
             <td align="center">&nbsp;</td>
-            <td align="center"><a href="selector_media.php<?php echo $url ?>&p=<?php echo $p+1 ?>&a=12" class="tabmenuType">vor</a></td>
+            <td align="center"><a href="selector_media.php<?php echo $url ?>&p=<?php echo $p+1 ?>&a=12" class="tabmenuType"><?php echo localeH("next");?></a></td>
             <?php
             }
             ?>

@@ -185,10 +185,6 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Cache-State</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Preview">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Preview</tmx:seg>
-      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="No.">
       <tmx:tuv xml:lang="en">
         <tmx:seg>No.</tmx:seg>
@@ -239,7 +235,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Where to locate the new page within the page tree?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Where to locate the new page within the page tree?</tmx:seg>
+        <tmx:seg>%bbWhere%bs to locate the new page within the page tree?</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="After current page, same level">
       <tmx:tuv xml:lang="en">
@@ -308,10 +304,6 @@
 			<tmx:tu tuid="visible">
       <tmx:tuv xml:lang="en">
         <tmx:seg>visible</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="send">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Send</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="copy page">
       <tmx:tuv xml:lang="en">

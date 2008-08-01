@@ -151,7 +151,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="Error during rollback.";
 
 
-		$_token["Editor"][]="%bbWhere%bs to locate the new page within the page tree?";
+		$_token["Editor"][]="Where to locate the new page within the page tree?";
 		$_token["Editor"][]="Copy page";
 		$_token["Editor"][]="Edit page";
 		$_token["Editor"][]="New version";
@@ -223,14 +223,21 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="Link type";
 		$_token["Editor"][]="Linkname";
 		$_token["Editor"][]="Link text";
+		$_token["Editor"][]="Link selection";
+		$_token["Editor"][]="Select link";
 		$_token["Editor"][]="Source";
 		$_token["Editor"][]="same window";
 		$_token["Editor"][]="new window";
 		$_token["Editor"][]="Add first page in group";
+		$_token["Editor"][]="send";
+		$_token["Editor"][]="Preview";
 		$_token["Editor"][]="Search Pages";
 		$_token["Editor"][]="Insert";
 		$_token["Editor"][]="Versions";
 		$_token["Editor"][]="Version";
+		$_token["Editor"][]="back";
+		$_token["Editor"][]="next";
+		$_token["Editor"][]="select";
 		
 		// Editor / Pages
 
@@ -280,7 +287,6 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Pages"][]="Build %1 sec (Cache %2)";
 		$_token["Editor_Pages"][]="Cache %1 sec";
 		$_token["Editor_Pages"][]="Cache-State";
-		$_token["Editor_Pages"][]="Preview";
 		$_token["Editor_Pages"][]="No.";
 		$_token["Editor_Pages"][]="Add Version Change";
 		$_token["Editor_Pages"][]="Activate";
@@ -311,7 +317,6 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Pages"][]="Vars";
 		$_token["Editor_Pages"][]="Monitor";
 		$_token["Editor_Pages"][]="visible";
-		$_token["Editor_Pages"][]="send";
 		$_token["Editor_Pages"][]="copy page";
 		$_token["Editor_Pages"][]="move page";
 		$_token["Editor_Pages"][]="Select page";
@@ -325,7 +330,9 @@ class PhenotypeLocaleManagerStandard
 
 		// => Editor / Media
 		$_token["Editor_Media"][]="Drag & Drop - Upload";
+		$_token["Editor_Media"][]="Media selection";
 		$_token["Editor_Media"][]="Search Media";
+		$_token["Editor_Media"][]="Upload mediaobject";
 		$_token["Editor_Media"][]="New Files";
 		$_token["Editor_Media"][]="Lightbox";
 		$_token["Editor_Media"][]="All Files";
@@ -356,9 +363,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="New version";
 		$_token["Editor_Media"][]="Group/Folder";
 		$_token["Editor_Media"][]="Upload files";
-		$_token["Editor_Media"][]="handle images like documents";
 		$_token["Editor_Media"][]="Image / Document";
-		$_token["Editor_Media"][]="Upload";
 		$_token["Editor_Media"][]="Import files";
 		$_token["Editor_Media"][]="Import";
 		$_token["Editor_Media"][]="Upload";
@@ -381,9 +386,11 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="msg_error_wrongformat";
 		$_token["Editor_Media"][]="Upload failed!";
 		$_token["Editor_Media"][]="Document upload succesful";
+		$_token["Editor_Media"][]="treat images like documents";
 		$_token["Editor_Media"][]="Sharpen";
 		$_token["Editor_Media"][]="Really delete this version?";
-
+		$_token["Editor_Media"][]="Select image";
+		
 
 		// Admin
 
@@ -400,6 +407,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Clear page cache";
 		$_token["Admin"][]="count page impressions";
 		$_token["Admin"][]="Create";
+		$_token["Admin"][]="Delete Action";
 		$_token["Admin"][]="Delete records";
 		$_token["Admin"][]="Delete records irrevocably";
 		$_token["Admin"][]="Edit mediagroup";
@@ -419,8 +427,12 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="index.php (possibly language tokens)";
 		$_token["Admin"][]="manual";
 		$_token["Admin"][]="Multi language";
-		$_token["Admin"][]="New mediagroup";
 		$_token["Admin"][]="New action";
+		$_token["Admin"][]="New layout";
+		$_token["Admin"][]="New mediagroup";
+		$_token["Admin"][]="New Page Group";
+		$_token["Admin"][]="New Role";
+		$_token["Admin"][]="Next run: immediately";
 		$_token["Admin"][]="none";
 		$_token["Admin"][]="Overview Actions";
 		$_token["Admin"][]="Overview mediagroups";
@@ -428,22 +440,29 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Overview Roles";
 		$_token["Admin"][]="Page titles (no language tokens)";
 		$_token["Admin"][]="Page titles (possibly language tokens)";
+		$_token["Admin"][]="Really delete this action?";
 		$_token["Admin"][]="Really delete this folders with all images and documents irrevocably?";
 		$_token["Admin"][]="Really delete this mediagroup?";
-		$_token["Admin"][]="Really delete this page group?";
 		$_token["Admin"][]="Really delete this pagegroup?";
 		$_token["Admin"][]="Really delete this role?";
+		$_token["Admin"][]="Really reset this action?";
 		$_token["Admin"][]="Rebuild index?";
 		$_token["Admin"][]="Remove Image";
+		$_token["Admin"][]="Reset";
 		$_token["Admin"][]="smartURL-Schema";
+		$_token["Admin"][]="State";
+		$_token["Admin"][]="Stats";
+		$_token["Admin"][]="Status: offline";
+		$_token["Admin"][]="Status: online";
 		$_token["Admin"][]="Sub path (no language tokens)";
 		$_token["Admin"][]="Sub path (possibly language tokens)";
+		$_token["Admin"][]="This Layout is not used in any page.";
+		$_token["Admin"][]="Versioning";
+		$_token["Admin"][]="View Action";
 		$_token["Admin"][]="View mediagroup";
 		$_token["Admin"][]="View Pagegroup";
 		$_token["Admin"][]="yes";
-		$_token["Admin"][]="Stats";
-		$_token["Admin"][]="Versioning";
-
+		
 		$_token["Admin_Users"][]="Admin";
 		$_token["Admin_Users"][]="value_newuser_surname";
 		$_token["Admin_Users"][]="value_newuser_lastname";
@@ -562,7 +581,9 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="delete content cache files";
 		$_token["Config"][]="delete dataobjects";
 		$_token["Config"][]="delete snapshots";
+		$_token["Config"][]="Delete template";
 		$_token["Config"][]="Edit component";
+		$_token["Config"][]="Edit content object";
 		$_token["Config"][]="Edit page scripts";
 		$_token["Config"][]="Export Package";
 		$_token["Config"][]="Files within webroot";
@@ -579,9 +600,11 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Method";
 		$_token["Config"][]="msg_install_structure_files";
 		$_token["Config"][]="msg_use_ajax_installer";
+		$_token["Config"][]="never";
 		$_token["Config"][]="New category";
 		$_token["Config"][]="New component";
 		$_token["Config"][]="New extra";
+		$_token["Config"][]="New layout";
 		$_token["Config"][]="New include";
 		$_token["Config"][]="New content object class";
 		$_token["Config"][]="overwrite";
@@ -597,12 +620,16 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Really delete this content object?";
 		$_token["Config"][]="Really delete this Extra?";
 		$_token["Config"][]="Really delete this include?";
+		$_token["Config"][]="Really delete this layout?";
 		$_token["Config"][]="Really install this package?";
 		$_token["Config"][]="Records";
 		$_token["Config"][]="Remove placeholder";
+		$_token["Config"][]="Remove include";
+		$_token["Config"][]="Remove template";
 		$_token["Config"][]="remove temporary files and reset directory structure";
 		$_token["Config"][]="remove unknown files in webroot folder";
 		$_token["Config"][]="reset _application.inc.php and preferences.xml";
+		$_token["Config"][]="same like page";
 		$_token["Config"][]="Script";
 		$_token["Config"][]="Select Package";
 		$_token["Config"][]="Select/Deselect all";
@@ -611,6 +638,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Storage folder";
 		$_token["Config"][]="Structures";
 		$_token["Config"][]="Templates";
+		$_token["Config"][]="This Layout is not used in any page.";
 		$_token["Config"][]="This layout is used in %1 pages";
 		$_token["Config"][]="Tools";
 		$_token["Config"][]="Usage";

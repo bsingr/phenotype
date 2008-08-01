@@ -267,7 +267,7 @@ if ($mySUser->checkRight("elm_page"))
 			  <img src="img/i_online.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22" border="0">
 			<?php }else{ ?>
 			<a href="page_setstatus.php?id=<?php echo $row_data["pag_id"] ?>&status=online">
-			  <img src="img/i_offline.gif" alt="<?php echo localeH("Status offline");?>" width="30" height="22" border="0">
+			  <img src="img/i_offline.gif" alt="<?php echo localeH("Status: offline");?>" width="30" height="22" border="0">
 			</a>
 			<?php } ?>
 			</td>

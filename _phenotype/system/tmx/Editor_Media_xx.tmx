@@ -8,9 +8,23 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media selection">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Media selection</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Search Media">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Search Media</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload mediaobject">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Upload mediaobject</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -225,23 +239,9 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="handle images like documents">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>handle images like documents</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Image / Document">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Image / Document</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Upload">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Upload</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -400,6 +400,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="treat images like documents">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>treat image as document</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Sharpen">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Sharpen</tmx:seg>
@@ -410,6 +417,13 @@
 			<tmx:tu tuid="Really delete this version?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this version?</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

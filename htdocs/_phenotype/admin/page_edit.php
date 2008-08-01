@@ -1177,7 +1177,7 @@ while ($row = mysql_fetch_array($rs))
 			<?php
 			}
 			?>
-                <input type="image" src="img/b_delete.gif" alt="<?php echo localeH("Delete Component");?>" width="22" height="22" border="0"  name="<?php echo $row["dat_id"] ?>_delete">
+                <input type="image" src="img/b_delete.gif" alt="<?php echo localeH("Delete component");?>" width="22" height="22" border="0"  name="<?php echo $row["dat_id"] ?>_delete">
 			<?php
 			if ($mySUser->checkRight("superuser"))
 			{

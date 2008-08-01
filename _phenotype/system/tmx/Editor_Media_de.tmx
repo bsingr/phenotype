@@ -8,12 +8,26 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Drag &amp; Drop - Upload</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media selection">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Media selection</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Medienauswahl</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Search Media">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Search Media</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Suche Media nach</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload mediaobject">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Upload mediaobject</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Mediaobjekte hochladen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="New Files">
       <tmx:tuv xml:lang="en">
@@ -225,26 +239,12 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Mediaobjekte hochladen</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="handle images like documents">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>handle images like documents</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Bilder als Dokumente handhaben</tmx:seg>
-      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Image / Document">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Image / Document</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Bild / Dokument</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Upload">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Upload</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Upload</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Import files">
       <tmx:tuv xml:lang="en">
@@ -363,7 +363,7 @@
         <tmx:seg>Original cannot be overwrited. A new version is created.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Das Original kann nicht überschrieben werden. Eine neue Version wurde erstellt.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_error_readimage">
       <tmx:tuv xml:lang="en">
@@ -400,6 +400,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Dokument hochgeladen.</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="treat images like documents">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>treat image as document</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bild als Dokument handhaben</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Sharpen">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Sharpen</tmx:seg>
@@ -413,6 +420,13 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Diese Version wirklich loeschen?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select image</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bild auswählen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

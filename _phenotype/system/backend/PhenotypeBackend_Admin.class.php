@@ -54,10 +54,10 @@ class PhenotypeBackend_Admin_Standard extends PhenotypeBackend
 			$nav_id_roles    = $myNav->addNode(locale("Roles"),"admin_roles.php",0,"Rollen");
 			$nav_id_cache    = $myNav->addNode("eeCache","admin_cache.php",0,"Cache");
 			$nav_id_layout    = $myNav->addNode("eeLayout","layout.php",0,"Layout");
-			$nav_id_pages    = $myNav->addNode("eeSeiten","admin_pages.php",0,"Seiten");
+			$nav_id_pages    = $myNav->addNode(locale("Pages"),"admin_pages.php",0,"Seiten");
 			$nav_id_groups   = $myNav->addNode(locale("pagegroups"),"admin_groups.php",0,"Seitengruppen");
 			$nav_id_content  = $myNav->addNode(locale("contentobjects"),"admin_content.php",0,"Content");
-			$nav_id_media    = $myNav->addNode("Meeedia","admin_media.php",0,"Media");
+			$nav_id_media    = $myNav->addNode(locale("Media"),"admin_media.php",0,"Media");
 			$nav_id_mediagroups   = $myNav->addNode(locale("mediagroups"),"admin_mediagroups.php",0,"Mediagruppen");
 			$nav_id_subject   = $myNav->addNode(locale("task subjects"),"admin_subject.php",0,"Aufgabenbereiche");
 			$nav_id_action   = $myNav->addNode("Aktionen","admin_actions.php",0,"Aktionen");
