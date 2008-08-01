@@ -152,7 +152,7 @@ $myPT->startBuffer();
 		{
 			$html .= $myLayout->workarea_form_checkbox("", "act_id".$row["act_id"], 1,$row["act_id"] ." - ". $row["act_bez"]);
 		}
-		$myLayout->workarea_row_draw("Aktionen", $html);
+		$myLayout->workarea_row_draw(locale("Actions"), $html);
 
 
 		$html = $myLayout->workarea_form_checkbox("", "ticketsubjects", 1,locale("Task subjects"));

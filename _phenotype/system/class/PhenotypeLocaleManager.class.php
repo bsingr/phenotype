@@ -104,7 +104,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="Changes saved";
 		$_token["Phenotype"][]="Layout";
 		$_token["Phenotype"][]="create new task";
-
+		$_token["Phenotype"][]="State";
 
 		$_token["Phenotype"][]="Actions";
 		$_token["Phenotype"][]="Cache";
@@ -238,7 +238,15 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="back";
 		$_token["Editor"][]="next";
 		$_token["Editor"][]="select";
-		
+		$_token["Editor"][]="All";
+		$_token["Editor"][]="next";
+		$_token["Editor"][]="prev";
+		$_token["Editor"][]="Preview";
+		$_token["Editor"][]="Rows";
+		$_token["Editor"][]="Select image";
+		$_token["Editor"][]="Send";
+		$_token["Editor"][]="Status offline";
+
 		// Editor / Pages
 
 		$_token["Editor_Pages"][]="Script";
@@ -320,7 +328,9 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Pages"][]="copy page";
 		$_token["Editor_Pages"][]="move page";
 		$_token["Editor_Pages"][]="Select page";
-		
+		$_token["Editor_Pages"][]="New version - Copy of";
+		$_token["Editor_Pages"][]="Delete Component";
+
 		// Editor / Content
 
 		$_token["Editor_Content"][]="Really delete this record?";
@@ -390,7 +400,9 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="Sharpen";
 		$_token["Editor_Media"][]="Really delete this version?";
 		$_token["Editor_Media"][]="Select image";
-		
+
+		$_token["Editor_Media"][]="Media selection";
+
 
 		// Admin
 
@@ -462,7 +474,22 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="View mediagroup";
 		$_token["Admin"][]="View Pagegroup";
 		$_token["Admin"][]="yes";
-		
+
+		$_token["Admin"][]="Full path (no language tokens)";
+		$_token["Admin"][]="Full path (possibly language tokens)";
+		$_token["Admin"][]="index.php (no language tokens)";
+		$_token["Admin"][]="index.php (possibly language tokens)";
+		$_token["Admin"][]="Next run: immediately";
+		$_token["Admin"][]="Page titles (no language tokens)";
+		$_token["Admin"][]="Page titles (possibly language tokens)";
+		$_token["Admin"][]="New action";
+		$_token["Admin"][]="Really delete this action?";
+		$_token["Admin"][]="Really reset this action?";
+		$_token["Admin"][]="Reset";
+		$_token["Admin"][]="Sub path (no language tokens)";
+		$_token["Admin"][]="Sub path (possibly language tokens)";
+		$_token["Admin"][]="users";
+
 		$_token["Admin_Users"][]="Admin";
 		$_token["Admin_Users"][]="value_newuser_surname";
 		$_token["Admin_Users"][]="value_newuser_lastname";
@@ -646,6 +673,12 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="User & Roles";
 		$_token["Config"][]="Utilization";
 		$_token["Config"][]="View component";
+		$_token["Config"][]="Aktionen";
+		$_token["Config"][]="Configure content objects classes";
+		$_token["Config"][]="Create new content object class";
+		$_token["Config"][]="Edit content object";
+		$_token["Config"][]="Really delete this content object?";
+		$_token["Config"][]="Remove Template";
 
 		// Info
 
