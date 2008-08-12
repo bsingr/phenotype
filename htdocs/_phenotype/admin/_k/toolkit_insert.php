@@ -34,7 +34,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("cog_bez",locale("New Componentgroup"));
+$mySQL->addField("cog_bez",locale("New componentgroup"));
 // ID unter 1000 ermitteln
 $sql = "SELECT MAX(cog_id) AS ID FROM componentgroup WHERE cog_id<1000";
 $rs = $myDB->query($sql);

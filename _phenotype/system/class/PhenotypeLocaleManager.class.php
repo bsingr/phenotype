@@ -139,6 +139,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="msg_no_access";
 		$_token["Phenotype"][]="msg_session_timeout";
 		$_token["Phenotype"][]="Login";
+		$_token["Phenotype"][]="Please remember to delete the user starter.";
 
 		// snapshot & rollback
 
@@ -240,6 +241,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="select";
 		$_token["Editor"][]="All";
 		$_token["Editor"][]="next";
+		$_token["Editor"][]="Next";
 		$_token["Editor"][]="prev";
 		$_token["Editor"][]="Preview";
 		$_token["Editor"][]="Rows";
@@ -393,10 +395,10 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="msg_error_overwrite_original";
 		$_token["Editor_Media"][]="msg_error_readimage";
 		$_token["Editor_Media"][]="msg_error_unknown_mimetype";
-		$_token["Editor_Media"][]="msg_error_wrongformat";
 		$_token["Editor_Media"][]="Upload failed!";
 		$_token["Editor_Media"][]="Document upload succesful";
 		$_token["Editor_Media"][]="treat images like documents";
+		$_token["Editor_Media"][]="handle images like documents";
 		$_token["Editor_Media"][]="Sharpen";
 		$_token["Editor_Media"][]="Really delete this version?";
 		$_token["Editor_Media"][]="Select image";
@@ -417,6 +419,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Build Content Index";
 		$_token["Admin"][]="Cleanup Mediabase";
 		$_token["Admin"][]="Clear page cache";
+		$_token["Admin"][]="Clear page cache?";
 		$_token["Admin"][]="count page impressions";
 		$_token["Admin"][]="Create";
 		$_token["Admin"][]="Delete Action";
@@ -489,7 +492,9 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Sub path (no language tokens)";
 		$_token["Admin"][]="Sub path (possibly language tokens)";
 		$_token["Admin"][]="users";
-
+		$_token["Admin"][]="The index of following content object records is regenerated:";
+		$_token["Admin"][]="Following media objects will be deleted:";
+		
 		$_token["Admin_Users"][]="Admin";
 		$_token["Admin_Users"][]="value_newuser_surname";
 		$_token["Admin_Users"][]="value_newuser_lastname";
@@ -630,6 +635,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="never";
 		$_token["Config"][]="New category";
 		$_token["Config"][]="New component";
+		$_token["Config"][]="New componentgroup";
 		$_token["Config"][]="New extra";
 		$_token["Config"][]="New layout";
 		$_token["Config"][]="New include";
@@ -679,7 +685,19 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Edit content object";
 		$_token["Config"][]="Really delete this content object?";
 		$_token["Config"][]="Remove Template";
-
+		
+		$_token["Config"][]="Remove action %1";
+		$_token["Config"][]="Remove layout %1";
+		$_token["Config"][]="Remove component %1";
+		$_token["Config"][]="Remove component group %1";
+		$_token["Config"][]="Remove include %1";
+		$_token["Config"][]="Remove contentobject %1";
+		$_token["Config"][]="Remove extra %1";
+		
+		$_token["Config"][]="Journal";
+		$_token["Config"][]="Structure";
+		$_token["Config"][]="Export package";
+		
 		// Info
 
 		$_token["Info"][]="headline_copyright";
@@ -838,18 +856,18 @@ class PhenotypeLocaleManagerStandard
 		}
 		foreach ($_xml->body->tu AS $_xml_tu)
 		{
-			$key= (string)$_xml_tu["tuid"];
+			$key= trim((string)$_xml_tu["tuid"]);
 			$val="";
 			$val_en="";
 			foreach ($_xml_tu->tuv AS $_xml_tuv)
 			{
 				if ((string)$_xml_tuv["lang"]=="en")
 				{
-					$val_en = (string)$_xml_tuv->seg;
+					$val_en = trim((string)$_xml_tuv->seg);
 				}
 				if ((string)$_xml_tuv["lang"]==$locale)
 				{
-					$val = (string)$_xml_tuv->seg;
+					$val = trim((string)$_xml_tuv->seg);
 					break;
 				}
 			}

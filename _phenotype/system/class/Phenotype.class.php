@@ -493,7 +493,7 @@ class PhenotypeStandard extends PhenotypeBase
 	 */
 	function clearcache_page($id,$silent=1)
 	{
-		throw new Exception("Deprecated call of function clearcache_page");
+		//throw new Exception("Deprecated call of function clearcache_page");
 		$id = (int)$id;
 		$silent = (int)$silent;
 
@@ -512,7 +512,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 	function clearcache_subpages($id,$silent=1)
 	{
-		throw new Exception("Deprecated call of function clearcache_subpages");
+		//throw new Exception("Deprecated call of function clearcache_subpages");
 		if ($id==0)
 		{
 			global $myDB;

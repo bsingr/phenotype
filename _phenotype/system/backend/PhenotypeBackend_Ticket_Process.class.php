@@ -26,7 +26,8 @@
 class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 {
 
-
+    public $tmxfile = "Ticket_Assess";
+    
 	function execute($scope,$action)
 	{
 			

@@ -273,5 +273,61 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>yes</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Full path (no language tokens)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Full path (no language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Full path (possibly language tokens)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Full path (possibly language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="index.php (no language tokens)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>index.php (no language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="index.php (possibly language tokens)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>index.php (possibly language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Next run: immediately">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Next run: immediately</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Page titles (no language tokens)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Page titles (no language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Page titles (possibly language tokens)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>"Page titles (possibly language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New action">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New action</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this action?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this action?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really reset this action?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really reset this action?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Reset">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Reset</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Sub path (no language tokens)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Sub path (no language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Sub path (possibly language tokens)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Sub path (possibly language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="users">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

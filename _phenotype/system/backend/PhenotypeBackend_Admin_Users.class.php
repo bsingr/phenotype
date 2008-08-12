@@ -299,7 +299,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		 </table>
 		 <?php
 		 $html = $myPT->stopBuffer();
-		 $this->workarea_row_draw(locale("pagegroups "),$html);
+		 $this->workarea_row_draw(locale("Pagegroups"),$html);
 
 		 $sql = "SELECT * FROM content ORDER by con_pos, con_bez";
 		 $rs = $myDB->query($sql);

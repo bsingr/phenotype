@@ -349,5 +349,37 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>select</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="All">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="next">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Next</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="prev">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Preview">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Preview</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Rows">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Send">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Status offline">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

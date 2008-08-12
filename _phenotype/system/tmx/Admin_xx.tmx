@@ -1,758 +1,576 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
-  <tmx:body><tmx:tu tuid="Start">
+  <tmx:body><tmx:tu tuid="* all pages *">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Start</tmx:seg>
+        <tmx:seg>* all pages *</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Editor">
+			<tmx:tu tuid="Add new action">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Editor</tmx:seg>
+        <tmx:seg>Add new action</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Extras">
+			<tmx:tu tuid="Add new mediagroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Extras</tmx:seg>
+        <tmx:seg>Add new mediagroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Analyze">
+			<tmx:tu tuid="Add new pagegroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Analyze</tmx:seg>
+        <tmx:seg>Add new pagegroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Tasks">
+			<tmx:tu tuid="Add new role">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Tasks</tmx:seg>
+        <tmx:seg>Add new role</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Admin">
+			<tmx:tu tuid="Admin rights">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Admin</tmx:seg>
+        <tmx:seg>Admin rights</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Info">
+			<tmx:tu tuid="archiving">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Info</tmx:seg>
+        <tmx:seg>archiving</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Config">
+			<tmx:tu tuid="Assign Image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Config</tmx:seg>
+        <tmx:seg>Assign Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Error">
+			<tmx:tu tuid="Build Content Index">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Error</tmx:seg>
+        <tmx:seg>Build Content Index</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Alert">
+			<tmx:tu tuid="Cleanup Mediabase">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Alert</tmx:seg>
+        <tmx:seg>Cleanup Mediabase</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Feedback">
+			<tmx:tu tuid="Clear page cache">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Info</tmx:seg>
+        <tmx:seg>Clear page cache</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Notice">
+			<tmx:tu tuid="count page impressions">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Notice</tmx:seg>
+        <tmx:seg>count page impressions</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Attention">
+			<tmx:tu tuid="Create">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Attention</tmx:seg>
+        <tmx:seg>Create</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Delete">
+			<tmx:tu tuid="Delete Action">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Delete</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Save">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Save</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="ID">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>ID</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Date">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Date</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="before">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>before</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="User">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>User</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Action">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Action</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day(s)">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day(s)</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="hours">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>hours</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="minutes">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>minutes</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Group">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Group</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="edit">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>edit</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Edit">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Edit</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Document">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Document</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Image">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Properties">
+			<tmx:tu tuid="Delete records">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Properties</tmx:seg>
+        <tmx:seg>Delete records</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Search">
+			<tmx:tu tuid="Delete records irrevocably">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Search</tmx:seg>
+        <tmx:seg>Delete records irrevocably</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Overview">
+			<tmx:tu tuid="Edit mediagroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Overview</tmx:seg>
+        <tmx:seg>Edit mediagroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="online">
+			<tmx:tu tuid="Edit Pagegroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>online</tmx:seg>
+        <tmx:seg>Edit Pagegroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="offline">
+			<tmx:tu tuid="Editor / Content">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>offline</tmx:seg>
+        <tmx:seg>Editor / Content</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Changes saved.">
+			<tmx:tu tuid="Editor / Mediabase">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Changes saved.</tmx:seg>
+        <tmx:seg>Editor / Mediabase</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Copy of">
+			<tmx:tu tuid="Editor / Pages - CANNOT insert/remove/change components">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Copy of</tmx:seg>
+        <tmx:seg>Editor / Pages - CANNOT insert/remove/change components</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Day">
+			<tmx:tu tuid="Editor / Pages - Create and configure pages">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Day</tmx:seg>
+        <tmx:seg>Editor / Pages - Create and configure pages</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Month">
+			<tmx:tu tuid="Editor / Pages - Stats">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Month</tmx:seg>
+        <tmx:seg>Editor / Pages - Stats</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Year">
+			<tmx:tu tuid="Elementary rights">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Year</tmx:seg>
+        <tmx:seg>Elementary rights</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="January">
+			<tmx:tu tuid="Execute">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>January</tmx:seg>
+        <tmx:seg>Execute</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="February">
+			<tmx:tu tuid="Following content object records are deleted:">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>February</tmx:seg>
+        <tmx:seg>Following content object records are deleted:</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="March">
+			<tmx:tu tuid="Following pages will be rendered upon next page impression:">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>March</tmx:seg>
+        <tmx:seg>Following pages will be rendered upon next page impression:</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="April">
+			<tmx:tu tuid="Full path (no language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>April</tmx:seg>
+        <tmx:seg>Full path (no language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="May">
+			<tmx:tu tuid="Full path (possibly language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>May</tmx:seg>
+        <tmx:seg>Full path (possibly language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="June">
+			<tmx:tu tuid="index.php (no language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>June</tmx:seg>
+        <tmx:seg>index.php (no language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="July">
+			<tmx:tu tuid="index.php (possibly language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>July</tmx:seg>
+        <tmx:seg>index.php (possibly language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="August">
+			<tmx:tu tuid="manual">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>August</tmx:seg>
+        <tmx:seg>manual</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="September">
+			<tmx:tu tuid="Multi language">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>September</tmx:seg>
+        <tmx:seg>Multi language</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="October">
+			<tmx:tu tuid="New action">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>October</tmx:seg>
+        <tmx:seg>New action</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="November">
+			<tmx:tu tuid="New layout">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>November</tmx:seg>
+        <tmx:seg>New layout</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="December">
+			<tmx:tu tuid="New mediagroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>December</tmx:seg>
+        <tmx:seg>New mediagroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_monday">
+			<tmx:tu tuid="New Page Group">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_monday</tmx:seg>
+        <tmx:seg>New Pagegroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_tuesday">
+			<tmx:tu tuid="New Role">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_tuesday</tmx:seg>
+        <tmx:seg>New Role</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_wednesday">
+			<tmx:tu tuid="Next run: immediately">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_wednesday</tmx:seg>
+        <tmx:seg>Next run: immediately</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_thursday">
+			<tmx:tu tuid="none">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_thursday</tmx:seg>
+        <tmx:seg>none</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_friday">
+			<tmx:tu tuid="Overview Actions">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_friday</tmx:seg>
+        <tmx:seg>Overview Actions</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_saturday">
+			<tmx:tu tuid="Overview mediagroups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_saturday</tmx:seg>
+        <tmx:seg>Overview Actions</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_sunday">
+			<tmx:tu tuid="Overview Pagegroups">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_sunday</tmx:seg>
+        <tmx:seg>Overview Pagegroups</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="next month">
+			<tmx:tu tuid="Overview Roles">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>next month</tmx:seg>
+        <tmx:seg>Overview Roles</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="last month">
+			<tmx:tu tuid="Page titles (no language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>last month</tmx:seg>
+        <tmx:seg>Page titles (no language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="all">
+			<tmx:tu tuid="Page titles (possibly language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>all</tmx:seg>
+        <tmx:seg>"Page titles (possibly language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Images">
+			<tmx:tu tuid="Really delete this action?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Images</tmx:seg>
+        <tmx:seg>Really delete this action?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Documents">
+			<tmx:tu tuid="Really delete this folders with all images and documents irrevocably?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Documents</tmx:seg>
+        <tmx:seg>Really delete this folders with all images and documents irrevocably?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Title">
+			<tmx:tu tuid="Really delete this mediagroup?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Title</tmx:seg>
+        <tmx:seg>Really delete this mediagroup?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Folder">
+			<tmx:tu tuid="Really delete this pagegroup?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Folder</tmx:seg>
+        <tmx:seg>Really delete this pagegroup?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Keywords">
+			<tmx:tu tuid="Really delete this role?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Keywords</tmx:seg>
+        <tmx:seg>Really delete this role?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Comment">
+			<tmx:tu tuid="Really reset this action?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Comment</tmx:seg>
+        <tmx:seg>Really reset this action?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="User">
+			<tmx:tu tuid="Rebuild index?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>User</tmx:seg>
+        <tmx:seg>Rebuild index?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Changes saved">
+			<tmx:tu tuid="Remove Image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Changes saved</tmx:seg>
+        <tmx:seg>Remove Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Layout">
+			<tmx:tu tuid="Reset">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Layout</tmx:seg>
+        <tmx:seg>Reset</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="create new task">
+			<tmx:tu tuid="smartURL-Schema">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>create new task</tmx:seg>
+        <tmx:seg>smartURL-Schema</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="State">
       <tmx:tuv xml:lang="en">
+        <tmx:seg>State</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Stats">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Stats</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Status: offline">
+      <tmx:tuv xml:lang="en">
         <tmx:seg></tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Actions">
+			<tmx:tu tuid="Status: online">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Actions</tmx:seg>
+        <tmx:seg></tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Cache">
+			<tmx:tu tuid="Sub path (no language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Cache</tmx:seg>
+        <tmx:seg>Sub path (no language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Content">
+			<tmx:tu tuid="Sub path (possibly language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Content</tmx:seg>
+        <tmx:seg>Sub path (possibly language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Content objects">
+			<tmx:tu tuid="This Layout is not used in any page.">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Content objects</tmx:seg>
+        <tmx:seg></tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Contentobjects">
+			<tmx:tu tuid="Versioning">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Contentobjects</tmx:seg>
+        <tmx:seg>Versioning</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Description">
+			<tmx:tu tuid="View Action">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Description</tmx:seg>
+        <tmx:seg></tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Help">
+			<tmx:tu tuid="View mediagroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Help</tmx:seg>
+        <tmx:seg>View mediagroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Includes">
+			<tmx:tu tuid="View Pagegroup">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Includes</tmx:seg>
+        <tmx:seg>View Pagegroup</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Media">
+			<tmx:tu tuid="yes">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Media</tmx:seg>
+        <tmx:seg>yes</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Mediagroup">
+			<tmx:tu tuid="Full path (no language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Mediagroup</tmx:seg>
+        <tmx:seg>Full path (no language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Mediagroups">
+			<tmx:tu tuid="Full path (possibly language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Mediagroups</tmx:seg>
+        <tmx:seg>Full path (possibly language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Name">
+			<tmx:tu tuid="index.php (no language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Name</tmx:seg>
+        <tmx:seg>index.php (no language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="No.">
+			<tmx:tu tuid="index.php (possibly language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>No.</tmx:seg>
+        <tmx:seg>index.php (possibly language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Pagegroup">
+			<tmx:tu tuid="Next run: immediately">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Pagegroup</tmx:seg>
+        <tmx:seg>Next run: immediately</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Pagegroups">
+			<tmx:tu tuid="Page titles (no language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Pagegroups</tmx:seg>
+        <tmx:seg>Page titles (no language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="pagegroups">
+			<tmx:tu tuid="Page titles (possibly language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>pagegroups</tmx:seg>
+        <tmx:seg>"Page titles (possibly language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Pages">
+			<tmx:tu tuid="New action">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Pages</tmx:seg>
+        <tmx:seg>New action</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Rights">
+			<tmx:tu tuid="Really delete this action?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Rights</tmx:seg>
+        <tmx:seg>Really delete this action?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Role">
+			<tmx:tu tuid="Really reset this action?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Role</tmx:seg>
+        <tmx:seg>Really reset this action?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Roles">
+			<tmx:tu tuid="Reset">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Roles</tmx:seg>
+        <tmx:seg>Reset</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Roles">
+			<tmx:tu tuid="Sub path (no language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Roles</tmx:seg>
+        <tmx:seg>Sub path (no language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Status">
+			<tmx:tu tuid="Sub path (possibly language tokens)">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Status</tmx:seg>
+        <tmx:seg>Sub path (possibly language tokens)</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Task subjects">
+			<tmx:tu tuid="users">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Task subjects</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Users">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Users</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Username">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Username</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Password">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Password</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_login_error">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Login Error.%lInvalid combination of username and password.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_no_access">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>No Access!%nPlease login with adequate rights or press browser back button.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_session_timeout">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Session timed out!%lPlease login again.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Login">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Login</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Install snapshot">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Install snapshot</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="install snapshot">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>install snapshot</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_snapshot_contentobject">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>msg_snapshot_contentobject</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_snapshot_mediaobject">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>msg_snapshot_mediaobject</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Rollback">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Rollback</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="snapshot installed">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>snapshot installed</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Error during rollback.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Error during rollback.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

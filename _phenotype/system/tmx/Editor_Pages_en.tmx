@@ -317,5 +317,13 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Select page</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New version - Copy of">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete Component">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

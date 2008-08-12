@@ -55,7 +55,7 @@ exit();
     $rs = $myDB->query($sql);
     if (mysql_num_rows($rs)==1)
     {
-      $s = '<p style="color:red"><blink>Please remember to delete the user "starter".<blink></p>';
+      $s = '<p style="color:red"><blink>'.localeH('Please remember to delete the user starter.').'<blink></p>';
     }
 
     return ($s);

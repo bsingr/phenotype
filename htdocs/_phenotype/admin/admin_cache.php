@@ -109,7 +109,7 @@ $myPT->startBuffer();
 		 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" onclick="javascript:return confirm('<?php echo localeH("Clear page cache");?>');" value="<?php echo localeH("Execute");?>"></td>
+            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" onclick="javascript:return confirm('<?php echo localeH("Clear page cache?");?>');" value="<?php echo localeH("Execute");?>"></td>
           </tr>
         </table>
 		<?php	$myLayout->workarea_stop_draw();

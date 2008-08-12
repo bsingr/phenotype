@@ -281,6 +281,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>create new task</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="State">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Actions">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Actions</tmx:seg>

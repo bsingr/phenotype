@@ -245,5 +245,9 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Select image</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media selection">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Media selection</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

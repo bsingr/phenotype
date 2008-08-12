@@ -1,754 +1,1280 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
-  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
-  <tmx:body><tmx:tu tuid="Start">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Start</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Start</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Editor">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Editor</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Redaktion</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Extras">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Extras</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Extras</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Analyze">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Analyze</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Analyse</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Tasks">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Tasks</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Aufgaben</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Admin">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Admin</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Admin</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Info">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Info</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Hinweis</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Config">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Config</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Konfiguration</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Error">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Error</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Fehler</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Alert">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Alert</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Hinweis</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Feedback">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Info</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Info</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Notice">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Notice</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Attention">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Attention</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Delete">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Delete</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Löschen</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Save">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Save</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Speichern</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="ID">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>ID</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>ID</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Date">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Date</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Datum</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="before">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>before</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>vor</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="User">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>User</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Benutzer</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Action">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Action</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Aktion</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day(s)">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day(s)</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Tage(e)</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="hours">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>hours</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Stunden</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="minutes">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>minutes</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Minuten</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Group">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Group</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="edit">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>edit</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Edit">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Edit</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Document">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Document</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Dokument</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Image">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Image</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Properties">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Properties</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Eigenschaften</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Search">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Search</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Suche</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Overview">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Overview</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Übersicht</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="online">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>online</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Online</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="offline">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>offline</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Offline</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Changes saved.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Changes saved.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Änderungen gespeichert.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Copy of">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Copy of</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Kopie von</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Day">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Day</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Month">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Month</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Year">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Year</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="January">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>January</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Januar</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="February">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>February</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Februrar</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="March">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>March</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>März</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="April">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>April</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>April</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="May">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>May</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Mai</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="June">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>June</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Juni</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="July">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>July</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Juli</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="August">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>August</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>August</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="September">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>September</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>September</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="October">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>October</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="November">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>November</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>November</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="December">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>December</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Dezember</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_monday">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_monday</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Dezember</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_tuesday">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_tuesday</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Januar</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_wednesday">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_wednesday</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>day_short_monday</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_thursday">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_thursday</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>day_short_tuesday</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_friday">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_friday</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>day_short_wednesday</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_saturday">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_saturday</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>day_short_thursday</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="day_short_sunday">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>day_short_sunday</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>day_short_friday</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="next month">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>next month</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>day_short_saturday</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="last month">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>last month</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>day_short_sunday</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="all">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>all</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>alle</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Images">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Images</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Bilder</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Documents">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Documents</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Dokumente</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Title">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Title</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Titel</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Folder">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Folder</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Ordner</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Keywords">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Keywords</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Keywords</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Comment">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Comment</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Kommentar</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="User">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>User</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Benutzer</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Changes saved">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Changes saved</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Änderungen gespeichert.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Layout">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Layout</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="create new task">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>create new task</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Actions">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Actions</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Cache">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Cache</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Content">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Content</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Content objects">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Content objects</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Contentobjects">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Contentobjects</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Description">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Description</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Help">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Help</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Includes">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Includes</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Media">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Media</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Mediagroup">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Mediagroup</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Mediagroups">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Mediagroups</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Name">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Name</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="No.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>No.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Pagegroup">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Pagegroup</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Pagegroups">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Pagegroups</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="pagegroups">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>pagegroups</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Pages">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Pages</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Rights">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Rights</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Role">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Role</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Roles">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Roles</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Roles">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Roles</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Status">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Status</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Task subjects">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Task subjects</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Users">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Users</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Username">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Username</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Benutzername</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Password">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Password</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Passwort</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_login_error">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Login Error.%lInvalid combination of username and password.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Falsche Benutzer-/Password-Kombination.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_no_access">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>No Access!%nPlease login with adequate rights or press browser back button.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Kein Zugriff!%rBitte melden Sie sich mit den erforderlichen Rechten an%loder Drücken Sie den Zurück-Button Ihres Browsers.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_session_timeout">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Session timed out!%lPlease login again.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Session abgelaufen!%lBitte melden Sie sich erneut an.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Login">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Login</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Anmelden</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Install snapshot">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Install snapshot</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Snapshot einspielen</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="install snapshot">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>install snapshot</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Snapshot installieren</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_snapshot_contentobject">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>msg_snapshot_contentobject</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Snapshot %1 des Contentobjekts %2 eingespielt.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_snapshot_mediaobject">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>msg_snapshot_mediaobject</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Snapshot %1 des Mediaobjekts %2 eingespielt.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Rollback">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Rollback</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Rollback</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="snapshot installed">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>snapshot installed</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Snapshot eingespielt.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Error during rollback.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Error during rollback.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Fehler beim Rollback.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			  </tmx:body>
-</tmx:tmx>
+<tmx version="2.0" xmlns="http://www.lisa.org/tmx20">
+    <header adminlang="en" creationtool="locale4j" creationtoolversion="1.1" o-tmf="unknown" segtype="block" srclang="*all*"/>
+    <body>
+        <tu tuid="Action">
+            <tuv xml:lang="en">
+                <seg>
+                    Action
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Aktion
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Actions">
+            <tuv xml:lang="en">
+                <seg>
+                    Actions
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Aktionen
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Admin">
+            <tuv xml:lang="en">
+                <seg>
+                    Admin
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Admin
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Alert">
+            <tuv xml:lang="en">
+                <seg>
+                    Alert
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Hinweis
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Analyze">
+            <tuv xml:lang="en">
+                <seg>
+                    Analyze
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Analyse
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="April">
+            <tuv xml:lang="en">
+                <seg>
+                    April
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    April
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Attention">
+            <tuv xml:lang="en">
+                <seg>
+                    Attention
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Achtung
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="August">
+            <tuv xml:lang="en">
+                <seg>
+                    August
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    August
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Cache">
+            <tuv xml:lang="en">
+                <seg>
+                    Cache
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Cache
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Changes saved">
+            <tuv xml:lang="en">
+                <seg>
+                    Changes saved
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Änderungen gespeichert
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Changes saved.">
+            <tuv xml:lang="en">
+                <seg>
+                    Changes saved.
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Änderungen gespeichert.
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Comment">
+            <tuv xml:lang="en">
+                <seg>
+                    Comment
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Kommentar
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Config">
+            <tuv xml:lang="en">
+                <seg>
+                    Config
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Konfiguration
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Content">
+            <tuv xml:lang="en">
+                <seg>
+                    Content
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Content
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Content objects">
+            <tuv xml:lang="en">
+                <seg>
+                    Content objects
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Contentobjekte
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Contentobjects">
+            <tuv xml:lang="en">
+                <seg>
+                    Contentobjects
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Contentobjekte
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Copy of">
+            <tuv xml:lang="en">
+                <seg>
+                    Copy of
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Kopie von
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Date">
+            <tuv xml:lang="en">
+                <seg>
+                    Date
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Datum
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Day">
+            <tuv xml:lang="en">
+                <seg>
+                    Day
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Tag
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="December">
+            <tuv xml:lang="en">
+                <seg>
+                    December
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Dezember
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Delete">
+            <tuv xml:lang="en">
+                <seg>
+                    Delete
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Löschen
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Description">
+            <tuv xml:lang="en">
+                <seg>
+                    Description
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Beschreibung
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Document">
+            <tuv xml:lang="en">
+                <seg>
+                    Document
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Dokument
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Documents">
+            <tuv xml:lang="en">
+                <seg>
+                    Documents
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Dokumente
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Edit">
+            <tuv xml:lang="en">
+                <seg>
+                    Edit
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Bearbeiten
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Editor">
+            <tuv xml:lang="en">
+                <seg>
+                    Editor
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Redaktion
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Error">
+            <tuv xml:lang="en">
+                <seg>
+                    Error
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Fehler
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Error during rollback.">
+            <tuv xml:lang="en">
+                <seg>
+                    Error during rollback.
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Fehler beim Rollback.
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Extras">
+            <tuv xml:lang="en">
+                <seg>
+                    Extras
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Extras
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="February">
+            <tuv xml:lang="en">
+                <seg>
+                    February
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Februrar
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Feedback">
+            <tuv xml:lang="en">
+                <seg>
+                    Info
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Info
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Folder">
+            <tuv xml:lang="en">
+                <seg>
+                    Folder
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Ordner
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Group">
+            <tuv xml:lang="en">
+                <seg>
+                    Group
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Gruppe
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Help">
+            <tuv xml:lang="en">
+                <seg>
+                    Help
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Hilfe
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="ID">
+            <tuv xml:lang="en">
+                <seg>
+                    ID
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    ID
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Image">
+            <tuv xml:lang="en">
+                <seg>
+                    Image
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Bild
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Images">
+            <tuv xml:lang="en">
+                <seg>
+                    Bilder
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Bilder
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Includes">
+            <tuv xml:lang="en">
+                <seg>
+                    Includes
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Includes
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Info">
+            <tuv xml:lang="en">
+                <seg>
+                    Info
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Info
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Install snapshot">
+            <tuv xml:lang="en">
+                <seg>
+                    Install snapshot
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Snapshot einspielen
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="January">
+            <tuv xml:lang="en">
+                <seg>
+                    January
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Januar
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="July">
+            <tuv xml:lang="en">
+                <seg>
+                    July
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Juli
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="June">
+            <tuv xml:lang="en">
+                <seg>
+                    June
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Juni
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Keywords">
+            <tuv xml:lang="en">
+                <seg>
+                    Keywords
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Keywords
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Layout">
+            <tuv xml:lang="en">
+                <seg>
+                    Layout
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Layout
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Login">
+            <tuv xml:lang="en">
+                <seg>
+                    Login
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Anmelden
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="March">
+            <tuv xml:lang="en">
+                <seg>
+                    March
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    März
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="May">
+            <tuv xml:lang="en">
+                <seg>
+                    May
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Mai
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Media">
+            <tuv xml:lang="en">
+                <seg>
+                    Media
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Media
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Mediagroup">
+            <tuv xml:lang="en">
+                <seg>
+                    Mediagroup
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Mediagruppe
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Mediagroups">
+            <tuv xml:lang="en">
+                <seg>
+                    Mediagroups
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Mediagruppen
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Month">
+            <tuv xml:lang="en">
+                <seg>
+                    Month
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Monat
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Name">
+            <tuv xml:lang="en">
+                <seg>
+                    Name
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Name
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="No.">
+            <tuv xml:lang="en">
+                <seg>
+                    No.
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Nr.
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Notice">
+            <tuv xml:lang="en">
+                <seg>
+                    Notice
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Hinweis
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="November">
+            <tuv xml:lang="en">
+                <seg>
+                    November
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    November
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="October">
+            <tuv xml:lang="en">
+                <seg>
+                    October
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Oktober
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Overview">
+            <tuv xml:lang="en">
+                <seg>
+                    Overview
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Übersicht
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Pagegroup">
+            <tuv xml:lang="en">
+                <seg>
+                    Pagegroup
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Seitengruppe
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Pagegroups">
+            <tuv xml:lang="en">
+                <seg>
+                    Pagegroups
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Seitengruppen
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Pages">
+            <tuv xml:lang="en">
+                <seg>
+                    Pages
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Seiten
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Password">
+            <tuv xml:lang="en">
+                <seg>
+                    Password
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Passwort
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Properties">
+            <tuv xml:lang="en">
+                <seg>
+                    Properties
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Eigenschaften
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Rights">
+            <tuv xml:lang="en">
+                <seg>
+                    Rights
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Rechte
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Role">
+            <tuv xml:lang="en">
+                <seg>
+                    Role
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Rolle
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Roles">
+            <tuv xml:lang="en">
+                <seg>
+                    Roles
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Rollen
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Rollback">
+            <tuv xml:lang="en">
+                <seg>
+                    Rollback
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Rollback
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Save">
+            <tuv xml:lang="en">
+                <seg>
+                    Save
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Speichern
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Search">
+            <tuv xml:lang="en">
+                <seg>
+                    Search
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Suche
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="September">
+            <tuv xml:lang="en">
+                <seg>
+                    September
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    September
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Start">
+            <tuv xml:lang="en">
+                <seg>
+                    Start
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Start
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Status">
+            <tuv xml:lang="en">
+                <seg>
+                    Status
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Status
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Task subjects">
+            <tuv xml:lang="en">
+                <seg>
+                    Task subjects
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Aufgabenbereiche
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Tasks">
+            <tuv xml:lang="en">
+                <seg>
+                    Tasks
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Aufgaben
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Title">
+            <tuv xml:lang="en">
+                <seg>
+                    Title
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Titel
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="User">
+            <tuv xml:lang="en">
+                <seg>
+                    User
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Benutzer
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Username">
+            <tuv xml:lang="en">
+                <seg>
+                    Username
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Benutzername
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Users">
+            <tuv xml:lang="en">
+                <seg>
+                    Users
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Benutzer
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="Year">
+            <tuv xml:lang="en">
+                <seg>
+                    Year
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Jahre
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="all">
+            <tuv xml:lang="en">
+                <seg>
+                    all
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    alle
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="before">
+            <tuv xml:lang="en">
+                <seg>
+                    before
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    vor
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="create new task">
+            <tuv xml:lang="en">
+                <seg>
+                    create new task
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Neue Aufgabe einstellen
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="day(s)">
+            <tuv xml:lang="en">
+                <seg>
+                    day(s)
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Tage(e)
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="day_short_friday">
+            <tuv xml:lang="en">
+                <seg>
+                    day_short_friday
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Fr
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="day_short_monday">
+            <tuv xml:lang="en">
+                <seg>
+                    day_short_monday
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Mo
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="day_short_saturday">
+            <tuv xml:lang="en">
+                <seg>
+                    day_short_saturday
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Sa
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="day_short_sunday">
+            <tuv xml:lang="en">
+                <seg>
+                    day_short_sunday
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    So
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="day_short_thursday">
+            <tuv xml:lang="en">
+                <seg>
+                    day_short_thursday
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Do
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="day_short_tuesday">
+            <tuv xml:lang="en">
+                <seg>
+                    day_short_tuesday
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Di
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="day_short_wednesday">
+            <tuv xml:lang="en">
+                <seg>
+                    day_short_wednesday
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Mi
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="edit">
+            <tuv xml:lang="en">
+                <seg>
+                    edit
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    bearbeiten
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="hours">
+            <tuv xml:lang="en">
+                <seg>
+                    hours
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Stunden
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="install snapshot">
+            <tuv xml:lang="en">
+                <seg>
+                    install snapshot
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Snapshot installieren
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="last month">
+            <tuv xml:lang="en">
+                <seg>
+                    last month
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    letzer Monat
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="minutes">
+            <tuv xml:lang="en">
+                <seg>
+                    minutes
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Minuten
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="msg_login_error">
+            <tuv xml:lang="en">
+                <seg>
+                    Login Error.%lInvalid combination of username and password.
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Falsche Benutzer-/Password-Kombination.
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="msg_no_access">
+            <tuv xml:lang="en">
+                <seg>
+                    No Access!%nPlease login with adequate rights or press browser back button.
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Kein Zugriff!%rBitte melden Sie sich mit den erforderlichen Rechten an%loder Drücken Sie den Zurück-Button Ihres Browsers.
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="msg_session_timeout">
+            <tuv xml:lang="en">
+                <seg>
+                    Session timed out!%lPlease login again.
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Session abgelaufen!%lBitte melden Sie sich erneut an.
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="msg_snapshot_contentobject">
+            <tuv xml:lang="en">
+                <seg>
+                    msg_snapshot_contentobject
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Snapshot %1 des Contentobjekts %2 eingespielt.
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="msg_snapshot_mediaobject">
+            <tuv xml:lang="en">
+                <seg>
+                    msg_snapshot_mediaobject
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Snapshot %1 des Mediaobjekts %2 eingespielt.
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="next month">
+            <tuv xml:lang="en">
+                <seg>
+                    next month
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    nächster Monat
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="offline">
+            <tuv xml:lang="en">
+                <seg>
+                    offline
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Offline
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="online">
+            <tuv xml:lang="en">
+                <seg>
+                    online
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Online
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="pagegroups">
+            <tuv xml:lang="en">
+                <seg>
+                    pagegroups
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Seitengruppen
+                </seg>
+            </tuv>
+        </tu>
+        <tu tuid="snapshot installed">
+            <tuv xml:lang="en">
+                <seg>
+                    snapshot installed
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    Snapshot eingespielt.
+                </seg>
+            </tuv>
+        </tu>
+		        <tu tuid="Please remember to delete the user starter.">
+            <tuv xml:lang="en">
+                <seg>
+                    snapshot installed
+                </seg>
+            </tuv>
+            <tuv xml:lang="de">
+                <seg>
+                    	Please remember to delete the user "starter".
+                </seg>
+            </tuv>
+        </tu>
+		
+	
+    </body>
+</tmx>

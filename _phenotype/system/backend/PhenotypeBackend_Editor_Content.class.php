@@ -655,7 +655,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
       $sql_con = "SELECT con_bez FROM content WHERE con_id = " .$this->con_id;
       $rs = $myDB->query($sql_con);
       $row = mysql_fetch_array($rs);
-      $headline= locale("Search Content")." / " . $row["con_bez"];
+      $headline= locale("Search Content")." / " . $row["con_bez"] ." ";
       $display_content_type=false;
     }
     else
@@ -709,7 +709,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
       }
       $sql .=")) ";
 
-      $headline ="Suche";
+      $headline = localeH("Search") ." ";
       $display_content_type=true;
     }
 
@@ -718,19 +718,19 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     if ($myRequest->get("s")!="")
     {
       $sql .= " AND dat_bez LIKE '%". $myRequest->getSQL("s")."%'";
-      $headline .= locale("in titles") . $myRequest->get("s");
+      $headline .= locale("in titles") . " ". $myRequest->get("s");
       $pagingUrlExt .= "&s=". urlencode($myRequest->get("s"));
     }
     if ($myRequest->get("v")!="")
     {
       $sql .= " AND dat_fullsearch LIKE '%". $myRequest->getSQL("v")."%'";
-      $headline .= locale("fulltext") . $myRequest->get("v");
+      $headline .= locale("fulltext") . " ". $myRequest->get("v");
       $pagingUrlExt .= "&s=". urlencode($myRequest->get("v"));
     }
     if ($myRequest->getI("i")!=0)
     {
       $sql .= " AND dat_id = ". $myRequest->getI("i");
-      $headline .= locale("for ID") . $myRequest->getI("i");
+      $headline .= locale("for ID") . " ". $myRequest->getI("i");
       $pagingUrlExt .= "&s=". urlencode($myRequest->get("i"));
     }
 

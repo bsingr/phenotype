@@ -168,6 +168,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 			case "rollback":
 			  $myPT->clearCache();
+			 
 				$this->fillContentArea1($this->renderRollback());
 				break;
 			case "viewsnapshot":
@@ -898,6 +899,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	    $url = "backend.php?page=Editor,Media,browse&grp_id=".$this->grp_id . "&folder=" .$myPT->codeH($this->folder) ."&type=" .$this->type . "&sortorder=" . $this->sortorder . "&a=" . $this->itemcount."&p=";
 
 	    echo $this->renderPageBrowser($p,$anzahl,$url,$this->itemcount,true);
+	    echo '<br/>';
 	    return $myPT->stopBuffer();
 	}
 
@@ -1217,9 +1219,11 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 		$myPT->startBuffer();
 		$myAdm->displayCreationStatus($myObj->usr_id_creator, $myObj->creationdate);
-		echo "<br>";
-		$myAdm->displayChangeStatus($myObj->usr_id, $myObj->cdate);
 		$html = $myPT->stopBuffer();
+		if ($html!=""){$html.="<br/>";}
+		$myPT->startBuffer();
+		$myAdm->displayChangeStatus($myObj->usr_id, $myObj->cdate);
+		$html .= $myPT->stopBuffer();
 		$this->workarea_row_draw(locale("State"), $html);
 		?>
    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -3582,6 +3586,7 @@ function initoid()
 		global $myRequest;
 		global $myPT;
 
+		
 		$dat_id = $myRequest->getI("id");
 		$this->checkRight("superuser",true);
 
@@ -3602,7 +3607,7 @@ function initoid()
 		}
 
 		$myPT->startBuffer();
-
+		 $this->displayJS_Lightbox();
 		$this->displayIDLineMediaObject($myObj);
 
 
