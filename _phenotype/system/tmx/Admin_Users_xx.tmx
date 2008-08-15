@@ -1,268 +1,344 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
-  <tmx:body><tmx:tu tuid="Admin">
+  <tmx:body><tmx:tu tuid="Action">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Admin</tmx:seg>
+        <tmx:seg>
+                    Action
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="value_newuser_surname">
+			<tmx:tu tuid="Admin">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>New</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="value_newuser_lastname">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>User</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="User">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>User</tmx:seg>
+        <tmx:seg>
+                    Admin
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Config">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Config</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Surname">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Surname</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Lastname">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Lastname</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Email">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Email</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="headline_name">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Name</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Username">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Username</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Password (for change enter 2 times)">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Password (to change enter new password two times)</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_password_change_failure">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Could not change password.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_password_change_success">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Password changed.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="headline_login">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Login</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Photo">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Photo</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Preferences">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Preferences</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Ticket-Preferences">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Ticket-Preferences</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="created at">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>created at</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Never logged in.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Never logged in.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Last login on">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Last login on</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="State">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>State</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Rights">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Rights</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Superuser">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Superuser</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Roles">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Roles</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="value_allpages">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>* all pages *</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="pagegroups ">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Pagegroups </tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="contentobjects">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Contentobjects</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="mediagroups">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Mediagroups</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="extras">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Extras</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="task subjects">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Task subjects</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Really delete this user?">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Really delete this user?</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="headline_users">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>All users</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="ID">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>ID</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Name">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Name</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Action">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Action</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="view user">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>View user</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="edit user">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Edit user</tmx:seg>
+        <tmx:seg>
+                    Config
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Create new user">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Create new user</tmx:seg>
+        <tmx:seg>
+                    Create new user
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Email">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Email
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="ID">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    ID
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Last login on">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Last login on
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Lastname">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Lastname
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Name">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Name
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Never logged in.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Never logged in.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Password (for change enter 2 times)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Password (to change enter new password two times)
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Photo">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Photo
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Preferences">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Preferences
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this user?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Really delete this user?
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Rights">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Rights
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Roles">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Roles
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="State">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    State
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Superuser">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Superuser
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Surname">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Surname
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket-Preferences">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Ticket-Preferences
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="User">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    User
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Username">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Username
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="contentobjects">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Contentobjects
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="created at">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    created at
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="edit user">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Edit user
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="extras">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Extras
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="headline_login">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Login
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="headline_name">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Name
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="headline_users">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    All users
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="mediagroups">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Mediagroups
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_password_change_failure">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Could not change password.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_password_change_success">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Password changed.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="pagegroups ">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Pagegroups 
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="task subjects">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Task subjects
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="value_allpages">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    * all pages *
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="value_newuser_lastname">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    User
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="value_newuser_surname">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    New
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="view user">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    View user
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

@@ -28,7 +28,7 @@
 */
 
 define ("PT_CHARSET","iso-8859-1");
-define ("PT_LOCALE","de");
+define ("PT_LOCALE","en");
 
 define("MB_IMAGE", 1);
 define("MB_DOCUMENT", 2);

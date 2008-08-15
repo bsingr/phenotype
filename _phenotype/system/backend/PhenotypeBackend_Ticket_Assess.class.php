@@ -129,7 +129,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 
 
-		$headline = localeH("task overview");
+		$headline = locale("task overview");
 
 
 		// --------------------------------------------------------------------------------------------

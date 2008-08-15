@@ -520,7 +520,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		{
 			$this->tab_new();
 			$url = "backend.php?page=Editor,Media,browse&grp_id=0&folder=&type=0&sortorder=1&p=1&a=10";
-			$this->tab_addEntry("Sammelbox",$url,"b_pinadd.gif");
+			$this->tab_addEntry(locale("Lightbox"),$url,"b_pinadd.gif");
 			$this->tab_draw(locale("Lightbox"),$x=260,1);
 
 

@@ -3,60 +3,73 @@
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="headline_copyright">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Copyright</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_copyright">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Phenotype is an Open Source project maintaned by Nils Hagemann, Paul Sellinger, Peter Sellinger und Michael Krämer.
-
-Phenotype is licensed under the GNU General Public License.
-
-PhenoType CMS ist a registered trademark, filed under number 303 28 492 at the Deutsche Patent- und Markenamt, München.</tmx:seg>
+        <tmx:seg>
+                    Copyright
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="headline_info">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>About</tmx:seg>
+        <tmx:seg>
+                    About
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="headline_systemreqs">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>System Requirements</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="headline_version">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Version</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_version">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Version %1 from %2%r(%3)</tmx:seg>
+        <tmx:seg>
+                    System Requirements
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="headline_tools">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Embedded tools</tmx:seg>
+        <tmx:seg>
+                    Embedded tools
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="headline_version">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Version
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_copyright">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Phenotype is an Open Source project maintaned by Nils Hagemann, Paul Sellinger, Peter Sellinger und Michael Krämer.
+                    Phenotype is licensed under the GNU General Public License.
+                    PhenoType CMS ist a registered trademark, filed under number 303 28 492 at the Deutsche Patent- und Markenamt, München.
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_radinks">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>msg_radinks</tmx:seg>
+        <tmx:seg>
+                    * to upload bigger files you must optain a separate licence                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_version">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Version %1 from %2%r(%3)
+                </tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

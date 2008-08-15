@@ -1,750 +1,665 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
-    <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
-    <tmx:body>
-        <tmx:tu tuid="Drag &amp; Drop - Upload">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Drag &amp; Drop - Upload
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Drag &amp; Drop - Upload
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Media selection">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Media selection
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Medienauswahl
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Search Media">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Search Media
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Suche Media nach
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Upload mediaobject">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Upload mediaobject
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Mediaobjekte hochladen
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="New Files">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    New Files
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Neue Dateien
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Lightbox">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Lightbox
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Sammelbox
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="All Files">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    All Files
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Alle Dateien
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="objects/page">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    objects/page
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Medien / Seite anzeigen
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Folder">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Folder
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Ordner
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Size">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Size
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Größe
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Alternate">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Alternate
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Alternate
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Image (%1x%2)">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Image (%1x%2)
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Bild (%1x%2)
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Mediagroup">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Mediagroup
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Mediagruppe
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Mimetype">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Mimetype
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Mimetype
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Create new versions">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Create new versions
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Neue Versionen anlegen
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Create new version">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Create new version
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Neue Version anlegen
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Really delete this image?">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Really delete this image?
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Dieses Bild wirklich löschen?
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Really delete this document?">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Really delete this document?
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Dieses Dokument wirklich löschen?
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Original">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Original
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Original
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="free">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    free
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    frei
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="fixed selection">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    fixed selection
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    fixer Ausschnitt
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="fixed ratio">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    fixed ratio
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Verhältnis
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="fixed size">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    fixed size
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    fixe Zielgröße
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="target frame">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    target frame
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Zielrahmen
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="none">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    none
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    ohne
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="light">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    light
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    leicht
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="normal">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    normal
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    normal
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="strong">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    strong
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    mittel
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="very strong">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    very strong
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    stark
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Action">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:body><tmx:tu tuid="Action">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
                     Action
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
                     Aktion
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Overwrite version">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Overwrite version
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="All Files">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    All Files
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Version überschreiben
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Alle Dateien
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="New version">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    New version
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Alternate">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Alternate
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    neue Version
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Alternate
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Group/Folder">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Group/Folder
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create new version">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Create new version
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Gruppe/Ordner
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Neue Version anlegen
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Upload files">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Upload files
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create new versions">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Create new versions
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Mediaobjekte hochladen
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Neue Versionen anlegen
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Image / Document">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Image / Document
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Bild / Dokument
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Import files">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Import files
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Mediaobjekte importieren
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Import">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Import
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Importieren
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Upload">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Upload
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Upload
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Files">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Files
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Dateien
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Nothing to import.">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Nothing to import.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Keine Dateien zum Importieren vorhanden.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Shared properties">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Shared properties
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Gemeinsame Eigenschaften
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Mediagroup">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Mediagroup
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Mediagruppe
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="add objects to lightbox">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    add objects to lightbox
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Medien in die Sammelbox aufnehmen
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Object %1 edited.">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Object %1 edited.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Mediaobjekt %1 bearbeitet.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Object deleted.">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Object deleted.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Mediaobjekt gelöscht.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="msg_object_not_saved">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    File not changed! An image object must always be of type jpeg, gif or png.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Datei wurde nicht ausgetauscht! Eine Bilddokument kann nur durch Bilder vom Typ JPG/GIF/PNG ersetzt werden.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="First version added">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    First version added
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Erste Version hinzugefügt.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="msg_error_imageversionupload">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    File upload error! An image object version must always be of type jpeg, gif or png.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Fehler beim Hochladen einer Bildversion. Achtung! Versionen eines Bildes müssen immer vom Typ JPEG, GIF oder PNG sein.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="illegal versionname">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    illegal versionname
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Ungültiger Versionsname.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="msg_error_versionnamechange">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Name of version %1 cannot be changed to %2. A version with that name already exists.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Versionsbezeichnung %1 kann nicht nach %2 geändert werden. Versionsname bereits vorhanden
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Version deleted.">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Version deleted.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Version gelöscht.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="msg_error_overwrite_original">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Original cannot be overwrited. A new version is created.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Das Original kann nicht überschrieben werden. Eine neue Version wurde erstellt.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="msg_error_readimage">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Problems reading image. Unsupported/Unknown image format.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Probleme beim Öffnen der Ausgangsdatei. Bildformat wird nicht unterstützt.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="msg_error_unknown_mimetype">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Problems reading image. Unsupported/Unknown mime type %1.
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Unbekannter Mimetype (%1). Bildformat wird nicht unterstüzt. Operation abgebrochen.
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Upload failed!">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Upload failed!
-                </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Upload fehlgeschlagen!
-                </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Document upload succesful">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Document upload succesful">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
                     Document upload succesful
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
                     Dokument hochgeladen.
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="treat images like documents">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    treat image as document
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Drag &amp; Drop - Upload">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Drag &amp; Drop - Upload
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Bild als Dokument handhaben
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Drag &amp; Drop - Upload
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="handle images like documents">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    treat image as document
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Files">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Files
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Bilder als Dokumente handhaben
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Dateien
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>		
-        <tmx:tu tuid="Sharpen">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Sharpen
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="First version added">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    First version added
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Schärfen
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Erste Version hinzugefügt.
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Really delete this version?">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Really delete this version?
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Folder">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Folder
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Diese Version wirklich loeschen?
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Ordner
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Select image">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
-                    Select image
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Group/Folder">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Group/Folder
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
-                    Bild auswählen
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Gruppe/Ordner
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-        <tmx:tu tuid="Media selection">
-            <tmx:tuv xml:lang="en">
-                <tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Image (%1x%2)">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Image (%1x%2)
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Bild (%1x%2)
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Image / Document">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Image / Document
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Bild / Dokument
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Import">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Import
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Importieren
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Import files">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Import files
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Mediaobjekte importieren
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Lightbox">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Lightbox
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Sammelbox
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media selection">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
                     Media selection
                 </tmx:seg>
-            </tmx:tuv>
-            <tmx:tuv xml:lang="de">
-                <tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
                     Medienauswahl
                 </tmx:seg>
-            </tmx:tuv>
-        </tmx:tu>
-    </tmx:body>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Mediagroup">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Mediagroup
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Mediagruppe
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Mimetype">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Mimetype
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Mimetype
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New Files">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    New Files
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Neue Dateien
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New version">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    New version
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    neue Version
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Nothing to import.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Nothing to import.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Keine Dateien zum Importieren vorhanden.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Object %1 edited.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Object %1 edited.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Mediaobjekt %1 bearbeitet.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Object deleted.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Object deleted.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Mediaobjekt gelöscht.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Original">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Original
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Original
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Overwrite version">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Overwrite version
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Version überschreiben
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this document?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Really delete this document?
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Dieses Dokument wirklich löschen?
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this image?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Really delete this image?
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Dieses Bild wirklich löschen?
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this version?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Really delete this version?
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Diese Version wirklich loeschen?
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Search Media">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Search Media
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Suche Media nach
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Select image
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Bild auswählen
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Shared properties">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Shared properties
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Gemeinsame Eigenschaften
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Sharpen">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Sharpen
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Schärfen
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Size">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Size
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Größe
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Upload
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Upload
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload failed!">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Upload failed!
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Upload fehlgeschlagen!
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload files">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Upload files
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Mediaobjekte hochladen
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload mediaobject">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Upload mediaobject
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Mediaobjekte hochladen
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Version deleted.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Version deleted.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Version gelöscht.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="add objects to lightbox">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    add objects to lightbox
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Medien in die Sammelbox aufnehmen
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="fixed ratio">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    fixed ratio
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Verhältnis
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="fixed selection">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    fixed selection
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    fixer Ausschnitt
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="fixed size">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    fixed size
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    fixe Zielgröße
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="free">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    free
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    frei
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="handle images like documents">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                	handle images like documents
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Bilder als Dokumente handhaben
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="illegal versionname">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    illegal versionname
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Ungültiger Versionsname.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="light">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    light
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    leicht
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_error_imageversionupload">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    File upload error! An image object version must always be of type jpeg, gif or png.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Fehler beim Hochladen einer Bildversion. Achtung! Versionen eines Bildes müssen immer vom Typ JPEG, GIF oder PNG sein.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_error_overwrite_original">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Original cannot be overwritten. A new version is created.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Das Original kann nicht überschrieben werden. Eine neue Version wurde erstellt.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_error_readimage">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Problems reading image. Unsupported/Unknown image format.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Probleme beim Öffnen der Ausgangsdatei. Bildformat wird nicht unterstützt.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_error_unknown_mimetype">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Problems reading image. Unsupported/Unknown mime type %1.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Unbekannter Mimetype (%1). Bildformat wird nicht unterstüzt. Operation abgebrochen.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_error_versionnamechange">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    Name of version %1 cannot be changed to %2. A version with that name already exists.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Versionsbezeichnung %1 kann nicht nach %2 geändert werden. Versionsname bereits vorhanden
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_object_not_saved">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    File not changed! An image object must always be of type jpeg, gif or png.
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Datei wurde nicht ausgetauscht! Eine Bilddokument kann nur durch Bilder vom Typ JPG/GIF/PNG ersetzt werden.
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="none">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    none
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    ohne
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="normal">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    normal
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    normal
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="objects/page">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    objects/page
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Medien / Seite anzeigen
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="strong">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    strong
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    mittel
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="target frame">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    target frame
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Zielrahmen
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="treat images like documents">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    treat image as document
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    Bild als Dokument handhaben
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="very strong">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>
+                    very strong
+                </tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>
+                    stark
+                </tmx:seg>
+      </tmx:tuv></tmx:tu>
+			  </tmx:body>
 </tmx:tmx>
