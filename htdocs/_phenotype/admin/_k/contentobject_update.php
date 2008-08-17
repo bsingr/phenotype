@@ -144,7 +144,7 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
 
 	if ($minus !="")
 	{
-		$sql = "DELETE FROM content_template WHERE tpl_id = " . $minus;
+		$sql = "DELETE FROM content_template WHERE con_id = $id AND tpl_id = " . $minus;
 		$myDB->query($sql);
 		$anzahl_templates--;
 	}
