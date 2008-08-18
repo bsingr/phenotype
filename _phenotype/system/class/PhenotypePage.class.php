@@ -834,7 +834,9 @@ class PhenotypePageStandard extends PhenotypeBase
 	    $myPT->displayDebugInfo();
 	    $uri =  uniqid();
 	    $myDao = new PhenotypeSystemDataObject("DebugInfo",array("uri"=>$uri));
-	    $myDao->set("html",$myPT->stopBuffer());
+	    $debuginfo = $myPT->stopBuffer();
+	    $debuginfo = substr($debuginfo,0,800000);
+	    $myDao->set("html",$debuginfo);
 	    //$myDao->storeData("system.debuginfo_".$uri,60);
 	    $myDao->store(60);
 	    ?>
@@ -2329,12 +2331,17 @@ class PhenotypePageStandard extends PhenotypeBase
     {
       $lng_id=$this->lng_id;
     }
+    else 
+    {
+      $this->switchLanguage($lng_id);
+    }
     if ($this->get("pag_url".$lng_id)!="")
     {
       $url =$this->get("pag_url".$lng_id);
     }
     else
     {
+    
       $schema = "fulltree";
       $multilanguage = $this->multilanguage;
       $url="";
@@ -2390,10 +2397,12 @@ class PhenotypePageStandard extends PhenotypeBase
       $url = $this->urlencode($this->titel);
       if ($schema == "fulltree" OR $schema=="subtree")
       {
+
+
         while ($row["pag_id_top"]!=0)
         {
           $myNavPage = new PhenotypePage($row["pag_id_top"]);
-          $myNavPage->switchLanguage($this->lng_id);
+          $myNavPage->switchLanguage($lng_id);
           $row = $myNavPage->row;
           if ($row["pag_id_top"]!=0 OR $schema=="fulltree")
           {
@@ -2422,18 +2431,19 @@ class PhenotypePageStandard extends PhenotypeBase
     $url = $this->buildURL();
 
 
-    $mySQL->addField("pag_url".$k,$url);
+    $mySQL->addField("pag_url",$url);
     foreach ($PTC_LANGUAGES AS $k =>$v)
     {
       if ($this->multilanguage)
       {
-        $url = $this->buildURL($k);
+           $url = $this->buildURL($k);
       }
+
       $mySQL->addField("pag_url".$k,$url);
     }
     $sql = $mySQL->update("page","pag_id=".$this->id);
     $myDB->query($sql);
-
+    //exit();
   }
 
   /**

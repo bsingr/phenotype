@@ -1963,7 +1963,7 @@ public function localeH($token,$_params=Array())
 {
 
 	$s= $this->locale($token,$_params);
-	return htmlentities($s);
+	return $this->codeHKT($s);
 }
 
 public function localeHBR($token,$_params=Array())

@@ -100,10 +100,6 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 		global $myAdm;
 		global $mySUser;
 
-		// Meine Hinweise und Anfragen in temporaere Tabellen
-		$this->storeRequestsTemporary();
-		$this->storeMarkupsTemporary();
-		$this->storePinsTemporary();
 
 
 		// Darstellungsvariante bestimmen
@@ -125,6 +121,8 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 		// Grund-SQL fuer alle Detailabfragen
 		$sql_join = $this->getBaseSelectSQL();
+		
+	
 		$sql_join_user = $this->getBaseUserSelectSQL();
 
 
@@ -626,8 +624,6 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 
 
-		// Temptabellen wieder loeschen
-		$this->removeTemporaryTables();
 
 		return($myPT->stopBuffer());
 	}

@@ -5,7 +5,7 @@
 // Copyright (c) 2003-2006 Nils Hagemann, Paul Sellinger,
 // Peter Sellinger.
 // -------------------------------------------------------
-// Thanks for your support: Markus Griesbach, Michael 
+// Thanks for your support: Markus Griesbach, Michael
 // Krämer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
@@ -25,62 +25,18 @@
 class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 {
 
-	public $temptable_request;
-	public $temptable_markup;
-	public $temptable_pin;
 
-	function storeRequestsTemporary()
-	{
-		global $myDB;
-
-		$sql_request = " SELECT tik_id,tik_request FROM ticketrequest WHERE usr_id=" . $_SESSION["usr_id"];
-		$this->temptable_request ="temp_request_" . uniqid("pt");
-		$sql = "CREATE TEMPORARY TABLE " . $this->temptable_request . $sql_request;
-
-		$rs = $myDB->query($sql);
-
-	}
-
-
-	function storeMarkupsTemporary()
-	{
-		global $myDB;
-
-		$sql_markup = " SELECT tik_id,tik_markup FROM ticketmarkup WHERE usr_id=" . $_SESSION["usr_id"];
-
-		$this->temptable_markup ="temp_markup_" . uniqid("pt");
-		$sql = "CREATE TEMPORARY TABLE " . $this->temptable_markup . $sql_markup;
-		$rs = $myDB->query($sql);
-
-	}
-	
-	function storePinsTemporary()
-	{
-		global $myDB;
-
-		$sql_pin = " SELECT tik_id,tik_pin FROM ticketpin WHERE usr_id=" . $_SESSION["usr_id"];
-		$this->temptable_pin ="temp_pin_" . uniqid("pt");
-		$sql = "CREATE TEMPORARY TABLE " . $this->temptable_pin . $sql_pin;
-
-		$rs = $myDB->query($sql);
-
-	}	
-
-	function removeTemporaryTables()
-	{
-		global $myDB;
-
-		$sql = "DROP TEMPORARY TABLE " . $this->temptable_markup;
-		$rs = $myDB->query($sql);
-		$sql = "DROP TEMPORARY TABLE " . $this->temptable_request;
-		$rs = $myDB->query($sql);
-				$sql = "DROP TEMPORARY TABLE " . $this->temptable_pin;
-		$rs = $myDB->query($sql);
-	}
 
 	function getBaseSelectSQL()
 	{
-		$sql = "SELECT *, ticket.tik_id AS tik_id FROM ticket LEFT JOIN ticketsubject ON ticket.sbj_id = ticketsubject.sbj_id LEFT JOIN $this->temptable_request ON ticket.tik_id = $this->temptable_request.tik_id LEFT JOIN $this->temptable_markup ON ticket.tik_id = $this->temptable_markup.tik_id LEFT JOIN $this->temptable_pin ON ticket.tik_id = $this->temptable_pin.tik_id ";
+		global $mySUser;
+
+		$sql = "SELECT *, ticket.tik_id AS tik_id FROM ticket LEFT JOIN ticketsubject ON ticket.sbj_id = ticketsubject.sbj_id ";
+
+		$sql .="LEFT JOIN (SELECT tik_id,tik_request FROM ticketrequest WHERE usr_id=" . $mySUser->id.")AS ticketrequest ON ticket.tik_id = ticketrequest.tik_id ";
+		$sql .="LEFT JOIN (SELECT tik_id,tik_markup FROM ticketmarkup WHERE usr_id=" . $mySUser->id.")AS ticketmarkup ON ticket.tik_id = ticketmarkup.tik_id ";
+		$sql .="LEFT JOIN (SELECT tik_id,tik_pin FROM ticketpin WHERE usr_id=" . $mySUser->id.")AS ticketpin ON ticket.tik_id = ticketpin.tik_id ";
+		 
 		return ($sql);
 	}
 
@@ -120,7 +76,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 	{
 		global $mySUser;
 		global $myDB;
-		
+
 		$sql = "SELECT * FROM ticketpin WHERE tik_id=".$tik_id ." AND usr_id=".$mySUser->id;
 		$rs = $myDB->query($sql);
 		if (mysql_num_rows($rs)!=0)
@@ -128,7 +84,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 			$sql = "DELETE FROM ticketpin WHERE tik_id=".$tik_id ." AND usr_id=".$mySUser->id;
 			$rs = $myDB->query($sql);
 		}
-		else 
+		else
 		{
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("tik_id",$tik_id,DB_NUMBER);
@@ -138,7 +94,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 		}
 
 	}
-	
+
 	function renderExplorer($scope,$sbj_id,$dat_id,$focus,$sortorder)
 	{
 		global $myPT;
@@ -171,7 +127,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 		if ($dat_id==0)
 		{
 			$param = "&focus=".$focus."&sortorder=".$sortorder."&dat_id=0";
-			
+				
 			$this->tab_draw("Aufgaben",$x=260,1);
 			$myNav = new PhenotypeTree();
 			$nav_id  = $myNav->addNode("Alle Bereiche","backend.php?page=Ticket,Assess&amp;sbj_id=0".$param,0,"Alle Bereiche");
@@ -202,15 +158,15 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 			$dat_bez = "";
 			$this->tab_draw($myPT->getPref("tickets.tab_2ndorder"),$x=260,1);
 			$myNav = new PhenotypeTree();
-			
+				
 			$param = "&focus=".$focus."&sortorder=".$sortorder."&sbj_id=0";
-			
+				
 			foreach ($_projects AS $k => $v)
 			{
 				$myNav->addNode($v,"backend.php?page=Ticket,Assess&amp;dat_id=".$k.$param,0,$k);
 				if ($dat_id==$k){$dat_bez = "/ " . $v;}
 			}
-			
+				
 			$this->displayTreeNavi($myNav,$dat_id);
 			return ($dat_bez);
 		}
@@ -223,64 +179,72 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 	function displayNewTaskButton($sbj_id,$dat_id_2ndorder,$focus,$sortorder)
 	{
 		?>
-		<table width="260" border="0" cellpadding="0" cellspacing="0">
-	        <tr>
-          <td class="windowFooterGrey2"><a href="javascript:ticketWizard(0,0,0,0,<?php echo $sbj_id ?>,<?php echo $dat_id_2ndorder ?>)" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neue Aufgabe einstellen </a></td>
-          <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
-        </tr>
-	 <tr>
-          <td class="windowBottomShadow" width="250"><img src="img/win_sh_bo_le.gif" width="10" height="10"></td>
-          <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
-        </tr>
-		</table>
+<table width="260" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="windowFooterGrey2"><a
+			href="javascript:ticketWizard(0,0,0,0,<?php echo $sbj_id ?>,<?php echo $dat_id_2ndorder ?>)"
+			class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22"
+			border="0" align="absmiddle"> Neue Aufgabe einstellen </a></td>
+		<td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="windowBottomShadow" width="250"><img
+			src="img/win_sh_bo_le.gif" width="10" height="10"></td>
+		<td valign="top" class="windowRightShadow"><img
+			src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
+	</tr>
+</table>
 		<?php
-	}
+}
 
-	function displaySearchForm($sbj_id,$dat_id,$focus,$sortorder,$search_term="")
-	{
-		?>
-		<form action="backend.php" method="post">
-		<input type="hidden" name="page" value="Ticket,Assess,search">
- <table width="260" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td colspan="3" class="padding10"><strong>Suche Aufgaben <?php echo $search_term ?> nach:</strong></td>
-            </tr>
-            <tr>
-              <td class="padding10">Bezeichnung</td>
-              <td>
- 	  		  <input type="hidden" name="sbj_id" value="<?php echo $sbj_id ?>">
- 	  		  <input type="hidden" name="dat_id" value="<?php echo $dat_id ?>">
-			  <input type="hidden" name="focus" value="<?php echo $focus ?>">
-			  <input type="hidden" name="sortorder" value="<?php echo $sortorder ?>">
-	    	  <input type="text" name="s" style="width: 100
-			  px" class="input"></td>
-            </tr>
-            <tr>
-              <td class="padding10"> ID </td>
-              <td><input type="text" style="width: 100
-			  px" name="i" class="input"></td>
-            </tr>
-            <tr>
-              <td class="padding10"> Volltext </td>
-              <td><input type="text" style="width: 100
-			  px" name="v" class="input"></td>
-            </tr>
-            <tr>
-              <td class="padding10">&nbsp;</td>
-              <td><input name="Submit" type="submit" class="buttonGrey2" value="Senden" style="width:102px"></td>
-            </tr>
-          </table></td>
-          <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
-        </tr>
-        <tr>
-          <td class="windowBottomShadow"><img src="img/win_sh_bo_le.gif" width="10" height="10"></td>
-          <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
-        </tr>
-      </table></form>	
-		<?php
-	}
+function displaySearchForm($sbj_id,$dat_id,$focus,$sortorder,$search_term="")
+{
+	?>
+<form action="backend.php" method="post"><input type="hidden"
+	name="page" value="Ticket,Assess,search">
+<table width="260" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="windowFooterGrey2">
+		<table border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td colspan="3" class="padding10"><strong>Suche Aufgaben <?php echo $search_term ?>
+				nach:</strong></td>
+			</tr>
+			<tr>
+				<td class="padding10">Bezeichnung</td>
+				<td><input type="hidden" name="sbj_id" value="<?php echo $sbj_id ?>">
+				<input type="hidden" name="dat_id" value="<?php echo $dat_id ?>"> <input
+					type="hidden" name="focus" value="<?php echo $focus ?>"> <input
+					type="hidden" name="sortorder" value="<?php echo $sortorder ?>"> <input
+					type="text" name="s" style="width: 100 px" class="input"></td>
+			</tr>
+			<tr>
+				<td class="padding10">ID</td>
+				<td><input type="text" style="width: 100 px" name="i" class="input"></td>
+			</tr>
+			<tr>
+				<td class="padding10">Volltext</td>
+				<td><input type="text" style="width: 100 px" name="v" class="input"></td>
+			</tr>
+			<tr>
+				<td class="padding10">&nbsp;</td>
+				<td><input name="Submit" type="submit" class="buttonGrey2"
+					value="Senden" style="width: 102px"></td>
+			</tr>
+		</table>
+		</td>
+		<td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="windowBottomShadow"><img src="img/win_sh_bo_le.gif"
+			width="10" height="10"></td>
+		<td valign="top" class="windowRightShadow"><img
+			src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
+	</tr>
+</table>
+</form>
+	<?php
+}
 
 }
 ?>

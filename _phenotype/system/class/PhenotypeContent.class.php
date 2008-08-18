@@ -159,6 +159,22 @@ class PhenotypeContentStandard extends PhenotypeBase
 
     $this->mySQL = $mySQL;
     $this->attachKeyFields();
+    
+    global $PTC_LANGUAGES;
+
+    foreach ($PTC_LANGUAGES AS $k=>$v)
+    {
+      $url= $this->buildURL("show",$k);
+      // / am Anfang wegfiltern
+      $patterns = "/^[\/]*/";
+      $url = preg_replace($patterns,"", $url);
+      // / am Ende wegfiltern
+      $patterns = "/[\/]\$/";
+      $url = preg_replace($patterns,"", $url);
+
+      $this->mySQL->addField("dat_permalink".$k,$url);
+    }
+    
 
     $fulltext = $this->buildFullText();
 
@@ -491,7 +507,7 @@ class PhenotypeContentStandard extends PhenotypeBase
     $this->load($id);
   }
 
-	/**
+  /**
 	 * sets key field1 in the data table. There is a VARCHAR key1 and a INT key1, you can choose to set a specific one or both
 	 *
 	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
@@ -499,10 +515,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 	 */
   function setKey1($val, $type=0)
   {
-  	$this->setKey(1, $val, $type);
+    $this->setKey(1, $val, $type);
   }
 
-	/**
+  /**
 	 * sets key field2 in the data table. There is a VARCHAR key2 and a INT key2, you can choose to set a specific one or both
 	 *
 	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
@@ -510,10 +526,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 	 */
   function setKey2($val, $type=0)
   {
-  	$this->setKey(2, $val, $type);
+    $this->setKey(2, $val, $type);
   }
 
-	/**
+  /**
 	 * sets key field3 in the data table. There is a VARCHAR key3 and a INT key3, you can choose to set a specific one or both
 	 *
 	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
@@ -521,10 +537,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 	 */
   function setKey3($val, $type=0)
   {
-  	$this->setKey(3, $val, $type);
+    $this->setKey(3, $val, $type);
   }
 
-	/**
+  /**
 	 * sets key field4 in the data table. There is a VARCHAR key4 and a INT key4, you can choose to set a specific one or both
 	 *
 	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
@@ -532,10 +548,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 	 */
   function setKey4($val, $type=0)
   {
-  	$this->setKey(4, $val, $type);
+    $this->setKey(4, $val, $type);
   }
 
-	/**
+  /**
 	 * sets key field5 in the data table. There is a VARCHAR key5 and a INT key5, you can choose to set a specific one or both
 	 *
 	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
@@ -543,10 +559,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 	 */
   function setKey5($val, $type=0)
   {
-  	$this->setKey(5, $val, $type);
+    $this->setKey(5, $val, $type);
   }
 
-	/**
+  /**
 	 * sets key field6 in the data table. There is a VARCHAR key6 and a INT key6, you can choose to set a specific one or both
 	 *
 	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
@@ -554,27 +570,27 @@ class PhenotypeContentStandard extends PhenotypeBase
 	 */
   function setKey6($val, $type=0)
   {
-  	$this->setKey(6, $val, $type);
+    $this->setKey(6, $val, $type);
   }
 
-	/**
+  /**
 	 * sets a key field in the data table. There is a VARCHAR field and a separate INT field for every key in the DB, you can choose to set a specific one or both
 	 *
 	 * @param int $num	number of the key field
 	 * @param mixed	$value	value of the key. can be any scalar variable, will be casted to string or int
 	 * @param const int $type optional param. shows if to set the varchar key (with DB_STRING), the int ikey (with DB_NUMBER) or both. omit param to set both keys
 	 */
-	private function setKey($num, $value, $type=0)
-	{
-		if ($type == 0 || $type == DB_STRING)
-		{
-	    $this->mySQL->addField("dat_key". $num, (string)$value);
-		}
-		if ($type == 0 || $type == DB_NUMBER)
-		{
-	    $this->mySQL->addField("dat_ikey". $num, (int)$value);
-		}
-	}
+  private function setKey($num, $value, $type=0)
+  {
+    if ($type == 0 || $type == DB_STRING)
+    {
+      $this->mySQL->addField("dat_key". $num, (string)$value);
+    }
+    if ($type == 0 || $type == DB_NUMBER)
+    {
+      $this->mySQL->addField("dat_ikey". $num, (int)$value);
+    }
+  }
 
   function buildFullText()
   {
@@ -884,6 +900,12 @@ class PhenotypeContentStandard extends PhenotypeBase
     }
   }
 
+  /**
+   * Currently not working!
+   *
+   * @param unknown_type $input
+   * @param unknown_type $bez
+   */
   function form_datetime($input, $bez)
   {
     $a = Array (PT_CON_FORM_DATETIME, $input, $bez);
@@ -1525,58 +1547,58 @@ class PhenotypeContentStandard extends PhenotypeBase
 		break;
 
 		// ######## Datumsbox mit Uhrzeit
-	    case PT_CON_FORM_DATETIME :
-?>
-             <tr>
-             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
-             </td>
-             <td width="509" class="formarea"><p>
-             <?php
-
-
-             $name = $myCO->formid."_".$a[2];
-             $val = $myCO->get($a[2]);
-             if ($val != "")
-             {
-               $datum = @ date("d.m.Y H:i", $val);
-             } else
-             {
-               $val == time();
-               $datum = "";
-             }
-?>
-			 <input type="text" name="<?php echo $name ?>" value="<?php echo $datum ?>" size="14" class="input" ><a href="javascript:flip('divajax_<?php echo $a[2] ?>')"><img src="img/b_kalender_tr.gif" width="18" height="18" border="0" align="absmiddle"></a>
-			 <div id="divajax_<?php echo $a[2] ?>" style="position:absolute;visibility:hidden"></div>
-			 <script type="text/javascript">
-			 var ajax_<?php echo $a[2] ?> = new sack();
-
-			 var error=0;
-			 function ajax_<?php echo $a[2] ?>_doit(date,timestamp){
-			   ajax_<?php echo $a[2] ?>.resetData();
-			   ajax_<?php echo $a[2] ?>.requestFile = "backend.php";
-			   ajax_<?php echo $a[2] ?>.method = "GET";
-			   ajax_<?php echo $a[2] ?>.element = 'divajax_<?php echo $a[2] ?>';
-			   ajax_<?php echo $a[2] ?>.setVar("page","Editor,Content,selector_date");
-			   ajax_<?php echo $a[2] ?>.setVar("d",date);
-			   ajax_<?php echo $a[2] ?>.setVar("t",timestamp);
-			   ajax_<?php echo $a[2] ?>.setVar("e",'<?php echo $a[2] ?>');
-			   ajax_<?php echo $a[2] ?>.runAJAX();
-			 }
-			 function setDate_<?php echo $a[2] ?>(date)
-			 {
-			   document.forms.editform.<?php echo $name ?>.value=date;
-			   hide('divajax_<?php echo $a[2] ?>');
-			 }
-			</script>
-			<script type="text/javascript">ajax_<?php echo $a[2] ?>_doit(<?php echo $val ?>, 1)</script>
-             </p>
-             </td>
-             </tr>
-		<?php
-
-
-		break;
-
+  	    case PT_CON_FORM_DATETIME :
+ 	
+  ?>
+              <tr>
+              <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
+              </td>
+              <td width="509" class="formarea"><p>
+               <?php
+  
+  
+               $name = $myCO->formid."_".$a[2];
+               $val = $myCO->get($a[2]);
+               if ($val != "")
+              {
+                 $datum = @ date("d.m.Y H:i", $val);
+               } else
+               {
+                 $val == time();
+                 $datum = "";
+               }
+ ?>
+  			 <input type="text" name="<?php echo $name ?>" value="<?php echo $datum ?>" size="14" class="input" ><a href="javascript:flip('divajax_<?php echo $a[2] ?>')"><img src="img/b_kalender_tr.gif" width="18" height="18" border="0" align="absmiddle"></a>
+  			 <div id="divajax_<?php echo $a[2] ?>" style="position:absolute;visibility:hidden"></div>
+  			 <script type="text/javascript">
+  			 var ajax_<?php echo $a[2] ?> = new sack();
+  
+  			 var error=0;
+  			 function ajax_<?php echo $a[2] ?>_doit(date,timestamp){
+  			   ajax_<?php echo $a[2] ?>.resetData();
+  			   ajax_<?php echo $a[2] ?>.requestFile = "backend.php";
+  			   ajax_<?php echo $a[2] ?>.method = "GET";
+  			   ajax_<?php echo $a[2] ?>.element = 'divajax_<?php echo $a[2] ?>';
+  			   ajax_<?php echo $a[2] ?>.setVar("page","Editor,Content,selector_date");
+  			   ajax_<?php echo $a[2] ?>.setVar("d",date);
+  			   ajax_<?php echo $a[2] ?>.setVar("t",timestamp);
+  			   ajax_<?php echo $a[2] ?>.setVar("e",'<?php echo $a[2] ?>');
+  			   ajax_<?php echo $a[2] ?>.runAJAX();
+  			 }
+  			 function setDate_<?php echo $a[2] ?>(date)
+  			 {
+  			   document.forms.editform.<?php echo $name ?>.value=date;
+  			   hide('divajax_<?php echo $a[2] ?>');
+  			 }
+ 			</script>
+  			<script type="text/javascript">ajax_<?php echo $a[2] ?>_doit(<?php echo (int)$val ?>, 1)</script>
+               </p>
+               </td>
+               </tr>
+  		<?php
+  
+  
+ 		break;
 		// ######## HTML
 	    case PT_CON_FORM_HTML :
 ?>
@@ -4092,13 +4114,29 @@ class PhenotypeContentStandard extends PhenotypeBase
     return ("ajax_".$token."_doit('".$step."');");
   }
 
-  
-  public function buildPermaID($lng_id=null)
+
+  /**
+   * retrieves URL of a page using the DAO cache
+   * 
+   * You should not overwerite this method. If you want to change URL behaviour
+   * stick to buildURL instead.
+   *
+   * @param integer $lng_id
+   * @return string
+   */
+
+  public function getURL($action="show",$lng_id=null)
   {
-    
+    return $this->buildURL($action,$lng_id);
   }
   
-  public function getURL($action,$pag_id=null,$lng_id=null)
+  public function getHUrl($action="show",$lng_id=null)
+  {
+    global $myPT;
+    return $myPT->codeH(self::getUrl($action,$lng_id));
+  }
+  
+  public function buildURL($action="show",$lng_id=null)
   {
     return "undefined";
   }

@@ -78,13 +78,20 @@ class PhenotypeRequestStandard
         {
           // check for param rewrite
 
-          $sql = "SELECT pag_id, LENGTH(pag_url) AS L FROM page WHERE pag_url !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url,'/'))=1  ORDER BY L LIMIT 0,1";
+         
+          $sql = "SELECT pag_id, LENGTH(pag_url1) AS L ,1 AS lng_id FROM page WHERE pag_url1 !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url1,'/'))=1";
+          $sql .= " UNION SELECT pag_id, LENGTH(pag_url2) AS L ,2 AS lng_id FROM page WHERE pag_url2 !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url2,'/'))=1";
+          $sql .= " UNION SELECT pag_id, LENGTH(pag_url3) AS L ,3 AS lng_id FROM page WHERE pag_url3 !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url3,'/'))=1";
+          $sql .= " UNION SELECT pag_id, LENGTH(pag_url4) AS L ,4 AS lng_id FROM page WHERE pag_url4 !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url4,'/'))=1";
+          $sql .= " ORDER BY L DESC, lng_id ASC LIMIT 0,1";
 
           $rs = $myDB->query($sql);
           if (mysql_num_rows($rs)==1)
           {
             $row =mysql_fetch_array($rs);
             $this->set("id",$row["pag_id"]);
+            $this->set("lng_id",$row["lng_id"]);
+            
             $params = substr($smartURL,$row["L"]+1);
             $this->set("smartURLParams", $params);
             //echo $params;

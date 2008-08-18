@@ -177,10 +177,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		global $myLayout;
 
 
-		// Meine Hinweise und Anfragen in temporaere Tabellen
-		$this->storeRequestsTemporary();
-		$this->storeMarkupsTemporary();
-		$this->storePinsTemporary();
+
 
 		// Grund-SQL fuer alle Detailabfragen
 		$sql_join = $this->getBaseSelectSQL();
@@ -290,8 +287,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		echo "</form>";
 		$myLayout->workarea_stop_draw();
 
-		// Temptabellen wieder loeschen
-		$this->removeTemporaryTables();
+
 		return ($myPT->stopBuffer());
 	}
 
