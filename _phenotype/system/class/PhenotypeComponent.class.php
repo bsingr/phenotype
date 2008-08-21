@@ -556,14 +556,14 @@ class PhenotypeComponentStandard
 
 
 
-	function form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=2)
+	function form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=2, $version=false)
 	{
 		if ($this->myLayout==-1)
 		{
 			$this->myLayout = new PhenotypeAdminLayout();
 		}
 		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_image($name,$img_id,$folder,$changefolder,$x,$y,$alt,$align,$mode);
+		echo $this->myLayout->workarea_form_image($name,$img_id,$folder,$changefolder,$x,$y,$alt,$align,$mode, $version);
 	}
 
 	function form_imageupload($name,$img_id,$alt,$align)

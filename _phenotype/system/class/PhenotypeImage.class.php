@@ -111,11 +111,11 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 		$this->id = $id;
 	}	
 	
-	function render($alt = Null)
+	function render($alt = Null, $version = NULL)
 	{
 		global $myPT;
 		$myPT->startbuffer();
-		$this->display($alt);
+		$this->display($alt, $version);
 		$html = $myPT->stopbuffer();
 		return $html;
 	}
@@ -165,16 +165,20 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 		return $myPT->stopbuffer();
 	}
 
-	function display($alt = NULL)
+	function display($alt = NULL, $version = NULL)
 	{
+		global $myDB;
 		if ($alt == NULL)
 		{
 			$alt = $this->alt;
 		}
-?><img src="<?php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php echo $this->x ?>" height="<?php echo $this->y ?>" alt="<?php echo $alt ?>" title="<?php echo $alt ?>" border="0"<?php if ($this->align!=""){ ?> align="<?php echo $this->align ?>"<?php } ?><?php if ($this->class!=""){ ?> class="<?php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php echo $this->style ?>"<?php } ?> /><?php
-
-
-
+		if ($version >= 1) {
+			$sql = "SELECT * FROM mediaversion WHERE med_id = ".$this->id." AND ver_id = ".(int)$version." ORDER BY ver_bez, ver_id DESC";
+			$rs = $myDB->query($sql);
+			$row = mysql_fetch_array($rs);
+			$this->initVersion($row);
+		}
+		?><img src="<?php echo MEDIABASEURL . $this->physical_folder . "/" . $this->filename ?>" width="<?php echo $this->x ?>" height="<?php echo $this->y ?>" alt="<?php echo $alt ?>" title="<?php echo $alt ?>" border="0"<?php if ($this->align!=""){ ?> align="<?php echo $this->align ?>"<?php } ?><?php if ($this->class!=""){ ?> class="<?php echo $this->class ?>"<?php } ?><?php if ($this->style!=""){ ?> style="<?php echo $this->style ?>"<?php } ?> /><?php
 	}
 
 	function display_maxX($maxX, $alt = NULL)

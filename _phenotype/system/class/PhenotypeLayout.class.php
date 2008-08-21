@@ -1074,7 +1074,7 @@ class PhenotypeLayoutStandard
 	}
 
 
-	function workarea_form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=1)
+	function workarea_form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=1,$version=false)
 	{
 		global $myDB;
 		global $myPT;
@@ -1144,8 +1144,27 @@ class PhenotypeLayoutStandard
      $this->iconbar_draw($name."img_align",$align,"editform");
      //$this->workarea_form_iconbar($name_org."bildausrichtung",$align);
      echo "<br>";
-?>
- </td></tr></table>
+	 if ($version !== false) {
+    ?> locale("version"):<br/>
+    <select name="<?php echo $name ?>version" class="listmenu">
+    <?php
+     $html = '<option value="0" >Original</option>';
+	 $sql = "SELECT * FROM mediaversion WHERE med_id = ".$myImg->id." ORDER BY ver_bez, ver_id DESC";
+	 $rs = $myDB->query($sql);
+     while ($row = mysql_fetch_array($rs))
+     {
+	 $selected ="";
+	 if ($row["ver_id"] == $version)
+	 {
+		$selected = "selected";
+	 }
+		$html .='<option value="'. $row["ver_id"] .'" ' . $selected . '>' . $row["ver_bez"] . '</option>';
+     }
+     echo $html;
+     ?>				 
+    </select>
+    <?php } ?>
+      </td></tr></table>
  <?php } ?>
  </div>
 

@@ -11,6 +11,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		$this->set("img_id",0);
 		$this->set("alt","");
 		$this->set("bildausrichtung","links");
+		$this->set("version", 0);
 		$this->set("linkbez","");
 		$this->set("linkurl","");
 		$this->set("linktarget","_self");
@@ -20,7 +21,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 	{
 		$this->form_textfield("Überschrift","headline",$this->get("headline"));
 		echo "<br>";
-		$this->form_image("",$this->get("img_id"),-1,1,0,0,$this->get("alt"),$this->get("bildausrichtung"),2);
+		$this->form_image("",$this->get("img_id"),-1,1,0,0,$this->get("alt"),$this->get("bildausrichtung"),2, $this->get("version"));
 
 
     ?> 
@@ -62,6 +63,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		{
 			$this->set("bildausrichtung","links");
 		}
+		$this->fset("version");
 		$this->fset("linkbez","linkbez");
 		$this->fset("linkurl","linkurl");
 		$this->fset("linktarget","linktarget");
@@ -106,7 +108,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 			$myImg = new PhenotypeImage($this->get("img_id"));
 			$myImg->style = $style;
 
-			$mySmarty->assign("image",$myImg->render($alt));
+			$mySmarty->assign("image",$myImg->render($alt,$this->get("version")));
 		}
 
 		$mySmarty->assign("headline",$this->get("headline"));
