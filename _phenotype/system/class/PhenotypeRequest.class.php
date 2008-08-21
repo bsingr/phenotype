@@ -28,7 +28,9 @@ class PhenotypeRequestStandard
   // holds the request array
 
   public $_REQUEST;
-
+  
+  public $code404 = 0;
+  
   public function __construct()
   {
     global $myDB;
@@ -96,9 +98,11 @@ class PhenotypeRequestStandard
             $this->set("smartURLParams", $params);
             //echo $params;
             $_params = split('/',$params);
-            $i=0;
+            $i=0;$n=0;
             foreach ($_params AS $v)
             {
+              $n++;
+              $this->set("smartParam".$n,$v);
               switch ($i)
               {
                 case 0:
@@ -123,7 +127,9 @@ class PhenotypeRequestStandard
           else
           {
             // no unique hit
-            $myApp->throw404();
+            global $myTC;
+            $myTC->stop();
+            $this->code404=1;
           }
         }
       }

@@ -8,7 +8,16 @@ class PhenotypeApplicationStandard
 {
   function throw404($pag_id)
   {
+  	global $myPT;
+  	global $myPage;
+	global $myRequest;
+	
+	if (!is_object($myPage))
+	{
+		$myPage = new PhenotypePage();
+	}
     Header("HTTP/1.0 404 Not Found");
+    $myPT->startBuffer();
 ?>
 <HTML><HEAD>
 <TITLE>404 Not Found</TITLE>
@@ -17,8 +26,11 @@ class PhenotypeApplicationStandard
 The requested URL <?php echo $_SERVER["REQUEST_URI"] ?> was not found on this server.<P>
 <HR>
 <ADDRESS>Phenotype CMS/<?php echo PT_VERSION ?> at <?php echo $_SERVER["SERVER_NAME"] ?> Port <?php echo $_SERVER["SERVER_PORT"] ?></ADDRESS>
-</BODY></HTML>
+#!#pt_debug#!#</BODY></HTML>
 <?php
+$html = $myPT->stopBuffer();
+global $myTC;
+echo $myPage->doDisplayPostProcessing($html,$myTC,"?");
 exit();
   }
 

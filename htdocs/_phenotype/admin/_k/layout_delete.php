@@ -39,7 +39,7 @@ $id = $_REQUEST["id"];
 $myAdm = new PhenotypeAdmin();
 $myAdm->cfg_removeLayout($id);
 
-
+$url ="layout.php";
   Header ("Location:" . $url."?".SID);
   exit();
 ?>

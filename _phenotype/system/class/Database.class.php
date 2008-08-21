@@ -132,6 +132,11 @@ class PhenotypeDatabase
         $file = $_traces[0]["file"];
         $p = strrpos($file,'\\');
         $file = substr($file,$p+1);
+        $sql_cut = $sql;
+        if (strlen($sql)>512)
+        {
+        	$sql_cut = substr($sql,0,512)."...";
+        }
  	  		?>
  	  		<br clear="all">
 		 	<div style="position:absolute;background-color:#FF0000;left:10px;top:500px;width:1000px;opacity:0.8;color:white;
@@ -139,7 +144,7 @@ filter:alpha(opacity=85);padding-left:5px">
 		 	<table>
 		 	<tr><td>SQL-Fehler:</td><td><strong><?php echo mysql_errno($this->dbhandle)?></strong></td></tr>
 		 	<tr><td>Fehlermeldung:</td><td><strong><?php echo mysql_error($this->dbhandle)?></strong></td></tr>
-		 	<tr><td>SQL:</td><td><strong><?php echo $sql?></strong></td></tr>
+		 	<tr><td>SQL:</td><td><strong><?php echo $sql_cut?></strong></td></tr>
 		 	<tr><td>Datei:</td><td><strong><?php echo $file?></strong></td></tr>
 		 	<tr><td>Zeile:</td><td><strong><?php echo $zeile?></strong></td></tr>
 		 	</table>

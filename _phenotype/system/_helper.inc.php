@@ -80,6 +80,12 @@ function get_image($img_id,$alt=null,$style="",$class="")
   return $myPT->get_image($img_id,$alt,$style,$class);
 }
 
+function url_for_content($dat_id,$action,$lng_id=null,$_params,$smartUID="",$fullUrl=false)
+{
+  global $myPT;
+  return $myPT->url_for_content($dat_id,$action,$lng_id,$_params,$smartUID,$fullUrl);
+}
+
 /*
 function url_for_po($myPage,$params=array())
 {

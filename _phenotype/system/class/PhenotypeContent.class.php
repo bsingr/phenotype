@@ -4133,7 +4133,7 @@ class PhenotypeContentStandard extends PhenotypeBase
   public function getHUrl($action="show",$lng_id=null)
   {
     global $myPT;
-    return $myPT->codeH(self::getUrl($action,$lng_id));
+    return $myPT->codeH($this->getUrl($action,$lng_id));
   }
   
   public function buildURL($action="show",$lng_id=null)

@@ -55,11 +55,12 @@ class PhenotypeStandard extends PhenotypeBase
 	//private $_phrases = Array();
 
 	/**
-	 * Holds the URLHelper dataobject during one request
+	 * Holds the URLHelper dataobjects during one request
 	 *
 	 * @var unknown_type
 	 */
 	private $URLHelper = false;
+	private $URLHelperCO = false;
 
 	/**
 	 * Holds the MediaobjectsHelper dataobject during one request
@@ -100,6 +101,14 @@ class PhenotypeStandard extends PhenotypeBase
 				$myDAO->store(0,true);
 			}
 		}
+		if ($this->URLHelperCO!=false)
+		{
+			$myDAO = $this->URLHelperCO;
+			if ($myDAO->changed)
+			{
+				$myDAO->store(0,true);
+			}
+		}		
 		if ($this->MediaobjectsHelper!=false)
 		{
 			$myDAO = $this->MediaobjectsHelper;
@@ -116,8 +125,8 @@ class PhenotypeStandard extends PhenotypeBase
 		global $myTC;
 
 		// Time check initialize
-		$myTC = new TCheck();
-		$myTC->start();
+		//$myTC = new TCheck();
+		//$myTC->start();
 
 		if (PT_FRONTENDSESSION==1)
 		{
@@ -417,7 +426,7 @@ class PhenotypeStandard extends PhenotypeBase
 		}
 	}
 
-	function cutString ($s, $pos,$maxlen=0)
+	static function cutString ($s, $pos,$maxlen=0)
 	{
 		$border = $pos;
 		$_s = split(" ",$s);
@@ -623,12 +632,12 @@ class PhenotypeStandard extends PhenotypeBase
 	}
 
 	// Funktion zum Herausfinden des Klassen-Namens anhand einer Item ID
-	function getContentClassNameByDatId($id)
+	function getContentClassNameByDatId($dat_id)
 	{
 		global $myDB;
-		$sql = "SELECT con_id FROM content_data WHERE dat_id =".$id;
+		$sql = "SELECT con_id FROM content_data WHERE dat_id =".$dat_id;
 		$rs = $myDB->query($sql);
-		$row = mysql_fetch_arry($rs);
+		$row = mysql_fetch_array($rs);
 
 		$ret = "PhenotypeContent_".$row["con_id"];
 
@@ -1332,8 +1341,14 @@ foreach ($_traces AS $_trace)
 <div id="database"><em>SQL Backlog</em>
 <ul class="source">
 <?php
-for ($i=$stop;$i>=$start;$i--){?>
-	<li><span>#<?php echo sprintf('%04d',$i)?>: </span><span class="query"><?php echo $this->codeH($_sql[$i-1])?></span></li>
+for ($i=$stop;$i>=$start;$i--){
+$sql_cut = $_sql[$i-1];
+ if (strlen($sql_cut)>255)
+        {
+        	$sql_cut = substr($sql_cut,0,255)."...";
+        }
+	?>
+	<li><span>#<?php echo sprintf('%04d',$i)?>: </span><span class="query"><?php //echo $this->codeH($sql_cut)?></span></li>
 	<?php }?>
 </ul>
 </div>
@@ -1454,7 +1469,7 @@ em {
 
 .param_key {
 	display: block;
-	width: 80px;
+	width: 125px;
 	float: left;
 }
 
@@ -1707,6 +1722,74 @@ public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fu
 	{
 		$myTempPage = new PhenotypePage($pag_id);
 		$url = $myTempPage->buildURL($lng_id);
+		$myDAO->set($token,$url);
+	}
+
+	if ($fullUrl)
+	{
+		$base = SERVERFULLURL;
+	} else
+	{
+		$base = SERVERURL;
+	}
+
+	// Fallback, if smartURL is disabled
+	if (PT_URL_STYLE!="smartURL")
+	{
+		$url = $base . "index.php?smartURL=".$url;
+		if (is_array($_params))
+		{
+			foreach ($_params AS $k=>$v)
+			{
+				$url .= "&".$k."=".$v;
+			}
+		}
+		if ($smartUID!="")
+		{
+			$url .="&smartUID=".$smartUID;
+		}
+		return $url;
+	}
+
+	if (is_array($_params))
+	{
+		foreach ($_params AS $k=>$v)
+		{
+			$url .= "/".$k."/".$v;
+		}
+	}
+	if ($smartUID!="")
+	{
+		$url .="/".$smartUID;
+	}
+
+	$url = $base . $url;
+	return $url;
+}
+
+
+public function url_for_content($dat_id,$action,$lng_id=null,$_params,$smartUID="",$fullUrl=false)
+{
+	if ($this->URLHelperCO==false)
+	{
+		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"content"),false,true);
+		$this->URLHelperCO = $myDAO;
+	}
+	else
+	{
+		$myDAO = $this->URLHelperCO;
+	}
+	$token = "url_c".$dat_id."l".(int)$lng_id."a".$action;
+
+	if ($myDAO->check($token))
+	{
+		$url =  $myDAO->get($token);
+	}
+	else
+	{
+		$cname = $this->getContentClassNameByDatId($dat_id);
+		$myCO = new $cname($dat_id);
+		$url = $myCO->buildURL($action,$lng_id);
 		$myDAO->set($token,$url);
 	}
 

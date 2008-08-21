@@ -710,7 +710,7 @@ function cleanupSnapshots()
 $myPT->startBuffer();
 ?>
 <?php
-$myAdm->explorer_prepare(locale("Configuration"),locale("Packages"));
+$myAdm->explorer_prepare(locale("Config"),locale("Packages"));
 $myAdm->explorer_set("packagemode","cleanup");
 $myAdm->explorer_draw();
 

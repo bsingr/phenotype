@@ -647,12 +647,17 @@ class PhenotypePageStandard extends PhenotypeBase
     @chown ($filename_bak,UMASK);
 
     global $myDB;
+    global $myPT;
     $myPage = &$this; // Zugriff fuer Includes und dergleichen
 
+    $myPT->startBuffer();
     require ($filename_bak);
+    $html = $myPT->stopBuffer();
+    $myTC->stop();
     unlink ($filename_bak);
 
-    $myTC->stop();
+    $html=$this->doDisplayPostProcessing($html,$myTC,"R");
+    echo $html;
   }
 
   function display($cache=1,$sendHeader=1)
@@ -660,6 +665,8 @@ class PhenotypePageStandard extends PhenotypeBase
     global $myApp;
     global $myRequest;
     global $myTC;
+    global $myPage;
+    $myPage = &$this; // Zugriff fuer Includes und dergleichen
     if ($this->status==0)
     {
       $myApp->throw404($myRequest->getI("id"));
@@ -669,7 +676,7 @@ class PhenotypePageStandard extends PhenotypeBase
     global $myDB;
     global $_PT_HTTP_CONTENTTYPES;
     global $myPT;
-    $myPage = &$this; // Zugriff fuer Includes und dergleichen
+    
 
 
 
@@ -760,9 +767,6 @@ class PhenotypePageStandard extends PhenotypeBase
     $myPT->startBuffer();
     require ($dateiname);
     $html = $myPT->stopBuffer();
-
-
-
     $myTC->stop();
 
 
@@ -808,8 +812,20 @@ class PhenotypePageStandard extends PhenotypeBase
         }
       }
     }
+    
+	echo $this->doDisplayPostProcessing($html,$myTC,$info);
 
-    $html = str_replace("#!#title#!#",$myPT->codeH($myPage->titel),$html);
+  }
+  
+  function doDisplayPostProcessing($html,$myTC,$info)
+  {
+  	global $myPT;
+  	global $myRequest;
+  	global $myDB;
+  	 $myPage = &$this; // Zugriff fuer Includes und dergleichen
+
+  	
+  	 $html = str_replace("#!#title#!#",$myPT->codeH($myPage->titel),$html);
     $html = str_replace("#!#alttitle#!#",$myPT->codeH($myPage->alttitel),$html);
     $html = str_replace("#!#keywords#!#",$myPT->codeH($myPage->row["pag_searchtext"]),$html);
 
@@ -843,24 +859,22 @@ class PhenotypePageStandard extends PhenotypeBase
 	    <div id="pt_debug_cover" style="display:none;background-color:#555555;left:0px;position:absolute;top:0px;right:0px;height:200%;z-index:9999;opacity:0.9">
 	    </div>
 	    <div id="pt_debug_details" style="display:none;position:absolute;top:50px;left:width:900px;height:85%;margin:0px;background-color: #fff;border:0px;padding:0px;z-index:10000;">
-	    <div style="float:left"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close" style="margin:0px;padding:0px"/></a></div>
+	    <div style="float:left"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close" style="margin:0px;padding:0px" border="0"/></a></div>
 	    <iframe src="<?php echo SERVERFULLURL ?>debuginfo.php?uri=<?php echo $uri?>" style="width:900px;height:100%;border:0px;overflow: auto;"></iframe>
 	    </div>
 	    <?php
 
 	    $html = str_replace("#!#pt_debug#!#",$myPT->stopBuffer(),$html);
     }
-    echo $html;
-
-
-
-
-  }
+    return $html;
+  	
+}
 
   function printview($cache=1)
   {
     global $myRequest;
     global $myApp;
+    global $myPT;
 
     if ($this->status==0)
     {
@@ -918,8 +932,10 @@ class PhenotypePageStandard extends PhenotypeBase
     {
       $info = "Cache";
     }
+	$myPT->startBuffer();
     require ($dateiname);
-
+    $html = $myPT->stopBuffer();
+    
     $myTC->stop();
     // Jetzt die Statistik
     if ($this->statistic==true)
@@ -948,7 +964,8 @@ class PhenotypePageStandard extends PhenotypeBase
         }
       }
     }
-
+	$html=$this->doDisplayPostProcessing($html,$myTC,$info);
+    echo $html;
   }
 
 
@@ -2320,7 +2337,7 @@ class PhenotypePageStandard extends PhenotypeBase
   public function getURL($lng_id)
   {
     global $myPT;
-    return $myPT->url_for_page($pag_id,$_params,$lng_id);
+    return $myPT->url_for_page($pag_id,null,$lng_id);
   }
 
   public function buildURL($lng_id=null)
