@@ -28,7 +28,7 @@
 */
 
 define ("PT_CHARSET","iso-8859-1");
-define ("PT_LOCALE","en");
+define ("PT_LOCALE","de");
 
 define("MB_IMAGE", 1);
 define("MB_DOCUMENT", 2);
@@ -93,7 +93,7 @@ define ("PT_CON_FORM_PAGER", 36);
 define ("PT_CON_FORM_JAVASCRIPTONLOAD", 37);
 define ("PT_CON_FORM_AJAX", 38);
 define ("PT_CON_FORM_UPLOAD", 39);
-
+define ("PT_CON_FORM_PASSWORD", 40);
 
 
 

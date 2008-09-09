@@ -814,7 +814,7 @@ class PhenotypeContentStandard extends PhenotypeBase
     return $myCO->id;
   }
 
-  // Inzwischen 39 Formelemente
+  // Inzwischen 40 Formelemente
 
   function form_headline($headline,$space=false)
   {
@@ -831,6 +831,18 @@ class PhenotypeContentStandard extends PhenotypeBase
   function form_textfield($input, $bez, $size)
   {
     $a = Array (PT_CON_FORM_TEXTFIELD, $input, $bez, $size);
+    if ($this->formmode == 1)
+    {
+      $this->form[] = $a;
+    } else
+    {
+      $this->configform[] = $a;
+    }
+  }
+
+  function form_password($input, $bez, $size)
+  {
+    $a = Array (PT_CON_FORM_PASSWORD, $input, $bez, $size);
     if ($this->formmode == 1)
     {
       $this->form[] = $a;
@@ -1391,6 +1403,28 @@ class PhenotypeContentStandard extends PhenotypeBase
              $name = $myCO->formid."_".$a[2];
              $val = $myCO->get($a[2]);
              echo $myLayout->workarea_form_text("", $name, $val, $a[3], 0);
+?>
+             </p>
+             </td>
+             </tr>
+		<?php
+
+
+		break;
+
+		// ######## Password
+	    case PT_CON_FORM_PASSWORD :
+?>
+             <tr>
+             <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
+             </td>
+             <td width="509" class="formarea"><p>
+             <?php
+
+
+             $name = $myCO->formid."_".$a[2];
+             $val = $myCO->get($a[2]);
+             echo $myLayout->workarea_form_password("", $name, $val, $a[3], 0);
 ?>
              </p>
              </td>

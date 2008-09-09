@@ -420,7 +420,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
               </tr>
               <tr>
                 <td class="padding10">&nbsp;</td>
-                <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("Send")?>" style="width:102px">
+                <td><input name="Submit" type="submit" class="buttonGrey2" value="<?php echo localeH("send");?>" style="width:102px">
                 </form>
                 </td>
               </tr>
@@ -455,7 +455,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			      <input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
 			      <input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
 				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">	
-				  <input name="upload" type="submit" class="buttonWhite" id="upload" style="width:102px" value="<?php echo localeH("Upload")?>"></td>
+				  <input name="upload" type="submit" class="buttonWhite" id="upload" style="width:102px" value="<?php echo localeH("Upload");?>"></td>
 	            </tr>
 				</form>
 	            <tr>
@@ -469,7 +469,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			      <input type="hidden" name="sortorder" value="<?php echo $this->sortorder ?>">
 			      <input type="hidden" name="p" value="<?php echo $this->pagenr ?>">		  
 				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">		  
-				  <input name="import" type="submit" class="buttonWhite" id="import2" style="width:102px" value="<?php echo localeH("Import")?>">	
+				  <input name="import" type="submit" class="buttonWhite" id="import2" style="width:102px" value="<?php echo localeH("Import");?>">	
 				  </form>
 				  </td>
 	            </tr>
@@ -1789,9 +1789,9 @@ function initoid()
           <tr>
 
             <td class="windowFooterWhite">
-        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="<?php echo localeH("Preview")?>" onclick="preview(<?php echo $myObj->id ?>,<?php echo $ver_id ?>)">
+        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="<?php echo localeH("Preview") ?>" onclick="preview(<?php echo $myObj->id ?>,<?php echo $ver_id ?>)">
             </td>
-            <td align="right" class="windowFooterWhite"><?php if ($ver_id!=0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:if (confirm('<?php echo localeH("Really delete this version?");?>')){document.forms.editform.deleteversion.value=1;document.forms.editform.submit();}"><?php } ?> <input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" onclick="document.forms.editform.submit();">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($ver_id!=0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:if (confirm('<?php echo localeH("Really delete this version?");?>')){document.forms.editform.deleteversion.value=1;document.forms.editform.submit();}"><?php } ?> <input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save") ?>" onclick="document.forms.editform.submit();">&nbsp;&nbsp;</td>
           </tr>
         </table>
       		</td>
@@ -2020,7 +2020,7 @@ function initoid()
 		$myPT->startBuffer();
   		?>
   		<input name="userfile" type="file" class="input"><br>
-  		<input type="checkbox" value="1" name="documentonly"> <?php echo localeH("handle images like documents");?>    		
+  		<input type="checkbox" value="1" name="documentonly"> <?php echo localeH("treat images like documents");?>    		
   		<?php
   		$html = $myPT->stopBuffer();
   		$this->workarea_row_draw(locale("Image / Document"),$html);
@@ -2165,7 +2165,7 @@ function initoid()
             <td class="windowFooterWhite">
 		    &nbsp;
 			</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Next")?>">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("next") ?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 		<?php
@@ -2454,7 +2454,7 @@ function initoid()
 
 		$myPT->startBuffer();
 		?>
-		<input type="checkbox" value="1" name="documentonly"> <?php echo localeH("handle images like documents");?>    		
+		<input type="checkbox" value="1" name="documentonly"> <?php echo localeH("treat images like documents");?>    		
 		<?php
 		$html = $myPT->stopBuffer();
 		$this->workarea_row_draw(locale("Image / Document"),$html);

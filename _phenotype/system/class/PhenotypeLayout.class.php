@@ -588,6 +588,28 @@ class PhenotypeLayoutStandard
 	}
 
 	/**
+	 * renders a passwordfield in the workarea
+	 *
+	 * does not directly display the element
+	 *
+	 * @param	string $bez	label for the field
+	 * @param string $name	name of the field in html form
+	 * @param	string $val	value of the field content
+	 * @param integer $x	width of the field in px
+	 * @param boolean $br	should there be an <br> tag after the field?
+	 *
+	 * @return string		html code output
+	 */
+	function workarea_form_password($bez,$name,$val,$x=300,$br=1)
+	{
+		$html="";
+		if($bez!=""){$html = $bez.'<br>';}
+		$html .= '<input type="password" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities($val,null,PT_CHARSET).'">';
+		if ($br==1){$html.="<br>";}
+		return $html;
+	}
+
+	/**
 	 * renders a hidden form field in the workarea
 	 *
 	 * does not directly display the element
