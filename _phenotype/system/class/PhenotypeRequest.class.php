@@ -291,5 +291,26 @@ class PhenotypeRequestStandard
     //currently fitting for most purposes
     return SERVERFULLURL ."reload.php?uri=".base64_encode($_SERVER["REQUEST_URI"]);
   }
+
+  public function isPostRequest()
+  {
+  	return ($_SERVER['REQUEST_METHOD'] == 'POST');
+  }
+
+  function getPostParam($k)
+  {
+    if ($this->checkPost($k))
+    {$v=@$_POST[$k];
+    return $v;
+    }
+    return "";
+  }
+
+  function checkPost($k)
+  {
+    if(isset($_POST[$k])){return true;}
+    return false;
+  }
+
 }
 ?>
