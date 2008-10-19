@@ -1973,6 +1973,11 @@ class PhenotypeContentStandard extends PhenotypeBase
 			  $tname = "PhenotypeComponent_" . $row["com_id"];
 			  $myComponent = new $tname;
 			  $myComponent->init($row);
+			  
+			  // ND-Erweiterung, Info über den Context
+			  $myComponent->set("content_type",$this->content_type);
+			  $myComponent->set("dat_id_content",$this->id);
+
 				?>
  				<tr>
             		<td class="padding30"><strong><?php echo $myComponent->bez ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?> >sichtbar
@@ -4158,10 +4163,12 @@ class PhenotypeContentStandard extends PhenotypeBase
    * @param integer $lng_id
    * @return string
    */
-
-  public function getURL($action="show",$lng_id=null)
+  
+   public function getURL($action="show",$lng_id=null)
   {
-    return $this->buildURL($action,$lng_id);
+    return url_for_co($this,$action,$lng_id,array());
+    
+    //return $this->buildURL($action,$lng_id);
   }
   
   public function getHUrl($action="show",$lng_id=null)

@@ -84,7 +84,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 		if (ini_get("register_globals")==1)
 		{
-			die("Bitte stellen Sie Register Globals aus !! Aus Sicherheitsgründen läuft Phenotype nicht mit dieser Einstellung");
+			die("Bitte stellen Sie Register Globals aus !! Aus SicherheitsgrÃ¼nden lÃ¤uft Phenotype nicht mit dieser Einstellung");
 		}
 
 		// start buffering the output im
@@ -625,7 +625,7 @@ class PhenotypeStandard extends PhenotypeBase
 		echo "</pre>";
 	}
 
-	// Funktion zur Rückgabe des Klassen-Namens
+	// Funktion zur RÃ¼ckgabe des Klassen-Namens
 	function getContentClassName($con_id)
 	{
 		return "PhenotypeContent_".$con_id;
@@ -984,7 +984,7 @@ class PhenotypeStandard extends PhenotypeBase
 		global $myPage;
 
 		// we ignore smarty warnings
-		if ($errno==E_WARNING AND strpos($errfile,'/smarty/')!==0)
+		if (($errno==E_WARNING OR $errno == E_STRICT) AND stripos($errfile,'/smarty/')!==0)
 		{
 			return;
 		}
@@ -1012,7 +1012,7 @@ class PhenotypeStandard extends PhenotypeBase
 		}
 
 		$_hint = Array();
-		$_hint["message"] = $errstr;
+		$_hint["message"] = $errstr;// ."(L".$errno.")";
 		$_hint["file"] = $errfile;
 		$_hint["line"] = $errline;
 
@@ -1591,12 +1591,19 @@ em {
 					?><span class="exec_context"><?php echo $context?></span><?php
 }
 }
+
+$sql_cut = $myDB->_sql[$i];
+
+if (strlen($sql_cut) > 512)
+{
+  $sql_cut = substr($sql_cut,0,512)."...";
+}
 ?><span class="filename">[<?php echo $this->getFilenameOutOfPath($myDB->_files[$i])?>
 in line <?php echo $myDB->_lines[$i]?>]</span><br />
 <table class="query">
 	<tr>
 		<td rowspan="3" class="querynr" valign="top">#<?php echo sprintf('%04d',$i+1)?>:</td>
-		<td><?php echo $this->codeH($myDB->_sql[$i])?></td>
+		<td><?php echo $this->codeH($sql_cut)?></td>
 	</tr>
 	<tr>
 		<td><?php echo $myDB->_results[$i]?> record(s) in <?php echo $zeit?>
@@ -1768,9 +1775,10 @@ public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fu
 }
 
 
-public function url_for_content($dat_id,$action,$lng_id=null,$_params,$smartUID="",$fullUrl=false)
+
+public function url_for_co($myCO,$action,$lng_id=null,$_params=null,$smartUID="",$fullUrl=false)
 {
-	if ($this->URLHelperCO==false)
+  if ($this->URLHelperCO==false)
 	{
 		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"content"),false,true);
 		$this->URLHelperCO = $myDAO;
@@ -1779,7 +1787,7 @@ public function url_for_content($dat_id,$action,$lng_id=null,$_params,$smartUID=
 	{
 		$myDAO = $this->URLHelperCO;
 	}
-	$token = "url_c".$dat_id."l".(int)$lng_id."a".$action;
+	$token = "url_c".$myCO->id."l".(int)$lng_id."a".$action;
 
 	if ($myDAO->check($token))
 	{
@@ -1787,11 +1795,10 @@ public function url_for_content($dat_id,$action,$lng_id=null,$_params,$smartUID=
 	}
 	else
 	{
-		$cname = $this->getContentClassNameByDatId($dat_id);
-		$myCO = new $cname($dat_id);
 		$url = $myCO->buildURL($action,$lng_id);
 		$myDAO->set($token,$url);
 	}
+
 
 	if ($fullUrl)
 	{
@@ -1832,6 +1839,90 @@ public function url_for_content($dat_id,$action,$lng_id=null,$_params,$smartUID=
 	}
 
 	$url = $base . $url;
+  $url = str_replace('//','/',$url);
+	return $url;
+}
+
+
+public function url_for_content($dat_id,$action,$lng_id=null,$_params=null,$smartUID="",$fullUrl=false)
+{
+	global $myDB;
+	
+  if ($this->URLHelperCO==false)
+	{
+		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"content"),false,true);
+		$this->URLHelperCO = $myDAO;
+	}
+	else
+	{
+		$myDAO = $this->URLHelperCO;
+	}
+	$token = "url_c".$dat_id."l".(int)$lng_id."a".$action;
+
+	if ($myDAO->check($token))
+	{
+		$url =  $myDAO->get($token);
+	}
+	else
+	{
+		$sql ="SELECT * FROM content_data WHERE dat_id =" .$dat_id;
+		$rs = $myDB->query($sql);
+		if (mysql_num_rows($rs)!=0)
+		{
+		  $row =mysql_fetch_array($rs);
+		  $cname = "PhenotypeContent_".$row["con_id"];
+		  $myCO = new $cname();
+		  $myCO->init($row);
+		  $url = $myCO->buildURL($action,$lng_id);
+		  $myDAO->set($token,$url);
+		}
+		else 
+		{
+		  return "unavailable";
+		}
+	}
+
+
+	if ($fullUrl)
+	{
+		$base = SERVERFULLURL;
+	} else
+	{
+		$base = SERVERURL;
+	}
+
+	// Fallback, if smartURL is disabled
+	if (PT_URL_STYLE!="smartURL")
+	{
+		$url = $base . "index.php?smartURL=".$url;
+		if (is_array($_params))
+		{
+			foreach ($_params AS $k=>$v)
+			{
+				$url .= "&".$k."=".$v;
+			}
+		}
+		if ($smartUID!="")
+		{
+			$url .="&smartUID=".$smartUID;
+		}
+		return $url;
+	}
+
+	if (is_array($_params))
+	{
+		foreach ($_params AS $k=>$v)
+		{
+			$url .= "/".$k."/".$v;
+		}
+	}
+	if ($smartUID!="")
+	{
+		$url .="/".$smartUID;
+	}
+
+	$url = $base . $url;
+  $url = str_replace('//','/',$url);
 	return $url;
 }
 
@@ -1962,6 +2053,34 @@ public function get_image($img_id,$alt=null,$style="",$class="")
 	$myImg->style = $style;
 	$myImg->class = $class;
 	return $myImg;
+}
+
+public function get_co($con_id,$dat_id)
+{
+
+	if ($this->ContentobjectsHelper==false)
+	{
+		$myDAO = new PhenotypeSystemDataObject("ContentobjectsHelper",array(),false,true);
+		$this->ContentobjectsHelper = $myDAO;
+	}
+	else
+	{
+		$myDAO = $this->ContentobjectsHelper;
+	}
+	$token = "c".$con_id."d". $dat_id;
+	// We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
+	// storage (initiated by the Phenotype destructor)
+	if ($myDAO->check($token))
+	{
+		$myCO = clone($myDAO->get($token));
+	}
+	else
+	{
+	  $cname ="PhenotypeContent_".$con_id;
+		$myCO = new $cname($dat_id);
+		$myDAO->set($token,clone($myCO));
+	}
+	return $myCO;
 }
 
 /**

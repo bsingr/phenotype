@@ -130,13 +130,18 @@ require (APPPATH . "_host.config.inc.php");
 // Grundinitialisierung
 // ------------------------------------------------------
 
+// Time check initialize
+$myTC = new TCheck();
+$myTC->start();
 
+//date_default_timezone_set('Etc/GMT-1');
+require (APPPATH . "_application.inc.php");
+$myPT = new Phenotype();
 $myDB = new PhenotypeDatabase();
 $myDB->connect();
-date_default_timezone_set('Etc/GMT-1');
-require (APPPATH . "_application.inc.php");
 $myApp = new PhenotypeApplication();
-$myPT = new Phenotype();
 require (SYSTEMPATH . "_init.inc.php");
 $myLog = new PhenotypeLog();
+
 $myRequest = new PhenotypeRequest();
+if ($myRequest->code404){$myApp->throw404();}

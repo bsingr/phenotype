@@ -106,7 +106,13 @@ class PhenotypePageStandard extends PhenotypeBase
     {
       return parent::get($key);
     }
+        if(array_key_exists($key,$this->_inheritageprops))
+    {
     return $this->_inheritageprops[$key];
+    }
+    return "";
+    
+
   }
 
   /*

@@ -274,7 +274,8 @@ class PhenotypeRequestStandard
 	 */
   public function getParamHash ()
   {
-    $_ignore = Array("PHPSESSID","cache","id","smartURL");
+    $hash="";
+    $_ignore = Array("PHPSESSID","cache","id","smartURL","smartURLParams","smartParam1","smartParam2","smartParam3","smartParam4","smartParam5","smartParam6","smartParam7","smartParam8","smartParam9","smartParam10");
     foreach ($this->_REQUEST AS $k => $v)
     {
       if (!in_array($k,$_ignore))
