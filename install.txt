@@ -10,14 +10,11 @@ Installation:
 4. create an empty database
 5. access the webroot in your browser and follow the instructions on the screen
 
-Problems? Please post your questions and problems in the forum on the phenotype project page at sourceforge.
-
-
 
 First Login:
 ============
 
-Login with user "starter" and password "deleteme" and please delete it afterwards ... ;) backend is normally installed
+Login with user "starter" and password "deleteme" and please delete or change it afterwards ... ;) backend is normally installed
 in folder "_phenotype/admin".
 
 
@@ -27,10 +24,10 @@ First Demonstration:
 
 To get a first impression we recommend to install the package PT_DEMO:
 
-1. Choose menu item "Konfiguration" 
-2. Then click "Paket installieren"
+1. Choose menu item "Configuration" 
+2. Then click "Install package"
 3. Select the  package "1200_PT_Demo"
-4. Push button "Installieren".
+4. Push button "Install".
 
 
 

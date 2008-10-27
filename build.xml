@@ -5,24 +5,24 @@
 	<php expression="PHP_OS" returnProperty="buildOS"/>
 	<php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>
 
-  <property name="ptVersion" value="2.7-current" />
+  <property name="ptVersion" value="2.7" />
   
   <tstamp>
   	<format property="DATE" pattern="%d.%m.%Y" locale="de_DE"/>
   </tstamp>
   
   <!-- svn stuff -->
-  <svnlastrevision svnpath="svn" workingcopy="." propertyname="revision"/>
+  <!--<svnlastrevision svnpath="svn" workingcopy="." propertyname="revision"/>-->
   <!-- if you have trouble with evaluating the last revision from svn, try the manually way -->
   <!-- be sure to set the value to the current svn revision -->
-  <!-- <property name="revision" value="131" /> -->
+  <property name="revision" value="322" /> 
 
 	
-  <property name="buildNo" value="r${revision}-0001" />
+  <property name="buildNo" value="r${revision}" />
   <property name="buildId" value="Phenotype ${ptVersion}, build ${buildNo} PHP${php.version}@${buildOS}/${host.arch}(${host.name})" />
   
 	<!-- directory setup -->
-  <property name="buildDir" value="phenotype_${ptVersion}_${buildNo}" />
+  <property name="buildDir" value="_build_" />
   <property name="htdocsDir" value="htdocs" />
   <property name="_phenotypeDir" value="_phenotype" />
   <property name="mirrorDir" value="_mirror" />

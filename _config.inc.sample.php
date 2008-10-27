@@ -15,8 +15,8 @@ define ("PT_XMLACCESS","changeit");
 // PFADE und URLs - Teil 1
 // ------------------------------------------------------
 
-define ("BASEPATH","/Users/www/default/phenotype-svn/trunk/");
-define ("SERVERURL","/phenotype-svn/trunk/htdocs/");
+define ("BASEPATH","/var/www/htdocs/phenotype/");
+define ("SERVERURL","/");
 define ("SERVERFULLURL","http://localhost" . SERVERURL);
 
 // smartURL uses free configurable URLs for every page instead of index.php?id=xx
@@ -30,12 +30,13 @@ define ("PT_URL_STYLE", "smartURL");
 define ("DATABASE_SERVER", 		"localhost");
 define ("DATABASE_USER", 		"root");
 define ("DATABASE_PASSWORD", 	"root01");	
-define ("DATABASE_NAME",		"phenotype-svn");	
+define ("DATABASE_NAME",		"phenotype");	
 
 // ------------------------------------------------------
 // Sprach-Setup
 // ------------------------------------------------------
 
+define ("PT_LOCALE","de");
 $PTC_LANGUAGES = Array(1=>"Deutsch",2=>"Englisch",3=>"Spanisch",4=>"Französisch");
 
 // ------------------------------------------------------
@@ -127,7 +128,7 @@ define("PT_LOG_CLIENTINFO_SERVER", 'REMOTE_ADDR');
 require (APPPATH . "_host.config.inc.php");
 
 // ------------------------------------------------------
-// Grundinitialisierung
+// Basic initialization
 // ------------------------------------------------------
 
 // Time check initialize

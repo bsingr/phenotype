@@ -288,4 +288,3 @@ class PhenotypeBackend_Ticket_Assess extends PhenotypeBackend_Ticket_Assess_Stan
 class PhenotypeBackend_Ticket_Process extends PhenotypeBackend_Ticket_Process_Standard
 {
 }
-?>

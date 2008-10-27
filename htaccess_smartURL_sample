@@ -1,8 +1,8 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
-	# Define the rewrite base.
-	RewriteBase /phenotype-svn/trunk/htdocs/
+	# Define the rewrite base, i.e. the "visible" browser path to the main index.php file
+	RewriteBase /
 
 	# Don't rewrite requests for any files, directories, or symbolic
 	# links (shortcuts) that exist on the filesystem.

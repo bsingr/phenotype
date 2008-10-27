@@ -57,3 +57,24 @@ ALTER TABLE `page` ADD `pag_props` TEXT NOT NULL AFTER `pag_url4` ;
 ALTER TABLE `content_data` ADD `dat_key6` VARCHAR( 100 ) DEFAULT NULL AFTER `dat_key5` ;
 ALTER TABLE `content_data` ADD `dat_ikey6` INT DEFAULT '0' NOT NULL AFTER `dat_ikey5` ;
 ALTER TABLE `content_data` ADD INDEX ( `dat_ikey6` ) ;
+
+
+--- permalinks for content records with version 2.6 (r?)
+
+ALTER TABLE `content_data` ADD `dat_permalink` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink1` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink2` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink3` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink4` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink5` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink6` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink7` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink8` VARCHAR( 255 ) NOT NULL ,
+ADD `dat_permalink9` VARCHAR( 255 ) NOT NULL ;
+
+--- only relevant during i8ln work
+
+ CREATE TABLE `srv_sf`.`tokens` (
+`token` VARCHAR( 255 ) NOT NULL ,
+`section` VARCHAR( 255 ) NOT NULL
+) ENGINE = MYISAM 
