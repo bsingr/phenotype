@@ -64,7 +64,6 @@ em {
 }
 
 #logo {
-	background-image: url ('/img/logo.png' );
 	width: 780px;
 	padding: 10px;
 	margin-left: auto;
@@ -185,12 +184,12 @@ width: 350px;
 </style>
 </head>
 <body>
-<div id="logo"><img	src="_phenotype/admin/img/phenotypelogo.gif" alt="Phenotype" /></div>
+<div id="logo"><a href="http://www.phenotype.de/"><img	src="_phenotype/admin/img/phenotypelogo.gif" alt="Phenotype" style="border:0px"/></a></div>
 <div id="main">
 <?php if($myInstaller->getStep()==1):?>
 <form action="install.php" method="POST"/>
 <input type="hidden" name="reload" value="1"/>
-<div id="header"><strong>Phenotype Installer - Step 1 (Checking requirements, basic configuration ...)</strong>
+<div id="header"><strong>Phenotype Installer - Step 1/2 (Checking requirements, basic configuration ...)</strong>
 <?php if ($myInstaller->isReload()):?>
 <?php if ($myInstaller->gotErrors()):?>
 <div id="message">
@@ -217,7 +216,7 @@ Please provide your database settings, check wether your environment meets all r
 
 <em>Database Settings:</em><br />
 
-<div id="hints">
+
 <ul class="source">
 
 <li ><span class="title">MySQL server:</span><code><span><input type="text" name="database_server" value="<?php echo htmlentities($myInstaller->database_server)?>"/></span></code></li>
@@ -237,7 +236,7 @@ Please provide your database settings, check wether your environment meets all r
 
 <em>Account Settings:</em><br />
 
-<div id="hints">
+
 <ul class="source">
 
 <li ><span class="title">Superuser login:</span><code><span><input type="text" name="superuser_login" value="<?php echo htmlentities($myInstaller->superuser_login)?>"/></span></code></li>
@@ -250,7 +249,7 @@ Please provide your database settings, check wether your environment meets all r
 
 <em>Path configuration:</em><br />
 
-<div id="hints">
+
 <ul class="source">
 
 <li><span class="title">Basepath:</span><code><span><input type="text" name="path_basepath" class="longinput" value="<?php echo htmlentities($myInstaller->path_basepath)?>"/></span></code></li>
@@ -269,9 +268,44 @@ Please provide your database settings, check wether your environment meets all r
 <br/>
 
 
+<em>PHP Settings:</em><br />
+
+
+<ul class="source">
+<?php foreach ($myInstaller->checkPHP() AS $line):?>
+<li ><span class="title">#<?php echo $line["title"]?>:</span><code><span class="<?php echo $line["class"]?>"><?php echo $line["status"]?></span></code></li>
+<?php endforeach;?>		
+</ul>
+
+<br/>
+<br/>
+
+<em>Apache Settings:</em><br />
+
+
+<ul class="source">
+<?php foreach ($myInstaller->checkApache() AS $line):?>
+<li ><span class="title">#<?php echo $line["title"]?>:</span><code><span class="<?php echo $line["class"]?>"><?php echo $line["status"]?></span></code></li>
+<?php endforeach;?>		
+</ul>
+
+<br/>
+<br/>
+
+<em>File Permissions:</em><br />
+
+<ul class="source">
+<?php foreach ($myInstaller->checkRWPermissions() AS $line):?>
+<li ><span class="title"><?php echo $line["title"]?>:</span><code><span class="<?php echo $line["class"]?>"><?php echo $line["status"]?></span></code></li>
+<?php endforeach;?>		
+</ul>
+	
+<br/>
+<br/>	
+
 <em>Application Configuration:</em><br />
 
-<div id="hints">
+
 <ul class="source">
 
 <li ><span class="title">Default backend language:</span><code><span><select name="app_backend_language"><?php echo $myInstaller->getOptionsAsHTML("app_backend_language")?></select></span></code></li>
@@ -285,41 +319,12 @@ Please provide your database settings, check wether your environment meets all r
 <br/>
 <br/>
 
-
-<em>PHP Settings:</em><br />
-
-<div id="hints">
-<ul class="source">
-<?php foreach ($myInstaller->checkPHP() AS $line):?>
-<li ><span class="title">#<?php echo $line["title"]?>:</span><code><span class="<?php echo $line["class"]?>"><?php echo $line["status"]?></span></code></li>
-<?php endforeach;?>		
-</ul>
-
-<em>Apache Settings:</em><br />
-
-
-<ul class="source">
-<?php foreach ($myInstaller->checkApache() AS $line):?>
-<li ><span class="title">#<?php echo $line["title"]?>:</span><code><span class="<?php echo $line["class"]?>"><?php echo $line["status"]?></span></code></li>
-<?php endforeach;?>		
-</ul>
-
-
-<em>File Permissions:</em><br />
-
-<ul class="source">
-<?php foreach ($myInstaller->checkRWPermissions() AS $line):?>
-<li ><span class="title"><?php echo $line["title"]?>:</span><code><span class="<?php echo $line["class"]?>"><?php echo $line["status"]?></span></code></li>
-<?php endforeach;?>		
-</ul>
-	
-	
 	</div>
 	</form>
 <?php endif?>
 <?php if ($myInstaller->getStep()==2):?>
 <form action="install.php" method="POST"/>
-<div id="header"><strong>Phenotype Installer - Step 2 (Writing configuration files, importing database ...)</strong>
+<div id="header"><strong>Phenotype Installer - Step 2/2 (Writing configuration files, importing database ...)</strong>
 <div id="intro">
 Installation in process ...<br/>
 </div>
@@ -329,7 +334,7 @@ Installation in process ...<br/>
 <?php foreach ($myInstaller->installDB() AS $line):?>
 <li ><code>#<?php echo $line?></code></li>
 <?php endforeach;?>		
-<?php if ($myInstaller->gotErrors()):?>
+<?php if ($myInstaller->gotErrors() AND $myInstaller->installation_status!=""):?>
 <li><div class="red update" style="display:table"><?php echo $myInstaller->installation_status?></></li>
 <?php endif?>
 </ul>
@@ -340,11 +345,53 @@ Installation in process ...<br/>
 <?php foreach ($myInstaller->writeConfigFiles() AS $line):?>
 <li ><code>#<?php echo $line?></code></li>
 <?php endforeach;?>		
-<?php if ($myInstaller->gotErrors()):?>
+<?php if ($myInstaller->gotErrors() AND $myInstaller->installation_status!=""):?>
 <li><div class="red update" style="display:table"><?php echo $myInstaller->installation_status?></></li>
 <?php endif?>
 </ul>
 
+<em>Installing packages:</em><br />
+<ul class="source">
+<?php foreach ($myInstaller->installPackages() AS $line):?>
+<li ><code>#<?php echo $line?></code></li>
+<?php endforeach;?>		
+<?php if ($myInstaller->gotErrors() AND $myInstaller->installation_status!=""):?>
+<li><div class="red update" style="display:table"><?php echo $myInstaller->installation_status?></></li>
+<?php endif?>
+</ul>
+
+<em>Finalize installation:</em><br />
+<ul class="source">
+<?php foreach ($myInstaller->finalizeInstallation() AS $line):?>
+<li ><code>#<?php echo $line?></code></li>
+<?php endforeach;?>		
+<?php if ($myInstaller->gotErrors() AND $myInstaller->installation_status!=""):?>
+<li><div class="red update" style="display:table"><?php echo $myInstaller->installation_status?></></li>
+<?php endif?>
+</ul>
+<?php if ($myInstaller->gotErrors()):?>
+<div id="message">
+Installation failure.<br/><br/>
+We are sorry, something went wrong. Please carefully read the given error messages.<br/><br/>
+Most probably some of the requirements were not (really) met, especially write permissions and our installer unfortunatetly did not detect this. :(
+<br/><br/>
+If you retry by reloading and continue to get strange error messages, please delete the whole installation folder and restart from scratch.
+<br/><br/>
+If you're new to phenotype we recommend to try a local installation prior installing and configuring phenotype in a maybe somehow limited shared hosting environment.<br/>
+</div>
+<?php else:?>
+<div id="intro">
+<span class="green">
+<br/>
+Installation complete.<br/><br/>
+You may now login into the <a href="_phenotype/admin">backend</a> or just browse the new installed <a href="index.php">web application</a>.
+<br/><br/>
+Thank you for using Phenotype.
+<br/>
+<br/>
+</span>
+</div>
+<?php endif?>
 </div>
 <?php endif?>
 </div>

@@ -94,20 +94,20 @@ define ("UMASK",0775);
 // Einbindung der Grundklassen
 // ------------------------------------------------------
 
-require (BASEPATH . "buildinfo.inc.php");
-require (SYSTEMPATH . "_constants.inc.php");
-require (CLASSPATH . "PhenotypeBase.class.php");
-require (CLASSPATH . "Phenotype.class.php");
-require (SYSTEMPATH . "_autoloader.inc.php");
-require (SYSTEMPATH . "_helper.inc.php");
+require_once (BASEPATH . "buildinfo.inc.php");
+require_once (SYSTEMPATH . "_constants.inc.php");
+require_once (CLASSPATH . "PhenotypeBase.class.php");
+require_once (CLASSPATH . "Phenotype.class.php");
+require_once (SYSTEMPATH . "_autoloader.inc.php");
+require_once (SYSTEMPATH . "_helper.inc.php");
 
-require (CLASSPATH . "PhenotypePage.class.php");
-require (CLASSPATH . "Database.class.php");
-require (CLASSPATH . "SqlBuilder.class.php");
-require (CLASSPATH . "PhenotypeApplication.class.php");
-require (CLASSPATH . "PhenotypeRequest.class.php");
-require (CLASSPATH . "TCheck.class.php");
-require (CLASSPATH . "PhenotypeLog.class.php");
+require_once (CLASSPATH . "PhenotypePage.class.php");
+require_once (CLASSPATH . "Database.class.php");
+require_once (CLASSPATH . "SqlBuilder.class.php");
+require_once (CLASSPATH . "PhenotypeApplication.class.php");
+require_once (CLASSPATH . "PhenotypeRequest.class.php");
+require_once (CLASSPATH . "TCheck.class.php");
+require_once (CLASSPATH . "PhenotypeLog.class.php");
 
 
 // ------------------------------------------------------
@@ -125,7 +125,7 @@ define("PT_LOG_CLIENTINFO_SERVER", 'REMOTE_ADDR');
 // Einbindung der anwendungsspezifischen Hostkonfiguration
 // ------------------------------------------------------
 
-require (APPPATH . "_host.config.inc.php");
+require_once (APPPATH . "_host.config.inc.php");
 
 // ------------------------------------------------------
 // Basic initialization
@@ -136,12 +136,12 @@ $myTC = new TCheck();
 $myTC->start();
 
 //date_default_timezone_set('Etc/GMT-1');
-require (APPPATH . "_application.inc.php");
+require_once (APPPATH . "_application.inc.php");
 $myPT = new Phenotype();
 $myDB = new PhenotypeDatabase();
 $myDB->connect();
 $myApp = new PhenotypeApplication();
-require (SYSTEMPATH . "_init.inc.php");
+require_once (SYSTEMPATH . "_init.inc.php");
 $myLog = new PhenotypeLog();
 
 $myRequest = new PhenotypeRequest();

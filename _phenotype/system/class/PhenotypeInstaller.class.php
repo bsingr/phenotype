@@ -18,12 +18,6 @@
 // -------------------------------------------------------
 
 
-
-
-
-//define("INDEXPHP_DEST", "../index.php");
-//define("INDEXPHP_WORKING", "index_postinstall.php");
-
 define("SQL_DUMP", "../phenotype.sql");
 
 define("SAMPLE_CONFIG_FILE", "../_config.inc.sample.php");
@@ -34,6 +28,10 @@ define("HTACCESS_FILE", ".htaccess");
 
 define("SAMPLE_HOST_CONFIG", "../_phenotype/application/_host.config.sample.inc.php");
 define("HOST_CONFIG", "../_phenotype/application/_host.config.inc.php");
+
+
+define("SAMPLE_APP_CONFIG", "../_phenotype/application/_application.sample.inc.php");
+define("APP_CONFIG", "../_phenotype/application/_application.inc.php");
 
 /**
  * @package phenotype
@@ -85,8 +83,7 @@ class PhenotypeInstaller
 			$this->step=2;
 		}
 
-
-		// determine pathes (default values)
+			// determine pathes (default values)
 
 		$dirname = dirname($_SERVER["SCRIPT_FILENAME"]);
 
@@ -516,6 +513,8 @@ class PhenotypeInstaller
 
 	function installDB()
 	{
+		$this->installation_status ="";
+
 		$_logs = array();
 
 		if (!$myDB= @mysql_connect($this->database_server, $this->database_user, $this->database_password) )
@@ -600,7 +599,9 @@ class PhenotypeInstaller
 	* writes the config file with the collected and tested data
 	*
 	*/
-	public function writeConfigFiles() {
+	public function writeConfigFiles()
+	{
+		$this->installation_status ="";
 
 		$_logs = array();
 
@@ -638,20 +639,20 @@ class PhenotypeInstaller
 		// debug mode
 		$exps[] = '/^define \("PT_DEBUG",.+\);/';
 		$subs[] = 'define ("PT_DEBUG",'.(int)$this->app_debug_mode.');';
-		
+
 		// frontend session
 		$exps[] = '/^define \("PT_FRONTENDSESSION",.+\);/';
 		$subs[] = 'define ("PT_FRONTENDSESSION",'.(int)$this->app_frontend_session.');';
-		
+
 		// default backend language
 		$_options = array(1=>"en",2=>"de");
 		$exps[] = '/^define \("PT_LOCALE",.+\);/';
 		$subs[] = 'define ("PT_LOCALE","'.$_options[(int)$this->app_backend_language].'");';
 
-		
+
 		$templateConfig = file(SAMPLE_CONFIG_FILE);
 
-		
+
 		$config = "";
 		foreach ($templateConfig as $line) {
 			$config .= preg_replace($exps, $subs, $line);
@@ -664,7 +665,7 @@ class PhenotypeInstaller
 			$this->error_globalfeedback=true;
 			return $_logs;
 		}
-		
+
 		$_logs[] = "Writing _host.config.inc.php (possible host specific configuration file)";
 		if (!@copy (SAMPLE_HOST_CONFIG, HOST_CONFIG))
 		{
@@ -672,7 +673,7 @@ class PhenotypeInstaller
 			$this->error_globalfeedback=true;
 			return $_logs;
 		}
-		
+
 
 		$templateHTAccess = file(SAMPLE_HTACCESS_FILE);
 
@@ -693,7 +694,116 @@ class PhenotypeInstaller
 		return $_logs;
 	}
 
+	function installPackages()
+	{
+		$this->installation_status ="";
+		$_logs = array();
 
+		if ($this->app_package==1)
+		{
+			$_logs[]="No installation necessary. PT_CORE is part of the base system.";
+			return $_logs;
+		}
+
+		global $myDB;
+		global $myPT;
+		global $myApp;
+		global $myAdm;
+
+		$_logs[]="Preparing installation of PT_DEMO";
+		$_logs[]="";
+
+
+
+		$_logs[] = "Resetting _application.inc.php";
+		if (!@copy (SAMPLE_APP_CONFIG, APP_CONFIG))
+		{
+			$this->installation = "Could not write _host.config.inc.php. Check read/write permissions";
+			$this->error_globalfeedback=true;
+			return $_logs;
+		}
+		
+		require ("../_config.inc.php");
+		
+		$_logs[]="Start installation of demo package (Structure files)";
+		$_logs[]="";
+		
+		$myAdm = new PhenotypeAdmin();
+		require (PACKAGEPATH."1200_PT_Demo/PhenotypePackage.class.php");
+		$myPak = new PhenotypePackage();
+		$myPT->startBuffer();
+		$myPak->globalInstallStructure(0);
+		$html = $myPT->stopBuffer();
+		$_html = explode("<br/>",$html);
+		foreach ($_html AS $line)
+		{
+			$_logs[]=$line;
+		}
+
+		$_logs[]="";
+		$_logs[]="Installation of demo package (Content)";
+		$_logs[]="";
+		
+		$myPT->startBuffer();
+		$myPak->globalInstallData();
+		$html = $myPT->stopBuffer();
+		$_html = explode("<br/>",$html);
+		foreach ($_html AS $line)
+		{
+			$_logs[]=$line;
+		}
+		return ($_logs);
+
+	}
+	
+	public function finalizeInstallation()
+	{
+		$this->installation_status ="";
+		$_logs = array();
+		
+		$logentry = "";
+		if ($myDB= @mysql_connect($this->database_server, $this->database_user, $this->database_password) )
+		{
+			mysql_select_db($this->database_name, $myDB);
+			
+			// We expect a user with the id 13 in PT_CORE and PT_DEMO
+			// If we also select for usr_login="starter" a reload of the installer will cause
+			// erros, which will not be understood by the typical phenotype installer
+			
+			$sql = "SELECT * FROM user WHERE usr_id=13";
+			$rs = mysql_query($sql);
+			if (mysql_num_rows($rs)==1)
+			{
+				$pass = crypt(strtolower($this->superuser_password),"phenotype");
+				$sql = "UPDATE `user` SET `usr_login`='".mysql_real_escape_string($this->superuser_login)."', `usr_pass`='".mysql_real_escape_string($pass)."' WHERE `usr_id`=13";
+				echo $sql;
+				$rs = mysql_query($sql);
+				if ($rs)
+				{
+					$logentry="Superuser ".$this->superuser_login." created.";
+				}
+			}
+		}
+		if ($logentry=="")
+		{
+			$this->installation_status ="Could not create superuser ".$this->superuser_login;
+			$this->error_globalfeedback=true;
+			return($_logs);
+		}
+		$_logs[]=$logentry;
+		
+	
+		if (!unlink("install.php"))
+		{
+			$this->installation_status = "Could not delete install.php. Check read/write permissions or delete the file manually.";
+			$this->error_globalfeedback=true;
+		}
+		
+		
+		
+		$_logs[]="deleting install.php";
+		return ($_logs);
+	}
 }
 
 
