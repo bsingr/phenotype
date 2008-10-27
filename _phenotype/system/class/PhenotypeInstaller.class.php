@@ -83,7 +83,7 @@ class PhenotypeInstaller
 			$this->step=2;
 		}
 
-			// determine pathes (default values)
+		// determine pathes (default values)
 
 		$dirname = dirname($_SERVER["SCRIPT_FILENAME"]);
 
@@ -581,13 +581,16 @@ class PhenotypeInstaller
 
 		foreach ($_sql AS $sql)
 		{
-			$rs = mysql_query($sql);
-			if (!$rs)
+			if (trim($sql)!="") // Some phpmyAdmin-Dumps do have empty lines (damn, every version works different :())
 			{
-				$this->installation_status = "Sorry, the initialization of the database was not successful.";
-				$_logs[] = mysql_error();
-				$this->error_globalfeedback=true;
-				return $_logs;
+				$rs = mysql_query($sql);
+				if (!$rs)
+				{
+					$this->installation_status = "Sorry, the initialization of the database was not successful.";
+					$_logs[] = mysql_error();
+					$this->error_globalfeedback=true;
+					return $_logs;
+				}
 			}
 		}
 		$_logs[] = "Queries executed";
@@ -722,12 +725,12 @@ class PhenotypeInstaller
 			$this->error_globalfeedback=true;
 			return $_logs;
 		}
-		
+
 		require ("../_config.inc.php");
-		
+
 		$_logs[]="Start installation of demo package (Structure files)";
 		$_logs[]="";
-		
+
 		$myAdm = new PhenotypeAdmin();
 		require (PACKAGEPATH."1200_PT_Demo/PhenotypePackage.class.php");
 		$myPak = new PhenotypePackage();
@@ -743,7 +746,7 @@ class PhenotypeInstaller
 		$_logs[]="";
 		$_logs[]="Installation of demo package (Content)";
 		$_logs[]="";
-		
+
 		$myPT->startBuffer();
 		$myPak->globalInstallData();
 		$html = $myPT->stopBuffer();
@@ -755,21 +758,21 @@ class PhenotypeInstaller
 		return ($_logs);
 
 	}
-	
+
 	public function finalizeInstallation()
 	{
 		$this->installation_status ="";
 		$_logs = array();
-		
+
 		$logentry = "";
 		if ($myDB= @mysql_connect($this->database_server, $this->database_user, $this->database_password) )
 		{
 			mysql_select_db($this->database_name, $myDB);
-			
+
 			// We expect a user with the id 13 in PT_CORE and PT_DEMO
 			// If we also select for usr_login="starter" a reload of the installer will cause
 			// erros, which will not be understood by the typical phenotype installer
-			
+
 			$sql = "SELECT * FROM user WHERE usr_id=13";
 			$rs = mysql_query($sql);
 			if (mysql_num_rows($rs)==1)
@@ -791,17 +794,25 @@ class PhenotypeInstaller
 			return($_logs);
 		}
 		$_logs[]=$logentry;
-		
-	
-		if (!unlink("install.php"))
+
+
+		if ($this->error_globalfeedback==false)
 		{
-			$this->installation_status = "Could not delete install.php. Check read/write permissions or delete the file manually.";
-			$this->error_globalfeedback=true;
+			$_logs[]="deleting install.php";
+			if (!unlink("install.php"))
+			{
+				$this->installation_status = "Could not delete install.php. Check read/write permissions or delete the file manually.";
+				$this->error_globalfeedback=true;
+			}
 		}
-		
-		
-		
-		$_logs[]="deleting install.php";
+		else
+		{
+			$_logs[]="Skipping deletion of install.php. Try to fix the errors first.";
+		}
+
+
+
+
 		return ($_logs);
 	}
 }
