@@ -161,7 +161,7 @@ font-size: 12px;
 {
 margin-top:5px;
 margin-bottom:5px;
-display:block;
+display:table;
 }
 
 .longinput
@@ -187,7 +187,7 @@ width: 350px;
 <div id="logo"><a href="http://www.phenotype.de/"><img	src="_phenotype/admin/img/phenotypelogo.gif" alt="Phenotype" style="border:0px"/></a></div>
 <div id="main">
 <?php if($myInstaller->getStep()==1):?>
-<form action="install.php" method="POST"/>
+<form action="install.php" method="post">
 <input type="hidden" name="reload" value="1"/>
 <div id="header"><strong>Phenotype Installer - Step 1/2 (Checking requirements, basic configuration ...)</strong>
 <?php if ($myInstaller->isReload()):?>
@@ -208,7 +208,6 @@ Welcome to the Phenotype CMS Installer (##!PT_VERSION!## - ##!BUILD_DATE!##)<br/
 Please provide your database settings, check wether your environment meets all requirements,<br/> fix noted issues and press "continue".
 <br/><br/><br/>
 <input type="submit" value="Continue"/>
-</div>
 <?php endif?>
 </div>
 
@@ -255,7 +254,7 @@ Please provide your database settings, check wether your environment meets all r
 <li><span class="title">Basepath:</span><code><span><input type="text" name="path_basepath" class="longinput" value="<?php echo htmlentities($myInstaller->path_basepath)?>"/></span></code></li>
 <li><span class="title">Base URL:</span><code><span><input type="text" name="path_baseurl" class="longinput" value="<?php echo htmlentities($myInstaller->path_baseurl)?>"/></span></code></li>
 <li><span class="title">Hostname:</span><code><span><input type="text" name="path_hostname" class="longinput" value="<?php echo htmlentities($myInstaller->path_hostname)?>"/></span></code></li>
-<li><span class="title">Full URL:</span><code><span><?php echo htmlentities($myInstaller->path_fullurl)?></code></li>
+<li><span class="title">Full URL:</span><code><span><?php echo htmlentities($myInstaller->path_fullurl)?></span></code></li>
 <?php if ($myInstaller->checkPathes()):?>
 <li><span class="title">&nbsp;</span><span class="green update"><?php echo $myInstaller->path_status?></span></li>
 <?php else:?>
@@ -312,18 +311,36 @@ Please provide your database settings, check wether your environment meets all r
 <li ><span class="title">Debug mode:</span><code><span><input type="checkbox" value="1" name="app_debug_mode" <?php echo $myInstaller->getCheckboxSelectionAsHTML("app_debug_mode")?>/>activated</span></code></li>
 <li ><span class="title">Frontend session:</span><code><span><input type="checkbox" value="1" name="app_frontend_session" <?php echo $myInstaller->getCheckboxSelectionAsHTML("app_frontend_session")?>/>activated</span></code></li>
 <li ><span class="title">Inital Setup:</span><code><span><select name="app_package"><?php echo $myInstaller->getOptionsAsHTML("app_package")?></select></span></code></li>
-<li><span class="title">&nbsp;</span><span class="green update">Don't worry, you must not understand this settings for a successfull install.</span></li>
+<li><span class="title">&nbsp;</span><span class="green update">Don't worry, you must not (yet) understand this settings for a successfull install.</span></li>
 <li><span class="title">&nbsp;</span><span class="update"><input type="submit" value="Update!"/></span></li>
 </ul>
 
 <br/>
 <br/>
+<?php /* -not yet
+<em>Web Access Security (HTTP Authentification):</em><br />
 
-	</div>
-	</form>
+<ul class="source">
+
+<li ><span class="title">Frontend login:</span><code><span><input type="text" name="frontend_login" value="<?php echo htmlentities($myInstaller->frontend_login)?>"/></span></code></li>
+<li ><span class="title">Frontend password:</span><code><span><input type="text" name="frontend_password" value="<?php echo htmlentities($myInstaller->frontend_password)?>"/></span></code></li>
+<li ><span class="title">Backend login:</span><code><span><input type="text" name="backend_login" value="<?php echo htmlentities($myInstaller->backend_login)?>"/></span></code></li>
+<li ><span class="title">Backend password:</span><code><span><input type="text" name="backend_password" value="<?php echo htmlentities($myInstaller->backend_password)?>"/></span></code></li>
+<?php if ($myInstaller->checkWebaccess()):?>
+<li><span class="title">&nbsp;</span><span class="green update"><?php echo $myInstaller->webaccess_status?></span></li>
+<?php else:?>
+<li><span class="title">&nbsp;</span><div class="red update" style="display:table"><?php echo $myInstaller->webaccess_status?></></li>
+<?php endif?>
+<li><span class="title">&nbsp;</span><span class="update"><input type="submit" value="Update!"/></span></li>
+</ul>
+
+<br/>
+<br/>
+*/?>
+</div>
+</form>
 <?php endif?>
 <?php if ($myInstaller->getStep()==2):?>
-<form action="install.php" method="POST"/>
 <div id="header"><strong>Phenotype Installer - Step 2/2 (Writing configuration files, importing database ...)</strong>
 <div id="intro">
 Installation in process ...<br/>
@@ -380,7 +397,7 @@ If you retry by reloading and continue to get strange error messages, please del
 If you're new to phenotype we recommend to try a local installation prior installing and configuring phenotype in a maybe somehow limited shared hosting environment.<br/>
 </div>
 <?php else:?>
-<div id="intro">
+<div id="outro">
 <span class="green">
 <br/>
 Installation complete.<br/><br/>

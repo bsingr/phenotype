@@ -18,7 +18,7 @@
 // -------------------------------------------------------
 
 
-define("SQL_DUMP", "../phenotype.sql");
+define("SQL_DUMP", "../phenotype_install.sql");
 
 define("SAMPLE_CONFIG_FILE", "../_config.inc.sample.php");
 define("CONFIG_FILE", "../_config.inc.php");
@@ -40,6 +40,17 @@ define("APP_CONFIG", "../_phenotype/application/_application.inc.php");
  */
 class PhenotypeInstaller
 {
+	/**
+	 * Upon activation of develop_mode the install.php-file will not be delete after succesfull installation
+	 * So you can test the installer without the need to backup the install.php-file every time
+	 * 
+	 * Addionally the content of the install.php-file is copied into the install.4build.php, so you don't have
+	 * to worry to loose any changes, since the install.4build.php ist stored in the svn repository.
+	 *
+	 * @var boolean
+	 */
+	private $develop_mode =true;
+
 	private $error_globalfeedback = false;
 	private $step = 1;
 
@@ -68,6 +79,13 @@ class PhenotypeInstaller
 	public $app_frontend_session = 0;
 
 
+	public $frontend_login="phenotype";
+	public $frontend_password="";
+	public $backend_login="phenotype";
+	public $backend_password="";
+
+	public $webaccess_status="";
+
 	public $installation_status ="";
 
 	/**
@@ -77,6 +95,11 @@ class PhenotypeInstaller
 	public function __construct()
 	{
 		global $myRequest;
+
+		if ($this->develop_mode ==true)
+		{
+			copy("install.php","install.4build.php");
+		}
 
 		if ($myRequest->check("btn_install"))
 		{
@@ -92,10 +115,14 @@ class PhenotypeInstaller
 		$this->path_basepath = implode("/", $myDirs) ."/";
 
 		$urlprefix = dirname($_SERVER['PHP_SELF']);
+		$urlprefix = str_replace("\\","/",$urlprefix);
 		$myDirs = explode("/", $urlprefix);
-		array_pop($myDirs);
 		$urlprefix = implode("/", $myDirs);
-		$this->path_baseurl = $urlprefix ."/";
+		if($urlprefix=="/")
+		{
+			$urlprefix="";
+		}
+		$this->path_baseurl = $urlprefix."/";
 
 		$this->path_hostname = $_SERVER["HTTP_HOST"];
 
@@ -106,7 +133,7 @@ class PhenotypeInstaller
 			$this->app_debug_mode=1;
 		}
 
-		$_params = array("database_server","database_user","database_password","database_name","superuser_login","superuser_password","path_basepath","path_baseurl","path_hostname","app_backend_language","app_debug_mode","app_frontend_session","app_package");
+		$_params = array("database_server","database_user","database_password","database_name","superuser_login","superuser_password","path_basepath","path_baseurl","path_hostname","app_backend_language","app_debug_mode","app_frontend_session","app_package","frontend_login","frontend_password","backend_login","backend_password");
 
 		foreach ($_params AS $param)
 		{
@@ -135,6 +162,7 @@ class PhenotypeInstaller
 				$this->checkPathes();
 				$this->checkRWPermissions();
 				$this->checkApache();
+				$this->checkWebaccess();
 				break;
 			case 2:
 				break;
@@ -217,7 +245,7 @@ class PhenotypeInstaller
 		{
 			if (mysql_num_rows($rs)!=0)
 			{
-				$this->database_status="Database not empty! Installation may fail, please make sure none of the existing tables conflicts with the phenotype initial sql import.";
+				$this->database_status="Database not empty! Installation may fail, existing data may be deleted.<br/><br/>Please make sure none of the existing tables conflicts with the<br/>phenotype initial sql import.";
 				$this->error_globalfeedback=true;
 				return false;
 			}
@@ -250,14 +278,25 @@ class PhenotypeInstaller
 			$this->error_globalfeedback=true;
 			return false;
 		}
-		$fullurlcheck=@file_get_contents($this->path_fullurl."installcheck.txt");
-		if ($fullurlcheck!="o.k.")
-		{
+
+
+		$fullurl = $this->path_fullurl."installcheck.txt";
+		// Sometimes a request to localhost simply doesn't resolve
+		$fullurl = str_replace("localhost","127.0.0.1",$fullurl);
+		
+		$socketurl = str_replace("http://","",$fullurl);
+		$socketurl=substr($socketurl,0,strpos($socketurl,"/"));
+		// Check only, if host is reachable
+		if ($fsock = @fsockopen($socketurl, 80, $errno, $errstr, 1)) 
+    	{
+			$fullurlcheck=@file_get_contents($fullurl);
+			if ($fullurlcheck!="o.k.")
+			{
 			$this->path_status="Either base URL or hostname seems to be wrong. The Full URL (combination of both) must point to the main web folder, where the index.php resides.";
 			$this->error_globalfeedback=true;
 			return false;
-		}
-
+			}
+    	}
 
 		$this->path_status = "Everything seems to be all right.";
 		return true;
@@ -285,7 +324,7 @@ class PhenotypeInstaller
 			$selected="";
 			if ($k==$value)
 			{
-				$selected='selected=="selected"';
+				$selected='selected="selected"';
 			}
 			$html.='<option value="'.$k.'" '.$selected.'>'.htmlentities($v).'</option>';
 		}
@@ -458,6 +497,29 @@ class PhenotypeInstaller
 		return ($_array);
 	}
 
+	public function checkWebaccess()
+	{
+		$this->webaccess_status = "Everything fine, HTTP authentification is optional.<br/> If you want to restrict web access, just enter password(s).";
+		if ($this->frontend_login!="" AND $this->frontend_password!="")
+		{
+			if ($this->is_writable("../htdocs",false)==false)
+			{
+				$this->webaccess_status ="Please check read/write permissions for webfolder (/htdocs).";
+				return false;
+			}
+			$this->webaccess_status = "Everything fine. Installer will create the necessary files for you.";
+		}
+		if ($this->backend_login!="" AND $this->backend_password!="")
+		{
+			if ($this->is_writable("../htdocs/_phenotype/admin",false)==false)
+			{
+				$this->webaccess_status ="For backend access restriction the installer must be able to<br/> write within the folder /htdocs/_phenotype/admin.<br/><br/>(After installation you can restore your preferred setting for that folder.)";
+				return false;
+			}
+			$this->webaccess_status = "Everything fine. Installer will create the necessary files for you.";
+		}
+		return true;
+	}
 
 	public function is_writable($path,$subfolders=false)
 	{
@@ -538,6 +600,7 @@ class PhenotypeInstaller
 				return $_logs;
 			}
 			$_logs[]="Creating database ".$this->database_name;
+			mysql_select_db($this->database_name, $myDB);
 
 		}
 		$_logs[]="Selecting database ".$this->database_name;
@@ -686,6 +749,14 @@ class PhenotypeInstaller
 			$sub = "\tRewriteBase ". $this->path_baseurl;
 			$htaccess .= preg_replace($exp, $sub, $line);
 		}
+
+		/*
+		if ($this->frontend_login!="" AND $this->frontend_password)
+		{
+		$password = crypt($this->frontend_password, substr($this->frontend_user, 0, 2));
+		}
+		$htaccess .="\nAuthType Basic\nAuthName \"Frontend\"\nAuthUserFile .htpasswd\nRequire valid-user\n";
+		*/
 		$_logs[] = "Writing .htaccess file";
 
 		if (!@file_put_contents(HTACCESS_FILE, $htaccess))
@@ -694,6 +765,8 @@ class PhenotypeInstaller
 			$this->error_globalfeedback=true;
 			return $_logs;
 		}
+
+
 		return $_logs;
 	}
 
@@ -779,7 +852,6 @@ class PhenotypeInstaller
 			{
 				$pass = crypt(strtolower($this->superuser_password),"phenotype");
 				$sql = "UPDATE `user` SET `usr_login`='".mysql_real_escape_string($this->superuser_login)."', `usr_pass`='".mysql_real_escape_string($pass)."' WHERE `usr_id`=13";
-				echo $sql;
 				$rs = mysql_query($sql);
 				if ($rs)
 				{
@@ -795,6 +867,10 @@ class PhenotypeInstaller
 		}
 		$_logs[]=$logentry;
 
+		if ($this->develop_mode ==true)
+		{
+			return ($_logs);
+		}
 
 		if ($this->error_globalfeedback==false)
 		{

@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
-
 <project name="phenotype" default="build" basedir=".">
 	
-	<php expression="PHP_OS" returnProperty="buildOS"/>
-	<php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>
+  <php expression="PHP_OS" returnProperty="buildOS"/>
+  <php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>
 
   <property name="ptVersion" value="2.7" />
   
@@ -15,21 +14,24 @@
   <!--<svnlastrevision svnpath="svn" workingcopy="." propertyname="revision"/>-->
   <!-- if you have trouble with evaluating the last revision from svn, try the manually way -->
   <!-- be sure to set the value to the current svn revision -->
-  <property name="revision" value="322" /> 
+  <property name="revision" value="???" /> 
 
 	
   <property name="buildNo" value="r${revision}" />
   <property name="buildId" value="Phenotype ${ptVersion}, build ${buildNo} PHP${php.version}@${buildOS}/${host.arch}(${host.name})" />
   
-	<!-- directory setup -->
-  <property name="buildDir" value="_build_" />
+  <!-- directory setup -->
+  <property name="buildDir" value="../srv_build" />
   <property name="htdocsDir" value="htdocs" />
   <property name="_phenotypeDir" value="_phenotype" />
   <property name="mirrorDir" value="_mirror" />
-  <property name="installerDir" value="installer" />
   
   <fileset dir="${htdocsDir}" id="allHtdocsFiles">
   	<include name="**" />
+  	<exclude name="php.ini"/>
+  	<exclude name="install.4build.php"/>
+  	<exclude name=".htaccess"/>
+  	<exclude name=".htpasswd"/>
   </fileset>
   
   <fileset dir="${_phenotypeDir}" id="all_phenotypeFiles">
@@ -47,12 +49,7 @@
   <fileset dir="${mirrorDir}${pathSep}_phenotype" id="_phenotypeMirrorFiles">
     <include name="**" />
   </fileset>
-
-  <fileset dir="${installerDir}" id="installerFiles">
-	<include name="**" />
-  </fileset>
-
-
+  
   <target name="clean">
     <echo msg="Cleaning up..."/>
     <delete dir="${buildDir}" includeemptydirs="true" />
@@ -63,7 +60,7 @@
     <mkdir dir="${buildDir}" />
   </target>
 
-  <target name="build" depends="prepare">
+  <target name="build" depends="clean, prepare">
     <echo>Building buildNo ${buildNo}...</echo>
     
     <copy todir="${buildDir}${pathSep}${htdocsDir}">
@@ -102,44 +99,21 @@
 		</replacetokens>
 	  </filterchain>
     </copy>
+
     
+    <copy file="index.html" todir="${buildDir}">
+    </copy>
+     
     <copy file="_config.inc.sample.php" todir="${buildDir}">
     </copy>
 
     <copy file="htaccess_smartURL_sample" todir="${buildDir}">
     </copy>
-
-    <copy file="phenotype.sql" todir="${buildDir}${pathSep}${htdocsDir}${pathSep}${installerDir}">
-    </copy>
-	
-		<copy file="install.txt" todir="${buildDir}">
-			<filterchain>
-			<replacetokens begintoken="##!" endtoken="!##">
-				<token key="BUILD_DATE" value="${DATE}" />
-				<token key="BUILD_ID" value="${buildId}" />
-				<token key="BUILD_NO" value="${buildNo}" />
-				<token key="PT_VERSION" value="${ptVersion}" />
-			</replacetokens>
-			</filterchain>
-		</copy>
-	
-		<!-- copy the dummy index to htdocs -->
-		<copy file="${installerDir}${pathSep}index2copy1${pathSep}index.php" todir="${buildDir}${pathSep}${htdocsDir}${pathSep}" overwrite="true" />
-	
-		<!-- copy the installer files -->
-    <copy todir="${buildDir}${pathSep}${htdocsDir}${pathSep}${installerDir}">
-      <fileset refid="installerFiles" />
-    </copy>
-
-		<!-- copy the real index to htdocs -->
-		<copy file="${htdocsDir}${pathSep}index.php" tofile="${buildDir}${pathSep}${htdocsDir}${pathSep}${installerDir}${pathSep}index_postinstall.php" />
-		
-  </target>
- 
-  <target name="update-build" depends="prepare">
-    <echo>Building update buildNo ${buildNo}...  this one comes without the installer</echo>
     
-    <copy todir="${buildDir}${pathSep}${htdocsDir}">
+    <copy file="phenotype_install.sql" todir="${buildDir}">
+    </copy>
+
+	<copy file="install.txt" todir="${buildDir}">
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
 		  <token key="BUILD_DATE" value="${DATE}" />
@@ -148,82 +122,21 @@
 		  <token key="PT_VERSION" value="${ptVersion}" />
 		</replacetokens>
 	  </filterchain>
-      <fileset refid="allHtdocsFiles" />    
-      <fileset refid="htdocsMirrorFiles" />    
-    </copy>
-    
-    <copy todir="${buildDir}${pathSep}${_phenotypeDir}">
+	</copy>
+
+	<!-- copy the installer to htdocs -->
+	<copy file="htdocs/install.4build.php" tofile="${buildDir}${pathSep}${htdocsDir}${pathSep}install.php" >
 	  <filterchain>
-		<replacetokens begintoken="##!" endtoken="!##">
+	    <replacetokens begintoken="##!" endtoken="!##">
 		  <token key="BUILD_DATE" value="${DATE}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
-		</replacetokens>
+	    </replacetokens>
 	  </filterchain>
-      <fileset refid="all_phenotypeFiles" />    
-      <fileset refid="_phenotypeMirrorFiles" />    
-    </copy>
-    
-    <copy file="buildinfo.inc.php" todir="${buildDir}">
-	  <filterchain>
-		<replacetokens begintoken="##!" endtoken="!##">
-		  <token key="BUILD_DATE" value="${DATE}" />
-		  <token key="BUILD_ID" value="${buildId}" />
-		  <token key="BUILD_NO" value="${buildNo}" />
-		  <token key="PT_VERSION" value="${ptVersion}" />
-		</replacetokens>
-	  </filterchain>
-    </copy>
-    
-    <copy file="_config.inc.sample.php" todir="${buildDir}">
-    </copy>
-
-    <copy file="htaccess_smartURL_sample" todir="${buildDir}">
-    </copy>
-
-    <copy file="phenotype.sql" todir="${buildDir}${pathSep}${htdocsDir}${pathSep}${installerDir}">
-    </copy>
-	
-		<copy file="install.txt" todir="${buildDir}">
-			<filterchain>
-			<replacetokens begintoken="##!" endtoken="!##">
-				<token key="BUILD_DATE" value="${DATE}" />
-				<token key="BUILD_ID" value="${buildId}" />
-				<token key="BUILD_NO" value="${buildNo}" />
-				<token key="PT_VERSION" value="${ptVersion}" />
-			</replacetokens>
-			</filterchain>
-		</copy>
+	</copy>
 	
   </target>
   
-  <target name="dist" depends="build">
-    <echo message="please don't use target dist at the moment" />
-    <echo message="there is a problem with the tar task in phing" />
-    <!--echo message="Creating archive..." />
-    <tar destfile="phenotype_${ptVersion}_${buildNo}.tgz" compression="gzip">
-    	<fileset dir=".">
-    		<include name="${buildDir}" />
-    	</fileset>
-		</tar-->
-  </target>
-
-  <target name="dev-build">
-    <echo>Building build ${buildNo}... DIRECTLY IN SVN DIR</echo>
-    
-    <copy todir="${htdocsDir}">
-      <fileset refid="htdocsMirrorFiles" />    
-    </copy>
-    
-    <copy todir="${_phenotypeDir}">
-      <fileset refid="_phenotypeMirrorFiles" />    
-    </copy>
-    
-    <copy todir="${htdocsDir}${pathSep}${installerDir}">
-      <fileset refid="installerFiles" />
-    </copy>
-  </target>
-
- 
 </project>
+
