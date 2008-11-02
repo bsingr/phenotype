@@ -49,7 +49,7 @@ class PhenotypeInstaller
 	 *
 	 * @var boolean
 	 */
-	private $develop_mode =true;
+	private $develop_mode =false;
 
 	private $error_globalfeedback = false;
 	private $step = 1;
