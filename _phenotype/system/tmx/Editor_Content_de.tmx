@@ -3,47 +3,31 @@
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="Really delete this record?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Really delete this record?
-                </tmx:seg>
+        <tmx:seg>Really delete this record?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Diesen Datensatz wirklich löschen
-                </tmx:seg>
+        <tmx:seg>Diesen Datensatz wirklich löschen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Record copied.">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Record copied.
-                </tmx:seg>
+        <tmx:seg>Record copied.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Datensatz kopiert.
-                </tmx:seg>
+        <tmx:seg>Datensatz kopiert.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Record deleted.">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Record deleted.
-                </tmx:seg>
+        <tmx:seg>Record deleted.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Datensatz gelöscht.
-                </tmx:seg>
+        <tmx:seg>Datensatz gelöscht.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Record not found.">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Record not found.
-                </tmx:seg>
+        <tmx:seg>Record not found.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Datensatz nicht gefunden.
-                </tmx:seg>
+        <tmx:seg>Datensatz nicht gefunden.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

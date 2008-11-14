@@ -84,7 +84,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 		<table width="640" height="480" border="0" align="center" cellpadding="0" cellspacing="0">
 		  <tr>
 		    <td>
-			<form action="backend.php" method="post">
+			<form action="backend.php" method="post" name="login">
 			<input type="hidden" name="page" value="Session,Login"/>
 			  <table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
 		        <tr>
@@ -118,6 +118,13 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 		          <td valign="top" class="windowRightShadow"><span class="windowBottomShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></span></td>
 		        </tr>
 		      </table>
+		      
+		      <script type="text/javascript">
+		      <!--
+		      document.forms.login.user.focus();
+		      -->
+		      </script>
+		      
 			  </form></td>
 		  </tr>
 		</table>
@@ -163,7 +170,7 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 <table width="640" height="480" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td>
-      <form action="backend.php" method="post">
+      <form action="backend.php" method="post" name="login">
 	  <input type="hidden" name="page" value="Session,Login"/>
         <table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
           <tr>
@@ -196,8 +203,17 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
           </tr>
         </table>
 
-</body>
-</html>
+		      <script type="text/javascript">
+		      <!--
+		      document.forms.login.user.focus();
+		      -->
+		      </script>
+		      
+			  </form></td>
+		  </tr>
+		</table>
+		</body>
+		</html>
 <?php
 	}
 }

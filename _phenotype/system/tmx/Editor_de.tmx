@@ -3,1015 +3,647 @@
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="Action">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Action
-                </tmx:seg>
+        <tmx:seg>Action</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Aktion
-                </tmx:seg>
+        <tmx:seg>Aktion</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Add Link">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Add Link
-                </tmx:seg>
+        <tmx:seg>Add Link</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Link hinzufügen
-                </tmx:seg>
+        <tmx:seg>Link hinzufügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Add first page in group">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Add first page in group
-                </tmx:seg>
+        <tmx:seg>Add first page in group</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Erste Seite hinzufügen
-                </tmx:seg>
+        <tmx:seg>Erste Seite hinzufügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Add new record">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Add new record
-                </tmx:seg>
+        <tmx:seg>Add new record</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Neuen Datensatz hinzufügen
-                </tmx:seg>
+        <tmx:seg>Neuen Datensatz hinzufügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="All">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                	All
-                </tmx:seg>
+        <tmx:seg>All</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Alle
-                </tmx:seg>
+        <tmx:seg>Alle</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Alternate">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Alternate
-                </tmx:seg>
+        <tmx:seg>Alternate</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Alt-Text
-                </tmx:seg>
+        <tmx:seg>Alt-Text</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Assign Document">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Assign Document
-                </tmx:seg>
+        <tmx:seg>Assign Document</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Dokument hinzufügen
-                </tmx:seg>
+        <tmx:seg>Dokument hinzufügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Assign Document/Image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Assign Document/Image
-                </tmx:seg>
+        <tmx:seg>Assign Document/Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Dokument/Bild hinzufügen
-                </tmx:seg>
+        <tmx:seg>Dokument/Bild hinzufügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Assign Image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Assign Image
-                </tmx:seg>
+        <tmx:seg>Assign Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Bild hinzufügen
-                </tmx:seg>
+        <tmx:seg>Bild hinzufügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Change Document">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Change Document
-                </tmx:seg>
+        <tmx:seg>Change Document</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Dokument ändern
-                </tmx:seg>
+        <tmx:seg>Dokument ändern</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Change Document/Image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Change Document/Image
-                </tmx:seg>
+        <tmx:seg>Change Document/Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Dokument/Bild ändern
-                </tmx:seg>
+        <tmx:seg>Dokument/Bild ändern</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Change Image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Change Image
-                </tmx:seg>
+        <tmx:seg>Change Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Bild ändern
-                </tmx:seg>
+        <tmx:seg>Bild ändern</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Content">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Content
-                </tmx:seg>
+        <tmx:seg>Content</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Content
-                </tmx:seg>
+        <tmx:seg>Content</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Copy page">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Copy page
-                </tmx:seg>
+        <tmx:seg>Copy page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Seite kopieren
-                </tmx:seg>
+        <tmx:seg>Seite kopieren</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Copy record">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Copy record
-                </tmx:seg>
+        <tmx:seg>Copy record</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Datensatz kopieren
-                </tmx:seg>
+        <tmx:seg>Datensatz kopieren</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Create new task">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Create new task
-                </tmx:seg>
+        <tmx:seg>Create new task</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Neue Aufgabe einstellen
-                </tmx:seg>
+        <tmx:seg>Neue Aufgabe einstellen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Current">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Current
-                </tmx:seg>
+        <tmx:seg>Current</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Aktuell
-                </tmx:seg>
+        <tmx:seg>Aktuell</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Date">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Date
-                </tmx:seg>
+        <tmx:seg>Date</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Datum
-                </tmx:seg>
+        <tmx:seg>Datum</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete record">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Delete record
-                </tmx:seg>
+        <tmx:seg>Delete record</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Datensatz löschen
-                </tmx:seg>
+        <tmx:seg>Datensatz löschen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Display debug skin">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Display debug skin
-                </tmx:seg>
+        <tmx:seg>Display debug skin</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Debug-Skin anzeigen
-                </tmx:seg>
+        <tmx:seg>Debug-Skin anzeigen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Document No.">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Document No.
-                </tmx:seg>
+        <tmx:seg>Document No.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Document Nr.
-                </tmx:seg>
+        <tmx:seg>Document Nr.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Document assigned">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Document assigned
-                </tmx:seg>
+        <tmx:seg>Document assigned</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Dokument hinzugefügt.
-                </tmx:seg>
+        <tmx:seg>Dokument hinzugefügt.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Document/Image assigned">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Document/Image assigned
-                </tmx:seg>
+        <tmx:seg>Document/Image assigned</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Document/Bild hinzugefügt
-                </tmx:seg>
+        <tmx:seg>Document/Bild hinzugefügt</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Edit page">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Edit page
-                </tmx:seg>
+        <tmx:seg>Edit page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Seite bearbeiten
-                </tmx:seg>
+        <tmx:seg>Seite bearbeiten</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Edit record">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Edit record
-                </tmx:seg>
+        <tmx:seg>Edit record</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Datensatz bearbeiten
-                </tmx:seg>
+        <tmx:seg>Datensatz bearbeiten</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Fulltext">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Fulltext
-                </tmx:seg>
+        <tmx:seg>Fulltext</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Volltext
-                </tmx:seg>
+        <tmx:seg>Volltext</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Help">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Help
-                </tmx:seg>
+        <tmx:seg>Help</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Hilfe aufrufen
-                </tmx:seg>
+        <tmx:seg>Hilfe aufrufen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="ID">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    ID
-                </tmx:seg>
+        <tmx:seg>ID</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    ID
-                </tmx:seg>
+        <tmx:seg>ID</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Insert">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Insert
-                </tmx:seg>
+        <tmx:seg>Insert</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Einfügen
-                </tmx:seg>
+        <tmx:seg>Einfügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Insert component">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Insert component
-                </tmx:seg>
+        <tmx:seg>Insert component</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Baustein einfügen
-                </tmx:seg>
+        <tmx:seg>Baustein einfügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Link selection">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Link selection
-                </tmx:seg>
+        <tmx:seg>Link selection</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Linkauswahl
-                </tmx:seg>
+        <tmx:seg>Linkauswahl</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Link text">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Link text
-                </tmx:seg>
+        <tmx:seg>Link text</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Linktext
-                </tmx:seg>
+        <tmx:seg>Linktext</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Link type">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Link type
-                </tmx:seg>
+        <tmx:seg>Link type</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Linktyp
-                </tmx:seg>
+        <tmx:seg>Linktyp</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Linkname">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Linkname
-                </tmx:seg>
+        <tmx:seg>Linkname</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Linkbezeichnung
-                </tmx:seg>
+        <tmx:seg>Linkbezeichnung</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Media">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Media
-                </tmx:seg>
+        <tmx:seg>Media</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Media
-                </tmx:seg>
+        <tmx:seg>Media</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Mediabase">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Mediabase
-                </tmx:seg>
+        <tmx:seg>Mediabase</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Media
-                </tmx:seg>
+        <tmx:seg>Media</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Name">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Name
-                </tmx:seg>
+        <tmx:seg>Name</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Bezeichnung
-                </tmx:seg>
+        <tmx:seg>Bezeichnung</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="New version">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    New version
-                </tmx:seg>
+        <tmx:seg>New version</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Neue Version
-                </tmx:seg>
+        <tmx:seg>Neue Version</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Next">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                	Next
-                </tmx:seg>
+        <tmx:seg>Next</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Weiter
-                </tmx:seg>
+        <tmx:seg>Weiter</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Page">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Page
-                </tmx:seg>
+        <tmx:seg>Page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Seite
-                </tmx:seg>
+        <tmx:seg>Seite</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Pages">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Pages
-                </tmx:seg>
+        <tmx:seg>Pages</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Seiten
-                </tmx:seg>
+        <tmx:seg>Seiten</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Preview">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Preview
-                </tmx:seg>
+        <tmx:seg>Preview</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Vorschau
-                </tmx:seg>
+        <tmx:seg>Vorschau</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Put into / Take out of lightbox">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Put into / Take out of lightbox
-                </tmx:seg>
+        <tmx:seg>Put into / Take out of lightbox</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Objekt in Sammelbox legen / aus Sammelbox nehmen
-                </tmx:seg>
+        <tmx:seg>Objekt in Sammelbox legen / aus Sammelbox nehmen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Reallocate page">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Reallocate page
-                </tmx:seg>
+        <tmx:seg>Reallocate page</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Seite umhängen
-                </tmx:seg>
+        <tmx:seg>Seite umhängen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete record?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Really delete record?
-                </tmx:seg>
+        <tmx:seg>Really delete record?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Den Datensatz wirklich löschen?
-                </tmx:seg>
+        <tmx:seg>Den Datensatz wirklich löschen?</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this record?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Really delete this record?
-                </tmx:seg>
+        <tmx:seg>Really delete this record?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Den Datensatz wirklich löschen?
-                </tmx:seg>
+        <tmx:seg>Den Datensatz wirklich löschen?</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Remove Document">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Remove Document
-                </tmx:seg>
+        <tmx:seg>Remove Document</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Dokument entfernen
-                </tmx:seg>
+        <tmx:seg>Dokument entfernen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Remove Document/Image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Remove Document/Image
-                </tmx:seg>
+        <tmx:seg>Remove Document/Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Dokument/Bild entfernen
-                </tmx:seg>
+        <tmx:seg>Dokument/Bild entfernen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Remove Image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Remove Image
-                </tmx:seg>
+        <tmx:seg>Remove Image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Bild entfernen
-                </tmx:seg>
+        <tmx:seg>Bild entfernen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Reset Link">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Reset Link
-                </tmx:seg>
+        <tmx:seg>Reset Link</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Referenz zurücksetzen
-                </tmx:seg>
+        <tmx:seg>Referenz zurücksetzen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Rows">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                	Zeilen
-                </tmx:seg>
+        <tmx:seg>Zeilen</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Zeilen
-                </tmx:seg>
+        <tmx:seg>Zeilen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Search Content">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Search Content
-                </tmx:seg>
+        <tmx:seg>Search Content</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Suche Content
-                </tmx:seg>
+        <tmx:seg>Suche Content</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Search Pages">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Search Pages
-                </tmx:seg>
+        <tmx:seg>Search Pages</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Suche Seiten nach
-                </tmx:seg>
+        <tmx:seg>Suche Seiten nach</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Select Link">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Select Link
-                </tmx:seg>
+        <tmx:seg>Select Link</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Referenz auswählen
-                </tmx:seg>
+        <tmx:seg>Referenz auswählen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Select image">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                	Select image
-                </tmx:seg>
+        <tmx:seg>Select image</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Bild auswählen
-                </tmx:seg>
+        <tmx:seg>Bild auswählen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Select link">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Select link
-                </tmx:seg>
+        <tmx:seg>Select link</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Link auswählen
-                </tmx:seg>
+        <tmx:seg>Link auswählen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Send">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                	Send
-                </tmx:seg>
+        <tmx:seg>Send</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Senden
-                </tmx:seg>
+        <tmx:seg>Senden</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Source">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Source
-                </tmx:seg>
+        <tmx:seg>Source</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Quelle
-                </tmx:seg>
+        <tmx:seg>Quelle</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="State">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Status
-                </tmx:seg>
+        <tmx:seg>Status</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Status
-                </tmx:seg>
+        <tmx:seg>Status</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Status offline">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                	Status offline
-                </tmx:seg>
+        <tmx:seg>Status offline</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Status offline
-                </tmx:seg>
+        <tmx:seg>Status offline</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Status: offline">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Status: offline
-                </tmx:seg>
+        <tmx:seg>Status: offline</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Status: offline
-                </tmx:seg>
+        <tmx:seg>Status: offline</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Status: online">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Status: online
-                </tmx:seg>
+        <tmx:seg>Status: online</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Status: online
-                </tmx:seg>
+        <tmx:seg>Status: online</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Thumb">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Thumb
-                </tmx:seg>
+        <tmx:seg>Thumb</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Abbildung
-                </tmx:seg>
+        <tmx:seg>Abbildung</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Type">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Type
-                </tmx:seg>
+        <tmx:seg>Type</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Typ
-                </tmx:seg>
+        <tmx:seg>Typ</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="URL">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    URL
-                </tmx:seg>
+        <tmx:seg>URL</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	URL
-                </tmx:seg>
+        <tmx:seg>URL</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="User">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    User
-                </tmx:seg>
+        <tmx:seg>User</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Benutzer
-                </tmx:seg>
+        <tmx:seg>Benutzer</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Version">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Version
-                </tmx:seg>
+        <tmx:seg>Version</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Version
-                </tmx:seg>
+        <tmx:seg>Version</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Versions">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Versions
-                </tmx:seg>
+        <tmx:seg>Versions</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Versionen
-                </tmx:seg>
+        <tmx:seg>Versionen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Where to locate the new page within the page tree?">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    %bbWhere%bs to locate the new page within the page tree?
-                </tmx:seg>
+        <tmx:seg>%bbWhere%bs to locate the new page within the page tree?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	%bbWo%bs soll die neue Seite im Navigationsbaum eingeordnet werden?
-                </tmx:seg>
+        <tmx:seg>%bbWo%bs soll die neue Seite im Navigationsbaum eingeordnet werden?</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="back">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Back
-                </tmx:seg>
+        <tmx:seg>Back</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Zurück
-                </tmx:seg>
+        <tmx:seg>Zurück</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="for">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    for
-                </tmx:seg>
+        <tmx:seg>for</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    nach
-                </tmx:seg>
+        <tmx:seg>nach</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="for ID">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    for ID
-                </tmx:seg>
+        <tmx:seg>for ID</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    nach ID
-                </tmx:seg>
+        <tmx:seg>nach ID</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="fulltext">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    fulltext
-                </tmx:seg>
+        <tmx:seg>fulltext</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    nach Volltext
-                </tmx:seg>
+        <tmx:seg>nach Volltext</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="in titles">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    in titles
-                </tmx:seg>
+        <tmx:seg>in titles</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    nach Titel
-                </tmx:seg>
+        <tmx:seg>nach Titel</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_align_center">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    centered
-                </tmx:seg>
+        <tmx:seg>centered</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Mittig
-                </tmx:seg>
+        <tmx:seg>Mittig</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_align_left">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    left
-                </tmx:seg>
+        <tmx:seg>left</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Linksbündig
-                </tmx:seg>
+        <tmx:seg>Linksbündig</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_align_right">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    right
-                </tmx:seg>
+        <tmx:seg>right</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Rechtsbündig
-                </tmx:seg>
+        <tmx:seg>Rechtsbündig</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_creation_date_anonymous">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Created at %1
-                </tmx:seg>
+        <tmx:seg>Created at %1</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Angelegt am %1
-                </tmx:seg>
+        <tmx:seg>Angelegt am %1</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_creation_date_by_user">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Created at %1 from %2
-                </tmx:seg>
+        <tmx:seg>Created at %1 from %2</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Angelegt am %1 durch %2
-                </tmx:seg>
+        <tmx:seg>Angelegt am %1 durch %2</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_last_change_anonymous">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Last change at %1
-                </tmx:seg>
+        <tmx:seg>Last change at %1</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Letzte Änderung am %1
-                </tmx:seg>
+        <tmx:seg>Letzte Änderung am %1</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_last_change_by_user">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Last change at %1 by %2
-                </tmx:seg>
+        <tmx:seg>Last change at %1 by %2</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Letzte Änderung am %1 durch %2
-                </tmx:seg>
+        <tmx:seg>Letzte Änderung am %1 durch %2</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_recordchange_0">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    This record was changed right now by %1.
-                </tmx:seg>
+        <tmx:seg>This record was changed right now by %1.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Dieser Datensatz wurde gerade von %1 verändert.
-                </tmx:seg>
+        <tmx:seg>Dieser Datensatz wurde gerade von %1 verändert.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_recordchange_1">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    This record was changed by %1 just a minute ago.
-                </tmx:seg>
+        <tmx:seg>This record was changed by %1 just a minute ago.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Dieser Datensatz wurde vor 1 Minute von %1 verändert.
-                </tmx:seg>
+        <tmx:seg>Dieser Datensatz wurde vor 1 Minute von %1 verändert.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_recordchange_n">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    This record was changed by %1 %2 minutes ago.
-                </tmx:seg>
+        <tmx:seg>This record was changed by %1 %2 minutes ago.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Dieser Datensatz wurde vor %2 Minuten von %1 verändert.
-                </tmx:seg>
+        <tmx:seg>Dieser Datensatz wurde vor %2 Minuten von %1 verändert.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_selected_image_not_found">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Wrong assignment. Document Nr. %1 not found.
-                </tmx:seg>
+        <tmx:seg>Wrong assignment. Document Nr. %1 not found.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Fehlerhafte Zuordnung. Dokument Nr. %1 nicht vorhanden.
-                </tmx:seg>
+        <tmx:seg>Fehlerhafte Zuordnung. Dokument Nr. %1 nicht vorhanden.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="new window">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    new window
-                </tmx:seg>
+        <tmx:seg>new window</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    in neuem Fenster
-                </tmx:seg>
+        <tmx:seg>in neuem Fenster</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="next">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Next
-                </tmx:seg>
+        <tmx:seg>Next</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Weiter
-                </tmx:seg>
+        <tmx:seg>Weiter</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="prev">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                	Back
-                </tmx:seg>
+        <tmx:seg>Back</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                	Zurück
-                </tmx:seg>
+        <tmx:seg>Zurück</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="same window">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    same window
-                </tmx:seg>
+        <tmx:seg>same window</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    in gleichem Fenster
-                </tmx:seg>
+        <tmx:seg>in gleichem Fenster</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="select">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    select
-                </tmx:seg>
+        <tmx:seg>select</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Übernehmen
-                </tmx:seg>
+        <tmx:seg>Übernehmen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="send">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    Send
-                </tmx:seg>
+        <tmx:seg>Send</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Senden
-                </tmx:seg>
+        <tmx:seg>Senden</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="tasks">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>
-                    tasks
-                </tmx:seg>
+        <tmx:seg>tasks</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>
-                    Aufgaben
-                </tmx:seg>
+        <tmx:seg>Aufgaben</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

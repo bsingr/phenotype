@@ -133,12 +133,8 @@ function __autoload($class_name) {
         require_once($file);
         return;
       }
-
     }
-
-
-
   }
-  throw new Exception("Class autoloading failure. unknown class " .$class_name);
+  throw new Exception("Class autoloading failure. Unknown class " .$class_name);
 }
 

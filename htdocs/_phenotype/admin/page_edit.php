@@ -937,7 +937,7 @@ if ($mySUser->checkRight("elm_task"))
             <td class="windowFooterWhite">
         <input name="savescript_preview" type="submit" style="width:102px"class="buttonWhite" value="<?php echo localeH("Preview");?>">
             </td>
-            <td align="right" class="windowFooterWhite"><input name="savescript" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Delete");?>">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="savescript" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
           </tr>
         </table
         <?php

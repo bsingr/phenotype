@@ -147,6 +147,7 @@ class PhenotypeLayoutStandard
 <head>
 <title>Phenotype <?php echo PT_VERSION ?> - <?php echo $modul ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="media.css" rel="stylesheet" type="text/css">
@@ -3465,11 +3466,11 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		          </tr>
 		          <tr>
 		            <td valign="top" class="taskTopCorner"><img src="img/task_topcorner.gif" width="20" height="20"></td>
-					<td class="taskHeaderGrey" align="right">ID</td>
-		            <td class="taskHeaderGrey">Bezeichnung</td>
-		            <td class="taskHeaderGrey">Bereich<?php if ($view_projects){echo"/".$myPT->getPref("tickets.bez_2ndorder");} ?></td>
-		            <td class="taskHeaderGrey">Bearbeiter</td>
-		            <td class="taskHeaderGrey">Aktion</td>
+					<td class="taskHeaderGrey" align="right"><?php echo localeH("ID")?></td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Title")?></td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Realm")?><?php if ($view_projects){echo"/".$myPT->getPref("tickets.bez_2ndorder");} ?></td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Processors")?></td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Action")?></td>
 		            <td valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
 		          </tr>
 				<?php				
@@ -3490,12 +3491,12 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		          </tr>
 		          <tr>
 		            <td valign="top" class="taskTopCorner"><img src="img/task_topcorner.gif" width="20" height="20"></td>
-		            <td class="taskHeaderGrey">Status</td>
-					<td class="taskHeaderGrey" align="right">ID</td>
-		            <td class="taskHeaderGrey">Bezeichnung</td>
-		            <td class="taskHeaderGrey">Bereich<?php if ($view_projects){echo"/".$myPT->getPref("tickets.bez_2ndorder");} ?></td>
-		            <td class="taskHeaderGrey">Bearbeiter/Einsteller</td>
-		            <td class="taskHeaderGrey">Aktion</td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Status")?></td>
+					<td class="taskHeaderGrey" align="right"><?php echo localeH("ID")?></td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Title")?></td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Realm")?><?php if ($view_projects){echo"/".$myPT->getPref("tickets.bez_2ndorder");} ?></td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Processors/Creator")?></td>
+		            <td class="taskHeaderGrey"><?php echo localeH("Action")?></td>
 		            <td valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
 		          </tr>
 				<?php
@@ -3604,27 +3605,27 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 
 			if ($row["pag_id"]!=0)
 			{
-				echo '<a href="page_edit.php?id='.$row["pag_id"].'"><img src="img/t_attached.gif" alt="Aufgabe h&auml;ngt an einer Seite" width="22" height="22" border="0"></a>';
+				echo '<a href="page_edit.php?id='.$row["pag_id"].'"><img src="img/t_attached.gif" alt="' . localeH("Task is connected to a page.").'" width="22" height="22" border="0"></a>';
 			}
 
 			if ($row["dat_id_content"]!=0)
 			{
-				echo'<a href="backend.php?page=Editor,Content,edit&id='.$row["dat_id_content"].';"><img src="img/t_attached_c.gif" alt="Aufgabe h&auml;ngt am Datensatz" width="22" height="22" border="0"></a>';
+				echo'<a href="backend.php?page=Editor,Content,edit&id='.$row["dat_id_content"].';"><img src="img/t_attached_c.gif" alt="' . localeH("Task is connected to a content record.").'" width="22" height="22" border="0"></a>';
 			}
 
 			if ($row["med_id"]!=0)
 			{
-				echo '<a href="backend.php?page=Editor,Media,edit&id='.$row["med_id"].';&folder=-1&type=-1&sortorder=1&p=1&a=10"><img src="img/t_attached_m.gif" alt="Aufgabe h&auml;ngt an einem Mediaobjekt" width="22" height="22" border="0"></a>';
+				echo '<a href="backend.php?page=Editor,Media,edit&id='.$row["med_id"].';&folder=-1&type=-1&sortorder=1&p=1&a=10"><img src="img/t_attached_m.gif" alt="' . localeH("Task is connected to a media object").'" width="22" height="22" border="0"></a>';
 			}
 
 			if ($row["tik_markup"]==1)
 			{
-				echo '<img src="img/t_notice.gif" alt="Tickethinweis" width="12" height="22" border="0">';
+				echo '<img src="img/t_notice.gif" alt="' . localeH("Ticket Notice").'" width="12" height="22" border="0">';
 			}
 
 			if ($row["tik_request"]==1)
 			{
-				echo '<img src="img/t_question.gif" alt="Am Ticket h&auml;ngt eine Frage" width="12" height="22" border="0">';
+				echo '<img src="img/t_question.gif" alt="' . localeH("Pending question").'" width="12" height="22" border="0">';
 			}
 
 			echo '<br>';
@@ -3664,7 +3665,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
  	  			echo '<img src="img/t_closed100.gif" width="17" height="17" hspace="1">';
  	  		}
 			?>
- 	  		<img src="img/t_closed.gif" alt="Ticket geschlossen" width="22" height="22" border="0">
+ 	  		<img src="img/t_closed.gif" alt="' . localeH("Ticket closed").'" width="22" height="22" border="0">
  	  		</td>
  	  	<?php
 		}
@@ -3691,11 +3692,11 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
             //."#tik".$row["tik_id"];
             if ($row["tik_pin"]==0 AND $row["tik_status"]==1)
             {
-            	echo '<a href="'.$url_pin.'"><img src="img/b_pinadd.gif" title = "Ticket merken" alt="Ticket merken" width="22" height="22" border="0"></a>';
+            	echo '<a href="'.$url_pin.'"><img src="img/b_pinadd.gif" title = "' . localeH("Add ticket to watch list.").'" alt="' . localeH("Add ticket to watch list.").'" width="22" height="22" border="0"></a>';
             }
             if ($row["tik_pin"]==1)
             {
-            	echo '<a href="'.$url_pin.'"><img src="img/b_pinremove.gif" title = "Ticket nicht mehr merken" alt="Ticket merken" width="22" height="22" border="0"></a>';
+            	echo '<a href="'.$url_pin.'"><img src="img/b_pinremove.gif" title = "' . localeH("Remove ticket from watch list.").'" alt="' . localeH("Remove ticket from watch list.").'" width="22" height="22" border="0"></a>';
             }
 
 
@@ -3708,10 +3709,10 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
             else
             {
             	$url_view = "backend.php?page=Ticket,Process,edit&id=".$row["tik_id"]. "&b=3" . $params;
-            	echo '<a href="'.$url_view.'"><img src="img/b_view.gif" alt="Verlauf sichten" width="22" height="22" border="0"></a>';
+            	echo '<a href="'.$url_view.'"><img src="img/b_view.gif" alt="' . localeH("View ticket log").'" width="22" height="22" border="0"></a>';
             }
             $url_edit = "backend.php?page=Ticket,Process,edit&id=".$row["tik_id"]. "&b=1".  $params;
-            echo '<a href="'.$url_edit.'"><img src="img/b_edit.gif" alt="Aufgabe bearbeiten" width="22" height="22" border="0"></a>';
+            echo '<a href="'.$url_edit.'"><img src="img/b_edit.gif" alt="' . localeH("Process task.").'" width="22" height="22" border="0"></a>';
 			?>
             </td>
             <td width="10" class="windowRightShadow">&nbsp;</td>
@@ -3789,7 +3790,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 			
     		echo '<td class="taskTopCorner" height="26">';
     		echo '<a name="tik'.$row["tik_id"].'"></a>';
-    		echo '<img src="img/t_closed_white.gif" alt="Ticket geschlossen" width="25" height="22" border="0"></td>';
+    		echo '<img src="img/t_closed_white.gif" alt="' . localeH("Ticket closed").'" width="25" height="22" border="0"></td>';
  	  	
 		}
 		?>
@@ -3814,11 +3815,11 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
             //."#tik".$row["tik_id"];
             if ($row["tik_pin"]==0 AND $row["tik_status"]==1)
             {
-            	echo '<a href="'.$url_pin.'"><img src="img/b_pinadd.gif" title = "Ticket merken" alt="Ticket merken" width="22" height="22" border="0"></a>';
+            	echo '<a href="'.$url_pin.'"><img src="img/b_pinadd.gif" title = "'.localeH("Add ticket to watch list.").'" alt="'.localeH("Add ticket to watch list.").'" width="22" height="22" border="0"></a>';
             }
             if ($row["tik_pin"]==1)
             {
-            	echo '<a href="'.$url_pin.'"><img src="img/b_pinremove.gif" title = "Ticket nicht mehr merken" alt="Ticket merken" width="22" height="22" border="0"></a>';
+            	echo '<a href="'.$url_pin.'"><img src="img/b_pinremove.gif" title = "'.localeH("Remove ticket from watch list.").'" alt="'.localeH("Remove ticket from watch list.").'" width="22" height="22" border="0"></a>';
             }
 
 
@@ -3831,10 +3832,10 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
             else
             {
             	$url_view = "backend.php?page=Ticket,Process,edit&id=".$row["tik_id"]. "&b=3" . $params;
-            	echo '<a href="'.$url_view.'"><img src="img/b_view.gif" alt="Verlauf sichten" width="22" height="22" border="0"></a>';
+            	echo '<a href="'.$url_view.'"><img src="img/b_view.gif" alt="'.localeH("View ticket log").'" width="22" height="22" border="0"></a>';
             }
             $url_edit = "backend.php?page=Ticket,Process,edit&id=".$row["tik_id"]. "&b=1".  $params;
-            echo '<a href="'.$url_edit.'"><img src="img/b_edit.gif" alt="Aufgabe bearbeiten" width="22" height="22" border="0"></a>';
+            echo '<a href="'.$url_edit.'"><img src="img/b_edit.gif" alt="'.localeH("Process task").'" width="22" height="22" border="0"></a>';
 			?>       </td>
             <td width="10" class="windowRightShadow">&nbsp;</td>
           </tr>

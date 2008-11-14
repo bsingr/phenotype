@@ -2135,6 +2135,12 @@ public function locale($token,$_params=Array())
 {
 	global $myLog;
 	$myDAO = $this->TMXHelper;
+	
+	if (!is_array($_params))
+	{
+		$_params = Array($_params);
+	}
+	
 	// :TODO: check when migration to UTF8
 	$s = utf8_decode($this->TMXHelper->get($token));
 	$s = str_replace("%r","\n",$s);
@@ -2142,6 +2148,7 @@ public function locale($token,$_params=Array())
 	$s = str_replace("%n","\n",$s);
 	$s = str_replace("%bb","<strong>",$s);
 	$s = str_replace("%bs","</strong>",$s);
+	$s = str_replace("%spc","&nbsp;",$s);
 	for ($i=0;$i<=count($_params);$i++)
 	{
 		$s = str_replace("%".($i+1),$_params[$i],$s);
@@ -2184,6 +2191,19 @@ public function localeDate($timestamp)
 			break;
 		default:
 			return date("m/d/Y",$timestamp);
+			break;
+	}
+}
+
+public function localeShortDate($timestamp)
+{
+	switch (PT_LOCALE)
+	{
+		case "de":
+			return date("d.m.y",$timestamp);
+			break;
+		default:
+			return date("m/d/y",$timestamp);
 			break;
 	}
 }

@@ -113,7 +113,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 		global $myPT;
 
 		$url = "backend.php?page=Ticket,Assess&focus=".$focus."&sortorder=".$sortorder."&dat_id=0&sbj_id=0";
-		$this->tab_addEntry("Aufgaben",$url,"b_job.gif");
+		$this->tab_addEntry(locale("Tasks"),$url,"b_job.gif");
 
 		if ($myPT->getIPref("tickets.con_id_2ndorder")!=0)
 		{
@@ -128,9 +128,9 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 		{
 			$param = "&focus=".$focus."&sortorder=".$sortorder."&dat_id=0";
 				
-			$this->tab_draw("Aufgaben",$x=260,1);
+			$this->tab_draw(locale("Tasks"),$x=260,1);
 			$myNav = new PhenotypeTree();
-			$nav_id  = $myNav->addNode("Alle Bereiche","backend.php?page=Ticket,Assess&amp;sbj_id=0".$param,0,"Alle Bereiche");
+			$nav_id  = $myNav->addNode(locale("All realms"),"backend.php?page=Ticket,Assess&amp;sbj_id=0".$param,0,locale("All realms"));
 
 			$sql ="SELECT * FROM ticketsubject LEFT JOIN user_ticketsubject ON ticketsubject.sbj_id = user_ticketsubject.sbj_id WHERE usr_id = " . $_SESSION["usr_id"] . " ORDER BY sbj_bez";
 			$rs = $myDB->query($sql);
@@ -145,7 +145,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 
 			if ($sbj_id==0)
 			{
-				$this->displayTreeNavi($myNav,"Alle Bereiche");
+				$this->displayTreeNavi($myNav,locale("All realms"));
 			}
 			else
 			{
@@ -184,7 +184,7 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 		<td class="windowFooterGrey2"><a
 			href="javascript:ticketWizard(0,0,0,0,<?php echo $sbj_id ?>,<?php echo $dat_id_2ndorder ?>)"
 			class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22"
-			border="0" align="absmiddle"> Neue Aufgabe einstellen </a></td>
+			border="0" align="absmiddle"> <?php echo localeH("Create new ticket")?> </a></td>
 		<td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 	</tr>
 	<tr>
@@ -199,7 +199,17 @@ class PhenotypeBackend_Ticket_Standard extends PhenotypeBackend
 
 function displaySearchForm($sbj_id,$dat_id,$focus,$sortorder,$search_term="")
 {
-	?>
+	if ($search_term=="")
+	{
+		$search_term = localeH("Search tasks");
+	}
+	else 
+	{
+		$search_term = localeH("Search tasks %1",array($search_term));
+	}
+	
+
+?>
 <form action="backend.php" method="post"><input type="hidden"
 	name="page" value="Ticket,Assess,search">
 <table width="260" border="0" cellpadding="0" cellspacing="0">
@@ -207,11 +217,10 @@ function displaySearchForm($sbj_id,$dat_id,$focus,$sortorder,$search_term="")
 		<td class="windowFooterGrey2">
 		<table border="0" cellspacing="0" cellpadding="0">
 			<tr>
-				<td colspan="3" class="padding10"><strong>Suche Aufgaben <?php echo $search_term ?>
-				nach:</strong></td>
+				<td colspan="3" class="padding10"><strong><?php echo $search_term?></strong></td>
 			</tr>
 			<tr>
-				<td class="padding10">Bezeichnung</td>
+				<td class="padding10"><?php echo localeH("Name")?></td>
 				<td><input type="hidden" name="sbj_id" value="<?php echo $sbj_id ?>">
 				<input type="hidden" name="dat_id" value="<?php echo $dat_id ?>"> <input
 					type="hidden" name="focus" value="<?php echo $focus ?>"> <input
@@ -219,17 +228,17 @@ function displaySearchForm($sbj_id,$dat_id,$focus,$sortorder,$search_term="")
 					type="text" name="s" style="width: 100 px" class="input"></td>
 			</tr>
 			<tr>
-				<td class="padding10">ID</td>
+				<td class="padding10"><?php echo localeH("ID")?></td>
 				<td><input type="text" style="width: 100 px" name="i" class="input"></td>
 			</tr>
 			<tr>
-				<td class="padding10">Volltext</td>
+				<td class="padding10"><?php echo localeH("Fulltext")?></td>
 				<td><input type="text" style="width: 100 px" name="v" class="input"></td>
 			</tr>
 			<tr>
 				<td class="padding10">&nbsp;</td>
 				<td><input name="Submit" type="submit" class="buttonGrey2"
-					value="Senden" style="width: 102px"></td>
+					value="<?php echo localeH("Send")?>" style="width: 102px"></td>
 			</tr>
 		</table>
 		</td>

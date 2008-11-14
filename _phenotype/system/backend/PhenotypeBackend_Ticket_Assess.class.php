@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael 
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
+// Krï¿½mer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:
@@ -20,7 +20,7 @@
 // ToDO:
 // Geschlossen-Tab zeigt immer die Anzahl aller geschlossene Tickets an, besser nur die des aktiven Zeitraumes !?
 // Kompaktsicht durchziehen
-// In der Suche werden eigene Tickets aus nichtzugeordneten Bereichen nicht gefunden, in der Übersicht schon
+// In der Suche werden eigene Tickets aus nichtzugeordneten Bereichen nicht gefunden, in der ï¿½bersicht schon
 
 /**
  * @package phenotype
@@ -30,7 +30,7 @@
 class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 {
 
-    public $tmxfile = "Ticket_Assess";
+    public $tmxfile = "Ticket";
 
 
 	function execute($scope,$action)
@@ -109,7 +109,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 			$mode = 2;
 		}
 
-		// Gibt es eine User-Präferenz?
+		// Gibt es eine User-Prï¿½ferenz?
 		if ($mySUser->getPref("ticket_compact")!==false)
 		{
 			$mode = 1;
@@ -127,7 +127,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 
 
-		$headline = locale("task overview");
+		$headline = locale("Tasks Overview");
 
 
 		// --------------------------------------------------------------------------------------------
@@ -139,7 +139,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 		if ($action=="search")
 		{
-			$headline = localeH("searchresult")." - ";
+			$headline = localeH("Searchresult")." - ";
 
 			$suchparameter ="&suche=1&s=" . urlencode($myRequest->get("s"))."&v=" . urlencode($myRequest->get("v"))."&i=" . urlencode($myRequest->get("i"));
 			if ($_REQUEST["s"]!="")
@@ -181,7 +181,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 		$nrofdays_listing_closedtickets = $myPT->getIPref("tickets.nrofdays_listing_closedtickets");
 
-		// ToDo Suche auf eigene Aufgabenbereiche einschränken
+		// ToDo Suche auf eigene Aufgabenbereiche einschrï¿½nken
 		if ($sbj_id==0)
 		{
 
@@ -319,8 +319,9 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 	              			{
 	              				$edatum = date ('d.m.Y',time());
 	              			}
-	        				?>
-	            		zeige Tickets, die zwischen <input type="text" name="adatum" value="<?php echo $this->getH($adatum) ?>" class="input" style="width:60px" onchange="document.forms.formsort.submit();" onblur="document.forms.formsort.submit();"/> und <input type="text" name="edatum" value="<?php echo $this->getH($edatum) ?>" class="input" style="width:60px" onchange="document.forms.formsort.submit();"/> geschlossen wurden. <input type="image" src="img/transparent.gif"/>
+	        				 
+	              			?>
+	            		<?php echo localeH("msg_filter_closed_tickets_1")?> <input type="text" name="adatum" value="<?php echo $this->getH($adatum) ?>" class="input" style="width:60px" onchange="document.forms.formsort.submit();" onblur="document.forms.formsort.submit();"/> <?php echo localeH("msg_filter_closed_tickets_2")?> <input type="text" name="edatum" value="<?php echo $this->getH($edatum) ?>" class="input" style="width:60px" onchange="document.forms.formsort.submit();"/> <?php echo localeH("msg_filter_closed_tickets_3")?><input type="image" src="img/transparent.gif"/>
 						<?php
 	              		}
 	              		else
@@ -462,7 +463,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 		if ($action=="search")
 		{
-			// Zunächst pro Bereich suchen
+			// Zunï¿½chst pro Bereich suchen
 			foreach ($_subjects AS $k => $v)
 			{
 				$sql_subject = "WHERE ((tik_status = 1 AND ticket.sbj_id = ". $k. ") OR (tik_status = 0 AND ticket.sbj_id = ". $k ." AND tik_closingdate > ". (time()-(3600*12*$nrofdays_listing_closedtickets)) .")) ";
@@ -480,7 +481,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 				}
 			}
 
-			// Dann die Archivsuche, wird nicht angezeigt, wenn generell geschlossene Tickets abgerufen werden können
+			// Dann die Archivsuche, wird nicht angezeigt, wenn generell geschlossene Tickets abgerufen werden kï¿½nnen
 
 			if ($idhit==0 AND $myPT->getPref("tickets.tab_closedtickets")!=1) // Nur, wenn nicht nach ID gesucht wurde und in das Ticket in den aktiven gefunden wurde
 			{
@@ -512,7 +513,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 			}
 
 			// Temptabellen wieder loeschen
-			$this->removeTemporaryTables();
+			// $this->removeTemporaryTables();
 
 			return($myPT->stopBuffer());
 		}
@@ -529,7 +530,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 			}
 			else
 			{
-				$headline = "Alle Bereiche";
+				$headline = locale("All realms");
 				$sql_subject = "WHERE ticket.sbj_id IN (" . implode(",",array_keys($_subjects)) . ")";
 			}
 
@@ -561,8 +562,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 						$sonntag = mktime(0,0,0, date("m",$aktwoche),date("d",$aktwoche)+(7-$wochentag),date("Y",$aktwoche));
 						$montag2 = mktime(0,0,0, date("m",$sonntag),date("d",$sonntag)+1,date("Y",$sonntag));
 
-
-						$headline = "KW " . date("W",$aktwoche). "/" . date('y',$aktwoche) . " - vom " . date('d.m',$montag) . "-" . date('d.m.Y',$sonntag);
+						$headline = localeH("msg_calenderweek",array(date("W",$aktwoche),date("y",$aktwoche),localeShortDate($montag),localeDate($sonntag)));
 
 						$sql_timeframe = " AND tik_closingdate>= " . $montag . " AND tik_closingdate< " . $montag2;
 						$sql_doit = $sql . $sql_subject .  $sql_focus .  $sql_2ndorder . $sql_timeframe.  " " . $sql_order;
@@ -574,7 +574,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 
 			}
 			// Temptabellen wieder loeschen
-			$this->removeTemporaryTables();
+			//$this->removeTemporaryTables();
 
 			return($myPT->stopBuffer());
 		}
@@ -592,7 +592,7 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 		}
 		else
 		{
-			$headline = "Alle Bereiche";
+			$headline = locale("All realms");
 
 			if ($focus==0) // Alle
 			{

@@ -136,3 +136,9 @@ function localeDate($timestamp)
 	global $myPT;
 	return $myPT->localeDate($timestamp);
 }
+
+function localeShortDate($timestamp)
+{
+	global $myPT;
+	return $myPT->localeShortDate($timestamp);
+}

@@ -27,6 +27,10 @@ $myAdm = new PhenotypeAdmin();
 
 $page = $myRequest->get("page");
 
+if ($page=="")
+{
+	$page="Editor,Start";
+}
 $patterns = "/[^a-z0-9A-Z,_]*/";
 $page = preg_replace($patterns,"", $page);
 
@@ -49,6 +53,14 @@ if ($page!="Session")
 {
 	require("_session.inc.php");
 }
+
+if (!class_exists($cname,true))
+{
+	// This line will never be reached, since phenotype class load will throw an exception before
+	exit();
+}
+
+
 
 $myBP = new $cname;
 $myBP->execute($scope,$action);

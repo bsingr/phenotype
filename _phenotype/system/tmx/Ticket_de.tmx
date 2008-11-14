@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:body><tmx:tu tuid="%bbTitle%bs for task:">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>%bbTitle%bs for task:</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>%bbBezeichnung%bs der Aufgabe:</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="+ Preferential">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>+ Preferential</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>+ vorrangig</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="++ Highest Priority">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>++ Highest Priority</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>++ Höchste Priorität</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="- Subordinate">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>- Subordinate</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>- nachrangig</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="1 hour">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>1 hour</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>1 Stunde</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="1,5 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>1,5 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>1,5 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="10 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>10 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>10 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="10 minutes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>10 minutes</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>10 Minuten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="15 minutes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>15 minutes</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>15 Minuten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="2 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>2 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>2 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="20 minutes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>20 minutes</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>20 Minuten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="3 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>3 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>3 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="30 minutes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>30 minutes</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>30 Minuten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="4 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>4 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>4 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="45 minutes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>45 minutes</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>45 Minuten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="5 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>5 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>5 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="5 minutes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>5 minutes</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>5 Minuten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="6 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>6 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>6 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="7 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>7 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>7 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="8 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>8 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>8 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="9 hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>9 hours</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>9 Stunden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add ticket to watch list.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Add ticket to watch list.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket merken</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="All realms">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>All realms</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Alle Bereiche</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Attachment">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Attachment</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Anhang</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Back to overview">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Back to overview</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>zur Übersicht</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Capability Planning">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Capability Planning</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Resourcenplanung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Classification">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Classification</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Einordnung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Close">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Close</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Schließen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Comment/Documentation">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Comment/Documentation</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Kommentar/Dokumentation</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Complexity">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Complexity</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Komplexität</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create new ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create new ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Neue Aufgabe einstellen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Deferral">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Deferral</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Rückstellung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Duration">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Duration</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Dauer</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Execute">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Execute</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ausführen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Express Ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Express Ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Express-Ticket</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Fulltext">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Fulltext</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Volltext</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Hint for %1">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Hint for %1</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Hinweis für %1</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Information">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Information</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Hinweis</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Limit">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Limit</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Limit</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Log">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Log</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Verlauf</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Manage new task">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Manage new task</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Neue Aufgabe planen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Meta">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Meta</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Meta</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="New Task">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>New Task</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Neue Aufgabe</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Notices">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Notices</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Notizen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Notices edited.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Notices edited.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Notizen bearbeitet</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Pending question">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Pending question</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Am Tichket hängt eine Frage</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Period">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Period</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Zeitraum</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Planning">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Planning</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Planung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Please choose a title for this ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Please choose a title for this ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bitte wählen Sie eine Bezeichnung für diese Aufgabe.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Please chosse a limit for this ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Please chosse a limit for this ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bitte wählen Sie ein Zeitlimit für diese Aufgabe</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Postpone">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Postpone</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Rückstellung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Priority">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Priority</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Priorität</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Process task.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Process task.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabe bearbeiten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Processor">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Processor</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bearbeiter</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Processors/Creator">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Processor/Creator</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bearbeiter/Einsteller</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Progress">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Progress</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Fortschritt</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Question">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Question</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Anfrage</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Question for %1">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Question for %1</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Anfrage für %1</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this ticket?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this ticket?</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Dieses Ticket wirklich löschen?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Realm">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Realm</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bereich</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Search tasks">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Search tasks</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Suche Aufgaben nach:</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Search tasks %1">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Search tasks %1</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Suche Aufgaben / %1 nach:</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Searchresult">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Searchresult</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Suchergebnis</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Send">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Send</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Senden</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Standard Ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Standard Ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Standard-Ticket</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Target">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Target</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ziel</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Target Date">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Target Date</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Zieldatum</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Tasks Overview">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Tasks Overview</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabenübersicht</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticked reopened">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticked reopened</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket erneut geöffnet.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket Notice">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket Notice</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Tickethinweise</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket accepted.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket accepted.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket akzeptiert.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket closed.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket closed.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket geschlossen.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket deferral cleared.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket deferral cleared.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket-Rückstellung aufgehoben</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket deferred until %1.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket deferred until %1.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket bis %1 zurückgestellt.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket delegated to %1">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket delegated to %1</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket an %1 delegiert.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket log">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket log</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticketverlauf</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket opened.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket opened.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket erstellt.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket postponed until %1.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket postponed until %1.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket bis %1 zurückgestellt.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket processed for %1 minutes.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket processed for %1 minutes.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>%1 Minuten bearbeitet.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket processed for %1 minutes. %2% completed.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket processed for %1 minutes. %2% completed.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>%1 Minuten bearbeitet, Fertigstellungsgrad %2%.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket processed. %1% completed.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket processed. %1% completed.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket bearbeitet, Fertigstellungsgrad %1%</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket rejected.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket rejected.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket zurückgewiesen.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket viewed.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket viewed.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket angesehen.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Time scheduling">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Time scheduling</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Terminplanung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Trend">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Trend</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Tendenz</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="View ticket log">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>View ticket log</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Verlauf sichten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="all">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>All</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Alle</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="close ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>close ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket schließen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="closed">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Closed</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Geschlossen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="day">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>day</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Tag</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="end of week">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>end of week</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ende der Woche</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="few days">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>few days</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>wenige Tage</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="fulltext search for">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Fulltext search for</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Volltextsuche nach</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="give back ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>give back ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabe abgeben</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="hour">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>hour</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Stunde</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="in 6 month">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>in 6 month</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>in 6 Monaten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="in four weeks">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>in four weeks</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>in 4 Wochen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="in one year">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>in one year</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>in einem Jahr</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="in three month">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>in three month</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>in drei Monaten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="in two month">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>in two month</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>in zwei Monaten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="in two weeks">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>in two weeks</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>in zwei Wochen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="marked">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Marked</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Gemerkt</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="mine">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Mine</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Meine</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="month">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>month</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Monat</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_calenderweek">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Week %1/%2 | %3 - %4</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Woche %1/%2 vom %3 - %4</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_filter_closed_tickets_1">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>show tickets closed between</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>zeige Tickets, die zwischen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_filter_closed_tickets_2">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>and</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>und</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_filter_closed_tickets_3">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>%spc</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>geschlossen wurden.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_selectusers_comment">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Please select the users you want to inform:</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Wählen Sie jetzt die Benutzer aus, die Sie auf Ihren Kommentar hinweisen möchten:</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_selectusers_question">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Please select the users you want to ask:</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Wählen Sie jetzt die Benutzer aus, die auf Ihre Frage mit einem Kommentar antworten sollen:</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_ticket_created">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket created on %1 From %2 (Day %3)</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>eingestellt am %1 von %2 (Tag %3)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_ticket_duration_minutes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Processing expense so far: %1 minutes.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bisheriger dokumentierter Aufwand %1 Minuten.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_ticket_duration_hours">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Processing expense so far: %1 hours.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bisheriger dokumentierter Aufwand %1 Stunden.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_ticket_progress">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>%1% processed.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Die Aufgabe ist zu %1% abgeschlossen.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="my tasks">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>My tasks</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Meine Aufgaben</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="n/a">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>n/a</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>N.N.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="negative">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>negative</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>negativ</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="next monday">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>next monday</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>nächsten Montag</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="next week">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>next week</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>nächste Woche</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="no estimation">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>no estimation</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>ohne Schätzung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="not specified">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>not specified</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>keine Angabe</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="notices">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Notices</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Hinweise</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="o Standard">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>o Standard</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>o Standard</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order ABCD">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>ABCD</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>ABCD</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order assigned to">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>assigned to</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bearbeiter</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order date">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>date</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Datum</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order importance">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>importance</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Wichtigkeit</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order last change">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>last change</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>letzte Änderung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order priority">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>priority</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Dringlichkeit</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order reported by">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>reported by</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Einsteller</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="order title">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>title</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bezeichnung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="permanent task">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>permanent task</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Daueraufgabe</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="positive">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>positive</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>positiv</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="questions">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Questions</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Fragen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="reactivate ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>reactivate ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ticket reaktivieren</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="search for">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>search for</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Suche nach</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="search for id">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Search for Ticket ID</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Suche nach Ticket ID</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="searchresult">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>searchresult</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Suchergebnis</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="set target">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>set target</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Vorgabe</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="take over ticket">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>take over ticket</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabe übernehmen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="task overview">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task Overview</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabenübersicht</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="tasks">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>tasks</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgaben</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="title">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>title</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bezeichnung</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="today">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>today</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>heute</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="tomorrow">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>tomorrow</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>morgen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="week">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>week</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Woche</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			  </tmx:body>
+</tmx:tmx>

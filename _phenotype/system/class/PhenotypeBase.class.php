@@ -241,10 +241,12 @@ class PhenotypeBase
 		$s = str_replace("<br />","###BR###",$s);
 		$s = str_replace("</b>","###BB###",$s);
 		$s = str_replace("</strong>","###BB###",$s);
+		$s = str_replace("&nbsp;","###NBSP###",$s);
 		$s = @ htmlentities($s,null,$this->charset);
 		$s = str_replace("###B###","<strong>",$s);
 		$s = str_replace("###BB###","</strong>",$s);
 		$s = str_replace("###BR###","<br/>",$s);
+		$s = str_replace("###NBSP###","&nbsp;",$s);
 		return $s;
 	}
 

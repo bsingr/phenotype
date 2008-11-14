@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael 
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
+// Krï¿½mer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:
@@ -26,7 +26,7 @@
 class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 {
 
-    public $tmxfile = "Ticket_Assess";
+    public $tmxfile = "Ticket";
     
 	function execute($scope,$action)
 	{
@@ -136,7 +136,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			return;
 		}
 
-		$this->setPageTitle("Phenotype ".$myPT->version. " Aufgaben");
+		$this->setPageTitle("Phenotype ".$myPT->version. " ".locale("Tasks"));
 
 		$this->selectMenuItem(5);
 		$this->selectLayout(1);
@@ -203,32 +203,32 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		
 		$myLayout->tab_new();
 		$url = "backend.php?page=Ticket,Process,edit&id=" .$tik_id . "&b=1" . $params;
-		$myLayout->tab_addEntry("Bearbeiten",$url,"b_edit_w.gif");
+		$myLayout->tab_addEntry(locale("Edit"),$url,"b_edit_w.gif");
 		$url = "backend.php?page=Ticket,Process,edit&id=" .$tik_id . "&b=2". $params;
-		$myLayout->tab_addEntry("Planung",$url,"b_konfig.gif");
+		$myLayout->tab_addEntry(locale("Planning"),$url,"b_konfig.gif");
 		if ($myTicket->row["usr_id_owner"]==$_SESSION["usr_id"] OR $myPT->getIPref("tickets.show_notices_to_all_users")==1)
 		{
-			$notizen ="Notizen";
+			$notizen =locale("Notices");
 			if ($myTicket->row["tik_notice"]!=""){$notizen="Notizen !";}
 			$url = "backend.php?page=Ticket,Process,edit&id=" .$tik_id . "&b=7". $params;
 			$myLayout->tab_addEntry($notizen,$url,"b_noticecomment.gif");
 		}
 		$url = "backend.php?page=Ticket,Process,edit&id=" .$tik_id . "&b=3". $params;
-		$myLayout->tab_addEntry("Verlauf",$url,"b_viewtrans.gif");
+		$myLayout->tab_addEntry(locale("Log"),$url,"b_viewtrans.gif");
 
 
 		if ($block_nr==1 OR $block_nr==5 OR $block_nr==6)
 		{
-			$myLayout->tab_draw("Bearbeiten");
+			$myLayout->tab_draw(locale("Edit"));
 		}
 		if ($block_nr==2)
 		{
-			$myLayout->tab_draw("Planung");
+			$myLayout->tab_draw(locale("Planning"));
 		}
 
 		if ($block_nr==3)
 		{
-			$myLayout->tab_draw("Verlauf");
+			$myLayout->tab_draw(locale("Log"));
 		}
 
 		if ($block_nr==7)
@@ -305,13 +305,13 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 
 	<?php
-	$html = '<input type="radio" name="step" value="1" checked> Kommentar/Dokumentation ';
-	$html .= '<input type="radio" name="step" value="2"> Anfrage ';
-	$html .= '<input type="radio" name="step" value="3"> Hinweis ';
-	$myLayout->workarea_row_draw("Aktion",$html);
+	$html = '<input type="radio" name="step" value="1" checked> '. localeH("Comment/Documentation");
+	$html .= ' <input type="radio" name="step" value="2"> '.localeH("Information");
+	$html .= ' <input type="radio" name="step" value="3"> '.locale("Question");
+	$myLayout->workarea_row_draw(locale("Action"),$html);
 
 	$html="";
-	$options=Array();;
+	$options=Array();
 	for ($i=0;$i<=100;$i=$i+10)
 	{
 		$options[$i]=$i . "%";
@@ -320,7 +320,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	$options = $myAdm->buildOptionsByNamedArray($options,$myTicket->row["tik_percentage"]);
 	if ($myTicket->row["tik_complexity"]!=6)
 	{ // Kein Fortschritt bei Daueraufgaben
-		$html = $myLayout->workarea_form_select("Fortschritt","progress",$options,50) . "<br>";
+		$html = $myLayout->workarea_form_select(locale("Progress"),"progress",$options,50) . "<br>";
 	}
 	else
 	{
@@ -328,9 +328,9 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<input type="hidden" name="progress" value="<?php echo $myTicket->row["tik_percentage"] ?>">
 	<?php
 	}
-	$options='<option value="0"></option><option value="5">5 Minuten</option><option value="10">10 Minuten</option><option value="15">15 Minuten</option><option value="20">20 Minuten</option><option value="30">30 Minuten</option><option value="45">45 Minuten</option><option value="60">1 Stunde</option><option value="90">1,5 Stunden</option><option value="120">2 Stunden</option><option value="180">3 Stunden</option><option value="240">4 Stunden</option><option value="300">5 Stunden</option><option value="360">6 Stunden</option><option value="420">7 Stunden</option><option value="480">8 Stunden</option><option value="540">9 Stunden</option><option value="600">10 Stunden</option>';
-	$html .= $myLayout->workarea_form_select("Dauer","duration",$options,100);
-	$myLayout->workarea_row_draw("Verlauf",$html);
+	$options='<option value="0"></option><option value="5">'.localeH("5 minutes").'</option><option value="10">'.localeH("10 minutes").'</option><option value="15">'.localeH("15 minutes").'</option><option value="20">'.localeH("20 minutes").'</option><option value="30">'.localeH("30 minutes").'</option><option value="45">'.localeH("45 minutes").'</option><option value="60">'.localeH("1 hour").'</option><option value="90">'.localeH("1,5 hours").'</option><option value="120">'.localeH("2 hours").'</option><option value="180">'.localeH("3 hours").'</option><option value="240">'.localeH("4 hours").'</option><option value="300">'.localeH("5 hours").'</option><option value="360">'.localeH("6 hours").'</option><option value="420">'.localeH("7 hours").'</option><option value="480">'.localeH("8 hours").'</option><option value="540">'.localeH("9 hours").'</option><option value="600">'.localeH("10 hours").'</option>';
+	$html .= $myLayout->workarea_form_select(locale("Duration"),"duration",$options,100);
+	$myLayout->workarea_row_draw(locale("Log"),$html);
 	$myPT->startbuffer();
 	?>
 		<script language="JavaScript">
@@ -342,31 +342,31 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 </script>
 	<input type="text" name="datum1" size="10" value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>" class="input">&nbsp;&nbsp;
 <select name="timeframe1" onchange="javascript:taketime1();" class="input">
-<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>">Vorgabe</option>
-<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
-<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
-<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
-<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
-<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
-<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
-<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
-<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
-<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
-<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
+<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>"><?php echo localeH("set target")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>"><?php echo localeH("tomorrow")?></option>
+<option value="<?php echo $myPT->nextFriday(time(),1) ?>"><?php echo localeH("end of week")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>"><?php echo localeH("next week")?></option>
+<option value="<?php echo $myPT->nextMonday(time(),1) ?>"><?php echo localeH("next monday")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>"><?php echo localeH("in two weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>"><?php echo localeH("in four weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>"><?php echo localeH("in two month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>"><?php echo localeH("in three month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>"><?php echo localeH("in 6 month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>"><?php echo localeH("in one year")?></option>
 </select>
 	<?php
 	$html = $myPT->stopbuffer();
 
-	$myLayout->workarea_row_draw("R&uuml;ckstellung",$html);
+	$myLayout->workarea_row_draw(locale("Deferral"),$html);
 	$html ='<input name="userfile" type="file" class="input">';
-	$myLayout->workarea_row_draw("Anhang",$html);
+	$myLayout->workarea_row_draw(locale("Attachment"),$html);
 
 	$html =   $myLayout->workarea_form_textarea("","comment","",8);
 
 
 	if ($myTicket->row["tik_status"]==0)
 	{
-		$html .='<input type="checkbox" name="reopen" value="1"> Ticket reaktivieren.';
+		$html .='<input type="checkbox" name="reopen" value="1"> '.localeH("reactivate ticket");
 	}
 	else
 	{
@@ -375,23 +375,24 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			$checked ="checked";
 			if ($myTicket->row["tik_accepted"]==1)
 			{
-				$html .='<input type="checkbox" name="reject" value="1" onclick="document.forms.editform.close.checked=0;"> Aufgabe abgeben &nbsp;<input type="checkbox" name="close" value="1" onclick="document.forms.editform.reject.checked=0;"> Ticket schliessen';
+				$html .='<input type="checkbox" name="reject" value="1" onclick="document.forms.editform.close.checked=0;"> '.localeH("give back ticket").' &nbsp;<input type="checkbox" name="close" value="1" onclick="document.forms.editform.reject.checked=0;"> '.locale("close ticket");
 			}
 			else
 			{
-				$html .='<input type="checkbox" name="accept" value="1" checked onclick="document.forms.editform.reject.checked=0;document.forms.editform.close.checked=0;"> Aufgabe &uuml;bernehmen &nbsp;<input type="checkbox" name="reject" value="1" onclick="document.forms.editform.accept.checked=0;document.forms.editform.close.checked=0;"> Aufgabe abgeben &nbsp;<input type="checkbox" name="close" value="1" onclick="document.forms.editform.reject.checked=0;document.forms.editform.accept.checked=0;"> Ticket schliessen';
+				$html .='<input type="checkbox" name="accept" value="1" checked onclick="document.forms.editform.reject.checked=0;document.forms.editform.close.checked=0;"> '.localeH("take over ticket") .' &nbsp;<input type="checkbox" name="reject" value="1" onclick="document.forms.editform.accept.checked=0;document.forms.editform.close.checked=0;"> '.localeH("give back ticket").' &nbsp;<input type="checkbox" name="close" value="1" onclick="document.forms.editform.reject.checked=0;document.forms.editform.accept.checked=0;"> '.locale("close ticket");
 			}
 		}
 		else
 		{
-			$html .='<input type="checkbox" name="accept" value="1" onclick="document.forms.editform.close.checked=0;"> Aufgabe &uuml;bernehmen &nbsp;<input type="checkbox" name="close" value="1" onclick="document.forms.editform.accept.checked=0;"> Ticket schliessen';
+			$html .='<input type="checkbox" name="accept" value="1" onclick="document.forms.editform.close.checked=0;"> '.localeH("take over ticket") .' &nbsp;<input type="checkbox" name="close" value="1" onclick="document.forms.editform.accept.checked=0;"> '.locale("close ticket");
+			
 		}
 	}
-	$myLayout->workarea_row_draw("Kommentar",$html);
+	$myLayout->workarea_row_draw(locale("Comment"),$html);
 	?>
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td align="right" class="windowFooterWhite"><?php if ($mySUser->checkRight("elm_admin") OR $mySUser->checkRight("superuser") ){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px"value="L&ouml;schen" onclick="javascript:return confirm('Dieses Ticket wirklich l&ouml;schen?')">&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($mySUser->checkRight("elm_admin") OR $mySUser->checkRight("superuser") ){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Delete")?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this ticket?")?>');">&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save")?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 
@@ -429,10 +430,10 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		}
 </script>
 		<?php
-		$html = $myLayout->workarea_form_text("Bezeichnung","bez",$myTicket->row["tik_bez"]);
+		$html = $myLayout->workarea_form_text(locale("title"),"bez",$myTicket->row["tik_bez"]);
 		$sql ="SELECT ticketsubject.sbj_id AS K, sbj_bez AS V FROM ticketsubject LEFT JOIN user_ticketsubject ON ticketsubject.sbj_id = user_ticketsubject.sbj_id WHERE usr_id = " . $_SESSION["usr_id"] . " ORDER BY sbj_bez";
 		$options = $myAdm->buildOptionsBySQL($sql,$myTicket->row["sbj_id"]);
-		$html .= $myLayout->workarea_form_select("Bereich","sbj_id_ticket",$options);
+		$html .= $myLayout->workarea_form_select(locale("Realm"),"sbj_id_ticket",$options);
 		if ($myPT->getIPref("tickets.con_id_2ndorder")!=0)
 		{
 
@@ -446,36 +447,35 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			$html.=$myLayout->workarea_form_select2($bez,"dat_id_2ndorder",$dat_id,$_options);
 		}
 
-		$myLayout->workarea_row_draw("Meta",$html);
-		$options = Array (1=>"++ H&ouml;chste Priorit&auml;t",2=>"+&nbsp; vorrangig",3=>"o&nbsp; Standard",4=>"-&nbsp; nachrangig");
+		$myLayout->workarea_row_draw(locale("Meta"),$html);
+		$options = Array (1=>localeH("++ Highest Priority"),2=>localeH("+ Preferential"),3=>localeH("o Standard"),4=>localeH("- Subordinate"));
 		$options = $myAdm->buildOptionsByNamedArray($options,$myTicket->row["tik_prio"]);
-		$html = $myLayout->workarea_form_select("","priority",$options);
+		$html = $myLayout->workarea_form_select(locale("Priority"),"priority",$options);
 		$myPT->startbuffer();
 		?>
-		<br>R&uuml;ckstellung:<br>
+		<br><?php echo localeH("Deferral")?><br>
 		<input type="text" name="datum3" size="10" value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe3" onchange="javascript:taketime3();" class="input">
-		<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>">Vorgabe</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
-		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
-		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
-		</select>
+		<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);}?>"><?php echo localeH("set target")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>"><?php echo localeH("tomorrow")?></option>
+<option value="<?php echo $myPT->nextFriday(time(),1) ?>"><?php echo localeH("end of week")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>"><?php echo localeH("next week")?></option>
+<option value="<?php echo $myPT->nextMonday(time(),1) ?>"><?php echo localeH("next monday")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>"><?php echo localeH("in two weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>"><?php echo localeH("in four weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>"><?php echo localeH("in two month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>"><?php echo localeH("in three month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>"><?php echo localeH("in 6 month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>"><?php echo localeH("in one year")?></option>
 		<?php
 		$html .= $myPT->stopbuffer();
-		$myLayout->workarea_row_draw("Priorit&auml;t",$html);
+		$myLayout->workarea_row_draw(locale("Priority"),$html);
 
 		$sql = "SELECT CONCAT(usr_nachname,', ',usr_vorname) AS V, usr_id AS K FROM user WHERE usr_status = 1  ORDER BY usr_nachname,usr_vorname";
 		$options = $myAdm->buildOptionsBySQL($sql,$myTicket->row["usr_id_owner"]);
-		$options = '<option value="0">N.N.</option>' . $options;
+		$options = '<option value="0">'.localeH('n/a').'</option>' . $options;
 		$html = $myLayout->workarea_form_select("","usr_id",$options);
-		$myLayout->workarea_row_draw("Bearbeiter",$html);
+		$myLayout->workarea_row_draw(locale("Processor"),$html);
 
 		$myPT->startbuffer();
 		global $mySUser;
@@ -483,46 +483,46 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		$tage = time() - $ticketdatum;
 		$tage = floor($tage/(60*60*24))+1;
 
-   		?>
-		eingestellt am <?php echo date('d.m.Y H:i',$myTicket->row["tik_startdate"]) ?> von <?php echo $mySUser->getName($myTicket->row["usr_id_creator"]) ?>. (Tag <?php echo $tage ?>)
-		<?php
+		echo localeH("msg_ticket_created",array(localeFullTime($myTicket->row["tik_startdate"]),$mySUser->getName($myTicket->row["usr_id_creator"]),$tage));
+		
 		if ($myTicket->row["tik_complexity"]!=6)
 		{
 		?>
 		<br><br>
-		Limit:<br>
+		<?php echo localeH("Limit")?>:<br>
 		<input type="text" name="datum1" size="10" value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe1" onchange="javascript:taketime1();" class="input">
-		<option value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>">Vorgabe</option>
-		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
-		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
-		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
+		<option value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>"><?php echo localeH("set target")?></option>
+
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>"><?php echo localeH("tomorrow")?></option>
+<option value="<?php echo $myPT->nextFriday(time(),1) ?>"><?php echo localeH("end of week")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>"><?php echo localeH("next week")?></option>
+<option value="<?php echo $myPT->nextMonday(time(),1) ?>"><?php echo localeH("next monday")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>"><?php echo localeH("in two weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>"><?php echo localeH("in four weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>"><?php echo localeH("in two month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>"><?php echo localeH("in three month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>"><?php echo localeH("in 6 month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>"><?php echo localeH("in one year")?></option>
+		
 		</select>
 		<br>
-		Ziel:<br>
+		<?php echo localeH("Target")?>:<br>
 		<input type="text" name="datum2" size="10" value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe2" onchange="javascript:taketime2();" class="input">
-		<option value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>">Vorgabe</option>
-		<option value="-1">Limit</option>
-		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
-		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
-		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
+		<option value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>"><?echo localeH("set target")?></option>
+		<option value="-1"><?php echo localeH("Limit")?></option>
+		<option value="<?php echo date("d.m.Y"); ?>"><?php echo localeH("today")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>"><?php echo localeH("tomorrow")?></option>
+<option value="<?php echo $myPT->nextFriday(time(),1) ?>"><?php echo localeH("end of week")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>"><?php echo localeH("next week")?></option>
+<option value="<?php echo $myPT->nextMonday(time(),1) ?>"><?php echo localeH("next monday")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>"><?php echo localeH("in two weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>"><?php echo localeH("in four weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>"><?php echo localeH("in two month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>"><?php echo localeH("in three month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>"><?php echo localeH("in 6 month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>"><?php echo localeH("in one year")?></option>
 		</select>
 		<?php
 		}
@@ -535,42 +535,44 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		}
 
 		$html = $myPT->stopbuffer();
-		$myLayout->workarea_row_draw("Terminplanung",$html);
-		$options = Array (0=>"ohne Schätzung",1=>"Stunde",2=>"Tag",3=>"Wenige Tage",4=>"Woche",5=>"Monat",6=>"Daueraufgabe");
+		$myLayout->workarea_row_draw(locale("Time scheduling"),$html);
+		$options = Array (0=>locale("no estimation"),1=>locale("hour"),2=>locale("day"),3=>locale("few days"),4=>locale("week"),5=>locale("month"),6=>locale("permanent task"));
 		$options = $myAdm->buildOptionsByNamedArray($options,$myTicket->row["tik_complexity"]);
-		$html = $myLayout->workarea_form_select("Komplexität:","complexity",$options,150);
-		$options = Array (0=>"keine Angabe",1=>"positiv","negativ");
+		$html = $myLayout->workarea_form_select(locale("Complexity"),"complexity",$options,150);
+		$options = Array (0=>locale("not specified"),1=>locale("positive"),2=>locale("negative"));
 		$options = $myAdm->buildOptionsByNamedArray($options,$myTicket->row["tik_tendency"]);
-		$html .= $myLayout->workarea_form_select("Tendenz:","tendency",$options,150);
+		$html .= $myLayout->workarea_form_select(locale("Trend"),"tendency",$options,150);
 
 		if ($myTicket->row["tik_complexity"]!=6){
-			$html.= "<br>Die Aufgabe ist zu " . $myTicket->row["tik_percentage"] . "% abgeschlossen.";
+			$html.= "<br>". localeH("msg_ticket_progress",$myTicket->row["tik_percentage"]);
 		}
 		if ($myTicket->row["tik_duration"]!=0)
 		{
 			if ($myTicket->row["tik_duration"]<=90)
 			{
-				$html.="<br>Bisheriger dokumentierter Aufwand " .$myTicket->row["tik_duration"]. " Minuten.<br>";
+				$html.="<br/>". localeH("msg_ticket_duration_minutes",$myTicket->row["tik_duration"]);
+			
 			}
 			else
 			{
 				$stunden = floor($myTicket->row["tik_duration"]/30)/2;
 				$stunden = str_replace(".",",",$stunden);
-				$html.="Bisheriger dokumentierter Aufwand " .$stunden. " Stunden.<br>";
+				$html.= "<br/>". localeH("msg_ticket_duration_hours",$stunden);
+				
 			}
 
 		}
 
 
-		$myLayout->workarea_row_draw("Resourcenplanung",$html);
+		$myLayout->workarea_row_draw(locale("Capability Planning"),$html);
 
-		$html =   $myLayout->workarea_form_textarea("","comment","",8);
-		$myLayout->workarea_row_draw("Kommentar",$html);
+		$html =   $myLayout->workarea_form_textarea("","Comment","",8);
+		$myLayout->workarea_row_draw(locale("Comment"),$html);
 		?>
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td align="right" class="windowFooterWhite"><?php if ($mySUser->checkRight("elm_admin") OR $mySUser->checkRight("superuser") )
-	{?><input name="delete" type="submit" class="buttonWhite" style="width:102px"value="L&ouml;schen" onclick="javascript:return confirm('Dieses Ticket wirklich l&ouml;schen?')">&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+	{?><input name="delete" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Delete")?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this ticket?")?>')">&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save")?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
         <?php
@@ -593,13 +595,13 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			if ($row["usr_vorname"] !="" AND $row["usr_nachname"]!=""){$user.=", ";}
 			$user .= $row["usr_vorname"] ."<br/>";
 		}
-		$html = "&nbsp;W&auml;hlen Sie jetzt die Benutzer aus, die Sie auf Ihren Kommentar hinweisen m&ouml;chten:<br><br>".$user."<br><br><br><br><br><br><br><br>";
-		$myLayout->workarea_row_draw("Benutzer",$html);
+		$html = "&nbsp;".localeH("msg_selectusers_comment")."<br><br>".$user."<br><br><br><br><br><br><br><br>";
+		$myLayout->workarea_row_draw(localeH("Users"),$html);
   		?>
    		<input type="hidden" name="comment" value="<?php echo htmlentities($myRequest->get("comment")) ?>">
    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Ausf&uuml;hren">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Execute")?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
         <?php
@@ -622,13 +624,13 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			if ($row["usr_vorname"] !="" AND $row["usr_nachname"]!=""){$user.=", ";}
 			$user .= $row["usr_vorname"] ."<br/>";
 		}
-		$html = "&nbsp;W&auml;hlen Sie jetzt die Benutzer aus, die auf Ihre Frage mit einem Kommentar antworten sollen:<br/><br/>".$user."<br/><br/><br/><br/><br/><br/><br/><br/>";
-		$myLayout->workarea_row_draw("Benutzer",$html);
+		$html = "&nbsp;".localeH("msg_selectusers_question")."<br/><br/>".$user."<br/><br/><br/><br/><br/><br/><br/><br/>";
+		$myLayout->workarea_row_draw(localeH("Users"),$html);
 		?>
     <input type="hidden" name="comment" value="<?php echo htmlentities($myRequest->get("comment")) ?>">
    	<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Ausf&uuml;hren">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Execute")?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
         <?php
@@ -654,7 +656,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save")?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 		<?php
@@ -726,7 +728,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		  <tr>
 		    <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		      <tr>
-		        <td class="windowTitle">Ticketverlauf</td>
+		        <td class="windowTitle"><?php echo localeH("Ticket log")?></td>
 		        <td align="right" class="windowTitle"></td>
 		      </tr>
 		    </table></td>
@@ -734,10 +736,10 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		</table>
 		<?php
 		}
-		$_prio = Array(1=>"++ H&ouml;chste Priorit&auml;t",2=>"vorrangig",3=>"Standard",4=>"nachrangig");
-		$_komplex = Array("ohne Schätzung","Stunde","Tag","Wenige Tage","Woche","Monat","Daueraufgabe");
-		$_tendency = Array("keine Angabe","positiv","negativ");
-		$_tag = Array("So","Mo","Di","Mi","Do","Fr","Sa","So");
+		$_prio = Array (1=>localeH("++ Highest Priority"),2=>localeH("+ Preferential"),3=>localeH("o Standard"),4=>localeH("- Subordinate"));
+		$_komplex = Array (0=>locale("no estimation"),1=>locale("hour"),2=>locale("day"),3=>locale("few days"),4=>locale("week"),5=>locale("month"),6=>locale("permanent task"));
+		$_tendency =Array (0=>locale("not specified"),1=>locale("positive"),2=>locale("negative"));
+		$_tag = Array(locale("day_short_sunday"),locale("day_short_monday"),locale("day_short_tuesday"),locale("day_short_wednesday"),locale("day_short_thursday"),locale("day_short_friday"),locale("day_short_saturday"),locale("day_short_sunday"));
 		$_details = Array();
 
 
@@ -787,7 +789,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 				  <tr>
 				    <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 				      <tr>
-				        <td class="windowTitle">Woche <?php echo date("W",$montag) ?>/<?php echo date("Y",$sonntag) ?> vom <?php echo date("d.m.y",$montag) ?> - <?php echo date("d.m.y",$sonntag) ?></td>
+				        <td class="windowTitle"><?php echo localeH("msg_calenderweek",array(date("W",$montag),date("Y",$sonntag),localeShortDate($montag),localeShortDate($sonntag)))?></td>
 				        <td align="right" class="windowTitle">&nbsp;</td>
 				      </tr>
 				    </table></td>
@@ -925,16 +927,16 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_newtask2.gif" alt="" width="17" height="17"  vspace="1" hspace="2" border="0"></td>
-	<td valign="top" >Ticket erstellt.</td>
+	<td valign="top" ><?php echo localeH("Ticket opened.")?></td>
 	</tr>
 	<tr>
 	<td align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
 	<td valign="top" >
-	Bezeichnung: <?php echo $myPT->codeH($_details["bez"]) ?><br>
-	Bereich:  <?php echo $myPT->codeH($_details["subject"]) ?><br>
-	Zieldatum: <?php echo date('d.m.Y',$_details["enddate"]) ?><br>
-	Priorit&auml;t: <?php echo $_prio[$_details["prio"]] ?><br>
-	Bearbeiter: <?php echo $myPT->codeH($_details["owner"]) ?><br>
+	<?php echo localeH("Title")?>: <?php echo $myPT->codeH($_details["bez"]) ?><br>
+	<?php echo localeH("Realm")?>:  <?php echo $myPT->codeH($_details["subject"]) ?><br>
+	<?php echo localeH("Target Date")?>: <?php echo date('d.m.Y',$_details["enddate"]) ?><br>
+	<?php echo localeH("Priority")?>: <?php echo $_prio[$_details["prio"]] ?><br>
+	<?php echo localeH("Processor")?>: <?php echo $myPT->codeH($_details["owner"]) ?><br>
 	</td>
 	</tr>	
 	<?php
@@ -957,7 +959,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_myjob.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket an <?php echo $myPT->codeH($_details["newowner"]) ?> delegiert.</td>
+	<td valign="top" ><?php echo localeH("Ticket delegated to %1",$myPT->codeH($_details["newowner"]))?></td>
 	</tr>
 
 	<?php
@@ -980,7 +982,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/i_working.gif" width="25" height="18"></td>
-	<td valign="top" >Ticket akzeptiert.</td>
+	<td valign="top" ><?php echo localeH("Ticket accepted.")?></td>
 	</tr>
 
 	<?php
@@ -1018,30 +1020,25 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		 </td>
 		  <td valign="top" >
 		  <?php
-		  if ($_details["minutes"]>0)
+		 
+		  if ($_details["minutes"]>0 AND $_details["percentage"]!=$_details["oldpercentage"])
 		  {
-		  ?>
-		  <?php echo $_details["minutes"] ?> Minuten 
-		  <?php
+			echo localeH("Ticket processed for %1 minutes. %2% completed.",array($_details["minutes"],$_details["percentage"]));
 		  }
-		  else
+		  elseif ($_details["minutes"]>0 OR $_details["percentage"]!=$_details["oldpercentage"])
 		  {
-		  ?>
-		  Ticket
-		  <?php
+		  	if ($_details["minutes"]>0)
+		  	{
+		  		echo localeH("Ticket processed for %1 minutes.",$_details["minutes"]);
+		  	}
+		  	else 
+		  	{
+		  		echo localeH("Ticket processed. %1% completed.",$_details["percentage"]);
+		  	}
 		  }
-		  ?>
-		  bearbeitet
-		  <?php
-		  if ($_details["percentage"]!=$_details["oldpercentage"])
+		  else 
 		  {
-		  ?>
-		  , Fertigstellungsgrad <?php echo $_details["percentage"] ?>%.
-		  <?php
-		  }else{
-		  ?>
-		  .
-		  <?php
+		  	echo localeH("Ticket processed.");
 		  }
 		  ?>
 		  </td>
@@ -1067,7 +1064,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><?php if ($_details["percentage"]!=100){ ?><img src="img/t_closed0.gif" width="17" height="17" hspace="1"><?php }else{ ?><img src="img/t_closed100.gif" width="17" height="17" hspace="1"><?php } ?><img src="img/t_closed.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket geschlossen. </td>
+	<td valign="top" ><?php echo localeH("Ticket closed.")?></td>
 	</tr>
 
 	<?php
@@ -1088,7 +1085,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_view.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket angesehen.</td>
+	<td valign="top" ><?php echo localeH("Ticket viewed.")?></td>
 	</tr>
 
 	<?php
@@ -1135,7 +1132,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_myjob.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket zur&uuml;ckgewiesen.</td>
+	<td valign="top" ><?php echo localeH("Ticket rejected.")?></td>
 	</tr>
 
 	<?php
@@ -1158,22 +1155,22 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<?php
 	if ($_details["newsubject"]!=""){
 	?>
-	Bezeichnung: <?php echo $myPT->codeH($_details["newsubject"]) ?><br>
+	<?php echo localeH("Title")?>: <?php echo $myPT->codeH($_details["newsubject"]) ?><br>
 	<?php
 	}
 	?>
 	<?php
 	if ($_details["newenddate"]!=""){
 	?>
-	Enddatum: <?php echo date('d.m.Y',$_details["newenddate"]) ?><br>
+	<?php echo localeH("Limit")?>: <?php echo localeDate($_details["newenddate"]) ?><br>
 	<?php
 	}
 	?>
 	<?php
 	if ($_details["newestimationdate"]!=""){
 	?>
-	Zieldatum: <?php
-	if ($_details["newestimationdate"]==0){echo"keine Festlegung";}else{echo date('d.m.Y',$_details["newestimationdate"]);}
+	<?php echo localeH("Target Date")?>: <?php
+	if ($_details["newestimationdate"]==0){echo localeH("not specified");}else{echo localeDate($_details["newestimationdate"]);}
 	?><br>
 	<?php
 	}
@@ -1181,28 +1178,28 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	<?php
 	if ($_details["newsleepdate"]!=""){
 	?>
-	R&uuml;ckstellung: <?php echo date('d.m.Y',$_details["newsleepdate"]) ?><br>
+	<?php echo localeH("Deferral")?>: <?php echo localeDate($_details["newsleepdate"]) ?><br>
 	<?php
 	}
 	?>	
 	<?php
 	if ($_details["newpriority"]!=""){
 	?>
-	Priorit&auml;t: <?php echo $_prio[$_details["newpriority"]] ?><br>
+	<?php echo localeH("Priority")?>: <?php echo $_prio[$_details["newpriority"]] ?><br>
 	<?php
 	}
 	?>
 	<?php
 	if ($_details["newcomplexity"]!=""){
 	?>
-	Komplexit&auml;t: <?php echo $_komplex[$_details["newcomplexity"]] ?><br>
+	<?php echo localeH("Complexity")?>: <?php echo $_komplex[$_details["newcomplexity"]] ?><br>
 	<?php
 	}
 	?>
 	<?php
 	if ($_details["newtendency"]!=""){
 	?>
-	Tendenz: <?php echo $_tendency[$_details["newtendency"]] ?><br>
+	<?php echo localeH("Trend")?>: <?php echo $_tendency[$_details["newtendency"]] ?><br>
 	<?php
 	}
 	?>	
@@ -1230,7 +1227,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_noticecomment.gif" width="22" height="22"></td>
-	<td valign="top" >Ticketnotizen bearbeitet.</td>
+	<td valign="top" ><?php echo localeH("Notices edited.")?></td>
 	</tr>
 	<?php
 	break;
@@ -1241,7 +1238,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
-	<td valign="top" >Bereich: <?php echo $myPT->codeH($_details["newsubject"]) ?></td>
+	<td valign="top" ><?php echo localeH("Realm")?>: <?php echo $myPT->codeH($_details["newsubject"]) ?></td>
 	</tr>
 
 	<?php
@@ -1262,7 +1259,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_newtask2.gif" width="17" height="17" vspace="1" hspace="2"></td>
-	<td valign="top" >Ticket erneut ge&ouml;ffnet.</td>
+	<td valign="top" ><?php echo localeH("Ticked reopened")?></td>
 	</tr>
 
 	<?php
@@ -1283,7 +1280,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_notice.gif" width="22" height="22"></td>
-	<td valign="top" >Hinweis f&uuml;r <?php echo $myPT->codeH($_details["aim"]) ?></td>
+	<td valign="top" ><?php echo localeH("Hint for %1",$_details["aim"]) ?></td>
 	</tr>
 
 	<?php
@@ -1303,7 +1300,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_request.gif" width="22" height="22"></td>
-	<td valign="top" >Anfrage f&uuml;r <?php echo $myPT->codeH($_details["aim"]) ?></td>
+	<td valign="top"><?php echo localeH("Question for %1",$_details["aim"]) ?></td>
 	</tr>
 
 	<?php
@@ -1327,7 +1324,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket bis <?php echo $_tag[date('w',$_details["sleepdate"])] ?> <?php echo date('d.m.y',$_details["sleepdate"]) ?> zur&uuml;ckgestellt.</td>
+	<td valign="top" ><?php echo localeH("Ticket deferred until %1.",$_tag[date('w',$_details["sleepdate"])] ." ".localeDate($_details["sleepdate"]))?></td>
 	</tr>
 
 	<?php
@@ -1348,7 +1345,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_konfig.gif" width="22" height="22"></td>
-	<td valign="top" >Ticket-R&uuml;ckstellung aufgehoben.</td>
+	<td valign="top" ><?php echo localeH("Ticket deferral cleared.")?></td>
 	</tr>
 
 	<?php
@@ -1387,13 +1384,13 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			}
 			else
 			{
-				$attachment ="Dokument ist nicht mehr in der Mediabase enthalten.";
+				$attachment =localeH("Document cannot be found in mediabase.");
 			}
 
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_attach.gif" width="17" height="17" vspace="1" hspace="2"></td>
-	<td valign="top" >Dokument <a href="<?php echo $myDoc->url ?>" target="_blank"><?php echo $myDoc->bez ?></a> angeh&auml;ngt.<br>
+	<td valign="top" ><?php echo locale("Document %1 attached.",'<a href="'.$myDoc->url.'" target="_blank">'. $myDoc->bez .'</a>');?></br>
 	<br><a href="<?php echo $myDoc->url ?>" target="_blank"><?php echo $attachment ?></a>
 	</td>
 	</tr>
@@ -1435,7 +1432,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_notice.gif" width="22" height="22"></td>
-	<td valign="top" >Hinweismerker gelöscht.</td>
+	<td valign="top" ><?php echo localeH("Notice marker deleted.")?></td>
 	</tr>
 	
 	<?php
@@ -1444,7 +1441,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_request.gif" width="22" height="22"></td>
-	<td valign="top" >Anfragemerker gelöscht.</td>
+	<td valign="top" ><?php echo localeH("Question marker deleted.")?></td>
 	</tr>
 	<?php
 	break;
@@ -1479,7 +1476,7 @@ if ($zeigegrafik2==1)
 		$html_button2="";
 		if ($popup==0)
 		{
-			$html_button1 ='<input name="overview" type="submit" class="buttonWhite" style="width:102px"value="zur Übersicht">';
+			$html_button1 ='<input name="overview" type="submit" class="buttonWhite" style="width:102px"value="'.localeH("Back to overview").'">';
 
 		}
 		if ($myPT->getIPref("tickets.active_markup_removal")==1 OR  $myPT->getIPref("tickets.active_request_removal")==1)
@@ -1487,7 +1484,7 @@ if ($zeigegrafik2==1)
 			if ($myTicket->hasMarkup($mySUser->id) OR $myTicket->hasRequest($mySUser->id))
 			{
 
-				$html_button2 ='<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Hinweis entfernen">';
+				$html_button2 ='<input name="save" type="submit" class="buttonWhite" style="width:102px"value="'.localeH("Remove Notice").'">';
 			}
 		}
 		?>
@@ -1555,13 +1552,13 @@ if ($zeigegrafik2==1)
 		{
 			if (document.forms.form1.bez.value=="" | document.forms.form1.bez.value=="Neue Aufgabe")
 			{
-				alert ('Bitte wählen Sie eine Bezeichung für diese Aufgabe.');
+				alert ('<?php echo localeH("Please choose a title for this ticket")?>');
 				return false;
 			}
 
 			if (document.forms.form1.datum.value=="")
 			{
-				alert ('Bitte wählen Sie ein Zeitlimit für diese Aufgabe.');
+				alert ('<?php echo localeH("Please chosse a limit for this ticket")?>');
 				return false;
 			}
 		}
@@ -1573,7 +1570,7 @@ if ($zeigegrafik2==1)
 		  <tr>
 		    <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		      <tr>
-		        <td class="windowTitle">Neue Aufgabe hinzuf&uuml;gen</td>
+		        <td class="windowTitle"><?php echo localeH("Create new ticket")?></td>
 		        <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
 		      </tr>
 		    </table></td>
@@ -1583,17 +1580,17 @@ if ($zeigegrafik2==1)
 		<?php
 		$url = 'backend.php?page=Ticket,Process,insert&pag_id=' .$pag_id. '&ver_id=' .$ver_id. '&dat_id=' . $dat_id . '&med_id=' . $med_id .'&sbj_id=' .$sbj_id. "&dat_id_2ndorder=".$dat_id_2ndorder."&express=0";
 
-		$this->tab_addEntry("Standard-Ticket",$url,"b_job.gif");
+		$this->tab_addEntry(locale("Standard Ticket"),$url,"b_job.gif");
 		
 		$url = 'backend.php?page=Ticket,Process,insert&pag_id=' .$pag_id. '&ver_id=' .$ver_id. '&dat_id=' . $dat_id . '&med_id=' . $med_id .'&sbj_id=' .$sbj_id. "&dat_id_2ndorder=".$dat_id_2ndorder."&express=1";
-		$this->tab_addEntry("Express-Ticket",$url,"b_myjob.gif");
+		$this->tab_addEntry(locale("Express Ticket"),$url,"b_myjob.gif");
 		if ($express==1)
 		{
-			$this->tab_draw("Express-Ticket",$x=450,0);
+			$this->tab_draw(locale("Express Ticket"),$x=450,0);
 		}
 		else
 		{
-			$this->tab_draw("Standard-Ticket",$x=450,0);
+			$this->tab_draw(locale("Standard Ticket"),$x=450,0);
 		}
 		?>
 		<form action="backend.php" method="post" enctype="multipart/form-data" name="form1"  onsubmit="return checkForm();">
@@ -1603,19 +1600,19 @@ if ($zeigegrafik2==1)
 
 			<table width="100%" border=0" cellpadding="0" cellspacing="0" align="center" class="window">
 		        <tr>
-		          <td colspan="5" valign="top" class="tableBody"><strong>Bezeichnung</strong> der Aufgabe: <br>
-		              <input name="bez" type="text" class="input" style="width: 300px" value="Neue Aufgabe">
+		          <td colspan="5" valign="top" class="tableBody"><?php echo localeH("%bbTitle%bs for task:")?> <br>
+		              <input name="bez" type="text" class="input" style="width: 300px" value="<?php echo localeH("New Task")?>">
 		          </td>
 		          </tr>
 		        <tr>
 		          <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
 		          </tr>
 		        <tr>
-		          <td colspan="5" valign="top" class="tableBody"><strong>Einordnung</strong><br>
+		          <td colspan="5" valign="top" class="tableBody"><strong><?php echo localeH("Classification")?></strong><br>
 				  
 		<table cellspacing="0" cellpadding="0">
 		<tr>
-		<td width="100">Bereich:</td>
+		<td width="100"><?php echo localeH("Realm")?>:</td>
 		<td>
 		<select name="sbj_id" class="listmenu" style="width: 200px" >
 		<?php
@@ -1678,7 +1675,7 @@ if ($zeigegrafik2==1)
 			<input type="hidden" name="ver_id" value="<?php echo $ver_id ?>">
 			<tr>
 			<td width="100">
-			<br>Seite:
+			<br><?php echo localeH("Page")?>:
 			</td>
 			<td ><br><p class="input"><?php echo $myPT->codeH($bez) ?></p></td>
 			</tr>
@@ -1692,7 +1689,7 @@ if ($zeigegrafik2==1)
 			<input type="hidden" name="dat_id" value="<?php echo $dat_id ?>">
 			<tr>
 			<td>
-			<br>Content-Datensatz:
+			<br><?php echo localeH("Content Record")?>:
 			</td>
 			<td ><br><p class="input"><?php echo $myPT->codeH($bez) ?></p></td>
 			</tr>
@@ -1706,7 +1703,7 @@ if ($zeigegrafik2==1)
 			<input type="hidden" name="med_id" value="<?php echo $med_id ?>">
 			<tr>
 			<td>
-			<br>Mediaobjekt:
+			<br><?php echo localeH("Media object")?>:
 			</td>
 			<td ><br><p class="input"><?php echo $myPT->codeH($bez) ?></p></td>
 			</tr>
@@ -1714,19 +1711,19 @@ if ($zeigegrafik2==1)
 		}
 		?>
 		<tr>
-		<td valign="top"><br>Priorit&auml;t:</td>
+		<td valign="top"><br><?php echo localeH("Priority")?></td>
 		<td  colspan="3" ><br>
 		<?php
 		if ($express==1)
 		{
 		?>
-		<select name="priority" style="width: 200px" class="listmenu" ><option value="3" selected>o&nbsp; Standard</option></select>
+		<select name="priority" style="width: 200px" class="listmenu" ><option value="3" selected><?php echo localeH("o Standard")?></option></select>
 		<?php
 		}
 		else
 		{
 		?>
-		<select name="priority" style="width: 200px" class="listmenu" ><option value="1" >++ H&ouml;chste Priorit&auml;t</option><option value="2" >+&nbsp; vorrangig</option><option value="3" selected>o&nbsp; Standard</option><option value="4" >-&nbsp; nachrangig</option></select>
+		<select name="priority" style="width: 200px" class="listmenu" ><option value="1" ><?php echo localeH("++ Highest Priority")?></option><option value="2" ><?php echo localeH("+ Preferential")?></option><option value="3" selected><?php echo localeH("o Standard")?></option><option value="4" ><?php echo localeH("- Subordinate")?></option></select>
 		<?php
 		}
 		?>
@@ -1734,14 +1731,14 @@ if ($zeigegrafik2==1)
 		</td>
 		</tr>
 		<tr>
-		<td>Zeitraum:</td>
+		<td><?php echo localeH("Period")?>:</td>
 		<td  colspan="3">
 		<?php
 		if ($express==1)
 		{
 		?>
 		<select name="timeframe" class="listmenu">
-		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
+		<option value="<?php echo date("d.m.Y"); ?>"><?php echo localeH("today")?></option>
 		</select>&nbsp;&nbsp;<input type="hidden" name="datum" size="10" value="<?php echo date("d.m.Y"); ?>" class="input" /><?php echo date("d.m.Y"); ?>
 		<?php
 		}
@@ -1751,16 +1748,16 @@ if ($zeigegrafik2==1)
 		<select name="timeframe" onchange="javascript:taketime()" class="listmenu">
 		<option value=""></option>
 		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
-		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
-		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>"><?php echo localeH("tomorrow")?></option>
+		<option value="<?php echo $myPT->nextFriday(time(),1) ?>"><?php echo localeH("end of week")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>"><?php echo localeH("next week")?></option>
+		<option value="<?php echo $myPT->nextMonday(time(),1) ?>"><?php echo localeH("next monday")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>"><?php echo localeH("in two weeks")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>"><?php echo localeH("in four weeks")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>"><?php echo localeH("in two month")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>"><?php echo localeH("in three month")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>"><?php echo localeH("in 6 month")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>"><?php echo localeH("in one year")?></option>
 		</select>&nbsp;&nbsp;<input type="text" name="datum" size="10" value="" class="input">
 		<?php
 		}
@@ -1782,7 +1779,7 @@ if ($zeigegrafik2==1)
 		}
 		else 
 		{
-			echo '<option value="0">N.N.</option>';	
+			echo '<option value="0">'.localeH("n/a").'</option>';	
 		}
 		$rs = $myDB->query($sql);
 		$options="";
@@ -1813,9 +1810,12 @@ if ($zeigegrafik2==1)
 		      <td colspan="5" valign="top" class="tableBody">
 		      	<table cellspacing="0" cellpadding="0">
 		        	<tr>
-						<td width="100"><strong>Dauer</strong></td>
+						<td width="100"><strong><?php echo localeH("Duration")?>:</strong></td>
 						<td>
-						<select name="duration" class="input"><option value="0"></option><option value="5">5 Minuten</option><option value="10">10 Minuten</option><option value="15">15 Minuten</option><option value="20">20 Minuten</option><option value="30">30 Minuten</option><option value="45">45 Minuten</option><option value="60">1 Stunde</option><option value="90">1,5 Stunden</option><option value="120">2 Stunden</option><option value="180">3 Stunden</option><option value="240">4 Stunden</option><option value="300">5 Stunden</option><option value="360">6 Stunden</option><option value="420">7 Stunden</option><option value="480">8 Stunden</option><option value="540">9 Stunden</option><option value="600">10 Stunden</option></duration>
+						<select name="duration" class="input">
+						<?php $options='<option value="0"></option><option value="5">'.localeH("5 minutes").'</option><option value="10">'.localeH("10 minutes").'</option><option value="15">'.localeH("15 minutes").'</option><option value="20">'.localeH("20 minutes").'</option><option value="30">'.localeH("30 minutes").'</option><option value="45">'.localeH("45 minutes").'</option><option value="60">'.localeH("1 hour").'</option><option value="90">'.localeH("1,5 hours").'</option><option value="120">'.localeH("2 hours").'</option><option value="180">'.localeH("3 hours").'</option><option value="240">'.localeH("4 hours").'</option><option value="300">'.localeH("5 hours").'</option><option value="360">'.localeH("6 hours").'</option><option value="420">'.localeH("7 hours").'</option><option value="480">'.localeH("8 hours").'</option><option value="540">'.localeH("9 hours").'</option><option value="600">'.localeH("10 hours").'</option>';
+						echo $options;	
+						?>
 						</td>
 					</tr>
 				</table>
@@ -1832,7 +1832,7 @@ if ($zeigegrafik2==1)
 		
 		          
 		         <tr>
-		<td width="100"><strong>Anhang</strong></td>
+		<td width="100"><strong><?php echo localeH("Attachment")?></strong></td>
 		<td><input name="userfile" type="file" class="input"></td></tr></table>
 		          </td>
 		          </tr>
@@ -1841,7 +1841,7 @@ if ($zeigegrafik2==1)
 		          <td colspan="5" valign="top" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
 		          </tr>				
 		        <tr>
-		          <td colspan="5" valign="top" class="tableBody">1. <strong>Kommentar</strong><br>
+		          <td colspan="5" valign="top" class="tableBody">1. <strong><?php echo localeH("Comment")?></strong><br>
 		              <textarea name="comment" rows="8"style="width: 390px" class="input" wrap="physical"></textarea><br>
 		          </td>
 		          </tr>
@@ -1853,7 +1853,7 @@ if ($zeigegrafik2==1)
 		  <tr>
 		    <td class="windowFooterWhite"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		      <tr>
-		        <td align="right" class="windowTitle"><input name="Submit" type="submit" class="buttonWhite" value="Speichern" style="width:102px"></td>
+		        <td align="right" class="windowTitle"><input name="Submit" type="submit" class="buttonWhite" value="<?php echo localeH("Save")?>" style="width:102px"></td>
 		      </tr>
 		    </table></td>
 		    </tr>
@@ -1985,7 +1985,7 @@ if ($zeigegrafik2==1)
 		"http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype 2.2</title>
+		<title>Phenotype <?php echo $myPT->version?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<script language="JavaScript">
 		top.opener.location = "<?php echo $url ?>";
@@ -2015,7 +2015,7 @@ if ($zeigegrafik2==1)
 		"http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype 2.2</title>
+		<title>phenotype <?php echo $myPT->version?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -2062,7 +2062,7 @@ if ($zeigegrafik2==1)
 		  <tr>
 		    <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		      <tr>
-		        <td class="windowTitle">Neue Aufgabe planen</td>
+		        <td class="windowTitle"><?php echo localeH("Manage new task")?></td>
 		        <td align="right" class="windowTitle"><!--<a href="#"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a>--></td>
 		      </tr>
 		    </table></td>
@@ -2075,58 +2075,64 @@ if ($zeigegrafik2==1)
 		        <tr>
 		        <tr>
 				  <td width="10">&nbsp;</td>
-		          <td valign="top" width="110"><br><strong>Terminplanung</strong></td>
+		          <td valign="top" width="110"><br><strong><?php echo locale("Time scheduling")?></strong></td>
 		          <td width="10">&nbsp;</td>
 				  <td><br>
 				  		
-						Limit:<br>
+				<?php echo localeH("Limit")?>:<br>
 		<input type="text" name="datum1" size="10" value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe1" onchange="javascript:taketime1();" class="input">
-		<option value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>">Vorgabe</option>
-		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
-		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
-		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
+		
+
+		
+
+		
+		<option value="<?php echo date("d.m.Y",$myTicket->row["tik_enddate"]); ?>"><?echo localeH("set target")?></option>
+		<option value="<?php echo date("d.m.Y"); ?>"><?php echo localeH("today")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>"><?php echo localeH("tomorrow")?></option>
+<option value="<?php echo $myPT->nextFriday(time(),1) ?>"><?php echo localeH("end of week")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>"><?php echo localeH("next week")?></option>
+<option value="<?php echo $myPT->nextMonday(time(),1) ?>"><?php echo localeH("next monday")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>"><?php echo localeH("in two weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>"><?php echo localeH("in four weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>"><?php echo localeH("in two month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>"><?php echo localeH("in three month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>"><?php echo localeH("in 6 month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>"><?php echo localeH("in one year")?></option>
 		</select>
 		<br>
-		Ziel:<br>
+		<?php echo localeH("Target")?>:<br>
 		<input type="text" name="datum2" size="10" value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe2" onchange="javascript:taketime2();" class="input">
-		<option value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>">Vorgabe</option>
-		<option value="-1">Limit</option>
-		<option value="<?php echo date("d.m.Y"); ?>">heute</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
-		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
-		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
+		<option value="<?php if ($myTicket->row["tik_targetdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_targetdate"]);} ?>"><?echo localeH("set target")?></option>
+		<option value="-1"><?php echo localeH("Limit")?></option>
+		<option value="<?php echo date("d.m.Y"); ?>"><?php echo localeH("today")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>"><?php echo localeH("tomorrow")?></option>
+<option value="<?php echo $myPT->nextFriday(time(),1) ?>"><?php echo localeH("end of week")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>"><?php echo localeH("next week")?></option>
+<option value="<?php echo $myPT->nextMonday(time(),1) ?>"><?php echo localeH("next monday")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>"><?php echo localeH("in two weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>"><?php echo localeH("in four weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>"><?php echo localeH("in two month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>"><?php echo localeH("in three month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>"><?php echo localeH("in 6 month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>"><?php echo localeH("in one year")?></option>
 		</select>
-			<br>R&uuml;ckstellung:<br>
+			<br><?php echo localeH("Deferral")?>:<br>
 			<input type="text" name="datum3" size="10" value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>" class="input">&nbsp;&nbsp;
 		<select name="timeframe3" onchange="javascript:taketime3();" class="input">
-		<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>">Vorgabe</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>">morgen</option>
-		<option value="<?php echo $myPT->nextFriday(time(),1) ?>">Ende der Woche</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>">n&auml;chste Woche</option>
-		<option value="<?php echo $myPT->nextMonday(time(),1) ?>">n&auml;chsten Montag</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>">in zwei Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>">in vier Wochen</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>">in 2 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>">in 3 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>">in 6 Monaten</option>
-		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>">in 1 Jahr</option>
+		<option value="<?php if ($myTicket->row["tik_sleepdate"]!=0){echo date("d.m.Y",$myTicket->row["tik_sleepdate"]);} ?>"><?echo localeH("set target")?></option>
+		<option value="<?php echo date("d.m.Y"); ?>"><?php echo localeH("today")?></option>
+		<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+1, date('y'))); ?>"><?php echo localeH("tomorrow")?></option>
+<option value="<?php echo $myPT->nextFriday(time(),1) ?>"><?php echo localeH("end of week")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+7, date('y'))); ?>"><?php echo localeH("next week")?></option>
+<option value="<?php echo $myPT->nextMonday(time(),1) ?>"><?php echo localeH("next monday")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+14, date('y'))); ?>"><?php echo localeH("in two weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d'))+28, date('y'))); ?>"><?php echo localeH("in four weeks")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+2, (date('d')), date('y'))); ?>"><?php echo localeH("in two month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+3, (date('d')), date('y'))); ?>"><?php echo localeH("in three month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m')+6, (date('d')), date('y'))); ?>"><?php echo localeH("in 6 month")?></option>
+<option value="<?php echo date("d.m.Y",mktime ( 0, 0, 0, date('m'), (date('d')), date('y')+1)); ?>"><?php echo localeH("in one year")?></option>
 		</select><br><br>
 				  </td>
 				</tr>		
@@ -2136,15 +2142,15 @@ if ($zeigegrafik2==1)
 		        <tr>	
 		        <tr>
 				  <td width="10">&nbsp;</td>
-		          <td valign="top" width="110"><br><strong>Resourcenplanung</strong></td>
+		          <td valign="top" width="110"><br><strong><?php localeH("Capability Planning")?></strong></td>
 		          <td width="10">&nbsp;</td>
 				  <td><br><?php
-				  $options = Array (0=>"ohne Schätzung",1=>"Stunde",2=>"Tag",3=>"Wenige Tage",4=>"Woche",5=>"Monat",6=>"Daueraufgabe");
+				  $options = Array (0=>locale("no estimation"),1=>locale("hour"),2=>locale("day"),3=>locale("few days"),4=>locale("week"),5=>locale("month"),6=>locale("permanent task"));
 				  $options = $myAdm->buildOptionsByNamedArray($options,$myTicket->row["tik_complexity"]);
-				  $html = $myLayout->workarea_form_select("Komplexität:","complexity",$options,150);
-				  $options = Array (0=>"keine Angabe",1=>"positiv","negativ");
+				  $html = $myLayout->workarea_form_select(locale("Complexity"),"complexity",$options,150);
+				  $options = Array (0=>locale("not specified"),1=>locale("positive"),2=>locale("negative"));
 				  $options = $myAdm->buildOptionsByNamedArray($options,$myTicket->row["tik_tendency"]);
-				  $html .= $myLayout->workarea_form_select("Tendenz:","tendency",$options,150);
+				  $html .= $myLayout->workarea_form_select(locale("Trend"),"tendency",$options,150);
 			echo $html;?><br>
 				  </td>
 				</tr>		
@@ -2154,11 +2160,11 @@ if ($zeigegrafik2==1)
 		        <tr>		
 		        <tr>
 				  <td width="10">&nbsp;</td>
-		          <td valign="top" width="110"><br><strong>Kommentar</strong></td>
+		          <td valign="top" width="110"><br><strong><?echo localeH("Comment")?></strong></td>
 		          <td width="10">&nbsp;</td>
 				  <td><br><textarea name="comment" rows="6" style="width: 250px" class="input" wrap="physical"></textarea>
 				  
-				  		<br><input type="checkbox" value="1" name="accept" checked> Aufgabe &uuml;bernehmen<br><br>
+				  		<br><input type="checkbox" value="1" name="accept" checked> <?php echo localeH("take over ticket")?><br/><br/>
 				  </td>
 				</tr>		
 					
@@ -2168,7 +2174,7 @@ if ($zeigegrafik2==1)
 		  <tr>
 		    <td class="windowFooterWhite"><table width="100%" border="0" cellpadding="0" cellspacing="0">
 		      <tr>
-		        <td align="right" class="windowTitle"><input name="close" type="submit" class="buttonWhite" value="Schliessen" style="width:102px">&nbsp;<input name="save" type="submit" class="buttonWhite" value="Speichern" style="width:102px"></td>
+		        <td align="right" class="windowTitle"><input name="close" type="submit" class="buttonWhite" value="<?php echo localeH("Close")?>" style="width:102px">&nbsp;<input name="save" type="submit" class="buttonWhite" value="<?php echo localeH("Save")?>" style="width:102px"></td>
 		      </tr>
 		    </table></td>
 		    </tr>

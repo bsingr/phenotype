@@ -237,20 +237,10 @@ class PhenotypeTicketStandard
 		$mySQL->addField("tik_sleepdate","0",DB_NUMBER);
 		$sql = $mySQL->update("ticket","tik_id=" . $this->id);
 		$rs = $myDB->query($sql);
-		echo "<br>1<br><br>";
-		print_r ($this->props);
 		$this->loadById($this->id);
-		echo "<br>2<br><br>";
-		print_r ($this->props);
 		$this->calculate_prio();
-		echo "<br>3<br><br>";
-		print_r ($this->props);
 		$act_id =  $this->logAction(16,$comment);
-		echo "<br>4<br><br>";
-		print_r ($this->props);
 		$this->loadById($this->id);
-		echo "<br><br><br>";
-		print_r ($this->props);
 	}
 
 	function adjust($comment,$bez,$priority,$complexity,$tendency,$date,$date2,$date3,$sbj_id,$dat_id_2ndorder)

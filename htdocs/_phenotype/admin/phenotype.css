@@ -58,7 +58,7 @@ h3	{
 .buttonGrey2	{
 	background:url(img/b_ongrey2.gif) no-repeat top right;
 	border-width: 0px 0px 0px 0px;
-	font-family: ms trebuchet;
+	font-family: ms trebuchet, sans-serif;
 	font-size: 11px;
 	padding: 3px 5px 7px 0px;
 	margin:  0px 10px 0px 0px;
@@ -67,7 +67,7 @@ h3	{
 .buttonWhite	{
 	background:url(img/b_onwhite.gif) no-repeat top right;
 	border-width: 0px 0px 0px 0px;
-	font-family: ms trebuchet;
+	font-family: ms trebuchet, sans-serif;
 	font-size: 11px;
 	padding: 3px 5px 7px 0px;
 	margin:  0px 10px 0px 0px;

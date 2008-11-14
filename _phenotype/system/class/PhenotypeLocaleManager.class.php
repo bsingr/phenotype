@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
+// Krï¿½mer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:
@@ -31,6 +31,10 @@ class PhenotypeLocaleManagerStandard
 	public function __construct()
 	{
 		$_token = Array();
+
+
+
+		// Admin
 
 
 
@@ -190,7 +194,9 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Edit page scripts";
 		$_token["Config"][]="Export Package";
 		$_token["Config"][]="Export package";
+		$_token["Config"][]="File gets deleted";
 		$_token["Config"][]="Files within webroot";
+		$_token["Config"][]="Folder gets deleted";
 		$_token["Config"][]="Folders";
 		$_token["Config"][]="Include component";
 		$_token["Config"][]="Install";
@@ -665,77 +671,163 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="snapshot installed";
 
 
-		// Ticket_Assess
+		// Ticket
 
-		$_token["Ticket_Assess"][]="all";
-		$_token["Ticket_Assess"][]="closed";
-		$_token["Ticket_Assess"][]="fulltext search for";
-		$_token["Ticket_Assess"][]="marked";
-		$_token["Ticket_Assess"][]="mine";
-		$_token["Ticket_Assess"][]="my tasks";
-		$_token["Ticket_Assess"][]="notices";
-		$_token["Ticket_Assess"][]="order ABCD";
-		$_token["Ticket_Assess"][]="order assigned to";
-		$_token["Ticket_Assess"][]="order date";
-		$_token["Ticket_Assess"][]="order importance";
-		$_token["Ticket_Assess"][]="order last change";
-		$_token["Ticket_Assess"][]="order priority";
-		$_token["Ticket_Assess"][]="order reported by";
-		$_token["Ticket_Assess"][]="order title";
-		$_token["Ticket_Assess"][]="questions";
-		$_token["Ticket_Assess"][]="search for";
-		$_token["Ticket_Assess"][]="search for id";
-		$_token["Ticket_Assess"][]="searchresult";
-		$_token["Ticket_Assess"][]="task overview";
+		$_token["Ticket"][]="%bbTitle%bs for task:";
+		$_token["Ticket"][]="+ Preferential";
+		$_token["Ticket"][]="++ Highest Priority";
+		$_token["Ticket"][]="- Subordinate";
+		$_token["Ticket"][]="1 hour";
+		$_token["Ticket"][]="1,5 hours";
+		$_token["Ticket"][]="10 hours";
+		$_token["Ticket"][]="10 minutes";
+		$_token["Ticket"][]="15 minutes";
+		$_token["Ticket"][]="2 hours";
+		$_token["Ticket"][]="20 minutes";
+		$_token["Ticket"][]="3 hours";
+		$_token["Ticket"][]="30 minutes";
+		$_token["Ticket"][]="4 hours";
+		$_token["Ticket"][]="45 minutes";
+		$_token["Ticket"][]="5 hours";
+		$_token["Ticket"][]="5 minutes";
+		$_token["Ticket"][]="6 hours";
+		$_token["Ticket"][]="7 hours";
+		$_token["Ticket"][]="8 hours";
+		$_token["Ticket"][]="9 hours";
+		$_token["Ticket"][]="Add ticket to watch list.";
+		$_token["Ticket"][]="All realms";
+		$_token["Ticket"][]="Attachment";
+		$_token["Ticket"][]="Back to overview";
+		$_token["Ticket"][]="Capability Planning";
+		$_token["Ticket"][]="Classification";
+		$_token["Ticket"][]="Close";
+		$_token["Ticket"][]="Comment/Documentation";
+		$_token["Ticket"][]="Complexity";
+		$_token["Ticket"][]="Create new ticket";
+		$_token["Ticket"][]="Deferral";
+		$_token["Ticket"][]="Duration";
+		$_token["Ticket"][]="Execute";
+		$_token["Ticket"][]="Express Ticket";
+		$_token["Ticket"][]="Fulltext";
+		$_token["Ticket"][]="Hint for %1";
+		$_token["Ticket"][]="Information";
+		$_token["Ticket"][]="Limit";
+		$_token["Ticket"][]="Log";
+		$_token["Ticket"][]="Manage new task";
+		$_token["Ticket"][]="Meta";
+		$_token["Ticket"][]="New Task";
+		$_token["Ticket"][]="Notices";
+		$_token["Ticket"][]="Notices edited.";
+		$_token["Ticket"][]="Pending question";
+		$_token["Ticket"][]="Period";
+		$_token["Ticket"][]="Planning";
+		$_token["Ticket"][]="Please choose a title for this ticket";
+		$_token["Ticket"][]="Please chosse a limit for this ticket";
+		$_token["Ticket"][]="Postpone";
+		$_token["Ticket"][]="Priority";
+		$_token["Ticket"][]="Process task.";
+		$_token["Ticket"][]="Processor";
+		$_token["Ticket"][]="Processors/Creator";
+		$_token["Ticket"][]="Progress";
+		$_token["Ticket"][]="Question";
+		$_token["Ticket"][]="Question for %1";
+		$_token["Ticket"][]="Really delete this ticket?";
+		$_token["Ticket"][]="Realm";
+		$_token["Ticket"][]="Search tasks";
+		$_token["Ticket"][]="Search tasks %1";
+		$_token["Ticket"][]="Searchresult";
+		$_token["Ticket"][]="Send";
+		$_token["Ticket"][]="Standard Ticket";
+		$_token["Ticket"][]="Target";
+		$_token["Ticket"][]="Target Date";
+		$_token["Ticket"][]="Tasks Overview";
+		$_token["Ticket"][]="Ticked reopened";
+		$_token["Ticket"][]="Ticket Notice";
+		$_token["Ticket"][]="Ticket accepted.";
+		$_token["Ticket"][]="Ticket closed.";
+		$_token["Ticket"][]="Ticket deferral cleared.";
+		$_token["Ticket"][]="Ticket deferred until %1.";
+		$_token["Ticket"][]="Ticket delegated to %1";
+		$_token["Ticket"][]="Ticket log";
+		$_token["Ticket"][]="Ticket opened.";
+		$_token["Ticket"][]="Ticket postponed until %1.";
+		$_token["Ticket"][]="Ticket processed for %1 minutes.";
+		$_token["Ticket"][]="Ticket processed for %1 minutes. %2% completed.";
+		$_token["Ticket"][]="Ticket processed. %1% completed.";
+		$_token["Ticket"][]="Ticket rejected.";
+		$_token["Ticket"][]="Ticket viewed.";
+		$_token["Ticket"][]="Time scheduling";
+		$_token["Ticket"][]="Trend";
+		$_token["Ticket"][]="View ticket log";
+		$_token["Ticket"][]="all";
+		$_token["Ticket"][]="close ticket";
+		$_token["Ticket"][]="closed";
+		$_token["Ticket"][]="day";
+		$_token["Ticket"][]="end of week";
+		$_token["Ticket"][]="few days";
+		$_token["Ticket"][]="fulltext search for";
+		$_token["Ticket"][]="give back ticket";
+		$_token["Ticket"][]="hour";
+		$_token["Ticket"][]="in 6 month";
+		$_token["Ticket"][]="in four weeks";
+		$_token["Ticket"][]="in one year";
+		$_token["Ticket"][]="in three month";
+		$_token["Ticket"][]="in two month";
+		$_token["Ticket"][]="in two weeks";
+		$_token["Ticket"][]="marked";
+		$_token["Ticket"][]="mine";
+		$_token["Ticket"][]="month";
+		$_token["Ticket"][]="msg_calenderweek";
+		$_token["Ticket"][]="msg_filter_closed_tickets_1";
+		$_token["Ticket"][]="msg_filter_closed_tickets_2";
+		$_token["Ticket"][]="msg_filter_closed_tickets_3";
+		$_token["Ticket"][]="msg_selectusers_comment";
+		$_token["Ticket"][]="msg_selectusers_question";
+		$_token["Ticket"][]="msg_ticket_created";
+		$_token["Ticket"][]="msg_ticket_duration_minutes";
+		$_token["Ticket"][]="msg_ticket_duration_hours";
+		$_token["Ticket"][]="msg_ticket_progress";
+		$_token["Ticket"][]="my tasks";
+		$_token["Ticket"][]="n/a";
+		$_token["Ticket"][]="negative";
+		$_token["Ticket"][]="next monday";
+		$_token["Ticket"][]="next week";
+		$_token["Ticket"][]="no estimation";
+		$_token["Ticket"][]="not specified";
+		$_token["Ticket"][]="notices";
+		$_token["Ticket"][]="o Standard";
+		$_token["Ticket"][]="order ABCD";
+		$_token["Ticket"][]="order assigned to";
+		$_token["Ticket"][]="order date";
+		$_token["Ticket"][]="order importance";
+		$_token["Ticket"][]="order last change";
+		$_token["Ticket"][]="order priority";
+		$_token["Ticket"][]="order reported by";
+		$_token["Ticket"][]="order title";
+		$_token["Ticket"][]="permanent task";
+		$_token["Ticket"][]="positive";
+		$_token["Ticket"][]="questions";
+		$_token["Ticket"][]="reactivate ticket";
+		$_token["Ticket"][]="search for";
+		$_token["Ticket"][]="search for id";
+		$_token["Ticket"][]="searchresult";
+		$_token["Ticket"][]="set target";
+		$_token["Ticket"][]="take over ticket";
+		$_token["Ticket"][]="task overview";
+		$_token["Ticket"][]="tasks";
+		$_token["Ticket"][]="title";
+		$_token["Ticket"][]="today";
+		$_token["Ticket"][]="tomorrow";
+		$_token["Ticket"][]="week";
 
 
 		$this->_token = $_token;
 
 	}
 
-	public function rebuildTMXFiles($insert="",$_englishinsert=array(),$_germaninsert=array())
-	{
-		foreach ($this->_token AS $name => $_token)
-		{
 
-			$file = SYSTEMPATH . "tmx/". $name ."_en.tmx";
 
-			$_english = $this->readTMX($file,"en");
-			if ($name==$insert)
-			{
-				$_english = array_merge($_english,$_englishinsert);
-			}
-			$this->writeTMX($file,$_token,$_english);
-			foreach ($this->_locales AS $locale)
-			{
-				$file = SYSTEMPATH . "tmx/". $name ."_".$locale.".tmx";
-				$_translation = $this->readTMX($file,$locale);
-				if ($name==$insert AND $locale == "de")
-				{
-					$_translation = array_merge($_translation,$_germaninsert);
-				}
-				$this->writeTMX($file,$_token,$_english,$locale,$_translation);
-			}
-		}
-	}
 
-	public function lumberEnglishTMX()
-	{
-		foreach ($this->_token AS $name => $_token)
-		{
-			$file = SYSTEMPATH . "tmx/". $name ."_en.tmx";
-			//echo $file ."<br/>";
-			$_english = $this->readTMX($file,"en");
-			foreach ($_english AS $k=>$v)
-			{
-				if ($v=="")
-				{
-					$_english[$k]=$k;
-				}
-			}
-			$this->writeTMX($file,$_token,$_english);
-		}
-	}
 
 	public function readTMX($file,$locale)
 	{
@@ -788,8 +880,7 @@ class PhenotypeLocaleManagerStandard
 		foreach ($_token AS $token)
 		{
 			$val = $_english[$token];
-			//if ($val==""){$val='-';}
-			$val = codeX($val,true);
+			$val = trim(codeX($val,true));
 			$xml .='<tmx:tu tuid="'.codeX($token,true).'">
       <tmx:tuv xml:lang="en">
         <tmx:seg>'.$val.'</tmx:seg>
@@ -797,8 +888,7 @@ class PhenotypeLocaleManagerStandard
 			if ($locale != false)
 			{
 				$val = $_translation[$token];
-				//if ($val==""){$val='-';}
-				$val = codeX($val,true);
+				$val = trim(codeX($val,true));
 				$xml .='
       <tmx:tuv xml:lang="'.$locale.'">
         <tmx:seg>'.$val.'</tmx:seg>
@@ -894,7 +984,7 @@ class PhenotypeLocaleManagerStandard
 	/**
 	 * sorts alle localization tokens for optimizing the LocaleManager class
 	 *
-	 * interal (system developer) use only
+	 * interal (system developer) usage only
 	 *
 	 */
 	public function sortTokens()
@@ -914,4 +1004,81 @@ class PhenotypeLocaleManagerStandard
 		}
 	}
 
+	/**
+	 * prints out all unknown (i.e. new) tokens, collected into database table tokens
+	 * 
+	 * internal (system developer) usage only
+	 */
+	public function displayNewTokens()
+	{
+		global $myDB;
+		$sql = "SELECT * FROM tokens ORDER BY section, token";
+		$rs = $myDB->query($sql);
+		while ($row=mysql_fetch_array($rs))
+		{
+			echo '$_token["'.$row["section"].'"][]="'.$row["token"].'";<br/>';
+		}
+	}
+
+	/**
+	 * Rewrites all txm files based on the tokens array in this class. 
+	 * Be cautious: 
+	 * That means, any entry to a token in any tmx file not referenced in this class gets deleted!
+	 * 
+	 * 
+	 * internal (system developer) usage only
+	 */
+	public function rebuildTMXFiles($insert="",$_englishinsert=array(),$_germaninsert=array())
+	{
+		foreach ($this->_token AS $name => $_token)
+		{
+
+			$file = SYSTEMPATH . "tmx/". $name ."_en.tmx";
+
+			$_english = $this->readTMX($file,"en");
+			if ($name==$insert)
+			{
+				$_english = array_merge($_english,$_englishinsert);
+			}
+			$this->writeTMX($file,$_token,$_english);
+			foreach ($this->_locales AS $locale)
+			{
+				$file = SYSTEMPATH . "tmx/". $name ."_".$locale.".tmx";
+				$_translation = $this->readTMX($file,$locale);
+				if ($name==$insert AND $locale == "de")
+				{
+					$_translation = array_merge($_translation,$_germaninsert);
+				}
+				$this->writeTMX($file,$_token,$_english,$locale,$_translation);
+			}
+		}
+	}
+
+	/**
+	 * This functions pastes token names into the english content (if empty)
+	 * 
+	 * Very usefull since most english translations for a token are identical to the token itself
+	 * 
+	 * internal (system developer) usage only
+	 */
+	public function lumberEnglishTMX()
+	{
+		foreach ($this->_token AS $name => $_token)
+		{
+			$file = SYSTEMPATH . "tmx/". $name ."_en.tmx";
+			//echo $file ."<br/>";
+			$_english = $this->readTMX($file,"en");
+			foreach ($_english AS $k=>$v)
+			{
+				if ($v=="")
+				{
+					$_english[$k]=$k;
+				}
+			}
+			$this->writeTMX($file,$_token,$_english);
+		}
+	}
+
 }
+
+
