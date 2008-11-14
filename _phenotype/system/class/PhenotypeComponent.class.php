@@ -297,14 +297,29 @@ class PhenotypeComponentStandard
 
 	function edit()
 	{
-		// macht in der Superklasse keinen Sinn
-  ?>
-  <?php
+
 	}
 
+	/**
+	 * Default update function, simply transferring all request properties into
+	 * the component object property array. No postprocessing at all
+	 *  
+	 */
 	function update()
 	{
-		// macht in der Superklasse keinen Sinn
+		global $myRequest;
+		
+		$prefix ="com_".$this->id."_";
+		$l = strlen($prefix);
+		
+		foreach ($_REQUEST as $k=>$v)
+		{
+			if (substr($k,0,$l)==$prefix)
+			{
+				$prop = substr($k,$l);
+				$this->set($prop,$myRequest->get($k));
+			}
+		}
 	}
 
 	function renderXML()
@@ -558,6 +573,7 @@ class PhenotypeComponentStandard
 
 	function form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=2, $version=false)
 	{
+		if ($align==""){$align="links";}
 		if ($this->myLayout==-1)
 		{
 			$this->myLayout = new PhenotypeAdminLayout();
@@ -590,7 +606,7 @@ class PhenotypeComponentStandard
 
 
 
-	function form_Richtext($name,$val,$cols=80,$rows=10)
+	function form_richtext($name,$val,$cols=80,$rows=10)
 	{
 		global $myLayout;
 		global $myApp;
@@ -598,7 +614,7 @@ class PhenotypeComponentStandard
 		$myLayout->form_Richtext($name,$myApp->richtext_prefilter($val),$cols,$rows);
 	}
 
-	function form_HTML($name,$val,$cols=80,$rows=10)
+	function form_html($name,$val,$cols=80,$rows=10)
 	{
 		global $myLayout;
 		$name = $this->formid . $name;

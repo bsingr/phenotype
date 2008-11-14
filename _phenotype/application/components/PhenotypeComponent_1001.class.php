@@ -1,72 +1,77 @@
 <?php 
+/**
+ * Richtext component
+ *
+ */
 class PhenotypeComponent_1001 extends PhenotypeComponent
 {
 	var $tool_type = 1001;
-	var $bez = "Richtextabsatz";
+
+	var $bez = "Richtext";
+
+
+	/**
+	 * With this flag you can turn on and off wether a the editor can distinct between versions of an image
+	 * 
+	 * @var boolean
+	 */
+	public $selectionOfImageVersions = false;
+
 
 	function setDefaultProperties()
 	{
-		$this->set("headline","");
-		$this->set("text","");
+		// Setting some default values
 		$this->set("img_id",0);
-		$this->set("alt","");
-		$this->set("bildausrichtung","links");
-		$this->set("version", 0);
-		$this->set("linkbez","");
-		$this->set("linkurl","");
+		$this->set("img_alignment","links"); // unfortunately still in german, meaning "left" ...
 		$this->set("linktarget","_self");
 	}
 
 	function edit()
 	{
-		$this->form_textfield("Überschrift","headline",$this->get("headline"));
-		echo "<br>";
-		$this->form_image("",$this->get("img_id"),-1,1,0,0,$this->get("alt"),$this->get("bildausrichtung"),2, $this->get("version"));
-
-
-    ?> 
-    <br> 
-    <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground"> 
-    <tr><td nowrap> 
-    <?php 
-    $this->form_Richtext("text",$this->get("text"),80,16);
-    ?> 
-    </td></tr></table> <br> 
-    <?php 
-    $this->form_link("link",$this->get("linkbez"),$this->get("linkurl"),$this->get("linktarget"));
-    ?>
-    <br>Link-Anchor: #t<?php echo $this->id ?>
-    <?php 
+		$this->form_textfield("Headline","headline",$this->get("headline"));
+		echo "<br/>";
+		if ($this->selectionOfImageVersions)
+		{
+			$this->form_image("",$this->getI("img_id"),-1,1,0,0,$this->get("img_alt"),$this->get("img_align"),2, $this->get("version"));
+		}
+		else
+		{
+			$this->form_image("",$this->getI("img_id"),-1,1,0,0,$this->get("img_alt"),$this->get("img_align"),2);
+		}
+	    ?> 
+    	<br/> 
+    	<table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground"> 
+    	<tr><td nowrap> 
+    	<?php 
+    	$this->form_richtext("text",$this->get("text"),80,16);
+    	?> 
+    	</td></tr></table> <br> 
+    	<?php 
+    	$this->form_link("link",$this->get("linkbez"),$this->get("linkurl"),$this->get("linktarget"));
+    	?>
+    	<br/>Link-Anchor: #t<?php echo $this->id ?>
+    	<?php 
 	}
 
 	function update()
 	{
+		// First do the default property update
+		parent::update();
 		global $myApp;
+
+		// Then get the property text, which contains the richtext and filter it
+		$richtext = $this->get("text");
+		$richtext = $myApp->richtext_strip_tags($richtext);
+		$this->set("text",$richtext);
+
+		// You can change the filtering by inheriting the method richtext_strip_tags in
+		// your PhenotypeApplication.class (located in _application.inc.php)
 		
-		// Auswertung der Eingabemaske und Setzen der Properties des Tools
-		$this->fset("headline","headline");
-		$text = $this->fget("text");
-		// Nur erlaubte Tags !!
-		$text = $myApp->richtext_strip_tags($text);
-		$this->set("text",$text);
-		$this->fset("img_id","img_id");
-		$this->fset("bildausrichtung","img_align");
-		if ($this->get("img_id")!=0)
+		if ($this->getI("img_id")==0)
 		{
-			$this->fset("alt","img_alt");
+			
 		}
-		else
-		{
-			$this->set("alt","");
-		}
-		if ($this->get("bildausrichtung")=="")
-		{
-			$this->set("bildausrichtung","links");
-		}
-		$this->fset("version");
-		$this->fset("linkbez","linkbez");
-		$this->fset("linkurl","linkurl");
-		$this->fset("linktarget","linktarget");
+
 	}
 
 
@@ -108,7 +113,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 			$myImg = new PhenotypeImage($this->get("img_id"));
 			$myImg->style = $style;
 
-			$mySmarty->assign("image",$myImg->render($alt,$this->get("version")));
+			$mySmarty->assign("image",$myImg->render($alt, $this->get("version")));
 		}
 
 		$mySmarty->assign("headline",$this->get("headline"));

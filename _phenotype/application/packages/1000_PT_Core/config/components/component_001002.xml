@@ -8,73 +8,74 @@
 		<com_rubrik>System</com_rubrik>
 		<com_description>## Baustein 1002 - HTML</com_description>
 	</meta>
-	<script>&#60;?php 
-class PhenotypeComponent_1002 extends PhenotypeComponent 
-{ 
-  var $tool_type = 1002; 
-  var $bez = &#34;HTML&#34;; &#47;&#47; erscheint im Arbeitsbereich 
+	<script>&#60;?php
+&#47;**
+ * HTML component
+ *
+ *&#47;
+class PhenotypeComponent_1002 extends PhenotypeComponent
+{
+	var $tool_type = 1002;
+	var $bez = &#34;HTML&#34;;
 
-  function setDefaultProperties() 
-  { 
-      $this-&#62;set(&#34;html&#34;,&#34;&#34;); 
-  } 
-    
-  function edit() 
-  { 
+	function setDefaultProperties()
+	{
+		$this-&#62;set(&#34;html&#34;,&#34;&#34;);
+	}
 
-    $this-&#62;form_HTML(&#34;html&#34;,$this-&#62;get(&#34;html&#34;),80,15); 
-  } 
+	function edit()
+	{
 
-  
-  function setFullSearch() 
-  { 
-    $s = $this-&#62;get(&#34;html&#34;); 
-	&#47;&#47; Alle Tags entfernen
-	$s = ereg_replace(&#34;&#60;[^&#62;]*&#62;&#34;,&#34;&#34;,$s); 
-    return ($s); 
-  } 
-  
-  function update() 
-  { 
-    global $myAdm; 
-    &#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools 
-    $html = $this-&#62;fget(&#34;html&#34;); 
-    &#47;&#47;echo $html; 
-    $html = $myAdm-&#62;decodeRequest_HTMLArea($html); 
-    $this-&#62;set(&#34;html&#34;,$html); &#47;&#47; Aus dem Formularfeld holen 
-  } 
-    
+		$this-&#62;form_html(&#34;html&#34;,$this-&#62;get(&#34;html&#34;),80,15);
+	}
 
-  function render($context) 
-  { 
-    &#47;&#47; Die Variable $context kommt aus dem Layoutblock 
-    &#47;&#47; und kann genutzt werden, um die Bausteine in unterschiedlichen 
-    &#47;&#47; Contexten anders reagieren zu lassen 
-    $html = $this-&#62;get(&#34;html&#34;);
-    
-	&#47;&#47; PHP-Tags entferen, damit keiner Code einschleussen kann !!
-	
-	$html = ereg_replace(&#34;&#60;\?[^&#62;]*&#62;&#34;,&#34;&#34;,$html); 
-	$html = ereg_replace(&#34;&#60;\%[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; ASP-Style Tags
 
-  
-    return $html; 
-  } 
-    
-   
-  function displayXML()
-  {
-  	&#47;&#47; &#60;html&#62;$this-&#62;getX(&#34;html&#34;)&#60;&#47;html&#62;
-  	 ?&#62;
+	function setFullSearch()
+	{
+		$s = $this-&#62;get(&#34;html&#34;);
+		&#47;&#47; Alle Tags entfernen
+		$s = ereg_replace(&#34;&#60;[^&#62;]*&#62;&#34;,&#34;&#34;,$s);
+		return ($s);
+	}
+
+	function update()
+	{
+		&#47;&#47; First do the default property update
+		parent::update();
+		global $myAdm;
+
+		$html = $this-&#62;get(&#34;html&#34;);
+		$html = $myAdm-&#62;decodeRequest_HTMLArea($html);
+		$this-&#62;set(&#34;html&#34;,$html);
+	}
+
+
+	function render($context)
+	{
+		$html = $this-&#62;get(&#34;html&#34;);
+
+		&#47;&#47; Remove PHP-Tags so nobody can insert code
+
+		$html = ereg_replace(&#34;&#60;\?[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; matching normal and short opening tags
+		$html = ereg_replace(&#34;&#60;\%[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; matching ASP-style tags
+
+
+		return $html;
+	}
+
+
+	function displayXML()
+	{
+  	?&#62;
   	&#60;component com_id=&#34;1002&#34; type=&#34;HTML&#34;&#62;
   	&#60;content&#62;
-  	&#60;html&#62;$this-&#62;getX(&#34;html&#34;)&#60;&#47;html&#62;
+  	&#60;html&#62;&#60;?php echo $this-&#62;getX(&#34;html&#34;);?&#62;&#60;&#47;html&#62;
     &#60;&#47;content&#62;
     &#60;&#47;component&#62;
   	&#60;?php 
   	return true;
-  }     
-} 
+	}
+}
  ?&#62;</script>
 	<templates>
    	</templates>

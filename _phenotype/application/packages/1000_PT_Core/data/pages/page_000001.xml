@@ -10,7 +10,7 @@
 	<content>
 	<pag_uid>41d1b7423d6618a0a7574487a3fbb89e</pag_uid>
 <pag_bez>Startseite</pag_bez>
-<pag_titel>Phenotype 2.6 Startseite</pag_titel>
+<pag_titel>Phenotype 2.7 Startseite</pag_titel>
 <pag_alttitel></pag_alttitel>
 <pag_comment></pag_comment>
 <pag_quickfinder></pag_quickfinder>
@@ -18,17 +18,17 @@
 <pag_id_mimikry>1</pag_id_mimikry>
 <pag_id_top>0</pag_id_top>
 <pag_pos>1</pag_pos>
-<pag_cache>0</pag_cache>
+<pag_cache>86400</pag_cache>
 <pag_status>1</pag_status>
 <usr_id_creator>13</usr_id_creator>
 <pag_creationdate>1206374344</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1206375124</pag_date>
-<pag_url>Phenotype-2.6-Startseite</pag_url>
-<pag_url1>Phenotype-2.6-Startseite</pag_url1>
-<pag_url2>Phenotype-2.6-Startseite</pag_url2>
-<pag_url3>Phenotype-2.6-Startseite</pag_url3>
-<pag_url4>Phenotype-2.6-Startseite</pag_url4>
+<pag_date>1226676956</pag_date>
+<pag_url>Phenotype-2.7-Startseite</pag_url>
+<pag_url1>Phenotype-2.7-Startseite</pag_url1>
+<pag_url2>Phenotype-2.7-Startseite</pag_url2>
+<pag_url3>Phenotype-2.7-Startseite</pag_url3>
+<pag_url4>Phenotype-2.7-Startseite</pag_url4>
 <pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjA6IiI7fQ==</pag_props>
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
@@ -37,10 +37,11 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Phenotype 2.6 Startseite|Phenotype 2.6 Startseite|Phenotype 2.6 Startseite||||Phenotype 2.6|&#60;p&#62;Willkommen bei Phenotype - Ihr System wurde installiert.&#60;&#47;p&#62;
-&#60;p&#62;Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter &#47; Passwort: deleteme&#60;br &#47;&#62;
-&#60;a href=&#34;_phenotype&#47;admin&#47;&#34;&#62;Zum Redaktionssystem&#60;&#47;a&#62;&#60;&#47;p&#62;
-&#60;p&#62;Weitere Informationen &#38;uuml;ber Phenotype auf &#60;a href=&#34;http:&#47;&#47;www.phenotype.de&#34;&#62;phenotype.de&#60;&#47;a&#62; und im &#60;a href=&#34;http:&#47;&#47;phenotype.de&#47;wiki&#47;&#34;&#62;Phenotype-Wiki&#60;&#47;a&#62;&#60;&#47;p&#62;|</pag_fullsearch>
+				<pag_fullsearch>Phenotype 2.7 Startseite|Phenotype 2.7 Startseite|Phenotype 2.7 Startseite||||Phenotype 2.7|&#60;p&#62;&#60;strong&#62;Welcome to Phenotype!&#60;&#47;strong&#62;&#60;&#47;p&#62;
+&#60;p&#62;If you can read this text, Phenotype was installed succesfull with the PT_CORE package.&#60;&#47;p&#62;
+&#60;p&#62;If you&#39;re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.&#60;&#47;p&#62;
+&#60;p&#62;For more infos visit the &#60;a href=&#34;http:&#47;&#47;www.phenotype.de&#34;&#62;offical homepage&#60;&#47;a&#62;.&#60;&#47;p&#62;
+&#60;p&#62;(Sorry currently most infos in german only).&#60;&#47;p&#62;|</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -48,7 +49,10 @@
 			</version>
 
 		</pageversions>
-		<languages>
+		<languages>			<language>
+				<lng_id>0</lng_id>
+				<pag_titel></pag_titel>
+			</language>
 		</languages>
 		<sequence_data>
 			<component>
@@ -58,11 +62,12 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YTo4OntzOjg6ImhlYWRsaW5lIjtzOjEzOiJQaGVub3R5cGUgMi42IjtzOjQ6InRleHQiO3M6NDA5OiI8cD5XaWxsa29tbWVuIGJlaSBQaGVub3R5cGUgLSBJaHIgU3lzdGVtIHd1cmRlIGluc3RhbGxpZXJ0LjwvcD4NCjxwPkxvZ2dlbiBTaWUgc2ljaCBpbSBSZWRha3Rpb25zc3lzdGVtIGVpbiB1bSBJaHIgU3lzdGVtIHp1IHZlcndlbmRlbi4gQmVudXR6ZXJuYW1lOiBzdGFydGVyIC8gUGFzc3dvcnQ6IGRlbGV0ZW1lPGJyIC8+DQo8YSBocmVmPSJfcGhlbm90eXBlL2FkbWluLyI+WnVtIFJlZGFrdGlvbnNzeXN0ZW08L2E+PC9wPg0KPHA+V2VpdGVyZSBJbmZvcm1hdGlvbmVuICZ1dW1sO2JlciBQaGVub3R5cGUgYXVmIDxhIGhyZWY9Imh0dHA6Ly93d3cucGhlbm90eXBlLmRlIj5waGVub3R5cGUuZGU8L2E+IHVuZCBpbSA8YSBocmVmPSJodHRwOi8vcGhlbm90eXBlLmRlL3dpa2kvIj5QaGVub3R5cGUtV2lraTwvYT48L3A+IjtzOjY6ImltZ19pZCI7czoxOiIwIjtzOjM6ImFsdCI7czowOiIiO3M6MTU6ImJpbGRhdXNyaWNodHVuZyI7czo1OiJsaW5rcyI7czo3OiJsaW5rYmV6IjtzOjA6IiI7czo3OiJsaW5rdXJsIjtzOjA6IiI7czoxMDoibGlua3RhcmdldCI7czo1OiJfc2VsZiI7fQ==</dat_comdata>
-				<dat_fullsearch>Phenotype 2.6|&#60;p&#62;Willkommen bei Phenotype - Ihr System wurde installiert.&#60;&#47;p&#62;
-&#60;p&#62;Loggen Sie sich im Redaktionssystem ein um Ihr System zu verwenden. Benutzername: starter &#47; Passwort: deleteme&#60;br &#47;&#62;
-&#60;a href=&#34;_phenotype&#47;admin&#47;&#34;&#62;Zum Redaktionssystem&#60;&#47;a&#62;&#60;&#47;p&#62;
-&#60;p&#62;Weitere Informationen &#38;uuml;ber Phenotype auf &#60;a href=&#34;http:&#47;&#47;www.phenotype.de&#34;&#62;phenotype.de&#60;&#47;a&#62; und im &#60;a href=&#34;http:&#47;&#47;phenotype.de&#47;wiki&#47;&#34;&#62;Phenotype-Wiki&#60;&#47;a&#62;&#60;&#47;p&#62;</dat_fullsearch>
+				<dat_comdata>YToyMTp7czo4OiJoZWFkbGluZSI7czoxMzoiUGhlbm90eXBlIDIuNyI7czo0OiJ0ZXh0IjtzOjM4ODoiPHA+PHN0cm9uZz5XZWxjb21lIHRvIFBoZW5vdHlwZSE8L3N0cm9uZz48L3A+DQo8cD5JZiB5b3UgY2FuIHJlYWQgdGhpcyB0ZXh0LCBQaGVub3R5cGUgd2FzIGluc3RhbGxlZCBzdWNjZXNmdWxsIHdpdGggdGhlIFBUX0NPUkUgcGFja2FnZS48L3A+DQo8cD5JZiB5b3UncmUgbmV3IHRvIFBoZW5vdHlwZSB0cnkgdG8gaW5zdGFsbCBQVF9ERU1PIGZvciBhIGZpcnN0IGltcHJlc3Npb24gb24gaG93IFBoZW5vdHlwZSB3b3Jrcy48L3A+DQo8cD5Gb3IgbW9yZSBpbmZvcyB2aXNpdCB0aGUgPGEgaHJlZj0iaHR0cDovL3d3dy5waGVub3R5cGUuZGUiPm9mZmljYWwgaG9tZXBhZ2U8L2E+LjwvcD4NCjxwPihTb3JyeSBjdXJyZW50bHkgbW9zdCBpbmZvcyBpbiBnZXJtYW4gb25seSkuPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiMCI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NzoidmVyc2lvbiI7czowOiIiO3M6NzoiaW1nX2FsdCI7czoxMzoiTWVpbiBBbHQtVGV4dCI7czo5OiJpbWdfYWxpZ24iO3M6NjoicmVjaHRzIjtzOjY6Im1lZF9pZCI7czoxOiIwIjtzOjg6Imxpbmt0eXBlIjtzOjE6IjAiO3M6ODoibGlua3RleHQiO3M6MDoiIjtzOjEwOiJsaW5rc291cmNlIjtzOjA6IiI7czo1OiJsaW5reCI7czowOiIiO3M6NToibGlua3kiO3M6MDoiIjtzOjEyOiJpbWFnZWltZ19hbHQiO3M6MTM6Ik1laW4gQWx0LVRleHQiO3M6MTQ6ImltYWdlaW1nX2FsaWduIjtzOjY6InJlY2h0cyI7czoxMToiaW1hZ2VpbWdfaWQiO3M6MToiMCI7czoxMToiaW1hZ2VtZWRfaWQiO3M6MToiMCI7fQ==</dat_comdata>
+				<dat_fullsearch>Phenotype 2.7|&#60;p&#62;&#60;strong&#62;Welcome to Phenotype!&#60;&#47;strong&#62;&#60;&#47;p&#62;
+&#60;p&#62;If you can read this text, Phenotype was installed succesfull with the PT_CORE package.&#60;&#47;p&#62;
+&#60;p&#62;If you&#39;re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.&#60;&#47;p&#62;
+&#60;p&#62;For more infos visit the &#60;a href=&#34;http:&#47;&#47;www.phenotype.de&#34;&#62;offical homepage&#60;&#47;a&#62;.&#60;&#47;p&#62;
+&#60;p&#62;(Sorry currently most infos in german only).&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 		</sequence_data>
 	</content>
