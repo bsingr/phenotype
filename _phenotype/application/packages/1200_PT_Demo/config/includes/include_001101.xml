@@ -4,7 +4,7 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>
 		<inc_id>1101</inc_id>
-		<inc_bez>Seitennavigation</inc_bez>		
+		<inc_bez>Page Navigation</inc_bez>		
 		<inc_rubrik>Navigation</inc_rubrik>
 		<inc_description></inc_description>
 		<inc_usage_layout>1</inc_usage_layout>
@@ -18,8 +18,6 @@
  *&#47;
 class PhenotypeInclude_1101 extends PhenotypeInclude
 {
-  &#47;&#47; Seitennavigation
-
   public $id = 1101;
 
 
@@ -29,12 +27,17 @@ class PhenotypeInclude_1101 extends PhenotypeInclude
 
     $myHelper = new PhenotypeNavigationHelper();
 
+    &#47;&#47; Always use the mimikry pag_id of a page
+    &#47;&#47; So you can configure pages not within the main sitemap to mimik the navigation of other pages
+    
+    
     $pag_id = $myPage-&#62;pag_id_mimikry;
 
-    &#47;&#47; ignore next view lines, they are always a special treatment for gallery detail view,
-    &#47;&#47; not necessary for a simple navigation
 
-    &#47;&#47; We imitate navigation of a given page, if we are on gallery detail view page
+    &#47;&#47; The detail of a gallery image is displayed on a separate page not within the sitemap
+    &#47;&#47; Because of that we want to highlight the &#34;referrer page&#34; in our navigation, i.e. the
+    &#47;&#47; page the gallery component was put on. We get the info out of the request
+    
     if ($pag_id==PhenotypeApplication::pag_id_galleryview)
     {
       $pag_id = $this-&#62;getMimikry_pag_id();
@@ -66,7 +69,7 @@ class PhenotypeInclude_1101 extends PhenotypeInclude
 
     &#47;&#47; now print out the page tree as unorderd list an highlight all pages in the path
 
-    $html .=&#39;&#60;ul&#62;&#39;;
+    $html =&#39;&#60;ul&#62;&#39;;
     foreach ($_pages AS $pag_id =&#62; $level)
     {
       $class=&#34;level&#34;.$level;

@@ -4,16 +4,16 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1104</com_id>
-		<com_bez>Trennlinie</com_bez>		
-		<com_rubrik>Sonstige</com_rubrik>
-		<com_description>## Baustein 1104 - Trennlinie</com_description>
+		<com_bez>Horizontal Row</com_bez>		
+		<com_rubrik>Others</com_rubrik>
+		<com_description>## Baustein 1104 - Horizontal Row</com_description>
 	</meta>
 	<script>&#60;?php  
 
 class PhenotypeComponent_1104 extends PhenotypeComponent  
 {  
   var $tool_type = 1104;  
-  var $bez = &#34;Trennlinie&#34;;  
+  var $bez = &#34;Horizontal Row&#34;;  
  
   function render($context)  
   {  
@@ -27,7 +27,7 @@ class PhenotypeComponent_1104 extends PhenotypeComponent
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description># default components</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

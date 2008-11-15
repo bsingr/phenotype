@@ -9,8 +9,8 @@
 	</meta>
 	<content>
 	<pag_uid>81609c16bb5632e80fd7f369d9611597</pag_uid>
-<pag_bez>Impressum</pag_bez>
-<pag_titel>Impressum</pag_titel>
+<pag_bez>Imprint</pag_bez>
+<pag_titel>Imprint</pag_titel>
 <pag_alttitel></pag_alttitel>
 <pag_comment></pag_comment>
 <pag_quickfinder></pag_quickfinder>
@@ -23,13 +23,13 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1162651603</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1162718858</pag_date>
-<pag_url>Impressum.html</pag_url>
-<pag_url1>Impressum.html</pag_url1>
-<pag_url2>Impressum.html</pag_url2>
-<pag_url3>Impressum.html</pag_url3>
-<pag_url4>Impressum.html</pag_url4>
-<pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjE0OiJJbXByZXNzdW0uaHRtbCI7fQ==</pag_props>
+<pag_date>1226769086</pag_date>
+<pag_url>Imprint.html</pag_url>
+<pag_url1>Imprint.html</pag_url1>
+<pag_url2>Imprint.html</pag_url2>
+<pag_url3>Imprint.html</pag_url3>
+<pag_url4>Imprint.html</pag_url4>
+<pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjEyOiJJbXByaW50Lmh0bWwiO30=</pag_props>
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
 		<pageversions>  			<version>
@@ -37,11 +37,10 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Impressum|Impressum|Impressum||||Impressum|Zu jeder Website geh&#38;ouml;rt ein Impressum. &#60;br &#47;&#62;
+				<pag_fullsearch>Imprint|Imprint|Imprint||||Imprint|&#60;p&#62;Every website needs an imprint.&#60;&#47;p&#62;
+&#60;p&#62;This one is just to demonstrate the possibility to give any page any url you want, like &#38;quot;Imprint.html&#38;quot; for example.&#60;br &#47;&#62;
 &#60;br &#47;&#62;
-Dieses hier dient nur dazu zu demonstrieren, wie Phenotype beliebige URIs mit smartUrl aufl&#38;ouml;sen kann, in diesem Fall die URL &#38;quot;Impressum.html&#38;quot; - wenn ihre .htaccess-Datei richtig konfiguriert ist ...&#60;br &#47;&#62;
-&#60;br &#47;&#62;
-Au&#38;szlig;erdem sehen Sie, dass das Men&#38;uuml; links den gleichen Baum zeigt, wie beim Aufruf der Startseite. Diese liegt&#38;nbsp; am Navigations-Mimikry. Diese Seite ist so konfiguriert, dass sie sich, wie die Startseite verh&#38;auml;lt. Das Navigationsinclude muss das nat&#38;uuml;rlich ber&#38;uuml;cksichtigen.|</pag_fullsearch>
+You should also take a look on the navigational highlighthing on the left. While the imprint itself is not part of the page tree, this page is configured to mimik the navigation of the startpage.&#60;&#47;p&#62;|</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -62,12 +61,11 @@ Au&#38;szlig;erdem sehen Sie, dass das Men&#38;uuml; links den gleichen Baum zei
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjk6IkltcHJlc3N1bSI7czo0OiJ0ZXh0IjtzOjU4ODoiWnUgamVkZXIgV2Vic2l0ZSBnZWgmb3VtbDtydCBlaW4gSW1wcmVzc3VtLiA8YnIgLz4NCjxiciAvPg0KRGllc2VzIGhpZXIgZGllbnQgbnVyIGRhenUgenUgZGVtb25zdHJpZXJlbiwgd2llIFBoZW5vdHlwZSBiZWxpZWJpZ2UgVVJJcyBtaXQgc21hcnRVcmwgYXVmbCZvdW1sO3NlbiBrYW5uLCBpbiBkaWVzZW0gRmFsbCBkaWUgVVJMICZxdW90O0ltcHJlc3N1bS5odG1sJnF1b3Q7IC0gd2VubiBpaHJlIC5odGFjY2Vzcy1EYXRlaSByaWNodGlnIGtvbmZpZ3VyaWVydCBpc3QgLi4uPGJyIC8+DQo8YnIgLz4NCkF1JnN6bGlnO2VyZGVtIHNlaGVuIFNpZSwgZGFzcyBkYXMgTWVuJnV1bWw7IGxpbmtzIGRlbiBnbGVpY2hlbiBCYXVtIHplaWd0LCB3aWUgYmVpbSBBdWZydWYgZGVyIFN0YXJ0c2VpdGUuIERpZXNlIGxpZWd0Jm5ic3A7IGFtIE5hdmlnYXRpb25zLU1pbWlrcnkuIERpZXNlIFNlaXRlIGlzdCBzbyBrb25maWd1cmllcnQsIGRhc3Mgc2llIHNpY2gsIHdpZSBkaWUgU3RhcnRzZWl0ZSB2ZXJoJmF1bWw7bHQuIERhcyBOYXZpZ2F0aW9uc2luY2x1ZGUgbXVzcyBkYXMgbmF0JnV1bWw7cmxpY2ggYmVyJnV1bWw7Y2tzaWNodGlnZW4uIjtzOjY6ImltZ19pZCI7czoxOiIwIjtzOjM6ImFsdCI7czowOiIiO3M6MTU6ImJpbGRhdXNyaWNodHVuZyI7czo1OiJsaW5rcyI7czo3OiJsaW5rYmV6IjtzOjA6IiI7czo3OiJsaW5rdXJsIjtzOjA6IiI7czoxMDoibGlua3RhcmdldCI7czo1OiJfc2VsZiI7czo1OiJzdHlsZSI7czoxOiIwIjt9</dat_comdata>
-				<dat_fullsearch>Impressum|Zu jeder Website geh&#38;ouml;rt ein Impressum. &#60;br &#47;&#62;
+				<dat_comdata>YToxNzp7czo4OiJoZWFkbGluZSI7czo3OiJJbXByaW50IjtzOjQ6InRleHQiO3M6MzgzOiI8cD5FdmVyeSB3ZWJzaXRlIG5lZWRzIGFuIGltcHJpbnQuPC9wPg0KPHA+VGhpcyBvbmUgaXMganVzdCB0byBkZW1vbnN0cmF0ZSB0aGUgcG9zc2liaWxpdHkgdG8gZ2l2ZSBhbnkgcGFnZSBhbnkgdXJsIHlvdSB3YW50LCBsaWtlICZxdW90O0ltcHJpbnQuaHRtbCZxdW90OyBmb3IgZXhhbXBsZS48YnIgLz4NCjxiciAvPg0KWW91IHNob3VsZCBhbHNvIHRha2UgYSBsb29rIG9uIHRoZSBuYXZpZ2F0aW9uYWwgaGlnaGxpZ2h0aGluZyBvbiB0aGUgbGVmdC4gV2hpbGUgdGhlIGltcHJpbnQgaXRzZWxmIGlzIG5vdCBwYXJ0IG9mIHRoZSBwYWdlIHRyZWUsIHRoaXMgcGFnZSBpcyBjb25maWd1cmVkIHRvIG1pbWlrIHRoZSBuYXZpZ2F0aW9uIG9mIHRoZSBzdGFydHBhZ2UuPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiMCI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMCI7czo3OiJpbWdfYWx0IjtzOjA6IiI7czo5OiJpbWdfYWxpZ24iO3M6NToibGlua3MiO3M6NjoibWVkX2lkIjtzOjE6IjAiO3M6ODoibGlua3R5cGUiO3M6MToiMCI7czo4OiJsaW5rdGV4dCI7czowOiIiO3M6MTA6Imxpbmtzb3VyY2UiO3M6MDoiIjtzOjU6Imxpbmt4IjtzOjA6IiI7czo1OiJsaW5reSI7czowOiIiO30=</dat_comdata>
+				<dat_fullsearch>Imprint|&#60;p&#62;Every website needs an imprint.&#60;&#47;p&#62;
+&#60;p&#62;This one is just to demonstrate the possibility to give any page any url you want, like &#38;quot;Imprint.html&#38;quot; for example.&#60;br &#47;&#62;
 &#60;br &#47;&#62;
-Dieses hier dient nur dazu zu demonstrieren, wie Phenotype beliebige URIs mit smartUrl aufl&#38;ouml;sen kann, in diesem Fall die URL &#38;quot;Impressum.html&#38;quot; - wenn ihre .htaccess-Datei richtig konfiguriert ist ...&#60;br &#47;&#62;
-&#60;br &#47;&#62;
-Au&#38;szlig;erdem sehen Sie, dass das Men&#38;uuml; links den gleichen Baum zeigt, wie beim Aufruf der Startseite. Diese liegt&#38;nbsp; am Navigations-Mimikry. Diese Seite ist so konfiguriert, dass sie sich, wie die Startseite verh&#38;auml;lt. Das Navigationsinclude muss das nat&#38;uuml;rlich ber&#38;uuml;cksichtigen.</dat_fullsearch>
+You should also take a look on the navigational highlighthing on the left. While the imprint itself is not part of the page tree, this page is configured to mimik the navigation of the startpage.&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 		</sequence_data>
 	</content>

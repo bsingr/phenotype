@@ -50,7 +50,8 @@
 &#60;body&#62;
 &#60;!-- Header --&#62;
 &#60;div id=&#34;header&#34;&#62;
-   &#60;div id=&#34;logo&#34;&#62;&#60;a href=&#34;index.php&#34;&#62;&#60;img src=&#34;{pt_constant value=&#34;SERVERURL&#34;}img&#47;logo.png&#34; alt=&#34;Logo&#34; &#47;&#62;&#60;&#47;a&#62;&#60;&#47;div&#62;
+   &#60;div id=&#34;logo&#34;&#62;&#60;a href=&#34;
+{url_for_page pag_id=1|escape}&#34;&#62;&#60;img src=&#34;{pt_constant value=&#34;SERVERURL&#34;}img&#47;logo.png&#34; alt=&#34;Logo&#34; &#47;&#62;&#60;&#47;a&#62;&#60;&#47;div&#62;
 &#60;&#47;div&#62; 
 &#60;div id=&#34;menu&#34;&#62;
   &#60;div class=&#34;container&#34;&#62;
@@ -84,7 +85,7 @@
 
 
 &#60;!--Footer --&#62;
-&#60;div id=&#34;footer&#34;&#62;Copyright 2003-2008. &#38;nbsp; Nils Hagemann, Paul Sellinger, Peter Sellinger, Michael Kr&#38;auml;mer - &#60;a href=&#34;{url_for_page pag_id=43|escape}&#34;&#62;Impressum&#60;&#47;a&#62;&#60;&#47;div&#62;
+&#60;div id=&#34;footer&#34;&#62;Copyright 2003-2008. &#38;nbsp; Nils Hagemann, Paul Sellinger, Peter Sellinger, Michael Kr&#38;auml;mer - &#60;a href=&#34;{url_for_page pag_id=43|escape}&#34;&#62;Imprint&#60;&#47;a&#62;&#60;&#47;div&#62;
 
 &#60;&#47;body&#62;
 &#60;&#47;html&#62;</page>

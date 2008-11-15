@@ -81,7 +81,7 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description># default components</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

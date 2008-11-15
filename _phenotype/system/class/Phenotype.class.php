@@ -84,7 +84,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 		if (ini_get("register_globals")==1)
 		{
-			die("Bitte stellen Sie Register Globals aus !! Aus Sicherheitsgründen läuft Phenotype nicht mit dieser Einstellung");
+			die("Please turn off register globals. For security reasons phenotype does not allow this setting.");
 		}
 
 		// start buffering the output im
@@ -1649,30 +1649,37 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 
 	<?php
 	$myDao = new PhenotypeSystemDataObject("DebugLookUpTable");
+	
 	?>
-<div id="database"><em>Quick Lookup</em><br />
+<div id="lookup"><em>Quick Lookup</em><br />
+<?php if (count($myDao->get("components"))!=0){?>
 <span class="exec_context">components</span>
 <ul class="source">
 <?php foreach ($myDao->get("components") AS $k=>$v){?>
 	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
 	<?php }?>
 </ul>
+<?php }?>
+<?php if (count($myDao->get("content"))!=0){?>
 <span class="exec_context">content object classes</span>
 <ul class="source">
 <?php foreach ($myDao->get("content") AS $k=>$v){?>
 	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
 	<?php }?>
 </ul>
+<?php }?>
+<?php if (count($myDao->get("includes"))!=0){?>
 <span class="exec_context">includes</span>
 <ul class="source">
 <?php foreach ($myDao->get("includes") AS $k=>$v){?>
 	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
 	<?php }?>
 </ul>
+<?php }?>
 </div>
 	<?php }?></div>
 <div id="footer"><?php echo date('d.m.Y H:i');?></div>
-</div>
+
 </body>
 </html>
 	<?php

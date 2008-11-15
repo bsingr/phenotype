@@ -9,8 +9,8 @@
 	</meta>
 	<content>
 	<pag_uid>1f1484506e3b33635c11f70dfc245837</pag_uid>
-<pag_bez>Rubrik 2</pag_bez>
-<pag_titel>Rubrik 2</pag_titel>
+<pag_bez>Heading 2</pag_bez>
+<pag_titel>Heading 2</pag_titel>
 <pag_alttitel></pag_alttitel>
 <pag_comment></pag_comment>
 <pag_quickfinder></pag_quickfinder>
@@ -23,12 +23,12 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153068248</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1206205444</pag_date>
-<pag_url>Rubrik-2</pag_url>
-<pag_url1>Rubrik-2</pag_url1>
-<pag_url2>Rubrik-2</pag_url2>
-<pag_url3>Rubrik-2</pag_url3>
-<pag_url4>Rubrik-2</pag_url4>
+<pag_date>1226747425</pag_date>
+<pag_url>Heading-2</pag_url>
+<pag_url1>Heading-2</pag_url1>
+<pag_url2>Heading-2</pag_url2>
+<pag_url3>Heading-2</pag_url3>
+<pag_url4>Heading-2</pag_url4>
 <pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjA6IiI7fQ==</pag_props>
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
@@ -37,10 +37,10 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Rubrik 2|Rubrik 2|Rubrik 2||||
-Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
+				<pag_fullsearch>Heading 2|Heading 2|Heading 2|||||Richtext|&#60;p&#62;This page lists all page components of this demonstration.&#60;&#47;p&#62;|||Demonstration Of All Page Components||Point 1|Point 2|Point 3||Richtext|&#60;p&#62;Your job ist to develop your own very specific page components. These are just examples.&#60;&#47;p&#62;|
+This tag is not at all valid. (HTML component)
 
-|Richtextabsatz|Sie k&#38;ouml;nnen nat&#38;uuml;rlich f&#38;uuml;r Ihre Anwendung komplett andere Bausteine entwicklen.||Demonstration aller Bausteine|||Richtextabsatz|Diese Seite listet alle Bausteine dieser Demonstration.|Punkt 1|Punkt 2|Punkt 3|||</pag_fullsearch>
+|</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -61,8 +61,8 @@ Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YToyOntzOjM6ImJleiI7czoyOToiRGVtb25zdHJhdGlvbiBhbGxlciBCYXVzdGVpbmUiO3M6Nzoic3VibGluZSI7czowOiIiO30=</dat_comdata>
-				<dat_fullsearch>Demonstration aller Bausteine|</dat_fullsearch>
+				<dat_comdata>YToyOntzOjM6ImJleiI7czozNjoiRGVtb25zdHJhdGlvbiBPZiBBbGwgUGFnZSBDb21wb25lbnRzIjtzOjc6InN1YmxpbmUiO3M6MDoiIjt9</dat_comdata>
+				<dat_fullsearch>Demonstration Of All Page Components|</dat_fullsearch>
 			</component>
 			<component>
 				<com_id>1001</com_id>
@@ -71,8 +71,8 @@ Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>2</dat_pos>
-				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjE0OiJSaWNodGV4dGFic2F0eiI7czo0OiJ0ZXh0IjtzOjU1OiJEaWVzZSBTZWl0ZSBsaXN0ZXQgYWxsZSBCYXVzdGVpbmUgZGllc2VyIERlbW9uc3RyYXRpb24uIjtzOjY6ImltZ19pZCI7czoxOiIwIjtzOjM6ImFsdCI7czowOiIiO3M6MTU6ImJpbGRhdXNyaWNodHVuZyI7czo2OiJyZWNodHMiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMCI7fQ==</dat_comdata>
-				<dat_fullsearch>Richtextabsatz|Diese Seite listet alle Bausteine dieser Demonstration.</dat_fullsearch>
+				<dat_comdata>YToxMDp7czo4OiJoZWFkbGluZSI7czo4OiJSaWNodGV4dCI7czo0OiJ0ZXh0IjtzOjY1OiI8cD5UaGlzIHBhZ2UgbGlzdHMgYWxsIHBhZ2UgY29tcG9uZW50cyBvZiB0aGlzIGRlbW9uc3RyYXRpb24uPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiMCI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NjoicmVjaHRzIjtzOjc6ImxpbmtiZXoiO3M6MDoiIjtzOjc6Imxpbmt1cmwiO3M6MDoiIjtzOjEwOiJsaW5rdGFyZ2V0IjtzOjU6Il9zZWxmIjtzOjU6InN0eWxlIjtzOjE6IjAiO3M6NzoidmVyc2lvbiI7czoxOiIwIjt9</dat_comdata>
+				<dat_fullsearch>Richtext|&#60;p&#62;This page lists all page components of this demonstration.&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 			<component>
 				<com_id>1001</com_id>
@@ -81,8 +81,8 @@ Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>3</dat_pos>
-				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjE0OiJSaWNodGV4dGFic2F0eiI7czo0OiJ0ZXh0IjtzOjkyOiJTaWUgayZvdW1sO25uZW4gbmF0JnV1bWw7cmxpY2ggZiZ1dW1sO3IgSWhyZSBBbndlbmR1bmcga29tcGxldHQgYW5kZXJlIEJhdXN0ZWluZSBlbnR3aWNrbGVuLiI7czo2OiJpbWdfaWQiO3M6MToiNiI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMiI7fQ==</dat_comdata>
-				<dat_fullsearch>Richtextabsatz|Sie k&#38;ouml;nnen nat&#38;uuml;rlich f&#38;uuml;r Ihre Anwendung komplett andere Bausteine entwicklen.</dat_fullsearch>
+				<dat_comdata>YToxMDp7czo4OiJoZWFkbGluZSI7czo4OiJSaWNodGV4dCI7czo0OiJ0ZXh0IjtzOjk1OiI8cD5Zb3VyIGpvYiBpc3QgdG8gZGV2ZWxvcCB5b3VyIG93biB2ZXJ5IHNwZWNpZmljIHBhZ2UgY29tcG9uZW50cy4gVGhlc2UgYXJlIGp1c3QgZXhhbXBsZXMuPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiNiI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMiI7czo3OiJ2ZXJzaW9uIjtzOjE6IjAiO30=</dat_comdata>
+				<dat_fullsearch>Richtext|&#60;p&#62;Your job ist to develop your own very specific page components. These are just examples.&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 			<component>
 				<com_id>1103</com_id>
@@ -91,8 +91,8 @@ Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>4</dat_pos>
-				<dat_comdata>YTo1OntzOjY6ImFuemFobCI7aTozO3M6NToidGV4dDEiO3M6NzoiUHVua3QgMSI7czo1OiJ0ZXh0MiI7czo3OiJQdW5rdCAyIjtzOjU6InRleHQzIjtzOjc6IlB1bmt0IDMiO3M6ODoiaGVhZGxpbmUiO3M6MTA6IkF1ZnrkaGx1bmciO30=</dat_comdata>
-				<dat_fullsearch>Punkt 1|Punkt 2|Punkt 3|</dat_fullsearch>
+				<dat_comdata>YTo1OntzOjY6ImFuemFobCI7aTozO3M6NToidGV4dDEiO3M6NzoiUG9pbnQgMSI7czo1OiJ0ZXh0MiI7czo3OiJQb2ludCAyIjtzOjU6InRleHQzIjtzOjc6IlBvaW50IDMiO3M6ODoiaGVhZGxpbmUiO3M6MTE6IkVudW1lcmF0aW9uIjt9</dat_comdata>
+				<dat_fullsearch>Point 1|Point 2|Point 3|</dat_fullsearch>
 			</component>
 			<component>
 				<com_id>1104</com_id>
@@ -111,9 +111,9 @@ Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>6</dat_pos>
-				<dat_comdata>YToxOntzOjQ6Imh0bWwiO3M6MTA2OiI8YnIvPgo8Ymxpbms+PG1hcnF1ZWU+RGllc2VyIFRhZyBpc3QgbmF0/HJsaWNoIG5pY2h0IHZhbGlkZS4gKEhUTUwtQmF1c3RlaW4pPC9tYXJxdWVlPjwvYmxpbms+Cjxici8+Cjxici8+Ijt9</dat_comdata>
+				<dat_comdata>YToxOntzOjQ6Imh0bWwiO3M6OTg6Ijxici8+CjxibGluaz48bWFycXVlZT5UaGlzIHRhZyBpcyBub3QgYXQgYWxsIHZhbGlkLiAoSFRNTCBjb21wb25lbnQpPC9tYXJxdWVlPjwvYmxpbms+Cjxici8+Cjxici8+Ijt9</dat_comdata>
 				<dat_fullsearch>
-Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
+This tag is not at all valid. (HTML component)
 
 </dat_fullsearch>
 			</component>
@@ -124,7 +124,7 @@ Dieser Tag ist natürlich nicht valide. (HTML-Baustein)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>7</dat_pos>
-				<dat_comdata>YTozOntzOjY6ImltZ19pZCI7czoxOiI1IjtzOjM6ImFsdCI7czoxNjoiRWluZmFjaCBlaW4gQmlsZCI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjY6Im1pdHRpZyI7fQ==</dat_comdata>
+				<dat_comdata>YTo0OntzOjY6ImltZ19pZCI7czoxOiI1IjtzOjM6ImFsdCI7czoxMzoiSnVzdCBhbiBpbWFnZSI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjY6Im1pdHRpZyI7czo3OiJ2ZXJzaW9uIjtzOjE6IjAiO30=</dat_comdata>
 				<dat_fullsearch></dat_fullsearch>
 			</component>
 			<component>

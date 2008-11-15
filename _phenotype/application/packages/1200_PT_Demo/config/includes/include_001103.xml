@@ -29,27 +29,28 @@ class PhenotypeInclude_1103 extends PhenotypeInclude
 		global $myPage;
 		global $myPT;
 		global $mySmarty;
-		
-		
+
+
 		$pag_id = $myPage-&#62;pag_id_mimikry;
 
 		if ($myRequest-&#62;check(&#34;pag_id_mik&#34;))
 		{
 			$pag_id = $myRequest-&#62;getI(&#34;pag_id_mik&#34;);
 		}
-		
-	
+
+
 		$myHelper = new PhenotypeNavigationHelper();
-		
+
 		$_pages = $myHelper-&#62;getPagesWithinPath($pag_id);
-		
-		&#47;&#47; Initialisieren des Smartyzugriffs
+
+		&#47;&#47; initialize smarty access, allocate $mySmarty and $TPL_XY placeholder
 		eval ($this-&#62;initRendering());
+		
 		$mySmarty-&#62;assign(&#34;pages&#34;, $_pages);
 		$mySmarty-&#62;display($TPL_1);
 
 	}
-	
+
 
 }
 ?&#62;</script>

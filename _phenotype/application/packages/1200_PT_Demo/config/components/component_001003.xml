@@ -21,7 +21,7 @@
 class PhenotypeComponent_1003 extends PhenotypeComponent
 {
   var $tool_type = 1003;
-  var $bez=&#34;Include (Funktion)&#34;;
+  var $bez=&#34;Include (Function)&#34;;
 
 
   function setDefaultProperties()
@@ -163,7 +163,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description># default components</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

@@ -2,31 +2,35 @@
 class PhenotypeExtra_1002 extends PhenotypeExtra
 {
 
-  // Konsole
-  public $id = 1002;
-  public $bez = "Konsole";
-  
-  function displaySetup()
-  {
-	  
-	  //$this->form_textfield("Test","var",200);
-	  //$this->form_textarea("test2","text");
-	  //$this->form_link("Eijo","link1","zur ARD","http://www.ard.de","_self");
-	  //$_options = Array("Mo","Di","Mi");
-	  //$this->form_selectbox("Tag","tag",$_options);
-	  $this->form_checkbox("Color Coding","color","aktivieren");
-  }
+	public $id = 1002;
+	public $bez = "Console";
 
-  function storeConfig()
-  {
-	$this->store();
-  }
-  
-  function displayStart()
-  {
-	 global $myLayout;
-  	 $myLayout->workarea_start_draw();
- 	 $scriptname = "console.inc.php";
+	function displaySetup()
+	{
+		$this->form_checkbox("Color Coding","color","activate");
+	}
+
+	function storeConfig()
+	{
+		$this->store();
+	}
+
+	function displayStart()
+	{
+		global $myLayout;
+		global $mySUser;
+
+		if (PT_CONFIGMODE==0 OR !$mySUser->hasRight("superuser"))
+		{
+			$myLayout->workarea_start_draw();
+			echo "This extra needs super user privileges. Also config mode must be activated.";
+			$myLayout->workarea_whiteline();
+			$myLayout->workarea_stop_draw();
+			return;
+		}
+
+		$myLayout->workarea_start_draw();
+		$scriptname = "console.inc.php";
 		 ?>
 		 <form action="extra_execute.php" method="post">
 		 <input type="hidden" name="id" value="1002">
@@ -50,14 +54,14 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
             </tr>
 			</table>	 
 	<?php 
-	 // Status
-	 $myLayout->workarea_whiteline();
+	// Status
+	$myLayout->workarea_whiteline();
 	 ?>	
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
             <td align="right" class="windowFooterWhite">
-			<input name="execute" type="submit" class="buttonWhite" style="width:102px" value="Ausführen" onclick="javascript:return confirm('Dieses Skript ausführen?')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;
+			<input name="execute" type="submit" class="buttonWhite" style="width:102px" value="Execute" onclick="javascript:return confirm('Really execute this script?')">&nbsp;&nbsp;<input name="save" type="submit" class="buttonWhite" style="width:102px"value="Save changes">&nbsp;&nbsp;
             </td>
           </tr>
         </table>
@@ -66,39 +70,50 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
 	 ?>
 	</form>	 
   <?php 
-  }
-
-  function execute($myRequest)
-  {
-    global $myAdm;
-	
-    if ($myRequest->check("save"))
-	{
-	  if ($this->get("color")==1)
-  	  {
-    	$code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
-  	  }
-	  else
-  	  {
-    	$code = $myAdm->decodeRequest_TextArea($myRequest->get("skript"));
-  	  }
- 	  
-	  $scriptname = "console.inc.php";
-  	  $scriptname = TEMPPATH ."console/" . $scriptname;
-
-	  $fp = fopen ($scriptname, "w");
-	  fputs ($fp,$code);
-	  fclose ($fp);
-	  @chmod ($scriptname,UMASK);
-	
-	  $this->displayStart();
-	  return;
 	}
-	
-	// Das Konsolenskript soll ausgeführt werden
-	global $myLayout;
-  	 $myLayout->workarea_start_draw();
- 	 
+
+	function execute($myRequest)
+	{
+		global $myAdm;
+		global $myLayout;
+		global $mySUser;
+
+		if (PT_CONFIGMODE==0 OR !$mySUser->hasRight("superuser"))
+		{
+			$myLayout->workarea_start_draw();
+			echo "This extra needs super user privileges. Also config mode must be activated.";
+			$myLayout->workarea_whiteline();
+			$myLayout->workarea_stop_draw();
+			return;
+		}
+
+		if ($myRequest->check("save"))
+		{
+			if ($this->get("color")==1)
+			{
+				$code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
+			}
+			else
+			{
+				$code = $myAdm->decodeRequest_TextArea($myRequest->get("skript"));
+			}
+
+			$scriptname = "console.inc.php";
+			$scriptname = TEMPPATH ."console/" . $scriptname;
+
+			$fp = fopen ($scriptname, "w");
+			fputs ($fp,$code);
+			fclose ($fp);
+			@chmod ($scriptname,UMASK);
+
+			$this->displayStart();
+			return;
+		}
+
+		// Das Konsolenskript soll ausgeführt werden
+		global $myLayout;
+		$myLayout->workarea_start_draw();
+
 		 ?>
 		 <form action="extra_start.php" method="post">
 		 <input type="hidden" name="id" value="1002">
@@ -110,8 +125,8 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
             </tr>
 			</table>	 
 	<?php 
-	 // Status
-	 $myLayout->workarea_whiteline();
+	// Status
+	$myLayout->workarea_whiteline();
 	 ?>	
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
@@ -126,7 +141,7 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
 	 ?>
 	</form>	 
 	<?php 
-  }
+	}
 
 }
 ?>

@@ -15,7 +15,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 	 * 
 	 * @var boolean
 	 */
-	public $selectionOfImageVersions = false;
+	public $selectionOfImageVersions = true;
 
 
 	function setDefaultProperties()
@@ -24,6 +24,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		$this->set("img_id",0);
 		$this->set("img_alignment","links"); // unfortunately still in german, meaning "left" ...
 		$this->set("linktarget","_self");
+		$this->set("version",0);
 	}
 
 	function edit()
@@ -66,10 +67,10 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 
 		// You can change the filtering by inheriting the method richtext_strip_tags in
 		// your PhenotypeApplication.class (located in _application.inc.php)
-		
+
 		if ($this->getI("img_id")==0)
 		{
-			
+
 		}
 
 	}
@@ -89,7 +90,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 
 		$template = $TPL_DEFAULT;
 
-		switch ($this->get("bildausrichtung"))
+		switch ($this->get("img_align"))
 		{
 			case "links":
 				$style = "float:left";
@@ -100,7 +101,6 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 				break;
 
 			case "mittig":
-				$template = $TPL_TOPIMAGE;
 				$style = "";
 				break;
 		}
@@ -125,10 +125,16 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 			$link = '&nbsp;<a href="'.$this->get("linkurl").'" target="'.$this->get("linktarget").'">'.$this->get("linkbez").'</a>';
 			$a= '<a href="'.$this->get("linkurl").'" target="'.$this->get("linktarget").'">';
 			$aa = '</a>';
-			$mySmarty->assign("a",$a);
-			$mySmarty->assign("aa",$aa);
-			$mySmarty->assign("link",$link);
 		}
+		else
+		{
+			$link="";
+			$a="";
+			$aa="";
+		}
+		$mySmarty->assign("a",$a);
+		$mySmarty->assign("aa",$aa);
+		$mySmarty->assign("link",$link);
 
 		return $mySmarty->fetch($template);
 

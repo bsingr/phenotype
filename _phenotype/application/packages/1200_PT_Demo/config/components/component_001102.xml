@@ -4,15 +4,15 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1102</com_id>
-		<com_bez>Bild</com_bez>		
+		<com_bez>Image</com_bez>		
 		<com_rubrik>Media</com_rubrik>
-		<com_description>## Baustein 1102 - Bild</com_description>
+		<com_description>## Baustein 1102 - Image</com_description>
 	</meta>
 	<script>&#60;?php
 class PhenotypeComponent_1102 extends PhenotypeComponent
 {
 	var $tool_type = 1102;
-	var $bez  =&#34;Bild&#34;;
+	var $bez  =&#34;Image&#34;;
 
 	function setDefaultProperties()
 	{
@@ -25,7 +25,7 @@ class PhenotypeComponent_1102 extends PhenotypeComponent
 	function edit()
 	{
 
-		$this-&#62;form_image(&#34;&#34;,$this-&#62;get(&#34;img_id&#34;),-1,1,0,0,$this-&#62;get(&#34;alt&#34;),$this-&#62;get(&#34;bildausrichtung&#34;),2, $this->get(&#34;version&#34;));
+		$this-&#62;form_image(&#34;&#34;,$this-&#62;get(&#34;img_id&#34;),-1,1,0,0,$this-&#62;get(&#34;alt&#34;),$this-&#62;get(&#34;bildausrichtung&#34;),2, $this-&#62;get(&#34;version&#34;));
 
 	}
 
@@ -96,7 +96,7 @@ class PhenotypeComponent_1102 extends PhenotypeComponent
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description># default components</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

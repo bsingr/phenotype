@@ -369,7 +369,7 @@ $myPT->startBuffer();
 
 
     // Languagemaps
-
+	/*
     $directory = APPPATH . "languagemaps/";
     $fp = @opendir($directory);
 
@@ -391,7 +391,7 @@ $myPT->startBuffer();
     		}
     	}
     }
-
+	*/
 
 
 

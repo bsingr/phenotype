@@ -4,15 +4,15 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1103</com_id>
-		<com_bez>Aufzählung</com_bez>		
-		<com_rubrik>Sonstige</com_rubrik>
-		<com_description>## Baustein 1103 - Aufzählung</com_description>
+		<com_bez>Enumeration</com_bez>		
+		<com_rubrik>Text</com_rubrik>
+		<com_description>## Baustein 1103 - Enumeration</com_description>
 	</meta>
 	<script>&#60;?php 
 class PhenotypeComponent_1103 extends PhenotypeComponent
 {
 	var $tool_type = 1103;
-	var $bez = &#34;Aufzählung&#34;;
+	var $bez = &#34;Enumeration&#34;;
 
 	function setDefaultProperties()
 	{
@@ -121,7 +121,7 @@ class PhenotypeComponent_1103 extends PhenotypeComponent
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description># default components</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

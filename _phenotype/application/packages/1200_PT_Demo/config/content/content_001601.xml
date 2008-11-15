@@ -4,7 +4,7 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>
 		<con_id>1601</con_id>
-		<con_bez>Galerie</con_bez>		
+		<con_bez>Gallery</con_bez>		
 		<con_rubrik>Demonstration</con_rubrik>
 		<con_description></con_description>
 		<con_anlegen>1</con_anlegen>
@@ -25,7 +25,7 @@ class PhenotypeContent_1601 extends PhenotypeContent
   var $content_type = 1601;
 
   &#47;&#47; tab configuration
-  var $_blocks = Array (&#34;Eigenschaften&#34;, &#34;Bild 1-10&#34;,&#34;Bild 11-20&#34;);
+  var $_blocks = Array (&#34;Properties&#34;, &#34;Images 1-10&#34;,&#34;Images 11-20&#34;);
   var $_icons = Array (&#34;b_konfig.gif&#34;, &#34;b_items.gif&#34;,&#34;b_items.gif&#34;);
 
   &#47;**
@@ -144,7 +144,7 @@ class PhenotypeContent_1601 extends PhenotypeContent
   function getImageArrayForImageNumber($nr)
   {
     $img_id = $this-&#62;getI(&#34;image&#34;.$nr.&#34;_img_id&#34;);
-    if ($img_id!=0 AND ($this-&#62;getI(&#34;view&#34;.$i)==1 OR $visible==false))
+    if ($img_id!=0 AND ($this-&#62;getI(&#34;view&#34;.$nr)==1 OR $visible==false))
     {
       $myImg = get_image($img_id);
       $_image = Array();

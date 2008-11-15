@@ -4,13 +4,12 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1001</com_id>
-		<com_bez>Richtextabsatz</com_bez>		
-		<com_rubrik>Textbausteine</com_rubrik>
-		<com_description>## Baustein 1001 - Richtextabsatz
+		<com_bez>Richtext</com_bez>		
+		<com_rubrik>Text</com_rubrik>
+		<com_description>## Component 1001 - Richtext
 
-Mit diesem Bausteinen können bereits die meisten Anforderungen einer einfachen Website abegedeckt werden. Ein Absatz besteht aus Überschrift, Text, Bild und Link.
-
-</com_description>
+		This basic component fits many needs of simple web pages. It offers headlines, formatted text, images and links.
+		</com_description>
 	</meta>
 	<script>&#60;?php 
 &#47;**
@@ -29,7 +28,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 	 * 
 	 * @var boolean
 	 *&#47;
-	public $selectionOfImageVersions = false;
+	public $selectionOfImageVersions = true;
 
 
 	function setDefaultProperties()
@@ -38,6 +37,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		$this-&#62;set(&#34;img_id&#34;,0);
 		$this-&#62;set(&#34;img_alignment&#34;,&#34;links&#34;); &#47;&#47; unfortunately still in german, meaning &#34;left&#34; ...
 		$this-&#62;set(&#34;linktarget&#34;,&#34;_self&#34;);
+		$this-&#62;set(&#34;version&#34;,0);
 	}
 
 	function edit()
@@ -80,10 +80,10 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 
 		&#47;&#47; You can change the filtering by inheriting the method richtext_strip_tags in
 		&#47;&#47; your PhenotypeApplication.class (located in _application.inc.php)
-		
+
 		if ($this-&#62;getI(&#34;img_id&#34;)==0)
 		{
-			
+
 		}
 
 	}
@@ -103,7 +103,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 
 		$template = $TPL_DEFAULT;
 
-		switch ($this-&#62;get(&#34;bildausrichtung&#34;))
+		switch ($this-&#62;get(&#34;img_align&#34;))
 		{
 			case &#34;links&#34;:
 				$style = &#34;float:left&#34;;
@@ -114,7 +114,6 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 				break;
 
 			case &#34;mittig&#34;:
-				$template = $TPL_TOPIMAGE;
 				$style = &#34;&#34;;
 				break;
 		}
@@ -139,10 +138,16 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 			$link = &#39;&#38;nbsp;&#60;a href=&#34;&#39;.$this-&#62;get(&#34;linkurl&#34;).&#39;&#34; target=&#34;&#39;.$this-&#62;get(&#34;linktarget&#34;).&#39;&#34;&#62;&#39;.$this-&#62;get(&#34;linkbez&#34;).&#39;&#60;&#47;a&#62;&#39;;
 			$a= &#39;&#60;a href=&#34;&#39;.$this-&#62;get(&#34;linkurl&#34;).&#39;&#34; target=&#34;&#39;.$this-&#62;get(&#34;linktarget&#34;).&#39;&#34;&#62;&#39;;
 			$aa = &#39;&#60;&#47;a&#62;&#39;;
-			$mySmarty-&#62;assign(&#34;a&#34;,$a);
-			$mySmarty-&#62;assign(&#34;aa&#34;,$aa);
-			$mySmarty-&#62;assign(&#34;link&#34;,$link);
 		}
+		else
+		{
+			$link=&#34;&#34;;
+			$a=&#34;&#34;;
+			$aa=&#34;&#34;;
+		}
+		$mySmarty-&#62;assign(&#34;a&#34;,$a);
+		$mySmarty-&#62;assign(&#34;aa&#34;,$aa);
+		$mySmarty-&#62;assign(&#34;link&#34;,$link);
 
 		return $mySmarty-&#62;fetch($template);
 
@@ -151,17 +156,10 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 }
  ?&#62;</script>
 	<templates>
-<template access="TPL_DEFAULT">&#60;div class=&#34;richtext {if $box}box{&#47;if}&#34;&#62;
+<template access="TPL_DEFAULT">&#60;div class=&#34;richtext&#34;&#62;
 &#60;a name=&#34;t{$id}&#34;&#62;&#60;&#47;a&#62;
 {if $headline!=&#34;&#34;}&#60;h1&#62;{$a}{$headline}{$aa}&#60;&#47;h1&#62;{&#47;if}
 {$a}{$image}{$aa}{$text}{$link}
-&#60;&#47;div&#62;
-&#60;br clear=&#34;all&#34;&#47;&#62;</template>
-<template access="TPL_TOPIMAGE">&#60;div class=&#34;richtext {if $box}box{&#47;if}&#34;&#62;
-&#60;a name=&#34;t{$id}&#34;&#62;&#60;&#47;a&#62;
-{if $headline!=&#34;&#34;}&#60;h1&#62;{$a}{$headline}{$aa}&#60;&#47;h1&#62;{&#47;if}
-{$a}{$image}{$aa}
-{$text}{$link}
 &#60;&#47;div&#62;
 &#60;br clear=&#34;all&#34;&#47;&#62;</template>
    	</templates>

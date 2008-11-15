@@ -66,7 +66,7 @@ div.hr hr {
 #content ul {}
 #content li {font-size:13px;padding:5px;list-style-type:circle;}
 
-#content p {font-size:13px;margin:0;}
+#content p {font-size:13px;margin:0;margin-bottom:20px}
 #content .richtext {font-size:13px;margin:0;}
 #content h1 {font-size:17px;color:#82A700;font-weight:normal;margin-bottom:5px;}
 #content h2 {font-size:15px;color:#82A700;font-weight:normal;margin-bottom:5px;}
@@ -79,7 +79,7 @@ div.hr hr {
 #content .box {background:#EDF2DF;border: 1px solid #CCE200;margin:0px auto;width:460px;padding:10px;padding-bottom:20px;margin-bottom:5px;}
 #content .box h1 {margin:0px 0px 10px 0px;}
 #content .box h1 a{color:#82A700;}
-#content .box p {font-size:13px;margin:0;}
+#content .box p {font-size:13px;margin:0;margin-bottom:15px}
 
 
 #display .Tabelle {padding:3px 0px;margin:5px 0px}

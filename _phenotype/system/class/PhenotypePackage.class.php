@@ -56,7 +56,7 @@ class PhenotypePackageStandard
 		$this->installApplicationFiles($hostconfig);
 
 		$this->installBackendClasses();
-		$this->installLanguageMaps();
+		//$this->installLanguageMaps();
 
 		$this->configureMediabase();
 		$this->configureComponents();
@@ -119,16 +119,16 @@ class PhenotypePackageStandard
 				{
 					$myMB = new PhenotypeMediabase();
 					$myMB->rawXMLImport($buffer);
-					echo "Anlegen der Mediagruppen.<br/>";
+					echo "Building media groups.<br/>";
 				}
 				else
 				{
-					echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+					echo "XML processing error while parsing ".$file . "<br/>";
 				}
 			}
 			else
 			{
-				echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+				echo "I/O error reading ".$file . "<br/>";
 			}
 		}
 	}
@@ -155,21 +155,21 @@ class PhenotypePackageStandard
 							$com_id = $myCom->rawXMLImport($buffer);
 							if ($com_id)
 							{
-								echo "Baustein ". $com_id. " angelegt (".$file.") <br/>";
+								echo "Component ". $com_id. " created (".$file.") <br/>";
 							}
 							else
 							{
-								echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+								echo "Import failure while processing " .$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+							echo "XML processing error while parsing ".$file . "<br/>";
 						}
 					}
 					else
 					{
-						echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+						echo "I/O error reading ".$file . "<br/>";
 					}
 				}
 			}
@@ -199,21 +199,21 @@ class PhenotypePackageStandard
 							$inc_id = $myInc->rawXMLImport($buffer);
 							if ($inc_id)
 							{
-								echo "Include ". $inc_id. " angelegt (".$file.") <br/>";
+								echo "Include ". $inc_id. " created (".$file.") <br/>";
 							}
 							else
 							{
-								echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+								echo "Import failure while processing " .$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+							echo "XML processing error while parsing ".$file . "<br/>";
 						}
 					}
 					else
 					{
-						echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+						echo "I/O error reading ".$file . "<br/>";
 					}
 				}
 			}
@@ -237,16 +237,16 @@ class PhenotypePackageStandard
 				{
 					$myPage = new PhenotypePage();
 					$myPage->rawXMLPagegroupImport($buffer);
-					echo "Anlegen der Seitengruppen.<br/>";
+					echo "Building page groups.<br/>";
 				}
 				else
 				{
-					echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+					echo "XML processing error while parsing ".$file . "<br/>";
 				}
 			}
 			else
 			{
-				echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+				echo "I/O error reading ".$file . "<br/>";
 			}
 		}
 
@@ -269,16 +269,16 @@ class PhenotypePackageStandard
 				{
 					$myPage = new PhenotypePage();
 					$myPage->rawXMLLayoutimport($buffer);
-					echo "Anlegen der Layouts.<br/>";
+					echo "Building layouts.<br/>";
 				}
 				else
 				{
-					echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+					echo "XML processing error while parsing ".$file . "<br/>";
 				}
 			}
 			else
 			{
-				echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+				echo "I/O error reading ".$file . "<br/>";
 			}
 		}
 	}
@@ -304,21 +304,21 @@ class PhenotypePackageStandard
 							$con_id = $myCO->rawXMLImport($buffer);
 							if ($con_id)
 							{
-								echo "Contentobjekt ". $con_id. " angelegt (".$file.") <br/>";
+								echo "Content class ". $con_id. " created (".$file.") <br/>";
 							}
 							else
 							{
-								echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+								echo "Import failure while processing " .$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+							echo "XML processing error while parsing ".$file . "<br/>";
 						}
 					}
 					else
 					{
-						echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+						echo "I/O error reading ".$file . "<br/>";
 					}
 				}
 			}
@@ -343,16 +343,16 @@ class PhenotypePackageStandard
 				{
 					$myTicket = new PhenotypeTicket();
 					$myTicket->rawXMLSubjectsImport($buffer);
-					echo "Anlegen der Aufgabenbereiche.<br/>";
+					echo "Building task realms.<br/>";
 				}
 				else
 				{
-					echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+					echo "XML processing error while parsing ".$file . "<br/>";
 				}
 			}
 			else
 			{
-				echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+				echo "I/O error reading ".$file . "<br/>";
 			}
 		}
 	}
@@ -379,21 +379,21 @@ class PhenotypePackageStandard
 							$ext_id = $myExt->rawXMLImport($buffer);
 							if ($ext_id)
 							{
-								echo "Extraobjekt ". $ext_id. " angelegt (".$file.") <br/>";
+								echo "Extra ". $ext_id. " created (".$file.") <br/>";
 							}
 							else
 							{
-								echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+								echo "Import failure while processing " .$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+							echo "XML processing error while parsing ".$file . "<br/>";
 						}
 					}
 					else
 					{
-						echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+						echo "I/O error reading ".$file . "<br/>";
 					}
 				}
 			}
@@ -423,21 +423,21 @@ class PhenotypePackageStandard
 							$act_id = $myAction->rawXMLImport($buffer);
 							if ($act_id)
 							{
-								echo "Aktion ". $act_id. " angelegt (".$file.") <br/>";
+								echo "Action ". $act_id. " created (".$file.") <br/>";
 							}
 							else
 							{
-								echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+								echo "Import failure while processing " .$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+							echo "XML processing error while parsing ".$file . "<br/>";
 						}
 					}
 					else
 					{
-						echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+						echo "I/O error reading ".$file . "<br/>";
 					}
 				}
 			}
@@ -463,16 +463,16 @@ class PhenotypePackageStandard
 				{
 					$myUser = new PhenotypeUser();
 					$myUser->rawXMLRolesImport($buffer);
-					echo "Anlegen der Rollen.<br/>";
+					echo "Building roles.<br/>";
 				}
 				else
 				{
-					echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+					echo "XML processing error while parsing ".$file . "<br/>";
 				}
 			}
 			else
 			{
-				echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+				echo "I/O error reading ".$file . "<br/>";
 			}
 		}
 
@@ -553,7 +553,7 @@ class PhenotypePackageStandard
 			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 			<html>
 			<head>
-			<title>phenotype <?php echo $myPT->version ?></title>
+			<title>Phenotype <?php echo $myPT->version ?></title>
 			<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 			<link href="phenotype.css" rel="stylesheet" type="text/css">
 			<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -603,7 +603,7 @@ class PhenotypePackageStandard
 				}
 				else
 				{
-					alert ("AJAX-Fehler, OK für Wiederholung (" +filenr+")");
+					alert ("AJAX Error, OK to retry (" +filenr+")");
 					doit(filenr);
 				}
 			}
@@ -625,7 +625,7 @@ class PhenotypePackageStandard
 				ajax.runAJAX();
 			}
 			</script>
-			<div id="statusbar" style="width:400px;height:50px;font-size:10px"><?php echo $count ?> XML-Dateien werden bearbeitet.</div>
+			<div id="statusbar" style="width:400px;height:50px;font-size:10px"><?php echo $count ?> processing XML files</div>
 			
 			</body>
 			</html>
@@ -686,7 +686,7 @@ class PhenotypePackageStandard
 			}
 			else
 			{
-				echo "Keine XML-Dateien gefunden.";
+				echo "No XM Files found.";
 			}
 		}
 	}
@@ -721,22 +721,22 @@ class PhenotypePackageStandard
 								$usr_id = $myUser->rawXMLImport($buffer);
 								if ($usr_id)
 								{
-									echo "Benutzer ". $usr_id. " angelegt (".$file.") <br/>";
+									echo "User ". $usr_id. " installed (".$file.") <br/>";
 								}
 								else
 								{
-									echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+									echo "Import failure while processing " .$file . "<br/>";
 								}
 
 							}
 							else
 							{
-								echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+								echo "XML processing error while parsing  ".$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+							echo "I/O error reading ".$file . "<br/>";
 						}
 					}
 				}
@@ -776,23 +776,23 @@ class PhenotypePackageStandard
 								$med_id = $myMO->rawXMLImport($buffer);
 								if ($med_id)
 								{
-									echo "Mediaobjekt ". $med_id. " angelegt (".$file." mit lokaler ID ".$med_id_local.") <br/>";
+									echo "Media object ". $med_id. " installed (".$file." with local ID ".$med_id_local.") <br/>";
 									$this->_media_data[$med_id_local]=$med_id;
 								}
 								else
 								{
-									echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+									echo "Import failure while processing " .$file . "<br/>";
 								}
 
 							}
 							else
 							{
-								echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+								echo "XML processing error while parsing ".$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+							echo "I/O error reading ".$file . "<br/>";
 						}
 					}
 				}
@@ -845,27 +845,27 @@ class PhenotypePackageStandard
 									$dat_id = $myCO->rawXMLDataImport($buffer);
 									if ($dat_id)
 									{
-										echo "Datensatz ". $dat_id. " angelegt (".$file." mit lokaler ID ".$dat_id_local.") <br/>";
+										echo "Content record ". $dat_id. " installed (".$file." with local ID ".$dat_id_local.") <br/>";
 										$this->_content_data[$dat_id_local]=$dat_id;
 									}
 									else
 									{
-										echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+										echo "Import failure while processing " .$file . "<br/>";
 									}
 								}
 								else
 								{
-									echo "Contentobjekt ". $con_id . " nicht vorhanden. Überspringe " .$file . "<br/>";
+									echo "Content type PhenotypeContent_". $con_id . " unknow. Skipping " .$file . "<br/>";
 								}
 							}
 							else
 							{
-								echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+								echo "XML processing error while parsing ".$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+							echo "I/O error reading ".$file . "<br/>";
 						}
 					}
 				}
@@ -913,27 +913,27 @@ class PhenotypePackageStandard
 									$pag_id = $myPage->rawXMLImport($buffer);
 									if ($pag_id)
 									{
-										echo "Seite ". $pag_id. " angelegt (".$file." mit lokaler ID ".$pag_id_local.") <br/>";
+										echo "Page ". $pag_id. " installed (".$file." with local ID ".$pag_id_local.") <br/>";
 										$this->_pages[$pag_id_local]=$pag_id;
 									}
 									else
 									{
-										echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+										echo "Import failure while processing " .$file . "<br/>";
 									}
 								}
 								else
 								{
-									echo "Seitengruppe ". $pag_id . " nicht vorhanden. Überspringe " .$file . "<br/>";
+									echo "Page group ". $pag_id . " not available. Skipping " .$file . "<br/>";
 								}
 							}
 							else
 							{
-								echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+								echo "XML processing error while parsing ".$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+							echo "I/O error reading ".$file . "<br/>";
 						}
 					}
 				}
@@ -991,27 +991,27 @@ class PhenotypePackageStandard
 									$tik_id = $myTicket->rawXMLImport($buffer);
 									if ($tik_id)
 									{
-										echo "Ticket ". $tik_id. " angelegt (".$file.") <br/>";
+										echo "Ticket ". $tik_id. " installed (".$file.") <br/>";
 
 									}
 									else
 									{
-										echo "Importfehler beim Verarbeiten von " .$file . "<br/>";
+										echo "Import failure while processing " .$file . "<br/>";
 									}
 								}
 								else
 								{
-									echo "Aufgabenbereich ". $sbj_id . " nicht vorhanden. Überspringe " .$file . "<br/>";
+									echo "Task realm ". $sbj_id . " unknown. Skipping " .$file . "<br/>";
 								}
 							}
 							else
 							{
-								echo "XML-Verarbeitungsfehler beim Parsing von ".$file . "<br/>";
+								echo "XML processing error while parsing ".$file . "<br/>";
 							}
 						}
 						else
 						{
-							echo "I/O-Fehler beim Lesen von ".$file . "<br/>";
+							echo "I/O error reading ".$file . "<br/>";
 						}
 					}
 				}
@@ -1037,12 +1037,12 @@ class PhenotypePackageStandard
 				{
 					if (is_dir($directory . $file))
 					{
-						echo "Kopiere Verzeichnis " . $file . "<br/>";
+						echo "Coyp folder " . $file . "<br/>";
 						$myAdm->copyDirComplete($directory . $file,SERVERPATH.$file);
 					}
 					else
 					{
-						echo "Kopiere Datei " . $file . "<br/>";
+						echo "Copy file " . $file . "<br/>";
 						copy ($directory . $file,SERVERPATH . $file);
 						chmod (SERVERPATH . $file,UMASK);
 					}
@@ -1068,12 +1068,12 @@ class PhenotypePackageStandard
 				{
 					if (is_dir($directory . $file))
 					{
-						echo "Kopiere Verzeichnis " . $file . "<br/>";
+						echo "Copy Folder " . $file . "<br/>";
 						$myAdm->copyDirComplete($directory . $file, APPPATH."storage/".$file);
 					}
 					else
 					{
-						echo "Kopiere Datei " . $file . "<br/>";
+						echo "Copy file " . $file . "<br/>";
 						copy ($directory . $file,APPPATH."storage/". $file);
 						chmod (APPPATH."storage/". $file,UMASK);
 					}
@@ -1093,7 +1093,7 @@ class PhenotypePackageStandard
 
 		if (file_exists($directory . $file))
 		{
-			echo "Kopiere Datei " . $file . "<br/>";
+			echo "Copy file " . $file . "<br/>";
 			copy ($directory . $file,APPPATH . $file);
 			chmod (APPPATH . $file,UMASK);
 		}
@@ -1102,7 +1102,7 @@ class PhenotypePackageStandard
 
 		if (file_exists($directory . $file))
 		{
-			echo "Kopiere Datei " . $file . "<br/>";
+			echo "Copy file " . $file . "<br/>";
 			copy ($directory . $file,APPPATH . $file);
 			chmod (APPPATH . $file,UMASK);
 		}
@@ -1111,7 +1111,7 @@ class PhenotypePackageStandard
 
 		if (file_exists($directory . $file) AND $hostconfig==1)
 		{
-			echo "Kopiere Datei " . $file . "<br/>";
+			echo "Copy file " . $file . "<br/>";
 			copy ($directory . $file,APPPATH . $file);
 			chmod (APPPATH . $file,UMASK);
 		}		
@@ -1130,7 +1130,7 @@ class PhenotypePackageStandard
 			{
 				if ( ($file{0} != ".") && ($file != "CVS") ) // ignore hidden files and CVS
 				{
-					echo "Kopiere Backendklasse " . $file . "<br/>";
+					echo "Copy backend class " . $file . "<br/>";
 					copy ($directory . $file,APPPATH . "backend/". $file);
 					chmod (APPPATH . "backend/". $file,UMASK);
 				}
@@ -1138,6 +1138,7 @@ class PhenotypePackageStandard
 		}
 	}
 
+	/*
 	function installLanguageMaps()
 	{
 		echo "<br/>--installLanguageMaps<br/>";
@@ -1158,5 +1159,6 @@ class PhenotypePackageStandard
 			}
 		}
 	}
+	*/
 }
 ?>

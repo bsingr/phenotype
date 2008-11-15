@@ -4,9 +4,9 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1003</com_id>
-		<com_bez>Include</com_bez>		
+		<com_bez>Include (Function)</com_bez>		
 		<com_rubrik>System</com_rubrik>
-		<com_description>## Baustein 1003 - Include</com_description>
+		<com_description>## Component 1003 - Include</com_description>
 	</meta>
 	<script>&#60;? 
 &#47;**

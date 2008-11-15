@@ -4,7 +4,7 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1105</com_id>
-		<com_bez>Tabelle</com_bez>		
+		<com_bez>Table</com_bez>		
 		<com_rubrik>Demonstration</com_rubrik>
 		<com_description></com_description>
 	</meta>
@@ -12,7 +12,7 @@
 class PhenotypeComponent_1105 extends PhenotypeComponent
 {
 	var $tool_type = 1105;
-	var $bez = &#34;Tabelle&#34;;
+	var $bez = &#34;Table&#34;;
 
 	function setDefaultProperties()
 	{
@@ -226,7 +226,7 @@ class PhenotypeComponent_1105 extends PhenotypeComponent
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description># default components</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

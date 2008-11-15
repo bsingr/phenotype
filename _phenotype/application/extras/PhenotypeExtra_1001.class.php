@@ -21,26 +21,31 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		<table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
         <td class="tableBody">
-        Mit dem Pagewizard können Sie auf sehr einfache Weise Seitenbäume anlegen.</br>
-        Schreiben Sie die Seitentitel einfach in einer Liste untereinander auf. Mit Leerzeichen rücken Sie</br>
-        Seiten ein, so         dass sie im Baum eine Ebene tiefer eingehängt werden.</br> 
-        </br>
-        Beispiel: </br></br>
-        Home</br>
-        &nbsp;Seite 1</br>
-        &nbsp;Seite 2</br>
-        &nbsp;&nbsp;Seite 2.1</br>
-        &nbsp;Seite 3</br>
-        </br>
-        </br>
-        Alle Seiten werden abhängig davon, welche Einstellungen sie hier vornehmen, angelegt. Sie können
-        einzelnen Seiten zusätzlich ein abweichendes Layout und einen abweichenden On/Offline-Status geben:</br>
-        </br>
-        Beispiel: </br>
-        Seite1 || 6 0</br>
-        Seite2 || 4 1</br></br>
-        Bei diesem Beispiel wird Seite1 mit dem Layout und Seite2 mit dem Layout4 angelegt. Seite 1 wird offline gestellt, Seite 2 online.
-        </br>
+        The pagewizard is a mighty helper extra for creating pages.<br/>
+        You can create whole page trees very simple by writing them down.<br/>
+        
+        Just write down page titles in a list, one line for each page.<br/>
+        With spaces you can determine the level of a page, i.e. you can create child pages.<br/>
+        <br/>
+        Example: <br/>
+        Home<br/>
+        &nbsp;Page 1<br/>
+        &nbsp;Page 2<br/>
+        &nbsp;&nbsp;Page 2.1<br/>
+        &nbsp;Page 3<br/>
+        <br/>
+        <br/>
+        You must determine layout and online status for all pages. But you can override your global settings for single pages:<br/>
+ 		<br/>	
+        Example: <br/>
+        Page 1 || 6 0<br/>
+        Page 2 || 4 1<br/>
+        Page 3<br/>
+        Page 4<br/>
+        <br/>
+         In this example "Page 1" gets the layout with id 6, "Page 2" gets layout with id 4.<br/>
+        "Page 1" is offline after creation, "Page 2" online. Page 3 and 4 gets selected default values.<br/>
+        <br/>
         </td>
         </tr>
         </table>
@@ -65,7 +70,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		$options .= '<option value="0">--------------------------------</option>';
 		while ($row = mysql_fetch_array($rs))
 		{
-			$options .= '<option value="g'.$row["grp_id"].'">Gruppe: '.$row["grp_bez"].'</option>';
+			$options .= '<option value="g'.$row["grp_id"].'">Group: '.$row["grp_bez"].'</option>';
 		}
 		$sql = "SELECT * FROM page ORDER BY grp_id,pag_bez";
 		$rs = $myDB->query($sql);
@@ -82,20 +87,20 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		$options .= '<option value="0">--------------------------------</option>';
 
 		$html = $myLayout->workarea_form_select("", "pag_id", $options, $x);
-		$myLayout->workarea_row_draw("Referenzseite", $html);
+		$myLayout->workarea_row_draw("Reference page", $html);
 
-		$_options = Array (1 => "Nach ausgewählter Seite, gleiche Ebene", 2 => "Vor ausgewählter Seite, gleiche Ebene", 3 => "Unterhalb der Seite, eine Ebene tiefer");
+		$_options = Array (1 => "after selected page, same level", 2 => "before selected page, same level", 3 => "below selected page, one level deeper (new child page)");
 		$options = $myPT->buildOptionsByNamedArray($_options, "");
 		$html = $myLayout->workarea_form_select("", "insertorder", $options, $x);
-		$myLayout->workarea_row_draw("Einordnung", $html);
+		$myLayout->workarea_row_draw("Settings", $html);
 
 		$sql = "SELECT * FROM layout ORDER BY lay_bez";
 		$rs = $myDB->query($sql);
 		$_options = Array ();
-		$_options[] = "kein Template";
+		$_options[] = "no template";
 		while ($row = mysql_fetch_array($rs))
 		{
-			$_options[$row["lay_id"]] = $row["lay_bez"];
+			$_options[$row["lay_id"]] = $row["lay_id"].": ".$row["lay_bez"];
 		}
 		$options = $myPT->buildOptionsByNamedArray($_options, "");
 		$html = $myLayout->workarea_form_select("", "lay_id", $options, $x);
@@ -105,7 +110,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		$myLayout->workarea_row_draw("Status", $html);
 
 		$html = $myLayout->workarea_form_textarea("", "tree", "", 20, 395);
-		$myLayout->workarea_row_draw("Seitenbaum", $html);
+		$myLayout->workarea_row_draw("Page tree", $html);
 
 		$myLayout->workarea_whiteline();
  ?>
@@ -251,7 +256,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			  	// Abfangen pag_id=0;
 			  	if ($myRequest->getI("pag_id")==0)
 			  	{
-			  		echo "Sie müssen entweder eine Seite oder eine Seitengruppe auswählen.";
+			  		echo "You must choos either a page or a pagegroup.";
 			  		return false;
 			  	}
 			  	
@@ -285,7 +290,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			$c2 = count($_parents);
 			$pag_id_parent = $_parents[$c2-1-$downgrade];
 			
-			echo "Seite <strong>" . $bez . "</strong> angelegt.<br/>";
+			echo "Page <strong>" . $bez . "</strong> created.<br/>";
 			
 			$myPage = new PhenotypePage();
 			if ($pag_id_parent==0)

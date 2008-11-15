@@ -9,8 +9,8 @@
 	</meta>
 	<content>
 	<pag_uid>d3d760aea54607fe836ce16207354cac</pag_uid>
-<pag_bez>Startseite</pag_bez>
-<pag_titel>Startseite</pag_titel>
+<pag_bez>Startpage</pag_bez>
+<pag_titel>Startpage</pag_titel>
 <pag_alttitel></pag_alttitel>
 <pag_comment></pag_comment>
 <pag_quickfinder></pag_quickfinder>
@@ -23,12 +23,12 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153067027</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1206194228</pag_date>
-<pag_url>Startseite</pag_url>
-<pag_url1>Startseite</pag_url1>
-<pag_url2>Startseite</pag_url2>
-<pag_url3>Startseite</pag_url3>
-<pag_url4>Startseite</pag_url4>
+<pag_date>1226769411</pag_date>
+<pag_url>Startpage</pag_url>
+<pag_url1>Startpage</pag_url1>
+<pag_url2>Startpage</pag_url2>
+<pag_url3>Startpage</pag_url3>
+<pag_url4>Startpage</pag_url4>
 <pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjA6IiI7fQ==</pag_props>
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
@@ -37,17 +37,15 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Startseite|Startseite|Startseite||||||Herzlich Willkommen|auf der Phenotype Demonstrations Website||Phenotype arbeitet seiten- und inhaltorientiert. &#60;br &#47;&#62;
-&#60;br &#47;&#62;
-Dieser Text wurde direkt an dieser Seite mit dem Richtextabsatz-Baustein platziert.&#60;br &#47;&#62;
-&#60;br &#47;&#62;
-Gleich folgen noch weitere per &#38;quot;Baustein&#38;quot; zugeordnete Inhalte: &#60;br &#47;&#62;
+				<pag_fullsearch>Startpage|Startpage|Startpage||||Welcome to the Phenotype demonstration website||||Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62;www.phenotype-cms.de&#60;&#47;a&#62;.&#60;&#47;p&#62;
+&#60;p&#62;(Currently most information in german only)&#60;&#47;p&#62;||&#60;p&#62;Phenotype is a page &#60;strong&#62;and&#60;&#47;strong&#62; a content oriented system, meaning content can be edited independent from it&#39;s later usage (using content objects) or directly on a page (using page components).&#60;&#47;p&#62;
+&#60;p&#62;This text you&#39;re just reading was placed right here on the startpage with the richtext component.&#60;&#47;p&#62;
+&#60;p&#62;After that three more components are rendered on this page:&#60;&#47;p&#62;
 &#60;ul&#62;
-    &#60;li&#62;eine Tabelle&#60;&#47;li&#62;
-    &#60;li&#62;ein Galerie-Include und&#60;br &#47;&#62;
-    &#60;&#47;li&#62;
-    &#60;li&#62;ein weiterer Richtextabsatz - diesmal mit anderem Style &#60;&#47;li&#62;
-&#60;&#47;ul&#62;|Ausführliche Dokumentation|Ausf&#38;uuml;hrliche Info zu Phenotype finden Sie unter&#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62; www.phenotype-cms.de&#60;&#47;a&#62;.|</pag_fullsearch>
+    &#60;li&#62;a table&#60;&#47;li&#62;
+    &#60;li&#62;a gallery component&#60;&#47;li&#62;
+    &#60;li&#62;another richtext component - this time in a different style&#60;&#47;li&#62;
+&#60;&#47;ul&#62;|</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -68,8 +66,8 @@ Gleich folgen noch weitere per &#38;quot;Baustein&#38;quot; zugeordnete Inhalte:
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YToyOntzOjM6ImJleiI7czoxOToiSGVyemxpY2ggV2lsbGtvbW1lbiI7czo3OiJzdWJsaW5lIjtzOjQwOiJhdWYgZGVyIFBoZW5vdHlwZSBEZW1vbnN0cmF0aW9ucyBXZWJzaXRlIjt9</dat_comdata>
-				<dat_fullsearch>Herzlich Willkommen|auf der Phenotype Demonstrations Website</dat_fullsearch>
+				<dat_comdata>YToyOntzOjM6ImJleiI7czo0NjoiV2VsY29tZSB0byB0aGUgUGhlbm90eXBlIGRlbW9uc3RyYXRpb24gd2Vic2l0ZSI7czo3OiJzdWJsaW5lIjtzOjA6IiI7fQ==</dat_comdata>
+				<dat_fullsearch>Welcome to the Phenotype demonstration website|</dat_fullsearch>
 			</component>
 			<component>
 				<com_id>1001</com_id>
@@ -78,17 +76,14 @@ Gleich folgen noch weitere per &#38;quot;Baustein&#38;quot; zugeordnete Inhalte:
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>2</dat_pos>
-				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjA6IiI7czo0OiJ0ZXh0IjtzOjQwNDoiUGhlbm90eXBlIGFyYmVpdGV0IHNlaXRlbi0gdW5kIGluaGFsdG9yaWVudGllcnQuIDxiciAvPg0KPGJyIC8+DQpEaWVzZXIgVGV4dCB3dXJkZSBkaXJla3QgYW4gZGllc2VyIFNlaXRlIG1pdCBkZW0gUmljaHRleHRhYnNhdHotQmF1c3RlaW4gcGxhdHppZXJ0LjxiciAvPg0KPGJyIC8+DQpHbGVpY2ggZm9sZ2VuIG5vY2ggd2VpdGVyZSBwZXIgJnF1b3Q7QmF1c3RlaW4mcXVvdDsgenVnZW9yZG5ldGUgSW5oYWx0ZTogPGJyIC8+DQo8dWw+DQogICAgPGxpPmVpbmUgVGFiZWxsZTwvbGk+DQogICAgPGxpPmVpbiBHYWxlcmllLUluY2x1ZGUgdW5kPGJyIC8+DQogICAgPC9saT4NCiAgICA8bGk+ZWluIHdlaXRlcmVyIFJpY2h0ZXh0YWJzYXR6IC0gZGllc21hbCBtaXQgYW5kZXJlbSBTdHlsZSA8L2xpPg0KPC91bD4iO3M6NjoiaW1nX2lkIjtzOjE6IjAiO3M6MzoiYWx0IjtzOjA6IiI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjU6ImxpbmtzIjtzOjc6ImxpbmtiZXoiO3M6MDoiIjtzOjc6Imxpbmt1cmwiO3M6MDoiIjtzOjEwOiJsaW5rdGFyZ2V0IjtzOjU6Il9zZWxmIjtzOjU6InN0eWxlIjtzOjE6IjAiO30=</dat_comdata>
-				<dat_fullsearch>|Phenotype arbeitet seiten- und inhaltorientiert. &#60;br &#47;&#62;
-&#60;br &#47;&#62;
-Dieser Text wurde direkt an dieser Seite mit dem Richtextabsatz-Baustein platziert.&#60;br &#47;&#62;
-&#60;br &#47;&#62;
-Gleich folgen noch weitere per &#38;quot;Baustein&#38;quot; zugeordnete Inhalte: &#60;br &#47;&#62;
+				<dat_comdata>YToxODp7czo4OiJoZWFkbGluZSI7czowOiIiO3M6NDoidGV4dCI7czo1MjY6IjxwPlBoZW5vdHlwZSBpcyBhIHBhZ2UgPHN0cm9uZz5hbmQ8L3N0cm9uZz4gYSBjb250ZW50IG9yaWVudGVkIHN5c3RlbSwgbWVhbmluZyBjb250ZW50IGNhbiBiZSBlZGl0ZWQgaW5kZXBlbmRlbnQgZnJvbSBpdCdzIGxhdGVyIHVzYWdlICh1c2luZyBjb250ZW50IG9iamVjdHMpIG9yIGRpcmVjdGx5IG9uIGEgcGFnZSAodXNpbmcgcGFnZSBjb21wb25lbnRzKS48L3A+DQo8cD5UaGlzIHRleHQgeW91J3JlIGp1c3QgcmVhZGluZyB3YXMgcGxhY2VkIHJpZ2h0IGhlcmUgb24gdGhlIHN0YXJ0cGFnZSB3aXRoIHRoZSByaWNodGV4dCBjb21wb25lbnQuPC9wPg0KPHA+QWZ0ZXIgdGhhdCB0aHJlZSBtb3JlIGNvbXBvbmVudHMgYXJlIHJlbmRlcmVkIG9uIHRoaXMgcGFnZTo8L3A+DQo8dWw+DQogICAgPGxpPmEgdGFibGU8L2xpPg0KICAgIDxsaT5hIGdhbGxlcnkgY29tcG9uZW50PC9saT4NCiAgICA8bGk+YW5vdGhlciByaWNodGV4dCBjb21wb25lbnQgLSB0aGlzIHRpbWUgaW4gYSBkaWZmZXJlbnQgc3R5bGU8L2xpPg0KPC91bD4iO3M6NjoiaW1nX2lkIjtzOjE6IjAiO3M6MzoiYWx0IjtzOjA6IiI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjU6ImxpbmtzIjtzOjc6ImxpbmtiZXoiO3M6MDoiIjtzOjc6Imxpbmt1cmwiO3M6MDoiIjtzOjEwOiJsaW5rdGFyZ2V0IjtzOjU6Il9zZWxmIjtzOjU6InN0eWxlIjtzOjE6IjAiO3M6NzoidmVyc2lvbiI7czoxOiIwIjtzOjc6ImltZ19hbHQiO3M6MDoiIjtzOjk6ImltZ19hbGlnbiI7czo1OiJsaW5rcyI7czo2OiJtZWRfaWQiO3M6MjoiMTUiO3M6ODoibGlua3R5cGUiO3M6MToiMCI7czo4OiJsaW5rdGV4dCI7czowOiIiO3M6MTA6Imxpbmtzb3VyY2UiO3M6MDoiIjtzOjU6Imxpbmt4IjtzOjA6IiI7czo1OiJsaW5reSI7czowOiIiO30=</dat_comdata>
+				<dat_fullsearch>|&#60;p&#62;Phenotype is a page &#60;strong&#62;and&#60;&#47;strong&#62; a content oriented system, meaning content can be edited independent from it&#39;s later usage (using content objects) or directly on a page (using page components).&#60;&#47;p&#62;
+&#60;p&#62;This text you&#39;re just reading was placed right here on the startpage with the richtext component.&#60;&#47;p&#62;
+&#60;p&#62;After that three more components are rendered on this page:&#60;&#47;p&#62;
 &#60;ul&#62;
-    &#60;li&#62;eine Tabelle&#60;&#47;li&#62;
-    &#60;li&#62;ein Galerie-Include und&#60;br &#47;&#62;
-    &#60;&#47;li&#62;
-    &#60;li&#62;ein weiterer Richtextabsatz - diesmal mit anderem Style &#60;&#47;li&#62;
+    &#60;li&#62;a table&#60;&#47;li&#62;
+    &#60;li&#62;a gallery component&#60;&#47;li&#62;
+    &#60;li&#62;another richtext component - this time in a different style&#60;&#47;li&#62;
 &#60;&#47;ul&#62;</dat_fullsearch>
 			</component>
 			<component>
@@ -98,7 +93,7 @@ Gleich folgen noch weitere per &#38;quot;Baustein&#38;quot; zugeordnete Inhalte:
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>3</dat_pos>
-				<dat_comdata>YToxODp7czo1OiJzdHlsZSI7aToxO3M6NToid2lkdGgiO3M6MzoiNDUwIjtzOjg6ImFuemFobF94IjtpOjI7czo4OiJhbnphaGxfeSI7aTo1O3M6MTA6InRjb25feDFfeTEiO3M6NzoiRmVhdHVyZSI7czoxMDoidGNvbl94MV95MiI7czo5OiJNZWRpYWJhc2UiO3M6MTA6InRjb25feDFfeTMiO3M6MTY6IlNlaXRlbnZlcndhbHR1bmciO3M6MTA6InRjb25feDJfeTEiO3M6OToiRXJrbORydW5nIjtzOjEwOiJ0Y29uX3gyX3kyIjtzOjEwMToiTWVkaWVudmVyd2FsdHVuZyBtaXQgZnJlaWVyIEthdGVnb3Jpc2llcnVuZywgYnJvd3Nlcmdlc3T8dHplciBCaWxkYmVhcmJlaXR1bmcgdW5kIFZhcmlhbnRlbm1hbmFnZW1lbnQiO3M6MTA6InRjb25feDJfeTMiO3M6OTM6IkJlc3T8Y2t1bmcgdm9uIFNlaXRlbiD8YmVyIGZyZWkgcHJvZ3JhbW1pZXJiYXJlICJCYXVzdGVpbmUiLCB6LkIuIFRhYmVsbGVuLCBUZWFzZXIsIFZvdGUgdXN3LiI7czoxMDoidGNvbl94M195MSI7czowOiIiO3M6MTA6InRjb25feDNfeTIiO3M6MDoiIjtzOjEwOiJ0Y29uX3gzX3kzIjtzOjA6IiI7czo4OiJoZWFkbGluZSI7czozNDoiRGFzIGlzdCBlaW5lIGJlaXNwaWVsaGFmdGUgVGFiZWxsZSI7czoxMDoidGNvbl94MV95NCI7czoxNzoiQ29udGVudHZlcndhbHR1bmciO3M6MTA6InRjb25feDJfeTQiO3M6MTIyOiJWZXJ3YWx0dW5nIHZvbiBtZWhyZmFjaCB6dSB2ZXJ3ZW5kZW5kZW4gSW5oYWx0ZW4g/GJlciBDb250ZW50b2JqZWt0ZSBtaXQgZnJlaSBwcm9ncmFtbWllcmJhcmVuICJpbnRlbGxpZ2VudGVuIiBGb3JtdWxhcmVuLiI7czoxMDoidGNvbl94MV95NSI7czozOiIuLi4iO3M6MTA6InRjb25feDJfeTUiO3M6MTg6InVuZCB2aWVsZXMgbWVociA7KSI7fQ==</dat_comdata>
+				<dat_comdata>YToxODp7czo1OiJzdHlsZSI7aToxO3M6NToid2lkdGgiO3M6MzoiNDUwIjtzOjg6ImFuemFobF94IjtpOjI7czo4OiJhbnphaGxfeSI7aTo1O3M6MTA6InRjb25feDFfeTEiO3M6NzoiRmVhdHVyZSI7czoxMDoidGNvbl94MV95MiI7czo5OiJNZWRpYWJhc2UiO3M6MTA6InRjb25feDFfeTMiO3M6MTQ6IkVkaXRvciAvIFBhZ2VzIjtzOjEwOiJ0Y29uX3gyX3kxIjtzOjExOiJEZXNjcmlwdGlvbiI7czoxMDoidGNvbl94Ml95MiI7czoxMTI6Im1lZGlhIGFzc2V0IG1hbmFnZW1lbnQgd2l0aCBicm93c2VyIGJhc2VkIGltYWdlIG1hbmlwdWxhdGlvbiwgc3VwcG9ydGluZyBpbWFnZSB2ZXJzaW9ucyBhbmQgZnJlZSBjYXRlZ29yaXphdGlvbi4iO3M6MTA6InRjb25feDJfeTMiO3M6MTI0OiJQbGFjZW1lbnQgb2YgY29udGVudCBvbiBwYWdlcyB3aXRoIHByb2dyYW1tYWJsZSBwYWdlIGNvbXBvbmVudHMsIGxpa2UgcmljaHRleHQsIHRhYmxlcywgdGVhc2VyLCB2b3RlcywgcXVvdGVib3hlcyBhbmQgc28gb24uIjtzOjEwOiJ0Y29uX3gzX3kxIjtzOjA6IiI7czoxMDoidGNvbl94M195MiI7czowOiIiO3M6MTA6InRjb25feDNfeTMiO3M6MDoiIjtzOjg6ImhlYWRsaW5lIjtzOjI2OiJUaGlzIGlzIGFuIGV4ZW1wbGFyeSB0YWJsZSI7czoxMDoidGNvbl94MV95NCI7czoxNjoiRWRpdG9yIC8gQ29udGVudCI7czoxMDoidGNvbl94Ml95NCI7czoxOTU6Ik1hbmFnZW1lbnQgb2YgY29udGVudCBmb3IgbXVsdGlwbGUgdXNlIG9uIGRpZmZlcmVudCBwYWdlcy4NCg0KRWFjaCBjb250ZW50IHR5cGUgcmVmZXJlcyB0byBhIGZyZWUgcHJvZ3JhbW1hYmxlIGNvbnRlbnQgY2xhc3Mgd2l0aCBtYW5pZm9sZCBwb3NzaWJpbGl0ZXMgdG8gYnVpbGQgcmljaCBhbmQgcmVzcG9uZGluZyBlZGl0aW5nIGZvcm1zLiI7czoxMDoidGNvbl94MV95NSI7czozOiIuLi4iO3M6MTA6InRjb25feDJfeTUiO3M6MTc6ImEgbG90IG1vcmUgLi4uIDspIjt9</dat_comdata>
 				<dat_fullsearch></dat_fullsearch>
 			</component>
 			<component>
@@ -118,8 +113,9 @@ Gleich folgen noch weitere per &#38;quot;Baustein&#38;quot; zugeordnete Inhalte:
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>5</dat_pos>
-				<dat_comdata>YTo5OntzOjg6ImhlYWRsaW5lIjtzOjI2OiJBdXNm/GhybGljaGUgRG9rdW1lbnRhdGlvbiI7czo0OiJ0ZXh0IjtzOjExNjoiQXVzZiZ1dW1sO2hybGljaGUgSW5mbyB6dSBQaGVub3R5cGUgZmluZGVuIFNpZSB1bnRlcjxhIGhyZWY9Imh0dHA6Ly93d3cucGhlbm90eXBlLWNtcy5kZSI+IHd3dy5waGVub3R5cGUtY21zLmRlPC9hPi4iO3M6NjoiaW1nX2lkIjtzOjE6IjAiO3M6MzoiYWx0IjtzOjA6IiI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjU6ImxpbmtzIjtzOjc6ImxpbmtiZXoiO3M6MDoiIjtzOjc6Imxpbmt1cmwiO3M6MDoiIjtzOjEwOiJsaW5rdGFyZ2V0IjtzOjU6Il9zZWxmIjtzOjU6InN0eWxlIjtzOjE6IjIiO30=</dat_comdata>
-				<dat_fullsearch>Ausführliche Dokumentation|Ausf&#38;uuml;hrliche Info zu Phenotype finden Sie unter&#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62; www.phenotype-cms.de&#60;&#47;a&#62;.</dat_fullsearch>
+				<dat_comdata>YToxODp7czo4OiJoZWFkbGluZSI7czoxMzoiRG9jdW1lbnRhdGlvbiI7czo0OiJ0ZXh0IjtzOjE1NDoiPHA+RXh0ZW5zaXZlIEluZm9zIG9uIHBoZW5vdHlwZSBvbiA8YSBocmVmPSJodHRwOi8vd3d3LnBoZW5vdHlwZS1jbXMuZGUiPnd3dy5waGVub3R5cGUtY21zLmRlPC9hPi48L3A+DQo8cD4oQ3VycmVudGx5IG1vc3QgaW5mb3JtYXRpb24gaW4gZ2VybWFuIG9ubHkpPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiMCI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMiI7czo3OiJ2ZXJzaW9uIjtzOjE6IjAiO3M6NzoiaW1nX2FsdCI7czowOiIiO3M6OToiaW1nX2FsaWduIjtzOjU6ImxpbmtzIjtzOjY6Im1lZF9pZCI7czoyOiIxNiI7czo4OiJsaW5rdHlwZSI7czoxOiIwIjtzOjg6Imxpbmt0ZXh0IjtzOjA6IiI7czoxMDoibGlua3NvdXJjZSI7czowOiIiO3M6NToibGlua3giO3M6MDoiIjtzOjU6Imxpbmt5IjtzOjA6IiI7fQ==</dat_comdata>
+				<dat_fullsearch>Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62;www.phenotype-cms.de&#60;&#47;a&#62;.&#60;&#47;p&#62;
+&#60;p&#62;(Currently most information in german only)&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 		</sequence_data>
 	</content>

@@ -4,51 +4,44 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1101</com_id>
-		<com_bez>Überschrift</com_bez>		
-		<com_rubrik>Textbausteine</com_rubrik>
-		<com_description>## Baustein 1101 - Überschrift</com_description>
+		<com_bez>Heading</com_bez>		
+		<com_rubrik>Text</com_rubrik>
+		<com_description>## Baustein 1101 - Heading</com_description>
 	</meta>
 	<script>&#60;?php
-class PhenotypeComponent_1101 extends PhenotypeComponent 
-{ 
-  var $tool_type = 1101; 
-  var $bez =&#34;Überschrift&#34;; 
+class PhenotypeComponent_1101 extends PhenotypeComponent
+{
+	var $tool_type = 1101;
+	var $bez =&#34;Heading&#34;;
 
-  function setDefaultProperties() 
-  { 
-      $this-&#62;set(&#34;bez&#34;,&#34;Überschrift&#34;);
-      $this-&#62;set(&#34;subline&#34;,&#34;&#34;); 
-  } 
-   
-  function edit() 
-  { 
-     $this-&#62;form_textfield(&#34;Schlagzeile&#34;,&#34;bez&#34;,$this-&#62;get(&#34;bez&#34;));
-     $this-&#62;form_textfield(&#34;Unterzeile&#34;,&#34;subline&#34;,$this-&#62;get(&#34;subline&#34;));
-  } 
+	function setDefaultProperties()
+	{
+		$this-&#62;set(&#34;bez&#34;,&#34;Headline&#34;);
+		$this-&#62;set(&#34;subline&#34;,&#34;&#34;);
+	}
 
-  function update() 
-  { 
-    &#47;&#47; Auswertung der Eingabemaske und Setzen der Properties 
-    $this-&#62;fset(&#34;bez&#34;); 
-    $this-&#62;fset(&#34;subline&#34;); 
-  } 
-   
-function setFullSearch()
-  {
-    $s = $this-&#62;get(&#34;bez&#34;) . &#34;|&#34; . $this-&#62;get(&#34;subline&#34;);
-    return ($s);
-  }
+	function edit()
+	{
+		$this-&#62;form_textfield(&#34;Headline&#34;,&#34;bez&#34;,$this-&#62;get(&#34;bez&#34;));
+		$this-&#62;form_textfield(&#34;Subline&#34;,&#34;subline&#34;,$this-&#62;get(&#34;subline&#34;));
+	}
 
-  function render($style) 
-  { 
-    eval ($this-&#62;initRendering()); 
-    $mySmarty-&#62;assign(&#34;bez&#34;,$this-&#62;getH(&#34;bez&#34;)); 
-    $mySmarty-&#62;assign(&#34;subline&#34;,$this-&#62;getH(&#34;subline&#34;));
-    $html = $mySmarty-&#62;fetch($TPL_1); 
-    return $html; 
-  } 
-   
-} 
+	function setFullSearch()
+	{
+		$s = $this-&#62;get(&#34;bez&#34;) . &#34;|&#34; . $this-&#62;get(&#34;subline&#34;);
+		return ($s);
+	}
+
+	function render($style)
+	{
+		eval ($this-&#62;initRendering());
+		$mySmarty-&#62;assign(&#34;bez&#34;,$this-&#62;getH(&#34;bez&#34;));
+		$mySmarty-&#62;assign(&#34;subline&#34;,$this-&#62;getH(&#34;subline&#34;));
+		$html = $mySmarty-&#62;fetch($TPL_1);
+		return $html;
+	}
+
+}
 ?&#62;
 </script>
 	<templates>
@@ -61,7 +54,7 @@ function setFullSearch()
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description># default components</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

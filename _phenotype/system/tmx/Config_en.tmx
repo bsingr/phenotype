@@ -503,7 +503,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_install_structure_files">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>install structur files</tmx:seg>
+        <tmx:seg>install structure files</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_use_ajax_installer">
       <tmx:tuv xml:lang="en">

@@ -185,6 +185,7 @@ $myPT->startBuffer();
 		}
 		$myLayout->workarea_row_draw(locale("Backend classes"), $html);
 		
+		/*
 		$html = "";
 		$directory = APPPATH . "languagemaps/";
 		$fp = @opendir($directory);
@@ -201,7 +202,7 @@ $myPT->startBuffer();
 			}
 		}
 		$myLayout->workarea_row_draw(locale("Language maps"), $html);
-				
+		*/	
 		$myLayout->workarea_stop_draw();
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
@@ -240,7 +241,7 @@ $myPT->startBuffer();
     	$radio = '&nbsp;&nbsp;&nbsp;[<input type="radio" name="mgrp_id'.$row["grp_id"].'_importmethod" value="overwrite" checked="checked"/> '.locale("overwrite").' <input type="radio" name="mgrp_id'.$row["grp_id"].'_importmethod" value="append" /> '.locale("append").' ]';
     	$html .= $myLayout->workarea_form_checkbox("", "mgrp_id".$row["grp_id"], 0,$row["grp_id"] ." - ". $row["grp_bez"]. " " . $radio);
     }
-    $myLayout->workarea_row_draw(locale("media objects"), $html);
+    $myLayout->workarea_row_draw(locale("Media objects"), $html);
 
 
     $sql = "SELECT * FROM ticketsubject ORDER BY sbj_bez";

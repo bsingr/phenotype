@@ -1159,7 +1159,7 @@ class PhenotypeLayoutStandard
 				<?php echo localeH("Alternate");?>:<br>
 				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
      <?php
-     echo "Ausrichtung:<br>";
+     echo localeH("Alignment").":<br>";
      $this->iconbar_new();
      $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","links",locale("msg_align_left"));
      $this->iconbar_addentry("b_picture_center.gif","b_picture_center_active.gif","mittig",locale("msg_align_center"));
@@ -1168,7 +1168,7 @@ class PhenotypeLayoutStandard
      //$this->workarea_form_iconbar($name_org."bildausrichtung",$align);
      echo "<br>";
 	 if ($version !== false) {
-    ?> locale("version"):<br/>
+     echo locale("Version")?>:<br/>
     <select name="<?php echo $name ?>version" class="listmenu">
     <?php
      $html = '<option value="0" >Original</option>';
@@ -1238,7 +1238,7 @@ return $myPT->stopBuffer();
 				<?php echo localeH("Alternate");?>:<br>
 				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
      <?php
-     echo "Ausrichtung:<br>";
+     echo localeH("Ausrichtung").":<br>";
      $this->iconbar_new();
      $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","links","Linksb&uuml;ndig");
      $this->iconbar_addentry("b_picture_center.gif","b_picture_center_active.gif","mittig","Mittig");

@@ -122,6 +122,7 @@ class PhenotypeSystemDataObject extends PhenotypeSystemDataObjectStandard {}
  */
 class PhenotypeAdminLayout extends PhenotypeLayout {}
 
+class PhenotypeLayout extends PhenotypeLayoutStandard {}
 
 /**
  * @package phenotype

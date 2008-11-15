@@ -4,8 +4,8 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>
 		<inc_id>1106</inc_id>
-		<inc_bez>Galeriedetailanzeige</inc_bez>		
-		<inc_rubrik>Galerie</inc_rubrik>
+		<inc_bez>Gallery Detail View</inc_bez>		
+		<inc_rubrik>Demonstration</inc_rubrik>
 		<inc_description></inc_description>
 		<inc_usage_layout>0</inc_usage_layout>
 		<inc_usage_includecomponent>1</inc_usage_includecomponent>
@@ -94,15 +94,15 @@ class PhenotypeInclude_1106 extends PhenotypeInclude
     &#60;table cellspacing=&#34;0&#34; cellpadding=&#34;0&#34; width=&#34;{$image.x}&#34; class=&#34;tableBausteineBackground&#34;&#62;
         &#60;tr&#62;
             &#60;td&#62;
-            {if $url_backward}&#60;a href=&#34;{$url_backward|escape}&#34;&#62;Bild zur&#38;uuml;ck&#60;&#47;a&#62;{else}&#38;nbsp;{&#47;if}
+            {if $url_backward}&#60;a href=&#34;{$url_backward|escape}&#34;&#62;Previous Image&#60;&#47;a&#62;{else}&#38;nbsp;{&#47;if}
             &#60;&#47;td&#62;
             &#60;td &#62;&#38;nbsp;&#60;&#47;td&#62;
-            &#60;td align=&#34;right&#34;&#62;{if $url_forward}&#60;a href=&#34;{$url_forward|escape}&#34;&#62;Bild vor&#60;&#47;a&#62;{else}&#38;nbsp;{&#47;if}&#60;&#47;td&#62;
+            &#60;td align=&#34;right&#34;&#62;{if $url_forward}&#60;a href=&#34;{$url_forward|escape}&#34;&#62;Next Image&#60;&#47;a&#62;{else}&#38;nbsp;{&#47;if}&#60;&#47;td&#62;
         &#60;&#47;tr&#62;
     &#60;&#47;table&#62;
     
 
-&#60;p&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;&#60;a href=&#34;{$url_overview}&#34;&#62;zur&#38;uuml;ck zur &#38;Uuml;bersicht&#60;&#47;a&#62;&#60;&#47;p&#62;
+&#60;p&#62;&#60;br&#47;&#62;&#60;br&#47;&#62;&#60;a href=&#34;{$url_overview}&#34;&#62;Return to Overview&#60;&#47;a&#62;&#60;&#47;p&#62;
 &#60;&#47;div&#62;</template>
    	</templates>
 </phenotype>

@@ -9,8 +9,8 @@
 	</meta>
 	<content>
 	<pag_uid>f0b1ad6861aa4ab3e4bc8b9a63e5a9b4</pag_uid>
-<pag_bez>Rubrik 3</pag_bez>
-<pag_titel>Rubrik 3</pag_titel>
+<pag_bez>Heading 3</pag_bez>
+<pag_titel>Heading 3</pag_titel>
 <pag_alttitel></pag_alttitel>
 <pag_comment></pag_comment>
 <pag_quickfinder></pag_quickfinder>
@@ -23,12 +23,12 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153068248</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1206205452</pag_date>
-<pag_url>Rubrik-3</pag_url>
-<pag_url1>Rubrik-3</pag_url1>
-<pag_url2>Rubrik-3</pag_url2>
-<pag_url3>Rubrik-3</pag_url3>
-<pag_url4>Rubrik-3</pag_url4>
+<pag_date>1226697837</pag_date>
+<pag_url>Heading-3</pag_url>
+<pag_url1>Heading-3</pag_url1>
+<pag_url2>Heading-3</pag_url2>
+<pag_url3>Heading-3</pag_url3>
+<pag_url4>Heading-3</pag_url4>
 <pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjA6IiI7fQ==</pag_props>
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
@@ -37,7 +37,7 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Rubrik 3|Rubrik 3|Rubrik 3||||Rubrik 3||</pag_fullsearch>
+				<pag_fullsearch>Heading 3|Heading 3|Heading 3||||Heading 3||</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -58,8 +58,8 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YToyOntzOjM6ImJleiI7czo4OiJSdWJyaWsgMyI7czo3OiJzdWJsaW5lIjtzOjA6IiI7fQ==</dat_comdata>
-				<dat_fullsearch>Rubrik 3|</dat_fullsearch>
+				<dat_comdata>YToyOntzOjM6ImJleiI7czo5OiJIZWFkaW5nIDMiO3M6Nzoic3VibGluZSI7czowOiIiO30=</dat_comdata>
+				<dat_fullsearch>Heading 3|</dat_fullsearch>
 			</component>
 		</sequence_data>
 	</content>

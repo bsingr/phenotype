@@ -4,7 +4,7 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1601</com_id>
-		<com_bez>Galerie</com_bez>		
+		<com_bez>Gallery</com_bez>		
 		<com_rubrik>Demonstration</com_rubrik>
 		<com_description></com_description>
 	</meta>
@@ -17,7 +17,7 @@ class PhenotypeComponent_1601 extends PhenotypeComponent
 {
   public $tool_type = 1601;
 
-  public $bez = &#34;Galerie&#34;; &#47;&#47; erscheint im Arbeitsbereich im Redaktionsmodus
+  public $bez = &#34;Gallery&#34;; &#47;&#47; erscheint im Arbeitsbereich im Redaktionsmodus
 
   function edit()
   {
@@ -87,7 +87,7 @@ class PhenotypeComponent_1601 extends PhenotypeComponent
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description># default components</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

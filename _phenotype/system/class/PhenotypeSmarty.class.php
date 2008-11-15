@@ -57,7 +57,7 @@ class PhenotypeSmartyStandard extends Smarty
     if (isset($_params["pag_id"]))
     {
       $pag_id = $_params["pag_id"];
-      $fullUrl = $_params["fullUrl"];
+      if (isset($_params["fullUrl"])){$fullUrl = $_params["fullUrl"];}else{$fullUrl=false;}
       return url_for_page($pag_id, null, null, "", $fullUrl);
     }
     else
