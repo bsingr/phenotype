@@ -88,6 +88,10 @@ class PhenotypeInstaller
 
 	public $installation_status ="";
 
+
+	public $pass_xml ="";
+	public $pass_secret="";
+
 	/**
 	 * get configuration out of request
 	 *
@@ -165,6 +169,11 @@ class PhenotypeInstaller
 				$this->checkWebaccess();
 				break;
 			case 2:
+				// generate passwords / secret keys for _config.inc.php ..
+				$this->pass_xml = $this->createRandomPassword();
+				$this->pass_secret =  $this->createRandomPassword();
+				// and set cookie for displayment of pt_debug console before first login
+				setcookie("pt_debug",md5("on".$this->pass_secret),time()+(60*60*24*3),"/");
 				break;
 		}
 
@@ -283,20 +292,20 @@ class PhenotypeInstaller
 		$fullurl = $this->path_fullurl."installcheck.txt";
 		// Sometimes a request to localhost simply doesn't resolve
 		$fullurl = str_replace("localhost","127.0.0.1",$fullurl);
-		
+
 		$socketurl = str_replace("http://","",$fullurl);
 		$socketurl=substr($socketurl,0,strpos($socketurl,"/"));
 		// Check only, if host is reachable
-		if ($fsock = @fsockopen($socketurl, 80, $errno, $errstr, 1)) 
-    	{
+		if ($fsock = @fsockopen($socketurl, 80, $errno, $errstr, 1))
+		{
 			$fullurlcheck=@file_get_contents($fullurl);
 			if ($fullurlcheck!="o.k.")
 			{
-			$this->path_status="Either base URL or hostname seems to be wrong. The Full URL (combination of both) must point to the main web folder, where the index.php resides.";
-			$this->error_globalfeedback=true;
-			return false;
+				$this->path_status="Either base URL or hostname seems to be wrong. The Full URL (combination of both) must point to the main web folder, where the index.php resides.";
+				$this->error_globalfeedback=true;
+				return false;
 			}
-    	}
+		}
 
 		$this->path_status = "Everything seems to be all right.";
 		return true;
@@ -715,6 +724,11 @@ class PhenotypeInstaller
 		$exps[] = '/^define \("PT_LOCALE",.+\);/';
 		$subs[] = 'define ("PT_LOCALE","'.$_options[(int)$this->app_backend_language].'");';
 
+		//secret keys
+		$exps[] = '/^define \("PT_XMLACCESS",.+\);/';
+		$subs[] = 'define ("PT_XMLACCESS","'. $this->pass_xml .'");';
+		$exps[] = '/^define \("PT_SECRETKEY",.+\);/';
+		$subs[] = 'define ("PT_SECRETKEY","'. $this->pass_secret .'");';
 
 		$templateConfig = file(SAMPLE_CONFIG_FILE);
 
@@ -890,6 +904,23 @@ class PhenotypeInstaller
 
 
 		return ($_logs);
+	}
+
+	function createRandomPassword($length=8)
+	{
+		$chars = "abcdefghijkmnopqrstuvwxyz0123456789ABCDEFGHIJMNOPQRSTUVWXYZ";
+
+		srand((double)microtime()*1000000);
+
+		$pass = "" ;
+
+		for ($i=1;$i<=$length;$i++)
+		{
+			$p = rand(0, strlen($chars)-1);
+			$pass = $pass .substr($chars, $p, 1);
+		}
+
+		return $pass;
 	}
 }
 

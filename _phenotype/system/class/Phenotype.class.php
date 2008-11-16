@@ -1567,7 +1567,7 @@ em {
 					$html = '<table class="querydetails"><tr>';
 					foreach ($_keys AS $key)
 					{
-						$html .= '<th>'.$key.'</th>';
+						$html .= '<th>'.codeH($key).'</th>';
 					}
 					$html .= '</tr>';
 					while ($row = mysql_fetch_assoc($result))
@@ -1575,7 +1575,7 @@ em {
 						$html .='<tr>';
 						foreach ($_keys AS $key)
 						{
-							$html .= '<td>'.$row[$key].'</td>';
+							$html .= '<td>'.codeH($row[$key]).'</td>';
 						}
 						$html .= '</tr>';
 					}

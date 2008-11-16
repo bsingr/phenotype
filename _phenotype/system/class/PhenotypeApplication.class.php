@@ -19,14 +19,18 @@ class PhenotypeApplicationStandard
     Header("HTTP/1.0 404 Not Found");
     $myPT->startBuffer();
 ?>
-<HTML><HEAD>
-<TITLE>404 Not Found</TITLE>
-</HEAD><BODY>
-<H1>Not Found</H1>
-The requested URL <?php echo $_SERVER["REQUEST_URI"] ?> was not found on this server.<P>
-<HR>
-<ADDRESS>Phenotype CMS/<?php echo PT_VERSION ?> at <?php echo $_SERVER["SERVER_NAME"] ?> Port <?php echo $_SERVER["SERVER_PORT"] ?></ADDRESS>
-#!#pt_debug#!#</BODY></HTML>
+	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL <?php echo $_SERVER["REQUEST_URI"] ?> was not found on this server.</p>
+<hr/>
+<address>Phenotype CMS/<?php echo PT_VERSION ?> at <?php echo $_SERVER["SERVER_NAME"] ?> Port <?php echo $_SERVER["SERVER_PORT"] ?></address>
+#!#pt_debug#!#</body></html>
 <?php
 $html = $myPT->stopBuffer();
 global $myTC;
