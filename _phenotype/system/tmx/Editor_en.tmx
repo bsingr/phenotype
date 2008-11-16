@@ -17,6 +17,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Add new record</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Alignment">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Alignment</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="All">
       <tmx:tuv xml:lang="en">
         <tmx:seg>All</tmx:seg>

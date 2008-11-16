@@ -37,6 +37,7 @@ class PhenotypeBackend_Session_Logout_Standard extends PhenotypeBackend_Session
 		$myUser = new PhenotypeUser($_SESSION["usr_id"]);
 		$myLog->log("Benutzer ".$myUser->id . " - " . $myUser->getName() ." abgemeldet",PT_LOGFACILITY_SYS);
 		session_destroy();
+		setcookie("pt_debug","",0,"/");
 		$this->displayLogin();
 
 	}

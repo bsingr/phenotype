@@ -33,7 +33,7 @@ $myPT->clearCache();
 ?>
 <?php
 $mySQL = new SQLBuilder();
-$mySQL->addField("sbj_bez","Neuer Aufgabenbereich");
+$mySQL->addField("sbj_bez",locale("New realm"));
 $sql = $mySQL->insert("ticketsubject");
 $myDB->query($sql);
 

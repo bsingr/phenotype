@@ -82,6 +82,10 @@ class PhenotypeBackend_Session_Login_Standard extends PhenotypeBackend_Session
 			}
 
 			$myLog->log("Benutzer ".$myUser->id . " - " . $myUser->getName() ." erfolgreich angemeldet",PT_LOGFACILITY_SYS);
+			
+			// set debug cookie to allow displayment of debug console
+			setcookie("pt_debug",md5("on".PT_SECRETKEY),time()+(60*60*24*3),"/");
+			
 			$this->gotoPage("Editor","Start","");
 		}
 		$myLog->log("Anmeldung fehlgeschlagen - ".$myRequest->get("user"),PT_LOGFACILITY_SYS);

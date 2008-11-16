@@ -652,6 +652,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>bearbeiten</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="for">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>for</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>für</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="hours">
       <tmx:tuv xml:lang="en">
         <tmx:seg>hours</tmx:seg>

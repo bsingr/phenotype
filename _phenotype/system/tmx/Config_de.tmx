@@ -197,6 +197,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Normalansicht</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete Template">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Delete Template</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Template löschen</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete component">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Delete component</tmx:seg>
@@ -248,7 +255,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Export package">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Export package</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Paket exportieren</tmx:seg>
@@ -322,6 +329,13 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Layouts</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media objects">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Media objects</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Medienobjekte</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Mediabase">
       <tmx:tuv xml:lang="en">
@@ -878,7 +892,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_install_structure_files">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>install structur files</tmx:seg>
+        <tmx:seg>install structure files</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Strukturdateien installieren</tmx:seg>

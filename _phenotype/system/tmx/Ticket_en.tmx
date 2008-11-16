@@ -173,6 +173,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>New Task</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Notice marker deleted.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Notice marker deleted.</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Notices">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Notices</tmx:seg>
@@ -209,6 +213,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Priority</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Process task">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Process task</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Process task.">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Process task.</tmx:seg>
@@ -216,6 +224,10 @@
 			<tmx:tu tuid="Processor">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Processor</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Processors">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Processors</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Processors/Creator">
       <tmx:tuv xml:lang="en">
@@ -233,6 +245,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Question for %1</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Question marker deleted.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Question marker deleted.</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this ticket?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this ticket?</tmx:seg>
@@ -240,6 +256,14 @@
 			<tmx:tu tuid="Realm">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Realm</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove Marker">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove Marker</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove ticket from watch list.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove ticket from watch list.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Search tasks">
       <tmx:tuv xml:lang="en">
@@ -445,13 +469,13 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Ticket created on %1 From %2 (Day %3)</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="msg_ticket_duration_minutes">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Processing expense so far: %1 minutes.</tmx:seg>
-      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_ticket_duration_hours">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Processing expense so far: %1 hours.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="msg_ticket_duration_minutes">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Processing expense so far: %1 minutes.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="msg_ticket_progress">
       <tmx:tuv xml:lang="en">

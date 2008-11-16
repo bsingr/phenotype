@@ -113,6 +113,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Default view</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete Template">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Delete Template</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete component">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Delete component</tmx:seg>
@@ -143,7 +147,7 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Export package">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Export package</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="File gets deleted">
       <tmx:tuv xml:lang="en">
@@ -184,6 +188,10 @@
 			<tmx:tu tuid="Layouts">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Layouts</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media objects">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Media objects</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Mediabase">
       <tmx:tuv xml:lang="en">

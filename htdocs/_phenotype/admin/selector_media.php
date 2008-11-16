@@ -55,12 +55,10 @@ body {
 	    				$_mediagroups[$row["grp_id"]]=$row["grp_id"];
 	    			}
 	    		  }
+	   
 	    		  if (count($_mediagroups)==0){$_mediagroups=Array(-1);}
 ?>
 <script language="JavaScript" src="phenotype.js"></script>
-<script type="text/javascript" language="JavaScript">
-self.focus();
-</script>
 <form action="selector_media.php" name="form1">
 
 <table width="495" border="0" cellpadding="0" cellspacing="0"  align="center">
@@ -83,15 +81,15 @@ self.focus();
           <option value="-1">(<?php echo localeH("all");?>)</option>
           <?php
           $myMB = new PhenotypeMediabase();
-                          // Hot fix - check groups
-                  
+                 
 
-          $_folder = $myMB->getFullLogicalFolder($_mediagroups);
-          		if (!in_array($myRequest->get("folder"),$_folder))
+         $_folder = $myMB->getFullLogicalFolder($_mediagroups);
+       	if (!in_array($myRequest->get("folder"),$_folder) AND $myRequest->get("folder")!="-1")
 		{
 			$_folder[]=$myRequest->get("folder");
 			asort($_folder);
 		}
+		print_r ($_folder);
 		  foreach ($_folder AS $k)
           {
             $selected ="";
@@ -413,5 +411,8 @@ self.focus();
         </table></td>
       </tr>
     </table>
+    <script type="text/javascript" language="JavaScript">
+self.focus();
+</script>
 </body>
 </html>

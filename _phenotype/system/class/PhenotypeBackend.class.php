@@ -375,8 +375,7 @@ exit();
 		$myApp->displayBackendJavascript();
 
 		echo '<script type="text/javascript" src="wz_dragdrop.js"></script>
-<script type="text/javascript" src="fckeditor/fckeditor.js"></script>
-<script type="text/javascript" src="tw-sack.js"></script>
+		<script type="text/javascript" src="tw-sack.js"></script>
 </head>';
 
 		if ($body_onload!="")

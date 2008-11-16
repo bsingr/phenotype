@@ -69,7 +69,7 @@ $myPT->startBuffer();
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle">&Uuml;bersicht Aufgabenbereiche</td>
+            <td class="windowTitle"><?php echo localeH("Overview task realms");?></td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=13" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -91,10 +91,10 @@ $myPT->startBuffer();
       <tr>
         <td valign="top" class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tr>
-              <td width="25" class="tableHead">Nr.</td>
+              <td width="25" class="tableHead"><?php echo localeH("No.")?></td>
               <td width="60" class="tableHead">&nbsp;</td>
-              <td width="449" class="tableHead">Bezeichnung</td>
-              <td width="50" class="tableHead">Aktion</td>
+              <td width="449" class="tableHead"><?php echo localeH("Name")?></td>
+              <td width="50" class="tableHead"><?php echo localeH("Action")?></td>
             </tr>
             <tr>
               <td colspan="4" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -108,9 +108,9 @@ $myPT->startBuffer();
 			
             <tr>
               <td class="tableBody"><?php echo sprintf("%02d",$row["sbj_id"]) ?></td>
-              <td class="tableBody"><span class="tableCellMedia"><a href="admin_subject_edit.php?id=<?php echo $row["sbj_id"] ?>&b=0"><img src="img/t_subject.gif" alt="Aufgabenbereich anzeigen" width="60" height="40" border="0"></a></span></td>
+              <td class="tableBody"><span class="tableCellMedia"><a href="admin_subject_edit.php?id=<?php echo $row["sbj_id"] ?>&b=0"><img src="img/t_subject.gif" alt="<?php echo localeH("Edit realm")?>" width="60" height="40" border="0"></a></span></td>
               <td class="tableBody"><?php echo $row["sbj_bez"] ?></td>
-              <td align="right" nowrap class="tableBody"><a href="admin_subject_edit.php?id=<?php echo $row["sbj_id"] ?>&b=0"><img src="img/b_edit.gif" alt="Aufgabenbereich anzeigen" width="22" height="22" border="0" align="absmiddle"></a>
+              <td align="right" nowrap class="tableBody"><a href="admin_subject_edit.php?id=<?php echo $row["sbj_id"] ?>&b=0"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit realm")?>" width="22" height="22" border="0" align="absmiddle"></a>
 <?php
        $sql = "SELECT COUNT(*) AS C FROM ticket WHERE tik_status = 1 AND sbj_id = " . $row["sbj_id"];
 	   $rs_check = $myDB->query($sql);
@@ -118,7 +118,7 @@ $myPT->startBuffer();
 	   if ($row_check["C"]==0)
 	   {
 ?>   
-<a href="admin_subject_delete.php?id=<?php echo $row["sbj_id"] ?>" onclick="javascript:return confirm('Diesen Aufgabenbereich wirklich l&ouml;schen?')"> <img src="img/b_delete.gif" alt="Aufgabenbereich l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a>
+<a href="admin_subject_delete.php?id=<?php echo $row["sbj_id"] ?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this task realm?")?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete realm")?>" width="22" height="22" border="0" align="absmiddle"></a>
 <?php
        }else
 	   {
@@ -141,7 +141,7 @@ $myPT->startBuffer();
     </table>
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td class="windowFooterGrey2"><a href="admin_subject_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> Neuen Aufgabenbereich anlegen</a></td>
+        <td class="windowFooterGrey2"><a href="admin_subject_insert.php" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Create new task realm")?></a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>
       <tr>

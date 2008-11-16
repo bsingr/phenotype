@@ -1484,7 +1484,7 @@ if ($zeigegrafik2==1)
 			if ($myTicket->hasMarkup($mySUser->id) OR $myTicket->hasRequest($mySUser->id))
 			{
 
-				$html_button2 ='<input name="save" type="submit" class="buttonWhite" style="width:102px"value="'.localeH("Remove Notice").'">';
+				$html_button2 ='<input name="save" type="submit" class="buttonWhite" style="width:102px"value="'.localeH("Remove Marker").'">';
 			}
 		}
 		?>
@@ -1527,7 +1527,7 @@ if ($zeigegrafik2==1)
 		"http://www.w3.org/TR/html4/loose.dtd">
 		<html>
 		<head>
-		<title>phenotype <?php echo $myPT->version ?></title>
+		<title>Phenotype <?php echo $myPT->version ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
@@ -1711,7 +1711,7 @@ if ($zeigegrafik2==1)
 		}
 		?>
 		<tr>
-		<td valign="top"><br><?php echo localeH("Priority")?></td>
+		<td valign="top"><br><?php echo localeH("Priority")?>:</td>
 		<td  colspan="3" ><br>
 		<?php
 		if ($express==1)
@@ -1731,7 +1731,7 @@ if ($zeigegrafik2==1)
 		</td>
 		</tr>
 		<tr>
-		<td><?php echo localeH("Period")?>:</td>
+		<td><?php echo localeH("Limit")?>:</td>
 		<td  colspan="3">
 		<?php
 		if ($express==1)
@@ -1766,7 +1766,7 @@ if ($zeigegrafik2==1)
 		</td>
 		</tr>
 		<tr>
-		<td>f&uuml;r:</td>
+		<td><?php echo localeH("for")?>:</td>
 		<td  colspan="3">
 		<select name="usr_id" class="listmenu" style="width: 200px" >
 		<?php
@@ -2201,10 +2201,10 @@ if ($zeigegrafik2==1)
 			case 2: // Planen
 			$block_nr_neu = $this->updatePlanningMask($myTicket);
 			break;
-			case 6: // Hinweis
+			case 5: // Hinweis
 			$block_nr_neu = $this->updateMarkupMask($myTicket);
 			break;
-			case 5: // Frage
+			case 6: // Frage
 			$block_nr_neu = $this->updateRequestMask($myTicket);
 			break;
 			case 7: // Notizen

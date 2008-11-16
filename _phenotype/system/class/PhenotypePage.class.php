@@ -835,7 +835,9 @@ class PhenotypePageStandard extends PhenotypeBase
 		$html = str_replace("#!#alttitle#!#",$myPT->codeH($myPage->alttitel),$html);
 		$html = str_replace("#!#keywords#!#",$myPT->codeH($myPage->row["pag_searchtext"]),$html);
 
-		if (PT_DEBUG==1)
+		$cookie = md5("on".PT_SECRETKEY);
+			
+		if (PT_DEBUG==1 AND $_COOKIE["pt_debug"]==$cookie)
 		{
 			$url_reload = $myRequest->getReloadUrl();
 			$myPT->startBuffer();
@@ -871,6 +873,10 @@ class PhenotypePageStandard extends PhenotypeBase
 	    <?php
 
 	    $html = str_replace("#!#pt_debug#!#",$myPT->stopBuffer(),$html);
+		}
+		else 
+		{
+			 $html = str_replace("#!#pt_debug#!#","",$html);
 		}
 		return $html;
 

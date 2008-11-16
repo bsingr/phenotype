@@ -6,7 +6,7 @@
 // Peter Sellinger.
 // -------------------------------------------------------
 // Thanks for your support: Markus Griesbach, Michael
-// Krï¿½mer, Annemarie Komor, Jochen Rieger, Alexander
+// Krämer, Annemarie Komor, Jochen Rieger, Alexander
 // Wehrum, Martin Ochs.
 // -------------------------------------------------------
 // Kontakt:
@@ -36,10 +36,6 @@ class PhenotypeLocaleManagerStandard
 
 		// Admin
 
-
-
-		// Admin
-
 		$_token["Admin"][]="* all pages *";
 		$_token["Admin"][]="Add new action";
 		$_token["Admin"][]="Add new mediagroup";
@@ -52,11 +48,14 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Clear page cache";
 		$_token["Admin"][]="Clear page cache?";
 		$_token["Admin"][]="Create";
+		$_token["Admin"][]="Create new task realm";
 		$_token["Admin"][]="Delete Action";
+		$_token["Admin"][]="Delete realm";
 		$_token["Admin"][]="Delete records";
 		$_token["Admin"][]="Delete records irrevocably";
 		$_token["Admin"][]="Edit Pagegroup";
 		$_token["Admin"][]="Edit mediagroup";
+		$_token["Admin"][]="Edit realm";
 		$_token["Admin"][]="Editor / Content";
 		$_token["Admin"][]="Editor / Mediabase";
 		$_token["Admin"][]="Editor / Pages - CANNOT insert/remove/change components";
@@ -80,6 +79,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Overview Pagegroups";
 		$_token["Admin"][]="Overview Roles";
 		$_token["Admin"][]="Overview mediagroups";
+		$_token["Admin"][]="Overview task realms";
 		$_token["Admin"][]="Page titles (no language tokens)";
 		$_token["Admin"][]="Page titles (possibly language tokens)";
 		$_token["Admin"][]="Really delete this action?";
@@ -87,6 +87,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Really delete this mediagroup?";
 		$_token["Admin"][]="Really delete this pagegroup?";
 		$_token["Admin"][]="Really delete this role?";
+		$_token["Admin"][]="Really delete this task realm?";
 		$_token["Admin"][]="Really reset this action?";
 		$_token["Admin"][]="Rebuild index?";
 		$_token["Admin"][]="Remove Image";
@@ -97,6 +98,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Admin"][]="Status: online";
 		$_token["Admin"][]="Sub path (no language tokens)";
 		$_token["Admin"][]="Sub path (possibly language tokens)";
+		$_token["Admin"][]="Task realm";
 		$_token["Admin"][]="The index of following content object records is regenerated:";
 		$_token["Admin"][]="This Layout is not used in any page.";
 		$_token["Admin"][]="Versioning";
@@ -186,6 +188,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Create new layout";
 		$_token["Config"][]="Data";
 		$_token["Config"][]="Default view";
+		$_token["Config"][]="Delete Template";
 		$_token["Config"][]="Delete component";
 		$_token["Config"][]="Delete component group";
 		$_token["Config"][]="Delete template";
@@ -204,6 +207,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Journal";
 		$_token["Config"][]="Language maps";
 		$_token["Config"][]="Layouts";
+		$_token["Config"][]="Media objects";
 		$_token["Config"][]="Mediabase";
 		$_token["Config"][]="Meta";
 		$_token["Config"][]="Method";
@@ -301,6 +305,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="Add Link";
 		$_token["Editor"][]="Add first page in group";
 		$_token["Editor"][]="Add new record";
+		$_token["Editor"][]="Alignment";
 		$_token["Editor"][]="All";
 		$_token["Editor"][]="Alternate";
 		$_token["Editor"][]="Assign Document";
@@ -655,6 +660,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="day_short_tuesday";
 		$_token["Phenotype"][]="day_short_wednesday";
 		$_token["Phenotype"][]="edit";
+		$_token["Phenotype"][]="for";
 		$_token["Phenotype"][]="hours";
 		$_token["Phenotype"][]="install snapshot";
 		$_token["Phenotype"][]="last month";
@@ -716,6 +722,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Ticket"][]="Manage new task";
 		$_token["Ticket"][]="Meta";
 		$_token["Ticket"][]="New Task";
+		$_token["Ticket"][]="Notice marker deleted.";
 		$_token["Ticket"][]="Notices";
 		$_token["Ticket"][]="Notices edited.";
 		$_token["Ticket"][]="Pending question";
@@ -725,14 +732,19 @@ class PhenotypeLocaleManagerStandard
 		$_token["Ticket"][]="Please chosse a limit for this ticket";
 		$_token["Ticket"][]="Postpone";
 		$_token["Ticket"][]="Priority";
+		$_token["Ticket"][]="Process task";
 		$_token["Ticket"][]="Process task.";
 		$_token["Ticket"][]="Processor";
+		$_token["Ticket"][]="Processors";
 		$_token["Ticket"][]="Processors/Creator";
 		$_token["Ticket"][]="Progress";
 		$_token["Ticket"][]="Question";
 		$_token["Ticket"][]="Question for %1";
+		$_token["Ticket"][]="Question marker deleted.";
 		$_token["Ticket"][]="Really delete this ticket?";
 		$_token["Ticket"][]="Realm";
+		$_token["Ticket"][]="Remove Marker";
+		$_token["Ticket"][]="Remove ticket from watch list.";
 		$_token["Ticket"][]="Search tasks";
 		$_token["Ticket"][]="Search tasks %1";
 		$_token["Ticket"][]="Searchresult";
@@ -784,8 +796,8 @@ class PhenotypeLocaleManagerStandard
 		$_token["Ticket"][]="msg_selectusers_comment";
 		$_token["Ticket"][]="msg_selectusers_question";
 		$_token["Ticket"][]="msg_ticket_created";
-		$_token["Ticket"][]="msg_ticket_duration_minutes";
 		$_token["Ticket"][]="msg_ticket_duration_hours";
+		$_token["Ticket"][]="msg_ticket_duration_minutes";
 		$_token["Ticket"][]="msg_ticket_progress";
 		$_token["Ticket"][]="my tasks";
 		$_token["Ticket"][]="n/a";

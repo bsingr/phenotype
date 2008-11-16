@@ -75,8 +75,8 @@ $row = mysql_fetch_array($rs);
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo $id ?> Aufgabenbereich / <?php echo $row["sbj_bez"] ?></td>
-            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=2" target="_blank"><img src="img/b_help.gif" alt="Hilfe aufrufen" width="22" height="22" border="0"></a></td>
+            <td class="windowTitle"><?php echo $id ?> <?php echo localeH("Task realm")?> / <?php echo $row["sbj_bez"] ?></td>
+            <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=2" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help")?>" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
         <td width="10" valign="top" class="windowRightShadow"><img src="img/win_sh_ri_to.gif" width="10" height="10"></td>
@@ -89,13 +89,13 @@ $row = mysql_fetch_array($rs);
 	<?php
 	 $myLayout->tab_new();
 	 $url = "admin_subject_edit.php?id=" .$id ."&b=0";	 
-	 $myLayout->tab_addEntry("Konfiguration",$url,"b_konfig.gif");
-	 $myLayout->tab_draw("Konfiguration");
+	 $myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
+	 $myLayout->tab_draw(locale("Config"));
      $myLayout->workarea_start_draw();
      $html = $myLayout->workarea_form_text("","bez",$row["sbj_bez"]);
-	 $myLayout->workarea_row_draw("Bezeichnung",$html);		
+	 $myLayout->workarea_row_draw(locale("Name"),$html);		
      $html=  $myLayout->workarea_form_textarea("","description",$row["sbj_description"],8);
-     $myLayout->workarea_row_draw("Beschreibung",$html);	  
+     $myLayout->workarea_row_draw(locale("Description"),$html);	  
 	   // Abschlusszeile
         $sql = "SELECT COUNT(*) AS C FROM ticket WHERE tik_status = 1 AND sbj_id = " . $id;
 		$rs = $myDB->query($sql);
@@ -104,7 +104,7 @@ $row = mysql_fetch_array($rs);
 	 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
-            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diesen Aufgabenbereich wirklich l&ouml;schen?')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern">&nbsp;&nbsp;</td>
+            <td align="right" class="windowFooterWhite"><?php if ($row["C"]==0){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete")?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this task realm?")?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save")?>">&nbsp;&nbsp;</td>
           </tr>
         </table>
 	 <?php

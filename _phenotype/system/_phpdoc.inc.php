@@ -121,7 +121,6 @@ class PhenotypeSystemDataObject extends PhenotypeSystemDataObjectStandard {}
  *
  */
 class PhenotypeAdminLayout extends PhenotypeLayout {}
-
 class PhenotypeLayout extends PhenotypeLayoutStandard {}
 
 /**
@@ -130,6 +129,15 @@ class PhenotypeLayout extends PhenotypeLayoutStandard {}
  *
  */
 class PhenotypeNavigationHelper extends PhenotypeNavigationHelperStandard {}
+
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
+class PhenotypeLocaleManager extends PhenotypeLocaleManagerStandard {}
+{
+}
 
 /**
  * @package phenotype

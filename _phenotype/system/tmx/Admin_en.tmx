@@ -49,9 +49,17 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Create</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Create new task realm">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Create new task realm</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete Action">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Delete Action</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete realm">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Delete realm</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Delete records">
       <tmx:tuv xml:lang="en">
@@ -68,6 +76,10 @@
 			<tmx:tu tuid="Edit mediagroup">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Edit mediagroup</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Edit realm">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Edit realm</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Editor / Content">
       <tmx:tuv xml:lang="en">
@@ -161,6 +173,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Overview Actions</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Overview task realms">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Overview task realms</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Page titles (no language tokens)">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Page titles (no language tokens)</tmx:seg>
@@ -189,6 +205,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this role?</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this task realm?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this task realm?</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really reset this action?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really reset this action?</tmx:seg>
@@ -215,11 +235,11 @@
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Status: offline">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Status: offline</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Status: online">
       <tmx:tuv xml:lang="en">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Status: online</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Sub path (no language tokens)">
       <tmx:tuv xml:lang="en">
@@ -228,6 +248,10 @@
 			<tmx:tu tuid="Sub path (possibly language tokens)">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Sub path (possibly language tokens)</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Task realm">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task realm</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="The index of following content object records is regenerated:">
       <tmx:tuv xml:lang="en">

@@ -1,6 +1,6 @@
 <?php
 // ------------------------------------------------------
-// Runmode
+// runmode
 // ------------------------------------------------------
 define ("PT_DEBUG",1);
 define ("PT_BACKEND",1);
@@ -8,48 +8,50 @@ define ("PT_CONFIGMODE",1);
 define ("PT_FRONTENDSESSION",0);
 define ("PT_PAGECACHE",1);
 define ("PT_INCLUDECACHE",1);
-// PW für XML-Abruf
-define ("PT_XMLACCESS","changeit");
+define ("PT_URL_STYLE", "smartURL");
 
 // ------------------------------------------------------
-// PFADE und URLs - Teil 1
+// pathes and urls - part 1
 // ------------------------------------------------------
 
 define ("BASEPATH","/var/www/htdocs/phenotype/");
 define ("SERVERURL","/");
 define ("SERVERFULLURL","http://localhost" . SERVERURL);
 
-// smartURL uses free configurable URLs for every page instead of index.php?id=xx
-// to use it copy the htaccess file ../htaccess_smartURL_sample to .htaccess and disable APACHE_PTWRITEHTACCESS
-define ("PT_URL_STYLE", "smartURL");
-
 // ------------------------------------------------------
-// Datenbank-Setup
+// database setup
 // ------------------------------------------------------
 
 define ("DATABASE_SERVER", 		"localhost");
 define ("DATABASE_USER", 		"root");
-define ("DATABASE_PASSWORD", 	"root01");	
+define ("DATABASE_PASSWORD", 	"");	
 define ("DATABASE_NAME",		"phenotype");	
 
 // ------------------------------------------------------
-// Sprach-Setup
+// language setup
 // ------------------------------------------------------
 
-define ("PT_LOCALE","de");
+define ("PT_LOCALE","en");
 $PTC_LANGUAGES = Array(1=>"Deutsch",2=>"Englisch",3=>"Spanisch",4=>"Französisch");
 
 // ------------------------------------------------------
-// Default pag_id, wenn keine übergeben wird
+// default start page
 // ------------------------------------------------------
 
 define ("PAG_ID_STARTPAGE",1);
 
 // ------------------------------------------------------
-// PFADE und URLs - Teil 2
+// security settings (only relevant for some advanced features)
 // ------------------------------------------------------
-// muss nur angepasst werden,wenn nicht die
-// Standardverzeichnisstruktur genommen wird.
+
+define ("PT_XMLACCESS","changeit");
+define ("PT_SECRETKEY","changeit");
+
+// ------------------------------------------------------
+// pathes and urls - part 2
+// ------------------------------------------------------
+// normally no changes are necessary. Only if you decide
+// to change the normal folder structure of phenotype.
 // ------------------------------------------------------
 
 define ("ADMINPATH", BASEPATH ."htdocs/_phenotype/admin/");
@@ -67,8 +69,6 @@ define ("PACKAGEPATH",APPPATH ."packages/");
 define ("MEDIABASEPATH", SERVERPATH . "media/");
 define ("MEDIABASEURL", SERVERURL . "media/");
 
-// Pfad zu externen Libaries, Tools, die in der Applikation genutzt werden
-
 define ("THIRDPARTYPATH", APPPATH . "3rdparty/");
 
 define ("SYSTEMPATH", BASEPATH . "_phenotype/system/");
@@ -76,7 +76,8 @@ define ("SMARTYPATH", SYSTEMPATH . "smarty/libs/");
 define ("CLASSPATH", SYSTEMPATH . "class/");
 
 // ------------------------------------------------------
-// Cache
+// cache settings (only change if you use on phenotype 
+// installation in a cluster environment)
 // ------------------------------------------------------
 
 define ("CACHEPATH", BASEPATH . "_phenotype/cache/");
@@ -84,14 +85,13 @@ define ("CACHENR", 1);
 define ("CACHECOUNT",1);
 
 // ------------------------------------------------------
-// UMASK für Dateizugriffe
+// umask for file access
 // ------------------------------------------------------
 
 define ("UMASK",0775);
 
-
 // ------------------------------------------------------
-// Einbindung der Grundklassen
+// initalize system, require all core classes
 // ------------------------------------------------------
 
 require_once (BASEPATH . "buildinfo.inc.php");
@@ -111,7 +111,7 @@ require_once (CLASSPATH . "PhenotypeLog.class.php");
 
 
 // ------------------------------------------------------
-// Logging
+// logging
 // ------------------------------------------------------
 
 define("PT_LOG_METHOD", PT_LOGMTH_FILE);
@@ -122,13 +122,13 @@ define("PT_LOG_CLIENTINFO_SERVER", 'REMOTE_ADDR');
 
 
 // ------------------------------------------------------
-// Einbindung der anwendungsspezifischen Hostkonfiguration
+// get host config (if necessary)
 // ------------------------------------------------------
 
 require_once (APPPATH . "_host.config.inc.php");
 
 // ------------------------------------------------------
-// Basic initialization
+// start engine
 // ------------------------------------------------------
 
 // Time check initialize

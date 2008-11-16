@@ -38,3 +38,6 @@ function match2Entity($matches)
   $c = $matches[0];
   return "&#".ord($c).";";
 }
+
+// we don't want to have Cookies in our request arrays
+ini_set("gpc_order","GP");
