@@ -1,16 +1,19 @@
 <?php
-
 // -------------------------------------------------------
-// Copyright (c) 2003-2005 Phenotype Hagemann & Sellinger
+// Phenotype Content Application Framework
 // -------------------------------------------------------
-// Kontakt: 
-// phenotype@nilshagemann.de
-// Nils Hagemann, Lothringer Str. 31, 65195 Wiesbaden
+// Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
+// Peter Sellinger, Michael Krämer.
+//
+// Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Das Phenotype CMS Framework unterliegt dem Urheberrecht
-// und ist Eigentum von Hagemann & Sellinger. Ohne schriftliche 
-// Genehmigung darf kein Teil dieser Software reproduziert, ver-
-// vielfältigt oder verbreitet werden.
+// Thanks for your support: 
+// Markus Griesbach, Alexander Wehrum, Sebastian Heise,
+// Dominique Boes, Florian Gehringer, Jens Bissinger
+// -------------------------------------------------------
+// www.phenotype.de - offical homepage
+// www.phenotype-cms.de - documentation
+// www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------

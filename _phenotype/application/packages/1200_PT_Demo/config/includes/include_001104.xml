@@ -86,7 +86,6 @@ class PhenotypeInclude_1104 extends PhenotypeInclude
 		global $myRequest;
 		global $myApp;
 
-
 		$mail = &#34;======================================================\n&#34;;
 		$mail .= &#34;New entry in contact form\n&#34;;
 		$mail .= &#34;------------------------------------------------------\n&#34;;
@@ -114,17 +113,20 @@ class PhenotypeInclude_1104 extends PhenotypeInclude
 		$myCO-&#62;set(&#34;mail&#34;, $mail);
 		$myCO-&#62;store();
 
-		if (@mail($myApp-&#62;contact_email_to, &#34;New entry in contact form&#34;, $mail, $myApp-&#62;contact_email_from))
+		if ($myApp-&#62;contact_email_to!=&#34;&#34; AND $myApp-&#62;contact_email_from!=&#34;&#34;)
 		{
-			&#47;&#47; Notwendig, um die Smartyengine richtig zu initialisieren
-			eval ($this-&#62;initRendering());
-			echo $mySmarty-&#62;fetch($TPL_THANKYOU);
+			if (@mail($myApp-&#62;contact_email_to, &#34;New entry in contact form&#34;, $mail, $myApp-&#62;contact_email_from))
+			{
+				&#47;&#47; Notwendig, um die Smartyengine richtig zu initialisieren
+				eval ($this-&#62;initRendering());
+				echo $mySmarty-&#62;fetch($TPL_THANKYOU);
+				return;
+			}
 		}
-		else
-		{
-			eval ($this-&#62;initRendering());
-			echo $mySmarty-&#62;fetch($TPL_ERROR);
-		}
+
+		eval ($this-&#62;initRendering());
+		echo $mySmarty-&#62;fetch($TPL_ERROR);
+
 	}
 
 }

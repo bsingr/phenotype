@@ -2,17 +2,18 @@
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
-// Copyright (c) 2003-2006 Nils Hagemann, Paul Sellinger,
-// Peter Sellinger.
+// Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
+// Peter Sellinger, Michael Krämer.
+//
+// Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: Markus Griesbach, Michael
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
-// Wehrum, Martin Ochs.
+// Thanks for your support:
+// Markus Griesbach, Alexander Wehrum, Sebastian Heise,
+// Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
-// Kontakt:
-// www.phenotype.de - offical product homepage
-// www.phenotype-cms.de - documentation & support
-// www.sellinger-server.de - inventors of phenotype
+// www.phenotype.de - offical homepage
+// www.phenotype-cms.de - documentation
+// www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
@@ -22,7 +23,6 @@
  * @subpackage system
  *
  */
-
 class PhenotypeLocaleManagerStandard
 {
 	// additional locales (not en)
@@ -416,6 +416,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="Files";
 		$_token["Editor_Media"][]="First version added";
 		$_token["Editor_Media"][]="Folder";
+		$_token["Editor_Media"][]="Format";
 		$_token["Editor_Media"][]="Group/Folder";
 		$_token["Editor_Media"][]="Image (%1x%2)";
 		$_token["Editor_Media"][]="Image / Document";
@@ -432,6 +433,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="Object deleted.";
 		$_token["Editor_Media"][]="Original";
 		$_token["Editor_Media"][]="Overwrite version";
+		$_token["Editor_Media"][]="Quality";
 		$_token["Editor_Media"][]="Really delete this document?";
 		$_token["Editor_Media"][]="Really delete this image?";
 		$_token["Editor_Media"][]="Really delete this version?";
@@ -452,6 +454,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="free";
 		$_token["Editor_Media"][]="handle images like documents";
 		$_token["Editor_Media"][]="illegal versionname";
+		$_token["Editor_Media"][]="landscape";
 		$_token["Editor_Media"][]="light";
 		$_token["Editor_Media"][]="msg_error_imageversionupload";
 		$_token["Editor_Media"][]="msg_error_overwrite_original";
@@ -462,6 +465,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="none";
 		$_token["Editor_Media"][]="normal";
 		$_token["Editor_Media"][]="objects/page";
+		$_token["Editor_Media"][]="portrait";
 		$_token["Editor_Media"][]="strong";
 		$_token["Editor_Media"][]="target frame";
 		$_token["Editor_Media"][]="treat images like documents";

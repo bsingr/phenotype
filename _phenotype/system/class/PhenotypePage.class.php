@@ -2,17 +2,18 @@
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
-// Copyright (c) 2003-2006 Nils Hagemann, Paul Sellinger,
-// Peter Sellinger.
+// Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
+// Peter Sellinger, Michael Krämer.
+//
+// Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: Markus Griesbach, Michael
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
-// Wehrum, Martin Ochs.
+// Thanks for your support:
+// Markus Griesbach, Alexander Wehrum, Sebastian Heise,
+// Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
-// Kontakt:
-// www.phenotype.de - offical product homepage
-// www.phenotype-cms.de - documentation & support
-// www.sellinger-server.de - inventors of phenotype
+// www.phenotype.de - offical homepage
+// www.phenotype-cms.de - documentation
+// www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
@@ -836,7 +837,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		$html = str_replace("#!#keywords#!#",$myPT->codeH($myPage->row["pag_searchtext"]),$html);
 
 		$cookie = md5("on".PT_SECRETKEY);
-			
+
 		if (PT_DEBUG==1 AND $_COOKIE["pt_debug"]==$cookie)
 		{
 			$url_reload = $myRequest->getReloadUrl();
@@ -874,9 +875,9 @@ class PhenotypePageStandard extends PhenotypeBase
 
 	    $html = str_replace("#!#pt_debug#!#",$myPT->stopBuffer(),$html);
 		}
-		else 
+		else
 		{
-			 $html = str_replace("#!#pt_debug#!#","",$html);
+			$html = str_replace("#!#pt_debug#!#","",$html);
 		}
 		return $html;
 
@@ -1675,6 +1676,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	function move($pag_id_newtop,$insertorder)
 	{
 		global $myDB;
+		global $myPT;
 
 		//echo "NEU:" . $pag_id_newtop . "<br>";
 		if ($pag_id_newtop==$this->id){return false;}
@@ -1755,6 +1757,16 @@ class PhenotypePageStandard extends PhenotypeBase
 		// Seitenvariablen nachziehen
 		//$this->init($this->id,$this->lng_id);
 		$this->buildProps();
+
+		// clear cache and rebuild all urls
+		$myPT->clearCache();
+		$sql = "SELECT pag_id FROM page";
+		$rs = $myDB->query($sql);
+		while ($row=mysql_fetch_array($rs))
+		{
+			$myPage = new PhenotypePage($row["pag_id"]);
+			$myPage->rebuildURLs();
+		}
 		return true;
 	}
 
@@ -2451,7 +2463,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		return $url;
 	}
 
-	public function rebuildURLs()
+	public function rebuildURLs($recursive=false)
 	{
 		global $myDB;
 		global $PTC_LANGUAGES;
@@ -2484,17 +2496,17 @@ class PhenotypePageStandard extends PhenotypeBase
 		}
 		$sql = $mySQL->update("page","pag_id=".$this->id);
 		$myDB->query($sql);
-		
+
 		// rebuild url of child pages, if any url has changed
-		if ($url_changed==true)
+		if ($url_changed==true AND $recursive=true)
 		{
 			$sql = "SELECT pag_id FROM page WHERE pag_id_top=".$this->id;
 			$rs = $myDB->query($sql);
 			while ($row=mysql_fetch_array($rs))
 			{
 				$myPage = new PhenotypePage($row["pag_id"]);
-				$myPage->rebuildURLs();
-				
+				$myPage->rebuildURLs(true);
+
 			}
 		}
 	}

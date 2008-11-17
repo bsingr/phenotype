@@ -8,6 +8,7 @@
   
   <tstamp>
   	<format property="DATE" pattern="%d.%m.%Y" locale="de_DE"/>
+  	<format property="YEAR" pattern="%Y" locale="de_DE"/>
   </tstamp>
   
   <!-- svn stuff -->
@@ -67,6 +68,7 @@
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
 		  <token key="BUILD_DATE" value="${DATE}" />
+		  <token key="BUILD_YEAR" value="${YEAR}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
@@ -80,6 +82,7 @@
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
 		  <token key="BUILD_DATE" value="${DATE}" />
+		  <token key="BUILD_YEAR" value="${YEAR}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
@@ -93,6 +96,7 @@
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
 		  <token key="BUILD_DATE" value="${DATE}" />
+		  <token key="BUILD_YEAR" value="${YEAR}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
@@ -117,6 +121,7 @@
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
 		  <token key="BUILD_DATE" value="${DATE}" />
+		  <token key="BUILD_YEAR" value="${YEAR}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
@@ -129,6 +134,7 @@
 	  <filterchain>
 	    <replacetokens begintoken="##!" endtoken="!##">
 		  <token key="BUILD_DATE" value="${DATE}" />
+		  <token key="BUILD_YEAR" value="${YEAR}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />

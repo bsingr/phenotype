@@ -2,17 +2,18 @@
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
-// Copyright (c) 2003-2006 Nils Hagemann, Paul Sellinger,
-// Peter Sellinger.
+// Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
+// Peter Sellinger, Michael Krämer.
+//
+// Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: Markus Griesbach, Michael
-// Krämer, Annemarie Komor, Jochen Rieger, Alexander
-// Wehrum, Martin Ochs.
+// Thanks for your support: 
+// Markus Griesbach, Alexander Wehrum, Sebastian Heise,
+// Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
-// Kontakt:
-// www.phenotype.de - offical product homepage
-// www.phenotype-cms.de - documentation & support
-// www.sellinger-server.de - inventors of phenotype
+// www.phenotype.de - offical homepage
+// www.phenotype-cms.de - documentation
+// www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
@@ -1664,7 +1665,7 @@ function initoid()
 	            <tr>
 
 	              <td class="padding10">
-	              Format: <select name="size_format" class="listmenu" onchange="painter_changeCropFormat();">
+	              <?php echo localeH("Format")?>: <select name="size_format" class="listmenu" onchange="painter_changeCropFormat();">
 	                <option value="0" selected>...</option>
 	                <?php
 	                $_definitions = $myApp->getImageEditingFormatArray($myObj);
@@ -1680,9 +1681,9 @@ function initoid()
 				  </td>
 	              <td class="padding10">              
 				  X
-				  <input type="text" class="input" onchange="painter_changeCropParameters(false);" name="size_x" style="width:35px">
+				  <input type="text" class="input" onchange="painter_changeCropParameters(false);" name="size_x" style="width:30px">
 				  Y
-				  <input type="text" class="input" onchange="painter_changeCropParameters(false);" name="size_y" style="width:35px">
+				  <input type="text" class="input" onchange="painter_changeCropParameters(false);" name="size_y" style="width:30px">
 				   &nbsp;<select name="size_method" class="listmenu" onchange="painter_changeCropParameters(false);">
 	                <option value="1" selected><?php echo localeH("free");?></option>
 	                <option value="2" ><?php echo localeH("fixed selection");?></option>
@@ -1692,7 +1693,7 @@ function initoid()
 				  </select>
 				  </td>
 	              <td class="padding10"> 
-				  Qualität: <select name="size_quality" class="listmenu">
+				  <?php echo localeH("Quality")?>: <select name="size_quality" class="listmenu">
 				  <option value="100">100</option>
 				  <option value="95">95</option>
 				  <option value="90">90</option>

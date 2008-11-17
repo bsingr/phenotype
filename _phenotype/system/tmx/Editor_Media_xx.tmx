@@ -71,6 +71,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Format">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Format</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Group/Folder">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Group/Folder</tmx:seg>
@@ -179,6 +186,13 @@
 			<tmx:tu tuid="Overwrite version">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Overwrite version</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Quality">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Quality</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -323,6 +337,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="landscape">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>landscape</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="light">
       <tmx:tuv xml:lang="en">
         <tmx:seg>light</tmx:seg>
@@ -389,6 +410,13 @@
 			<tmx:tu tuid="objects/page">
       <tmx:tuv xml:lang="en">
         <tmx:seg>objects/page</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="portrait">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>portrait</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

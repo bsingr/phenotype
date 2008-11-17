@@ -140,7 +140,7 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
           &#60;tr&#62;
             &#60;td class=&#34;windowFooterWhite&#34;&#62;&#38;nbsp;&#60;&#47;td&#62;
             &#60;td align=&#34;right&#34; class=&#34;windowFooterWhite&#34;&#62;
-			&#60;input name=&#34;continue&#34; type=&#34;submit&#34; class=&#34;buttonWhite&#34; style=&#34;width:102px&#34;value=&#34;Weiter&#34;&#62;&#38;nbsp;&#38;nbsp;
+			&#60;input name=&#34;continue&#34; type=&#34;submit&#34; class=&#34;buttonWhite&#34; style=&#34;width:102px&#34;value=&#34;Continue&#34;&#62;&#38;nbsp;&#38;nbsp;
             &#60;&#47;td&#62;
           &#60;&#47;tr&#62;
         &#60;&#47;table&#62;

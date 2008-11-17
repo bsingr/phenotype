@@ -132,7 +132,7 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
           <tr>
             <td class="windowFooterWhite">&nbsp;</td>
             <td align="right" class="windowFooterWhite">
-			<input name="continue" type="submit" class="buttonWhite" style="width:102px"value="Weiter">&nbsp;&nbsp;
+			<input name="continue" type="submit" class="buttonWhite" style="width:102px"value="Continue">&nbsp;&nbsp;
             </td>
           </tr>
         </table>

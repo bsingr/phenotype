@@ -71,6 +71,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Ordner</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Format">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Format</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Format</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Group/Folder">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Group/Folder</tmx:seg>
@@ -182,6 +189,13 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Version überschreiben</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Quality">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Quality</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Qualität</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Really delete this document?">
       <tmx:tuv xml:lang="en">
@@ -323,6 +337,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Ungültiger Versionsname.</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="landscape">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>landscape</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>quer</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="light">
       <tmx:tuv xml:lang="en">
         <tmx:seg>light</tmx:seg>
@@ -392,6 +413,13 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Medien / Seite anzeigen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="portrait">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>portrait</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>hoch</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="strong">
       <tmx:tuv xml:lang="en">

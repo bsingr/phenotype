@@ -1,4 +1,23 @@
 <?php
+// -------------------------------------------------------
+// Phenotype Content Application Framework
+// -------------------------------------------------------
+// Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
+// Peter Sellinger, Michael Krämer.
+//
+// Open Source since 11/2006, I8ln since 11/2008
+// -------------------------------------------------------
+// Thanks for your support: 
+// Markus Griesbach, Alexander Wehrum, Sebastian Heise,
+// Dominique Boes, Florian Gehringer, Jens Bissinger
+// -------------------------------------------------------
+// www.phenotype.de - offical homepage
+// www.phenotype-cms.de - documentation
+// www.sellinger-design.de - inventors of phenotype
+// -------------------------------------------------------
+// Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
+// -------------------------------------------------------
+
 /**
  * @package phenotype
  * @subpackage system
@@ -142,7 +161,7 @@ exit();
 
 
     $_definitions[] = Array(
-    "name"=> "10x15 quer",
+    "name"=> "10x15 ".locale("landscape"),
     "method"=>3,
     "x"=>150,
     "y"=>100,
@@ -152,7 +171,7 @@ exit();
     "newversion"=>"10x15"
     );
     $_definitions[] = Array(
-    "name"=> "10x15 hoch",
+    "name"=> "10x15 ".locale("portrait"),
     "method"=>3,
     "x"=>100,
     "y"=>150,
@@ -162,7 +181,7 @@ exit();
     "newversion"=>"10x15"
     );
     $_definitions[] = Array(
-    "name"=> "13x18 quer",
+    "name"=> "13x18 ".locale("landscape"),
     "method"=>3,
     "x"=>180,
     "y"=>130,
@@ -172,7 +191,7 @@ exit();
     "newversion"=>"13x18"
     );
     $_definitions[] = Array(
-    "name"=> "13x18 hoch",
+    "name"=> "13x18 ".locale("portrait"),
     "method"=>3,
     "x"=>130,
     "y"=>180,
@@ -182,7 +201,7 @@ exit();
     "newversion"=>"13x18"
     );
     $_definitions[] = Array(
-    "name"=> "15x20 quer",
+    "name"=> "15x20 ".locale("landscape"),
     "method"=>3,
     "x"=>150,
     "y"=>200,
@@ -192,7 +211,7 @@ exit();
     "newversion"=>"15x20"
     );
     $_definitions[] = Array(
-    "name"=> "15x20 hoch",
+    "name"=> "15x20 ".locale("portrait"),
     "method"=>3,
     "x"=>200,
     "y"=>150,
