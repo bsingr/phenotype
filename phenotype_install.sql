@@ -3,17 +3,21 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 27. Oktober 2008 um 20:02
+-- Erstellungszeit: 17. November 2008 um 14:32
 -- Server Version: 5.0.51
 -- PHP-Version: 5.2.6
 
-SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+
+--
+-- Datenbank: `phenotype`
+--
 
 -- --------------------------------------------------------
 
@@ -22,7 +26,7 @@ SET FOREIGN_KEY_CHECKS=0;
 --
 
 DROP TABLE IF EXISTS `action`;
-CREATE TABLE `action` (
+CREATE TABLE IF NOT EXISTS `action` (
   `act_id` int(11) NOT NULL auto_increment,
   `act_status` tinyint(4) NOT NULL default '0',
   `act_bez` varchar(50) collate latin1_general_ci NOT NULL default '',
@@ -47,7 +51,7 @@ CREATE TABLE `action` (
 --
 
 DROP TABLE IF EXISTS `component`;
-CREATE TABLE `component` (
+CREATE TABLE IF NOT EXISTS `component` (
   `com_id` int(11) NOT NULL auto_increment,
   `com_bez` varchar(150) collate latin1_general_ci NOT NULL default '',
   `com_description` text collate latin1_general_ci NOT NULL,
@@ -60,9 +64,9 @@ CREATE TABLE `component` (
 --
 
 INSERT INTO `component` (`com_id`, `com_bez`, `com_description`, `com_rubrik`) VALUES
-(1002, 'HTML', '## Baustein 1002 - HTML', 'System'),
-(1003, 'Include', '## Baustein 1003 - Include', 'System'),
-(1001, 'Richtextabsatz', '## Baustein 1001 - Richtextabsatz\n\nMit diesem Bausteinen können bereits die meisten Anforderungen einer einfachen Website abegedeckt werden. Ein Absatz besteht aus Überschrift, Text, Bild und Link.\n\n', 'Textbausteine');
+(1002, 'HTML', '## Component 1002 - HTML', 'System'),
+(1003, 'Include (Function)', '## Component 1003 - Include', 'System'),
+(1001, 'Richtext', '## Component 1001 - Richtext\n\n		This basic component fits many needs of simple web pages. It offers headlines, formatted text, images and links.\n		', 'Text');
 
 -- --------------------------------------------------------
 
@@ -71,7 +75,7 @@ INSERT INTO `component` (`com_id`, `com_bez`, `com_description`, `com_rubrik`) V
 --
 
 DROP TABLE IF EXISTS `componentgroup`;
-CREATE TABLE `componentgroup` (
+CREATE TABLE IF NOT EXISTS `componentgroup` (
   `cog_id` int(11) NOT NULL auto_increment,
   `cog_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
   `cog_description` text collate latin1_general_ci NOT NULL,
@@ -84,7 +88,7 @@ CREATE TABLE `componentgroup` (
 --
 
 INSERT INTO `componentgroup` (`cog_id`, `cog_bez`, `cog_description`, `cog_pos`) VALUES
-(1, 'Default', '## Default-Bausteingruppe', 0);
+(1, 'Default', '## Default', 0);
 
 -- --------------------------------------------------------
 
@@ -93,7 +97,7 @@ INSERT INTO `componentgroup` (`cog_id`, `cog_bez`, `cog_description`, `cog_pos`)
 --
 
 DROP TABLE IF EXISTS `component_componentgroup`;
-CREATE TABLE `component_componentgroup` (
+CREATE TABLE IF NOT EXISTS `component_componentgroup` (
   `cog_id` int(11) NOT NULL default '0',
   `com_id` int(11) NOT NULL default '0',
   PRIMARY KEY  (`cog_id`,`com_id`)
@@ -115,20 +119,19 @@ INSERT INTO `component_componentgroup` (`cog_id`, `com_id`) VALUES
 --
 
 DROP TABLE IF EXISTS `component_template`;
-CREATE TABLE `component_template` (
+CREATE TABLE IF NOT EXISTS `component_template` (
   `tpl_id` int(11) NOT NULL auto_increment,
   `com_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
   PRIMARY KEY  (`tpl_id`,`com_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
 
 --
 -- Daten für Tabelle `component_template`
 --
 
 INSERT INTO `component_template` (`tpl_id`, `com_id`, `tpl_bez`) VALUES
-(1, 1001, 'TPL_DEFAULT'),
-(2, 1001, 'TPL_TOPIMAGE');
+(1, 1001, 'TPL_DEFAULT');
 
 -- --------------------------------------------------------
 
@@ -137,7 +140,7 @@ INSERT INTO `component_template` (`tpl_id`, `com_id`, `tpl_bez`) VALUES
 --
 
 DROP TABLE IF EXISTS `content`;
-CREATE TABLE `content` (
+CREATE TABLE IF NOT EXISTS `content` (
   `con_id` int(11) NOT NULL auto_increment,
   `con_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
   `con_description` text collate latin1_general_ci NOT NULL,
@@ -157,6 +160,7 @@ CREATE TABLE `content` (
 -- Daten für Tabelle `content`
 --
 
+
 -- --------------------------------------------------------
 
 --
@@ -164,7 +168,7 @@ CREATE TABLE `content` (
 --
 
 DROP TABLE IF EXISTS `content_data`;
-CREATE TABLE `content_data` (
+CREATE TABLE IF NOT EXISTS `content_data` (
   `dat_id` int(11) NOT NULL auto_increment,
   `dat_uid` varchar(32) collate latin1_general_ci NOT NULL default '0',
   `dat_status` tinyint(4) NOT NULL default '0',
@@ -230,7 +234,7 @@ CREATE TABLE `content_data` (
 --
 
 DROP TABLE IF EXISTS `content_statistics`;
-CREATE TABLE `content_statistics` (
+CREATE TABLE IF NOT EXISTS `content_statistics` (
   `dat_id` int(11) NOT NULL default '0',
   `sta_datum` int(11) NOT NULL default '0',
   `sta_contentview` int(11) NOT NULL default '0',
@@ -250,7 +254,7 @@ CREATE TABLE `content_statistics` (
 --
 
 DROP TABLE IF EXISTS `content_template`;
-CREATE TABLE `content_template` (
+CREATE TABLE IF NOT EXISTS `content_template` (
   `tpl_id` int(11) NOT NULL auto_increment,
   `con_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
@@ -269,7 +273,7 @@ CREATE TABLE `content_template` (
 --
 
 DROP TABLE IF EXISTS `dataobject`;
-CREATE TABLE `dataobject` (
+CREATE TABLE IF NOT EXISTS `dataobject` (
   `dao_id` int(11) NOT NULL auto_increment,
   `dao_bez` varchar(255) collate latin1_general_ci NOT NULL,
   `dao_params` varchar(255) collate latin1_general_ci NOT NULL,
@@ -281,8 +285,11 @@ CREATE TABLE `dataobject` (
   PRIMARY KEY  (`dao_id`),
   KEY `dao_bez` (`dao_bez`),
   KEY `dao_ttl` (`dao_ttl`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
 
+--
+-- Daten für Tabelle `dataobject`
+--
 
 
 -- --------------------------------------------------------
@@ -292,7 +299,7 @@ CREATE TABLE `dataobject` (
 --
 
 DROP TABLE IF EXISTS `extra`;
-CREATE TABLE `extra` (
+CREATE TABLE IF NOT EXISTS `extra` (
   `ext_id` int(11) NOT NULL auto_increment,
   `ext_bez` varchar(50) collate latin1_general_ci NOT NULL default '',
   `ext_description` text collate latin1_general_ci NOT NULL,
@@ -306,8 +313,8 @@ CREATE TABLE `extra` (
 --
 
 INSERT INTO `extra` (`ext_id`, `ext_bez`, `ext_description`, `ext_rubrik`, `ext_props`) VALUES
-(1001, 'Pagewizard', '', 'Development', ''),
-(1002, 'Konsole', '', 'Development', 'a:1:{s:5:"color";s:1:"1";}');
+(1002, 'Console', '', 'Development', 'a:1:{s:5:"color";s:1:"1";}'),
+(1001, 'Pagewizard', '', 'Development', '');
 
 -- --------------------------------------------------------
 
@@ -316,7 +323,7 @@ INSERT INTO `extra` (`ext_id`, `ext_bez`, `ext_description`, `ext_rubrik`, `ext_
 --
 
 DROP TABLE IF EXISTS `extra_template`;
-CREATE TABLE `extra_template` (
+CREATE TABLE IF NOT EXISTS `extra_template` (
   `tpl_id` int(11) NOT NULL auto_increment,
   `ext_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
@@ -335,7 +342,7 @@ CREATE TABLE `extra_template` (
 --
 
 DROP TABLE IF EXISTS `include`;
-CREATE TABLE `include` (
+CREATE TABLE IF NOT EXISTS `include` (
   `inc_id` int(11) NOT NULL auto_increment,
   `inc_bez` varchar(50) collate latin1_general_ci NOT NULL default '',
   `inc_description` text collate latin1_general_ci NOT NULL,
@@ -358,7 +365,7 @@ CREATE TABLE `include` (
 --
 
 DROP TABLE IF EXISTS `include_template`;
-CREATE TABLE `include_template` (
+CREATE TABLE IF NOT EXISTS `include_template` (
   `tpl_id` int(11) NOT NULL auto_increment,
   `inc_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
@@ -377,7 +384,7 @@ CREATE TABLE `include_template` (
 --
 
 DROP TABLE IF EXISTS `layout`;
-CREATE TABLE `layout` (
+CREATE TABLE IF NOT EXISTS `layout` (
   `lay_id` int(11) NOT NULL auto_increment,
   `lay_bez` varchar(100) collate latin1_general_ci NOT NULL default '0',
   `lay_description` text collate latin1_general_ci NOT NULL,
@@ -400,7 +407,7 @@ INSERT INTO `layout` (`lay_id`, `lay_bez`, `lay_description`) VALUES
 --
 
 DROP TABLE IF EXISTS `layout_block`;
-CREATE TABLE `layout_block` (
+CREATE TABLE IF NOT EXISTS `layout_block` (
   `lay_id` int(11) NOT NULL default '0',
   `lay_blocknr` int(11) NOT NULL default '0',
   `lay_blockbez` varchar(250) collate latin1_general_ci NOT NULL default '',
@@ -423,7 +430,7 @@ INSERT INTO `layout_block` (`lay_id`, `lay_blocknr`, `lay_blockbez`, `cog_id`, `
 --
 
 DROP TABLE IF EXISTS `layout_include`;
-CREATE TABLE `layout_include` (
+CREATE TABLE IF NOT EXISTS `layout_include` (
   `lay_id` int(11) NOT NULL default '0',
   `inc_id` int(11) NOT NULL default '0',
   `lay_includenr` int(11) NOT NULL default '0',
@@ -445,7 +452,7 @@ CREATE TABLE `layout_include` (
 --
 
 DROP TABLE IF EXISTS `layout_pagegroup`;
-CREATE TABLE `layout_pagegroup` (
+CREATE TABLE IF NOT EXISTS `layout_pagegroup` (
   `lay_id` int(11) NOT NULL default '0',
   `grp_id` int(11) NOT NULL default '0',
   KEY `lay_id` (`lay_id`,`grp_id`)
@@ -463,7 +470,7 @@ CREATE TABLE `layout_pagegroup` (
 --
 
 DROP TABLE IF EXISTS `media`;
-CREATE TABLE `media` (
+CREATE TABLE IF NOT EXISTS `media` (
   `med_id` int(11) NOT NULL auto_increment,
   `grp_id` int(11) NOT NULL default '2',
   `med_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
@@ -519,7 +526,7 @@ INSERT INTO `media` (`med_id`, `grp_id`, `med_bez`, `med_versioncount`, `med_phy
 --
 
 DROP TABLE IF EXISTS `mediagroup`;
-CREATE TABLE `mediagroup` (
+CREATE TABLE IF NOT EXISTS `mediagroup` (
   `grp_id` int(11) NOT NULL auto_increment,
   `grp_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
   `grp_description` text collate latin1_general_ci NOT NULL,
@@ -543,7 +550,7 @@ INSERT INTO `mediagroup` (`grp_id`, `grp_bez`, `grp_description`, `grp_type`) VA
 --
 
 DROP TABLE IF EXISTS `mediaversion`;
-CREATE TABLE `mediaversion` (
+CREATE TABLE IF NOT EXISTS `mediaversion` (
   `ver_id` int(11) NOT NULL auto_increment,
   `med_id` int(11) NOT NULL default '0',
   `ver_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
@@ -567,7 +574,7 @@ CREATE TABLE `mediaversion` (
 --
 
 DROP TABLE IF EXISTS `page`;
-CREATE TABLE `page` (
+CREATE TABLE IF NOT EXISTS `page` (
   `pag_id` int(11) NOT NULL auto_increment,
   `pag_uid` varchar(32) collate latin1_general_ci NOT NULL default '0',
   `pag_id_mimikry` int(11) NOT NULL default '0',
@@ -635,6 +642,12 @@ CREATE TABLE `page` (
   FULLTEXT KEY `pag_fullsearch` (`pag_fullsearch`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
 
+--
+-- Daten für Tabelle `page`
+--
+
+INSERT INTO `page` (`pag_id`, `pag_uid`, `pag_id_mimikry`, `ver_id`, `ver_nr`, `grp_id`, `pag_bez`, `pag_titel`, `pag_alttitel`, `pag_comment`, `pag_status`, `pag_id_top`, `pag_pos`, `pag_cache`, `pag_printcache1`, `pag_printcache2`, `pag_printcache3`, `pag_printcache4`, `pag_printcache5`, `pag_printcache6`, `pag_xmlcache1`, `pag_xmlcache2`, `pag_xmlcache3`, `pag_xmlcache4`, `pag_xmlcache5`, `pag_xmlcache6`, `pag_quickfinder`, `pag_searchtext`, `pag_date`, `usr_id`, `usr_id_creator`, `pag_creationdate`, `pag_lastfetch`, `pag_nextbuild1`, `pag_nextbuild2`, `pag_nextbuild3`, `pag_nextbuild4`, `pag_nextbuild5`, `pag_nextbuild6`, `pag_nextversionchange`, `pag_lastbuild_time`, `pag_lastcache_time`, `pag_lastcachenr`, `pag_ver_nr_max`, `pag_url`, `pag_url1`, `pag_url2`, `pag_url3`, `pag_url4`, `pag_url5`, `pag_url6`, `pag_url7`, `pag_url8`, `pag_url9`, `pag_props`, `pag_props_all`, `pag_props_locale`, `pag_fullsearch`, `pag_contenttype`, `pag_multilanguage`, `pag_adminlock`, `pag_redirect`) VALUES
+(1, '41d1b7423d6618a0a7574487a3fbb89e', 1, 1, 1, 1, 'Startseite', 'Phenotype 2.7 Startseite', '', '', 1, 0, 1, 86400, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', 1226676956, 13, 13, 1206374344, 1226928631, 1226962800, 1226927763, 1226927763, 1226927763, 1226927763, 1226927763, 0, '0.0607', '', 1, 0, 'Phenotype-2.7-Startseite', 'Phenotype-2.7-Startseite', 'Phenotype-2.7-Startseite', 'Phenotype-2.7-Startseite', 'Phenotype-2.7-Startseite', '', '', '', '', '', 'a:1:{s:8:"pag_url1";s:0:"";}', 'a:0:{}', 'a:0:{}', 'Phenotype 2.7 Startseite|Phenotype 2.7 Startseite|Phenotype 2.7 Startseite||||Phenotype 2.7|<p><strong>Welcome to Phenotype!</strong></p>\n<p>If you can read this text, Phenotype was installed succesfull with the PT_CORE package.</p>\n<p>If you''re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.</p>\n<p>For more infos visit the <a href="http://www.phenotype.de">offical homepage</a>.</p>\n<p>(Sorry currently most infos in german only).</p>|', 1, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -643,7 +656,7 @@ CREATE TABLE `page` (
 --
 
 DROP TABLE IF EXISTS `pagegroup`;
-CREATE TABLE `pagegroup` (
+CREATE TABLE IF NOT EXISTS `pagegroup` (
   `grp_id` int(11) NOT NULL auto_increment,
   `grp_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
   `grp_description` text collate latin1_general_ci NOT NULL,
@@ -669,7 +682,7 @@ INSERT INTO `pagegroup` (`grp_id`, `grp_bez`, `grp_description`, `grp_statistic`
 --
 
 DROP TABLE IF EXISTS `pageversion`;
-CREATE TABLE `pageversion` (
+CREATE TABLE IF NOT EXISTS `pageversion` (
   `ver_id` int(11) NOT NULL auto_increment,
   `ver_nr` tinyint(4) NOT NULL default '0',
   `pag_id` int(11) NOT NULL default '0',
@@ -682,7 +695,12 @@ CREATE TABLE `pageversion` (
   PRIMARY KEY  (`ver_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
 
+--
+-- Daten für Tabelle `pageversion`
+--
 
+INSERT INTO `pageversion` (`ver_id`, `ver_nr`, `pag_id`, `lay_id`, `ver_bez`, `inc_id1`, `inc_id2`, `pag_exec_script`, `pag_fullsearch`) VALUES
+(1, 1, 1, 1, 'Version 1', 0, 0, 0, 'Phenotype 2.7 Startseite|Phenotype 2.7 Startseite|Phenotype 2.7 Startseite||||Phenotype 2.7|<p><strong>Welcome to Phenotype!</strong></p>\n<p>If you can read this text, Phenotype was installed succesfull with the PT_CORE package.</p>\n<p>If you''re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.</p>\n<p>For more infos visit the <a href="http://www.phenotype.de">offical homepage</a>.</p>\n<p>(Sorry currently most infos in german only).</p>|');
 
 -- --------------------------------------------------------
 
@@ -691,7 +709,7 @@ CREATE TABLE `pageversion` (
 --
 
 DROP TABLE IF EXISTS `pageversion_autoactivate`;
-CREATE TABLE `pageversion_autoactivate` (
+CREATE TABLE IF NOT EXISTS `pageversion_autoactivate` (
   `auv_id` int(11) NOT NULL auto_increment,
   `pag_id` int(11) NOT NULL default '0',
   `ver_id` int(11) NOT NULL default '0',
@@ -711,7 +729,7 @@ CREATE TABLE `pageversion_autoactivate` (
 --
 
 DROP TABLE IF EXISTS `page_language`;
-CREATE TABLE `page_language` (
+CREATE TABLE IF NOT EXISTS `page_language` (
   `pag_id` int(11) NOT NULL default '0',
   `lng_id` smallint(6) NOT NULL default '0',
   `pag_titel` varchar(250) collate latin1_general_ci NOT NULL default '',
@@ -736,7 +754,12 @@ CREATE TABLE `page_language` (
   PRIMARY KEY  (`pag_id`,`lng_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+--
+-- Daten für Tabelle `page_language`
+--
 
+INSERT INTO `page_language` (`pag_id`, `lng_id`, `pag_titel`, `pag_nextbuild1`, `pag_nextbuild2`, `pag_nextbuild3`, `pag_nextbuild4`, `pag_nextbuild5`, `pag_nextbuild6`, `pag_printcache1`, `pag_printcache2`, `pag_printcache3`, `pag_printcache4`, `pag_printcache5`, `pag_printcache6`, `pag_xmlcache1`, `pag_xmlcache2`, `pag_xmlcache3`, `pag_xmlcache4`, `pag_xmlcache5`, `pag_xmlcache6`) VALUES
+(1, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -745,7 +768,7 @@ CREATE TABLE `page_language` (
 --
 
 DROP TABLE IF EXISTS `page_statistics`;
-CREATE TABLE `page_statistics` (
+CREATE TABLE IF NOT EXISTS `page_statistics` (
   `pag_id` int(11) NOT NULL default '0',
   `sta_datum` int(11) NOT NULL default '0',
   `sta_pageview` int(11) NOT NULL default '0',
@@ -753,6 +776,9 @@ CREATE TABLE `page_statistics` (
   KEY `pag_id` (`pag_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+--
+-- Daten für Tabelle `page_statistics`
+--
 
 
 -- --------------------------------------------------------
@@ -762,7 +788,7 @@ CREATE TABLE `page_statistics` (
 --
 
 DROP TABLE IF EXISTS `role`;
-CREATE TABLE `role` (
+CREATE TABLE IF NOT EXISTS `role` (
   `rol_id` int(11) NOT NULL auto_increment,
   `rol_description` text collate latin1_general_ci NOT NULL,
   `rol_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
@@ -785,7 +811,7 @@ INSERT INTO `role` (`rol_id`, `rol_description`, `rol_bez`, `rol_rights`) VALUES
 --
 
 DROP TABLE IF EXISTS `sequence_data`;
-CREATE TABLE `sequence_data` (
+CREATE TABLE IF NOT EXISTS `sequence_data` (
   `dat_id` int(11) NOT NULL auto_increment,
   `pag_id` int(11) NOT NULL default '0',
   `ver_id` int(11) NOT NULL default '0',
@@ -803,6 +829,13 @@ CREATE TABLE `sequence_data` (
   KEY `page_select` (`pag_id`,`ver_id`,`lng_id`,`dat_visible`,`dat_blocknr`,`dat_editbuffer`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
 
+--
+-- Daten für Tabelle `sequence_data`
+--
+
+INSERT INTO `sequence_data` (`dat_id`, `pag_id`, `ver_id`, `lng_id`, `dat_id_content`, `dat_editbuffer`, `dat_visible`, `dat_blocknr`, `dat_pos`, `com_id`, `dat_comdata`, `dat_fullsearch`, `usr_id`) VALUES
+(1, 1, 1, 1, 0, 0, 1, 1, 1, 1001, 'a:21:{s:8:"headline";s:13:"Phenotype 2.7";s:4:"text";s:388:"<p><strong>Welcome to Phenotype!</strong></p>\r\n<p>If you can read this text, Phenotype was installed succesfull with the PT_CORE package.</p>\r\n<p>If you''re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.</p>\r\n<p>For more infos visit the <a href="http://www.phenotype.de">offical homepage</a>.</p>\r\n<p>(Sorry currently most infos in german only).</p>";s:6:"img_id";s:1:"0";s:3:"alt";s:0:"";s:15:"bildausrichtung";s:5:"links";s:7:"linkbez";s:0:"";s:7:"linkurl";s:0:"";s:10:"linktarget";s:5:"_self";s:7:"version";s:0:"";s:7:"img_alt";s:13:"Mein Alt-Text";s:9:"img_align";s:6:"rechts";s:6:"med_id";s:1:"0";s:8:"linktype";s:1:"0";s:8:"linktext";s:0:"";s:10:"linksource";s:0:"";s:5:"linkx";s:0:"";s:5:"linky";s:0:"";s:12:"imageimg_alt";s:13:"Mein Alt-Text";s:14:"imageimg_align";s:6:"rechts";s:11:"imageimg_id";s:1:"0";s:11:"imagemed_id";s:1:"0";}', 'Phenotype 2.7|<p><strong>Welcome to Phenotype!</strong></p>\n<p>If you can read this text, Phenotype was installed succesfull with the PT_CORE package.</p>\n<p>If you''re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.</p>\n<p>For more infos visit the <a href="http://www.phenotype.de">offical homepage</a>.</p>\n<p>(Sorry currently most infos in german only).</p>', 0),
+(1, 1, 1, 1, 0, 1, 1, 1, 1, 1001, 'a:21:{s:8:"headline";s:13:"Phenotype 2.7";s:4:"text";s:388:"<p><strong>Welcome to Phenotype!</strong></p>\r\n<p>If you can read this text, Phenotype was installed succesfull with the PT_CORE package.</p>\r\n<p>If you''re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.</p>\r\n<p>For more infos visit the <a href="http://www.phenotype.de">offical homepage</a>.</p>\r\n<p>(Sorry currently most infos in german only).</p>";s:6:"img_id";s:1:"0";s:3:"alt";s:0:"";s:15:"bildausrichtung";s:5:"links";s:7:"linkbez";s:0:"";s:7:"linkurl";s:0:"";s:10:"linktarget";s:5:"_self";s:7:"version";s:0:"";s:7:"img_alt";s:13:"Mein Alt-Text";s:9:"img_align";s:6:"rechts";s:6:"med_id";s:1:"0";s:8:"linktype";s:1:"0";s:8:"linktext";s:0:"";s:10:"linksource";s:0:"";s:5:"linkx";s:0:"";s:5:"linky";s:0:"";s:12:"imageimg_alt";s:13:"Mein Alt-Text";s:14:"imageimg_align";s:6:"rechts";s:11:"imageimg_id";s:1:"0";s:11:"imagemed_id";s:1:"0";}', 'Phenotype 2.7|<p><strong>Welcome to Phenotype!</strong></p>\n<p>If you can read this text, Phenotype was installed succesfull with the PT_CORE package.</p>\n<p>If you''re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.</p>\n<p>For more infos visit the <a href="http://www.phenotype.de">offical homepage</a>.</p>\n<p>(Sorry currently most infos in german only).</p>', 13);
 
 -- --------------------------------------------------------
 
@@ -811,7 +844,7 @@ CREATE TABLE `sequence_data` (
 --
 
 DROP TABLE IF EXISTS `snapshot`;
-CREATE TABLE `snapshot` (
+CREATE TABLE IF NOT EXISTS `snapshot` (
   `sna_id` int(11) NOT NULL auto_increment,
   `sna_type` varchar(2) collate latin1_general_ci NOT NULL,
   `key_id` int(11) NOT NULL,
@@ -837,7 +870,7 @@ CREATE TABLE `snapshot` (
 --
 
 DROP TABLE IF EXISTS `ticket`;
-CREATE TABLE `ticket` (
+CREATE TABLE IF NOT EXISTS `ticket` (
   `tik_id` int(11) NOT NULL auto_increment,
   `sbj_id` int(11) NOT NULL default '0',
   `dat_id_2ndorder` int(11) NOT NULL,
@@ -883,7 +916,7 @@ CREATE TABLE `ticket` (
 --
 
 DROP TABLE IF EXISTS `ticketaction`;
-CREATE TABLE `ticketaction` (
+CREATE TABLE IF NOT EXISTS `ticketaction` (
   `act_id` int(11) NOT NULL auto_increment,
   `tik_id` int(11) NOT NULL default '0',
   `act_type` smallint(6) NOT NULL default '0',
@@ -906,7 +939,7 @@ CREATE TABLE `ticketaction` (
 --
 
 DROP TABLE IF EXISTS `ticketmarkup`;
-CREATE TABLE `ticketmarkup` (
+CREATE TABLE IF NOT EXISTS `ticketmarkup` (
   `tik_id` int(11) NOT NULL default '0',
   `usr_id` int(11) NOT NULL default '0',
   `tik_markup` tinyint(4) NOT NULL default '1'
@@ -924,7 +957,7 @@ CREATE TABLE `ticketmarkup` (
 --
 
 DROP TABLE IF EXISTS `ticketpin`;
-CREATE TABLE `ticketpin` (
+CREATE TABLE IF NOT EXISTS `ticketpin` (
   `tik_id` int(11) NOT NULL default '0',
   `usr_id` int(11) NOT NULL default '0',
   `tik_pin` tinyint(4) NOT NULL default '1',
@@ -943,7 +976,7 @@ CREATE TABLE `ticketpin` (
 --
 
 DROP TABLE IF EXISTS `ticketrequest`;
-CREATE TABLE `ticketrequest` (
+CREATE TABLE IF NOT EXISTS `ticketrequest` (
   `tik_id` int(11) NOT NULL default '0',
   `usr_id` int(11) NOT NULL default '0',
   `tik_request` tinyint(4) NOT NULL default '1'
@@ -961,7 +994,7 @@ CREATE TABLE `ticketrequest` (
 --
 
 DROP TABLE IF EXISTS `ticketsubject`;
-CREATE TABLE `ticketsubject` (
+CREATE TABLE IF NOT EXISTS `ticketsubject` (
   `sbj_id` int(11) NOT NULL auto_increment,
   `sbj_bez` varchar(150) collate latin1_general_ci NOT NULL default '',
   `sbj_description` text collate latin1_general_ci NOT NULL,
@@ -982,7 +1015,7 @@ INSERT INTO `ticketsubject` (`sbj_id`, `sbj_bez`, `sbj_description`) VALUES
 --
 
 DROP TABLE IF EXISTS `tokens`;
-CREATE TABLE `tokens` (
+CREATE TABLE IF NOT EXISTS `tokens` (
   `token` varchar(255) NOT NULL,
   `section` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -999,7 +1032,7 @@ CREATE TABLE `tokens` (
 --
 
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `usr_id` int(11) NOT NULL auto_increment,
   `usr_status` int(11) NOT NULL default '0',
   `usr_login` varchar(50) collate latin1_general_ci NOT NULL default '',
@@ -1022,7 +1055,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`usr_id`, `usr_status`, `usr_login`, `usr_pass`, `usr_vorname`, `usr_nachname`, `usr_email`, `usr_createdate`, `usr_lastlogin`, `usr_rights`, `usr_allrights`, `usr_preferences`, `usr_su`, `med_id_thumb`) VALUES
-(13, 1, 'starter', 'ph1c2fSo4Tg/2', 'Starter', '', '', 1128621734, 1161455573, 'a:4:{s:13:"elm_redaktion";i:0;s:11:"elm_content";i:0;s:10:"elm_extras";i:0;s:5:"rol_1";i:1;}', 'a:21:{s:13:"elm_redaktion";i:1;s:11:"elm_content";i:0;s:10:"elm_extras";i:1;s:5:"rol_1";i:1;s:14:"elm_pageconfig";i:1;s:17:"elm_pagestatistic";i:1;s:13:"elm_mediabase";i:1;s:11:"elm_analyse";i:1;s:9:"elm_admin";i:1;s:17:"access_mediagrp_1";i:1;s:17:"access_mediagrp_2";i:1;s:17:"access_mediagrp_3";i:1;s:8:"ext_1001";i:1;s:8:"ext_1002";i:1;s:12:"access_grp_1";i:1;s:12:"pag_id_grp_1";s:1:"0";s:12:"access_grp_2";i:1;s:12:"pag_id_grp_2";s:1:"0";s:12:"access_grp_3";i:1;s:12:"pag_id_grp_3";s:1:"0";s:8:"elm_page";i:1;}', 'a:0:{}', 1, 0),
+(13, 1, 'starter', 'ph1c2fSo4Tg/2', 'Starter', '', '', 1128621734, 1226928639, 'a:4:{s:13:"elm_redaktion";i:0;s:11:"elm_content";i:0;s:10:"elm_extras";i:0;s:5:"rol_1";i:1;}', 'a:21:{s:13:"elm_redaktion";i:1;s:11:"elm_content";i:0;s:10:"elm_extras";i:1;s:5:"rol_1";i:1;s:14:"elm_pageconfig";i:1;s:17:"elm_pagestatistic";i:1;s:13:"elm_mediabase";i:1;s:11:"elm_analyse";i:1;s:9:"elm_admin";i:1;s:17:"access_mediagrp_1";i:1;s:17:"access_mediagrp_2";i:1;s:17:"access_mediagrp_3";i:1;s:8:"ext_1001";i:1;s:8:"ext_1002";i:1;s:12:"access_grp_1";i:1;s:12:"pag_id_grp_1";s:1:"0";s:12:"access_grp_2";i:1;s:12:"pag_id_grp_2";s:1:"0";s:12:"access_grp_3";i:1;s:12:"pag_id_grp_3";s:1:"0";s:8:"elm_page";i:1;}', 'a:0:{}', 1, 0),
 (1, 0, '', '', 'System', '', '', 1128535703, 0, 'a:0:{}', 'a:0:{}', 'a:0:{}', 0, 0),
 (2, 0, '', '', 'Importer', '', '', 1128535744, 0, 'a:0:{}', 'a:0:{}', 'a:0:{}', 0, 0),
 (3, 0, '', '', 'WWW', '', '', 1129560752, 0, 'a:0:{}', 'a:0:{}', 'a:0:{}', 0, 0);
@@ -1034,7 +1067,7 @@ INSERT INTO `user` (`usr_id`, `usr_status`, `usr_login`, `usr_pass`, `usr_vornam
 --
 
 DROP TABLE IF EXISTS `user_ticketsubject`;
-CREATE TABLE `user_ticketsubject` (
+CREATE TABLE IF NOT EXISTS `user_ticketsubject` (
   `usr_id` int(11) NOT NULL default '0',
   `sbj_id` int(11) NOT NULL default '0',
   KEY `usr_id` (`usr_id`,`sbj_id`)
@@ -1044,5 +1077,3 @@ CREATE TABLE `user_ticketsubject` (
 -- Daten für Tabelle `user_ticketsubject`
 --
 
-
-SET FOREIGN_KEY_CHECKS=1;
