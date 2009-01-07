@@ -163,7 +163,7 @@ $row = mysql_fetch_array($rs);
             <td class="tableBody"><strong><?php echo $scriptname; ?></strong><br>
 			<?php
 			$scriptname = APPPATH . $scriptname;
-			echo $myLayout->form_HTMLTextArea(locale("Script"),$scriptname,80,30,"PHP");
+			echo $myLayout->form_HTMLTextArea("script",$scriptname,80,30,"PHP");
 			?>
 			</td>
             </tr>

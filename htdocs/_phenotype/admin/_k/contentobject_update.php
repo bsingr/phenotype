@@ -100,7 +100,7 @@ if ($_REQUEST["b"]==0)
 // SKRIPT
 if ($_REQUEST["b"]==1)
 {
-	$skript = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
+	$skript = $myAdm->decodeRequest_HTMLArea($myRequest->get("script"));
 
 	$dateiname = APPPATH . "content/PhenotypeContent_"  .$id . ".class.php";
 
@@ -172,11 +172,14 @@ if ($b==2)
 {
 	if ($anzahl_templates == 0){$b=0;}
 }
+/*
+auskommentiert, weil das voraussetzt, dass man beim Editieren einer Contentobjektklasse niemals Fehler macht.
+Nicht Sinn der Sache. Muss in SnapshotManager
 
 $fname = "PhenotypeContent_".$id;
 $myCO = new $fname;
 $myCO->snapshot($mySUser->id,"config");
-
+*/
 $url = "contentobject_edit.php?id=" . $id . "&b=" . $b. "&r=" . urlencode($rubrik);
 Header ("Location:" . $url."&".SID);
 

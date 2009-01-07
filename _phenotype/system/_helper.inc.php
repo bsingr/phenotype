@@ -87,6 +87,12 @@ function url_for_content($dat_id,$action,$lng_id=null,$_params,$smartUID="",$ful
   return $myPT->url_for_content($dat_id,$action,$lng_id,$_params,$smartUID,$fullUrl);
 }
 
+function url_for_co($myCO,$action,$lng_id=null,$_params,$smartUID="",$fullUrl=false)
+{
+  global $myPT;
+   return $myPT->url_for_co($myCO,$action,$lng_id,$_params,$smartUID,$fullUrl);
+}
+
 /*
 function url_for_po($myPage,$params=array())
 {
@@ -142,4 +148,26 @@ function localeShortDate($timestamp)
 {
 	global $myPT;
 	return $myPT->localeShortDate($timestamp);
+}
+
+function urlstrip($s,$lowercase=false)
+{
+	$s = str_replace(array(" ","/","_","&","?","---","--"),"-",$s);
+	$s = str_replace("ä","ae",$s);
+	$s = str_replace("ö","oe",$s);
+	$s = str_replace("ü","ue",$s);
+	$s = str_replace("Ä","Ae",$s);
+	$s = str_replace("Ö","Oe",$s);
+	$s = str_replace("Ü","Ue",$s);
+	$s = str_replace("ß","ss",$s);
+
+
+	// Alle Sonderzeichen, die nicht URL-typisch sind rausfiltern
+	$patterns = "/[^-a-z0-9A-Z_,.\/]*/";
+	$s = preg_replace($patterns,"",$s);
+	if($lowercase)
+	{
+		$s=strtolower($s);
+	}
+	return $s;
 }
