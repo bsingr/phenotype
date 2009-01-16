@@ -652,5 +652,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Aufgaben</tmx:seg>
       </tmx:tuv></tmx:tu>
+       <tmx:tu tuid="Document assigned.">
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Dokument zugeordnet.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+      <tmx:tu tuid="Select document">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Dokument wählen</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

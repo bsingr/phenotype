@@ -12,7 +12,7 @@
 			<blocks>
 				<block>
 					<lay_blocknr>1</lay_blocknr>
-					<lay_blockbez>Bausteine</lay_blockbez>
+					<lay_blockbez>Content</lay_blockbez>
 					<cog_id>1</cog_id>
 					<lay_context>1</lay_context>
 				</block>

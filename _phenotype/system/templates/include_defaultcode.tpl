@@ -1,18 +1,22 @@
 {literal}<?php
+/**
+ * Name of your include
+ *
+ * @package phenotype
+ * @subpackage application
+ */
 class PhenotypeInclude_{/literal}{$id}{literal} extends PhenotypeInclude
 {
-  // Bezeichnung des Includes
   
   public $id = {/literal}{$id}{literal};
 
-  function display()
+  public function display()
   {
-    global $myDB;
+    global $myDB, $myPage, $myRequest;
 	
-	// Initialisieren des Smartyzugriffs
-	eval ($this->initRendering());	
+	// Initialize template access (=>$mySmarty) 
+	// eval ($this->initRendering());	
   }
-  
-  //function displayXML()
+
 }
 ?>{/literal}

@@ -1320,7 +1320,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
   {
 
 
-    $_month = Array(localeH("December"),localeH("January"),localeH("February"),localeH("March"),localeH("April"),localeH("May"),localeH("June"),localeH("July"),localeH("August"),localeH("September"),localeH("Oktober"),localeH("November"),localeH("December"),localeH("January"));
+    $_month = Array(localeH("December"),localeH("January"),localeH("February"),localeH("March"),localeH("April"),localeH("May"),localeH("June"),localeH("July"),localeH("August"),localeH("September"),localeH("October"),localeH("November"),localeH("December"),localeH("January"));
 
     $start = @mktime (0,0,0,date("m",$date),1,date("Y",$date));
 

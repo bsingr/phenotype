@@ -1,41 +1,44 @@
 {literal}<?php
+/**
+ * Name of your content object class
+ *
+ * @package phenotype
+ * @subpackage application
+ */
 class PhenotypeContent_{/literal}{$id}{literal} extends PhenotypeContent
 {
-  // Bezeichnung des Contentobjektes
-  var $content_type = {/literal}{$id}{literal};
-  var $skins = Array(); // erlaubte Skins
+  public $content_type = {/literal}{$id}{literal};
   
-  // Mehrere Tabs
-  //var $_blocks = Array("Konfiguration","Bausteine");
-  //var $_icons = Array("b_konfig.gif","b_items.gif");
+  // Remove comment slashes for multiple tabs
+  // public $_blocks = Array("Config","Items");
+  // public $_icons = Array("b_konfig.gif","b_items.gif");
   
-  function setDefaultProperties()
+  public function setDefaultProperties()
   {
-	  $this->set("bez","Neuer Datensatz");
-	  $this->set("datum",time());	
+	  $this->set("bez","New Record");	
   }
   
-  function init($row,$block_nr=0) 
+  public function init($row,$block_nr=0) 
   { 
     parent::init($row,$block_nr); 
 	
-	// Hier das Formular und damit auch die Updatefunktion initialisieren
-	
-	
+    // Customize your form with form_xyz methods
+    
+    $this->form_textfield("Name","bez",200);
+        
+	// If you have multiple tabs ... 
+		
 	/*switch ($block_nr)
 	{ 
 	  case 0:
 	  break;
 	}*/
-	 
-	$this->form_textfield("Bezeichnung","bez",200);
-
-	
   }
   
-  function attachKeyFields()
+  public function attachKeyFields()
   {
-    $this->setKey1($this->get("datum"));
+  	// define keys here
+    // $this->setKey1($this->get("propertyxy"));
   }
   
 

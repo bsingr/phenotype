@@ -373,5 +373,13 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>tasks</tmx:seg>
       </tmx:tuv></tmx:tu>
+      <tmx:tu tuid="Document assigned.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Document assigned.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+      <tmx:tu tuid="Select document">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select document</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

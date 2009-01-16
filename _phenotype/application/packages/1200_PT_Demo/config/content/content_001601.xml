@@ -54,8 +54,8 @@ class PhenotypeContent_1601 extends PhenotypeContent
     {
       case 0:
         $this-&#62;form_headline(&#34;Meta&#34;);
-        $this-&#62;form_textfield(&#34;Bezeichnung&#34;, &#34;bez&#34;, 400);
-        $this-&#62;form_richtext(&#34;Beschreibung&#34;, &#34;desc&#34;, 405, 10);
+        $this-&#62;form_textfield(&#34;Name&#34;, &#34;bez&#34;, 400);
+        $this-&#62;form_richtext(&#34;Description&#34;, &#34;desc&#34;, 405, 10);
 
 
         $_position = Array ();
@@ -80,7 +80,7 @@ class PhenotypeContent_1601 extends PhenotypeContent
 
         if (count($_position)!=0)
         {
-          $this-&#62;form_headline(&#34;Bildreihenfolge&#34;);
+          $this-&#62;form_headline(&#34;Images Order&#34;);
           $this-&#62;set(&#34;ddimageorder&#34;, $_position);
           $this-&#62;form_ddpositioner(&#34;&#34;, &#34;ddimageorder&#34;, count($_position), &#34;dd_thumb&#34;);
         }
@@ -93,11 +93,11 @@ class PhenotypeContent_1601 extends PhenotypeContent
         {
           $j = (($block_nr-1)*10)+$i;
 
-          $this-&#62;form_headline(&#34;Bild &#34;. $j);
-          $this-&#62;form_textfield(&#34;Titel&#47;Alt-Text&#34;, &#34;titel&#34;. $j, 400);
-          $this-&#62;form_textarea(&#34;Beschreibung&#34;, &#34;text&#34;. $j, 400, 2);
-          $this-&#62;form_image_selector(&#34;Bild&#34;, &#34;image&#34;. $j, &#34;Galerie&#34;, 1);
-          $this-&#62;form_checkbox(&#34;&#34;,&#34;view&#34;. $j,&#34;anzeigen&#34;);
+          $this-&#62;form_headline(&#34;Image &#34;. $j);
+          $this-&#62;form_textfield(&#34;Title&#47;Alt-Text&#34;, &#34;titel&#34;. $j, 400);
+          $this-&#62;form_textarea(&#34;Description&#34;, &#34;text&#34;. $j, 400, 2);
+          $this-&#62;form_image_selector(&#34;Image&#34;, &#34;image&#34;. $j, &#34;Gallery&#34;, 1);
+          $this-&#62;form_checkbox(&#34;&#34;,&#34;view&#34;. $j,&#34;view&#34;);
         }
 
         break;

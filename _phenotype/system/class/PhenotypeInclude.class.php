@@ -71,6 +71,7 @@ class PhenotypeIncludeStandard
 	    $dateiname =  $myPT->getTemplateFileName(PT_CFG_INCLUDE, $this->id, $row_itp["tpl_id"]);
 	    $$tpl = $dateiname;
 	 }	 
+	 $mySmarty->assign("include",$this);
 	<?php
 	$code = $myPT->stopbuffer();
 	return $code;
@@ -97,6 +98,7 @@ class PhenotypeIncludeStandard
 		return ($html);
 	}
 
+	
 	function renderXML()
 	{
 
