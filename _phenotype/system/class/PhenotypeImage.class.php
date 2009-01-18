@@ -332,5 +332,154 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 		$myMB->importImageVersionFromUrl($dateiname_thumb, $bez, $this->id);
 		@unlink ($dateiname_thumb);
 	}				
+	
+	/**
+	 * Select version of an image or create it (if not existing) 
+	 *
+	 * @param string name of the version to be selected/created
+	 * @param integer width $x
+	 * @param integer heigth $y
+	 * @param integer 4 = fixed target size, 5 fit into traget size and maintain ratio (default)
+	 * @param integer JPEG quality
+	 * @param integer sharpen 0->no 1-4->yes
+	 * @return boolean success
+	 */
+	function selectVersionOrCreate($name,$x,$y,$method = 5, $quality = 85,$sharpening = 1)
+	{
+		
+		$rc = parent::selectVersion($name);
+		if (!$rc)
+		{
+			$size = GetImageSize($this->file);
+
+			if ($size!=false)
+			{
+				$skip =false;
+				switch ($size["mime"])
+				{
+					case "image/gif":
+						$sourceImage = imagecreatefromgif($this->file);
+						break;
+					case "image/jpeg":
+						$sourceImage = imagecreatefromjpeg($this->file);
+						break;
+					case "image/png":
+						$sourceImage = imagecreatefrompng($this->file);
+						break;
+					default:
+						return false;
+						break;
+				}
+
+			}
+			else 
+			{
+				return false;
+			}
+			
+			
+			$myMB = new PhenotypeMediabase();
+			$sx = 0;
+			$sy = 0;
+			$sw = $this->x;
+			$sh = $this->y;
+			$tx = 0;
+			$ty = 0;
+			$tw = $x;
+			$th = $y;
+
+			if ($method==4) // feste Zielgröße
+			{
+				// Anpassen des Ausschnitts
+
+				$ratio = $tw/$th;
+
+				if ($ratio<($sw/$sh))
+				{
+					// Bild zu breit, d.h. volle Höhe
+					$breite = $sh*$ratio;
+					$sx = (int)(($sw-$breite)/2);
+					$sw = (int)$breite;
+				}
+				else
+				{
+					// Bild zu hoch, d.h. volle Breite
+					$hoehe = $sw/$ratio;
+					$sy = (int)(($sh-$hoehe)/2);
+					$sh = (int)$hoehe;
+				}
+			}
+			else // Zielrahmen
+			{
+				$sx = 0;
+				$sy = 0;
+				$sw = $this->x;
+				$sh = $this->y;
+				$tx = 0;
+				$ty = 0;
+				$tw = $this->x;
+				$th = $this->y;
+
+				$r = $x/$sw;
+
+				if ($sh*$r<=$x) // Breite passt
+				{
+					$tw = $x;
+					$th = (int)($sh*$r);
+
+				}
+				else // Höhe
+				{
+					$r = $y/$sh;
+					$th = $y;
+					$tw = (int)($sw*$r);
+				}
+
+			}
+
+			$targetImage = imagecreatetruecolor($tw, $th);
+
+			if (function_exists(imagecopyresampled))
+			{
+				imagecopyresampled($targetImage, $sourceImage, $tx, $ty, $sx, $sy, $tw, $th, $sw, $sh);
+			} else
+			{
+				imagecopyresized($targetImage, $sourceImage, $tx, $ty, $sx, $sy, $tw, $th, $sw, $sh);
+			}
+
+			// Nachschärfen
+			switch ($sharpening)
+			{
+				case 1:
+					$targetImage = $myMB->unsharpMask($targetImage,40,0.5,3);
+					break;
+				case 2:
+					$targetImage = $myMB->unsharpMask($targetImage,80,0.5,3);
+					break;
+				case 3:
+					$targetImage = $myMB->unsharpMask($targetImage,140,0.5,3);
+					break;
+				case 4:
+					$targetImage = $myMB->unsharpMask($targetImage,180,0.5,3);
+					break;
+
+			}
+
+
+			$targetfile = TEMPPATH ."media/~build_".$this->id .".jpg";
+
+
+			ImageJPEG($targetImage, $targetfile,$quality);
+			@ chown($targetfile, UMASK);
+
+			$url = $targetfile;
+
+			$rc = $myMB->importImageVersionFromUrl($url,$name, $this->id,0);
+
+			@unlink($url);
+			return parent::selectVersion($name);
+		}
+		return false;
+	}	
 }
 ?>

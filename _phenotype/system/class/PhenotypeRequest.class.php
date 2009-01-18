@@ -23,11 +23,8 @@
  * @subpackage system
  *
  */
-class PhenotypeRequestStandard
+class PhenotypeRequestStandard extends PhenotypeBase
 {
-  // holds the request array
-
-  public $_REQUEST;
   
   public $code404 = 0;
   
@@ -42,6 +39,13 @@ class PhenotypeRequestStandard
       foreach ($this->_REQUEST AS $k=>$v)
       {
         $this->set($k,stripslashes($v));
+      }
+    }
+    else 
+    {
+    	foreach ($this->_REQUEST AS $k=>$v)
+      {
+        $this->set($k,$v);
       }
     }
 
@@ -135,136 +139,24 @@ class PhenotypeRequestStandard
       }
     }
   }
-  function set($k,$v)
-  {
-    $this->_REQUEST[$k]=$v;
-  }
+  
 
-  function get($k)
-  {
-    if ($this->check($k))
-    {$v=@$this->_REQUEST[$k];
-    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    return $v;
-    }
-    return "";
-  }
-
-  function getHTML($k)
-  {
-    $v=@$this->_REQUEST[$k];
-    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    // ToDO:Fehlt hier ein stripslashes??
-    return @htmlentities($v);
-
-  }
-
-  function getH ($k)
-  {
-    return $this->getHTML($k);
-  }
-
-
-  function getHBR($k)
-  {
-    $html = nl2br($this->getHTML($k));
-    // Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
-    $html = str_replace (chr(10),"",$html);
-    $html = str_replace (chr(13),"",$html);
-    return $html;
-
-  }
-
-  function getI($k)
-  {
-    global $myPT;
-    return $myPT->codeI($this->get($k));
-    //$v=$this->_REQUEST[$k];
-
-    // if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    //return (int)$v;
-
-  }
-
-  function getD($k,$decimals)
-  {
-
-    $v=$this->_REQUEST[$k];
-    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    $v=sprintf("%01.".$decimals."f",$v);
-    return $v;
-
-  }
-
-  function getURL($k)
-  {
-
-
-    $v=$this->_REQUEST[$k];
-    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    return urlencode($v);
-
-  }
-
-  function getU($k)
-  {
-
-
-    $v=$this->_REQUEST[$k];
-    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    return utf8_encode($v);
-
-  }
-
-  function getS($k)
-  {
-
-    $v=$this->_REQUEST[$k];
-    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    return addslashes($v);
-
-  }
-
-  function getA($k)
-  {
-
-    $v=$this->_REQUEST[$k];
-
-    //if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    $patterns = "/[^a-z0-9A-ZöäüÖÄÜß]*/";
-    $v = preg_replace($patterns,"", $v);
-    return $v;
-
-  }
-
-  function getSQL($k)
-  {
-
-    global $myPT;
-    $v=$this->_REQUEST[$k];
-    // if (ini_get("magic_quotes_gpc")==1){$v=stripslashes($v);}
-    return $myPT->codeSQL($v);
-
-  }
+  
+  
 
 
 
-  function check($k)
-  {
-    if(isset($this->_REQUEST[$k])){return true;}
-    return false;
-  }
-
+ 
   function printR()
   {
     echo "<pre>";
-    print_r ($this->_REQUEST);
+    print_r ($this->_props);
     echo "</pre></br>";
   }
 
   public function getParamsArray()
   {
-    return ($this->_REQUEST);
+    return ($this->_props);
   }
 
   /**
@@ -276,7 +168,7 @@ class PhenotypeRequestStandard
   {
     $hash="";
     $_ignore = Array("PHPSESSID","cache","id","smartURL","smartURLParams","smartParam1","smartParam2","smartParam3","smartParam4","smartParam5","smartParam6","smartParam7","smartParam8","smartParam9","smartParam10");
-    foreach ($this->_REQUEST AS $k => $v)
+    foreach ($this->_props AS $k => $v)
     {
       if (!in_array($k,$_ignore))
       {

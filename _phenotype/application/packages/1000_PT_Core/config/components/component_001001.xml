@@ -13,120 +13,62 @@
 	</meta>
 	<script>&#60;?php 
 &#47;**
- * Richtext component
+ * Richtext
  *
+ * @package phenotype
+ * @subpackage application
  *&#47;
 class PhenotypeComponent_1001 extends PhenotypeComponent
 {
-	var $tool_type = 1001;
+	public $com_id = 1001;
+	public $name = &#34;Richtext&#34;;
+	
 
-	var $bez = &#34;Richtext&#34;;
-
-
-	&#47;**
-	 * With this flag you can turn on and off wether a the editor can distinct between versions of an image
-	 * 
-	 * @var boolean
-	 *&#47;
-	public $selectionOfImageVersions = true;
-
-
-	function setDefaultProperties()
+	public function setDefaultProperties()
 	{
-		&#47;&#47; Setting some default values
-		$this-&#62;set(&#34;img_id&#34;,0);
-		$this-&#62;set(&#34;img_alignment&#34;,&#34;links&#34;); &#47;&#47; unfortunately still in german, meaning &#34;left&#34; ...
-		$this-&#62;set(&#34;linktarget&#34;,&#34;_self&#34;);
-		$this-&#62;set(&#34;version&#34;,0);
+		$this-&#62;set(&#34;_revision&#34;,1);
 	}
 
-	function edit()
-	{
-		$this-&#62;form_textfield(&#34;Headline&#34;,&#34;headline&#34;,$this-&#62;get(&#34;headline&#34;));
-		echo &#34;&#60;br&#47;&#62;&#34;;
-		if ($this-&#62;selectionOfImageVersions)
-		{
-			$this-&#62;form_image(&#34;&#34;,$this-&#62;getI(&#34;img_id&#34;),-1,1,0,0,$this-&#62;get(&#34;img_alt&#34;),$this-&#62;get(&#34;img_align&#34;),2, $this-&#62;get(&#34;version&#34;));
-		}
-		else
-		{
-			$this-&#62;form_image(&#34;&#34;,$this-&#62;getI(&#34;img_id&#34;),-1,1,0,0,$this-&#62;get(&#34;img_alt&#34;),$this-&#62;get(&#34;img_align&#34;),2);
-		}
-	    ?&#62; 
-    	&#60;br&#47;&#62; 
-    	&#60;table width=&#34;408&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34; class=&#34;tableBausteineBackground&#34;&#62; 
-    	&#60;tr&#62;&#60;td nowrap&#62; 
-    	&#60;?php 
-    	$this-&#62;form_richtext(&#34;text&#34;,$this-&#62;get(&#34;text&#34;),80,16);
-    	?&#62; 
-    	&#60;&#47;td&#62;&#60;&#47;tr&#62;&#60;&#47;table&#62; &#60;br&#62; 
-    	&#60;?php 
-    	$this-&#62;form_link(&#34;link&#34;,$this-&#62;get(&#34;linkbez&#34;),$this-&#62;get(&#34;linkurl&#34;),$this-&#62;get(&#34;linktarget&#34;));
-    	?&#62;
-    	&#60;br&#47;&#62;Link-Anchor: #t&#60;?php echo $this-&#62;id ?&#62;
-    	&#60;?php 
-	}
+	
+	public function initForm($context)
+  	{
+  		&#47;&#47; Customize input form with form_xy-methods 
+  		
+  		$this-&#62;form_textfield(&#34;Headline&#34;,&#34;headline&#34;,300);
+  		$this-&#62;form_image_selector(&#34;&#34;,&#34;image1&#34;,&#34;&#34;,true,0,0,0,array(&#34;altandalign&#34;=&#62;true));
+  		$this-&#62;form_richtext(&#34;&#34;,&#34;text&#34;,405,15);
+  		$this-&#62;form_link(&#34;&#34;,&#34;link&#34;);
+  	}
 
-	function update()
-	{
-		&#47;&#47; First do the default property update
-		parent::update();
-		global $myApp;
-
-		&#47;&#47; Then get the property text, which contains the richtext and filter it
-		$richtext = $this-&#62;get(&#34;text&#34;);
-		$richtext = $myApp-&#62;richtext_strip_tags($richtext);
-		$this-&#62;set(&#34;text&#34;,$richtext);
-
-		&#47;&#47; You can change the filtering by inheriting the method richtext_strip_tags in
-		&#47;&#47; your PhenotypeApplication.class (located in _application.inc.php)
-
-		if ($this-&#62;getI(&#34;img_id&#34;)==0)
-		{
-
-		}
-
-	}
-
-
-	function setFullSearch()
-	{
-		$s = $this-&#62;get(&#34;headline&#34;) . &#34;|&#34; . $this-&#62;get(&#34;text&#34;);
-		return ($s);
-	}
-
-	function render($context)
+	public function render($context)
 	{
 
-		&#47;&#47; Notwendig, um die Smartyengine richtig zu initialisieren
+		&#47;&#47; Initialize template access (=>$mySmarty) 
 		eval ($this-&#62;initRendering());
 
 		$template = $TPL_DEFAULT;
 
 		switch ($this-&#62;get(&#34;img_align&#34;))
 		{
-			case &#34;links&#34;:
+			case &#34;left&#34;:
 				$style = &#34;float:left&#34;;
 				break;
 
-			case &#34;rechts&#34;:
+			case &#34;right&#34;:
 				$style = &#34;float:right&#34;;
 				break;
 
-			case &#34;mittig&#34;:
+			case &#34;center&#34;:
 				$style = &#34;&#34;;
 				break;
 		}
 
 
-
-		if ($this-&#62;get(&#34;img_id&#34;)!=0)
+		if ($this-&#62;getI(&#34;image1_img_id&#34;)!=0)
 		{
-			$alt = $this-&#62;get(&#34;alt&#34;);
-			$myImg = new PhenotypeImage($this-&#62;get(&#34;img_id&#34;));
+			$myImg = new PhenotypeImage($this-&#62;get(&#34;image1_img_id&#34;));
 			$myImg-&#62;style = $style;
-
-			$mySmarty-&#62;assign(&#34;image&#34;,$myImg-&#62;render($alt, $this-&#62;get(&#34;version&#34;)));
+			$mySmarty-&#62;assign(&#34;image&#34;,$myImg-&#62;render($this-&#62;get(&#34;image1_alt&#34;)));
 		}
 
 		$mySmarty-&#62;assign(&#34;headline&#34;,$this-&#62;get(&#34;headline&#34;));
@@ -150,11 +92,20 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		$mySmarty-&#62;assign(&#34;link&#34;,$link);
 
 		return $mySmarty-&#62;fetch($template);
-
+	}
+	
+	public function setFullSearch()
+	{
+		$s = $this-&#62;get(&#34;headline&#34;) . &#34;|&#34; . $this-&#62;get(&#34;text&#34;);
+		return ($s);
+	}
+	
+	public function getEditLabel()
+	{
+		return ($this-&#62;name.&#34; (#&#34;.$this-&#62;id.&#34;)&#34;);
 	}
 
-}
- ?&#62;</script>
+}</script>
 	<templates>
 <template access="TPL_DEFAULT">&#60;div class=&#34;richtext&#34;&#62;
 &#60;a name=&#34;t{$id}&#34;&#62;&#60;&#47;a&#62;
@@ -166,7 +117,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description>## Default Component Group</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

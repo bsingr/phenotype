@@ -50,6 +50,14 @@ class PhenotypeDocument extends PhenotypeDocumentStandard {}
  */
 class PhenotypeMediaobject extends PhenotypeMediaObjectStandard  {}
 
+
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
+class PhenotypeMediabase extends PhenotypeMediabaseStandard  {}
+
 /**
  * @package phenotype
  * @subpackage application

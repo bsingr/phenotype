@@ -1836,11 +1836,11 @@ function initoid()
 		$sql_cond = "";
 		if ($myRequest->get("s")!="")
 		{
-			$sql_cond = " med_bez LIKE '%" . $myRequest->getS("s") ."%'";
+			$sql_cond = " med_bez LIKE '%" . $myRequest->getSQL("s") ."%'";
 		}
 		if ($myRequest->get("v")!="")
 		{
-			$sql_cond2 = " (med_bez LIKE '%" . $myRequest->getS("v") ."%' OR med_keywords LIKE '%" . $myRequest->getS("v") ."%' OR med_comment LIKE '%" . $myRequest->getS("v") ."%')";
+			$sql_cond2 = " (med_bez LIKE '%" . $myRequest->getSQL("v") ."%' OR med_keywords LIKE '%" . $myRequest->getSQL("v") ."%' OR med_comment LIKE '%" . $myRequest->getSQL("v") ."%')";
 			if ($sql_cond!=""){$sql_cond.= " AND " .$sql_cond2;}else{$sql_cond=$sql_cond2;}
 		}
 		if ($myRequest->get("i")!="")

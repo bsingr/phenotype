@@ -593,10 +593,17 @@ class PhenotypeMediabaseStandard
 		}
 	}
 
-	function importImageFromUrl($logical_folder, $url, $mimetype = "", $img_id = -1,$physical_folder)
+	function importImageFromUrl($logical_folder, $url, $mimetype = "", $img_id = -1,$title="", $physical_folder)
 	{
 		global $myDB;
 
+		
+		if (!GetImageSize($url))
+		{
+			return false;
+		}
+
+		
 		$action = "append";
 
 		if ($img_id != -1)
@@ -613,7 +620,7 @@ class PhenotypeMediabaseStandard
 			$action = "insert";
 		}
 		$logical_folder = $this->rewriteFolder($logical_folder);
-		$p = strrpos($url, "/");
+		$p = strrpos((str_replace('\\','/',$url)), "/");
 		if ($p)
 		{
 			$dateiname_original = substr($url, $p +1);
@@ -622,9 +629,32 @@ class PhenotypeMediabaseStandard
 		{
 			return false;
 		}
+		
+		if ($mimetype!="")
+		{
+			switch ($mimetype)
+			{
+				case "image/jpeg":
+					$suffix="jpg";
+					break;
+				case "image/png":
+					$suffix="png";
+					break;
+				case "image/gif":
+					$suffix="gif";
+					break;
+			}
+		}
 
+		
+		
+		if ($title=="")
+		{
+			$title = $dateiname_original;
+		}
+		
 		$mySQL = new SQLBuilder();
-		$mySQL->addField("med_bez", $dateiname_original);
+		$mySQL->addField("med_bez", $title);
 		$mySQL->addField("grp_id", $this->grp_id);
 		$mySQL->addField("med_bez_original", $dateiname_original);
 		$mySQL->addField("med_logical_folder1", $logical_folder);
@@ -776,7 +806,7 @@ class PhenotypeMediabaseStandard
 		}
 
 		$logical_folder = $this->rewriteFolder($logical_folder);
-		$p = strrpos($url, "/");
+		$p = strrpos((str_replace('\\','/',$url)), "/");
 		if ($p)
 		{
 			$dateiname_original = substr($url, $p +1);
@@ -785,7 +815,7 @@ class PhenotypeMediabaseStandard
 		{
 			return false;
 		}
-
+		
 
 		if ($title=="")
 		{
@@ -1221,7 +1251,7 @@ class PhenotypeMediabaseStandard
 		<group>
 			<grp_id>'.$row["grp_id"].'</grp_id>
 			<grp_bez>'.$myPT->codeX($row["grp_bez"]).'</grp_bez>
-			<grp_description>'.$myPT->codeX($row["grp_desc"]).'</grp_description>
+			<grp_description>'.$myPT->codeX($row["grp_description"]).'</grp_description>
 			<grp_type>'.$myPT->codeX($row["grp_type"]).'</grp_type>
 		 </group>';
 		}

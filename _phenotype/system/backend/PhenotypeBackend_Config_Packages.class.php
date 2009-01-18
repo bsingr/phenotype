@@ -363,12 +363,12 @@ class PhenotypeBackend_Config_Packages_Standard extends PhenotypeBackend_Config
 	    		$script = '<?php
 	class PhenotypePackage extends PhenotypePackageStandard
 	{
-		public $bez = "'.$myRequest->getS("title").'";
-		public $packagefolder = "'.$myRequest->getS("folder").'";
+		public $bez = "'.$myRequest->getAC("title").'";
+		public $packagefolder = "'.$myRequest->getAC("folder").'";
 		
 		function getDescription()
 		{
-			return ("'.$myRequest->getS("desc").'");
+			return ("'.$myRequest->getAC("desc","ABCDEFGHIJKLMNOPQRSTUVWXYZÖÄÜßabcdefghijklmnopqrstuvwxyzöäü!.?X,;".PHP_EOL).'");
 		}
 	}
 	?>';

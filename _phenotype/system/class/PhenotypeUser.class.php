@@ -320,7 +320,7 @@ class PhenotypeUserStandard
 		<role>
 			<rol_id>'.$row["rol_id"].'</rol_id>
 			<rol_bez>'.$myPT->codeX($row["rol_bez"]).'</rol_bez>
-			<rol_description>'.$myPT->codeX($row["rol_desc"]).'</rol_description>
+			<rol_description>'.$myPT->codeX($row["rol_description"]).'</rol_description>
 			<rol_rights>'.base64_encode($row["rol_rights"]).'</rol_rights>
 		</role>';
 		}

@@ -1425,6 +1425,7 @@ class PhenotypePageStandard extends PhenotypeBase
 			$myDB->setNextContext("Pagescript:");
 			$scriptname = APPPATH . "pagescripts/" .  sprintf("%04.0f", $this->id) . "_" . sprintf("%04.0f", $this->ver_id) . ".inc.php";
 			$myPT->startbuffer();
+			global $myPT, $myDB, $myPage, $myRequest, $myLog;
 			require($scriptname);
 			$html .= $myPT->stopbuffer();
 		}
@@ -1874,7 +1875,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		<group>
 			<grp_id>'.$row["grp_id"].'</grp_id>
 			<grp_bez>'.$myPT->codeX($row["grp_bez"]).'</grp_bez>
-			<grp_description>'.$myPT->codeX($row["grp_desc"]).'</grp_description>
+			<grp_description>'.$myPT->codeX($row["grp_description"]).'</grp_description>
 			<grp_statistic>'.$myPT->codeX($row["grp_statistic"]).'</grp_statistic>
 		  <grp_multilanguage>'.$myPT->codeX($row["grp_multilanguage"]).'</grp_multilanguage>
 		  <grp_smarturl_schema>'.$myPT->codeX($row["grp_smarturl_schema"]).'</grp_smarturl_schema>

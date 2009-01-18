@@ -11,60 +11,48 @@
 	<script>&#60;?php
 &#47;**
  * HTML component
+ * 
+ * @package phenotype
+ * @subpackage application
  *
  *&#47;
 class PhenotypeComponent_1002 extends PhenotypeComponent
 {
-	var $tool_type = 1002;
-	var $bez = &#34;HTML&#34;;
+	public $com_id = 1002;
+	public $name = &#34;HTML&#34;;
 
-	function setDefaultProperties()
+	public function setDefaultProperties()
 	{
-		$this-&#62;set(&#34;html&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;_revision&#34;,1);
 	}
-
-	function edit()
-	{
-
-		$this-&#62;form_html(&#34;html&#34;,$this-&#62;get(&#34;html&#34;),80,15);
-	}
-
-
-	function setFullSearch()
-	{
-		$s = $this-&#62;get(&#34;html&#34;);
-		&#47;&#47; Alle Tags entfernen
-		$s = ereg_replace(&#34;&#60;[^&#62;]*&#62;&#34;,&#34;&#34;,$s);
-		return ($s);
-	}
-
-	function update()
-	{
-		&#47;&#47; First do the default property update
-		parent::update();
-		global $myAdm;
-
-		$html = $this-&#62;get(&#34;html&#34;);
-		$html = $myAdm-&#62;decodeRequest_HTMLArea($html);
-		$this-&#62;set(&#34;html&#34;,$html);
-	}
-
-
-	function render($context)
+	
+  	public function initForm($context)
+  	{
+ 		&#47;&#47; Customize input form with form_xy-methods 
+ 	
+    	$this-&#62;form_html(&#34;&#34;,&#34;html&#34;,405,15);
+  	}
+	
+	public function render($context)
 	{
 		$html = $this-&#62;get(&#34;html&#34;);
 
 		&#47;&#47; Remove PHP-Tags so nobody can insert code
-
 		$html = ereg_replace(&#34;&#60;\?[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; matching normal and short opening tags
 		$html = ereg_replace(&#34;&#60;\%[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; matching ASP-style tags
-
 
 		return $html;
 	}
 
-
-	function displayXML()
+	public function setFullSearch()
+	{
+		$s = $this-&#62;get(&#34;html&#34;);
+		&#47;&#47; Remove all tags
+		$s = ereg_replace(&#34;&#60;[^&#62;]*&#62;&#34;,&#34;&#34;,$s);
+		return ($s);
+	}	
+	
+	public function displayXML()
 	{
   	?&#62;
   	&#60;component com_id=&#34;1002&#34; type=&#34;HTML&#34;&#62;
@@ -75,14 +63,13 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
   	&#60;?php 
   	return true;
 	}
-}
- ?&#62;</script>
+}</script>
 	<templates>
    	</templates>
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description>## Default Component Group</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

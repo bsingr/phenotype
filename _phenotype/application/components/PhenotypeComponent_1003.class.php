@@ -1,56 +1,47 @@
-<? 
+<?php
 /**
  * Include component
  * 
  * This component enables an editor to insert (include) functionalities within pages.
  * 
  * The editor also determines the caching behaviour of the selected include.
- *
+ * 
+ * @package phenotype
+ * @subpackage application
  *
  */
 class PhenotypeComponent_1003 extends PhenotypeComponent
 {
 
-	var $tool_type = 1003;
+	var $com_id = 1003;
+	var $name = "Include (Function)";
 
-	var $bez="Include (Function)";
 
-
-	function setDefaultProperties()
+	public function setDefaultProperties()
 	{
-		$this->set("inc_id","0");
-		$this->set("cache","1");
+		$this->set("_revision",1);
+		$this->set("cache",1);
 	}
 
-	function edit()
-	{
+	
+	public function initForm($context)
+  	{
 		global $myDB;
-    ?><select name="<?=$this->formid?>inc_id" class="input" style="width:300px"> 
-      <option value="0">...</option> 
-      <? 
-      $sql = "SELECT * FROM include WHERE inc_usage_includecomponent = 1 ORDER BY inc_rubrik,inc_bez";
-      $rs = $myDB->query($sql);
-      while ($row=mysql_fetch_array($rs))
-      {
-      	$selected = "";
-      	if ($row["inc_id"]==$this->get("inc_id")){$selected = "selected";}
-      ?> 
-      <option <?=$selected?> value="<?=$row["inc_id"]?>"><?=$row["inc_rubrik"].": ".$row["inc_bez"]?></option> 
-      <? 
-      }
-      ?> 
-      </select><br>Cache<br>
-      <select name="<?=$this->formid?>cache" class="input" style="width:140px"> 
-      <option value="1" >with page</option>
-      <option value="0" <?if ($this->get("cache")=="0"){echo "selected";}?>>never</option>
-      <option value="2" <?if ($this->get("cache")=="2"){echo "selected";}?>>Request parameter hash</option>     <?
-	}
+		
+   	   	$sql = "SELECT inc_id, inc_rubrik, inc_bez FROM include WHERE inc_usage_includecomponent = 1 ORDER BY inc_rubrik,inc_bez";
+      	$rs = $myDB->query($sql);
+      	$_options = Array();
+      	while ($row=mysql_fetch_assoc($rs))
+     	{
+      		$_options[$row["inc_id"]]=$row["inc_rubrik"].": ".$row["inc_bez"];
+      	}
+      	$this->form_selectbox("","inc_id",$_options);
+      	$_options = Array(1=>"With Page",2=>"Never",3=>"Request Parameter Hash");
+      	$this->form_selectbox("Cache","cache",$_options,false);
+  	}
 
-	function render($context)
+	public function render($context)
 	{
-		// Notwendig, um die Smartyengine richtig zu initialisieren
-		eval ($this->initRendering());
-
 		global $myPage;
 
 		$html = "";
@@ -82,7 +73,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
 					case 2:
 						$html = '<?php $myPage->includenocache=1?>';// Notwendig fuer Content-Statistik
 						$html .= '<?php $myDB->setNextContext("Include '.$inc_id.':");?>';
-						$html .= '<?php $myPT->executeInclude('.$inc_id.',true,$context);?>';
+						$html .= '<?php $myPT->executeInclude('.$inc_id.',true,'.$context.');?>';
 						$html .= '<?php $myPage->includenocache=0?>';
 						break;
 					default:
@@ -97,7 +88,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
 		return $html;
 	}
 
-	function displayXML($style=1)
+	public function displayXML($style=1)
 	{
 		global $myPage;
        ?>
@@ -140,4 +131,3 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
      return true;
 	}
 }
-?>

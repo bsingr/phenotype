@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -23,8 +23,26 @@
  * @subpackage system
  *
  */
-class PhenotypeComponentStandard
+class PhenotypeComponentStandard extends PhenotypeBase
 {
+	/**
+	 * Unique Page Component Identifier
+	 *
+	 */
+	public $com_id = 0;
+	
+	/**
+	 * Page Component Name
+	 *
+	 */
+	public $name="";
+	
+	/**
+	 * old component identifier, please use com_id instead
+	 *
+	 * 
+	 * @var integer
+	 */
 	var $tool_type;
 
 	var $id; // Datensatz-ID
@@ -35,13 +53,19 @@ class PhenotypeComponentStandard
 	var $bez;
 	var $visible;
 
-	var $props = Array();
-
 	var $myLayout = -1; // Layoutobjekt muss on Demand initalisiert werden
 
 	var $formid;
 
 	var $loaded = 0;
+
+
+	/**
+	 * Array with information about the editing form
+	 *
+	 * @var Array
+	 */
+	private $_form = Array ();
 
 
 	function setDefaultProperties()
@@ -61,7 +85,7 @@ class PhenotypeComponentStandard
 		$this->visible =$row["dat_visible"];
 		if ($row["dat_comdata"]!="")
 		{
-			$this->props = unserialize($row["dat_comdata"]);
+			$this->_props = unserialize($row["dat_comdata"]);
 		}
 		else
 		{
@@ -69,9 +93,30 @@ class PhenotypeComponentStandard
 		}
 	}
 
+	/**
+	 * to be implemented by application classes
+	 *
+	 * @param integer $context
+	 */
+	public function initForm($context)
+	{
+
+	}
 
 	public function __construct($id = -1)
 	{
+		// internally we use tool_type and bez instead of com_id and name
+		// TODO: accomplish new variable names		
+		if ((int)($this->com_id)!=0)
+		{
+			$this->tool_type = (int)($this->com_id);
+		}
+		if ($this->name!="")
+		{
+			$this->bez = $this->name;
+		}
+		// -- //
+		
 		$id = (int) $id;
 		if ($id != -1)
 		{
@@ -97,102 +142,46 @@ class PhenotypeComponentStandard
 		}
 	}
 
-	function set($bez,$val)
-	{
-		$this->props[$bez] = $val;
-		//print_r ($this->props);
-	}
 
-	function clear($bez)
-	{
-		unset($this->props[$bez]);
-	}
+	/**
+	 * 
 
-	// Setzt den Wert aus dem Formular
-	function fset($bez,$val="")
+	 *
+	 * @param unknown_type $bez
+	 * @param unknown_type $val
+	 */
+	function fset($property)
 	{
-		if ($val==""){$val=$bez;}
-		$this->props[$bez] = @stripslashes($_REQUEST[$this->formid . $val]);
-		//print_r ($this->props);
+		global $myRequest;
+		$formname = $this->formid . $property;
+		echo $formname;
+		$this->set($property,$myRequest->get($formname));
 	}
 
 
-	function get ($bez)
+
+	/**
+	 * 
+	 *
+	 * @param string name of the form field to be fetched (without formid)
+	 * @return mixed
+	 */
+	function fget($property)
 	{
-		return @($this->props[$bez]);
-		//return @stripslashes($this->props[$bez]);
+		global $myRequest;
+		$formname = $this->formid . $property;
+		return $myRequest->get($formname);
 	}
 
 
-	function fget($val)
-	{
-		return @stripslashes($_REQUEST[$this->formid . $val]);
-		//print_r ($this->props);
-	}
-
-	// veraltet
-	function getQ ($bez)
-	{
-		return ereg_replace('"',"&quot;",stripslashes($this->props[$bez]));
-	}
-
-	function getHTML ($bez)
-	{
-		return @htmlentities(stripslashes($this->props[$bez]));
-	}
-
-	function getH ($bez)
-	{
-		return $this->getHTML($bez);
-	}
-
-	function getHBR ($bez)
-	{
-		$html = nl2br($this->getHTML($bez));
-		// Falsch fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
-		$html = str_replace (chr(10),"",$html);
-		$html = str_replace (chr(13),"",$html);
-		return ($html);
-	}
-
-	function getI ($bez)
-	{
-		return @(int)($this->props[$bez]);
-		//return @stripslashes($this->props[$bez]);
-	}
-
-	function getD ($bez,$decimals)
-	{
-		return sprintf("%01.".$decimals."f",@($this->props[$bez]));
-	}
 
 
-	function getURL($bez)
-	{
-		return @ urlencode($this->props[$bez]);
-	}
 
-	function getU($bez)
-	{
-		return @ utf8_encode($this->props[$bez]);
-	}
 
-	function getX($bez)
-	{
-		global $myPT;
-		$s = @ $this->props[$bez];
-		return ($myPT->codeX($s));
-		/*
-		$s = str_replace("&","&#38;",$s);
-		$s = str_replace("<","&#60;",$s);
-		$s = str_replace(">","&#62;",$s);
-		$s = str_replace("'","&#39;",$s);
-		$s = str_replace('"',"&#34;",$s);
-		$s = str_replace('/',"&#47;",$s);
 
-		return $s;
-		*/
-	}
+
+
+
 
 	// Nur aus dem Backend heraus verwendbar
 	function addnew($pag_id,$ver_id,$dat_id_content,$block_nr,$dat_id=0)
@@ -239,7 +228,7 @@ class PhenotypeComponentStandard
 		$mySQL->addField("dat_editbuffer",1);
 		$mySQL->addField("dat_visible",$this->visible);
 		$mySQL->addField("com_id",$this->tool_type);
-		$s = serialize($this->props);
+		$s = serialize($this->_props);
 		$mySQL->addField("dat_comdata",$s);
 		$sql = $mySQL->insert("sequence_data");
 		$myDB->query($sql);
@@ -295,32 +284,18 @@ class PhenotypeComponentStandard
 		$myDB->query($sql);
 	}
 
-	function edit()
-	{
 
+	function edit($context)
+	{
+		$this->displayEditForm($context);
 	}
 
-	/**
-	 * Default update function, simply transferring all request properties into
-	 * the component object property array. No postprocessing at all
-	 *  
-	 */
-	function update()
+
+	function update($context)
 	{
-		global $myRequest;
-		
-		$prefix ="com_".$this->id."_";
-		$l = strlen($prefix);
-		
-		foreach ($_REQUEST as $k=>$v)
-		{
-			if (substr($k,0,$l)==$prefix)
-			{
-				$prop = substr($k,$l);
-				$this->set($prop,$myRequest->get($k));
-			}
-		}
+		$this->fetchEditForm($context);
 	}
+
 
 	function renderXML()
 	{
@@ -350,7 +325,7 @@ class PhenotypeComponentStandard
 	<component com_id="<?php echo $this->tool_type ?>" type="<?php echo $myPT->xmlencode($this->bez) ?>">
 	<content>
 	<?php
-	foreach ($this->props AS $k=>$v)
+	foreach ($this->_props AS $k=>$v)
 	{
 		$k = $myPT->xmlencode($k);
 		$v = $myPT->xmlencode($v);
@@ -374,7 +349,7 @@ class PhenotypeComponentStandard
 	function store()
 	{
 		global $myDB;
-		$s = serialize($this->props);
+		$s = serialize($this->_props);
 		$mySQL = new SQLBuilder();
 		$mySQL->addField("dat_comdata",$s);
 		$mySQL->addField("dat_fullsearch",$this->setFullSearch());
@@ -409,143 +384,653 @@ class PhenotypeComponentStandard
 	return $code;
 	}
 
-	function form_textfield($bez,$name,$val,$x=300)
+	function displayEditForm($context=0)
 	{
+		$this->initForm();
+		for ($i = 0; $i < count($this->_form); $i ++)
+		{
+			$_fconfig = $this->_form[$i];
+			if (array_key_exists("form_method",$_fconfig))
+			{
+				$methodname = "_".$_fconfig["form_method"]."_display";
+				if (method_exists($this,$methodname))
+				{
+					$this->$methodname($_fconfig);
+				}
+				else
+				{
+					throw new Exception($_fconfig["form_method"] ." implemented imperfectly. Missing display method: ".$methodname);
+				}
+			}
+		}
+	}
+
+	function fetchEditForm($context=0)
+	{
+		global $myPT;
+		$this->initForm($context);
+		for ($i = 0; $i < count($this->_form); $i ++)
+		{
+			$_fconfig = $this->_form[$i];
+			if (array_key_exists("form_method",$_fconfig))
+			{
+				$methodname = "_".$_fconfig["form_method"]."_fetch";
+				if (method_exists($this,$methodname))
+				{
+					$this->$methodname($_fconfig);
+				}
+				else
+				{
+					throw new Exception($_fconfig["form_method"] ." implemented imperfectly. Missing update method: ".$methodname);
+				}
+			}
+		}
+	}
+
+	public function form_textfield($title, $property, $width)
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_textfield",
+		"property" =>$property,
+		"title" =>$title,
+		"width" =>$width
+		);
+	}
+
+	private function _form_textfield_display($_fconfig)
+	{
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$width = $_fconfig["width"];
+
 		if ($this->myLayout==-1)
 		{
 			$this->myLayout = new PhenotypeAdminLayout();
 		}
-		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_text($bez,$name,$val,$x);
+		$formname = $this->formid . $property;
+		echo $this->myLayout->workarea_form_text($title,$formname,$this->get($property),$width);
 	}
 
+	private function _form_textfield_fetch($_fconfig)
+	{
+		$property = $_fconfig["property"];
+		$this->set($property,$this->fget($property));
+	}
+
+	public function form_textarea($title, $property, $width, $rows)
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_textarea",
+		"property" =>$property,
+		"title" =>$title,
+		"width" =>$width,
+		"rows" =>$rows
+		);
+	}
+
+	private function _form_textarea_display($_fconfig)
+	{
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$width = $_fconfig["width"];
+		$rows = $_fconfig["rows"];
+
+		if ($this->myLayout==-1)
+		{
+			$this->myLayout = new PhenotypeAdminLayout();
+		}
+		$formname = $this->formid . $property;
+		echo $this->myLayout->workarea_form_textarea($title,$formname,$this->get($property),$rows,$width);
+	}
+
+	private function _form_textarea_fetch($_fconfig)
+	{
+		$property = $_fconfig["property"];
+		$this->set($property,$this->fget($property));
+	}
+
+	public function form_selectbox($title, $property, $_options, $addzerodots=true)
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_selectbox",
+		"property" =>$property,
+		"title" =>$title,
+		"options"=>$_options,
+		"addzerodots" =>(boolean)$addzerodots
+		);
+	}
+
+	private function _form_selectbox_display($_fconfig)
+	{
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$addzerodots = $_fconfig["addzerodots"];
+		$_options = $_fconfig["options"];
+
+		$options="";
+		if ($addzerodots==true){$options ='<option value="0">...</option>';}
+		foreach ($_options as $key => $val)
+		{
+			$selected = "";
+			if ($key == $this->get($property))
+			{
+				$selected = ' selected="selected"';
+			}
+			$options .='<option value="'.codeH($key).'"'. $selected .'>'.codeH($val).'</option>';
+		}
+
+		$formname = $this->formid . $property;
+		echo codeH($title).'<br/><select name="'.$formname.'" class="listmenu">'.$options."</select><br/>";
+	}
+
+
+	private function _form_selectbox_fetch($_fconfig)
+	{
+		$property = $_fconfig["property"];
+		$this->set($property,$this->fget($property));
+	}
+
+
+
+	public function form_link($title, $property, $link_title=true, $link_target=true, $link_pageselector=false, $link_text=false, $link_popup=false, $link_source=false, $link_type=false, $link_type_options=Array())
+	{
+
+		$_options = Array(
+		"link_title"=>$link_title,
+		"link_target"=>$link_target,
+		"link_pageselector"=>$link_pageselector,
+		"link_text"=>$link_text,
+		"link_popup"=>$link_popup,
+		"link_source"=>$link_source,
+		"link_type"=>$link_type,
+		"link_type_options"=>$link_type_options);
+
+		$this->_form[] = array(
+		"form_method" =>"form_link",
+		"property" =>$property,
+		"title" =>$title,
+		"options"=>$_options
+		);
+	}
+
+	private function _form_link_display($_fconfig)
+	{
+
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$addzerodots = $_fconfig["addzerodots"];
+		$_options = $_fconfig["options"];
+
+
+		//if ($_options["link_title"]!==false){$linktitle = $this->get($property."_title");}else{$linktitle=false;}
+		//if ($_options["link_target"]!==false){$target = $this->get($property."_target");}else{$target=false;}
+		
+		if ($_options["link_text"]!==false){$linktext = $this->get($property."_text");}else{$linktext=false;}
+		if ($_options["link_popup"]!==false){$popup_x = $this->get($property."_x");$popup_y = $this->get($property."_y");}else{$popup_x=false;$popup_y=false;}
+		if ($_options["link_source"]!==false){$linksource = $this->get($property."_source");}else{$linksource=false;}
+		if ($_options["link_type"]!==false){$linktype = $this->get($property."_type");$linktype_options=$_options["link_type_options"];}else{$linktype=false;$linktype_options=false;}
+		$pageselector = $_options["link_pageselector"];
+
+
+		if ($this->myLayout==-1)
+		{
+			$this->myLayout = new PhenotypeAdminLayout();
+		}
+		$formname = $this->formid . $property;
+
+		if ($title!="")
+		{
+			echo codeH($title);
+		}
+		echo '<br/>';
+		echo $this->myLayout->workarea_form_link($formname,$this->get($property."_name"), $this->get($property."_url"), $this->get($property."_target"),$linktext,$linksource,$popup_x,$popup_y,$linktype,$linktype_options,$pageselector);
+
+	}
+
+	private function _form_link_fetch($_fconfig)
+	{
+		$property = $_fconfig["property"];
+		$_options = $_fconfig["options"];
+		$formname = $this->formid . $property;
+		
+		$this->set($property."_name",$this->fget($property."bez"));
+		$this->set($property."_url",$this->fget($property."url"));
+		$this->set($property."_target",$this->fget($property."target"));
+		
+		/*
+		if ($_options["link_title"]!==false){$this->set($property."_title",$this->get($property."_linkbez"));}else{$this->clear($property."_title");}
+		if ($_options["link_target"]!==false){$this->fset($property."_target");}else{$this->clear($property."_target");}
+		if ($_options["link_text"]!==false){$this->fset($property."_text");}else{$this->clear($property."_text");}
+		if ($_options["link_popup"]!==false){$this->fset($property."_x");$this->set($property."_y");}else{$this->clear($property."_x");$this->clear($property."_y");}
+		if ($_options["link_source"]!==false){$this->fset($property."_source");}else{$this->clear($property."_source");}
+		if ($_options["link_type"]!==false){$this->fset($property."_type");}else{$this->clear($property."_type");}
+		*/
+
+	}
+
+	/*
+	function form_link($name,$bez,$url,$target)
+	{
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
+	}
+	$name = $this->formid . $name;
+	echo $this->myLayout->workarea_form_link($name,$bez,$url,$target);
+	}*/
+
+	public function form_richtext($title, $property, $width, $rows, $filter = 1)
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_richtext",
+		"property" =>$property,
+		"title" =>$title,
+		"width" =>(int)$width,
+		"rows" =>(int)$rows,
+		"filter"=>(boolean)$filter,
+		);
+	}
+
+	private function _form_richtext_display($_fconfig)
+	{
+		global $myApp;
+
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$width = $_fconfig["width"];
+		$rows = $_fconfig["rows"];
+		$filter = $_fconfig["filter"];
+
+
+		if ($this->myLayout==-1)
+		{
+			$this->myLayout = new PhenotypeAdminLayout();
+		}
+		$formname = $this->formid . $property;
+		if ($title!="")
+		{
+			echo codeH($title);
+		}
+		echo '<br/>';
+		$this->myLayout->form_Richtext($formname,$myApp->richtext_prefilter($this->get($property),$this),$width,$rows);
+		echo '<br/>';
+
+	}
+
+	private function _form_richtext_fetch($_fconfig)
+	{
+		global $myApp;
+		$property = $_fconfig["property"];
+		$filter = $_fconfig["filter"];
+		$richtext = $this->fget($property);
+		if ($filter==true)
+		{
+			$richtext = $myApp->richtext_strip_tags($richtext);
+		}
+		$richtext = $myApp->richtext_postfilter($richtext,$this);
+		$this->set($property,$richtext);
+	}
+
+	/*
+	function form_richtext($name,$val,$cols=80,$rows=10)
+	{
+	global $myLayout;
+	global $myApp;
+	$name = $this->formid . $name;
+	$myLayout->form_Richtext($name,$myApp->richtext_prefilter($val),$cols,$rows);
+	}*/
+
+	public function form_html($title, $property, $width, $rows)
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_html",
+		"property" =>$property,
+		"title" =>$title,
+		"width" =>(int)$width,
+		"rows" =>(int)$rows
+		);
+	}
+
+	private function _form_html_display($_fconfig)
+	{
+		global $myApp;
+
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$width = $_fconfig["width"];
+		$rows = $_fconfig["rows"];
+
+		$filename_bak = TEMPPATH ."htmlarea/~" . uniqid("") . ".tmp";
+		$fp = fopen ($filename_bak,"w");
+		fputs($fp,$this->get($property));
+		fclose ($fp);
+		@chown ($filename_bak,UMASK);
+
+		if ($this->myLayout==-1)
+		{
+			$this->myLayout = new PhenotypeAdminLayout();
+		}
+		$formname = $this->formid . $property;
+		if ($title!="")
+		{
+			echo codeH($title);
+		}
+		echo '<br/>';
+		$this->myLayout->form_HTMLTextarea($formname,$filename_bak,80,$rows,$mode="HTML",$width);
+		echo '<br/>';
+		unlink ($filename_bak);
+	}
+
+	private function _form_html_fetch($_fconfig)
+	{
+		global $myAdm;
+
+		$property = $_fconfig["property"];
+		$html = $this->fget($property);
+		$html = $myAdm->decodeRequest_HTMLArea($html);
+		$this->set($property,$html);
+	}
+
+	public function form_imageupload($title,$property,$path="_upload",$grp_id=2)
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_imageupload",
+		"property" =>$property,
+		"title" =>$title,
+		"path"=>$path,
+		"grp_id"=>(int)$grp_id
+		);
+	}
+
+	private function _form_imageupload_display($_fconfig)
+	{
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$img_id= $this->getI($property."_img_id");
+		$alt= $this->get($property."_alt");
+		$align= $this->get($property."_align");
+
+
+		if ($this->myLayout==-1)
+		{
+			$this->myLayout = new PhenotypeAdminLayout();
+		}
+		$formname = $this->formid . $property;
+		if ($title!="")
+		{
+			echo codeH($title);
+		}
+		echo '<br/>';
+		echo $this->myLayout->workarea_form_imageupload($formname,$img_id,$alt,$align);
+	}
+
+	private function _form_imageupload_fetch($_fconfig)
+	{
+		$property = $_fconfig["property"];
+		$path = $_fconfig["path"];
+		$grp_id = $_fconfig["grp_id"];
+		$formname = $this->formid . $property;
+		
+		
+		// this "conversion" is necessary, since the old Phenotye workarea-functions doesnt't have stringent form field namings
+		
+		$this->set($property."_img_id",$this->fget($property."img_id"));
+		$this->set($property."_alt",$this->fget($property."img_alt"));
+		$this->set($property."_align",$this->fget($property."align"));
+		
+		if (isset($_FILES[$formname."userfile"]))
+		{
+			$_file = $_FILES[$formname."userfile"];
+			if ($_file["error"]!=UPLOAD_ERR_NO_FILE)
+			{
+				$myMB = new PhenotypeMediabase();
+				$myMB->setMediaGroup($grp_id);
+				$img_id = $myMB->importImageFromUrl($path,$_file["tmp_name"],$_file["type"],-1,$_file["name"]);
+				if ($img_id!=false)
+				{
+					$this->set($property."_img_id",(int)$img_id);
+				}
+				else
+				{
+					$this->set($property."_img_id",0);
+				}
+				@unlink ($_file["tmp_name"]);
+			}
+			
+		}
+		
+
+		
+	}
+
+
+
+
+	/*
+	private function form_html_display($_fconfig)
+	{
+	global $myLayout;
+	$name = $this->formid . $name;
+	$filename_bak = TEMPPATH ."htmlarea/~" . uniqid("") . ".tmp";
+	$fp = fopen ($filename_bak,"w");
+	fputs($fp,$val);
+	fclose ($fp);
+	@chown ($filename_bak,UMASK);
+	$myLayout->form_HTMLTextarea($name,$filename_bak,$cols,$rows,$mode="HTML",410);
+	unlink ($filename_bak);
+	}
+	*/
+
+
+	/*	function form_textfield($bez,$name,$val,$x=300)
+	{
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
+	}
+	$name = $this->formid . $name;
+	echo $this->myLayout->workarea_form_text($bez,$name,$val,$x);
+	}*/
+	/*
 	function form_textarea($bez,$name,$val,$r=6,$x=395)
 	{
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_textarea($bez,$name,$val,$r,$x);
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
 	}
-
+	$name = $this->formid . $name;
+	echo $this->myLayout->workarea_form_textarea($bez,$name,$val,$r,$x);
+	}
+	*/
+	/*
 	function form_select($bez,$name,$options,$x=200,$br=1)
 	{
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_select($bez,$name,$options,$x,$br);
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
 	}
+	$name = $this->formid . $name;
+	echo $this->myLayout->workarea_form_select($bez,$name,$options,$x,$br);
+	}*/
 
 
+	/*
 	function iconbar_new()
 	{
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$this->myLayout->iconbar_new();
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
+	}
+	$this->myLayout->iconbar_new();
 	}
 
 	function iconbar_addEntry($url1,$url2,$val,$alt="")
 	{
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$this->myLayout->iconbar_addEntry($url1,$url2,$val,$alt);
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
+	}
+	$this->myLayout->iconbar_addEntry($url1,$url2,$val,$alt);
 	}
 
 	function form_iconbar($name,$val)
 	{
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
+	}
+	$name = $this->formid . $name;
+	$this->myLayout->iconbar_draw($name,$val,"editform");
+	}
+	*/
+
+
+	public function form_image_selector($title, $property, $folder="", $changefolder = true, $x = 0, $y = 0,$grp_id=0,$_options=Array())
+	{
+		$folder=trim($folder);
+		if ($folder==""){$folder=-1;}
+		$_defaultoptions = Array(
+		"versionselect"=>false,
+		"altandalign"=>false
+		);
+		$_options = array_merge($_defaultoptions,$_options);
+		$this->_form[] = array(
+		"form_method" =>"form_image_selector",
+		"property" =>$property,
+		"title" =>$title,
+		"folder"=>$folder,
+		"changefolder"=>(boolean)$changefolder,
+		"x"=>(int)$x,
+		"y"=>(int)$y,
+		"grp_id"=>(int)$grp_id,
+		"options"=>$_options,
+		);
+		
+		if ($grp_id!=0)
+		{
+			throw new Exception('Sorry parameter $grp_id not yet supported :(. Stick to 0');
+		}
+	}
+
+	private function _form_image_selector_display($_fconfig)
+	{
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$_options = $_fconfig["options"];
+	
+		$img_id= $this->getI($property."_img_id");
+		$alt= $this->get($property."_alt");
+		$align= $this->get($property."_align");
+
+		$versionselect = (boolean)$_options["versionselect"];
+		
+		// There seems to be something wrong. Versionselect deactivated for the moment		
+		$versionselect = false;
+		switch ((boolean)$_options["altandalign"])
+		{
+			case true:
+				$mode=2;
+				break;
+			default:
+				$mode=1;
+				break;
+		}
+		
+
 		if ($this->myLayout==-1)
 		{
 			$this->myLayout = new PhenotypeAdminLayout();
 		}
-		$name = $this->formid . $name;
-		$this->myLayout->iconbar_draw($name,$val,"editform");
+		$formname = $this->formid . $property;
+	
+		if ($title!="")
+		{
+			echo codeH($title);
+		}
+		echo '<br/>';
+		echo $this->myLayout->workarea_form_image($formname, $img_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["x"],$_fconfig["y"],$alt,$align,$mode,$versionselect);		
 	}
 
-
-	function form_genericselector($name,$text_add,$text_reset,$text_select,$status,$js_add,$js_select,$js_reset,$html_hidden,$html_form,$html_start="",$html_select="",$html_reset="")
+	
+	private function _form_image_selector_fetch($_fconfig)
 	{
-		// Status 0 = leer
-		// Status 1 = gefüllt
-		// Derzeit nicht aus der Layoutklasse
-  	?>
-  	
-  	<?php if ($status==0){ ?>
-  	<table width="408" border="0" cellpadding="0" cellspacing="0" >
-    <tr>
-    <td nowrap>
-    <a class="bausteineLink" href="javascript:<?php echo $js_add ?>"><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"><?php echo $text_add ?></a>
-    </td>
-    </tr>
-    </table>
-    <?php } ?>
-    <table id="<?php echo $this->formid ?><?php echo $name ?>select" width="408" border="0" cellpadding="0" cellspacing="0" <?php if($status==0){ ?>style="visibility: hidden;display:none"<?php } ?>>
-    <tr>
-    <td nowrap>
-    <a class="bausteineLink" href="javascript:<?php echo $js_select ?>"><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"><?php echo $text_select ?></a>
-    </td>
-    </tr>
-    </table>
-    <?php if ($status==1){ ?>
-    <table id="<?php echo $this->formid ?><?php echo $name ?>reset" width="408" border="0" cellpadding="0" cellspacing="0">
-    <tr>
-    <td nowrap>
-    <a href="javascript:<?php echo $js_reset ?>" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"><?php echo $text_reset ?></a>
-    </td>
-    </tr>
-    </table>    
-    <?php } ?>
-    <table id="<?php echo $this->formid ?><?php echo $name ?>panel_form" <?php if($html_form==""){ ?>style="visibility: hidden;display:none"<?php } ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
-    <tr >
-    <td>
-    <?php echo $html_form ?>
-    </td>
-    </tr>
-    </table>    
-    <table id="<?php echo $this->formid ?><?php echo $name ?>panel_start" <?php if($html_start==""){ ?>style="visibility: hidden;display:none"<?php } ?> width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
-    <tr >
-    <td >
-    <?php echo $html_start ?>
-    </td>
-    </tr>
-    </table>
-    <table id="<?php echo $this->formid ?><?php echo $name ?>panel_select" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
-    <tr >
-    <td>
-    <?php echo $html_select ?>
-    </td>
-    </tr>
-    </table>
-    <table id="<?php echo $this->formid ?><?php echo $name ?>panel_reset" style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
-    <tr >
-    <td>
-    <?php echo $html_reset ?>
-    </td>
-    </tr>
-    </table>    
-    </br>
-    <table style="visibility: hidden;display:none" width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground" >
-    <tr >
-    <td>
-    <?php echo $html_hidden ?>
-    </td>
-    </tr>
-    </table><br clear="all">
-    
-  	<?php
+		$property = $_fconfig["property"];
+		$_options = $_fconfig["options"];
+		$formname = $this->formid . $property;
+		
+		$this->set($property."_img_id",$this->fget($property."img_id"));
+		$this->set($property."_med_id",$this->fget($property."img_id"));
+		
+		if ((boolean)$_options["altandalign"]==true)
+		{
+			$this->set($property."_alt",$this->fget($property."img_alt"));
+			$this->set($property."_align",$this->fget($property."img_align"));
+		}
+		if ((boolean)$_options["versionselect"]==true)
+		{
+			$this->set($property."_ver_id",$this->fget($property."version"));
+		}
+		
 	}
-
-	function form_download($name,$med_id)
+	
+	public function form_document_selector($title, $property, $folder="", $changefolder = true, $infoline = true, $type_filter = "",$grp_id)
 	{
-		$this->form_document($name,$med_id);
+		$folder=trim($folder);
+		if ($folder==""){$folder=-1;}
+		$this->_form[] = array(
+		"form_method" =>"form_document_selector",
+		"property" =>$property,
+		"title" =>$title,
+		"folder"=>$folder,
+		"changefolder"=>(boolean)$changefolder,
+		"infoline"=>(boolean)$infoline,
+		"type_filter"=>$type_filter,
+		"grp_id"=>(int)$grp_id
+		);
+		
+		if ($grp_id!=0)
+		{
+			throw new Exception('Sorry parameter $grp_id not yet supported :(. Stick to 0');
+		}
 	}
+	
+	private function _form_document_selector_display($_fconfig)
+	{
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
 
+	
+		$doc_id= $this->getI($property."_doc_id");
+
+		if ($this->myLayout==-1)
+		{
+			$this->myLayout = new PhenotypeAdminLayout();
+		}
+		$formname = $this->formid . $property;
+	
+		if ($title!="")
+		{
+			echo codeH($title);
+		}
+		echo '<br/>';
+		//echo $this->myLayout->workarea_form_image($formname, $img_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["x"],$_fconfig["y"],$alt,$align,$mode,$versionselect);	
+		
+		echo $this->myLayout->workarea_form_document2($formname, $doc_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["type_filter"]);	
+	}
+	
+	private function _form_document_selector_fetch($_fconfig)
+	{
+		$property = $_fconfig["property"];
+		$formname = $this->formid . $property;
+		//$this->_form_fetch_debugprint();
+		$this->set($property."_doc_id",$this->fget($property."med_id"));
+		$this->set($property."_med_id",$this->fget($property."med_id"));
+		
+
+		
+	}
+	
+	/*
 	function form_document($name,$med_id)
 	{
 		if ($this->myLayout==-1)
@@ -555,21 +1040,11 @@ class PhenotypeComponentStandard
 		$name = $this->formid . $name;
 		echo $this->myLayout->workarea_form_document($name,$med_id);
 	}
+	*/
 
 
 
-
-	function form_documentupload($name,$med_id)
-	{
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_document($name,$med_id);
-	}
-
-
+/*
 
 	function form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=2, $version=false)
 	{
@@ -581,292 +1056,12 @@ class PhenotypeComponentStandard
 		$name = $this->formid . $name;
 		echo $this->myLayout->workarea_form_image($name,$img_id,$folder,$changefolder,$x,$y,$alt,$align,$mode, $version);
 	}
-
-	function form_imageupload($name,$img_id,$alt,$align)
-	{
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_imageupload($name,$img_id,$alt,$align);
-	}
+*/
 
 
 
-	function form_link($name,$bez,$url,$target)
-	{
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_link($name,$bez,$url,$target);
-	}
 
 
-
-	function form_richtext($name,$val,$cols=80,$rows=10)
-	{
-		global $myLayout;
-		global $myApp;
-		$name = $this->formid . $name;
-		$myLayout->form_Richtext($name,$myApp->richtext_prefilter($val),$cols,$rows);
-	}
-
-	function form_html($name,$val,$cols=80,$rows=10)
-	{
-		global $myLayout;
-		$name = $this->formid . $name;
-		$filename_bak = TEMPPATH ."htmlarea/~" . uniqid("") . ".tmp";
-		$fp = fopen ($filename_bak,"w");
-		fputs($fp,$val);
-		fclose ($fp);
-		@chown ($filename_bak,UMASK);
-		$myLayout->form_HTMLTextarea($name,$filename_bak,$cols,$rows,$mode="HTML",410);
-		unlink ($filename_bak);
-	}
-
-
-	function form_ddpositioner($name,$val, $quantity, $methodname,$background=1)
-	{
-		?>
-		<p>
-		 <?php
-		 $anzahl = $quantity;
-		 $token = $this->formid.$name;
-		 $kette = "";
-		 for ($j = 1; $j <= $anzahl; $j ++)
-		 {
-		 	$kette .= ",".$j;
-		 }
-		 if (strpos($val,","))
-		 {
-		 	$_position = explode(",",$val);
-		 }
-		 else 
-		 {
-		 	$_position = Array();
-		 }
-
-		 	if (count($_position)!=$anzahl) // Array an die neue Anzahl anpassen
-		 	{
-		 		$_newposition = Array();
-		 		foreach ($_position AS $k => $v)
-		 		{
-		 			if ($v<=$anzahl)
-		 			{
-		 				$_newposition[]=$v;
-		 			}
-		 		}
-		 		for ($j = 1; $j <= $anzahl; $j ++)
-		 		{
-		 			if (!in_array($j,$_newposition))
-		 			{
-		 				$_newposition[] = $j;
-		 			}
-		 		}
-		 		$_position = $_newposition;
-		 	}
-		 
-			 ?>
-			 
-			 <input type="hidden" name="<?php echo $token ?>" value="<?php echo implode(",",$_position) ?>"/>
-			 <input type="hidden" name="<?php echo $token ?>_posstart" value="<?php echo implode(",",$_position) ?>"/>
-			 <?php
-			 $this->displayDHtmlWZJavascript($token, $anzahl,16);
-
-			 $mname = $methodname;
-			 for ($j = 1; $j <= $anzahl; $j ++)
-			 {
-			 ?>
-			 <div id="<?php echo $token.$j ?>" style="width:404px;position:relative;background:url(img/moveit.gif) top left no-repeat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:<?php echo $token ?>movedown(<?php echo $j ?>)"><img src="img/b_down2.gif" width="18" height="18" border="0"></a>
-        	 <a href="javascript:<?php echo $token ?>moveup(<?php echo $j ?>)"><img src="img/b_up2.gif" width="18" height="18" border="0"></a><br/>
-        	 <?php if ($background==1)
-        	 {
-        	 ?>
-        	 <div style="background-color:#D1D6DB;padding:2px;width:404px;"><p><?php echo $this->$mname($_position[$j-1]); ?></p></div></div><br/>
-        	 <?php
-        	 }else{
-			 ?>
-        	 <p><?php echo $this->$mname($_position[$j-1]); ?></p></div><br/>
-        	 <?php
-        	 }
-        	 ?>
-			 <script type="text/javascript">ADD_DHTML("<?php echo $token ?><?php echo $j ?>"+VERTICAL+TRANSPARENT);</script>
-			 <?php
-			 }
-			 ?>
-			 <script type="text/javascript">
-			 <?php
-			 for ($j = 1; $j <= $anzahl; $j ++)
-			 {
-			 	?>
-			 	dd.elements.<?php echo $token ?><?php echo $j ?>.setDropFunc(<?php echo $token ?>dropTopListItem);
-			 	<?php
-			 }
-			 ?>
-			 </script>
-			 </p>
-			 <?php
-	}
-
-
-	function displayDHtmlWZJavascript($token, $anzahl,$spacer)
-	{
-		global $myLayout;
-		
-		if ($myLayout->dhtmlwz_init == 0)
-		{
-?>
-			 <script type="text/javascript">
-			 SET_DHTML(CURSOR_MOVE);
-			 </script>
-			 <?php
-
-
-			 $myLayout->dhtmlwz_init = 1;
-		}
-?>
-  	<script type="text/javascript">
-  	function <?php echo $token ?>moveup(item)
-  	{
-
-  		order = <?php echo $token ?>determineOrder();
-  		currentpos = item;
-  		for (i=0;i<<?php echo $anzahl ?>;i++)
-  		{
-  			if(order[i]==item)
-  			{
-  				currentpos =i+1;
-  			}
-  		}
-  		if (currentpos>1)
-  		{
-  			// Item an der übergeordneten Position bestimmen
-  			changepos = currentpos-1;
-  			changeitem = order[changepos-1];
-
-  			citem ="<?php echo $token ?>" + item;
-  			y = dd.elements[citem].y;
-  			x = dd.elements[citem].x;
-
-  			citem2 ="<?php echo $token ?>" + changeitem;
-  			y2 = dd.elements[citem2].y;
-  			x2 = dd.elements[citem2].x;
-
-  			dd.elements[citem].moveTo(x2,y2);
-  			dd.elements[citem2].moveTo(x,y);
-  		}
-
-  		<?php echo $token ?>dropTopListItem();
-  	}
-
-  	function <?php echo $token ?>movedown(item)
-  	{
-  		order = <?php echo $token ?>determineOrder();
-  		currentpos = item;
-  		for (i=0;i<<?php echo $anzahl ?>;i++)
-  		{
-  			if(order[i]==item)
-  			{
-  				currentpos =i+1;
-  			}
-  		}
-  		if (currentpos<<?php echo $anzahl ?>)
-  		{
-  			// Item an der übergeordneten Position bestimmen
-  			changepos = currentpos+1;
-  			changeitem = order[changepos-1];
-
-  			citem ="<?php echo $token ?>" + item;
-  			y = dd.elements[citem].y;
-  			x = dd.elements[citem].x;
-
-  			citem2 ="<?php echo $token ?>" + changeitem;
-  			y2 = dd.elements[citem2].y;
-  			x2 = dd.elements[citem2].x;
-
-  			dd.elements[citem].moveTo(x2,y2);
-  			dd.elements[citem2].moveTo(x,y);
-  		}
-  		<?php echo $token ?>dropTopListItem();
-  	}
-
-  	function <?php echo $token ?>determineOrder()
-  	{
-  		order = new Array();
-
-  		for (i=1;i<=<?php echo $anzahl ?>;i++)
-  		{
-  			citem ='<?php echo $token ?>' + i;
-  			y = dd.elements[citem].y;
-  			order[i-1]=y + "#" + i;
-
-  		}
-
-  		order.sort
-  		(
-  		function(a,b)
-  		{
-  			return (parseInt(a)-parseInt(b));
-  		}
-  		);
-
-  		for (i=0;i<<?php echo $anzahl ?>;i++)
-  		{
-  			p = order[i].indexOf("#")
-  			order[i]=order[i].substr(p+1);
-  		}
-  		return (order);
-  	}
-
-  	function <?php echo $token ?>storeOrder()
-  	{
-  		posstart = document.forms.editform.<?php echo $token ?>_posstart.value;
-  		startorder = posstart.split(",");
-
-  		
-  		order = <?php echo $token ?>determineOrder();
-  		
-  		s="";
-  		for (i=0;i<<?php echo $anzahl ?>;i++)
-  		{
-  			s = s+ "," + startorder[order[i]-1];
-  		}
-  	
-  		document.forms.editform.<?php echo $token ?>.value=s.substr(1);
-    }
-  	
-
-
-  	function  <?php echo $token ?>dropTopListItem()
-  	{
-
-  		order = <?php echo $token ?>determineOrder();
-
-  		citem ="<?php echo $token ?>1";
-  		y = dd.elements[citem].defy;
-  		for (i=1;i<=<?php echo $anzahl ?>;i++)
-  		{
-  			citem ="<?php echo $token ?>" + order[i-1];
-  			x = dd.elements[citem].x;
-  			h = dd.elements[citem].h;
-   			dd.elements[citem].moveTo(x,y);
-  			y=y+h+<?php echo $spacer ?>;
-  		}
-  		<?php echo $token ?>storeOrder();
-
-  	}
-
-
-  	//-->
-
-    </script>
-    <?php
-
-
-	}
 
 	function rawXMLExport($tool_type=-1)
 	{
@@ -986,7 +1181,7 @@ class PhenotypeComponentStandard
 			@chmod ($file,UMASK);
 
 			// Templates anlegen
-			
+
 			$tpl_id = 1;
 			foreach ($_xml->templates->template AS $_xml_template)
 			{
@@ -1049,6 +1244,25 @@ class PhenotypeComponentStandard
 	function render($context)
 	{
 
+	}
+	
+	protected function _debug_print_form_xy_fetch($property)
+	{
+		$formname = $this->formid . $property;
+		$l=strlen($formname);
+		foreach ($_REQUEST AS $k=>$v)
+		{
+			if (substr($k,0,$l)==$formname)
+			{
+				echo substr($k,$l).': '.$v.'<br/>';
+			}
+		}
+		exit();
+	}
+	
+	public function getEditLabel()
+	{
+		return $this->name;
 	}
 }
 ?>

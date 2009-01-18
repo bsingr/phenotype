@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -30,29 +30,28 @@ class PhenotypeBase
 
 
 	public $_props = Array ();
-	public $changed = false;
+	private $changed = false;
 
-	function __construct()
+	public function __construct()
 	{
 		$this->charset = PT_CHARSET;
 	}
-
-	function check($k)
+	
+	public function check($k)
 	{
 		if(array_key_exists($k,$this->_props)){return true;}
 		return false;
 	}
 
 
-
-	function set($property, $value)
+	public function set($property, $value)
 	{
 		$this->_props[$property] = $value;
 		$this->changed = true;
 	}
 
 
-	function clear($property)
+	public function clear($property)
 	{
 		if ($this->check($property))
 		{
@@ -61,7 +60,9 @@ class PhenotypeBase
 	}
 
 
-	function get($property)
+
+
+	public function get($property,$default="")
 	{
 		if ($this->check($property))
 		{
@@ -69,40 +70,37 @@ class PhenotypeBase
 		}
 		else
 		{
-			return "";
+			return $default;
 		}
 	}
 
-	function getI($property)
+	public function getI($property,$default="")
 	{
-		return  (int) ($this->get($property));
+		return  (int) ($this->get($property,$default));
 	}
 
-	function getD($property, $decimals)
+	public function getD($property, $decimals,$default)
 	{
-		return sprintf("%01.".$decimals."f", ($this->get($property)));
+		return sprintf("%01.".$decimals."f", ($this->get($property,$default)));
 	}
 
 
 
-	function getQ($property)
+
+
+	public function getHTML($property,$default="")
 	{
-		throw new Exception("Deprecated call of function getQ");
+		return @ htmlentities(($this->get($property,$default)),null,$this->charset);
 	}
 
-	function getHTML($property)
+	public function getH($property,$default="")
 	{
-		return @ htmlentities(($this->get($property)),null,$this->charset);
+		return $this->getHTML($property,$default);
 	}
 
-	function getH($property)
+	public function getHBR($property,$default="")
 	{
-		return $this->getHTML($property);
-	}
-
-	function getHBR($property)
-	{
-		$html = nl2br($this->getHTML($property));
+		$html = nl2br($this->getHTML($property,$default));
 		// Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
 		$html = str_replace(chr(10), "", $html);
 		$html = str_replace(chr(13), "", $html);
@@ -110,23 +108,51 @@ class PhenotypeBase
 	}
 
 
+	public function getURL($property,$default="")
+	{
+		return @ urlencode($this->get($property,$default));
+	}
 
+	
+	public function getSQL($property,$default="")
+	{
+		return $this->codeSQL($this->get($property,$default));
+	}
+	
+	public function getX($property,$default="")
+	{
+		global $myPT;
+		return ($this->codeX(($this->get($property,$default))));
+	}
 
-	function getU($property)
+	
+	public function getAC($property,$allowedchars="ABCDEFGHIJKLMNOPQRSTUVWXYZÖÄÜßabcdefghijklmnopqrstuvwxyzöäü",$default)
+	{
+		$val = $this->get($property);
+		$patterns = "/[^".$allowedchars."]*/";
+		return preg_replace($patterns, "", $val);
+	}
+
+	public	function getQ($property)
+	{
+		throw new Exception("Deprecated call of function getQ");
+	}
+
+	public function getU($property)
 	{
 		throw new Exception("Deprecated call of function getU");
 		return @ utf8_encode($this->_props[$property]);
 	}
 
 
-	function getS($property)
+	public function getS($property)
 	{
 		throw new Exception("Deprecated call of function getS");
 		//return (string) @ addslashes($this->_props[$property]);
 	}
 
 
-	function getA($property)
+	public function getA($property)
 	{
 		throw new Exception("Deprecated call of function getA");
 		//$v = @$this->_props[$property];
@@ -139,23 +165,18 @@ class PhenotypeBase
 
 
 
-	function getX($property)
-	{
-		global $myPT;
-		return ($this->codeX(($this->get($property))));
-	}
 
 
 
 
 
-	function codeX($s,$utf8=false)
+	public function codeX($s,$utf8=false)
 	{
 		return ($this->xmlencode($s,$utf8));
 	}
 
 
-	function xmlencode($s,$utf8=false)
+	private function xmlencode($s,$utf8=false)
 	{
 
 		//The following are the valid XML characters and character ranges (hex values) as defined by the W3C XML
@@ -192,7 +213,7 @@ class PhenotypeBase
 		return $s;
 	}
 
-	function urlencode($url)
+	public function urlencode($url)
 	{
 		$url = str_replace(" ","-",$url);
 		$url = str_replace(array(" ","/","_","&","?","---","--"),"-",$url);
@@ -211,12 +232,12 @@ class PhenotypeBase
 
 	}
 
-	function codeH($s)
+	public function codeH($s)
 	{
 		return @ htmlentities($s,null,$this->charset);
 	}
 
-	function codeHBR($s)
+	public function codeHBR($s)
 	{
 		$html =  @ nl2br(htmlentities($s,null,$this->charset));
 		// Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
@@ -232,7 +253,7 @@ class PhenotypeBase
 	 * @param unknown_type $s
 	 * @return string
 	 */
-	function codeHKT($s) // HTML KEEP TAGS
+	public function codeHKT($s) // HTML KEEP TAGS
 	{
 		$s = nl2br($s);
 		$s = str_replace("<b>","###B###",$s);
@@ -260,15 +281,73 @@ class PhenotypeBase
    * @param string value
    * @return integer
    */
-	function codeI($s)
+	public function codeI($s)
 	{
 		return (int)$s;
 	}
 
-
-	function codeSQL($s)
+	/**
+	 * Enter description here...
+	 *
+	 * @param unknown_type $s
+	 * @return unknown
+	 */
+	public function codeSQL($s)
 	{
-		return mysql_escape_string($s);
+		return mysql_real_escape_string($s);
 	}
+	
+	public function isValidProperty($property)
+	{
+		
+		$this->setNoValidationError();
+
+		if (!$this->check($property))
+		{
+			$this->setValidationError('1','property not set');
+			return false;
+		}
+		return true;
+	}
+	
+	
+	public function setValidationError($number,$string)
+	{
+		global $myPT;
+		$myPT-> setValidationError($number,$string);
+	}
+		
+
+	public function getValidationError()
+	{
+		global $myPT;
+		return $myPT->getValidationError();
+	}
+	
+	public function setNoValidationError()
+	{
+		global $myPT;
+		$myPT->setNoValidationError();
+	}
+	
+	public function isValidInteger($property,$strict=false)
+	{
+		global $myPT;
+		if ($strict AND !$this->isValidProperty($property))
+		{
+			return false;
+		}
+		return $myPT->isValidInteger($this->get($property));
+	}
+	
+	public function isValidSelection($property,$_options,$strict=false)
+	{
+		global $myPT;
+		if ($strict AND !$this->isValidProperty($property))
+		{
+			return false;
+		}
+		return $myPT->isValidSelection($this->get($property),$_options);
+	}	
 }
 ?>

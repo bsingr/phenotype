@@ -7,31 +7,21 @@
  */
 class PhenotypeComponent_{/literal}{$id}{literal} extends PhenotypeComponent
 {
-  public $tool_type = {/literal}{$id}{literal};
+  public $com_id = {/literal}{$id}{literal};
 
-  public $bez = "New component"; // is shown as label in the editing area
-
+  public $name = "New component"; // is shown as label in the editing area
 
   public function setDefaultProperties()
   {
-	  //$this->set("property","value");
+	$this->set("_revision",1);
   }
   
-  public function edit($context)
+  public function initForm($context)
   {
  	// Customize input form with form_xy-methods 
- 	
-    $this->form_textfield("Headline","headline",$this->get("headline"));
+    $this->form_textfield("Headline","headline",300);
   }
 
-  /*
-  public function update()
-  {
-    $this->set("property","value"); 
-    $this->fset("property","inputfield"); 
-  }
-  */
-   
   public function render($context)
   {
 	// Example:
@@ -39,11 +29,10 @@ class PhenotypeComponent_{/literal}{$id}{literal} extends PhenotypeComponent
 	// Initialize template access (=>$mySmarty)  
     eval ($this->initRendering());
 
-    $mySmarty->assign("bez",$this->getH("bez"));
+    $mySmarty->assign("headline",$this->getH("headline"));
     $html = $mySmarty->fetch($TPL_1);
 
     return $html;
   }
   
-}
-?>{/literal}
+}{/literal}

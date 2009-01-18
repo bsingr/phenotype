@@ -8,59 +8,50 @@
 		<com_rubrik>System</com_rubrik>
 		<com_description>## Component 1003 - Include</com_description>
 	</meta>
-	<script>&#60;? 
+	<script>&#60;?php
 &#47;**
  * Include component
  * 
  * This component enables an editor to insert (include) functionalities within pages.
  * 
  * The editor also determines the caching behaviour of the selected include.
- *
+ * 
+ * @package phenotype
+ * @subpackage application
  *
  *&#47;
 class PhenotypeComponent_1003 extends PhenotypeComponent
 {
 
-	var $tool_type = 1003;
+	var $com_id = 1003;
+	var $name = &#34;Include (Function)&#34;;
 
-	var $bez=&#34;Include (Function)&#34;;
 
-
-	function setDefaultProperties()
+	public function setDefaultProperties()
 	{
-		$this-&#62;set(&#34;inc_id&#34;,&#34;0&#34;);
-		$this-&#62;set(&#34;cache&#34;,&#34;1&#34;);
+		$this-&#62;set(&#34;_revision&#34;,1);
+		$this-&#62;set(&#34;cache&#34;,1);
 	}
 
-	function edit()
-	{
+	
+	public function initForm($context)
+  	{
 		global $myDB;
-    ?&#62;&#60;select name=&#34;&#60;?=$this-&#62;formid?&#62;inc_id&#34; class=&#34;input&#34; style=&#34;width:300px&#34;&#62; 
-      &#60;option value=&#34;0&#34;&#62;...&#60;&#47;option&#62; 
-      &#60;? 
-      $sql = &#34;SELECT * FROM include WHERE inc_usage_includecomponent = 1 ORDER BY inc_rubrik,inc_bez&#34;;
-      $rs = $myDB-&#62;query($sql);
-      while ($row=mysql_fetch_array($rs))
-      {
-      	$selected = &#34;&#34;;
-      	if ($row[&#34;inc_id&#34;]==$this-&#62;get(&#34;inc_id&#34;)){$selected = &#34;selected&#34;;}
-      ?&#62; 
-      &#60;option &#60;?=$selected?&#62; value=&#34;&#60;?=$row[&#34;inc_id&#34;]?&#62;&#34;&#62;&#60;?=$row[&#34;inc_rubrik&#34;].&#34;: &#34;.$row[&#34;inc_bez&#34;]?&#62;&#60;&#47;option&#62; 
-      &#60;? 
-      }
-      ?&#62; 
-      &#60;&#47;select&#62;&#60;br&#62;Cache&#60;br&#62;
-      &#60;select name=&#34;&#60;?=$this-&#62;formid?&#62;cache&#34; class=&#34;input&#34; style=&#34;width:140px&#34;&#62; 
-      &#60;option value=&#34;1&#34; &#62;with page&#60;&#47;option&#62;
-      &#60;option value=&#34;0&#34; &#60;?if ($this-&#62;get(&#34;cache&#34;)==&#34;0&#34;){echo &#34;selected&#34;;}?&#62;&#62;never&#60;&#47;option&#62;
-      &#60;option value=&#34;2&#34; &#60;?if ($this-&#62;get(&#34;cache&#34;)==&#34;2&#34;){echo &#34;selected&#34;;}?&#62;&#62;Request parameter hash&#60;&#47;option&#62;     &#60;?
-	}
+		
+   	   	$sql = &#34;SELECT inc_id, inc_rubrik, inc_bez FROM include WHERE inc_usage_includecomponent = 1 ORDER BY inc_rubrik,inc_bez&#34;;
+      	$rs = $myDB-&#62;query($sql);
+      	$_options = Array();
+      	while ($row=mysql_fetch_assoc($rs))
+     	{
+      		$_options[$row[&#34;inc_id&#34;]]=$row[&#34;inc_rubrik&#34;].&#34;: &#34;.$row[&#34;inc_bez&#34;];
+      	}
+      	$this-&#62;form_selectbox(&#34;&#34;,&#34;inc_id&#34;,$_options);
+      	$_options = Array(1=&#62;&#34;With Page&#34;,2=&#62;&#34;Never&#34;,3=&#62;&#34;Request Parameter Hash&#34;);
+      	$this-&#62;form_selectbox(&#34;Cache&#34;,&#34;cache&#34;,$_options,false);
+  	}
 
-	function render($context)
+	public function render($context)
 	{
-		&#47;&#47; Notwendig, um die Smartyengine richtig zu initialisieren
-		eval ($this-&#62;initRendering());
-
 		global $myPage;
 
 		$html = &#34;&#34;;
@@ -92,7 +83,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
 					case 2:
 						$html = &#39;&#60;?php $myPage-&#62;includenocache=1?&#62;&#39;;&#47;&#47; Notwendig fuer Content-Statistik
 						$html .= &#39;&#60;?php $myDB-&#62;setNextContext(&#34;Include &#39;.$inc_id.&#39;:&#34;);?&#62;&#39;;
-						$html .= &#39;&#60;?php $myPT-&#62;executeInclude(&#39;.$inc_id.&#39;,true,$context);?&#62;&#39;;
+						$html .= &#39;&#60;?php $myPT-&#62;executeInclude(&#39;.$inc_id.&#39;,true,&#39;.$context.&#39;);?&#62;&#39;;
 						$html .= &#39;&#60;?php $myPage-&#62;includenocache=0?&#62;&#39;;
 						break;
 					default:
@@ -107,7 +98,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
 		return $html;
 	}
 
-	function displayXML($style=1)
+	public function displayXML($style=1)
 	{
 		global $myPage;
        ?&#62;
@@ -149,14 +140,13 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
      &#60;?
      return true;
 	}
-}
-?&#62;</script>
+}</script>
 	<templates>
    	</templates>
 	<componentgroups><group>
 			<cog_id>1</cog_id>
 			<cog_bez>Default</cog_bez>
-			<cog_description>## Default-Bausteingruppe</cog_description>
+			<cog_description>## Default Component Group</cog_description>
 			<cog_pos>0</cog_pos>
 		  </group></componentgroups>
 </phenotype>

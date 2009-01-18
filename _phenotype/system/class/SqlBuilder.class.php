@@ -68,7 +68,7 @@ var $values;
 	  else
 	  {
 	    $s = $this->values[$i];
-		$sql.= "'" . mysql_escape_string($s) . "'";
+		$sql.= "'" . mysql_real_escape_string($s) . "'";
 	  }
 	}
 	
@@ -97,7 +97,7 @@ function insert($tabelle)
 	    }
 	    else
 	    {
-	      $sql.= "'" . mysql_escape_string($this->values[$i]) . "'";
+	      $sql.= "'" . mysql_real_escape_string($this->values[$i]) . "'";
 	    }
 	  }
 	  $sql .=")";

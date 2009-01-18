@@ -1156,17 +1156,19 @@ while ($row = mysql_fetch_array($rs))
       $tname = "PhenotypeComponent_" . $row["com_id"];
       $myComponent = new $tname;
 
-      if (!myComponent){die("schrott");}
       $myComponent->init($row);
+      
       ?>
       <tr>
-            <td class="padding30"><strong><?php echo $myComponent->bez ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>><?php echo localeH("visible");?>
+            <td class="padding30"><strong><?php echo $myComponent->getEditLabel() ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>><?php echo localeH("visible");?>
             </td>
             <td>&nbsp;</td>
             <td class="formarea">
-      <?php
-      $myComponent->edit($context);
-      ?>
+      		<?php
+      		$myComponent->edit($context);
+      		
+			
+      		?>
             </td>
             <td align="center">
             <?php if (!$mySUser->checkRight("elm_pagenocomponent")){ ?>

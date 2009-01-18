@@ -245,6 +245,7 @@ else
     $tname = "PhenotypeComponent_" . $row["com_id"];
     $myComponent = new $tname;
     $myComponent->init($row);
+    
     if (isset($_REQUEST[$row["dat_id"]."_visible"]))
     {
       $myComponent->visible =1;
@@ -253,7 +254,6 @@ else
     {
       $myComponent->visible =0;
     }
-
     $myComponent->update($context);
     $myComponent->store();
     // Wurde ein Tool geloescht

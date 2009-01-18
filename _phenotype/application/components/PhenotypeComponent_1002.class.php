@@ -1,60 +1,48 @@
 <?php
 /**
  * HTML component
+ * 
+ * @package phenotype
+ * @subpackage application
  *
  */
 class PhenotypeComponent_1002 extends PhenotypeComponent
 {
-	var $tool_type = 1002;
-	var $bez = "HTML";
+	public $com_id = 1002;
+	public $name = "HTML";
 
-	function setDefaultProperties()
+	public function setDefaultProperties()
 	{
-		$this->set("html","");
+		$this->set("_revision",1);
 	}
-
-	function edit()
-	{
-
-		$this->form_html("html",$this->get("html"),80,15);
-	}
-
-
-	function setFullSearch()
-	{
-		$s = $this->get("html");
-		// Alle Tags entfernen
-		$s = ereg_replace("<[^>]*>","",$s);
-		return ($s);
-	}
-
-	function update()
-	{
-		// First do the default property update
-		parent::update();
-		global $myAdm;
-
-		$html = $this->get("html");
-		$html = $myAdm->decodeRequest_HTMLArea($html);
-		$this->set("html",$html);
-	}
-
-
-	function render($context)
+	
+  	public function initForm($context)
+  	{
+ 		// Customize input form with form_xy-methods 
+ 	
+    	$this->form_html("","html",405,15);
+  	}
+	
+	public function render($context)
 	{
 		$html = $this->get("html");
 
 		// Remove PHP-Tags so nobody can insert code
-
 		$html = ereg_replace("<\?[^>]*>","",$html); // matching normal and short opening tags
 		$html = ereg_replace("<\%[^>]*>","",$html); // matching ASP-style tags
-
 
 		return $html;
 	}
 
-
-	function displayXML()
+	public function setFullSearch()
+	{
+		$s = $this->get("html");
+		// Remove all tags
+		$s = ereg_replace("<[^>]*>","",$s);
+		return ($s);
+	}	
+	
+	public function displayXML()
 	{
   	?>
   	<component com_id="1002" type="HTML">
@@ -66,4 +54,3 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
   	return true;
 	}
 }
- ?>

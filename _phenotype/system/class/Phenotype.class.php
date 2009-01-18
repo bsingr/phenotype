@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -79,6 +79,13 @@ class PhenotypeStandard extends PhenotypeBase
 
 	private $tmxsection = '';
 
+
+	/**
+	 * temporary variables for isValid calls
+	 **/
+	private $validation_error_number=0;
+	private $validation_error_string="";
+
 	function __construct()
 	{
 		global $myDB;
@@ -109,7 +116,7 @@ class PhenotypeStandard extends PhenotypeBase
 			{
 				$myDAO->store(0,true);
 			}
-		}		
+		}
 		if ($this->MediaobjectsHelper!=false)
 		{
 			$myDAO = $this->MediaobjectsHelper;
@@ -299,8 +306,8 @@ class PhenotypeStandard extends PhenotypeBase
 	}
 
 	/* *****************
-	 * Allgemeine Funktionen
-	 * *****************/
+	* Allgemeine Funktionen
+	* *****************/
 	function cutLeft($s,$n)
 	{
 		$l = strlen($s);
@@ -315,8 +322,8 @@ class PhenotypeStandard extends PhenotypeBase
 	}
 
 	/* *****************
-	 * Datums- und Kalenderfunktionen
-	 * *****************/
+	* Datums- und Kalenderfunktionen
+	* *****************/
 	function nextWeekDay($datum,$mode=0)
 	{
 
@@ -544,8 +551,8 @@ class PhenotypeStandard extends PhenotypeBase
 
 
 	/* ********************
-	 * Kodierungsfunktionen
-	 * ********************/
+	* Kodierungsfunktionen
+	* ********************/
 	function strip_tags($s)
 	{
 		global $myApp;
@@ -811,29 +818,29 @@ class PhenotypeStandard extends PhenotypeBase
 
 
 	/*
-	 function loadLanguageMap($mapfile,$prefix="")
-	 {
-	 $file = SYSTEMPATH . "languagemaps/".$mapfile;
-	 $_xml = simplexml_load_file($file);
+	function loadLanguageMap($mapfile,$prefix="")
+	{
+	$file = SYSTEMPATH . "languagemaps/".$mapfile;
+	$_xml = simplexml_load_file($file);
 
-	 $language = $this->getPref("backend.language");
+	$language = $this->getPref("backend.language");
 
-	 foreach ($_xml->phrases->section AS $_xml_section)
-	 {
-	 $name = utf8_decode((string)$_xml_section["name"]);
-	 if ($prefix !=""){$name = $prefix .".".$name;}
-	 foreach ($_xml_section->phrase AS $_xml_phrase)
-	 {
-	 $token = $name .".".utf8_decode((string)$_xml_phrase["name"]);
-	 $v = utf8_decode((string)$_xml_phrase->$language);
-	 if ($v==""){$v = utf8_decode((string)$_xml_phrase->en);}
-	 $this->_phrases[$token]=$v;
+	foreach ($_xml->phrases->section AS $_xml_section)
+	{
+	$name = utf8_decode((string)$_xml_section["name"]);
+	if ($prefix !=""){$name = $prefix .".".$name;}
+	foreach ($_xml_section->phrase AS $_xml_phrase)
+	{
+	$token = $name .".".utf8_decode((string)$_xml_phrase["name"]);
+	$v = utf8_decode((string)$_xml_phrase->$language);
+	if ($v==""){$v = utf8_decode((string)$_xml_phrase->en);}
+	$this->_phrases[$token]=$v;
 
-	 }
+	}
 
-	 }
-	 }
-	 */
+	}
+	}
+	*/
 
 	function displayContentXML($con_id,$mode="")
 	{
@@ -1047,12 +1054,12 @@ class PhenotypeStandard extends PhenotypeBase
 	{
 
 		/*
-		 final function getMessage();                // Mitteilung der Ausnahme
-		 final function getCode();                   // Code der Ausnahme
-		 final function getFile();                   // Quelldateiname
-		 final function getLine();                   // Quelldateizeile
-		 final function getTrace();                  // Array mit Ablaufverfolgung
-		 final function getTraceAsString();  */
+		final function getMessage();                // Mitteilung der Ausnahme
+		final function getCode();                   // Code der Ausnahme
+		final function getFile();                   // Quelldateiname
+		final function getLine();                   // Quelldateizeile
+		final function getTrace();                  // Array mit Ablaufverfolgung
+		final function getTraceAsString();  */
 
 		// this method is executed via error and/or exception handler
 		// we are not in the phenotype class object context und therefore must use the global object
@@ -1273,9 +1280,10 @@ else
 {
 	$_traces =	debug_backtrace();
 }
-// remove the first towe entry of the backtrace (i.e. this method and the error handler)
-array_shift($_traces);
-array_shift($_traces);
+// remove the first two entry of the backtrace (i.e. this method and the error handler)
+// array_shift($_traces);
+// array_shift($_traces);
+// TODO: sometimes removal of two traces is too much. Check!
 foreach ($_traces AS $_trace)
 {
 	$_lines = file ($_trace["file"]);
@@ -1343,11 +1351,11 @@ foreach ($_traces AS $_trace)
 <ul class="source">
 <?php
 for ($i=$stop;$i>=$start;$i--){
-$sql_cut = $_sql[$i-1];
- if (strlen($sql_cut)>255)
-        {
-        	$sql_cut = substr($sql_cut,0,255)."...";
-        }
+	$sql_cut = $_sql[$i-1];
+	if (strlen($sql_cut)>255)
+	{
+		$sql_cut = substr($sql_cut,0,255)."...";
+	}
 	?>
 	<li><span>#<?php echo sprintf('%04d',$i)?>: </span><span class="query"><?php //echo $this->codeH($sql_cut)?></span></li>
 	<?php }?>
@@ -1386,16 +1394,16 @@ $sql_cut = $_sql[$i-1];
 </html>
 	<?php
 	exit();
-}
+	}
 
 
 
-public function displayDebugInfo()
-{
-	global $myDB;
-	global $myRequest;
+	public function displayDebugInfo()
+	{
+		global $myDB;
+		global $myRequest;
 
-	$headline = "Phenotype DebugInfo";
+		$headline = "Phenotype DebugInfo";
 	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -1590,15 +1598,15 @@ em {
 				$context = $myDB->_context[$i];
 				if ($context !=""){
 					?><span class="exec_context"><?php echo $context?></span><?php
-}
-}
+				}
+			}
 
-$sql_cut = $myDB->_sql[$i];
+			$sql_cut = $myDB->_sql[$i];
 
-if (strlen($sql_cut) > 512)
-{
-  $sql_cut = substr($sql_cut,0,512)."...";
-}
+			if (strlen($sql_cut) > 512)
+			{
+				$sql_cut = substr($sql_cut,0,512)."...";
+			}
 ?><span class="filename">[<?php echo $this->getFilenameOutOfPath($myDB->_files[$i])?>
 in line <?php echo $myDB->_lines[$i]?>]</span><br />
 <table class="query">
@@ -1650,7 +1658,7 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 
 	<?php
 	$myDao = new PhenotypeSystemDataObject("DebugLookUpTable");
-	
+
 	?>
 <div id="lookup"><em>Quick Lookup</em><br />
 <?php if (count($myDao->get("components"))!=0){?>
@@ -1685,13 +1693,13 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 </html>
 	<?php
 
-}
+	}
 
-// =========================================================================================================
-// functions for url/link management
-// =========================================================================================================
+	// =========================================================================================================
+	// functions for url/link management
+	// =========================================================================================================
 
-/**
+	/**
  * retrieve (language dependent) url of a page
  *
  * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
@@ -1707,234 +1715,234 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
  * @param boolean fullUrl	should the function return a fully qualified url including hostname? optional, defaults to false
  * @return string
  */
-public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fullUrl=false)
-{
-	// if no language id is ommited, take context into account
+	public function url_for_page($pag_id,$_params=null,$lng_id=null,$smartUID="",$fullUrl=false)
+	{
+		// if no language id is ommited, take context into account
 
-	if ($lng_id==null)
-	{
-		global $myPage;
-		$lng_id = $myPage->lng_id;
-	}
+		if ($lng_id==null)
+		{
+			global $myPage;
+			$lng_id = $myPage->lng_id;
+		}
 
 
-	if ($this->URLHelper==false)
-	{
-		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
-		$this->URLHelper = $myDAO;
-	}
-	else
-	{
-		$myDAO = $this->URLHelper;
-	}
-	$token = "url_p".$pag_id."l".(int)$lng_id;
+		if ($this->URLHelper==false)
+		{
+			$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+			$this->URLHelper = $myDAO;
+		}
+		else
+		{
+			$myDAO = $this->URLHelper;
+		}
+		$token = "url_p".$pag_id."l".(int)$lng_id;
 
-	if ($myDAO->check($token))
-	{
-		$url =  $myDAO->get($token);
-	}
-	else
-	{
-		$myTempPage = new PhenotypePage($pag_id);
-		$url = $myTempPage->buildURL($lng_id);
-		$myDAO->set($token,$url);
-	}
+		if ($myDAO->check($token))
+		{
+			$url =  $myDAO->get($token);
+		}
+		else
+		{
+			$myTempPage = new PhenotypePage($pag_id);
+			$url = $myTempPage->buildURL($lng_id);
+			$myDAO->set($token,$url);
+		}
 
-	if ($fullUrl)
-	{
-		$base = SERVERFULLURL;
-	} else
-	{
-		$base = SERVERURL;
-	}
+		if ($fullUrl)
+		{
+			$base = SERVERFULLURL;
+		} else
+		{
+			$base = SERVERURL;
+		}
 
-	// Fallback, if smartURL is disabled
-	if (PT_URL_STYLE!="smartURL")
-	{
-		$url = $base . "index.php?smartURL=".$url;
+		// Fallback, if smartURL is disabled
+		if (PT_URL_STYLE!="smartURL")
+		{
+			$url = $base . "index.php?smartURL=".$url;
+			if (is_array($_params))
+			{
+				foreach ($_params AS $k=>$v)
+				{
+					$url .= "&".$k."=".$v;
+				}
+			}
+			if ($smartUID!="")
+			{
+				$url .="&smartUID=".$smartUID;
+			}
+			return $url;
+		}
+
 		if (is_array($_params))
 		{
 			foreach ($_params AS $k=>$v)
 			{
-				$url .= "&".$k."=".$v;
+				$url .= "/".$k."/".$v;
 			}
 		}
 		if ($smartUID!="")
 		{
-			$url .="&smartUID=".$smartUID;
+			$url .="/".$smartUID;
 		}
+
+		$url = $base . $url;
 		return $url;
 	}
 
-	if (is_array($_params))
+
+
+	public function url_for_co($myCO,$action,$lng_id=null,$_params=null,$smartUID="",$fullUrl=false)
 	{
-		foreach ($_params AS $k=>$v)
+		if ($this->URLHelperCO==false)
 		{
-			$url .= "/".$k."/".$v;
+			$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"content"),false,true);
+			$this->URLHelperCO = $myDAO;
 		}
-	}
-	if ($smartUID!="")
-	{
-		$url .="/".$smartUID;
-	}
+		else
+		{
+			$myDAO = $this->URLHelperCO;
+		}
+		$token = "url_c".$myCO->id."l".(int)$lng_id."a".$action;
 
-	$url = $base . $url;
-	return $url;
-}
-
-
-
-public function url_for_co($myCO,$action,$lng_id=null,$_params=null,$smartUID="",$fullUrl=false)
-{
-  if ($this->URLHelperCO==false)
-	{
-		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"content"),false,true);
-		$this->URLHelperCO = $myDAO;
-	}
-	else
-	{
-		$myDAO = $this->URLHelperCO;
-	}
-	$token = "url_c".$myCO->id."l".(int)$lng_id."a".$action;
-
-	if ($myDAO->check($token))
-	{
-		$url =  $myDAO->get($token);
-	}
-	else
-	{
-		$url = $myCO->buildURL($action,$lng_id);
-		$myDAO->set($token,$url);
-	}
+		if ($myDAO->check($token))
+		{
+			$url =  $myDAO->get($token);
+		}
+		else
+		{
+			$url = $myCO->buildURL($action,$lng_id);
+			$myDAO->set($token,$url);
+		}
 
 
-	if ($fullUrl)
-	{
-		$base = SERVERFULLURL;
-	} else
-	{
-		$base = SERVERURL;
-	}
+		if ($fullUrl)
+		{
+			$base = SERVERFULLURL;
+		} else
+		{
+			$base = SERVERURL;
+		}
 
-	// Fallback, if smartURL is disabled
-	if (PT_URL_STYLE!="smartURL")
-	{
-		$url = $base . "index.php?smartURL=".$url;
+		// Fallback, if smartURL is disabled
+		if (PT_URL_STYLE!="smartURL")
+		{
+			$url = $base . "index.php?smartURL=".$url;
+			if (is_array($_params))
+			{
+				foreach ($_params AS $k=>$v)
+				{
+					$url .= "&".$k."=".$v;
+				}
+			}
+			if ($smartUID!="")
+			{
+				$url .="&smartUID=".$smartUID;
+			}
+			return $url;
+		}
+
 		if (is_array($_params))
 		{
 			foreach ($_params AS $k=>$v)
 			{
-				$url .= "&".$k."=".$v;
+				$url .= "/".$k."/".$v;
 			}
 		}
 		if ($smartUID!="")
 		{
-			$url .="&smartUID=".$smartUID;
+			$url .="/".$smartUID;
 		}
+
+		$url = $base . $url;
+		$url = str_replace('//','/',$url);
 		return $url;
 	}
 
-	if (is_array($_params))
+
+	public function url_for_content($dat_id,$action,$lng_id=null,$_params=null,$smartUID="",$fullUrl=false)
 	{
-		foreach ($_params AS $k=>$v)
+		global $myDB;
+
+		if ($this->URLHelperCO==false)
 		{
-			$url .= "/".$k."/".$v;
+			$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"content"),false,true);
+			$this->URLHelperCO = $myDAO;
 		}
-	}
-	if ($smartUID!="")
-	{
-		$url .="/".$smartUID;
-	}
-
-	$url = $base . $url;
-  $url = str_replace('//','/',$url);
-	return $url;
-}
-
-
-public function url_for_content($dat_id,$action,$lng_id=null,$_params=null,$smartUID="",$fullUrl=false)
-{
-	global $myDB;
-	
-  if ($this->URLHelperCO==false)
-	{
-		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"content"),false,true);
-		$this->URLHelperCO = $myDAO;
-	}
-	else
-	{
-		$myDAO = $this->URLHelperCO;
-	}
-	$token = "url_c".$dat_id."l".(int)$lng_id."a".$action;
-
-	if ($myDAO->check($token))
-	{
-		$url =  $myDAO->get($token);
-	}
-	else
-	{
-		$sql ="SELECT * FROM content_data WHERE dat_id =" .$dat_id;
-		$rs = $myDB->query($sql);
-		if (mysql_num_rows($rs)!=0)
+		else
 		{
-		  $row =mysql_fetch_array($rs);
-		  $cname = "PhenotypeContent_".$row["con_id"];
-		  $myCO = new $cname();
-		  $myCO->init($row);
-		  $url = $myCO->buildURL($action,$lng_id);
-		  $myDAO->set($token,$url);
+			$myDAO = $this->URLHelperCO;
 		}
-		else 
+		$token = "url_c".$dat_id."l".(int)$lng_id."a".$action;
+
+		if ($myDAO->check($token))
 		{
-		  return "unavailable";
+			$url =  $myDAO->get($token);
 		}
-	}
+		else
+		{
+			$sql ="SELECT * FROM content_data WHERE dat_id =" .$dat_id;
+			$rs = $myDB->query($sql);
+			if (mysql_num_rows($rs)!=0)
+			{
+				$row =mysql_fetch_array($rs);
+				$cname = "PhenotypeContent_".$row["con_id"];
+				$myCO = new $cname();
+				$myCO->init($row);
+				$url = $myCO->buildURL($action,$lng_id);
+				$myDAO->set($token,$url);
+			}
+			else
+			{
+				return "unavailable";
+			}
+		}
 
 
-	if ($fullUrl)
-	{
-		$base = SERVERFULLURL;
-	} else
-	{
-		$base = SERVERURL;
-	}
+		if ($fullUrl)
+		{
+			$base = SERVERFULLURL;
+		} else
+		{
+			$base = SERVERURL;
+		}
 
-	// Fallback, if smartURL is disabled
-	if (PT_URL_STYLE!="smartURL")
-	{
-		$url = $base . "index.php?smartURL=".$url;
+		// Fallback, if smartURL is disabled
+		if (PT_URL_STYLE!="smartURL")
+		{
+			$url = $base . "index.php?smartURL=".$url;
+			if (is_array($_params))
+			{
+				foreach ($_params AS $k=>$v)
+				{
+					$url .= "&".$k."=".$v;
+				}
+			}
+			if ($smartUID!="")
+			{
+				$url .="&smartUID=".$smartUID;
+			}
+			return $url;
+		}
+
 		if (is_array($_params))
 		{
 			foreach ($_params AS $k=>$v)
 			{
-				$url .= "&".$k."=".$v;
+				$url .= "/".$k."/".$v;
 			}
 		}
 		if ($smartUID!="")
 		{
-			$url .="&smartUID=".$smartUID;
+			$url .="/".$smartUID;
 		}
+
+		$url = $base . $url;
+		$url = str_replace('//','/',$url);
 		return $url;
 	}
 
-	if (is_array($_params))
-	{
-		foreach ($_params AS $k=>$v)
-		{
-			$url .= "/".$k."/".$v;
-		}
-	}
-	if ($smartUID!="")
-	{
-		$url .="/".$smartUID;
-	}
-
-	$url = $base . $url;
-  $url = str_replace('//','/',$url);
-	return $url;
-}
-
-/**
+	/**
  * retrieve (language dependent) title of a page
  *
  * This function uses a system dao cache to reduce database load. This cache is cleared upon backend edit.
@@ -1948,40 +1956,40 @@ public function url_for_content($dat_id,$action,$lng_id=null,$_params=null,$smar
  * @param integer $lng_id
  * @return string
  */
-public function title_of_page($pag_id,$lng_id=null)
-{
-	if ($this->URLHelper==false)
+	public function title_of_page($pag_id,$lng_id=null)
 	{
-		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
-		$this->URLHelper = $myDAO;
-	}
-	else
-	{
-		$myDAO = $this->URLHelper;
-	}
-	$token = "title_p".$pag_id."l".(int)$lng_id;
-
-	if ($myDAO->check($token))
-	{
-		$title =  $myDAO->get($token);
-	}
-	else
-	{
-		$myPage = new PhenotypePage($pag_id);
-		if ($lng_id!=null)
+		if ($this->URLHelper==false)
 		{
-			$myPage->switchLanguage($lng_id);
+			$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+			$this->URLHelper = $myDAO;
 		}
-		$title = $myPage->getTitle();
-		$myDAO->set($token,$title);
+		else
+		{
+			$myDAO = $this->URLHelper;
+		}
+		$token = "title_p".$pag_id."l".(int)$lng_id;
+
+		if ($myDAO->check($token))
+		{
+			$title =  $myDAO->get($token);
+		}
+		else
+		{
+			$myPage = new PhenotypePage($pag_id);
+			if ($lng_id!=null)
+			{
+				$myPage->switchLanguage($lng_id);
+			}
+			$title = $myPage->getTitle();
+			$myDAO->set($token,$title);
+		}
+
+
+		return $title;
 	}
 
 
-	return $title;
-}
-
-
-/**
+	/**
  * retrieve (language dependent) page description of a page
  * page description ("page_bez" in DB page)
  *
@@ -1997,101 +2005,101 @@ public function title_of_page($pag_id,$lng_id=null)
  * @param integer $lng_id
  * @return string
  */
-public function description_of_page($pag_id,$lng_id=null)
-{
-	if ($this->URLHelper==false)
+	public function description_of_page($pag_id,$lng_id=null)
 	{
-		$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
-		$this->URLHelper = $myDAO;
-	}
-	else
-	{
-		$myDAO = $this->URLHelper;
-	}
-	$token = "pageDescription_p".$pag_id."l".(int)$lng_id;
-
-	if ($myDAO->check($token))
-	{
-		$title =  $myDAO->get($token);
-	}
-	else
-	{
-		$myPage = new PhenotypePage($pag_id);
-		if ($lng_id!=null)
+		if ($this->URLHelper==false)
 		{
-			$myPage->switchLanguage($lng_id);
+			$myDAO = new PhenotypeSystemDataObject("UrlHelper",array("type"=>"pages"),false,true);
+			$this->URLHelper = $myDAO;
 		}
-		$title = $myPage->getPageDescription();
-		$myDAO->set($token,$title);
+		else
+		{
+			$myDAO = $this->URLHelper;
+		}
+		$token = "pageDescription_p".$pag_id."l".(int)$lng_id;
+
+		if ($myDAO->check($token))
+		{
+			$title =  $myDAO->get($token);
+		}
+		else
+		{
+			$myPage = new PhenotypePage($pag_id);
+			if ($lng_id!=null)
+			{
+				$myPage->switchLanguage($lng_id);
+			}
+			$title = $myPage->getPageDescription();
+			$myDAO->set($token,$title);
+		}
+
+
+		return $title;
 	}
 
 
-	return $title;
-}
+	public function get_image($img_id,$alt=null,$style="",$class="")
+	{
 
+		if ($this->MediaobjectsHelper==false)
+		{
+			$myDAO = new PhenotypeSystemDataObject("MediaobjectsHelper",array(),false,true);
+			$this->MediaobjectsHelper = $myDAO;
+		}
+		else
+		{
+			$myDAO = $this->MediaobjectsHelper;
+		}
+		$token = "image". $img_id;
+		// We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
+		// storage (initiated by the Phenotype destructor)
+		if ($myDAO->check($token))
+		{
+			$myImg = clone($myDAO->get($token));
+		}
+		else
+		{
+			$myImg = new PhenotypeImage($img_id);
+			$myDAO->set($token,clone($myImg));
+		}
+		if ($alt!==null)
+		{
+			$myImg->alt = $alt;
+		}
+		$myImg->style = $style;
+		$myImg->class = $class;
+		return $myImg;
+	}
 
-public function get_image($img_id,$alt=null,$style="",$class="")
-{
+	public function get_co($con_id,$dat_id)
+	{
 
-	if ($this->MediaobjectsHelper==false)
-	{
-		$myDAO = new PhenotypeSystemDataObject("MediaobjectsHelper",array(),false,true);
-		$this->MediaobjectsHelper = $myDAO;
+		if ($this->ContentobjectsHelper==false)
+		{
+			$myDAO = new PhenotypeSystemDataObject("ContentobjectsHelper",array(),false,true);
+			$this->ContentobjectsHelper = $myDAO;
+		}
+		else
+		{
+			$myDAO = $this->ContentobjectsHelper;
+		}
+		$token = "c".$con_id."d". $dat_id;
+		// We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
+		// storage (initiated by the Phenotype destructor)
+		if ($myDAO->check($token))
+		{
+			$myCO = clone($myDAO->get($token));
+		}
+		else
+		{
+			$cname ="PhenotypeContent_".$con_id;
+			$myCO = new $cname($dat_id);
+			$myDAO->set($token,clone($myCO));
+		}
+		return $myCO;
 	}
-	else
-	{
-		$myDAO = $this->MediaobjectsHelper;
-	}
-	$token = "image". $img_id;
-	// We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
-	// storage (initiated by the Phenotype destructor)
-	if ($myDAO->check($token))
-	{
-		$myImg = clone($myDAO->get($token));
-	}
-	else
-	{
-		$myImg = new PhenotypeImage($img_id);
-		$myDAO->set($token,clone($myImg));
-	}
-	if ($alt!==null)
-	{
-		$myImg->alt = $alt;
-	}
-	$myImg->style = $style;
-	$myImg->class = $class;
-	return $myImg;
-}
 
-public function get_co($con_id,$dat_id)
-{
-
-	if ($this->ContentobjectsHelper==false)
-	{
-		$myDAO = new PhenotypeSystemDataObject("ContentobjectsHelper",array(),false,true);
-		$this->ContentobjectsHelper = $myDAO;
-	}
-	else
-	{
-		$myDAO = $this->ContentobjectsHelper;
-	}
-	$token = "c".$con_id."d". $dat_id;
-	// We must clone the object, since we always want to have/store the inital state and we don't know, what will happen until object
-	// storage (initiated by the Phenotype destructor)
-	if ($myDAO->check($token))
-	{
-		$myCO = clone($myDAO->get($token));
-	}
-	else
-	{
-	  $cname ="PhenotypeContent_".$con_id;
-		$myCO = new $cname($dat_id);
-		$myDAO->set($token,clone($myCO));
-	}
-	return $myCO;
-}
-
-/**
+	/**
  *  reserved
  *
  * @param unknown_type $smartURL
@@ -2100,12 +2108,12 @@ public function get_co($con_id,$dat_id)
  * @param unknown_type $symbol
  * @return string
  */
-public function registerController($smartURL,$inc_id,$_params=Array(),$symbol="")
-{
+	public function registerController($smartURL,$inc_id,$_params=Array(),$symbol="")
+	{
 
-}
+	}
 
-/**
+	/**
  * reserved
  *
  * @param unknown_type $smartURL
@@ -2113,120 +2121,163 @@ public function registerController($smartURL,$inc_id,$_params=Array(),$symbol=""
  * @param unknown_type $_params
  * @param unknown_type $symbol
  */
-public function registerSmartURL($smartURL,$pag_id,$_params=Array(),$symbol="")
-{
+	public function registerSmartURL($smartURL,$pag_id,$_params=Array(),$symbol="")
+	{
 
-}
+	}
 
-/**
+	/**
  * reserved
  *
  * @param unknown_type $symbol
  * @param unknown_type $smartURL
  * @param unknown_type $_params
  */
-public function registerSymbol($symbol,$smartURL,$_params=Array())
-{
+	public function registerSymbol($symbol,$smartURL,$_params=Array())
+	{
 
-}
+	}
 
 
-public function loadTMX($section,$locale=PT_LOCALE)
-{
-	$myDAO = new PhenotypeSystemDataObject("TMXHelper",array("name"=>$section,"locale"=>$locale));
+	public function loadTMX($section,$locale=PT_LOCALE)
+	{
+		$myDAO = new PhenotypeSystemDataObject("TMXHelper",array("name"=>$section,"locale"=>$locale));
 
-	$this->TMXHelper = $myDAO;
-	$this->tmxsection = $section;
-}
+		$this->TMXHelper = $myDAO;
+		$this->tmxsection = $section;
+	}
 
-public function locale($token,$_params=Array())
-{
-	global $myLog;
-	$myDAO = $this->TMXHelper;
+	public function locale($token,$_params=Array())
+	{
+		global $myLog;
+		$myDAO = $this->TMXHelper;
+
+		if (!is_array($_params))
+		{
+			$_params = Array($_params);
+		}
+
+		// :TODO: check when migration to UTF8
+		$s = utf8_decode($this->TMXHelper->get($token));
+		$s = str_replace("%r","\n",$s);
+		$s = str_replace("%l","\n",$s);
+		$s = str_replace("%n","\n",$s);
+		$s = str_replace("%bb","<strong>",$s);
+		$s = str_replace("%bs","</strong>",$s);
+		$s = str_replace("%spc","&nbsp;",$s);
+		for ($i=0;$i<count($_params);$i++)
+		{
+			$s = str_replace("%".($i+1),$_params[$i],$s);
+		}
+		if ($s=="")
+		{
+			$s="#".$token."#";
+			$myLog->log("Unknown i8ln token ".$s." for section \"" . $this->tmxsection."\"",PT_LOGFACILITY_SYS,PT_LOGLVL_INFO);
+			// Nur während der Entwicklung
+			global $myDB;
+			$sql = "DELETE FROM tokens WHERE token='".$token."' AND section='".$this->tmxsection."'";
+			$myDB->query($sql);
+			$sql = "INSERT INTO tokens (token, section )VALUES ('".$token."','".$this->tmxsection."')";
+			$myDB->query($sql);
+		}
+		return $s;
+	}
+
+
+	public function localeH($token,$_params=Array())
+	{
+
+		$s= $this->locale($token,$_params);
+		return $this->codeHKT($s);
+	}
+
+	public function localeHBR($token,$_params=Array())
+	{
+
+		$s= $this->localeH($token,$_params);
+		return nl2br($s);
+	}
+
+	public function localeDate($timestamp)
+	{
+		switch (PT_LOCALE)
+		{
+			case "de":
+				return date("d.m.Y",$timestamp);
+				break;
+			default:
+				return date("m/d/Y",$timestamp);
+				break;
+		}
+	}
+
+	public function localeShortDate($timestamp)
+	{
+		switch (PT_LOCALE)
+		{
+			case "de":
+				return date("d.m.y",$timestamp);
+				break;
+			default:
+				return date("m/d/y",$timestamp);
+				break;
+		}
+	}
+
+	public function localeFulltime($timestamp)
+	{
+		switch (PT_LOCALE)
+		{
+			case "de":
+				return date("d.m.Y H:i",$timestamp);
+				break;
+			default:
+				return date("m/d/Y H:i",$timestamp);
+				break;
+		}
+	}
+
 	
-	if (!is_array($_params))
+	public function setValidationError($number,$string)
 	{
-		$_params = Array($_params);
+		$this->validation_error_number = (int)$number;
+		$this->validation_error_string = $string;
+	}
+	public function getValidationError()
+	{
+		return array("number"=>$this->validation_error_number,"string"=>$this->validation_error_string);
+	}
+	public function setNoValidationError()
+	{
+		$this->validation_error_number = 0;
+		$this->validation_error_string = "";
 	}
 	
-	// :TODO: check when migration to UTF8
-	$s = utf8_decode($this->TMXHelper->get($token));
-	$s = str_replace("%r","\n",$s);
-	$s = str_replace("%l","\n",$s);
-	$s = str_replace("%n","\n",$s);
-	$s = str_replace("%bb","<strong>",$s);
-	$s = str_replace("%bs","</strong>",$s);
-	$s = str_replace("%spc","&nbsp;",$s);
-	for ($i=0;$i<=count($_params);$i++)
+	public function  isValidInteger($value)
 	{
-		$s = str_replace("%".($i+1),$_params[$i],$s);
+		$this->setNoValidationError();
+		if (is_bool($value)) 
+		{
+            $this->setValidationError(1,"boolean values");
+            return false;
+        }
+        if ((int)$value!=$value OR !is_numeric($value))
+        {
+        	$this->setValidationError(2,"not an integer");
+            return false;
+        }
+        return true;
 	}
-	if ($s=="")
+	
+	public function  isValidSelection($value,$_options)
 	{
-		$s="#".$token."#";
-		$myLog->log("Unknown i8ln token ".$s." for section \"" . $this->tmxsection."\"",PT_LOGFACILITY_SYS,PT_LOGLVL_INFO);
-		// Nur während der Entwicklung
-		global $myDB;
-		$sql = "DELETE FROM tokens WHERE token='".$token."' AND section='".$this->tmxsection."'";
-		$myDB->query($sql);
-		$sql = "INSERT INTO tokens (token, section )VALUES ('".$token."','".$this->tmxsection."')";
-		$myDB->query($sql);
+		$this->setNoValidationError();
+		if (in_array($value,$_options))
+		{
+			return true;
+		}
+		$this->setValidationError(1,"Unknown Value");
+        return false;
 	}
-	return $s;
-}
-
-
-public function localeH($token,$_params=Array())
-{
-
-	$s= $this->locale($token,$_params);
-	return $this->codeHKT($s);
-}
-
-public function localeHBR($token,$_params=Array())
-{
-
-	$s= $this->localeH($token,$_params);
-	return nl2br($s);
-}
-
-public function localeDate($timestamp)
-{
-	switch (PT_LOCALE)
-	{
-		case "de":
-			return date("d.m.Y",$timestamp);
-			break;
-		default:
-			return date("m/d/Y",$timestamp);
-			break;
-	}
-}
-
-public function localeShortDate($timestamp)
-{
-	switch (PT_LOCALE)
-	{
-		case "de":
-			return date("d.m.y",$timestamp);
-			break;
-		default:
-			return date("m/d/y",$timestamp);
-			break;
-	}
-}
-
-public function localeFulltime($timestamp)
-{
-	switch (PT_LOCALE)
-	{
-		case "de":
-			return date("d.m.Y H:i",$timestamp);
-			break;
-		default:
-			return date("m/d/Y H:i",$timestamp);
-			break;
-	}
-}
 }
 

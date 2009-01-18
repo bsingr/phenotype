@@ -64,8 +64,10 @@ if ($row["dat_comdata"] != "")
 	$_props = unserialize($row["dat_comdata"]);
 }	
 ksort($_props);
+$myPT->startBuffer();
 print_r($_props);
-
+$html = $myPT->stopBuffer();
+echo codeH($html);
 }
 ?>
 </pre>

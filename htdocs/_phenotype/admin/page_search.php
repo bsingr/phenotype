@@ -111,11 +111,11 @@ if ($mySUser->checkRight("elm_page"))
   $sql_cond = "";
   if ($myRequest->get("s")!="")
   {
-    $sql_cond = " AND pag_bez LIKE '%" . $myRequest->getS("s") ."%'";
+    $sql_cond = " AND pag_bez LIKE '%" . $myRequest->getSQL("s") ."%'";
   }  
   if ($myRequest->get("v")!="")
   {
-    $sql_cond .= " AND pag_fullsearch LIKE '%" . $myRequest->getS("v") ."%'";
+    $sql_cond .= " AND pag_fullsearch LIKE '%" . $myRequest->getSQL("v") ."%'";
   }    
   if ($myRequest->get("i")!="")
   {

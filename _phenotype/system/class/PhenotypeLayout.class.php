@@ -1097,15 +1097,29 @@ class PhenotypeLayoutStandard
 	}
 
 
-	function workarea_form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=1,$version=false)
+	function workarea_form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="left",$mode=1,$version=false)
 	{
 		global $myDB;
 		global $myPT;
-
 		// Den übergebenen Folder normalisieren
 		$myMB = new PhenotypeMediabase();
 		$folder = $myMB->rewriteFolder($folder);
 
+		switch ($align)
+		{
+			case "":
+				$align="left";
+				break;
+			case "links":
+				$align="left";
+				break;
+				case "rechts":
+				$align="right";
+				break;
+				case "mittig":
+				$align="center";
+				break;
+		}
 		$myPT->startBuffer();
 		if ($img_id==0)
 		{
@@ -1161,9 +1175,9 @@ class PhenotypeLayoutStandard
      <?php
      echo localeH("Alignment").":<br>";
      $this->iconbar_new();
-     $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","links",locale("msg_align_left"));
-     $this->iconbar_addentry("b_picture_center.gif","b_picture_center_active.gif","mittig",locale("msg_align_center"));
-     $this->iconbar_addentry("b_textpic_right.gif","b_textpic_right_active.gif","rechts",locale("msg_align_right"));
+     $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","left",locale("msg_align_left"));
+     $this->iconbar_addentry("b_picture_center.gif","b_picture_center_active.gif","center",locale("msg_align_center"));
+     $this->iconbar_addentry("b_textpic_right.gif","b_textpic_right_active.gif","right",locale("msg_align_right"));
      $this->iconbar_draw($name."img_align",$align,"editform");
      //$this->workarea_form_iconbar($name_org."bildausrichtung",$align);
      echo "<br>";
@@ -1188,7 +1202,31 @@ class PhenotypeLayoutStandard
     </select>
     <?php } ?>
       </td></tr></table>
- <?php } ?>
+ <?php }else{ 
+ 	if ($version !== false) {
+ 	// $mode=1 ?>
+  	<table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
+              <tr>
+                <td nowrap>
+				<?php echo locale("Version")?>:<br/>
+    <select name="<?php echo $name ?>version" class="listmenu">
+    <?php
+     $html = '<option value="0" >Original</option>';
+	 $sql = "SELECT * FROM mediaversion WHERE med_id = ".$myImg->id." ORDER BY ver_bez, ver_id DESC";
+	 $rs = $myDB->query($sql);
+     while ($row = mysql_fetch_array($rs))
+     {
+	 $selected ="";
+	 if ($row["ver_id"] == $version)
+	 {
+		$selected = "selected";
+	 }
+		$html .='<option value="'. $row["ver_id"] .'" ' . $selected . '>' . $row["ver_bez"] . '</option>';
+     }
+     echo $html. '</td></tr></table>';
+ 	}
+ 	?>
+ 	<?php }?>
  </div>
 
 <input name="<?php echo $name ?>img_id" type="hidden" value="<?php echo $img_id ?>">
@@ -1216,7 +1254,7 @@ return $myPT->stopBuffer();
        <div id="<?php echo $name ?>panel" <?php echo $style ?>>
 	   <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td nowrap><a href="javascript:reset_image('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Remove image");?></a></td>
+                    <td nowrap><a href="javascript:reset_image('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Remove Image");?></a></td>
                   </tr>
                 </table>
      <table width="408" border="0" cellpadding="0" cellspacing="0" class="tableBausteineBackground">
@@ -1238,12 +1276,12 @@ return $myPT->stopBuffer();
 				<?php echo localeH("Alternate");?>:<br>
 				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
      <?php
-     echo localeH("Ausrichtung").":<br>";
+     echo localeH("Alignment").":<br>";
      $this->iconbar_new();
-     $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","links","Linksb&uuml;ndig");
-     $this->iconbar_addentry("b_picture_center.gif","b_picture_center_active.gif","mittig","Mittig");
-     $this->iconbar_addentry("b_textpic_right.gif","b_textpic_right_active.gif","rechts","Rechtsb&uuml;ndig");
-     $this->iconbar_draw($name."img_align",$align,"editform");
+     $this->iconbar_addentry("b_textpic_left.gif","b_textpic_left_activ.gif","left",locale("msg_align_left"));
+     $this->iconbar_addentry("b_picture_center.gif","b_picture_center_active.gif","center",locale("msg_align_center"));
+     $this->iconbar_addentry("b_textpic_right.gif","b_textpic_right_active.gif","right",locale("msg_align_right"));
+     $this->iconbar_draw($name."align",$align,"editform");
      echo "<br>";
 ?>
  </td></tr></table>

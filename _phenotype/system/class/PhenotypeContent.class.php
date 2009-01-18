@@ -143,7 +143,6 @@ class PhenotypeContentStandard extends PhenotypeBase
 	function update()
 	{
 		$this->fetchEditForm($this);
-		//$this->buildCache();
 	}
 
 	function store()
@@ -178,28 +177,6 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		$fulltext = $this->buildFullText();
 
-		/*
-		if ($fulltext == "")
-		{
-		// Nutze den Automatismus
-		if ($this->block_nr != -1 AND $this->block_nr < 6)
-		{
-		$this->mySQL->addField("dat_fullsearch".$this->block_nr, $this->fullsearch);
-		$fullsearch = $this->fullsearch;
-		for ($i = 0; $i <= 5; $i ++)
-		{
-		if ($i != $this->block_nr)
-		{
-		$fullsearch .= $this->row["dat_fullsearch".$i];
-		}
-		}
-		$this->mySQL->addField("dat_fullsearch", $fullsearch);
-		}
-		} else
-		{
-		$this->mySQL->addField("dat_fullsearch", $fulltext);
-		}
-		*/
 		$this->mySQL->addField("dat_fullsearch", $fulltext);
 
 		$mySQL = $this->mySQL;
@@ -427,7 +404,6 @@ class PhenotypeContentStandard extends PhenotypeBase
 	function setDefaultProperties()
 	{
 		// macht in der Superklasse keinen Sinn
-		//echo "superklasse";
 	}
 
 	function getAccessFilter()
@@ -476,7 +452,6 @@ class PhenotypeContentStandard extends PhenotypeBase
 		}
 	}
 
-	//function PhenotypeContent($id=-1)
 	public function __construct($id = -1)
 	{
 		$id = (int) $id;
@@ -1729,7 +1704,7 @@ function displayForm($myCO, $form, $id)
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
         <td width="509" class="formarea"><p>
-		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>" class="input">
+		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>" class="listmenu">
 		<?php 
 		if ($a[3]==true){
 		?>
@@ -2130,7 +2105,7 @@ function displayForm($myCO, $form, $id)
 
              $name = $myCO->formid."_".$a[2];
              $val = $myCO->get($a[2]);
-             $val = $myApp->richtext_prefilter($val);
+             $val = $myApp->richtext_prefilter($val,$myCO);
              echo $myLayout->form_Richtext($name, $val, 80, $a[4], $a[3]);
 ?>
              
@@ -3402,6 +3377,7 @@ function fetchForm($myCO, $form, $id)
 				{
 					$s = $myApp->richtext_strip_tags($s);
 				}
+				$s = $myApp->richtext_postfilter($s,$myCO);
 				$myCO->set($a[2], $s);
 				$this->fullsearch .= strip_tags($s)." | ";
 				break;

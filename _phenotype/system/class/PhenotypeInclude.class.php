@@ -28,8 +28,8 @@ class PhenotypeIncludeStandard
 	public $id;
 	public $params;
 	public $html;
-
-	//function PhenotypeInclude($id,$params="")
+	public $context = 0;
+	
 
 	public function __construct($p1="",$p2="")
 	{
