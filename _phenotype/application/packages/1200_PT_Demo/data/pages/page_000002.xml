@@ -23,7 +23,7 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153068248</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1226769437</pag_date>
+<pag_date>1232357203</pag_date>
 <pag_url>Heading-1</pag_url>
 <pag_url1>Heading-1</pag_url1>
 <pag_url2>Heading-1</pag_url2>
@@ -37,7 +37,7 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Heading 1|Heading 1|Heading 1||||Heading 1|||Multiple usage|&#60;p&#62;This is the same gallery like that one on the startpage:&#60;&#47;p&#62;|</pag_fullsearch>
+				<pag_fullsearch>Heading 1|Heading 1|Heading 1||||Multiple usage|&#60;p&#62;This is the same gallery like that one on the startpage:&#60;&#47;p&#62;|Heading 1|||</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -58,7 +58,7 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YToyOntzOjM6ImJleiI7czo5OiJIZWFkaW5nIDEiO3M6Nzoic3VibGluZSI7czowOiIiO30=</dat_comdata>
+				<dat_comdata>YTozOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6ODoiaGVhZGxpbmUiO3M6OToiSGVhZGluZyAxIjtzOjc6InN1YmxpbmUiO3M6MDoiIjt9</dat_comdata>
 				<dat_fullsearch>Heading 1|</dat_fullsearch>
 			</component>
 			<component>
@@ -68,7 +68,7 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>2</dat_pos>
-				<dat_comdata>YToxODp7czo4OiJoZWFkbGluZSI7czoxNDoiTXVsdGlwbGUgdXNhZ2UiO3M6NDoidGV4dCI7czo2MzoiPHA+VGhpcyBpcyB0aGUgc2FtZSBnYWxsZXJ5IGxpa2UgdGhhdCBvbmUgb24gdGhlIHN0YXJ0cGFnZTo8L3A+IjtzOjY6ImltZ19pZCI7czoxOiIwIjtzOjM6ImFsdCI7czowOiIiO3M6MTU6ImJpbGRhdXNyaWNodHVuZyI7czo1OiJsaW5rcyI7czo3OiJsaW5rYmV6IjtzOjA6IiI7czo3OiJsaW5rdXJsIjtzOjA6IiI7czoxMDoibGlua3RhcmdldCI7czo1OiJfc2VsZiI7czo1OiJzdHlsZSI7czoxOiIyIjtzOjc6InZlcnNpb24iO3M6MToiMCI7czo3OiJpbWdfYWx0IjtzOjA6IiI7czo5OiJpbWdfYWxpZ24iO3M6NToibGlua3MiO3M6NjoibWVkX2lkIjtzOjI6IjE2IjtzOjg6Imxpbmt0eXBlIjtzOjE6IjAiO3M6ODoibGlua3RleHQiO3M6MDoiIjtzOjEwOiJsaW5rc291cmNlIjtzOjA6IiI7czo1OiJsaW5reCI7czowOiIiO3M6NToibGlua3kiO3M6MDoiIjt9</dat_comdata>
+				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjIiO3M6ODoiaGVhZGxpbmUiO3M6MTQ6Ik11bHRpcGxlIHVzYWdlIjtzOjEzOiJpbWFnZTFfaW1nX2lkIjtzOjE6IjAiO3M6MTM6ImltYWdlMV9tZWRfaWQiO3M6MToiMCI7czoxMDoiaW1hZ2UxX2FsdCI7czowOiIiO3M6MTI6ImltYWdlMV9hbGlnbiI7czo0OiJsZWZ0IjtzOjQ6InRleHQiO3M6NjM6IjxwPlRoaXMgaXMgdGhlIHNhbWUgZ2FsbGVyeSBsaWtlIHRoYXQgb25lIG9uIHRoZSBzdGFydHBhZ2U6PC9wPiI7czo5OiJsaW5rX25hbWUiO3M6MDoiIjtzOjg6ImxpbmtfdXJsIjtzOjA6IiI7czoxMToibGlua190YXJnZXQiO3M6NToiX3NlbGYiO30=</dat_comdata>
 				<dat_fullsearch>Multiple usage|&#60;p&#62;This is the same gallery like that one on the startpage:&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 			<component>
@@ -78,7 +78,7 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>3</dat_pos>
-				<dat_comdata>YToyOntzOjg6InZhcmlhYmxlIjtzOjQ6IldlcnQiO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
+				<dat_comdata>YToyOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
 				<dat_fullsearch></dat_fullsearch>
 			</component>
 		</sequence_data>

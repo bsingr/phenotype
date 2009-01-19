@@ -23,7 +23,7 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153068248</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1226747425</pag_date>
+<pag_date>1232357313</pag_date>
 <pag_url>Heading-2</pag_url>
 <pag_url1>Heading-2</pag_url1>
 <pag_url2>Heading-2</pag_url2>
@@ -37,10 +37,10 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Heading 2|Heading 2|Heading 2|||||Richtext|&#60;p&#62;This page lists all page components of this demonstration.&#60;&#47;p&#62;|||Demonstration Of All Page Components||Point 1|Point 2|Point 3||Richtext|&#60;p&#62;Your job ist to develop your own very specific page components. These are just examples.&#60;&#47;p&#62;|
+				<pag_fullsearch>Heading 2|Heading 2|Heading 2||||||Richtext|&#60;p&#62;Your job ist to develop your own very specific page components. These are just examples.&#60;&#47;p&#62;|Richtext|&#60;p&#62;This page lists all page components of this demonstration.&#60;&#47;p&#62;||Demonstration Of All Page Components||
 This tag is not at all valid. (HTML component)
 
-|</pag_fullsearch>
+||Just an Image:||</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -61,7 +61,7 @@ This tag is not at all valid. (HTML component)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YToyOntzOjM6ImJleiI7czozNjoiRGVtb25zdHJhdGlvbiBPZiBBbGwgUGFnZSBDb21wb25lbnRzIjtzOjc6InN1YmxpbmUiO3M6MDoiIjt9</dat_comdata>
+				<dat_comdata>YTozOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6ODoiaGVhZGxpbmUiO3M6MzY6IkRlbW9uc3RyYXRpb24gT2YgQWxsIFBhZ2UgQ29tcG9uZW50cyI7czo3OiJzdWJsaW5lIjtzOjA6IiI7fQ==</dat_comdata>
 				<dat_fullsearch>Demonstration Of All Page Components|</dat_fullsearch>
 			</component>
 			<component>
@@ -71,7 +71,7 @@ This tag is not at all valid. (HTML component)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>2</dat_pos>
-				<dat_comdata>YToxMDp7czo4OiJoZWFkbGluZSI7czo4OiJSaWNodGV4dCI7czo0OiJ0ZXh0IjtzOjY1OiI8cD5UaGlzIHBhZ2UgbGlzdHMgYWxsIHBhZ2UgY29tcG9uZW50cyBvZiB0aGlzIGRlbW9uc3RyYXRpb24uPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiMCI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NjoicmVjaHRzIjtzOjc6ImxpbmtiZXoiO3M6MDoiIjtzOjc6Imxpbmt1cmwiO3M6MDoiIjtzOjEwOiJsaW5rdGFyZ2V0IjtzOjU6Il9zZWxmIjtzOjU6InN0eWxlIjtzOjE6IjAiO3M6NzoidmVyc2lvbiI7czoxOiIwIjt9</dat_comdata>
+				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjAiO3M6ODoiaGVhZGxpbmUiO3M6ODoiUmljaHRleHQiO3M6MTM6ImltYWdlMV9pbWdfaWQiO3M6MToiMCI7czoxMzoiaW1hZ2UxX21lZF9pZCI7czoxOiIwIjtzOjEwOiJpbWFnZTFfYWx0IjtzOjA6IiI7czoxMjoiaW1hZ2UxX2FsaWduIjtzOjQ6ImxlZnQiO3M6NDoidGV4dCI7czo2NToiPHA+VGhpcyBwYWdlIGxpc3RzIGFsbCBwYWdlIGNvbXBvbmVudHMgb2YgdGhpcyBkZW1vbnN0cmF0aW9uLjwvcD4iO3M6OToibGlua19uYW1lIjtzOjA6IiI7czo4OiJsaW5rX3VybCI7czowOiIiO3M6MTE6ImxpbmtfdGFyZ2V0IjtzOjU6Il9zZWxmIjt9</dat_comdata>
 				<dat_fullsearch>Richtext|&#60;p&#62;This page lists all page components of this demonstration.&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 			<component>
@@ -81,7 +81,7 @@ This tag is not at all valid. (HTML component)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>3</dat_pos>
-				<dat_comdata>YToxMDp7czo4OiJoZWFkbGluZSI7czo4OiJSaWNodGV4dCI7czo0OiJ0ZXh0IjtzOjk1OiI8cD5Zb3VyIGpvYiBpc3QgdG8gZGV2ZWxvcCB5b3VyIG93biB2ZXJ5IHNwZWNpZmljIHBhZ2UgY29tcG9uZW50cy4gVGhlc2UgYXJlIGp1c3QgZXhhbXBsZXMuPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiNiI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMiI7czo3OiJ2ZXJzaW9uIjtzOjE6IjAiO30=</dat_comdata>
+				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjIiO3M6ODoiaGVhZGxpbmUiO3M6ODoiUmljaHRleHQiO3M6MTM6ImltYWdlMV9pbWdfaWQiO3M6MToiMCI7czoxMzoiaW1hZ2UxX21lZF9pZCI7czoxOiIwIjtzOjEwOiJpbWFnZTFfYWx0IjtzOjA6IiI7czoxMjoiaW1hZ2UxX2FsaWduIjtzOjQ6ImxlZnQiO3M6NDoidGV4dCI7czo5NToiPHA+WW91ciBqb2IgaXN0IHRvIGRldmVsb3AgeW91ciBvd24gdmVyeSBzcGVjaWZpYyBwYWdlIGNvbXBvbmVudHMuIFRoZXNlIGFyZSBqdXN0IGV4YW1wbGVzLjwvcD4iO3M6OToibGlua19uYW1lIjtzOjA6IiI7czo4OiJsaW5rX3VybCI7czowOiIiO3M6MTE6ImxpbmtfdGFyZ2V0IjtzOjU6Il9zZWxmIjt9</dat_comdata>
 				<dat_fullsearch>Richtext|&#60;p&#62;Your job ist to develop your own very specific page components. These are just examples.&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 			<component>
@@ -91,17 +91,7 @@ This tag is not at all valid. (HTML component)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>4</dat_pos>
-				<dat_comdata>YTo1OntzOjY6ImFuemFobCI7aTozO3M6NToidGV4dDEiO3M6NzoiUG9pbnQgMSI7czo1OiJ0ZXh0MiI7czo3OiJQb2ludCAyIjtzOjU6InRleHQzIjtzOjc6IlBvaW50IDMiO3M6ODoiaGVhZGxpbmUiO3M6MTE6IkVudW1lcmF0aW9uIjt9</dat_comdata>
-				<dat_fullsearch>Point 1|Point 2|Point 3|</dat_fullsearch>
-			</component>
-			<component>
-				<com_id>1104</com_id>
-				<ver_id>3</ver_id>
-				<lng_id>1</lng_id>
-				<dat_blocknr>1</dat_blocknr>
-				<dat_visible>1</dat_visible>
-				<dat_pos>5</dat_pos>
-				<dat_comdata>YTowOnt9</dat_comdata>
+				<dat_comdata>YTo2OntzOjk6Il9yZXZpc2lvbiI7aToxO3M6MTA6ImVudW1fY291bnQiO3M6MToiMyI7czo4OiJoZWFkbGluZSI7czoxMToiRW51bWVyYXRpb24iO3M6MTA6ImVudW1faXRlbTEiO3M6NzoiUG9pbnQgMSI7czoxMDoiZW51bV9pdGVtMiI7czo3OiJQb2ludCAyIjtzOjEwOiJlbnVtX2l0ZW0zIjtzOjc6IlBvaW50IDMiO30=</dat_comdata>
 				<dat_fullsearch></dat_fullsearch>
 			</component>
 			<component>
@@ -110,12 +100,22 @@ This tag is not at all valid. (HTML component)
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
-				<dat_pos>6</dat_pos>
-				<dat_comdata>YToxOntzOjQ6Imh0bWwiO3M6OTg6Ijxici8+CjxibGluaz48bWFycXVlZT5UaGlzIHRhZyBpcyBub3QgYXQgYWxsIHZhbGlkLiAoSFRNTCBjb21wb25lbnQpPC9tYXJxdWVlPjwvYmxpbms+Cjxici8+Cjxici8+Ijt9</dat_comdata>
+				<dat_pos>5</dat_pos>
+				<dat_comdata>YToyOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6NDoiaHRtbCI7czo5ODoiPGJyLz4KPGJsaW5rPjxtYXJxdWVlPlRoaXMgdGFnIGlzIG5vdCBhdCBhbGwgdmFsaWQuIChIVE1MIGNvbXBvbmVudCk8L21hcnF1ZWU+PC9ibGluaz4KPGJyLz4KPGJyLz4iO30=</dat_comdata>
 				<dat_fullsearch>
 This tag is not at all valid. (HTML component)
 
 </dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1101</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>6</dat_pos>
+				<dat_comdata>YTozOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6ODoiaGVhZGxpbmUiO3M6MTQ6Ikp1c3QgYW4gSW1hZ2U6IjtzOjc6InN1YmxpbmUiO3M6MDoiIjt9</dat_comdata>
+				<dat_fullsearch>Just an Image:|</dat_fullsearch>
 			</component>
 			<component>
 				<com_id>1102</com_id>
@@ -124,7 +124,17 @@ This tag is not at all valid. (HTML component)
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>7</dat_pos>
-				<dat_comdata>YTo0OntzOjY6ImltZ19pZCI7czoxOiI1IjtzOjM6ImFsdCI7czoxMzoiSnVzdCBhbiBpbWFnZSI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjY6Im1pdHRpZyI7czo3OiJ2ZXJzaW9uIjtzOjE6IjAiO30=</dat_comdata>
+				<dat_comdata>YTo1OntzOjk6Il9yZXZpc2lvbiI7aToxO3M6MTM6ImltYWdlMV9pbWdfaWQiO3M6MjoiMTUiO3M6MTM6ImltYWdlMV9tZWRfaWQiO3M6MjoiMTUiO3M6MTA6ImltYWdlMV9hbHQiO3M6MTM6Ikp1c3QgYW4gaW1hZ2UiO3M6MTI6ImltYWdlMV9hbGlnbiI7czo2OiJjZW50ZXIiO30=</dat_comdata>
+				<dat_fullsearch></dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1105</com_id>
+				<ver_id>3</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>8</dat_pos>
+				<dat_comdata>YToxNDp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjEzOiJ0YWJsZV9jb3VudF94IjtpOjM7czoxMzoidGFibGVfY291bnRfeSI7aTozO3M6MTE6InRhYmxlX3dpZHRoIjtzOjM6IjUwMCI7czo4OiJoZWFkbGluZSI7czoxMjoiU2ltcGxlIFRhYmxlIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gxX3kxIjtzOjI6ImExIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gyX3kxIjtzOjI6ImEyIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gzX3kxIjtzOjI6ImEzIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gxX3kyIjtzOjI6ImIxIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gyX3kyIjtzOjI6ImIyIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gzX3kyIjtzOjI6ImIzIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gxX3kzIjtzOjI6ImMxIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gyX3kzIjtzOjI6ImMyIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gzX3kzIjtzOjI6ImMzIjt9</dat_comdata>
 				<dat_fullsearch></dat_fullsearch>
 			</component>
 			<component>
@@ -133,8 +143,8 @@ This tag is not at all valid. (HTML component)
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
-				<dat_pos>8</dat_pos>
-				<dat_comdata>YToyOntzOjg6InZhcmlhYmxlIjtzOjQ6IldlcnQiO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
+				<dat_pos>9</dat_pos>
+				<dat_comdata>YToyOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
 				<dat_fullsearch></dat_fullsearch>
 			</component>
 		</sequence_data>

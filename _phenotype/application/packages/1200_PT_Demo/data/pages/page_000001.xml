@@ -23,7 +23,7 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153067027</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1226769411</pag_date>
+<pag_date>1232356934</pag_date>
 <pag_url>Startpage</pag_url>
 <pag_url1>Startpage</pag_url1>
 <pag_url2>Startpage</pag_url2>
@@ -37,15 +37,15 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Startpage|Startpage|Startpage||||Welcome to the Phenotype demonstration website||||Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62;www.phenotype-cms.de&#60;&#47;a&#62;.&#60;&#47;p&#62;
-&#60;p&#62;(Currently most information in german only)&#60;&#47;p&#62;||&#60;p&#62;Phenotype is a page &#60;strong&#62;and&#60;&#47;strong&#62; a content oriented system, meaning content can be edited independent from it&#39;s later usage (using content objects) or directly on a page (using page components).&#60;&#47;p&#62;
+				<pag_fullsearch>Startpage|Startpage|Startpage|||||&#60;p&#62;Phenotype is a page &#60;strong&#62;and&#60;&#47;strong&#62; a content oriented system, meaning content can be edited independent from it&#39;s later usage (using content objects) or directly on a page (using page components).&#60;&#47;p&#62;
 &#60;p&#62;This text you&#39;re just reading was placed right here on the startpage with the richtext component.&#60;&#47;p&#62;
 &#60;p&#62;After that three more components are rendered on this page:&#60;&#47;p&#62;
 &#60;ul&#62;
     &#60;li&#62;a table&#60;&#47;li&#62;
     &#60;li&#62;a gallery component&#60;&#47;li&#62;
     &#60;li&#62;another richtext component - this time in a different style&#60;&#47;li&#62;
-&#60;&#47;ul&#62;|</pag_fullsearch>
+&#60;&#47;ul&#62;||Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62;www.phenotype-cms.de&#60;&#47;a&#62;.&#60;&#47;p&#62;
+&#60;p&#62;(Currently most information in german only)&#60;&#47;p&#62;|Welcome to the Phenotype demonstration website|||</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -66,7 +66,7 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YToyOntzOjM6ImJleiI7czo0NjoiV2VsY29tZSB0byB0aGUgUGhlbm90eXBlIGRlbW9uc3RyYXRpb24gd2Vic2l0ZSI7czo3OiJzdWJsaW5lIjtzOjA6IiI7fQ==</dat_comdata>
+				<dat_comdata>YTozOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6ODoiaGVhZGxpbmUiO3M6NDY6IldlbGNvbWUgdG8gdGhlIFBoZW5vdHlwZSBkZW1vbnN0cmF0aW9uIHdlYnNpdGUiO3M6Nzoic3VibGluZSI7czowOiIiO30=</dat_comdata>
 				<dat_fullsearch>Welcome to the Phenotype demonstration website|</dat_fullsearch>
 			</component>
 			<component>
@@ -76,7 +76,7 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>2</dat_pos>
-				<dat_comdata>YToxODp7czo4OiJoZWFkbGluZSI7czowOiIiO3M6NDoidGV4dCI7czo1MjY6IjxwPlBoZW5vdHlwZSBpcyBhIHBhZ2UgPHN0cm9uZz5hbmQ8L3N0cm9uZz4gYSBjb250ZW50IG9yaWVudGVkIHN5c3RlbSwgbWVhbmluZyBjb250ZW50IGNhbiBiZSBlZGl0ZWQgaW5kZXBlbmRlbnQgZnJvbSBpdCdzIGxhdGVyIHVzYWdlICh1c2luZyBjb250ZW50IG9iamVjdHMpIG9yIGRpcmVjdGx5IG9uIGEgcGFnZSAodXNpbmcgcGFnZSBjb21wb25lbnRzKS48L3A+DQo8cD5UaGlzIHRleHQgeW91J3JlIGp1c3QgcmVhZGluZyB3YXMgcGxhY2VkIHJpZ2h0IGhlcmUgb24gdGhlIHN0YXJ0cGFnZSB3aXRoIHRoZSByaWNodGV4dCBjb21wb25lbnQuPC9wPg0KPHA+QWZ0ZXIgdGhhdCB0aHJlZSBtb3JlIGNvbXBvbmVudHMgYXJlIHJlbmRlcmVkIG9uIHRoaXMgcGFnZTo8L3A+DQo8dWw+DQogICAgPGxpPmEgdGFibGU8L2xpPg0KICAgIDxsaT5hIGdhbGxlcnkgY29tcG9uZW50PC9saT4NCiAgICA8bGk+YW5vdGhlciByaWNodGV4dCBjb21wb25lbnQgLSB0aGlzIHRpbWUgaW4gYSBkaWZmZXJlbnQgc3R5bGU8L2xpPg0KPC91bD4iO3M6NjoiaW1nX2lkIjtzOjE6IjAiO3M6MzoiYWx0IjtzOjA6IiI7czoxNToiYmlsZGF1c3JpY2h0dW5nIjtzOjU6ImxpbmtzIjtzOjc6ImxpbmtiZXoiO3M6MDoiIjtzOjc6Imxpbmt1cmwiO3M6MDoiIjtzOjEwOiJsaW5rdGFyZ2V0IjtzOjU6Il9zZWxmIjtzOjU6InN0eWxlIjtzOjE6IjAiO3M6NzoidmVyc2lvbiI7czoxOiIwIjtzOjc6ImltZ19hbHQiO3M6MDoiIjtzOjk6ImltZ19hbGlnbiI7czo1OiJsaW5rcyI7czo2OiJtZWRfaWQiO3M6MjoiMTUiO3M6ODoibGlua3R5cGUiO3M6MToiMCI7czo4OiJsaW5rdGV4dCI7czowOiIiO3M6MTA6Imxpbmtzb3VyY2UiO3M6MDoiIjtzOjU6Imxpbmt4IjtzOjA6IiI7czo1OiJsaW5reSI7czowOiIiO30=</dat_comdata>
+				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjAiO3M6ODoiaGVhZGxpbmUiO3M6MDoiIjtzOjEzOiJpbWFnZTFfaW1nX2lkIjtzOjE6IjAiO3M6MTM6ImltYWdlMV9tZWRfaWQiO3M6MToiMCI7czoxMDoiaW1hZ2UxX2FsdCI7czowOiIiO3M6MTI6ImltYWdlMV9hbGlnbiI7czo0OiJsZWZ0IjtzOjQ6InRleHQiO3M6NTI2OiI8cD5QaGVub3R5cGUgaXMgYSBwYWdlIDxzdHJvbmc+YW5kPC9zdHJvbmc+IGEgY29udGVudCBvcmllbnRlZCBzeXN0ZW0sIG1lYW5pbmcgY29udGVudCBjYW4gYmUgZWRpdGVkIGluZGVwZW5kZW50IGZyb20gaXQncyBsYXRlciB1c2FnZSAodXNpbmcgY29udGVudCBvYmplY3RzKSBvciBkaXJlY3RseSBvbiBhIHBhZ2UgKHVzaW5nIHBhZ2UgY29tcG9uZW50cykuPC9wPg0KPHA+VGhpcyB0ZXh0IHlvdSdyZSBqdXN0IHJlYWRpbmcgd2FzIHBsYWNlZCByaWdodCBoZXJlIG9uIHRoZSBzdGFydHBhZ2Ugd2l0aCB0aGUgcmljaHRleHQgY29tcG9uZW50LjwvcD4NCjxwPkFmdGVyIHRoYXQgdGhyZWUgbW9yZSBjb21wb25lbnRzIGFyZSByZW5kZXJlZCBvbiB0aGlzIHBhZ2U6PC9wPg0KPHVsPg0KICAgIDxsaT5hIHRhYmxlPC9saT4NCiAgICA8bGk+YSBnYWxsZXJ5IGNvbXBvbmVudDwvbGk+DQogICAgPGxpPmFub3RoZXIgcmljaHRleHQgY29tcG9uZW50IC0gdGhpcyB0aW1lIGluIGEgZGlmZmVyZW50IHN0eWxlPC9saT4NCjwvdWw+IjtzOjk6ImxpbmtfbmFtZSI7czowOiIiO3M6ODoibGlua191cmwiO3M6MDoiIjtzOjExOiJsaW5rX3RhcmdldCI7czo1OiJfc2VsZiI7fQ==</dat_comdata>
 				<dat_fullsearch>|&#60;p&#62;Phenotype is a page &#60;strong&#62;and&#60;&#47;strong&#62; a content oriented system, meaning content can be edited independent from it&#39;s later usage (using content objects) or directly on a page (using page components).&#60;&#47;p&#62;
 &#60;p&#62;This text you&#39;re just reading was placed right here on the startpage with the richtext component.&#60;&#47;p&#62;
 &#60;p&#62;After that three more components are rendered on this page:&#60;&#47;p&#62;
@@ -93,7 +93,7 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>3</dat_pos>
-				<dat_comdata>YToxODp7czo1OiJzdHlsZSI7aToxO3M6NToid2lkdGgiO3M6MzoiNDUwIjtzOjg6ImFuemFobF94IjtpOjI7czo4OiJhbnphaGxfeSI7aTo1O3M6MTA6InRjb25feDFfeTEiO3M6NzoiRmVhdHVyZSI7czoxMDoidGNvbl94MV95MiI7czo5OiJNZWRpYWJhc2UiO3M6MTA6InRjb25feDFfeTMiO3M6MTQ6IkVkaXRvciAvIFBhZ2VzIjtzOjEwOiJ0Y29uX3gyX3kxIjtzOjExOiJEZXNjcmlwdGlvbiI7czoxMDoidGNvbl94Ml95MiI7czoxMTI6Im1lZGlhIGFzc2V0IG1hbmFnZW1lbnQgd2l0aCBicm93c2VyIGJhc2VkIGltYWdlIG1hbmlwdWxhdGlvbiwgc3VwcG9ydGluZyBpbWFnZSB2ZXJzaW9ucyBhbmQgZnJlZSBjYXRlZ29yaXphdGlvbi4iO3M6MTA6InRjb25feDJfeTMiO3M6MTI0OiJQbGFjZW1lbnQgb2YgY29udGVudCBvbiBwYWdlcyB3aXRoIHByb2dyYW1tYWJsZSBwYWdlIGNvbXBvbmVudHMsIGxpa2UgcmljaHRleHQsIHRhYmxlcywgdGVhc2VyLCB2b3RlcywgcXVvdGVib3hlcyBhbmQgc28gb24uIjtzOjEwOiJ0Y29uX3gzX3kxIjtzOjA6IiI7czoxMDoidGNvbl94M195MiI7czowOiIiO3M6MTA6InRjb25feDNfeTMiO3M6MDoiIjtzOjg6ImhlYWRsaW5lIjtzOjI2OiJUaGlzIGlzIGFuIGV4ZW1wbGFyeSB0YWJsZSI7czoxMDoidGNvbl94MV95NCI7czoxNjoiRWRpdG9yIC8gQ29udGVudCI7czoxMDoidGNvbl94Ml95NCI7czoxOTU6Ik1hbmFnZW1lbnQgb2YgY29udGVudCBmb3IgbXVsdGlwbGUgdXNlIG9uIGRpZmZlcmVudCBwYWdlcy4NCg0KRWFjaCBjb250ZW50IHR5cGUgcmVmZXJlcyB0byBhIGZyZWUgcHJvZ3JhbW1hYmxlIGNvbnRlbnQgY2xhc3Mgd2l0aCBtYW5pZm9sZCBwb3NzaWJpbGl0ZXMgdG8gYnVpbGQgcmljaCBhbmQgcmVzcG9uZGluZyBlZGl0aW5nIGZvcm1zLiI7czoxMDoidGNvbl94MV95NSI7czozOiIuLi4iO3M6MTA6InRjb25feDJfeTUiO3M6MTc6ImEgbG90IG1vcmUgLi4uIDspIjt9</dat_comdata>
+				<dat_comdata>YToxNTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjEzOiJ0YWJsZV9jb3VudF94IjtpOjI7czoxMzoidGFibGVfY291bnRfeSI7aTo1O3M6MTE6InRhYmxlX3dpZHRoIjtzOjM6IjQ1MCI7czo4OiJoZWFkbGluZSI7czoyNjoiVGhpcyBpcyBhbiBleGVtcGxhcnkgdGFibGUiO3M6MTk6InRhYmxlX2NvbnRlbnRfeDFfeTEiO3M6NzoiRmVhdHVyZSI7czoxOToidGFibGVfY29udGVudF94Ml95MSI7czoxMToiRGVzY3JpcHRpb24iO3M6MTk6InRhYmxlX2NvbnRlbnRfeDFfeTIiO3M6OToiTWVkaWFiYXNlIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gyX3kyIjtzOjExMjoibWVkaWEgYXNzZXQgbWFuYWdlbWVudCB3aXRoIGJyb3dzZXIgYmFzZWQgaW1hZ2UgbWFuaXB1bGF0aW9uLCBzdXBwb3J0aW5nIGltYWdlIHZlcnNpb25zIGFuZCBmcmVlIGNhdGVnb3JpemF0aW9uLiI7czoxOToidGFibGVfY29udGVudF94MV95MyI7czoxNDoiRWRpdG9yIC8gUGFnZXMiO3M6MTk6InRhYmxlX2NvbnRlbnRfeDJfeTMiO3M6MTI0OiJQbGFjZW1lbnQgb2YgY29udGVudCBvbiBwYWdlcyB3aXRoIHByb2dyYW1tYWJsZSBwYWdlIGNvbXBvbmVudHMsIGxpa2UgcmljaHRleHQsIHRhYmxlcywgdGVhc2VyLCB2b3RlcywgcXVvdGVib3hlcyBhbmQgc28gb24uIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gxX3k0IjtzOjE2OiJFZGl0b3IgLyBDb250ZW50IjtzOjE5OiJ0YWJsZV9jb250ZW50X3gyX3k0IjtzOjE5NToiTWFuYWdlbWVudCBvZiBjb250ZW50IGZvciBtdWx0aXBsZSB1c2Ugb24gZGlmZmVyZW50IHBhZ2VzLg0KDQpFYWNoIGNvbnRlbnQgdHlwZSByZWZlcmVzIHRvIGEgZnJlZSBwcm9ncmFtbWFibGUgY29udGVudCBjbGFzcyB3aXRoIG1hbmlmb2xkIHBvc3NpYmlsaXRlcyB0byBidWlsZCByaWNoIGFuZCByZXNwb25kaW5nIGVkaXRpbmcgZm9ybXMuIjtzOjE5OiJ0YWJsZV9jb250ZW50X3gxX3k1IjtzOjM6Ii4uLiI7czoxOToidGFibGVfY29udGVudF94Ml95NSI7czoxNzoiYSBsb3QgbW9yZSAuLi4gOykiO30=</dat_comdata>
 				<dat_fullsearch></dat_fullsearch>
 			</component>
 			<component>
@@ -103,7 +103,7 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>4</dat_pos>
-				<dat_comdata>YToyOntzOjg6InZhcmlhYmxlIjtzOjQ6IldlcnQiO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
+				<dat_comdata>YToyOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
 				<dat_fullsearch></dat_fullsearch>
 			</component>
 			<component>
@@ -113,7 +113,7 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>5</dat_pos>
-				<dat_comdata>YToxODp7czo4OiJoZWFkbGluZSI7czoxMzoiRG9jdW1lbnRhdGlvbiI7czo0OiJ0ZXh0IjtzOjE1NDoiPHA+RXh0ZW5zaXZlIEluZm9zIG9uIHBoZW5vdHlwZSBvbiA8YSBocmVmPSJodHRwOi8vd3d3LnBoZW5vdHlwZS1jbXMuZGUiPnd3dy5waGVub3R5cGUtY21zLmRlPC9hPi48L3A+DQo8cD4oQ3VycmVudGx5IG1vc3QgaW5mb3JtYXRpb24gaW4gZ2VybWFuIG9ubHkpPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiMCI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMiI7czo3OiJ2ZXJzaW9uIjtzOjE6IjAiO3M6NzoiaW1nX2FsdCI7czowOiIiO3M6OToiaW1nX2FsaWduIjtzOjU6ImxpbmtzIjtzOjY6Im1lZF9pZCI7czoyOiIxNiI7czo4OiJsaW5rdHlwZSI7czoxOiIwIjtzOjg6Imxpbmt0ZXh0IjtzOjA6IiI7czoxMDoibGlua3NvdXJjZSI7czowOiIiO3M6NToibGlua3giO3M6MDoiIjtzOjU6Imxpbmt5IjtzOjA6IiI7fQ==</dat_comdata>
+				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjIiO3M6ODoiaGVhZGxpbmUiO3M6MTM6IkRvY3VtZW50YXRpb24iO3M6MTM6ImltYWdlMV9pbWdfaWQiO3M6MToiMCI7czoxMzoiaW1hZ2UxX21lZF9pZCI7czoxOiIwIjtzOjEwOiJpbWFnZTFfYWx0IjtzOjA6IiI7czoxMjoiaW1hZ2UxX2FsaWduIjtzOjQ6ImxlZnQiO3M6NDoidGV4dCI7czoxNTQ6IjxwPkV4dGVuc2l2ZSBJbmZvcyBvbiBwaGVub3R5cGUgb24gPGEgaHJlZj0iaHR0cDovL3d3dy5waGVub3R5cGUtY21zLmRlIj53d3cucGhlbm90eXBlLWNtcy5kZTwvYT4uPC9wPg0KPHA+KEN1cnJlbnRseSBtb3N0IGluZm9ybWF0aW9uIGluIGdlcm1hbiBvbmx5KTwvcD4iO3M6OToibGlua19uYW1lIjtzOjA6IiI7czo4OiJsaW5rX3VybCI7czowOiIiO3M6MTE6ImxpbmtfdGFyZ2V0IjtzOjU6Il9zZWxmIjt9</dat_comdata>
 				<dat_fullsearch>Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62;www.phenotype-cms.de&#60;&#47;a&#62;.&#60;&#47;p&#62;
 &#60;p&#62;(Currently most information in german only)&#60;&#47;p&#62;</dat_fullsearch>
 			</component>

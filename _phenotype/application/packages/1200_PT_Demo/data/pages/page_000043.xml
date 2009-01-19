@@ -23,7 +23,7 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1162651603</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1226769086</pag_date>
+<pag_date>1232357760</pag_date>
 <pag_url>Imprint.html</pag_url>
 <pag_url1>Imprint.html</pag_url1>
 <pag_url2>Imprint.html</pag_url2>
@@ -38,9 +38,9 @@
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
 				<pag_fullsearch>Imprint|Imprint|Imprint||||Imprint|&#60;p&#62;Every website needs an imprint.&#60;&#47;p&#62;
-&#60;p&#62;This one is just to demonstrate the possibility to give any page any url you want, like &#38;quot;Imprint.html&#38;quot; for example.&#60;br &#47;&#62;
+&#60;p&#62;This one is just to demonstrate the possibility to give your page any variational url you want, like &#38;quot;Imprint.html&#38;quot; for example.&#60;br &#47;&#62;
 &#60;br &#47;&#62;
-You should also take a look on the navigational highlighthing on the left. While the imprint itself is not part of the page tree, this page is configured to mimik the navigation of the startpage.&#60;&#47;p&#62;|</pag_fullsearch>
+You should also take a look on the navigational highlighting on the left. While the imprint itself is not part of the page tree, this page is configured to mimik the navigation of the startpage.&#60;&#47;p&#62;|</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -61,11 +61,11 @@ You should also take a look on the navigational highlighthing on the left. While
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YToxNzp7czo4OiJoZWFkbGluZSI7czo3OiJJbXByaW50IjtzOjQ6InRleHQiO3M6MzgzOiI8cD5FdmVyeSB3ZWJzaXRlIG5lZWRzIGFuIGltcHJpbnQuPC9wPg0KPHA+VGhpcyBvbmUgaXMganVzdCB0byBkZW1vbnN0cmF0ZSB0aGUgcG9zc2liaWxpdHkgdG8gZ2l2ZSBhbnkgcGFnZSBhbnkgdXJsIHlvdSB3YW50LCBsaWtlICZxdW90O0ltcHJpbnQuaHRtbCZxdW90OyBmb3IgZXhhbXBsZS48YnIgLz4NCjxiciAvPg0KWW91IHNob3VsZCBhbHNvIHRha2UgYSBsb29rIG9uIHRoZSBuYXZpZ2F0aW9uYWwgaGlnaGxpZ2h0aGluZyBvbiB0aGUgbGVmdC4gV2hpbGUgdGhlIGltcHJpbnQgaXRzZWxmIGlzIG5vdCBwYXJ0IG9mIHRoZSBwYWdlIHRyZWUsIHRoaXMgcGFnZSBpcyBjb25maWd1cmVkIHRvIG1pbWlrIHRoZSBuYXZpZ2F0aW9uIG9mIHRoZSBzdGFydHBhZ2UuPC9wPiI7czo2OiJpbWdfaWQiO3M6MToiMCI7czozOiJhbHQiO3M6MDoiIjtzOjE1OiJiaWxkYXVzcmljaHR1bmciO3M6NToibGlua3MiO3M6NzoibGlua2JleiI7czowOiIiO3M6NzoibGlua3VybCI7czowOiIiO3M6MTA6Imxpbmt0YXJnZXQiO3M6NToiX3NlbGYiO3M6NToic3R5bGUiO3M6MToiMCI7czo3OiJpbWdfYWx0IjtzOjA6IiI7czo5OiJpbWdfYWxpZ24iO3M6NToibGlua3MiO3M6NjoibWVkX2lkIjtzOjE6IjAiO3M6ODoibGlua3R5cGUiO3M6MToiMCI7czo4OiJsaW5rdGV4dCI7czowOiIiO3M6MTA6Imxpbmtzb3VyY2UiO3M6MDoiIjtzOjU6Imxpbmt4IjtzOjA6IiI7czo1OiJsaW5reSI7czowOiIiO30=</dat_comdata>
+				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjAiO3M6ODoiaGVhZGxpbmUiO3M6NzoiSW1wcmludCI7czoxMzoiaW1hZ2UxX2ltZ19pZCI7czoxOiIwIjtzOjEzOiJpbWFnZTFfbWVkX2lkIjtzOjE6IjAiO3M6MTA6ImltYWdlMV9hbHQiO3M6MDoiIjtzOjEyOiJpbWFnZTFfYWxpZ24iO3M6NDoibGVmdCI7czo0OiJ0ZXh0IjtzOjM5NToiPHA+RXZlcnkgd2Vic2l0ZSBuZWVkcyBhbiBpbXByaW50LjwvcD4NCjxwPlRoaXMgb25lIGlzIGp1c3QgdG8gZGVtb25zdHJhdGUgdGhlIHBvc3NpYmlsaXR5IHRvIGdpdmUgeW91ciBwYWdlIGFueSB2YXJpYXRpb25hbCB1cmwgeW91IHdhbnQsIGxpa2UgJnF1b3Q7SW1wcmludC5odG1sJnF1b3Q7IGZvciBleGFtcGxlLjxiciAvPg0KPGJyIC8+DQpZb3Ugc2hvdWxkIGFsc28gdGFrZSBhIGxvb2sgb24gdGhlIG5hdmlnYXRpb25hbCBoaWdobGlnaHRpbmcgb24gdGhlIGxlZnQuIFdoaWxlIHRoZSBpbXByaW50IGl0c2VsZiBpcyBub3QgcGFydCBvZiB0aGUgcGFnZSB0cmVlLCB0aGlzIHBhZ2UgaXMgY29uZmlndXJlZCB0byBtaW1payB0aGUgbmF2aWdhdGlvbiBvZiB0aGUgc3RhcnRwYWdlLjwvcD4iO3M6OToibGlua19uYW1lIjtzOjA6IiI7czo4OiJsaW5rX3VybCI7czowOiIiO3M6MTE6ImxpbmtfdGFyZ2V0IjtzOjU6Il9zZWxmIjt9</dat_comdata>
 				<dat_fullsearch>Imprint|&#60;p&#62;Every website needs an imprint.&#60;&#47;p&#62;
-&#60;p&#62;This one is just to demonstrate the possibility to give any page any url you want, like &#38;quot;Imprint.html&#38;quot; for example.&#60;br &#47;&#62;
+&#60;p&#62;This one is just to demonstrate the possibility to give your page any variational url you want, like &#38;quot;Imprint.html&#38;quot; for example.&#60;br &#47;&#62;
 &#60;br &#47;&#62;
-You should also take a look on the navigational highlighthing on the left. While the imprint itself is not part of the page tree, this page is configured to mimik the navigation of the startpage.&#60;&#47;p&#62;</dat_fullsearch>
+You should also take a look on the navigational highlighting on the left. While the imprint itself is not part of the page tree, this page is configured to mimik the navigation of the startpage.&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 		</sequence_data>
 	</content>

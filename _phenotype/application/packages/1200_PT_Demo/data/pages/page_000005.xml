@@ -23,7 +23,7 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153068248</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1226697857</pag_date>
+<pag_date>1232357535</pag_date>
 <pag_url>Heading-4</pag_url>
 <pag_url1>Heading-4</pag_url1>
 <pag_url2>Heading-4</pag_url2>
@@ -37,7 +37,7 @@
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
-				<pag_fullsearch>Heading 4|Heading 4|Heading 4||||Heading 4||</pag_fullsearch>
+				<pag_fullsearch>Heading 4|Heading 4|Heading 4||||Heading 4|||</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -58,8 +58,18 @@
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>1</dat_pos>
-				<dat_comdata>YToyOntzOjM6ImJleiI7czo5OiJIZWFkaW5nIDQiO3M6Nzoic3VibGluZSI7czowOiIiO30=</dat_comdata>
+				<dat_comdata>YTozOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6ODoiaGVhZGxpbmUiO3M6OToiSGVhZGluZyA0IjtzOjc6InN1YmxpbmUiO3M6MDoiIjt9</dat_comdata>
 				<dat_fullsearch>Heading 4|</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1601</com_id>
+				<ver_id>5</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>2</dat_pos>
+				<dat_comdata>YToyOntzOjk6Il9yZXZpc2lvbiI7aToxO3M6NjoiZGF0X2lkIjtzOjE6IjEiO30=</dat_comdata>
+				<dat_fullsearch></dat_fullsearch>
 			</component>
 		</sequence_data>
 	</content>

@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<project name="phenotype" default="build" basedir=".">
+<project name="phenotype" default="default" basedir=".">
 	
   <php expression="PHP_OS" returnProperty="buildOS"/>
   <php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>
 
-  <property name="ptVersion" value="2.7" />
+  <property name="ptVersion" value="2.71" />
   
   <tstamp>
   	<format property="DATE" pattern="%d.%m.%Y" locale="de_DE"/>
@@ -15,7 +15,7 @@
   <!--<svnlastrevision svnpath="svn" workingcopy="." propertyname="revision"/>-->
   <!-- if you have trouble with evaluating the last revision from svn, try the manually way -->
   <!-- be sure to set the value to the current svn revision -->
-  <property name="revision" value="???" /> 
+  <property name="revision" value="338" /> 
 
 	
   <property name="buildNo" value="r${revision}" />
@@ -50,6 +50,12 @@
   <fileset dir="${mirrorDir}${pathSep}_phenotype" id="_phenotypeMirrorFiles">
     <include name="**" />
   </fileset>
+  
+  <target name="default">
+    <echo msg="Please specify build target"/>
+    <echo msg="a) build = full build including prior deletion of target folder"/>
+    <echo msg="b) phpdoc"/>
+  </target>
   
   <target name="clean">
     <echo msg="Cleaning up..."/>
@@ -143,6 +149,24 @@
 	</copy>
 	
   </target>
+  
+  <target name="phpdoc">
+  <delete dir="phpdoc" includeemptydirs="true" />
+  <phpdoc title="API Documentation"
+  destdir="phpdoc"
+  sourcecode="no"
+  output="HTML:frames:l0l33t">
+   <fileset dir="${buildDir}${pathSep}_phenotype${pathSep}system${pathSep}class">
+      <include name="**/*.php" />
+   </fileset>
+      <fileset dir="${buildDir}${pathSep}_phenotype${pathSep}system${pathSep}backend">
+   <include name="**/*.php" />
+   </fileset>
+   <fileset dir="${buildDir}${pathSep}_phenotype${pathSep}system">
+   <include name="*.php" />
+   </fileset>
+	</phpdoc>	
+	</target>
   
 </project>
 
