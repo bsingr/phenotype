@@ -120,4 +120,4 @@ define("PT_EDITOR_RTF", 1);
 define("PT_EDITOR_CODE", 2);
 
 
-$_PT_HTTP_CONTENTTYPES = Array(1=>"text/html;charset=iso-8859-1",2=>"text/css;charset=iso-8859-1",3=>"text/javascript;charset=iso-8859-1",4=>"text/xml;charset=iso-8859-1",21=>"text/html;charset=iso-8859-15",22=>"text/css;charset=iso-8859-15",23=>"text/javascript;charset=iso-8859-15",24=>"text/xml;charset=iso-8859-15",101=>"text/html;charset=utf-8",102=>"text/css;charset=utf-8",103=>"text/javascript;charset=utf-8",104=>"text/xml;charset=utf-8",200=>"kein Header");
+$_PT_HTTP_CONTENTTYPES = Array(1=>"text/html;charset=iso-8859-1",2=>"text/css;charset=iso-8859-1",3=>"text/javascript;charset=iso-8859-1",4=>"text/xml;charset=iso-8859-1",21=>"text/html;charset=iso-8859-15",22=>"text/css;charset=iso-8859-15",23=>"text/javascript;charset=iso-8859-15",24=>"text/xml;charset=iso-8859-15",101=>"text/html;charset=utf-8",102=>"text/css;charset=utf-8",103=>"text/javascript;charset=utf-8",104=>"text/xml;charset=utf-8",200=>"no header");

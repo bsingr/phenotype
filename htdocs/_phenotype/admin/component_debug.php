@@ -47,7 +47,7 @@ $id = $myRequest->getI("id");
 <?php
 
 
-$sql = "SELECT dat_comdata FROM sequence_data WHERE dat_id = " . $id;
+$sql = "SELECT dat_comdata FROM sequence_data WHERE dat_id = " . $id . " AND dat_editbuffer=1";
 $rs = $myDB->query($sql);
 if (mysql_num_rows($rs)==0)
 {

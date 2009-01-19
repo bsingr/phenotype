@@ -12,64 +12,62 @@
 &#47;**
  * component to place a gallery (i.e. thumbnail preview of a gallery) within a page
  *
+ * @package phenotype
+ * @subpackage application
  *&#47;
 class PhenotypeComponent_1601 extends PhenotypeComponent
 {
-  public $tool_type = 1601;
+	public $com_id = 1601;
+	public $name = &#34;Gallery&#34;;
 
-  public $bez = &#34;Gallery&#34;; &#47;&#47; erscheint im Arbeitsbereich im Redaktionsmodus
+	public function setDefaultProperties()
+	{
+		$this-&#62;set(&#34;_revision&#34;,1);
+	}
 
-  function edit()
-  {
-    global $myAdm;
-    $sql = &#34;SELECT dat_id AS K , dat_bez AS V FROM content_data WHERE con_id = 1601 AND dat_status=1 ORDER BY dat_bez&#34;;
-    $options = $myAdm-&#62;buildOptionsBySQL($sql,$this-&#62;get(&#34;dat_id&#34;));
-    $options = &#39;&#60;option value=&#34;0&#34;&#62;...&#60;&#47;option&#62;&#39;.$options;
-    $this-&#62;form_select(&#34;&#34;,&#34;dat_id&#34;,$options,$x=200,$br=1);
+	
+	public function initForm($context)
+  	{
+		&#47;&#47; Customize input form with form_xy-methods
 
-  }
+		global $myDB;
+		
+		$this-&#62;form_content_selectbox(&#34;&#34;,&#34;dat_id&#34;,PhenotypeApplication::con_id_gallery);
+		
+	}
 
-  function update()
-  {
-    &#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools
-    $this-&#62;fset(&#34;dat_id&#34;);
-  }
+	public function render($context)
+	{
+		global $myPT, $myPage, $myApp;
 
-  function render($context)
-  {
-    global $myPT;
-    global $myPage;
-    global $myApp;
+		$dat_id = $this-&#62;getI(&#34;dat_id&#34;);
+		if ($dat_id==0)
+		{
+			return;
+		}
 
-    $dat_id = $this-&#62;getI(&#34;dat_id&#34;);
-    if ($dat_id==0)
-    {
-      return;
-    }
+		$myCO = new CO_Gallery($dat_id);
 
-    $myCO = new CO_Gallery($dat_id);
+		&#47;&#47; get information about gallery images
+		$_images = Array();
+		foreach ($myCO-&#62;getImagesArray() AS $_image)
+		{
+			&#47;&#47; Define url for detail view of an image
+			&#47;&#47; We want to keep our navigation state, so we encode the id of the current page into the url
+			$smartUID = &#34;image&#34;.$_image[&#34;pos&#34;].&#34;,&#34;.$myPage-&#62;id.&#34;.html&#34;;
+			$_image[&#34;url_view&#34;] = url_for_page(PhenotypeApplication::pag_id_galleryview,array(&#34;gal_id&#34;=&#62;$dat_id),null,$smartUID);
+			$_images[]=$_image;
+		}
 
-    &#47;&#47; get information about gallery images
-    $_images = Array();
-    foreach ($myCO-&#62;getImagesArray() AS $_image)
-    {
-      &#47;&#47; Define url for detail view of an image
-      &#47;&#47; We want to keep our navigation state, so we encode the id of the current page into the url
-      $smartUID = &#34;image&#34;.$_image[&#34;pos&#34;].&#34;,&#34;.$myPage-&#62;id.&#34;.html&#34;;
-      $_image[&#34;url_view&#34;] = url_for_page(PhenotypeApplication::pag_id_galleryview,array(&#34;gal_id&#34;=&#62;$dat_id),null,$smartUID);
-      $_images[]=$_image;
-    }
-
-    eval ($this-&#62;initRendering());
-    $mySmarty-&#62;assign(&#34;gallery&#34;,$myCO);
-    $mySmarty-&#62;assign(&#34;images&#34;,$_images);
-    $html = $mySmarty-&#62;fetch($TPL_1);
-    return $html;
-  }
+		eval ($this-&#62;initRendering());
+		$mySmarty-&#62;assign(&#34;gallery&#34;,$myCO);
+		$mySmarty-&#62;assign(&#34;images&#34;,$_images);
+		$html = $mySmarty-&#62;fetch($TPL_1);
+		return $html;
+	}
 
 
-}
-?&#62;</script>
+}</script>
 	<templates>
 <template access="TPL_1">&#60;div class=&#34;gallery&#34;&#62;
 &#60;h1&#62;{$gallery-&#62;getH(&#34;bez&#34;)}&#60;&#47;h1&#62;

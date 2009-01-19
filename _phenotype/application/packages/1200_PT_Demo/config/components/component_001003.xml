@@ -4,149 +4,133 @@
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
 		<com_id>1003</com_id>
-		<com_bez>Include</com_bez>		
+		<com_bez>Include (Function)</com_bez>		
 		<com_rubrik>System</com_rubrik>
-		<com_description>## Baustein 1003 - Include</com_description>
+		<com_description>## Component 1003 - Include</com_description>
 	</meta>
-	<script>&#60;? 
+	<script>&#60;?php
 &#47;**
- * include component
+ * Include component
  * 
  * This component enables an editor to insert (include) functionalities within pages.
  * 
  * The editor also determines the caching behaviour of the selected include.
+ * 
+ * @package phenotype
+ * @subpackage application
  *
- * Attention. Don&#39;t change the tool_type number, it&#39;s a system component with a fixed ID which is also used elsewhere.
  *&#47;
 class PhenotypeComponent_1003 extends PhenotypeComponent
 {
-  var $tool_type = 1003;
-  var $bez=&#34;Include (Function)&#34;;
+
+	var $com_id = 1003;
+	var $name = &#34;Include (Function)&#34;;
 
 
-  function setDefaultProperties()
-  {
-    $this-&#62;set(&#34;inc_id&#34;,&#34;0&#34;);
-    $this-&#62;set(&#34;cache&#34;,&#34;1&#34;);
-  }
+	public function setDefaultProperties()
+	{
+		$this-&#62;set(&#34;_revision&#34;,1);
+		$this-&#62;set(&#34;cache&#34;,1);
+	}
 
-  function edit()
-  {
-    global $myDB;
-    ?&#62;&#60;select name=&#34;&#60;?=$this-&#62;formid?&#62;inc_id&#34; class=&#34;input&#34; style=&#34;width:300px&#34;&#62; 
-      &#60;option value=&#34;0&#34;&#62;...&#60;&#47;option&#62; 
-      &#60;? 
-      $sql = &#34;SELECT * FROM include WHERE inc_usage_includecomponent = 1 ORDER BY inc_rubrik,inc_bez&#34;;
-      $rs = $myDB-&#62;query($sql);
-      while ($row=mysql_fetch_array($rs))
-      {
-        $selected = &#34;&#34;;
-        if ($row[&#34;inc_id&#34;]==$this-&#62;get(&#34;inc_id&#34;)){$selected = &#34;selected&#34;;}
-      ?&#62; 
-      &#60;option &#60;?=$selected?&#62; value=&#34;&#60;?=$row[&#34;inc_id&#34;]?&#62;&#34;&#62;&#60;?=$row[&#34;inc_rubrik&#34;].&#34;: &#34;.$row[&#34;inc_bez&#34;]?&#62;&#60;&#47;option&#62; 
-      &#60;? 
-      }
-      ?&#62; 
-      &#60;&#47;select&#62;&#60;br&#62;Cache&#60;br&#62;
-      &#60;select name=&#34;&#60;?=$this-&#62;formid?&#62;cache&#34; class=&#34;input&#34; style=&#34;width:140px&#34;&#62; 
-      &#60;option value=&#34;1&#34; &#62;wie Seite&#60;&#47;option&#62;
-      &#60;option value=&#34;0&#34; &#60;?if ($this-&#62;get(&#34;cache&#34;)==&#34;0&#34;){echo &#34;selected&#34;;}?&#62;&#62;nie&#60;&#47;option&#62;
-      &#60;option value=&#34;2&#34; &#60;?if ($this-&#62;get(&#34;cache&#34;)==&#34;2&#34;){echo &#34;selected&#34;;}?&#62;&#62;Parameter-Hash&#60;&#47;option&#62;
-      &#60;?
-  }
+	
+	public function initForm($context)
+  	{
+		global $myDB;
+		
+   	   	$sql = &#34;SELECT inc_id, inc_rubrik, inc_bez FROM include WHERE inc_usage_includecomponent = 1 ORDER BY inc_rubrik,inc_bez&#34;;
+      	$rs = $myDB-&#62;query($sql);
+      	$_options = Array();
+      	while ($row=mysql_fetch_assoc($rs))
+     	{
+      		$_options[$row[&#34;inc_id&#34;]]=$row[&#34;inc_rubrik&#34;].&#34;: &#34;.$row[&#34;inc_bez&#34;];
+      	}
+      	$this-&#62;form_selectbox(&#34;&#34;,&#34;inc_id&#34;,$_options);
+      	$_options = Array(1=&#62;&#34;With Page&#34;,2=&#62;&#34;Never&#34;,3=&#62;&#34;Request Parameter Hash&#34;);
+      	$this-&#62;form_selectbox(&#34;Cache&#34;,&#34;cache&#34;,$_options,false);
+  	}
 
-  function update()
-  {
-    &#47;&#47; Auswertung der Eingabemaske und Setzen der Properties des Tools
-    $this-&#62;fset(&#34;inc_id&#34;);
-    $this-&#62;fset(&#34;cache&#34;);
-  }
+	public function render($context)
+	{
+		global $myPage;
 
+		$html = &#34;&#34;;
+		$inc_id = $this-&#62;get(&#34;inc_id&#34;);
+		if ($inc_id!=&#34;0&#34;)
+		{
+			if ($myPage-&#62;buildingcache==0)
+			{
+				$cname = &#34;PhenotypeInclude_&#34; . $inc_id;
+				$myInc = new $cname();
+				$myInc-&#62;context = $context;
+				$html = $myInc-&#62;execute();
+			}
+			else
+			{
+				$cache = $this-&#62;get(&#34;cache&#34;);
+				if ($cache==2 AND PT_PAGECACHE ==0)
+				{
+					$cache=1;
+				}
+				switch ($cache)
+				{
+					case 1:
+						$cname = &#34;PhenotypeInclude_&#34; . $inc_id;
+						$myInc = new $cname();
+						$myInc-&#62;context = $context;
+						$html = $myInc-&#62;execute();
+						break;
+					case 2:
+						$html = &#39;&#60;?php $myPage-&#62;includenocache=1?&#62;&#39;;&#47;&#47; Notwendig fuer Content-Statistik
+						$html .= &#39;&#60;?php $myDB-&#62;setNextContext(&#34;Include &#39;.$inc_id.&#39;:&#34;);?&#62;&#39;;
+						$html .= &#39;&#60;?php $myPT-&#62;executeInclude(&#39;.$inc_id.&#39;,true,&#39;.$context.&#39;);?&#62;&#39;;
+						$html .= &#39;&#60;?php $myPage-&#62;includenocache=0?&#62;&#39;;
+						break;
+					default:
+						$html .= &#39;&#60;?php $myDB-&#62;setNextContext(&#34;Include &#39;.$inc_id.&#39;:&#34;);?&#62;&#39;;
+						$html = &#39;&#60;?php $myPage-&#62;includenocache=1?&#62;&#39;;&#47;&#47; Notwendig fuer Content-Statistik
+						$html .= &#39;&#60;?php $myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;execute()?&#62;&#39;;
+						$html .= &#39;&#60;?php $myPage-&#62;includenocache=0?&#62;&#39;;
+						break;
+				}
+			}
+		}
+		return $html;
+	}
 
-  function render($context)
-  {
-    &#47;&#47; Notwendig, um die Smartyengine richtig zu initialisieren
-    eval ($this-&#62;initRendering());
-
-    global $myPage;
-
-    $html = &#34;&#34;;
-    $inc_id = $this-&#62;get(&#34;inc_id&#34;);
-    if ($inc_id!=&#34;0&#34;)
-    {
-      if ($myPage-&#62;buildingcache==0)
-      {
-        $cname = &#34;PhenotypeInclude_&#34; . $inc_id;
-        $myInc = new $cname();
-        $myInc-&#62;context = $context;
-        $html = $myInc-&#62;execute();
-      }
-      else
-      {
-        $cache = $this-&#62;get(&#34;cache&#34;);
-        if ($cache==2 AND PT_PAGECACHE ==0)
-        {
-          $cache=1;
-        }
-        switch ($cache)
-        {
-          case 1:
-            $cname = &#34;PhenotypeInclude_&#34; . $inc_id;
-            $myInc = new $cname();
-            $myInc-&#62;context = $context;
-            $html = $myInc-&#62;execute();
-            break;
-          case 2:
-            $html = &#39;&#60;?php $myPage-&#62;includenocache=1?&#62;&#39;;&#47;&#47; Notwendig fuer Content-Statistik
-            $html .= &#39;&#60;?php $myDB-&#62;setNextContext(&#34;Include &#39;.$inc_id.&#39;:&#34;);?&#62;&#39;;
-            $html .= &#39;&#60;?php $myPT-&#62;executeInclude(&#39;.$inc_id.&#39;,true,$context);?&#62;&#39;;
-            $html .= &#39;&#60;?php $myPage-&#62;includenocache=0?&#62;&#39;;
-            break;
-          default:
-            $html .= &#39;&#60;?php $myDB-&#62;setNextContext(&#34;Include &#39;.$inc_id.&#39;:&#34;);?&#62;&#39;;
-            $html = &#39;&#60;?php $myPage-&#62;includenocache=1?&#62;&#39;;&#47;&#47; Notwendig fuer Content-Statistik
-            $html .= &#39;&#60;?php $myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;execute()?&#62;&#39;;
-            $html .= &#39;&#60;?php $myPage-&#62;includenocache=0?&#62;&#39;;
-            break;
-        }
-      }
-    }
-    return $html;
-  }
-
-  function displayXML($style=1)
-  {
-    global $myPage;
+	public function displayXML($style=1)
+	{
+		global $myPage;
        ?&#62;
        &#60;component com_id=&#34;1003&#34; type=&#34;Include&#34;&#62;
-     &#60;content&#62;
+   	   &#60;content&#62;
        &#60;?
        $inc_id = $this-&#62;get(&#34;inc_id&#34;);
        if ($inc_id!=&#34;0&#34;)
        {
-         if ($myPage-&#62;buildingcache==0)
-         {
-           &#47;&#47;$myInc = new PhenotypeInclude($inc_id);
-           $cname = &#34;PhenotypeInclude_&#34; . $inc_id;
-           $myInc = new $cname();
-           $xml = $myInc-&#62;renderXML();
-           echo $xml;
-         }
-         else
-         {
-           if ($this-&#62;get(&#34;cache&#34;)==1)
-           {
-             $cname = &#34;PhenotypeInclude_&#34; . $inc_id;
-             $myInc = new $cname();
-             $xml = $myInc-&#62;renderXML();
-             echo $xml;
-           }
-           else
-           {
-             echo  &#39;&#60;?$myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;renderXML()?&#62;&#39;;
+       	if ($myPage-&#62;buildingcache==0)
+       	{
+       		&#47;&#47;$myInc = new PhenotypeInclude($inc_id);
+       		$cname = &#34;PhenotypeInclude_&#34; . $inc_id;
+       		$myInc = new $cname();
+       		$xml = $myInc-&#62;renderXML();
+       		echo $xml;
+       	}
+       	else
+       	{
+       		if ($this-&#62;get(&#34;cache&#34;)==1)
+       		{
+       			$cname = &#34;PhenotypeInclude_&#34; . $inc_id;
+       			$myInc = new $cname();
+       			$xml = $myInc-&#62;renderXML();
+       			echo $xml;
+       		}
+       		else
+       		{
+       			echo  &#39;&#60;?$myInc = new PhenotypeInclude_&#39; . $inc_id .&#39;();echo $myInc-&#62;renderXML()?&#62;&#39;;
 
-           }
-         }
+       		}
+       	}
 
 
        }
@@ -155,9 +139,8 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
      &#60;&#47;component&#62;
      &#60;?
      return true;
-  }
-}
-?&#62;</script>
+	}
+}</script>
 	<templates>
    	</templates>
 	<componentgroups><group>

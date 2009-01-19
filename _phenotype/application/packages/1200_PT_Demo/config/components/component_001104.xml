@@ -9,18 +9,23 @@
 		<com_description>## Baustein 1104 - Horizontal Row</com_description>
 	</meta>
 	<script>&#60;?php  
+&#47;**
+ * Horizontal Row
+ *
+ * @package phenotype
+ * @subpackage application
+ *&#47;
+class PhenotypeComponent_1104 extends PhenotypeComponent
+{
+	public $com_id = 1104;
+	public $name = &#34;Horizontal Row&#34;;
 
-class PhenotypeComponent_1104 extends PhenotypeComponent  
-{  
-  var $tool_type = 1104;  
-  var $bez = &#34;Horizontal Row&#34;;  
- 
-  function render($context)  
-  {  
-     return &#39;&#60;div class=&#34;hr&#34;&#62;&#60;hr&#47;&#62;&#60;&#47;div&#62;&#39;;  
-  }  
-    
-}  
+	public function render($context)
+	{
+		return &#39;&#60;div class=&#34;hr&#34;&#62;&#60;hr&#47;&#62;&#60;&#47;div&#62;&#39;;
+	}
+
+}
 ?&#62;</script>
 	<templates>
    	</templates>

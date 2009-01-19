@@ -30,13 +30,13 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	 *
 	 */
 	public $com_id = 0;
-	
+
 	/**
 	 * Page Component Name
 	 *
 	 */
 	public $name="";
-	
+
 	/**
 	 * old component identifier, please use com_id instead
 	 *
@@ -106,7 +106,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	public function __construct($id = -1)
 	{
 		// internally we use tool_type and bez instead of com_id and name
-		// TODO: accomplish new variable names		
+		// TODO: accomplish new variable names
 		if ((int)($this->com_id)!=0)
 		{
 			$this->tool_type = (int)($this->com_id);
@@ -116,7 +116,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 			$this->bez = $this->name;
 		}
 		// -- //
-		
+
 		$id = (int) $id;
 		if ($id != -1)
 		{
@@ -489,6 +489,90 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$this->set($property,$this->fget($property));
 	}
 
+
+	public function form_enumeration($title, $property, $start = 3, $max=99)
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_enumeration",
+		"property" =>$property,
+		"title" =>$title,
+		"start" =>$start,
+		"max" =>$max
+		);
+	}
+
+	private function _form_enumeration_display($_fconfig)
+	{
+		$title = $_fconfig["title"];
+		$property = $_fconfig["property"];
+		$start = (int)$_fconfig["start"];
+		$max = (int)$_fconfig["max"];
+		
+	
+		$formname = $this->formid . $property;
+		
+		if ($title!="")
+		{
+			echo codeH($title);
+		}
+		echo '<br/>';
+		?>
+		<input type="hidden" name="<?php echo $formname ?>_count" value="<?php echo $this->getI($property."_count",$start)?>"/>
+		<table width="408" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td nowrap class="tableBausteineBackground">
+		<?php
+		for ($i=1;$i<=$this->getI($property."_count",$start);$i++)
+		{
+		    ?> 
+			<input name="<?php echo $formname ?>_item<?php echo $i ?>" type="text" class="input" style="width: 355px" value="<?php echo $this->getH($property."_item".$i) ?>">&nbsp;
+		    <?php if ($this->getI($property."_count",$start)>1){ ?><input type="image" src="img/b_minus.gif" alt="<?php echo localeH("Remove Bullet Point")?>" width="18" height="18" border="0" align="absmiddle" name="<?php echo $formname ?>_minus_r<?php echo $i ?>"><?php } ?> <input type="image" src="img/b_plus.gif" alt="<?php echo localeH("Add Bullet Point")?>" width="18" height="18" border="0" align="absmiddle" name="<?php echo $formname ?>_plus_r<?php echo $i ?>"><br> 
+      		<?php 
+		}
+      	?> 
+      	</td> 
+      	</tr> 
+      	</table> 
+      	<?php 
+	}
+
+	
+	private function _form_enumeration_fetch($_fconfig)
+	{
+		global $myRequest;
+		$property = $_fconfig["property"];
+		$c = $this->fget($property."_count");
+		$this->set($property."_count",$c);
+		$put=1;
+		for ($i=1;$i<=$c;$i++)
+		{
+			$this->set($property."_item".$put,$this->fget($property."_item".$i));
+			$put++;
+
+			// New bullet point?
+			$fname = $this->formid .$property. "_plus_r" . $i . "_x";
+			
+			if ($myRequest->check($fname))
+			{
+				$this->set($property."_count",$c+1);
+				$this->set($property."_item".$put,"");
+				$put++;
+			}
+			// -- New bullet point?
+
+			// Bullet point removal ?
+			$fname = $this->formid .$property. "_minus_r" . $i . "_x";
+			if ($myRequest->check($fname))
+			{
+				$this->clear($property."_item".$c);
+				$this->set($property."_count",$c-1);
+				$put--;
+				
+			}
+			// -- Bullet point removal ?
+		}
+	}
+	
 	public function form_selectbox($title, $property, $_options, $addzerodots=true)
 	{
 		$this->_form[] = array(
@@ -530,6 +614,46 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$this->set($property,$this->fget($property));
 	}
 
+	public function form_content_selectbox($title, $property, $con_id, $addzerodots=true, $statuscheck=true,$sql_where="")
+	{
+		// realized a special editon of form_selectbox
+		// just populate the _options-Array
+	
+		global $myDB;
+		
+		$con_id = (int)$con_id;
+		
+		$sql  = "SELECT dat_id,dat_bez FROM content_data WHERE con_id=".$con_id;
+		
+		if ($statuscheck==true)
+		{
+			$sql .=" AND dat_status=1";
+		}
+		
+		if ($sql_where !="")
+		{
+			$sql .=" AND " . $a[6];
+		}
+		
+		$sql .= " ORDER BY dat_bez";
+		
+		$rs = $myDB->query($sql);
+		
+		$_options = Array();
+		
+		while ($row=mysql_fetch_assoc($rs))
+		{
+			$_options[$row["dat_id"]]=$row["dat_bez"];
+		}
+		
+		$this->_form[] = array(
+		"form_method" =>"form_selectbox",
+		"property" =>$property,
+		"title" =>$title,
+		"options"=>$_options,
+		"addzerodots" =>(boolean)$addzerodots
+		);
+	}
 
 
 	public function form_link($title, $property, $link_title=true, $link_target=true, $link_pageselector=false, $link_text=false, $link_popup=false, $link_source=false, $link_type=false, $link_type_options=Array())
@@ -564,7 +688,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 		//if ($_options["link_title"]!==false){$linktitle = $this->get($property."_title");}else{$linktitle=false;}
 		//if ($_options["link_target"]!==false){$target = $this->get($property."_target");}else{$target=false;}
-		
+
 		if ($_options["link_text"]!==false){$linktext = $this->get($property."_text");}else{$linktext=false;}
 		if ($_options["link_popup"]!==false){$popup_x = $this->get($property."_x");$popup_y = $this->get($property."_y");}else{$popup_x=false;$popup_y=false;}
 		if ($_options["link_source"]!==false){$linksource = $this->get($property."_source");}else{$linksource=false;}
@@ -592,11 +716,11 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$property = $_fconfig["property"];
 		$_options = $_fconfig["options"];
 		$formname = $this->formid . $property;
-		
+
 		$this->set($property."_name",$this->fget($property."bez"));
 		$this->set($property."_url",$this->fget($property."url"));
 		$this->set($property."_target",$this->fget($property."target"));
-		
+
 		/*
 		if ($_options["link_title"]!==false){$this->set($property."_title",$this->get($property."_linkbez"));}else{$this->clear($property."_title");}
 		if ($_options["link_target"]!==false){$this->fset($property."_target");}else{$this->clear($property."_target");}
@@ -770,14 +894,14 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$path = $_fconfig["path"];
 		$grp_id = $_fconfig["grp_id"];
 		$formname = $this->formid . $property;
-		
-		
+
+
 		// this "conversion" is necessary, since the old Phenotye workarea-functions doesnt't have stringent form field namings
-		
+
 		$this->set($property."_img_id",$this->fget($property."img_id"));
 		$this->set($property."_alt",$this->fget($property."img_alt"));
 		$this->set($property."_align",$this->fget($property."align"));
-		
+
 		if (isset($_FILES[$formname."userfile"]))
 		{
 			$_file = $_FILES[$formname."userfile"];
@@ -796,15 +920,34 @@ class PhenotypeComponentStandard extends PhenotypeBase
 				}
 				@unlink ($_file["tmp_name"]);
 			}
-			
-		}
-		
 
-		
+		}
+
+
+
 	}
 
 
-
+	public function form_wrap($methodname,$_params = Array ())
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_wrap",
+		"method" =>$methodname,
+		"params"=>$_params
+		);
+	}
+	
+	private function _form_wrap_display($_fconfig)
+	{
+		$mname = $_fconfig["method"];
+		$_params = $_fconfig["params"];
+		$this->$mname ($_params);
+	}
+	
+	private function _form_wrap_fetch($_fconfig)
+	{
+		// Nothing to do here
+	}
 
 	/*
 	private function form_html_display($_fconfig)
@@ -905,7 +1048,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		"grp_id"=>(int)$grp_id,
 		"options"=>$_options,
 		);
-		
+
 		if ($grp_id!=0)
 		{
 			throw new Exception('Sorry parameter $grp_id not yet supported :(. Stick to 0');
@@ -917,14 +1060,14 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
 		$_options = $_fconfig["options"];
-	
+
 		$img_id= $this->getI($property."_img_id");
 		$alt= $this->get($property."_alt");
 		$align= $this->get($property."_align");
 
 		$versionselect = (boolean)$_options["versionselect"];
-		
-		// There seems to be something wrong. Versionselect deactivated for the moment		
+
+		// There seems to be something wrong. Versionselect deactivated for the moment
 		$versionselect = false;
 		switch ((boolean)$_options["altandalign"])
 		{
@@ -935,32 +1078,32 @@ class PhenotypeComponentStandard extends PhenotypeBase
 				$mode=1;
 				break;
 		}
-		
+
 
 		if ($this->myLayout==-1)
 		{
 			$this->myLayout = new PhenotypeAdminLayout();
 		}
 		$formname = $this->formid . $property;
-	
+
 		if ($title!="")
 		{
 			echo codeH($title);
 		}
 		echo '<br/>';
-		echo $this->myLayout->workarea_form_image($formname, $img_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["x"],$_fconfig["y"],$alt,$align,$mode,$versionselect);		
+		echo $this->myLayout->workarea_form_image($formname, $img_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["x"],$_fconfig["y"],$alt,$align,$mode,$versionselect);
 	}
 
-	
+
 	private function _form_image_selector_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
 		$_options = $_fconfig["options"];
 		$formname = $this->formid . $property;
-		
+
 		$this->set($property."_img_id",$this->fget($property."img_id"));
 		$this->set($property."_med_id",$this->fget($property."img_id"));
-		
+
 		if ((boolean)$_options["altandalign"]==true)
 		{
 			$this->set($property."_alt",$this->fget($property."img_alt"));
@@ -970,9 +1113,9 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		{
 			$this->set($property."_ver_id",$this->fget($property."version"));
 		}
-		
+
 	}
-	
+
 	public function form_document_selector($title, $property, $folder="", $changefolder = true, $infoline = true, $type_filter = "",$grp_id)
 	{
 		$folder=trim($folder);
@@ -987,19 +1130,19 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		"type_filter"=>$type_filter,
 		"grp_id"=>(int)$grp_id
 		);
-		
+
 		if ($grp_id!=0)
 		{
 			throw new Exception('Sorry parameter $grp_id not yet supported :(. Stick to 0');
 		}
 	}
-	
+
 	private function _form_document_selector_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
 
-	
+
 		$doc_id= $this->getI($property."_doc_id");
 
 		if ($this->myLayout==-1)
@@ -1007,17 +1150,17 @@ class PhenotypeComponentStandard extends PhenotypeBase
 			$this->myLayout = new PhenotypeAdminLayout();
 		}
 		$formname = $this->formid . $property;
-	
+
 		if ($title!="")
 		{
 			echo codeH($title);
 		}
 		echo '<br/>';
-		//echo $this->myLayout->workarea_form_image($formname, $img_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["x"],$_fconfig["y"],$alt,$align,$mode,$versionselect);	
-		
-		echo $this->myLayout->workarea_form_document2($formname, $doc_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["type_filter"]);	
+		//echo $this->myLayout->workarea_form_image($formname, $img_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["x"],$_fconfig["y"],$alt,$align,$mode,$versionselect);
+
+		echo $this->myLayout->workarea_form_document2($formname, $doc_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["type_filter"]);
 	}
-	
+
 	private function _form_document_selector_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
@@ -1025,38 +1168,38 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		//$this->_form_fetch_debugprint();
 		$this->set($property."_doc_id",$this->fget($property."med_id"));
 		$this->set($property."_med_id",$this->fget($property."med_id"));
-		
 
-		
+
+
 	}
-	
+
 	/*
 	function form_document($name,$med_id)
 	{
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_document($name,$med_id);
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
+	}
+	$name = $this->formid . $name;
+	echo $this->myLayout->workarea_form_document($name,$med_id);
 	}
 	*/
 
 
 
-/*
+	/*
 
 	function form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=2, $version=false)
 	{
-		if ($align==""){$align="links";}
-		if ($this->myLayout==-1)
-		{
-			$this->myLayout = new PhenotypeAdminLayout();
-		}
-		$name = $this->formid . $name;
-		echo $this->myLayout->workarea_form_image($name,$img_id,$folder,$changefolder,$x,$y,$alt,$align,$mode, $version);
+	if ($align==""){$align="links";}
+	if ($this->myLayout==-1)
+	{
+	$this->myLayout = new PhenotypeAdminLayout();
 	}
-*/
+	$name = $this->formid . $name;
+	echo $this->myLayout->workarea_form_image($name,$img_id,$folder,$changefolder,$x,$y,$alt,$align,$mode, $version);
+	}
+	*/
 
 
 
@@ -1245,7 +1388,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	{
 
 	}
-	
+
 	protected function _debug_print_form_xy_fetch($property)
 	{
 		$formname = $this->formid . $property;
@@ -1259,7 +1402,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		}
 		exit();
 	}
-	
+
 	public function getEditLabel()
 	{
 		return $this->name;

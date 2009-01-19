@@ -9,43 +9,48 @@
 		<com_description>## Baustein 1101 - Heading</com_description>
 	</meta>
 	<script>&#60;?php
+&#47;**
+ * Heading
+ *
+ * @package phenotype
+ * @subpackage application
+ *&#47;
 class PhenotypeComponent_1101 extends PhenotypeComponent
 {
-	var $tool_type = 1101;
-	var $bez =&#34;Heading&#34;;
+	public $com_id = 1101;
+	public $name =&#34;Heading&#34;;
 
-	function setDefaultProperties()
+	public function setDefaultProperties()
 	{
-		$this-&#62;set(&#34;bez&#34;,&#34;Headline&#34;);
-		$this-&#62;set(&#34;subline&#34;,&#34;&#34;);
+		$this-&#62;set(&#34;_revision&#34;,1);
 	}
 
-	function edit()
-	{
-		$this-&#62;form_textfield(&#34;Headline&#34;,&#34;bez&#34;,$this-&#62;get(&#34;bez&#34;));
-		$this-&#62;form_textfield(&#34;Subline&#34;,&#34;subline&#34;,$this-&#62;get(&#34;subline&#34;));
-	}
+	public function initForm($context)
+  	{
+  		&#47;&#47; Customize input form with form_xy-methods 
+  		
+  		$this-&#62;form_textfield(&#34;Headline&#34;,&#34;headline&#34;,300);
+  		$this-&#62;form_textfield(&#34;Subline&#34;,&#34;subline&#34;,300);
+  	}	
 
-	function setFullSearch()
+  	function setFullSearch()
 	{
-		$s = $this-&#62;get(&#34;bez&#34;) . &#34;|&#34; . $this-&#62;get(&#34;subline&#34;);
+		$s = $this-&#62;get(&#34;headline&#34;) . &#34;|&#34; . $this-&#62;get(&#34;subline&#34;);
 		return ($s);
 	}
 
 	function render($style)
 	{
 		eval ($this-&#62;initRendering());
-		$mySmarty-&#62;assign(&#34;bez&#34;,$this-&#62;getH(&#34;bez&#34;));
+		$mySmarty-&#62;assign(&#34;headline&#34;,$this-&#62;getH(&#34;headline&#34;));
 		$mySmarty-&#62;assign(&#34;subline&#34;,$this-&#62;getH(&#34;subline&#34;));
 		$html = $mySmarty-&#62;fetch($TPL_1);
 		return $html;
 	}
 
-}
-?&#62;
-</script>
+}</script>
 	<templates>
-<template access="TPL_1">&#60;h1&#62;{$bez}&#60;&#47;h1&#62;
+<template access="TPL_1">&#60;h1&#62;{$headline}&#60;&#47;h1&#62;
 {if $subline!=&#34;&#34;}
 &#60;h2&#62;{$subline}&#60;&#47;h2&#62;
 &#60;br&#47;&#62;
