@@ -587,12 +587,12 @@ $myPT->startBuffer();
 		$script = '<?php
 	class PhenotypePackage extends PhenotypePackageStandard
 	{
-		public $bez = "'.$myRequest->getAC("title").'";
-		public $packagefolder = "'.$myRequest->getAC("folder").'";
+		public $bez = "'.$myRequest->getA("title").'";
+		public $packagefolder = "'.$myRequest->getA("folder").'";
 		
 		function getDescription()
 		{
-			return ("'.$myRequest->getAC("desc","ABCDEFGHIJKLMNOPQRSTUVWXYZÖÄÜßabcdefghijklmnopqrstuvwxyzöäü!.?X,;".PHP_EOL).'");
+			return ("'.$myRequest->getA("desc",PT_ALPHAPLUS.PHP_EOL).'");
 		}
 	}
 	?>';

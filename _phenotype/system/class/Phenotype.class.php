@@ -2237,7 +2237,7 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 		}
 	}
 
-	
+
 	public function setValidationError($number,$string)
 	{
 		$this->validation_error_number = (int)$number;
@@ -2252,23 +2252,38 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 		$this->validation_error_number = 0;
 		$this->validation_error_string = "";
 	}
-	
-	public function  isValidInteger($value)
+
+	public function  isValidInteger($value,$min=null,$max=null)
 	{
 		$this->setNoValidationError();
-		if (is_bool($value)) 
+		if (is_bool($value))
 		{
-            $this->setValidationError(1,"boolean values");
-            return false;
-        }
-        if ((int)$value!=$value OR !is_numeric($value))
-        {
-        	$this->setValidationError(2,"not an integer");
-            return false;
-        }
-        return true;
+			$this->setValidationError(1,"Boolean Balue");
+			return false;
+		}
+		if ((int)$value!=$value OR !is_numeric($value))
+		{
+			$this->setValidationError(2,"Not an Integer Value");
+			return false;
+		}
+		if ($min!=null)
+		{
+			if ($value<$min)
+			{
+				$this->setValidationError(3,"Value must be at least ".$min);
+				return false;
+			}
+		}
+		if ($max!=null)
+		{
+			if ($value>$max)
+			{
+				$this->setValidationError(4,"Value must not be higher than ".$max);
+			}
+		}
+		return true;
 	}
-	
+
 	public function  isValidSelection($value,$_options)
 	{
 		$this->setNoValidationError();
@@ -2277,7 +2292,101 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 			return true;
 		}
 		$this->setValidationError(1,"Unknown Value");
-        return false;
+		return false;
+	}
+
+	public function isValidString($value,$allowedchars=PT_ALPHA)
+	{
+		$this->setNoValidationError();
+		$patterns = "/[^".$allowedchars."]*/";
+		$filtered = preg_replace($patterns, "", $value);
+		if ($filtered!=$value)
+		{
+			$this->setValidationError(1,"String contains unwanted chars");
+			return false;
+		}
+		return true;
+	}
+
+	public function isValidEmail($email)
+	{
+		$this->setNoValidationError();
+
+		// taken from Douglas Lovell
+		// http://www.linuxjournal.com/article/9585
+		// Thanks for the great work
+
+		$isValid = true;
+		$atIndex = strrpos($email, "@");
+		if (is_bool($atIndex) && !$atIndex)
+		{
+			$isValid = false;
+		}
+		else
+		{
+			$domain = substr($email, $atIndex+1);
+			$local = substr($email, 0, $atIndex);
+			$localLen = strlen($local);
+			$domainLen = strlen($domain);
+			if ($localLen < 1 || $localLen > 64)
+			{
+				// local part length exceeded
+				$isValid = false;
+			}
+			else if ($domainLen < 1 || $domainLen > 255)
+			{
+				// domain part length exceeded
+				$isValid = false;
+			}
+			else if ($local[0] == '.' || $local[$localLen-1] == '.')
+			{
+				// local part starts or ends with '.'
+				$isValid = false;
+			}
+			else if (preg_match('/\\.\\./', $local))
+			{
+				// local part has two consecutive dots
+				$isValid = false;
+			}
+			else if (!preg_match('/^[A-Za-z0-9\\-\\.]+$/', $domain))
+			{
+				// character not valid in domain part
+				$isValid = false;
+			}
+			else if (preg_match('/\\.\\./', $domain))
+			{
+				// domain part has two consecutive dots
+				$isValid = false;
+			}
+			else if
+			(!preg_match('/^(\\\\.|[A-Za-z0-9!#%&`_=\\/$\'*+?^{}|~.-])+$/',
+			str_replace("\\\\","",$local)))
+			{
+				// character not valid in local part unless
+				// local part is quoted
+				if (!preg_match('/^"(\\\\"|[^"])+"$/',
+				str_replace("\\\\","",$local)))
+				{
+					$isValid = false;
+				}
+			}
+			if (function_exists("checkdnsrr"))
+			{
+				if ($isValid && !(checkdnsrr($domain,"MX") || checkdnsrr($domain,"A")))
+				{
+					// domain not found in DNS
+					$isValid = false;
+				}
+			}
+		}
+
+		if (!$isValid)
+		{
+			$this->setValidationError(1,"Wrong Email Format");
+			return false;
+		}
+		return true;
+
 	}
 }
 

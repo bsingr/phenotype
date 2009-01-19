@@ -62,9 +62,9 @@ class PhenotypeBase
 
 
 
-	public function get($property,$default="")
+	public function get($property,$default=null)
 	{
-		if ($this->check($property))
+		if ($default == null OR $this->check($property))
 		{
 			return ($this->_props[$property]);
 		}
@@ -74,9 +74,24 @@ class PhenotypeBase
 		}
 	}
 
-	public function getI($property,$default="")
+	public function getI($property,$default=null,$min=null,$max=null)
 	{
-		return  (int) ($this->get($property,$default));
+		$int = (int) ($this->get($property,$default));
+		if ($min!=null)
+		{
+			if ($int<$min)
+			{
+				$int=$min;
+			}
+		}
+		if ($max!=null)
+		{
+			if ($int>$max)
+			{
+				$int=$max;
+			}
+		}
+		return ($int);
 	}
 
 	public function getD($property, $decimals,$default)
@@ -88,17 +103,17 @@ class PhenotypeBase
 
 
 
-	public function getHTML($property,$default="")
+	public function getHTML($property,$default=null)
 	{
 		return @ htmlentities(($this->get($property,$default)),null,$this->charset);
 	}
 
-	public function getH($property,$default="")
+	public function getH($property,$default=null)
 	{
 		return $this->getHTML($property,$default);
 	}
 
-	public function getHBR($property,$default="")
+	public function getHBR($property,$default=null)
 	{
 		$html = nl2br($this->getHTML($property,$default));
 		// Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
@@ -108,31 +123,32 @@ class PhenotypeBase
 	}
 
 
-	public function getURL($property,$default="")
+	public function getURL($property,$default=null)
 	{
 		return @ urlencode($this->get($property,$default));
 	}
 
 	
-	public function getSQL($property,$default="")
+	public function getSQL($property,$default=null)
 	{
 		return $this->codeSQL($this->get($property,$default));
 	}
 	
-	public function getX($property,$default="")
+	public function getX($property,$default=null)
 	{
 		global $myPT;
 		return ($this->codeX(($this->get($property,$default))));
 	}
 
 	
-	public function getAC($property,$allowedchars="ABCDEFGHIJKLMNOPQRSTUVWXYZÖÄÜßabcdefghijklmnopqrstuvwxyzöäü",$default)
+	public function getA($property,$allowedchars=PT_ALPHA,$default)
 	{
 		$val = $this->get($property);
 		$patterns = "/[^".$allowedchars."]*/";
 		return preg_replace($patterns, "", $val);
 	}
-
+	
+	
 	public	function getQ($property)
 	{
 		throw new Exception("Deprecated call of function getQ");
@@ -150,19 +166,6 @@ class PhenotypeBase
 		throw new Exception("Deprecated call of function getS");
 		//return (string) @ addslashes($this->_props[$property]);
 	}
-
-
-	public function getA($property)
-	{
-		throw new Exception("Deprecated call of function getA");
-		//$v = @$this->_props[$property];
-
-		//$patterns = "/[^a-z0-9A-Z]*/";
-		//$v = preg_replace($patterns, "", $v);
-
-		return $v;
-	}
-
 
 
 
@@ -330,14 +333,14 @@ class PhenotypeBase
 		$myPT->setNoValidationError();
 	}
 	
-	public function isValidInteger($property,$strict=false)
+	public function isValidInteger($property,$strict=false,$min=null,$max=null)
 	{
 		global $myPT;
 		if ($strict AND !$this->isValidProperty($property))
 		{
 			return false;
 		}
-		return $myPT->isValidInteger($this->get($property));
+		return $myPT->isValidInteger($this->get($property),$min,$max);
 	}
 	
 	public function isValidSelection($property,$_options,$strict=false)
@@ -348,6 +351,26 @@ class PhenotypeBase
 			return false;
 		}
 		return $myPT->isValidSelection($this->get($property),$_options);
+	}	
+	
+	public function isValidString($property,$allowedchars=PT_ALPHA,$strict=false)
+	{
+		global $myPT;
+		if ($strict AND !$this->isValidProperty($property))
+		{
+			return false;
+		}
+		return $myPT->isValidString($this->get($property),$allowedchars);
+	}	
+	
+	public function isValidEmail($property,$strict=false)
+	{
+		global $myPT;
+		if ($strict AND !$this->isValidProperty($property))
+		{
+			return false;
+		}
+		return $myPT->isValidEmail($this->get($property));
 	}	
 }
 ?>

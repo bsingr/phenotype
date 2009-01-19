@@ -9,8 +9,18 @@
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-l
+	
+	# No rewrites for any url starting with _phenotype
+	RewriteCond %{REQUEST_URI} !_phenotype*
+	# No rewrites for any url starting with media
 	RewriteCond %{REQUEST_URI} !_phenotype*
 	
+	# No rewrites for any images, because we don't want to start Phenotype engine to handle them
+	RewriteCond %{REQUEST_URI} !\.jpg$ 
+	RewriteCond %{REQUEST_URI} !\.jpeg$ 
+	RewriteCond %{REQUEST_URI} !\.gif$ 
+	RewriteCond %{REQUEST_URI} !\.png$ 
+	RewriteCond %{REQUEST_URI} !\.ico$ 	
 	
 	# Send requests to index.php, appending the query string part.
 	RewriteRule ^(.*)$ index.php?smartURL=$1  [QSA,L]

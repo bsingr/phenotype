@@ -46,7 +46,7 @@ class PhenotypeComponent_1003 extends PhenotypeComponent
       		$_options[$row[&#34;inc_id&#34;]]=$row[&#34;inc_rubrik&#34;].&#34;: &#34;.$row[&#34;inc_bez&#34;];
       	}
       	$this-&#62;form_selectbox(&#34;&#34;,&#34;inc_id&#34;,$_options);
-      	$_options = Array(1=&#62;&#34;With Page&#34;,2=&#62;&#34;Never&#34;,3=&#62;&#34;Request Parameter Hash&#34;);
+      	$_options = Array(1=&#62;&#34;With Page&#34;,0=&#62;&#34;Never&#34;,2=&#62;&#34;Request Parameter Hash&#34;);
       	$this-&#62;form_selectbox(&#34;Cache&#34;,&#34;cache&#34;,$_options,false);
   	}
 
