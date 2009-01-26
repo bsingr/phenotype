@@ -23,7 +23,7 @@ function __autoload($class_name) {
 
   // create inheritage of standard classes, if not inherited by application
 
-  $_classes = Array("Phenotype","PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeIncludeController","PhenotypeSystemDataObject","PhenotypeNavigationHelper","PhenotypeSmarty","PhenotypeLocaleManager");
+  $_classes = Array("Phenotype","PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeIncludeController","PhenotypeSystemDataObject","PhenotypeNavigationHelper","PhenotypeSmarty","PhenotypeLocaleManager","PhenotypeSoapServer");
 
   if (in_array($class_name,$_classes))
   {
@@ -136,6 +136,13 @@ function __autoload($class_name) {
       }
     }
   }
+     // Am Ende ein erneuter Check im class-Ordner
+    $file = CLASSPATH . $class_name . ".class.php";
+    if (file_exists ( $file ))
+    {
+      require_once ($file);
+      return;
+    }
   throw new Exception("Class autoloading failure. Unknown class " .$class_name);
 }
 

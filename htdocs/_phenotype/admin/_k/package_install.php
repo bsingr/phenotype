@@ -38,9 +38,8 @@ $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 $id =$myRequest->get("id");
 
-require (PACKAGEPATH .$id."/PhenotypePackage.class.php");
-
-$myPak = new PhenotypePackage();
+$myMgr = new PhenotypePackageManager();
+$myMgr->selectPackage($id);
 
 
 ?>
@@ -108,7 +107,7 @@ $myPT->startBuffer();
 	{
 
 		$myPT->startBuffer();
-		$myPak->globalInstallStructure($myRequest->getI("hostconfig"));
+		$myMgr->globalInstallStructure($myRequest->getI("hostconfig"));
 		$html = $myPT->stopBuffer();
 		$myLayout->workarea_row_draw(locale("Structure"),$html);
 	}

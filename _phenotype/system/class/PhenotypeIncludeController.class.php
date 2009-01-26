@@ -2,7 +2,7 @@
 // -------------------------------------------------------
 // Phenotype Content Application Framework
 // -------------------------------------------------------
-// Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
+// Copyright (c) 2003-2008 Nils Hagemann, Paul Sellinger,
 // Peter Sellinger, Michael Krämer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
@@ -15,7 +15,7 @@
 // www.phenotype-cms.de - documentation
 // www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
-// Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
+// Version 2.7 vom 17.11.2008
 // -------------------------------------------------------
 
 /**
@@ -25,18 +25,30 @@
  */
 class PhenotypeIncludeControllerStandard extends PhenotypeInclude
 {
+  const naming_convention_phenotype = 0;
   const naming_convention_symfony = 1;
   const naming_convention_zend = 2;
 
-  public $default_naming_convention = self::naming_convention_symfony;
-  //public $default_naming_convention = self::naming_convention_zend;
+  public $naming_convention = self::naming_convention_phenotype;
 
-  const view_succes = "Success";
+
+  const view_success = "Success";
   const view_error = "Error";
   const view_none = false;
 
+
+  public $enable_actions = true;	
+  
   public $props = Array ();
   
+  /**
+   * If set to true page layout rendering is canceled, when executing this include
+   * 
+   * Attention: That also means, that the whole rendering process is stopped after execution of this Include, so be sure, to place
+   * it in the right order
+   *
+   * @var boolean
+   */
   public $disableLayout = false;
   
   public function execute ()
@@ -44,14 +56,31 @@ class PhenotypeIncludeControllerStandard extends PhenotypeInclude
     global $myRequest;
     global $myPT;
 
-    $action = $myRequest->get("action");
-    if ($action=="")
+    $action = "";
+    
+    if ($myRequest->check("action"))
     {
-      $action="index";
+    	$action =$myRequest->getA("action",PT_ALPHA,"index");
+    }
+    else 
+    {
+    	$action =$myRequest->getA("smartParam1",PT_ALPHA);
+    	if ($action!="")
+    	{
+    		$myRequest->shiftParams4Action($action);
+    	}
+    	else 
+    	{
+    		$action=index;
+    	}
     }
 
-    switch ($this->default_naming_convention)
+
+    switch ($this->naming_convention)
     {
+      case self::naming_convention_phenotype:
+      	 $methodname = "execute" . strtoupper($action[0]) . substr ($action,1)."Action";
+        break;
       case self::naming_convention_symfony:
         $methodname = "execute" . strtoupper($action[0]) . substr ($action,1);
         break;
@@ -65,8 +94,9 @@ class PhenotypeIncludeControllerStandard extends PhenotypeInclude
     $myPT->startBuffer();
 	
 
-	
+	   
     $view = call_user_method($methodname,$this,$myRequest);
+    
     if (is_null($view)){$view="Success";}
     if ($view!=false)
     {
@@ -76,6 +106,10 @@ class PhenotypeIncludeControllerStandard extends PhenotypeInclude
         $mySmarty->assign($k,$v);
       }
       $template = $action . $view;
+      if ($$template=="")
+      {
+      	throw new Exception("Missing template ".$template.". (return false, if no template should be selected!)");
+      }
       $mySmarty->display ($$template);
     }
     if ($this->disableLayout)
@@ -96,7 +130,7 @@ class PhenotypeIncludeControllerStandard extends PhenotypeInclude
   
   public function __call($methodname,$params)
   {
-    throw new Exception("Undefined action method ".$methodname.".");
+    throw new Exception("Undefined action method ".$methodname.' ($myRequest)');
   }
 
   public function __set($k,$v)
@@ -107,6 +141,26 @@ class PhenotypeIncludeControllerStandard extends PhenotypeInclude
   public function __get($k)
   {
     return $this->props[$k];
+  }
+  
+  public function redirect($action=index,$_params)
+  {
+  	global $myRequest;
+  	if ($myRequest->check("smartPATH")) // We won't have smartPATH on POST requests
+  	{
+  		$url = $myRequest->get("smartPATH");
+  	}
+  	else 
+  	{
+  		$url = $myRequest->get("smartURL");
+  	}
+  	$url .="/".$action;
+  	foreach ($_params AS $k=>$v)
+  	{
+  		$url .="/".$k."/".$v;
+  	}
+  	Header ("Location:" .$url);
+  	exit();
   }
 
 }

@@ -1444,7 +1444,7 @@ class PhenotypePageStandard extends PhenotypeBase
 
 		if ($this->lay_id!=0) // Keine Anzeige, wenn kein Template
 		{
-			//$mySmarty->register
+			$mySmarty->assign("page",$this);
 			$html .= $mySmarty->fetch($template);
 		}
 

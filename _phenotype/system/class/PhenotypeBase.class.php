@@ -141,13 +141,18 @@ class PhenotypeBase
 	}
 
 	
-	public function getA($property,$allowedchars=PT_ALPHA,$default)
+	public function getA($property,$allowedchars=PT_ALPHANUMERIC,$default)
 	{
-		$val = $this->get($property);
-		$patterns = "/[^".$allowedchars."]*/";
-		return preg_replace($patterns, "", $val);
+		$val = $this->get($property,$default);
+		return $this->codeA($val,$allowdchars);
 	}
 	
+	
+	public function getAH($property,$allowedchars=PT_ALPHANUMERIC,$default)
+	{
+		$val = $this->getA($property,$allowedchars,$default);
+		return codeH($val);
+	}
 	
 	public	function getQ($property)
 	{
@@ -298,6 +303,18 @@ class PhenotypeBase
 	public function codeSQL($s)
 	{
 		return mysql_real_escape_string($s);
+	}
+	
+	
+	public function codeA($s,$allowedchars=PT_ALPHANUMERIC)
+	{
+		$patterns = "/[^".$allowedchars."]*/";
+		return preg_replace($patterns, "", $s);
+	}
+	
+	public function codeAH($s,$allowedchars=PT_ALPHANUMERIC)
+	{
+		return codeH(codeA($s,$allowedchars));
 	}
 	
 	public function isValidProperty($property)

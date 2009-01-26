@@ -50,6 +50,18 @@ function codeX($value,$utf8=false)
   return $myPT->codeX($value,$utf8);
 }
 
+function codeA($value,$allowedchars=PT_ALPHANUMERIC)
+{
+  global $myPT;
+  return $myPT->codeA($value,$allowedchars);
+}
+
+function codeAH($value,$allowedchars=PT_ALPHANUMERIC)
+{
+  global $myPT;
+  return $myPT->codeAH($value,$allowedchars);
+}
+
 
 function url_for_page($pag_id, $_params=null, $lng_id=null, $smartUID="", $fullUrl=false)
 {

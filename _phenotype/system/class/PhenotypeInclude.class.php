@@ -23,7 +23,7 @@
  * @subpackage system
  *
  */
-class PhenotypeIncludeStandard
+class PhenotypeIncludeStandard extends PhenotypeBase
 {
 	public $id;
 	public $params;

@@ -28,12 +28,22 @@ class PhenotypeRequestStandard extends PhenotypeBase
   
   public $code404 = 0;
   
+  private $_REQUEST = array();
+  
   public function __construct()
+  {
+	$this->_REQUEST = $_REQUEST;
+	$this->analyzeRequest();
+  }
+
+  public function analyzeRequest()
   {
     global $myDB;
     global $myApp;
 
-    $this->_REQUEST = $_REQUEST;
+	// Clear all set/get values
+    $this->_props=Array();
+    
     if (ini_get("magic_quotes_gpc")==1)
     {
       foreach ($this->_REQUEST AS $k=>$v)
@@ -100,7 +110,8 @@ class PhenotypeRequestStandard extends PhenotypeBase
             
             $params = substr($smartURL,$row["L"]+1);
             $this->set("smartURLParams", $params);
-            //echo $params;
+            $this->set("smartPATH", substr($smartURL,0,$row["L"]));
+        
             $_params = split('/',$params);
             $i=0;$n=0;
             foreach ($_params AS $v)
@@ -142,7 +153,20 @@ class PhenotypeRequestStandard extends PhenotypeBase
   
 
   
-  
+    /**
+   * This method is called, wenn Include Actions are enabled and action is selected on smartParam1
+   * 
+   * @TODO: Reduce redundant database queries produced by this method
+   *
+   * @param string $action
+   */
+  public function shiftParams4Action($action)
+  {
+  	$smartURL = $this->get("smartPATH")."/action/".$this->get("smartURLParams");
+  	$this->_REQUEST["smartURL"]=$smartURL;
+  	$this->analyzeRequest();
+  }
+
 
 
 
@@ -167,7 +191,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
   public function getParamHash ()
   {
     $hash="";
-    $_ignore = Array("PHPSESSID","cache","id","smartURL","smartURLParams","smartParam1","smartParam2","smartParam3","smartParam4","smartParam5","smartParam6","smartParam7","smartParam8","smartParam9","smartParam10");
+    $_ignore = Array("PHPSESSID","cache","id","smartURL","smartURLParams","smartParam1","smartParam2","smartParam3","smartParam4","smartParam5","smartParam6","smartParam7","smartParam8","smartParam9","smartParam10","smartPATH");
     foreach ($this->_props AS $k => $v)
     {
       if (!in_array($k,$_ignore))
@@ -190,6 +214,12 @@ class PhenotypeRequestStandard extends PhenotypeBase
   	return ($_SERVER['REQUEST_METHOD'] == 'POST');
   }
 
+  /**
+   * @deprecated 
+   *
+   * @param unknown_type $k
+   * @return unknown
+   */
   function getPostParam($k)
   {
     if ($this->checkPost($k))
@@ -199,11 +229,55 @@ class PhenotypeRequestStandard extends PhenotypeBase
     return "";
   }
 
+  /**
+   * @deprecated 
+   *
+   * @param unknown_type $k
+   * @return unknown
+   */
   function checkPost($k)
   {
     if(isset($_POST[$k])){return true;}
     return false;
   }
+  
+  public function calcPager($key,$itemsperpage,$maxitem,$_options)
+	{
+		$_options = Array("first"=>true,"last"=>true,"before"=>2,"after"=>2);
+		$nrofpages = ceil($maxitem/$itemsperpage);
+		$_pager=Array("page"=>1,"nrofpages"=>$nrofpages);
+		if($this->check($key))
+		{
+			$page = $this->getI($key);
+			if ($page<1 OR $page>$nrofpages)
+			{
+				$page=1;
+			}
+			$_pager["page"]=$page;
+		}
+		else
+		{
+			$page=1;
+		}
+		$_pages = Array();
+		for ($i=1;$i<=$nrofpages;$i++)
+		{
+			$show=false;
+			if ($i==1 AND $_options["first"]==true){$show=true;}
+			if ($i==$nrofpages AND $_options["first"]==true){$show=true;}
+			if ($i==$page){$show=true;}
+			if ($i<$page AND $i>=($page-$_options["before"])){$show=true;}
+			if ($i>$page AND $i<=($page+$_options["after"])){$show=true;}
+
+
+			if ($show)
+			{
+				$_pages[]=$i;
+			}
+		}
+		$_pager["pages"]=$_pages;
+		return $_pager;
+	}
 
 }
 ?>

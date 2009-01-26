@@ -36,9 +36,9 @@ $myPT->clearCache();
 $myAdm = new PhenotypeAdmin();
 $id =$myRequest->get("id");
 
-require (PACKAGEPATH.$id."/PhenotypePackage.class.php");
-
-$myPak = new PhenotypePackage();
+$myMgr = new PhenotypePackageManager();
+$myMgr->selectPackage($id);
+$myPak = $myMgr->getPackage();
 
 
 $type = $myRequest->get("type");
@@ -133,7 +133,7 @@ switch ($type)
 		<td class="formarea" width="490">
 		<?php
 		// Alte Methode alles auf einen Rutsch zu installieren
-		$myPak->globalInstallData();
+		$myMgr->globalInstallData();
 		?>
 		<br/>
 		</td></tr>

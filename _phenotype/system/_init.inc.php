@@ -55,4 +55,4 @@ switch (PT_LOCALE)
 }
 define ("PT_ALPHANUMERIC",PT_ALPHA."0123456789");
 define ("PT_ALPHAPLUS",PT_ALPHANUMERIC.".,:;-_*+!§$%&()[]=?^#~?@");
-define ("PT_ALPHAPLUSQUOTES",PT_ALPHASAVE."'\"'");
+define ("PT_ALPHAPLUSQUOTES",PT_ALPHAPLUS."'\"'");
