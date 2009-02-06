@@ -65,7 +65,7 @@ exit();
 <HTML><HEAD>
 <TITLE>500 Internal Server Error</TITLE>
 </HEAD><BODY>
-<H1>Not Found</H1>
+<H1>500 Internal Server Error</H1>
 The requested URL <?php echo $_SERVER["REQUEST_URI"] ?> could not be processed on this server.<P>
 <HR>
 <ADDRESS>Phenotype CMS/<?php echo PT_VERSION ?> at <?php echo $_SERVER["SERVER_NAME"] ?> Port <?php echo $_SERVER["SERVER_PORT"] ?></ADDRESS>

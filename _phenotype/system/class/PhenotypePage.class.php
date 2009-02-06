@@ -897,6 +897,16 @@ class PhenotypePageStandard extends PhenotypeBase
 
 		global $myDB;
 
+		// Check for cache of normal view and render normal view first to enable caching of print view
+		if ($this->row["pag_cache"]!=0 AND $_SERVER['REQUEST_METHOD']!="POST")
+		{
+			if (time()>$this->nextbuild)
+			{
+				$myPT->startBuffer();
+				$this->display(1,0);
+				$myPT->stopBuffer();
+			}
+		}
 
 		$myTC = new TCheck();
 		$myTC->start();

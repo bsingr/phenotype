@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -29,7 +29,7 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 	public $params;
 	public $html;
 	public $context = 0;
-	
+
 
 	public function __construct($p1="",$p2="")
 	{
@@ -98,7 +98,7 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 		return ($html);
 	}
 
-	
+
 	function renderXML()
 	{
 
@@ -259,7 +259,7 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 			{
 				$access = (string)utf8_decode($_xml_template["access"]);
 				$mySQL = new SQLBuilder();
-		        $mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
+				$mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
 				$mySQL->addField("inc_id",$inc_id,DB_NUMBER);
 				$mySQL->addField("tpl_bez",$access);
 				$sql = $mySQL->insert("include_template");
@@ -274,7 +274,7 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 			}
 
 
-			
+
 			return $inc_id;
 
 		}
@@ -282,6 +282,11 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 		{
 			return (false);
 		}
+	}
+
+	public function __call($methodname,$params)
+	{
+		throw new Exception("There's no method ".$methodname."() in PhenotypeInclude_".sprintf('%02d',$this->id) .".");
 	}
 
 }

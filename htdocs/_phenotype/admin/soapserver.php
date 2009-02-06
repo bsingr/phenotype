@@ -32,6 +32,8 @@ if (!defined("PT_SOAP") OR PT_SOAP==0)
 	exit();
 }
 
+define ("PT_SOAPCONTEXT",1);
+
 // We must have the same conditions like a logged in backend user
 $myPT->loadTMX("Config");
 ini_set("session.use_trans_sid",0);

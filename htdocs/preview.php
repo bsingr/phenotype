@@ -6,10 +6,10 @@ require(ADMINPATH . "_session.inc.php");
 
 ?>
 <?php
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 if (isset($_REQUEST["ver_id"]))
 {
-$ver_id = $_REQUEST["ver_id"];
+$ver_id = (int)$_REQUEST["ver_id"];
 }
 else
 {
@@ -18,7 +18,7 @@ else
 ?>
 <?php
 
-$lng_id = $myRequest->getI("lng_id");
+$lng_id =(int)$myRequest->getI("lng_id");
 
 $myPage = new PhenotypePage($id,$ver_id);
 $myPage->switchLanguage($lng_id);
@@ -26,7 +26,7 @@ $mySmarty = new PhenotypeSmarty;
 $editbuffer=1;
 if (isset($_REQUEST["editbuffer"]))
 {
-	$editbuffer = $_REQUEST["editbuffer"];
+	$editbuffer = (int)$_REQUEST["editbuffer"];
 }
 $myPage->preview($editbuffer);
 ?>

@@ -62,10 +62,10 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		$mySmarty->assign("text",$this->get("text"));
 		$mySmarty->assign("id",$this->id);
 
-		if ($this->get("linkurl")!="")
+		if ($this->get("link_url")!="")
 		{
-			$link = '&nbsp;<a href="'.$this->get("linkurl").'" target="'.$this->get("linktarget").'">'.$this->get("linkbez").'</a>';
-			$a= '<a href="'.$this->get("linkurl").'" target="'.$this->get("linktarget").'">';
+			$link = '&nbsp;<a href="'.$this->get("link_url").'" target="'.$this->get("link_target").'">'.$this->get("link_name").'</a>';
+			$a= '<a href="'.$this->get("link_url").'" target="'.$this->get("link_target").'">';
 			$aa = '</a>';
 		}
 		else
@@ -77,6 +77,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		$mySmarty->assign("a",$a);
 		$mySmarty->assign("aa",$aa);
 		$mySmarty->assign("link",$link);
+
 
 		return $mySmarty->fetch($template);
 	}

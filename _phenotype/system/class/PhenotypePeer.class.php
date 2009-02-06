@@ -25,7 +25,7 @@
  * TODO: getImage, getImages, getDocument, getDocuments, getUser, getUsers, getPage, getPages, getComponents ?, getInclude?
  */
 
-class PhenotypePeer_Standard
+class PhenotypePeerStandard
 {
 
 	public static function getRecords($con_id,$status=true,$order="dat_bez",$_filter=array(),$limit)

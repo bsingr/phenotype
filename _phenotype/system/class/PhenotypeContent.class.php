@@ -4244,5 +4244,10 @@ public function buildURL($action="show",$lng_id=null)
 {
 	return "undefined";
 }
+
+	public function __call($methodname,$params)
+	{
+		throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
+	}
 }
 ?>

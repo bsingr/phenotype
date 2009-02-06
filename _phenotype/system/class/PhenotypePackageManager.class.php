@@ -32,15 +32,23 @@ class PhenotypePackageManager
 	public function selectPackage($name)
 	{
 		$name =codeA($name,PT_ALPHANUMERIC."_-");
-		$file = PACKAGEPATH.$name."/PhenotypePackage.class.php";
 		
+		$file = PACKAGEPATH.$name."/PhenotypePackage.class.php";
+
 		if (file_exists($file))
 		{
 			$this->package_file = $file;
 		}
 		else 
 		{
-			throw new Exception("Package file ".$file." not found");
+			if (defined("PT_SOAPCONTEXT") AND PT_SOAPCONTEXT==1)
+			{
+			throw new SoapFault("Server","Package file ".$file." not found");
+			}
+			else 
+			{
+				throw new Exception("Package file ".$file." not found");
+			}
 		}
 	}
 	

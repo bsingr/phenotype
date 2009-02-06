@@ -43,7 +43,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 	public function render($context)
 	{
 
-		&#47;&#47; Initialize template access (=>$mySmarty) 
+		&#47;&#47; Initialize template access (=&#62;$mySmarty) 
 		eval ($this-&#62;initRendering());
 
 		$template = $TPL_DEFAULT;
@@ -75,10 +75,10 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		$mySmarty-&#62;assign(&#34;text&#34;,$this-&#62;get(&#34;text&#34;));
 		$mySmarty-&#62;assign(&#34;id&#34;,$this-&#62;id);
 
-		if ($this-&#62;get(&#34;linkurl&#34;)!=&#34;&#34;)
+		if ($this-&#62;get(&#34;link_url&#34;)!=&#34;&#34;)
 		{
-			$link = &#39;&#38;nbsp;&#60;a href=&#34;&#39;.$this-&#62;get(&#34;linkurl&#34;).&#39;&#34; target=&#34;&#39;.$this-&#62;get(&#34;linktarget&#34;).&#39;&#34;&#62;&#39;.$this-&#62;get(&#34;linkbez&#34;).&#39;&#60;&#47;a&#62;&#39;;
-			$a= &#39;&#60;a href=&#34;&#39;.$this-&#62;get(&#34;linkurl&#34;).&#39;&#34; target=&#34;&#39;.$this-&#62;get(&#34;linktarget&#34;).&#39;&#34;&#62;&#39;;
+			$link = &#39;&#38;nbsp;&#60;a href=&#34;&#39;.$this-&#62;get(&#34;link_url&#34;).&#39;&#34; target=&#34;&#39;.$this-&#62;get(&#34;link_target&#34;).&#39;&#34;&#62;&#39;.$this-&#62;get(&#34;link_name&#34;).&#39;&#60;&#47;a&#62;&#39;;
+			$a= &#39;&#60;a href=&#34;&#39;.$this-&#62;get(&#34;link_url&#34;).&#39;&#34; target=&#34;&#39;.$this-&#62;get(&#34;link_target&#34;).&#39;&#34;&#62;&#39;;
 			$aa = &#39;&#60;&#47;a&#62;&#39;;
 		}
 		else
@@ -90,6 +90,7 @@ class PhenotypeComponent_1001 extends PhenotypeComponent
 		$mySmarty-&#62;assign(&#34;a&#34;,$a);
 		$mySmarty-&#62;assign(&#34;aa&#34;,$aa);
 		$mySmarty-&#62;assign(&#34;link&#34;,$link);
+
 
 		return $mySmarty-&#62;fetch($template);
 	}

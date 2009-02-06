@@ -92,7 +92,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 		if (ini_get("register_globals")==1)
 		{
-			die("Please turn off register globals. For security reasons phenotype does not allow this setting.");
+			die("Please turn off register globals. For security reasons Phenotype does not allow this setting.");
 		}
 
 		// start buffering the output im
@@ -1074,7 +1074,7 @@ class PhenotypeStandard extends PhenotypeBase
 		global $myDB;
 		global $myApp;
 
-		if (!PT_DEBUG==1)
+		if (!PT_DEBUG==1 OR !isset($_COOKIE["pt_debug"]))
 		{
 			ob_clean();
 			$myApp->throw500($myPage->id);
@@ -1286,9 +1286,18 @@ else
 // TODO: sometimes removal of two traces is too much. Check!
 foreach ($_traces AS $_trace)
 {
-	$_lines = file ($_trace["file"]);
-	$line = $_trace["line"];
-	$c = count($_lines);
+	if (isset($_trace["file"]))
+	{
+		$_lines = file ($_trace["file"]);
+		$line = $_trace["line"];
+		$c = count($_lines);
+	}
+	else // We don't have a line, so we don't have a file to be printed out (e.g in case of "magic" calls) 
+	{
+		$_trace["file"]="";
+		$c=0;
+	}
+	
 
 	$start = max(1,$line-2);
 	$stop = min($c,$line+2);

@@ -64,7 +64,7 @@ class PhenotypeBase
 
 	public function get($property,$default=null)
 	{
-		if ($default == null OR $this->check($property))
+		if ($this->check($property))
 		{
 			return ($this->_props[$property]);
 		}
@@ -94,7 +94,7 @@ class PhenotypeBase
 		return ($int);
 	}
 
-	public function getD($property, $decimals,$default)
+	public function getD($property, $decimals,$default=null)
 	{
 		return sprintf("%01.".$decimals."f", ($this->get($property,$default)));
 	}
@@ -141,14 +141,14 @@ class PhenotypeBase
 	}
 
 	
-	public function getA($property,$allowedchars=PT_ALPHANUMERIC,$default)
+	public function getA($property,$allowedchars=PT_ALPHANUMERIC,$default=null)
 	{
 		$val = $this->get($property,$default);
-		return $this->codeA($val,$allowdchars);
+		return $this->codeA($val,$allowedchars);
 	}
 	
 	
-	public function getAH($property,$allowedchars=PT_ALPHANUMERIC,$default)
+	public function getAH($property,$allowedchars=PT_ALPHANUMERIC,$default=null)
 	{
 		$val = $this->getA($property,$allowedchars,$default);
 		return codeH($val);

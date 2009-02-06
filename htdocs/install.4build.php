@@ -20,6 +20,7 @@
 
 set_time_limit(0);
 
+require ("../_phenotype/system/class/PhenotypeBase.class.php");
 require ("../_phenotype/system/class/PhenotypeInstaller.class.php");
 require ("../_phenotype/system/class/PhenotypeRequest.class.php");
 

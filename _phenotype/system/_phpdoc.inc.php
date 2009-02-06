@@ -7,6 +7,13 @@
  * @subpackage application
  *
  */
+class Phenotype extends PhenotypeStandard {}
+
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
 class PhenotypeAdmin extends PhenotypeAdminStandard {}
 
 /**
@@ -306,4 +313,3 @@ class PhenotypeBackend_Ticket_Process extends PhenotypeBackend_Ticket_Process_St
 {
 }
 
-define ("PT_ALPHA","ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");

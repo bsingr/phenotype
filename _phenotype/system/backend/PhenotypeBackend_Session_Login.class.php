@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -25,18 +25,18 @@
  */
 class PhenotypeBackend_Session_Login_Standard extends PhenotypeBackend_Session
 {
-    // PhenotypeBackend_Session-Classes don't have their own localization file. It's because some session/login/rights related functions
-  // are located in the PhenotypeBackendStandard class.
-  
-  public $tmxfile = "Phenotype";
-  
+	// PhenotypeBackend_Session-Classes don't have their own localization file. It's because some session/login/rights related functions
+	// are located in the PhenotypeBackendStandard class.
+
+	public $tmxfile = "Phenotype";
+
 	function execute()
 	{
 		global $myDB;
 		global $myRequest;
 		global $myPT;
 		global $myLog;
-		
+
 
 		@session_start();
 		$login = false;
@@ -82,15 +82,25 @@ class PhenotypeBackend_Session_Login_Standard extends PhenotypeBackend_Session
 				$myTicket->calculate_prio();
 			}
 
-			$myLog->log("Benutzer ".$myUser->id . " - " . $myUser->getName() ." erfolgreich angemeldet",PT_LOGFACILITY_SYS);
-			
+			$myLog->log("User ".$myUser->id . " - " . $myUser->getName() ." successfully logged in",PT_LOGFACILITY_SYS);
+
 			// set debug cookie to allow displayment of debug console
-			setcookie("pt_debug",md5("on".PT_SECRETKEY),time()+(60*60*24*3),"/");
-			
+			$p = strpos(".",$domain);
+			if ($p)
+			{
+				$p = strpos($_SERVER[HTTP_HOST],".");
+				$domain = substr($_SERVER[HTTP_HOST],$p);
+			}
+			else // if we don't have a dot in our domain name, we're probably in an local environment and don't set a domain cookie
+			{
+				$domain="";
+			}
+			setcookie("pt_debug",md5("on".PT_SECRETKEY),time()+(60*60*24*3),"/",$domain);
+
 			$this->gotoPage("Editor","Start","");
 		}
-		$myLog->log("Anmeldung fehlgeschlagen - ".$myRequest->get("user"),PT_LOGFACILITY_SYS);
-		
+		$myLog->log("Login failed - ".$myRequest->get("user"),PT_LOGFACILITY_SYS);
+
 		$this->displayLoginRetry();
 
 	}

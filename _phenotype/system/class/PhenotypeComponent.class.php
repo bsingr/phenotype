@@ -507,10 +507,10 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$property = $_fconfig["property"];
 		$start = (int)$_fconfig["start"];
 		$max = (int)$_fconfig["max"];
-		
-	
+
+
 		$formname = $this->formid . $property;
-		
+
 		if ($title!="")
 		{
 			echo codeH($title);
@@ -536,7 +536,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
       	<?php 
 	}
 
-	
+
 	private function _form_enumeration_fetch($_fconfig)
 	{
 		global $myRequest;
@@ -551,7 +551,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 			// New bullet point?
 			$fname = $this->formid .$property. "_plus_r" . $i . "_x";
-			
+
 			if ($myRequest->check($fname))
 			{
 				$this->set($property."_count",$c+1);
@@ -567,12 +567,12 @@ class PhenotypeComponentStandard extends PhenotypeBase
 				$this->clear($property."_item".$c);
 				$this->set($property."_count",$c-1);
 				$put--;
-				
+
 			}
 			// -- Bullet point removal ?
 		}
 	}
-	
+
 	public function form_selectbox($title, $property, $_options, $addzerodots=true)
 	{
 		$this->_form[] = array(
@@ -618,34 +618,34 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	{
 		// realized a special editon of form_selectbox
 		// just populate the _options-Array
-	
+
 		global $myDB;
-		
+
 		$con_id = (int)$con_id;
-		
+
 		$sql  = "SELECT dat_id,dat_bez FROM content_data WHERE con_id=".$con_id;
-		
+
 		if ($statuscheck==true)
 		{
 			$sql .=" AND dat_status=1";
 		}
-		
+
 		if ($sql_where !="")
 		{
 			$sql .=" AND " . $a[6];
 		}
-		
+
 		$sql .= " ORDER BY dat_bez";
-		
+
 		$rs = $myDB->query($sql);
-		
+
 		$_options = Array();
-		
+
 		while ($row=mysql_fetch_assoc($rs))
 		{
 			$_options[$row["dat_id"]]=$row["dat_bez"];
 		}
-		
+
 		$this->_form[] = array(
 		"form_method" =>"form_selectbox",
 		"property" =>$property,
@@ -732,16 +732,6 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 	}
 
-	/*
-	function form_link($name,$bez,$url,$target)
-	{
-	if ($this->myLayout==-1)
-	{
-	$this->myLayout = new PhenotypeAdminLayout();
-	}
-	$name = $this->formid . $name;
-	echo $this->myLayout->workarea_form_link($name,$bez,$url,$target);
-	}*/
 
 	public function form_richtext($title, $property, $width, $rows, $filter = 1)
 	{
@@ -936,14 +926,14 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		"params"=>$_params
 		);
 	}
-	
+
 	private function _form_wrap_display($_fconfig)
 	{
 		$mname = $_fconfig["method"];
 		$_params = $_fconfig["params"];
 		$this->$mname ($_params);
 	}
-	
+
 	private function _form_wrap_fetch($_fconfig)
 	{
 		// Nothing to do here
@@ -1116,7 +1106,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 	}
 
-	public function form_document_selector($title, $property, $folder="", $changefolder = true, $infoline = true, $type_filter = "",$grp_id)
+	public function form_document_selector($title, $property, $folder="", $changefolder = true, $infoline = true, $type_filter = "",$grp_id=0)
 	{
 		$folder=trim($folder);
 		if ($folder==""){$folder=-1;}
@@ -1172,36 +1162,6 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 
 	}
-
-	/*
-	function form_document($name,$med_id)
-	{
-	if ($this->myLayout==-1)
-	{
-	$this->myLayout = new PhenotypeAdminLayout();
-	}
-	$name = $this->formid . $name;
-	echo $this->myLayout->workarea_form_document($name,$med_id);
-	}
-	*/
-
-
-
-	/*
-
-	function form_image($name,$img_id,$folder="-1",$changefolder=1,$x=0,$y=0,$alt="",$align="links",$mode=2, $version=false)
-	{
-	if ($align==""){$align="links";}
-	if ($this->myLayout==-1)
-	{
-	$this->myLayout = new PhenotypeAdminLayout();
-	}
-	$name = $this->formid . $name;
-	echo $this->myLayout->workarea_form_image($name,$img_id,$folder,$changefolder,$x,$y,$alt,$align,$mode, $version);
-	}
-	*/
-
-
 
 
 
@@ -1384,11 +1344,23 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		}
 	}
 
+	/**
+	 * Everytime a component gets displayed this method is called
+	 * 
+	 * So you have to implement it for your application page components
+	 *
+	 * @param int $context (as stated in Layout configuration)
+	 */
 	function render($context)
 	{
-
+		echo 'Please implement method render for PhenotypeComponent_'.$this->tool_type;
 	}
 
+	/**
+	 * internal debugging method, intended for core development usage only ...
+	 *
+	 * @param string $property
+	 */
 	protected function _debug_print_form_xy_fetch($property)
 	{
 		$formname = $this->formid . $property;
@@ -1406,6 +1378,11 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	public function getEditLabel()
 	{
 		return $this->name;
+	}
+
+	public function __call($methodname,$params)
+	{
+		throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
 	}
 }
 ?>

@@ -9,7 +9,7 @@ if ($pw!= PT_XMLACCESS)
 
 if (isset($_REQUEST["id"]))
 {
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 }
 else
 {
