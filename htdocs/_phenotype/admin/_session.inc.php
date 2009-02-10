@@ -35,16 +35,19 @@ if (@$_SESSION["usr_id"]!=@$_SESSION["usr_id_fallback"])
 }
   
 
+
+$uri = $_SERVER["REQUEST_URI"];
+
 if (!isset($_SESSION["status"]))
 {
-  $url = "nosession.php";
+  $url = "nosession.php?uri=".urlencode($uri);
   Header ("Location: " . $url);
   exit();
 }
 
 if ($_SESSION["status"]!=1)
 {
-  $url = "nosession.php";
+  $url = "nosession.php?uri=".urlencode($uri);
   Header ("Location: " . $url);
   exit();
 }
@@ -52,7 +55,7 @@ else
 {
   if ($_SESSION["usr_id"]==0)
   {
-    $url = "nosession.php";
+    $url = "nosession.php?uri=".urlencode($uri);
     Header ("Location: " . $url);
     exit();
   }

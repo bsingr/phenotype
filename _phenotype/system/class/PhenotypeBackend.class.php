@@ -123,7 +123,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Phenotype <?php echo $myPT->version ?></title>
+<title>phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
@@ -181,7 +181,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 exit();
 	}
 
-	function noSession()
+	function noSession($uri="")
 	{
 		global $myPT;
 
@@ -220,6 +220,7 @@ exit();
     <td>
       <form action="backend.php" method="post">
 	  <input type="hidden" name="page" value="Session,Login"/>
+	  <input type="hidden" name="uri" value="<?php echo codeH($uri)?>"/>
         <table width="400" border="0" align="center" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterGrey2">

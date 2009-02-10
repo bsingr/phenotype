@@ -25,5 +25,5 @@ session_start();
 session_destroy();
 $_SESSION["usr_id"]="";
 $myBP = new PhenotypeBackend();
-$myBP->noSession();
+$myBP->noSession($myRequest->get("uri"));
 ?>

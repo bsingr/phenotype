@@ -4,7 +4,7 @@
   <php expression="PHP_OS" returnProperty="buildOS"/>
   <php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>
 
-  <property name="ptVersion" value="2.71" />
+  <property name="ptVersion" value="2.8" />
   
   <tstamp>
   	<format property="DATE" pattern="%d.%m.%Y" locale="de_DE"/>
@@ -15,7 +15,7 @@
   <!--<svnlastrevision svnpath="svn" workingcopy="." propertyname="revision"/>-->
   <!-- if you have trouble with evaluating the last revision from svn, try the manually way -->
   <!-- be sure to set the value to the current svn revision -->
-  <property name="revision" value="338" /> 
+  <property name="revision" value="346" /> 
 
 	
   <property name="buildNo" value="r${revision}" />

@@ -42,7 +42,7 @@ class PhenotypeBackend_Session_Login_Standard extends PhenotypeBackend_Session
 		$login = false;
 		if ($_REQUEST['user']!="")
 		{
-			$sql = "SELECT * FROM user WHERE usr_login = LCASE('" . strtolower($myRequest->getSQL("user")) ."') AND usr_status=1";
+			$sql = "SELECT * FROM user WHERE usr_login = '" . $myRequest->getSQL("user") ."' AND usr_status=1";
 			$rs = $myDB->query($sql);
 			if ($row=mysql_fetch_array($rs))
 			{
@@ -96,7 +96,11 @@ class PhenotypeBackend_Session_Login_Standard extends PhenotypeBackend_Session
 				$domain="";
 			}
 			setcookie("pt_debug",md5("on".PT_SECRETKEY),time()+(60*60*24*3),"/",$domain);
-
+			if ($myRequest->check("uri"))
+			{
+				Header ("Location: ".$myRequest->get("uri"));
+				exit();
+			}
 			$this->gotoPage("Editor","Start","");
 		}
 		$myLog->log("Login failed - ".$myRequest->get("user"),PT_LOGFACILITY_SYS);
