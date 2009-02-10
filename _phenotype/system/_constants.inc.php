@@ -26,6 +26,9 @@
 *
 * this file should NEVER EVER have ANY DEPENDENCIES
 * it is included very early to be accessible everywhere and because of this, it must not depend on any other file
+* @package phenotype
+* @subpackage system
+*
 */
 
 define ("PT_CHARSET","iso-8859-1");

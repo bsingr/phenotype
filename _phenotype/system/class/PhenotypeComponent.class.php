@@ -656,11 +656,11 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	}
 
 
-	public function form_link($title, $property, $link_title=true, $link_target=true, $link_pageselector=false, $link_text=false, $link_popup=false, $link_source=false, $link_type=false, $link_type_options=Array())
+	public function form_link($title, $property, $link_name=true, $link_target=true, $link_pageselector=false, $link_text=false, $link_popup=false, $link_source=false, $link_type=false, $link_type_options=Array())
 	{
 
 		$_options = Array(
-		"link_title"=>$link_title,
+		"link_name"=>$link_name,
 		"link_target"=>$link_target,
 		"link_pageselector"=>$link_pageselector,
 		"link_text"=>$link_text,
@@ -686,14 +686,14 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$_options = $_fconfig["options"];
 
 
-		//if ($_options["link_title"]!==false){$linktitle = $this->get($property."_title");}else{$linktitle=false;}
-		//if ($_options["link_target"]!==false){$target = $this->get($property."_target");}else{$target=false;}
-
+		if ($_options["link_name"]!==false){$linkname = $this->get($property."_name");}else{$linkname=false;}
+		if ($_options["link_target"]!==false){$target = $this->get($property."_target");}else{$target=false;}
 		if ($_options["link_text"]!==false){$linktext = $this->get($property."_text");}else{$linktext=false;}
 		if ($_options["link_popup"]!==false){$popup_x = $this->get($property."_x");$popup_y = $this->get($property."_y");}else{$popup_x=false;$popup_y=false;}
 		if ($_options["link_source"]!==false){$linksource = $this->get($property."_source");}else{$linksource=false;}
-		if ($_options["link_type"]!==false){$linktype = $this->get($property."_type");$linktype_options=$_options["link_type_options"];}else{$linktype=false;$linktype_options=false;}
+		if ($_options["link_type"]!==false){$linktype = $this->get($property."_linktype");$linktype_options=$_options["link_type_options"];}else{$linktype=false;$linktype_options=false;}
 		$pageselector = $_options["link_pageselector"];
+
 
 
 		if ($this->myLayout==-1)
@@ -707,7 +707,9 @@ class PhenotypeComponentStandard extends PhenotypeBase
 			echo codeH($title);
 		}
 		echo '<br/>';
-		echo $this->myLayout->workarea_form_link($formname,$this->get($property."_name"), $this->get($property."_url"), $this->get($property."_target"),$linktext,$linksource,$popup_x,$popup_y,$linktype,$linktype_options,$pageselector);
+
+		
+		echo $this->myLayout->workarea_form_link($formname,$linkname, $this->get($property."_url"), $target,$linktext,$linksource,$popup_x,$popup_y,$linktype,$linktype_options,$pageselector);
 
 	}
 
@@ -717,19 +719,49 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$_options = $_fconfig["options"];
 		$formname = $this->formid . $property;
 
-		$this->set($property."_name",$this->fget($property."bez"));
+
+
+
+		if ($_options["link_popup"]!==false){$popup_x = $this->get($property."_x");$popup_y = $this->get($property."_y");}else{$popup_x=false;$popup_y=false;}
+		if ($_options["link_source"]!==false){$linksource = $this->get($property."_source");}else{$linksource=false;}
+		if ($_options["link_type"]!==false){$linktype = $this->get($property."_type");$linktype_options=$_options["link_type_options"];}else{$linktype=false;$linktype_options=false;}
+		$pageselector = $_options["link_pageselector"];
+		
+		if ($_options["link_name"]!==false)
+		{
+			$this->set($property."_name",$this->fget($property."bez"));
+		}
+		
 		$this->set($property."_url",$this->fget($property."url"));
-		$this->set($property."_target",$this->fget($property."target"));
-
-		/*
-		if ($_options["link_title"]!==false){$this->set($property."_title",$this->get($property."_linkbez"));}else{$this->clear($property."_title");}
-		if ($_options["link_target"]!==false){$this->fset($property."_target");}else{$this->clear($property."_target");}
-		if ($_options["link_text"]!==false){$this->fset($property."_text");}else{$this->clear($property."_text");}
-		if ($_options["link_popup"]!==false){$this->fset($property."_x");$this->set($property."_y");}else{$this->clear($property."_x");$this->clear($property."_y");}
-		if ($_options["link_source"]!==false){$this->fset($property."_source");}else{$this->clear($property."_source");}
-		if ($_options["link_type"]!==false){$this->fset($property."_type");}else{$this->clear($property."_type");}
-		*/
-
+		
+		if ($_options["link_target"]!==false)
+		{
+			$this->set($property."_target",$this->fget($property."target"));
+		}
+		
+		if ($_options["link_text"]!==false)
+		{
+			$this->set($property."_text",$this->fget($property."text"));
+		}	
+		
+		if ($_options["link_popup"]!==false)
+		{
+			$this->set($property."_x",$this->fget($property."x"));
+			$this->set($property."_y",$this->fget($property."y"));
+		}
+		else
+		{
+			$this->clear($property."_x");$this->clear($property."_y");
+		}
+			
+		if ($_options["link_source"]!==false)
+		{
+			$this->set($property."_source",$this->fget($property."source"));
+		}		
+		if ($_options["link_type"]!==false)
+		{
+			$this->set($property."_linktype",$this->fget($property."type"));
+		}	
 	}
 
 

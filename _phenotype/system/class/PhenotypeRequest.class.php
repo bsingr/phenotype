@@ -224,7 +224,15 @@ class PhenotypeRequestStandard extends PhenotypeBase
 
 	public function isAjaxRequest()
 	{
-		return ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest');
+		// TODO:Check
+		if (in_array('HTTP_X_REQUESTED_WITH',$_SERVER))
+		{
+			return ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest');
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	/**

@@ -18,6 +18,12 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 
+/**
+ * @package phenotype
+ * @subpackage system
+ *
+ */
+
 if (PT_DEBUG==1)
 {
   error_reporting(E_ALL ^ E_NOTICE); // DEVELOPMENT

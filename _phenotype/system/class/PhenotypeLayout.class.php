@@ -1589,24 +1589,29 @@ return $myPT->stopBuffer();
 		global $myPT;
 		$myPT->startBuffer();
 
-		if ($bez!="" OR $url !="" OR $linktext !="")
+		if ($bez!="" OR $url !="" OR $linktext !="") // we have some info
 		{
 			$style="";
       ?>
-<table width="408" border="0" cellpadding="0" cellspacing="0">
+<?php if ($pageselector==true){ ?>
+<table width="408" border="0" cellpadding="0" cellspacing="0" id="<?php echo $name ?>select">
                   <tr>
                     <td nowrap><a class="bausteineLink" href='javascript:selector_link(
 "editform","<?php echo $name ?>")'><img src="img/b_edit_s.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Select Link");?></a></td>
                   </tr>
                 </table>
+                <?php }else{ ?>
+                <table width="408" border="0" cellpadding="0" cellspacing="0" style="visibility: hidden;display:none" id="<?php echo $name ?>select"></table>
+                <?php } ?>
                 <table width="408" border="0" cellpadding="0" cellspacing="0">
                   <tr>
                     <td nowrap><a href="javascript:reset_link('editform','<?php echo $name ?>');" class="bausteineLink"><img src="img/b_minus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Reset Link");?></a></td>
                   </tr>
                 </table>
     <?php }
-    else
+    else // No info entered yet
     {
+   
     	$style='style="visibility: hidden;display:none"';
 	?>
 

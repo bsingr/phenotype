@@ -18,13 +18,15 @@
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
 
-/*
-* class PhenotypeLog
-* logs system and application stuff
-*
-* @package phenotype
-* @subpackage system
-*/
+
+/**
+ * class PhenotypeLog
+ * logs system and application stuff
+ * 
+ * @package phenotype
+ * @subpackage system
+ *
+ */
 class PhenotypeLog {
 
 

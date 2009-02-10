@@ -26,9 +26,68 @@
 class PhenotypeIncludeStandard extends PhenotypeBase
 {
 	public $id;
+
+
 	public $params;
 	public $html;
 	public $context = 0;
+
+	/**
+	 * enable/disable smartActions
+	 *
+	 * @var boolean
+	 */
+	protected $smartActions = false;
+
+	/**
+	 * enable/disable magic properties
+	 *
+	 * @var unknown_type
+	 */
+	protected $magicProperties = false;
+
+	/**
+	 * reserved for future usage
+	 *
+	 * @var unknown_type
+	 */
+	protected $disableLayout = false;
+
+	/**
+	 * When smartActions are enabled the request object tries to guess the selected action. If no action parameter is
+	 * given, the first smartParam will become the action. That results in a "shift" of all other params. This shift 
+	 * may interfere with other includes. Therefore the request object is cloned by default. You may turn this protection
+	 * off (might help you when debugging smartActions).
+	 * 
+	 * @var boolean
+	 */
+	protected $protectGlobalRequestObject = true;
+
+
+
+
+
+
+	protected $view_success = "Success";
+	protected $view_error = "Error";
+	protected $view_ajax = "Ajax";
+	protected $view_post = "Post";
+	protected $view_none = false;
+
+
+
+
+
+
+	/**
+   * If set to true page layout rendering is canceled, when executing this include
+   * 
+   * Attention: That also means, that the whole rendering process is stopped after execution of this Include, so be sure, to place
+   * it in the right order
+   *
+   * @var boolean
+   */
+
 
 
 	public function __construct($p1="",$p2="")
@@ -80,6 +139,19 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 
 	function execute()
 	{
+		global $myPT;
+		if ($this->smartActions==true)
+		{
+			global $myPT;
+			$myPT->startBuffer();
+			$this->executeSmartAction();
+			$html = $myPT->stopBuffer();
+			return $html;
+		}
+
+		//$buffer_preexecution = $myPT->stopBuffer();
+		//$myPT->setBuffer($buffer_preexecution);
+
 		if (get_class ($this)=="PhenotypeInclude")
 		{
 			// Abwärtskomaptibel zu PT 2.0 - 2.1
@@ -93,8 +165,15 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 			$myPT->startBuffer();
 			$this->display();
 			$html = $myPT->stopBuffer();
-			return $html;
 		}
+		/*
+		if ($this->disableLayout)
+		{
+		echo $html;
+		die();
+		}
+		*/
+
 		return ($html);
 	}
 
@@ -117,6 +196,12 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 		}
 	}
 
+	/**
+	 * Please implement this method for normale includes
+	 * 
+	 * You don't need it when using smartActions
+	 *
+	 */
 	function display()
 	{
 	}
@@ -287,6 +372,245 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 	public function __call($methodname,$params)
 	{
 		throw new Exception("There's no method ".$methodname."() in PhenotypeInclude_".sprintf('%02d',$this->id) .".");
+	}
+
+
+
+
+	/**
+	 * action/view dispatcher if smartActions are enabled
+	 *
+	 */
+	protected function executeSmartAction ()
+	{
+		global $myRequest;
+		global $myPT;
+		global $myApp;
+		global $myPage;
+		
+		// We clone the request object to be able to shift params, in case the url did not containt the action parameter,
+		// but an action value!
+
+		if ($this->protectGlobalRequestObject===true)
+		{
+			$myRequestClone = clone($myRequest);
+		}
+		else
+		{
+			$myRequestClone = $myRequest;
+		}
+
+		$action = "";
+		$ajax = false;
+		$json = false;
+		$post = false;
+
+		if ($myRequestClone->check("action"))
+		{
+			$action =$myRequestClone->getA("action",PT_ALPHA,"index");
+		}
+		else
+		{
+			$action =$myRequestClone->getA("smartParam1",PT_ALPHA);
+			if ($action!="")
+			{
+				$myRequestClone->shiftParams4Action($action);
+			}
+			else
+			{
+				$action="Index";
+			}
+		}
+
+		$action = strtoupper($action[0]) . substr ($action,1);
+
+		if ($myRequestClone->isPostRequest())
+		{
+			$post = true;
+			// Currently only phenotype naming convention, others might follow
+
+			// postXYZAction => indexXYZAction => Error
+			$methodname = "post" . $action."Action";
+			if (!method_exists($this,$methodname))
+			{
+				$methodname = "execute" . $action."Action";
+			}
+
+		}
+		else
+		{
+			if ($myRequestClone->isAjaxRequest())
+			{
+				$ajax = true;
+				// Currently only phenotype naming convention, others might follow
+
+				// jsonXYZAction => ajaxXYZAction => indexXYZAction => Error
+				$methodname = "json" . $action."Action";
+				if (!method_exists($this,$methodname))
+				{
+					$methodname = "ajax" . $action."Action";
+					if (!method_exists($this,$methodname))
+					{
+						$methodname = "execute" . $action."Action";
+					}
+				}
+				else
+				{
+					$json = true;
+				}
+
+			}
+			else
+			{
+
+				$methodname = "execute" . $action."Action";
+
+			}
+		}
+	
+
+
+
+		
+
+
+
+		if (!method_exists($this,$methodname))
+		{
+
+			if (!method_exists($this,"executeUnknownAction"))
+			{
+				if (!PT_DEBUG==1 OR !isset($_COOKIE["pt_debug"]))
+				{
+					ob_clean();
+
+					$myApp->throw404($myPage->id);
+					exit();
+				}
+				throw new Exception("Include ".$this->id.": Undefined action method ".$methodname.' ($myRequest)');
+			}
+			else
+			{
+				$action = "Unknown";
+				$methodname = "executeUnknownAction";
+			}
+		}
+		$view = call_user_method($methodname,$this,$myRequestClone);
+
+		if ($json==true)
+		{
+			ob_get_clean();
+			echo json_encode($view);
+			exit();
+		}
+		if (is_array($view) OR is_object($view))
+		{
+			throw new Exception("Include ".$this->id.": Wrong return value for action method ".$methodname.' ($myRequestClone). Arrays and objects are not supported.');
+		}
+		if ($view!==false)
+		{
+			eval ($this->initRendering());
+			if ($this->magicProperties==true)
+			{
+				foreach ($this->_props AS $k => $v)
+				{
+					$mySmarty->assign($k,$v);
+				}
+			}
+			if (is_null($view))
+			{
+				$view=$this->view_success;
+				if ($ajax==1)
+				{
+					$template = $action ."Ajax";
+					if ($$template!="")
+					{
+						$view=$this->view_ajax;
+					}
+				}
+				if ($post==1)
+				{
+					$template = $action ."Post";
+					if ($$template!="")
+					{
+						$view=$this->view_post;
+					}
+				}
+			}
+
+			$template = $action . $view;
+			if ($$template=="")
+			{
+				if (!PT_DEBUG==1 OR !isset($_COOKIE["pt_debug"]))
+				{
+					ob_get_clean();
+
+					$myApp->throw404($myPage->id);
+					exit();
+				}
+				throw new Exception("Include ".$this->id.": Missing template ".$template.". (return false, if no template should be selected!)");
+			}
+			$mySmarty->display ($$template);
+		}
+		
+	
+	}
+
+	/**
+	 * reserved for future usage
+	 * 
+	 * currently there's a problem with the output buffer, if we don't know from beginning, that the layout should be disabled
+	 *
+	 */
+	public function disableLayout()
+	{
+		$this->disableLayout = true;
+	}
+
+
+
+	public function __set($k,$v)
+	{
+		if ($this->magicProperties==true)
+		{
+			$this->set($k,$v);
+		}
+	}
+	public function __get($k)
+	{
+		if ($this->magicProperties==true)
+		{
+			return $this->get($k);
+		}
+
+	}
+
+	/**
+	 * Jump to another action (via http-redirect)
+	 * 
+	 * We don't have a forward function, you may call executeActionXY manually 
+	 *
+	 * @param unknown_type $action
+	 * @param unknown_type $_params
+	 */
+	public function redirect($action=index,$_params)
+	{
+		global $myRequest;
+		if ($myRequest->check("smartPATH")) // We won't have smartPATH on POST requests
+		{
+			$url = $myRequest->get("smartPATH");
+		}
+		else
+		{
+			$url = $myRequest->get("smartURL");
+		}
+		$url .="/".$action;
+		foreach ($_params AS $k=>$v)
+		{
+			$url .="/".$k."/".$v;
+		}
+		Header ("Location:" .$url);
+		exit();
 	}
 
 }

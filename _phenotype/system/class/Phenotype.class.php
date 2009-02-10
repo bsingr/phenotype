@@ -1052,7 +1052,6 @@ class PhenotypeStandard extends PhenotypeBase
 	 */
 	public static function handleException($e)
 	{
-
 		/*
 		final function getMessage();                // Mitteilung der Ausnahme
 		final function getCode();                   // Code der Ausnahme
@@ -1070,6 +1069,8 @@ class PhenotypeStandard extends PhenotypeBase
 
 	public function displayErrorPage($headline,$message,$file="",$line=0,$sql="",$e = false)
 	{
+		ob_get_clean();
+		
 		global $myRequest;
 		global $myDB;
 		global $myApp;

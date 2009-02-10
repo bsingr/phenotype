@@ -26,6 +26,12 @@
 // application
 
 
+/**
+ * @package phenotype
+ * @subpackage system
+ *
+ */
+
 function codeH($value)
 {
   global $myPT;
@@ -78,7 +84,7 @@ function title_of_page($pag_id,$lng_id=null)
 
 /**
  * page description ("page_bez" in DB page)
- * added 2008/05/19 by Dominique BÃ¶s
+ * added 2008/05/19 by Dominique Bös
  */
 function description_of_page($pag_id,$lng_id=null)
 {
@@ -105,27 +111,6 @@ function url_for_co($myCO,$action,$lng_id=null,$_params,$smartUID="",$fullUrl=fa
    return $myPT->url_for_co($myCO,$action,$lng_id,$_params,$smartUID,$fullUrl);
 }
 
-/*
-function url_for_po($myPage,$params=array())
-{
-return PhenotypeHelper::url_for_po($myPage,$params);
-}
-
-function url_for_content($con_id,$dat_id,$action="show")
-{
-return PhenotypeHelper::url_for_content($con_id,$dat_id,$action);
-}
-
-function url_for_co($myCO,$action="show")
-{
-return PhenotypeHelper::url_for_co($myCO,$action);
-}
-
-function url_for_symbol($symbol,$params = Array())
-{
-return PhenotypeHelper::url_for_symbol($symbol,$params);
-}
-*/
 function locale($token,$_params=Array())
 {
 	global $myPT;

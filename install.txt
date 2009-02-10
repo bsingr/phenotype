@@ -11,7 +11,7 @@ Development:
 ============
 
 To grant any user the right to access the configuration mode you must access the database, find your user
-in the table users and enter the value "1" in the field usr_su. The installatio user (normally "starter")
+in the table users and enter the value "1" in the field usr_su. The installation user (normally "starter")
 is already a superuser.
 
 You will find all your application files (templates, php classes) in the folder /_phenotype/application 
