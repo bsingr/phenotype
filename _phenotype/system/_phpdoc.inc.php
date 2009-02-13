@@ -30,7 +30,12 @@ class PhenotypeComponent extends PhenotypeComponentStandard {}
  */
 class PhenotypeContent extends PhenotypeContentStandard {}
 
-
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
+class PhenotypePeer extends PhenotypePeerStandard {}
 
 /**
  * @package phenotype

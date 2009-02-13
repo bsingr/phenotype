@@ -21,7 +21,7 @@
 /**
  * @package phenotype
  * @subpackage system
- *
+ * 
  * the main wrapper for displaying a page in phenotype backend
  */
 class PhenotypeLayoutStandard

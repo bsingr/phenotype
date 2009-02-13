@@ -226,7 +226,7 @@ exit();
             <td class="windowFooterGrey2">
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr valign="bottom">
-                  <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert"><?php echo localeHBR("msg_session_timeout");?></div></td>
+                  <td height="145" colspan="2"  style="background:url(<?php echo $url ?>) no-repeat top left;"><div class="alert"><?php echo localeH("msg_session_timeout");?></div></td>
                 </tr>
                 <tr bgcolor="#FFFFFF">
                   <td colspan="2"><img src="img/white_border.gif" width="3" height="3"></td>
