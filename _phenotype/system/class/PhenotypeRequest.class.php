@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -49,7 +49,17 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		{
 			foreach ($this->_REQUEST AS $k=>$v)
 			{
-				$this->set($k,stripslashes($v));
+				if (is_array($v)) 
+				{
+					$strippedValue = Array();
+					foreach ($v as $key=>$rawValue) 
+					{
+						$strippedValue[$key] = stripslashes($rawValue);
+					}
+					$this->set($k,$strippedValue);
+				} else {
+					$this->set($k,stripslashes($v));
+				}
 			}
 		}
 		else
