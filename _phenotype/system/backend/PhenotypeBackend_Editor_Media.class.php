@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -115,6 +115,9 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				$this->fillContentArea1($this->renderEdit());
 				// OID temporarly disabled
 				//$body_onload="initoid();";
+				break;
+			case "delete":
+				$this->delete();
 				break;
 			case "update":
 			  $myPT->clearCache();
@@ -721,7 +724,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			$p= ceil($n/$this->itemcount);
 		}
 
-		// Seite größer als es die Anzahl erlaubt?
+		// Seite grï¿½ï¿½er als es die Anzahl erlaubt?
 		$max=ceil($anzahl/$this->itemcount);
 		if ($max==0){$max=1;}
 		if ($p>$max){$p=$max;}
@@ -849,8 +852,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	                </tr>
 	              </table>
 	              
-	                <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row["med_id"] ?>&grp_id=<?php echo $this->grp_id ?>&folder=<?php echo $myPT->codeH($this->folder) ?>&type=<?php echo $this->type ?>&sortorder=<?php echo $this->sortorder ?>&p=<?php echo $this->pagenr ?>&a=<?php echo $this->itemcount ?>"><img src="img/b_edit.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("edit");?><br/>
-	                </a> <?php echo localeH("Folder");?>: <?php echo $row["med_logical_folder1"] ?><br>
+	                <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row["med_id"] ?>&grp_id=<?php echo $this->grp_id ?>&folder=<?php echo $myPT->codeH($this->folder) ?>&type=<?php echo $this->type ?>&sortorder=<?php echo $this->sortorder ?>&p=<?php echo $this->pagenr ?>&a=<?php echo $this->itemcount ?>"><img src="img/b_edit.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("edit");?></a><br/> 
+	                <a href="backend.php?page=Editor,Media,delete&id=<?php echo $row["med_id"] ?>" onclick="javascript:return confirm('<?php if ($type==MB_IMAGE){echo localeH("Really delete this image?");}else{echo localeH("Really delete this document?");} ?>')"><img src="img/b_delete.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Delete");?></a><br>
+					
+					<?php echo localeH("Folder");?>: <?php echo $row["med_logical_folder1"] ?><br>
 					<?php
 					if ($row["med_type"]==MB_IMAGE)
 					{
@@ -1379,7 +1384,7 @@ function initoid()
 <input type="hidden" name="b" value="<?php echo $blocknr_oie ?>">
 <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
 <input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
-<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   				   
+<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">
 <input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
 <input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">	
 <input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">
@@ -1608,7 +1613,7 @@ function initoid()
 
 
 
-			if (m==2) // feste Zielgröße
+			if (m==2) // feste Zielgrï¿½ï¿½e
 			{
 				smallSquare_tl.style.visibility = "hidden";
 				smallSquare_tc.style.visibility = "hidden";
@@ -2590,6 +2595,17 @@ function initoid()
 		$this->gotoPage("Editor","Media","edit",$this->_params);
 	}
 
+	function delete()
+	{
+		global $myRequest;
+		$img_id = $myRequest->getI("id");
+		
+		$myMB = new PhenotypeMediabase();
+		$myMB->deleteMediaObject($img_id);
+		$this->_params["info"]= localeH("Object deleted.");
+		$this->gotoPage("Editor","Media","browse",$this->_params);
+	}
+
 	function renderPreview()
 	{
 		global $myPT;
@@ -3133,7 +3149,7 @@ function initoid()
 		switch ($method)
 		{
 			case 2: // fixer Ausschnitt
-			case 4: // fixe Zielgröße
+			case 4: // fixe Zielgrï¿½ï¿½e
 			$tw = $myRequest->getI("size_x");
 			$th = $myRequest->getI("size_y");
 			break;
@@ -3157,7 +3173,7 @@ function initoid()
 					$th = (int)($sh*$r);
 
 				}
-				else // Höhe
+				else // Hï¿½he
 				{
 					$r = $zh/$sh;
 					$th = $zh;
@@ -3184,7 +3200,7 @@ function initoid()
 		}
 
 
-		// Nachschärfen
+		// Nachschï¿½rfen
 		switch ($myRequest->get("size_sharpening"))
 		{
 			case 1:
