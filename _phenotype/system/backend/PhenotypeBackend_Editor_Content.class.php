@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -940,7 +940,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		  if ($myCO->nostatus==0)
 		  {
      		?>
-	 		<input name="status" type="checkbox" value="1" <?php if ($myCO->row["dat_status"]=="1") echo"checked"; ?>> <?php echo localeH("online");?>. 
+	 		<input name="status" id="status" type="checkbox" value="1" <?php if ($myCO->row["dat_status"]=="1") echo"checked"; ?>> <label for="status"><?php echo localeH("online");?></label>. 
      		<?php
 		  }
 		  $myAdm->displayCreationStatus($myCO->row["usr_id_creator"],$myCO->row["dat_creationdate"]);
@@ -950,7 +950,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		  $this->workarea_row_draw(locale("State"),$html);
 		}
 
-		// Kompletter Status, aber keine Veränderungsmöglichkeit
+		// Kompletter Status, aber keine Verï¿½nderungsmï¿½glichkeit
 		if ($myCO->showstatus==2 AND $myCO->nostatus==0)
 		{
 		  $myPT->startBuffer();

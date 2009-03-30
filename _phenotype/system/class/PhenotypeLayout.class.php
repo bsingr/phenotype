@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -583,7 +583,7 @@ class PhenotypeLayoutStandard
 		$html="";
 		if($bez!=""){$html = $bez.'<br>';}
 		//$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities($val,null,PT_CHARSET).'">';
-		$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities(stripcslashes($val),ENT_COMPAT,PT_CHARSET).'">'; //added 08/05/27 by Dominique Bös
+		$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities(stripcslashes($val),ENT_COMPAT,PT_CHARSET).'">'; //added 08/05/27 by Dominique Bï¿½s
 		if ($br==1){$html.="<br>";}
 		return $html;
 	}
@@ -726,7 +726,7 @@ class PhenotypeLayoutStandard
 		if($bez!=""){$html = $bez.'<br>';}
 		$checked="";
 		if ($val==1){$checked="checked";}
-		$html .= '<input type="checkbox" name="'.$name .'" value="1" '. $checked.'> '.$text;
+		$html .= '<input type="checkbox" name="'.$name .'" id="'.$name .'" value="1" '. $checked.'> <label for="'.$name .'">'.$text.'</label>';
 		if ($br==1){$html.="<br>";}
 		return $html;
 	}
@@ -1101,7 +1101,7 @@ class PhenotypeLayoutStandard
 	{
 		global $myDB;
 		global $myPT;
-		// Den übergebenen Folder normalisieren
+		// Den ï¿½bergebenen Folder normalisieren
 		$myMB = new PhenotypeMediabase();
 		$folder = $myMB->rewriteFolder($folder);
 
@@ -1365,7 +1365,7 @@ return $myPT->stopBuffer();
 	function workarea_form_document2($name,$med_id,$folder,$changefolder,$doctype)
 	{
 
-		// Den übergebenen Folder normalisieren
+		// Den ï¿½bergebenen Folder normalisieren
 		$myMB = new PhenotypeMediabase();
 		$folder = $myMB->rewriteFolder($folder);
 
@@ -1443,7 +1443,7 @@ return $myPT->stopBuffer();
 	function workarea_form_media($name,$med_id,$folder,$changefolder,$doctype)
 	{
 
-		// Den übergebenen Folder normalisieren
+		// Den ï¿½bergebenen Folder normalisieren
 		$myMB = new PhenotypeMediabase();
 		$folder = $myMB->rewriteFolder($folder);
 		$med_id = (int)$med_id;
@@ -2631,7 +2631,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 			case locale("Users"):
 				$sql = "SELECT * FROM user WHERE usr_status = 1 ORDER BY usr_nachname";
 
-				// Im eingeschränkten Modus nur den angemeldeten Benutzer zeigen
+				// Im eingeschrï¿½nkten Modus nur den angemeldeten Benutzer zeigen
 				if ($myAdm->explorer_get("littleadmin")==1)
 				{
 					$sql = "SELECT * FROM user WHERE usr_status = 1 AND usr_id = " . $mySUser->id;
@@ -3048,7 +3048,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
                 <td width="200" class="tableHead"><?php echo localeH("Chart");?> ( <img src="img/i_stat_legend.gif" width="5" height="8" align="absmiddle"> <?php echo localeH("Average value");?> )</td>
                 </tr>			  
 			  	  <style>
-	  /* Dynamisierung der x-Position für den Mittelwert */
+	  /* Dynamisierung der x-Position fï¿½r den Mittelwert */
 .tableMarker<?php echo $nr ?> {
 	padding: 5px 10px 5px 10px;
 	background:  url(img/i_stat_marker.gif) no-repeat <?php echo $avg+8 ?>px 0px;
@@ -3217,7 +3217,7 @@ $pix = 200;
 if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 ?>			    
 			  	  <style>
-	  /* Dynamisierung der x-Position für den Mittelwert */
+	  /* Dynamisierung der x-Position fï¿½r den Mittelwert */
 .tableMarker {
 	padding: 5px 10px 5px 10px;
 	background:  url(img/i_stat_marker.gif) no-repeat <?php echo $avg+8 ?>px 0px;
@@ -3306,7 +3306,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 
 ?>			    
 			  	  <style>
-	  /* Dynamisierung der x-Position für den Mittelwert */
+	  /* Dynamisierung der x-Position fï¿½r den Mittelwert */
 .tableMarker<?php echo $nr ?> {
 	padding: 5px 10px 5px 10px;
 	background:  url(img/i_stat_marker.gif) no-repeat <?php echo $avg+8 ?>px 0px;
@@ -3422,7 +3422,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 	<?php
 	$html = $myPT->stopBuffer();
 
-	// Seitenblättern, nur wenn notwendig
+	// Seitenblï¿½ttern, nur wenn notwendig
 	if ($anzahl<=$itemcount AND $forcedisplay==false){$html="";}
 	return $html;
 
@@ -3609,7 +3609,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		$tage = ceil($tage/(60*60*24));
 		if ($tage==1){$color="orange";}
 		if ($row["tik_complexity"]!=6)
-		{ // Daueraufgaben können keinen Status Rot erhalten
+		{ // Daueraufgaben kï¿½nnen keinen Status Rot erhalten
 			if ($row["tik_enddate"]<time()){$color="red";}
 		}
 
@@ -3803,7 +3803,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		$tage = ceil($tage/(60*60*24));
 		if ($tage==1){$color="orange";}
 		if ($row["tik_complexity"]!=6)
-		{ // Daueraufgaben können keinen Status Rot erhalten
+		{ // Daueraufgaben kï¿½nnen keinen Status Rot erhalten
 			if ($row["tik_enddate"]<time()){$color="red";}
 		}
 

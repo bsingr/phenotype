@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -119,7 +119,7 @@ if (!isset($_REQUEST["editbuffer"]) OR $languagechange == 1)
   $sql = "DELETE FROM  sequence_data WHERE pag_id = " . $id . " AND ver_id = ".$ver_id ." AND dat_editbuffer=1 AND lng_id=".$_SESSION["lng_id"]." AND usr_id=".$_SESSION["usr_id"];
   $myDB->query($sql);
 
-  // Prüfung, ob es in der Zielsprache Bausteine gibt
+  // Prï¿½fung, ob es in der Zielsprache Bausteine gibt
   $sql = "SELECT COUNT(*) AS C FROM sequence_data WHERE pag_id = " . $id . " AND ver_id = ".$ver_id ." AND dat_editbuffer=0 AND lng_id=".$_SESSION["lng_id"];
   $rs = $myDB->query($sql);
   $row = mysql_fetch_array($rs);
@@ -128,7 +128,7 @@ if (!isset($_REQUEST["editbuffer"]) OR $languagechange == 1)
   {
     if ($_SESSION["lng_id"]!=1)
     {
-      if ($block_nr>0 AND $block_nr<77) // Kopierhinweis nur bei Bausteinblöcken und wenn nicht die Standardsprache gewählt wurde
+      if ($block_nr>0 AND $block_nr<77) // Kopierhinweis nur bei Bausteinblï¿½cken und wenn nicht die Standardsprache gewï¿½hlt wurde
       {
         $language_copy=1;
       }
@@ -433,7 +433,7 @@ if ($mySUser->checkRight("elm_task"))
 
       // Eigenschaften
       //$html = $myLayout->workarea_form_text("Titel","titel",$myPage->titel);
-      $html = $myLayout->workarea_form_text(locale("Title"),"titel",stripslashes($myPage->titel)); // Changed by Dominique Bös - 2007/08/19
+      $html = $myLayout->workarea_form_text(locale("Title"),"titel",stripslashes($myPage->titel)); // Changed by Dominique Bï¿½s - 2007/08/19
 
       if ($myPT->getPref("edit_pages.show_alternative_title")==1)
       {
@@ -444,7 +444,7 @@ if ($mySUser->checkRight("elm_task"))
         $html.= $myLayout->workarea_form_hidden("alttitel",$myPage->alttitel);
       }
 
-      // Bestimmen welche Layouts genutzt werden dürfen
+      // Bestimmen welche Layouts genutzt werden dï¿½rfen
       $_layout_usable=Array();
       $sql = "SELECT * FROM layout_pagegroup WHERE grp_id=" .$myPage->grp_id;
       $rs = $myDB->query($sql);
@@ -474,7 +474,7 @@ if ($mySUser->checkRight("elm_task"))
       $_options = $myAdm->buildOptionsByNamedArray($_options,$myPage->lay_id);
       $html.=$myLayout->workarea_form_select(locale("Layout"),"template_id",$_options);
 
-      // Jetzt ausgewählte Seitenvariablen
+      // Jetzt ausgewï¿½hlte Seitenvariablen
       if (count($myApp->getEditablePageVars())!=0)
       {
         $html .="<br/>";
@@ -486,7 +486,7 @@ if ($mySUser->checkRight("elm_task"))
 
       //Cache
       //$options = Array(0=>"kein Cache",15=>"15 Sekunden",30=>"30 Sekunden",45=>"45 Sekunden",60=>"1 Minute",120=>"2 Minuten",300=>"5 Minuten",600=>"10 Minuten",3600=>"60 Minuten",86400=>"24 Stunden");
-      //Get the cache times from the preferences XML-file | added 07/08/23 by Dominique Bös
+      //Get the cache times from the preferences XML-file | added 07/08/23 by Dominique Bï¿½s
       $aXML = $myPT->gaGetPreferencesArray("preferences.section_cache.cachetime");
       foreach($aXML as $sItem => $sValue) {
         $options[$sValue["seconds"]] = $sValue["name"];
@@ -567,10 +567,10 @@ if ($mySUser->checkRight("elm_task"))
      // Meta
 
      //$html = $myLayout->workarea_form_text("Seitenbezeichnung","bez",$myPage->bez);
-     $html = $myLayout->workarea_form_text(locale("Page name"),"bez",stripslashes($myPage->bez)); // Changed by Dominique Bös - 2007/08/19
+     $html = $myLayout->workarea_form_text(locale("Page name"),"bez",stripslashes($myPage->bez)); // Changed by Dominique Bï¿½s - 2007/08/19
      $html.= $myLayout->workarea_form_text(locale("Version name"),"ver_bez",$myPage->ver_bez);
      //$html.=   $myLayout->workarea_form_textarea(locale("Comment"),"comment",$myPage->row["pag_comment"]);
-     $html.=   $myLayout->workarea_form_textarea(locale("Comment"),"comment",stripslashes($myPage->row["pag_comment"])); // Changed by Dominique Bös - 2007/08/19
+     $html.=   $myLayout->workarea_form_textarea(locale("Comment"),"comment",stripslashes($myPage->row["pag_comment"])); // Changed by Dominique Bï¿½s - 2007/08/19
      $myLayout->workarea_row_draw(locale("Meta"),$html);
 
 
@@ -580,8 +580,8 @@ if ($mySUser->checkRight("elm_task"))
      {
        $myPT->startBuffer();
      ?>
-     <input name="usequickfinder" type="checkbox" value="1" <?php if ($myPage->row["pag_quickfinder"]!="") echo"checked"; ?>>
-                    <?php echo localeH("msg_editquickfinder1");?>
+     <input name="usequickfinder" id="usequickfinder" type="checkbox" value="1" <?php if ($myPage->row["pag_quickfinder"]!="") echo"checked"; ?>>
+                    <label for="usequickfinder"><?php echo localeH("msg_editquickfinder1");?></label>
                     <input name="quickfinder" type="text" class="feld" value="<?php echo $myPage->row["pag_quickfinder"] ?>" size="30" />
                     <?php echo localeH("msg_editquickfinder2");?><br><br>
      <?php
@@ -621,7 +621,7 @@ if ($mySUser->checkRight("elm_task"))
      // Status
      $myPT->startBuffer();
      ?>
-     <input name="status" type="checkbox" value="1" <?php if ($myPage->row["pag_status"]=="1") echo"checked"; ?>> online.
+     <input name="status" id="status" type="checkbox" value="1" <?php if ($myPage->row["pag_status"]=="1") echo"checked"; ?>> <label for="status">online</label>.
      <?php
      $myAdm->displayCreationStatus($myPage->row["usr_id_creator"],$myPage->row["pag_creationdate"]);
      echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -682,7 +682,7 @@ if ($mySUser->checkRight("elm_task"))
       if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
       ?>
       <style>
-      /* Dynamisierung der x-Position für den Mittelwert */
+      /* Dynamisierung der x-Position fï¿½r den Mittelwert */
 .tableMarker {
     padding: 5px 10px 5px 10px;
     background:  url(img/i_stat_marker.gif) no-repeat <?php echo $avg+8 ?>px 0px;
@@ -1160,7 +1160,7 @@ while ($row = mysql_fetch_array($rs))
       
       ?>
       <tr>
-            <td class="padding30"><strong><?php echo $myComponent->getEditLabel() ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>><?php echo localeH("visible");?>
+            <td class="padding30"><strong><?php echo $myComponent->getEditLabel() ?></strong><br><input name="<?php echo $row["dat_id"] ?>_visible" id="<?php echo $row["dat_id"] ?>_visible" type="checkbox" value="checkbox" <?php if ($myComponent->visible){echo "checked";} ?>><label for="<?php echo $row["dat_id"] ?>_visible"><?php echo localeH("visible");?></label>
             </td>
             <td>&nbsp;</td>
             <td class="formarea">
