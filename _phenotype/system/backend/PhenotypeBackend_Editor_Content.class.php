@@ -1182,7 +1182,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $cname = "PhenotypeContent_" . $myCO_Source->content_type;
     $myCO_Target = new $cname;
     $id = $myCO_Target->addNew();
-    $myCO_Target->props = $myCO_Source->props;
+    $myCO_Target->_props = $myCO_Source->_props;
     $myCO_Target->set("bez",localeH("Copy of")." " . $myCO_Source->get("bez"));
     $myCO_Target->set("dat_id_copyparent",$myCO_Source->id);
     $myCO_Target->store();
