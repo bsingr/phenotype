@@ -1136,6 +1136,26 @@ while ($row = mysql_fetch_array($rs))
     <tr>
       <td colspan="4">&nbsp;</td>
     </tr>
+		<?php
+		//Überprüfen ob Buttonleiste am anfang angezeigt werden soll
+		if($myPT->getPref("edit_pages.show_ButtonBarOnTop") == "1") { // added 09/05/06 by Dominique Bös
+		?>
+		</table>
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="windowFooterWhite">
+        <input name="vorschau" type="submit" style="width:102px"class="buttonWhite" value="<?php echo localeH("Preview");?>">
+            </td>
+            <td align="right" class="windowFooterWhite">    <?php if ($myPage->hasChilds()==0 AND $mySUser->checkRight("elm_pageconfig")){ ?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this page?");?>')">&nbsp;&nbsp;<?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>">&nbsp;&nbsp;</td>
+          </tr>
+        </table>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="4">&nbsp;</td>
+    </tr>
+		<?php
+		}
+		?>
     <?php
     // Das erste Bausteinpulldown
     if (!$mySUser->checkRight("elm_pagenocomponent"))

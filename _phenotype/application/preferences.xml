@@ -18,6 +18,7 @@
 			<show_quickfinder>1</show_quickfinder>
 			<show_pageurl>1</show_pageurl>
 			<auto_pageurl>1</auto_pageurl>
+			<show_ButtonBarOnTop>0</show_ButtonBarOnTop>
 		</section>
 		<section name="edit_content">
 			<flat_tree>1</flat_tree>

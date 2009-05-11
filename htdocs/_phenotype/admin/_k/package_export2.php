@@ -588,7 +588,7 @@ $myPT->startBuffer();
 	class PhenotypePackage extends PhenotypePackageStandard
 	{
 		public $bez = "'.$myRequest->getA("title").'";
-		public $packagefolder = "'.$myRequest->getA("folder").'";
+		public $packagefolder = "'.$myRequest->getA("folder", PT_ALPHANUMERIC . "-_").'";
 		
 		function getDescription()
 		{
@@ -605,7 +605,8 @@ $myPT->startBuffer();
 
     // Zielordner
 
-    $targetfolder = $myRequest->get("folder");
+    //$targetfolder = $myRequest->get("folder");
+		$targetfolder = $myRequest->getA("folder", PT_ALPHANUMERIC . "-_"); //changed 09\05\06 by Dominique Bös
     if ($myRequest->getI("dataajax")==1)
     {
     	?>
