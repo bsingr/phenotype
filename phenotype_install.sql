@@ -217,8 +217,8 @@ CREATE TABLE IF NOT EXISTS `content_data` (
   KEY `dat_ikey3` (`dat_ikey3`),
   KEY `dat_ikey4` (`dat_ikey4`),
   KEY `dat_ikey5` (`dat_ikey5`),
-  KEY `default_select` (`con_id`,`dat_status`),
   KEY `dat_ikey6` (`dat_ikey6`),
+  KEY `dat_status` (`dat_status`),
   FULLTEXT KEY `dat_fullsearch` (`dat_fullsearch`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
