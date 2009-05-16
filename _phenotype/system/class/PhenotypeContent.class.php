@@ -133,7 +133,19 @@ class PhenotypeContentStandard extends PhenotypeBase
 		global $myDB;
 		$sql = "DELETE FROM content_data WHERE dat_id = ".$this->id;
 		$myDB->query($sql);
-	}
+
+		if ($this->use_datatable)
+		{
+			$table = $this->datatable_name;
+			if ($table=='')
+			{
+				$table = 'content_data'.$this->content_type;
+			}
+
+			$sql = "DELETE FROM " . $table . " WHERE dat_id=".$this->id;
+			$rs = $myDB->query($sql);
+		}
+}
 
 	function edit()
 	{
@@ -207,7 +219,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$table = $this->datatable_name;
 		if ($table=='')
 		{
-			$table = 'content_data'.$this->id;
+			$table = 'content_data'.$this->content_type;
 		}
 
 		// do the introsepction if in debug mode, otherwise run into the error :)
@@ -758,7 +770,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$fp = fopen($dateiname, "w");
 			fputs($fp, $html);
 			fclose($fp);
-			@ chown($dateiname, UMASK);
+			@ chmod($dateiname, UMASK);
 		}
 
 		global $myDB;
@@ -989,7 +1001,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		}
 	}
 
-		function form_newline()
+function form_newline()
 {
 	$a = Array (PT_CON_FORM_NEWLINE);
 	if ($this->formmode == 1)
@@ -1001,7 +1013,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 	}
 }
 
-	function form_sequence($cog_id, $blocknr = 1)
+function form_sequence($cog_id, $blocknr = 1)
 {
 	$a = Array (PT_CON_FORM_SEQUENCE, $cog_id, $blocknr);
 	if ($this->formmode == 1)
@@ -1649,7 +1661,7 @@ function displayForm($myCO, $form, $id)
              $fp = fopen($filename_tmp, "w");
              fputs($fp, $buffer);
              fclose($fp);
-             @ chown($filename_tmp, UMASK);
+             @ chmod($filename_tmp, UMASK);
              $myLayout->form_HTMLTextarea($name, $filename_tmp, 80, $a[4], "HTML", $a[3]);
              unlink($filename_tmp);
              //echo $myLayout->workarea_form_textarea("",$name,$val,$a[4],$a[3]);
@@ -3532,7 +3544,7 @@ function fetchForm($myCO, $form, $id)
 					$fp = fopen($filename, "w");
 					fputs($fp, $buffer);
 					fclose($fp);
-					@ chown($filename, UMASK);
+					@ chmod($filename, UMASK);
 					break;
 
 				case PT_CON_FORM_DDPOSITIONER : // Positioner
@@ -3599,14 +3611,14 @@ function fetchForm($myCO, $form, $id)
 }
 
 
-  function fetch_form_user($_params)
-  {
-  	global $myRequest;
-  	$fname = $this->formid."_".$_params["property"];
-  	$val = $myRequest->getI($fname);
-  	$this->set($_params["property"],$val);
-  }
-  
+function fetch_form_user($_params)
+{
+	global $myRequest;
+	$fname = $this->formid."_".$_params["property"];
+	$val = $myRequest->getI($fname);
+	$this->set($_params["property"],$val);
+}
+
 function setErrorText($s)
 {
 	$this->errorText = $s;
@@ -4245,9 +4257,9 @@ public function buildURL($action="show",$lng_id=null)
 	return "undefined";
 }
 
-	public function __call($methodname,$params)
-	{
-		throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
-	}
+public function __call($methodname,$params)
+{
+	throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
+}
 }
 ?>
