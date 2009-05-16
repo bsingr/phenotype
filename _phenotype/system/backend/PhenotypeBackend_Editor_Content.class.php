@@ -821,6 +821,18 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     }
 
     $row = mysql_fetch_array($rs);
+    
+    if ($myCO->publishmode==true AND $row["dat_altered"]==1)
+    {
+    	$sql = "SELECT * FROM content_data_editbuffer WHERE dat_id=".$dat_id . " AND usr_id=0";
+    	$rs = $myDB->query($sql);
+    	
+    	if (mysql_num_rows($rs)==1)
+    	{
+    		$row = mysql_fetch_array($rs);
+    	}   	
+    }
+
     $myCO->init($row,$block_nr);
     return ($myCO);
   }
@@ -976,9 +988,9 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
             if ($row["con_loeschen"]==1)
 			{?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this record?");?>')"><?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>" tabindex="1" accesskey="s">
 		<?
-		if($myPT->getPref("edit_content.show_PublishButton") == "1") {
+		if($myCO->publishmode == true) {
 		?>
-		<input name="publish" type="button" class="buttonWhite" style="width:102px"value="<?php echo localeH("Publish");?>" tabindex="1" accesskey="s">
+		<input name="publish" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Publish");?>" tabindex="1" accesskey="p">
 		<?
 		}
 		?>
@@ -1041,7 +1053,27 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     }
 
     $myCO->update();
-    $myCO->store();
+    if ($myCO->publishmode==true)
+    {
+    	if ($myRequest->check("publish"))
+    	{
+    		$myCO->store();
+    		$sql = "DELETE FROM content_data_editbuffer WHERE dat_id=".$myCO->id. " AND con_id=".$myCO->content_type;
+    		$myDB->query($sql);
+    		$mySQL = new SqlBuilder();
+    		$mySQL->addField("dat_altered",0);
+			$sql = $mySQL->update("content_data", "dat_id=".$myCO->id);
+			$myDB->query($sql);
+    	}
+    	else 
+    	{
+    	$myCO->store(0);
+    	}
+    }
+    else 
+    {
+    	$myCO->store();
+    }
     // :TODO: localize (no token)
     $myLog->log("Datensatz " . $myCO->id . " (Content-Type " . $myCO->content_type .") bearbeitet.",PT_LOGFACILITY_SYS);
 

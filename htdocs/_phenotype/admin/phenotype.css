@@ -178,6 +178,15 @@ h3	{
 	color: #686F78;
 	}
 	
-	
-	
-	
+
+
+
+// Page Preview
+.pt-iframe-pagepreview
+{
+margin:0;
+padding:0;
+width:500px;
+height:100%;
+border: 1px solid green;
+}

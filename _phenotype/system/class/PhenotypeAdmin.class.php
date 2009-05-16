@@ -325,7 +325,7 @@ class PhenotypeAdminStandard
 		global $myDB;
 		
 		
-		$sql = "SELECT * FROM user WHERE usr_id = " . $usr_id;
+		$sql = "SELECT * FROM user WHERE usr_id = " . (int)$usr_id;
 		$rs = $myDB->query($sql);
 		$row = mysql_fetch_array($rs);
 		if (mysql_num_rows($rs)!=0)

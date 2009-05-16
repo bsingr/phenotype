@@ -64,6 +64,12 @@ class PhenotypeContentStandard extends PhenotypeBase
 	// die reiterlosen Formulare funktionieren
 
 
+	/**
+	 * flag, wether publishing option is available
+	 *
+	 * @var boolean
+	 */
+	public $publishmode = false;
 
 	// Konfiguration der Reiter in der Contentueberischt
 	public $tab_alle = 1;
@@ -157,7 +163,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$this->fetchEditForm($this);
 	}
 
-	function store()
+	function store($usr_id_editbuffer = false)
 	{
 
 		global $myDB;
@@ -193,6 +199,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		$mySQL = $this->mySQL;
 
+		if ($usr_id_editbuffer===false)
+		{
+			
+
 		$sql = $mySQL->update("content_data", "dat_id=".$this->id);
 		//echo $sql;
 		$myDB->query($sql);
@@ -208,6 +218,33 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		// datatables?
 		if ($this->use_datatable){$this->storeDataTable();}
+		}
+		else 
+		{
+
+			$sql = "SELECT COUNT(*) AS C FROM content_data_editbuffer WHERE usr_id=".(int)$usr_id_editbuffer." AND dat_id=".$this->id. " AND con_id=".$this->content_type;
+
+			$rs = $myDB->query($sql);
+			$row = mysql_fetch_array($rs);
+
+			if ($row["C"]==0)
+			{
+				$mySQL->addField("usr_id",(int)$usr_id_editbuffer,DB_NUMBER);
+				$mySQL->addField("dat_id",$this->id,DB_NUMBER);
+				$mySQL->addField("con_id",$this->content_type,DB_NUMBER);
+				$sql = $mySQL->insert("content_data_editbuffer");
+			}
+			else 
+			{
+				$sql = $mySQL->update("content_data_editbuffer", "dat_id=".$this->id." AND usr_id=".(int)$usr_id_editbuffer);
+			}
+			$myDB->query($sql);
+			$mySQL = new SqlBuilder();
+			$mySQL->addField("dat_altered",1);
+			$sql = $mySQL->update("content_data", "dat_id=".$this->id);
+			$myDB->query($sql);
+			
+		}
 		return $s;
 	}
 

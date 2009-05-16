@@ -45,7 +45,15 @@ function showDoc(nr)
 
 function previewPage(id,ver_id,lng_id)
 {
-   popup('preview.php?id=' + id + '&ver_id=' + ver_id +'&lng_id=' + lng_id,'vorschau','scrollbars=yes,width=1024,height=768,resizable=yes,status=yes,location=yes');
+	$("body").after('<div id="pt-dialog"><iframe style="width:100%;height:100%;border:0px" src="preview.php?id=' + id + '&ver_id=' + ver_id +'&lng_id=' + lng_id+ '"></iframe></div>');
+	$("#pt-dialog").dialog({
+	closeOnEscape: true,
+	height:500,
+	width:800,
+	title:'Preview',
+	modal: true
+	});
+	//popup('preview.php?id=' + id + '&ver_id=' + ver_id +'&lng_id=' + lng_id,'vorschau','scrollbars=yes,width=1024,height=768,resizable=yes,status=yes,location=yes');
 }
 
 function pageWizard(id,hasChilds)

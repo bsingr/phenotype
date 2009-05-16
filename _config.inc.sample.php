@@ -137,10 +137,10 @@ $myTC->start();
 
 //date_default_timezone_set('Etc/GMT-1');
 require_once (APPPATH . "_application.inc.php");
+$myApp = new PhenotypeApplication();
 $myPT = new Phenotype();
 $myDB = new PhenotypeDatabase();
 $myDB->connect();
-$myApp = new PhenotypeApplication();
 require_once (SYSTEMPATH . "_init.inc.php");
 $myLog = new PhenotypeLog();
 
