@@ -300,7 +300,7 @@ class PhenotypeMediabaseStandard
 				unlink($dateiname_fix);
 			}
 			copy($dateiname_temp, $dateiname_fix);
-			@ chown($dateiname_fix, UMASK);
+			@ chmod($dateiname_fix, UMASK);
 
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("med_physical_folder", $folder);
@@ -517,7 +517,7 @@ class PhenotypeMediabaseStandard
 			}
 			copy($dateiname_temp, $dateiname_fix);
 			unlink($dateiname_temp);
-			@ chown($dateiname_fix, UMASK);
+			@ chmod($dateiname_fix, UMASK);
 
 			$sql = "SELECT COUNT(*) AS C FROM mediaversion WHERE med_id=".$med_id;
 			$rs = $myDB->query($sql);
@@ -750,7 +750,7 @@ class PhenotypeMediabaseStandard
 			}
 			return false;
 		}
-		@ chown($dateiname_fix, UMASK);
+		@ chmod($dateiname_fix, UMASK);
 
 		$mySQL = new SQLBuilder();
 		$mySQL->addField("med_physical_folder", $folder);
@@ -909,7 +909,7 @@ class PhenotypeMediabaseStandard
 			}
 			return false;
 		}
-		@ chown($dateiname_fix, UMASK);
+		@ chmod($dateiname_fix, UMASK);
 
 		return ($med_id);
 	}
@@ -980,7 +980,7 @@ class PhenotypeMediabaseStandard
 			unlink($dateiname_fix);
 		}
 		copy($importfolder.$dateiname_original, $dateiname_fix);
-		@ chown($dateiname_fix, UMASK);
+		@ chmod($dateiname_fix, UMASK);
 
 		$mySQL = new SQLBuilder();
 		$mySQL->addField("med_physical_folder", $folder);
@@ -1066,7 +1066,7 @@ class PhenotypeMediabaseStandard
 				ImageJPEG($targetImage, $dateiname_thumb);	
 			}
 		}
-		@ chown($dateiname_thumb, UMASK);
+		@ chmod($dateiname_thumb, UMASK);
 		return ($targetImage);
 	}
 

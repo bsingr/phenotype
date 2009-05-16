@@ -2628,7 +2628,7 @@ function initoid()
 			$targetfile = TEMPPATH ."media/~preview_".$img_id .".jpg";
 			$quality= $myRequest->getI("size_quality");
 			ImageJPEG($image, $targetfile,$quality);
-			@ chown($targetfile, UMASK);
+			@ chmod($targetfile, UMASK);
 
 			list($x, $y) = getimagesize($targetfile);
 		  ?>
@@ -3021,7 +3021,7 @@ function initoid()
 			$quality= $myRequest->getI("size_quality");
 
 			ImageJPEG($image, $targetfile,$quality);
-			@ chown($targetfile, UMASK);
+			@ chmod($targetfile, UMASK);
 
 
 			$url = $targetfile;

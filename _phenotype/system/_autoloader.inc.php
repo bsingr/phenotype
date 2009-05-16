@@ -27,7 +27,7 @@ function __autoload($class_name) {
 
   // create inheritage of standard classes, if not inherited by application
 
-  $_classes = Array("Phenotype","PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeSystemDataObject","PhenotypeNavigationHelper","PhenotypeSmarty","PhenotypeLocaleManager","PhenotypeSoapServer");
+  $_classes = Array("Phenotype","PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeSystemDataObject","PhenotypeNavigationHelper","PhenotypeSmarty","PhenotypeLocaleManager","PhenotypeSoapServer","PhenotypePeer");
 
   if (in_array($class_name,$_classes))
   {

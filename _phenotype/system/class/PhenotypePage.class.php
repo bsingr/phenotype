@@ -651,7 +651,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		$fp = fopen ($filename_bak,"w");
 		fputs($fp,$html);
 		fclose ($fp);
-		@chown ($filename_bak,UMASK);
+		@chmod ($filename_bak,UMASK);
 
 		global $myDB;
 		global $myPT;
@@ -723,7 +723,7 @@ class PhenotypePageStandard extends PhenotypeBase
 			$fp = fopen ($dateiname,"w");
 			fputs ($fp,$html);
 			fclose ($fp);
-			@chown ($dateiname,UMASK);
+			@chmod ($dateiname,UMASK);
 			$nextbuild = $t + $this->row["pag_cache"] -1;// -1 um Nocache bei Parallelzugriff zu garantieren
 			// Gibt es vorher einen Versionswechsel?
 			if ($nextbuild > $this->row["pag_nextversionchange"] AND
@@ -933,7 +933,7 @@ class PhenotypePageStandard extends PhenotypeBase
 			$fp = fopen ($dateiname,"w");
 			fputs ($fp,$html);
 			fclose ($fp);
-			@chown ($dateiname,UMASK);
+			@chmod ($dateiname,UMASK);
 
 			if ($this->lng_id==1)
 			{
@@ -1023,7 +1023,7 @@ class PhenotypePageStandard extends PhenotypeBase
 			$fp = fopen ($dateiname,"w");
 			fputs ($fp,$html);
 			fclose ($fp);
-			@chown ($dateiname,UMASK);
+			@chmod ($dateiname,UMASK);
 
 			if ($this->lng_id==1)
 			{

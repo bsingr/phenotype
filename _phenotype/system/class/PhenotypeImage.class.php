@@ -470,7 +470,7 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 
 
 			ImageJPEG($targetImage, $targetfile,$quality);
-			@ chown($targetfile, UMASK);
+			@ chmod($targetfile, UMASK);
 
 			$url = $targetfile;
 

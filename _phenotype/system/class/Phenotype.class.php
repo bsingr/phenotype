@@ -208,7 +208,7 @@ class PhenotypeStandard extends PhenotypeBase
 		$fp = fopen ($dateiname,"w");
 		fputs ($fp,$html);
 		fclose ($fp);
-		@chown ($dateiname,UMASK);
+		@chmod ($dateiname,UMASK);
 	}
 
 
