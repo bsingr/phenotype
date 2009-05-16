@@ -373,7 +373,11 @@ exit();
 <link href="task.css" rel="stylesheet" type="text/css">
 <link href="image-crop.css" rel="stylesheet" type="text/css">
 <link href="content.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="phenotype.js"></script>';
+<link href="css/jqueryui/phenotype/jquery-ui.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="phenotype.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery-ui.js"></script>
+';
 		$myApp->displayBackendJavascript();
 
 		echo '<script type="text/javascript" src="wz_dragdrop.js"></script>

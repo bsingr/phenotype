@@ -153,7 +153,10 @@ class PhenotypeLayoutStandard
 <link href="media.css" rel="stylesheet" type="text/css">
 <link href="site.css" rel="stylesheet" type="text/css">
 <link href="task.css" rel="stylesheet" type="text/css">
+<link href="css/jqueryui/phenotype/jquery-ui.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="phenotype.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery-ui.js"></script>
 <?php echo $myApp->displayBackendJavascript() ?>
 <script type="text/javascript" src="wz_dragdrop.js"></script> 
 </head>
