@@ -385,5 +385,9 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>tasks</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Publish">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Publish</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			</tmx:body>
 </tmx:tmx>
