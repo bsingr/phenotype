@@ -660,5 +660,11 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Dokument wählen</tmx:seg>
       </tmx:tuv></tmx:tu>
-			  </tmx:body>
+			<tmx:tu tuid="Publish">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Publish</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Publizieren</tmx:seg>
+      </tmx:tuv></tmx:tu>			  </tmx:body>
 </tmx:tmx>

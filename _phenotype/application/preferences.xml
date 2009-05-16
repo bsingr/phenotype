@@ -23,6 +23,7 @@
 		<section name="edit_content">
 			<flat_tree>1</flat_tree>
 			<build_snapshot>1</build_snapshot>
+			<show_PublishButton>0</show_PublishButton>
 		</section>
 		<section name="edit_media">
 			<auto_deleteimportbox>1</auto_deleteimportbox>

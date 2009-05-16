@@ -974,7 +974,15 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
             $rs= $myDB->query($sql);
             $row = mysql_fetch_array($rs);
             if ($row["con_loeschen"]==1)
-			{?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this record?");?>')"><?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>" tabindex="1" accesskey="s">&nbsp;&nbsp;</td>
+			{?><input name="delete" type="submit" class="buttonWhite" style="width:102px" value="<?php echo localeH("Delete");?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this record?");?>')"><?php } ?><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Save");?>" tabindex="1" accesskey="s">
+		<?
+		if($myPT->getPref("edit_content.show_PublishButton") == "1") {
+		?>
+		<input name="publish" type="button" class="buttonWhite" style="width:102px"value="<?php echo localeH("Publish");?>" tabindex="1" accesskey="s">
+		<?
+		}
+		?>
+		&nbsp;&nbsp;</td>
           </tr>
     	</table>
 		 <?php
