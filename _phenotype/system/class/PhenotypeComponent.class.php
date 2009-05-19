@@ -456,6 +456,20 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$property = $_fconfig["property"];
 		$this->set($property,$this->fget($property));
 	}
+	
+	public function form_headline($title)
+	{
+		$this->_form[] = array(
+		"form_method" =>"form_headline",
+		"title" =>$title
+		);
+	}
+
+	private function _form_headline_display($_fconfig)
+	{
+		$title = $_fconfig["title"];
+		echo "<br /><b>". $title . "</b><br />";
+	}
 
 	public function form_textarea($title, $property, $width, $rows)
 	{
@@ -850,7 +864,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$fp = fopen ($filename_bak,"w");
 		fputs($fp,$this->get($property));
 		fclose ($fp);
-		@chmod ($filename_bak,UMASK);
+		@chown ($filename_bak,UMASK);
 
 		if ($this->myLayout==-1)
 		{
@@ -980,7 +994,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	$fp = fopen ($filename_bak,"w");
 	fputs($fp,$val);
 	fclose ($fp);
-	@chmod ($filename_bak,UMASK);
+	@chown ($filename_bak,UMASK);
 	$myLayout->form_HTMLTextarea($name,$filename_bak,$cols,$rows,$mode="HTML",410);
 	unlink ($filename_bak);
 	}

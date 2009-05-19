@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `content` (
 --
 
 DROP TABLE IF EXISTS `content_data`;
-CREATE TABLE IF NOT EXISTS `content_data` (
+CREATE TABLE `content_data` (
   `dat_id` int(11) NOT NULL auto_increment,
   `dat_uid` varchar(32) collate latin1_general_ci NOT NULL default '0',
   `dat_status` tinyint(4) NOT NULL default '0',
@@ -210,6 +210,7 @@ CREATE TABLE IF NOT EXISTS `content_data` (
   `dat_permalink7` varchar(255) collate latin1_general_ci NOT NULL,
   `dat_permalink8` varchar(255) collate latin1_general_ci NOT NULL,
   `dat_permalink9` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_altered` tinyint(4) NOT NULL,
   PRIMARY KEY  (`dat_id`),
   KEY `con_id` (`con_id`),
   KEY `dat_ikey1` (`dat_ikey1`),
@@ -217,14 +218,76 @@ CREATE TABLE IF NOT EXISTS `content_data` (
   KEY `dat_ikey3` (`dat_ikey3`),
   KEY `dat_ikey4` (`dat_ikey4`),
   KEY `dat_ikey5` (`dat_ikey5`),
+  KEY `default_select` (`con_id`,`dat_status`),
   KEY `dat_ikey6` (`dat_ikey6`),
-  KEY `dat_status` (`dat_status`),
   FULLTEXT KEY `dat_fullsearch` (`dat_fullsearch`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=3 ;
 
 --
 -- Daten für Tabelle `content_data`
 --
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `content_data_editbuffer`
+-- 
+
+DROP TABLE IF EXISTS `content_data_editbuffer`;
+CREATE TABLE `content_data_editbuffer` (
+  `dat_id` int(11) NOT NULL auto_increment,
+  `dat_uid` varchar(32) collate latin1_general_ci NOT NULL default '0',
+  `dat_status` tinyint(4) NOT NULL default '0',
+  `dat_cache1` int(11) NOT NULL default '0',
+  `dat_cache2` int(11) NOT NULL default '0',
+  `dat_cache3` int(11) NOT NULL default '0',
+  `dat_cache4` int(11) NOT NULL default '0',
+  `dat_cache5` int(11) NOT NULL default '0',
+  `dat_cache6` int(11) NOT NULL default '0',
+  `dat_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `con_id` int(11) NOT NULL default '0',
+  `dat_props` longtext collate latin1_general_ci NOT NULL,
+  `usr_id_creator` int(11) NOT NULL default '0',
+  `dat_creationdate` int(11) NOT NULL default '0',
+  `usr_id` int(11) NOT NULL default '0',
+  `dat_date` int(11) NOT NULL default '0',
+  `dat_pos` int(11) NOT NULL default '0',
+  `dat_key1` varchar(100) collate latin1_general_ci default NULL,
+  `dat_key2` varchar(100) collate latin1_general_ci default NULL,
+  `dat_key3` varchar(100) collate latin1_general_ci default NULL,
+  `dat_key4` varchar(100) collate latin1_general_ci default NULL,
+  `dat_key5` varchar(100) collate latin1_general_ci default NULL,
+  `dat_key6` varchar(100) collate latin1_general_ci default NULL,
+  `dat_ikey1` int(11) NOT NULL default '0',
+  `dat_ikey2` int(11) NOT NULL default '0',
+  `dat_ikey3` int(11) NOT NULL default '0',
+  `dat_ikey4` int(11) NOT NULL default '0',
+  `dat_ikey5` int(11) NOT NULL default '0',
+  `dat_ikey6` int(11) NOT NULL default '0',
+  `dat_fullsearch` text collate latin1_general_ci NOT NULL,
+  `med_id_thumb` int(11) NOT NULL default '0',
+  `dat_permalink` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink1` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink2` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink3` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink4` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink5` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink6` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink7` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink8` varchar(255) collate latin1_general_ci NOT NULL,
+  `dat_permalink9` varchar(255) collate latin1_general_ci NOT NULL,
+  KEY `con_id` (`con_id`),
+  KEY `dat_ikey1` (`dat_ikey1`),
+  KEY `dat_ikey2` (`dat_ikey2`),
+  KEY `dat_ikey3` (`dat_ikey3`),
+  KEY `dat_ikey4` (`dat_ikey4`),
+  KEY `dat_ikey5` (`dat_ikey5`),
+  KEY `default_select` (`con_id`,`dat_status`),
+  KEY `dat_ikey6` (`dat_ikey6`),
+  KEY `dat_id` (`dat_id`),
+  FULLTEXT KEY `dat_fullsearch` (`dat_fullsearch`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=3 ;
 
 
 -- --------------------------------------------------------

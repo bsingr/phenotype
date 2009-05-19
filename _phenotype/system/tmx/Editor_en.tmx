@@ -389,5 +389,9 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Publish</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Preview">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Preview</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			</tmx:body>
 </tmx:tmx>

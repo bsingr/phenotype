@@ -169,7 +169,7 @@ if ($block_nr>0 AND $block_nr<77)
   if (isset($_REQUEST["preview"]))
   {
     ?>
-    previewPage(<?php echo $_REQUEST["id"] ?>,<?php echo $_REQUEST["ver_id"] ?>,<?php echo $_SESSION["lng_id"] ?>);
+    previewPage(<?php echo $_REQUEST["id"] ?>,<?php echo $_REQUEST["ver_id"] ?>,<?php echo $_SESSION["lng_id"] ?>,<?php echo $myPT->getPref("preview_dialog.dialog_width") ?>,<?php echo $myPT->getPref("preview_dialog.dialog_heigth") ?>, "<?php echo localeH("Preview");?>");
     <?php
   }
   ?>

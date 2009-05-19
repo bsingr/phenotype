@@ -395,6 +395,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="send";
 		$_token["Editor"][]="tasks";
 		$_token["Editor"][]="Publish";
+		$_token["Editor"][]="Preview";
 		
 		$_token["Editor"][]="Document assigned.";
 		$_token["Editor"][]="Select document";

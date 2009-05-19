@@ -43,17 +43,29 @@ function showDoc(nr)
    popup('showdoc.php?nr=' + nr,'documentation','scrollbars=yes,width=400,height=600');
 }
 
-function previewPage(id,ver_id,lng_id)
+function previewPage(id,ver_id,lng_id, dialogWidth, dialogHeight, sHeadline)
 {
 	$("body").after('<div id="pt-dialog"><iframe style="width:100%;height:100%;border:0px" src="preview.php?id=' + id + '&ver_id=' + ver_id +'&lng_id=' + lng_id+ '"></iframe></div>');
 	$("#pt-dialog").dialog({
 	closeOnEscape: true,
-	height:500,
-	width:800,
-	title:'Preview',
+	height:dialogHeight,
+	width:dialogWidth,
+	title:sHeadline,
 	modal: true
 	});
 	//popup('preview.php?id=' + id + '&ver_id=' + ver_id +'&lng_id=' + lng_id,'vorschau','scrollbars=yes,width=1024,height=768,resizable=yes,status=yes,location=yes');
+}
+
+function previewContent(url, dialogWidth, dialogHeight, sHeadline)
+{
+	$("body").after('<div id="pt-dialog"><iframe style="width:100%;height:100%;border:0px" src="' + url + '"></iframe></div>');
+	$("#pt-dialog").dialog({
+	closeOnEscape: true,
+	height:dialogHeight,
+	width:dialogWidth,
+	title:sHeadline,
+	modal: true
+	});
 }
 
 function pageWizard(id,hasChilds)
@@ -89,6 +101,18 @@ function ticketLog(tik_id)
 
 function selector_image(formname,formelement,folder,changefolder,x,y)
 {
+	/*
+	url = 'selector_media.php?folder=' + folder + '&cf=' + changefolder + '&x=' + x + "&y=" + y + '&sortorder=1&p=1&type=1';
+	$("body").after('<div id="pt-dialog"><iframe style="width:100%;height:100%;border:0px" src="' + url + '"></iframe></div>');
+	$("#pt-dialog").dialog({
+	closeOnEscape: true,
+	height:755,
+	width:550,
+	title:'Medienauswahl',
+	modal: true
+	});
+	*/
+	
   popup('selector_media.php?folder=' + folder + '&cf=' + changefolder + '&x=' + x + "&y=" + y + '&sortorder=1&p=1&type=1','selector_image','scrollbars=no,width=501,height=640');
 
   document.formname = formname;
@@ -135,6 +159,7 @@ function selector_link(formname,formelement)
 function select_image(id,src,src2,x,y)
 {
   doc = top.opener.document;
+  //doc = top.document;
   formname = doc.formname;
   img_id = doc.formelement + "img_id";
   doc.forms[formname][img_id].value=id;
@@ -289,6 +314,7 @@ function flip(id)
 
 function parentshow(id) {
     doc = top.opener.document;
+    //doc = top.document;
 	if (ns4) doc.layers[id].visibility = "show"
 	else if (ie4) doc.all[id].style.visibility = "visible"
 	else if (dom) doc.getElementById(id).style.visibility = "visible";

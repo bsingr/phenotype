@@ -60,6 +60,12 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     switch ($action)
     {
+      case "showPreview":
+        $this->showPreview();
+        break;
+      case "preview":
+				$this->update();
+				break;
       case "edit":
         $this->fillContentArea1($this->renderEdit());
         $body_onload = $this->_jsarray["body_onload"];
@@ -726,13 +732,13 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     {
       $sql .= " AND dat_fullsearch LIKE '%". $myRequest->getSQL("v")."%'";
       $headline .= locale("fulltext") . " ". $myRequest->get("v");
-      $pagingUrlExt .= "&s=". urlencode($myRequest->get("v"));
+      $pagingUrlExt .= "&v=". urlencode($myRequest->get("v"));
     }
     if ($myRequest->getI("i")!=0)
     {
       $sql .= " AND dat_id = ". $myRequest->getI("i");
       $headline .= locale("for ID") . " ". $myRequest->getI("i");
-      $pagingUrlExt .= "&s=". urlencode($myRequest->get("i"));
+      $pagingUrlExt .= "&i=". urlencode($myRequest->get("i"));
     }
 
 		?>
@@ -822,7 +828,26 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     $row = mysql_fetch_array($rs);
     
-    if ($myCO->publishmode==true AND $row["dat_altered"]==1)
+		/*
+		echo "<pre>";
+		var_dump($row);
+		echo "</pre>****************************************";
+		*/
+		
+		//preview mode
+    if ($myCO->previewmode==true AND $row["dat_altered"]==1)
+    {
+    	$sql = "SELECT * FROM content_data_editbuffer WHERE dat_id=".$dat_id . " AND usr_id=" . (int)$mySUser->id;
+    	$rs = $myDB->query($sql);
+    	
+    	if (mysql_num_rows($rs)==1)
+    	{
+    		$row = mysql_fetch_array($rs);
+    	}   	
+    }
+
+    //publish mode
+		if ($myCO->publishmode==true AND $row["dat_altered"]==1)
     {
     	$sql = "SELECT * FROM content_data_editbuffer WHERE dat_id=".$dat_id . " AND usr_id=0";
     	$rs = $myDB->query($sql);
@@ -993,6 +1018,16 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		<input name="publish" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Publish");?>" tabindex="1" accesskey="p">
 		<?
 		}
+		if($myCO->previewmode == true) {
+		?>
+		<input name="preview" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Preview");?>" tabindex="1" accesskey="p" onclick="this.form.page.value = 'Editor,Content,preview';">
+		<?
+		if($myRequest->check("preview")) {
+			?>
+			<script type="text/javascript">previewContent("backend.php?page=Editor,Content,showPreview&id=<?=$dat_id?>",<? echo $myPT->getPref("preview_dialog.dialog_width") ?>,<?php echo $myPT->getPref("preview_dialog.dialog_heigth")?>, "<?php echo localeH("Preview");?>");</script>
+			<?
+		}
+		}
 		?>
 		&nbsp;&nbsp;</td>
           </tr>
@@ -1005,6 +1040,34 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		return $myPT->stopBuffer();
   }
 
+	/**
+  * delete rows in editbuffer table (content_data_editbuffer) method
+  *
+  * @return null
+  */
+  function deleteEditbufferTable() {
+    global $myDB;
+    global $myRequest;
+
+    $dat_id = $myRequest->getI("id");
+    $block_nr = $myRequest->getI("b");
+
+    $myCO = $this->buildCO($dat_id,$block_nr);
+		
+		$sql = "DELETE FROM content_data_editbuffer WHERE dat_id=".$myCO->id. " AND con_id=".$myCO->content_type;
+		$myDB->query($sql);
+		$mySQL = new SqlBuilder();
+		$mySQL->addField("dat_altered",0);
+		$sql = $mySQL->update("content_data", "dat_id=".$myCO->id);
+		$myDB->query($sql);
+		
+	}
+	
+	/**
+  * update method
+  *
+  * @return null
+  */
   function update()
   {
     global $myDB;
@@ -1058,21 +1121,25 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     	if ($myRequest->check("publish"))
     	{
     		$myCO->store();
-    		$sql = "DELETE FROM content_data_editbuffer WHERE dat_id=".$myCO->id. " AND con_id=".$myCO->content_type;
-    		$myDB->query($sql);
-    		$mySQL = new SqlBuilder();
-    		$mySQL->addField("dat_altered",0);
-			$sql = $mySQL->update("content_data", "dat_id=".$myCO->id);
-			$myDB->query($sql);
+				$this->deleteEditbufferTable();
     	}
     	else 
     	{
-    	$myCO->store(0);
+				if($myRequest->check("preview")) {
+		    	$myCO->store($mySUser->id);
+				} else {
+		    	$myCO->store(0);
+				}
     	}
     }
     else 
     {
-    	$myCO->store();
+			if($myRequest->check("preview")) {
+				$myCO->store($mySUser->id);
+			} else {
+				$myCO->store();
+				$this->deleteEditbufferTable();
+			}
     }
     // :TODO: localize (no token)
     $myLog->log("Datensatz " . $myCO->id . " (Content-Type " . $myCO->content_type .") bearbeitet.",PT_LOGFACILITY_SYS);
@@ -1093,7 +1160,16 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
       $myCO->snapshot($mySUser->id);
     }
 
-    $action = "select";
+    
+		if($myRequest->check("preview") || ($myRequest->check("save") && $myCO->publishmode==true)) {
+			if($myRequest->check("preview")) {
+					$this->_params["preview"]="1";
+			}
+			$action = "edit";
+		} else {
+			$action = "select";
+		}
+		
     $feedback=1;
 
     if (isset($myCO->_blocks) OR ($myCO->getErrorText()!="" OR $myCO->getInfoText() !="" OR $myCO->getAlertText() !=""))
@@ -1169,6 +1245,11 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $this->gotoPage("Editor","Content","select",$this->_params);
   }
 
+	/**
+  * debug method show the properties from the content object
+  *
+  * @return null
+  */
   function debug()
   {
     global $myRequest;
@@ -1211,6 +1292,27 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		</body>
 		</html>
 		<?php
+		exit();
+  }
+
+	/**
+  * showPreview method show the preview properties from the content object
+  *
+  * @return null
+  */
+  function showPreview()
+  {
+    global $myRequest;
+    global $myDB;
+    global $mySUser;
+
+    $dat_id = $myRequest->getI("id");
+    $block_nr = $myRequest->getI("b");
+
+    $myCO = $this->buildCO($dat_id,$block_nr);
+
+		echo $myCO->previewRender();
+		
 		exit();
   }
 

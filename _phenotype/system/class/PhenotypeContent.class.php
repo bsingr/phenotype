@@ -71,6 +71,13 @@ class PhenotypeContentStandard extends PhenotypeBase
 	 */
 	public $publishmode = false;
 
+	/**
+	 * flag, wether preview option is available
+	 *
+	 * @var boolean
+	 */
+	public $previewmode = false;
+
 	// Konfiguration der Reiter in der Contentueberischt
 	public $tab_alle = 1;
 	public $tab_id = 1;
@@ -4298,5 +4305,23 @@ public function __call($methodname,$params)
 {
 	throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
 }
+
+	/**
+  * previewRender method render the preview properties from the content object
+  *
+   * @param string $skin which skin be used
+   * @return string return the preview HTML code
+  */
+	public function previewRender($skin = "")
+	{
+		$sHTML = $this->preRender($skin);
+		return $sHTML;
+		
+		/* example with content template
+		eval ($this->initRendering()); 
+		$mySmarty->assign("sContent", $sHTML); 
+		return $mySmarty->fetch($TPL_PreviewSite);  
+		*/
+	}
 }
 ?>
