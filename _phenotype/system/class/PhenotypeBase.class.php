@@ -159,10 +159,17 @@ class PhenotypeBase
 		throw new Exception("Deprecated call of function getQ");
 	}
 
-	public function getU($property)
+	/**
+	 * Get property in UTF8 format
+	 *
+	 * @param string $property property name
+	 * @param string $default default output if the property not exist
+	 * @return string return the property value in UTF8
+	 */
+	public function getU($property,$default=null)
 	{
-		throw new Exception("Deprecated call of function getU");
-		return @ utf8_encode($this->_props[$property]);
+		//return @ utf8_encode($this->_props[$property]);
+		return @ utf8_encode($this->get($property,$default));
 	}
 
 
