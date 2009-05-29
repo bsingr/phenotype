@@ -49,10 +49,10 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		{
 			foreach ($this->_REQUEST AS $k=>$v)
 			{
-				if (is_array($v)) 
+				if (is_array($v))
 				{
 					$strippedValue = Array();
-					foreach ($v as $key=>$rawValue) 
+					foreach ($v as $key=>$rawValue)
 					{
 						$strippedValue[$key] = stripslashes($rawValue);
 					}
@@ -70,9 +70,15 @@ class PhenotypeRequestStandard extends PhenotypeBase
 			}
 		}
 
+		
 		// check for smartURL hit
 		if (defined("PT_FRONTEND"))
 		{
+			// check for intrusions
+			if (PT_PHPIDS ==1)
+			{
+				$this->phpIDS();
+			}
 			if ($this->check("smartURL") AND !$this->check("id"))
 			{
 				$smartURL = $this->get("smartURL");
@@ -310,5 +316,37 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		return $_pager;
 	}
 
+	public function phpIDS()
+	{
+		set_include_path(
+		get_include_path()
+		. PATH_SEPARATOR
+		. SYSTEMPATH.'phpids/lib/'
+		);
+
+		require_once 'IDS/Init.php';
+
+		$request = $this->_props;
+		//$request = $_REQUEST;
+		$init = IDS_Init::init(dirname(__FILE__) . '/../phpids/lib/IDS/Config/Config.ini');
+		
+		
+		$init->config['General']['base_path'] = dirname(__FILE__) . '/../phpids/lib/IDS/';
+    	$init->config['General']['use_base_path'] = true;
+    	$init->config['Caching']['caching'] = 'none';
+    
+		$ids = new IDS_Monitor($request, $init);
+    	$result = $ids->run();
+    	if (!$result->isEmpty())
+    	{
+    		$this->set("smartIDSImpact",$result->getImpact());
+    		if ($result->getImpact()>PT_PHPIDS_MAXIMPACT)
+    		{
+    			throw new Exception("PHP Intrusion Detection\n\n".strip_tags(html_entity_decode($result)));
+    		}
+    	}
+    	
+    	//echo $result;
+	}
 }
 ?>

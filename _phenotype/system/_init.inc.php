@@ -108,3 +108,12 @@ if (!function_exists('json_encode'))
     }
   }
 }
+
+if (!defined('PT_PHPIDS'))
+{
+	define ('PT_PHPIDS',1);
+}
+if (!defined('PT_PHPIDS_MAXIMPACT'))
+{
+	define ('PT_PHPIDS_MAXIMPACT',10);
+}
