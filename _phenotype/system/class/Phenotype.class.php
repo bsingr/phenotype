@@ -1074,8 +1074,9 @@ class PhenotypeStandard extends PhenotypeBase
 		global $myRequest;
 		global $myDB;
 		global $myApp;
-
-		if (!PT_DEBUG==1 OR !isset($_COOKIE["pt_debug"]))
+		global $myLog;
+		$cookie = md5("on".PT_SECRETKEY);
+		if (!PT_DEBUG==1 OR  $_COOKIE["pt_debug"]!=$cookie)
 		{
 			ob_clean();
 			$myApp->throw500($myPage->id);
@@ -1087,7 +1088,8 @@ class PhenotypeStandard extends PhenotypeBase
 		{
 			$message .="\n\n".$sql;
 		}
-
+		$myLog->log($message,PT_LOGFACILITY_SYS,PT_LOGLVL_ERROR);
+		
 		// first get the current output
 		$html = $this->stopBuffer();
 		$html = $this->colorcodeHTML($html);

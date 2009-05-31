@@ -114,12 +114,12 @@ require_once (CLASSPATH . "PhenotypeLog.class.php");
 // logging
 // ------------------------------------------------------
 
-define("PT_LOG_METHOD", PT_LOGMTH_FILE);
+define("PT_LOG_METHOD", PT_LOGMTH_FILEANDFIREBUG);
 define("PT_LOG_LOGFILE", TEMPPATH ."/logs/phenotype.log");
 define("PT_LOG_TIMEFORMAT", "d/M/Y H:i:s O");
 define("PT_LOG_CLIENTINFO_HEADER", '');
 define("PT_LOG_CLIENTINFO_SERVER", 'REMOTE_ADDR');
-
+define("PT_LOG_LEVEL",PT_LOGLVL_DEBUG);
 
 // ------------------------------------------------------
 // get host config (if necessary)

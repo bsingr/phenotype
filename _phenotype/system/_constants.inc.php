@@ -115,6 +115,8 @@ define("PT_LOGLVL_INFO", 3);
 define("PT_LOGLVL_DEBUG", 4);
 
 define("PT_LOGMTH_FILE", "FILE");
+define("PT_LOGMTH_FIREBUG", "FIREBUG");
+define("PT_LOGMTH_FILEANDFIREBUG", "FILEANDFIREBUG");
 
 define("PT_RTF_EDITOR_FCKEDITOR", "fckEditor");
 define("PT_RTF_EDITOR_TINYMCE", "tinyMCE");
