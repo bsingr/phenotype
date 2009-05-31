@@ -294,13 +294,15 @@ if (isset($_REQUEST["save"]))
 
   $sql = "DELETE FROM sequence_data WHERE pag_id = " . $id . " AND ver_id = " . $ver_id. " AND lng_id=".$_SESSION["lng_id"]." AND dat_editbuffer=0";
   $myDB->query($sql);
-  $table ="temp_" . time();
-  $sql = "CREATE TEMPORARY TABLE " . $table . " SELECT * FROM sequence_data WHERE pag_id = " . $id . " AND ver_id = " . $ver_id. " AND dat_editbuffer=1 AND lng_id=".$_SESSION["lng_id"]. " AND usr_id=".$_SESSION["usr_id"];
+  
+  //$table ="temp_" . time();
+  //$sql = "CREATE TEMPORARY TABLE " . $table . " SELECT * FROM sequence_data WHERE pag_id = " . $id . " AND ver_id = " . $ver_id. " AND dat_editbuffer=1 AND lng_id=".$_SESSION["lng_id"]. " AND usr_id=".$_SESSION["usr_id"];
+  //$rs = $myDB->query($sql);
+  
+  $sql = "INSERT INTO sequence_data(dat_id,pag_id,ver_id,dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible,lng_id) SELECT dat_id,pag_id,ver_id, 0 AS dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible,  ".$_SESSION["lng_id"]." AS lng_id FROM sequence_data WHERE pag_id = " . $id . " AND ver_id = " . $ver_id. " AND dat_editbuffer=1 AND lng_id=".$_SESSION["lng_id"]. " AND usr_id=".$_SESSION["usr_id"];
   $rs = $myDB->query($sql);
-  $sql = "INSERT INTO sequence_data(dat_id,pag_id,ver_id,dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible,lng_id) SELECT dat_id,pag_id,ver_id, 0 AS dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible,  ".$_SESSION["lng_id"]." AS lng_id FROM " .$table;
-  $rs = $myDB->query($sql);
-  $sql = "DROP TABLE " . $table;
-  $rs = $myDB->query($sql);
+  //$sql = "DROP TABLE " . $table;
+  //$rs = $myDB->query($sql);
 
   // Volltext neu bauen
   $sql = "SELECT dat_fullsearch FROM sequence_data WHERE pag_id = " . $id . " AND ver_id = " . $ver_id. " AND dat_editbuffer=0";

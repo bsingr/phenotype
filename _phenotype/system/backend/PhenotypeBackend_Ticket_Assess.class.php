@@ -513,9 +513,6 @@ class PhenotypeBackend_Ticket_Assess_Standard extends PhenotypeBackend_Ticket
 				}
 			}
 
-			// Temptabellen wieder loeschen
-			// $this->removeTemporaryTables();
-
 			return($myPT->stopBuffer());
 		}
 

@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -225,10 +225,10 @@ if ($mySUser->checkRight("elm_page"))
 
 	// avoid SQL errors when datbase is not consistent (after package operations)
 	if ($sql_where ==""){$sql_where ='1=1';}
-	
+
 	$sql = "SELECT * FROM page WHERE " . $sql_where . " ORDER BY pag_date DESC LIMIT 0,6";
-	
-	
+
+
 
 
 ?>
@@ -302,16 +302,9 @@ if ($mySUser->checkRight("elm_page"))
 // Content
 if ($mySUser->checkRight("elm_content"))
 {
-
-	$table ="temp_" . uniqid("pt");
-
-
 	$sql = "SELECT * FROM content ORDER BY con_pos, con_bez";
 	$rs = $myDB->query($sql);
 	$sql_union="";
-	$create=0;
-	$rs_temp=0;
-
 	if (mysql_num_rows($rs)!=0)
 	{
 		while ($row = mysql_fetch_array($rs))
@@ -320,15 +313,6 @@ if ($mySUser->checkRight("elm_content"))
 			if ($mySUser->checkRight("con_".$row["con_id"])){$access=1;}
 			if ($access==1)
 			{
-				if ($create==0)
-				{
-					$sql = "CREATE TEMPORARY TABLE IF NOT EXISTS " . $table;
-					$create=1;
-				}
-				else
-				{
-					$sql = "INSERT INTO " . $table;
-				}
 				$cname = "PhenotypeContent_" . $row["con_id"];
 				$myCO = new $cname;
 				$filter = $myCO->getAccessFilter();
@@ -336,37 +320,19 @@ if ($mySUser->checkRight("elm_content"))
 				{
 					$filter = " AND " . $filter;
 				}
-
-				$sql .= " SELECT content_data.dat_bez, content_data.dat_id , content_data.dat_uid, content_data.usr_id,content_data.dat_date,content_data.dat_status, content_data.med_id_thumb, content.con_bearbeiten ,content.con_loeschen , content.con_bez FROM content_data LEFT JOIN content ON content_data.con_id = content.con_id WHERE content_data.con_id = " . $row["con_id"] . $filter . " ORDER BY dat_date DESC LIMIT 0,3";
-				//echo $sql;
-				$myDB->query($sql);
+				$sql = "(SELECT content_data.dat_bez, content_data.dat_id,content_data.dat_id,content_data.usr_id,content_data.dat_date,content_data.dat_status, content_data.med_id_thumb, content.con_bearbeiten ,content.con_loeschen , content.con_bez FROM content_data LEFT JOIN content ON content_data.con_id = content.con_id WHERE content_data.con_id = " . $row["con_id"] . $filter. " ORDER BY dat_date DESC LIMIT 0,3)";
+				if ($sql_union=="")
+				{
+					$sql_union = $sql;
+				}
+				else
+				{
+					$sql_union .=" UNION ".$sql;
+				}
 			}
 		}
-
-		$sql_union = "SELECT * FROM " . $table ." ORDER BY dat_date DESC LIMIT 0,10";
-		/*
-		$sql = "SELECT * FROM content ORDER BY con_pos, con_bez";
-		$rs = $myDB->query($sql);
-		$sql_union="";
-		while ($row = mysql_fetch_array($rs))
-		{
-		$access = 0;
-		if ($mySUser->checkRight("con_".$row["con_id"])){$access=1;}
-		if ($access==1)
-		{
-		$sql = "(SELECT content_data.dat_bez, content_data.dat_id,content_data.dat_id,content_data.usr_id,content_data.dat_date,content_data.dat_status, content_data.med_id_thumb, content.con_bearbeiten ,content.con_loeschen , content.con_bez FROM content_data LEFT JOIN content ON content_data.con_id = content.con_id WHERE content_data.con_id = " . $row["con_id"] . " ORDER BY dat_date DESC LIMIT 0,3)";
-		if ($sql_union=="")
-		{
-		$sql_union = $sql;
-		}
-		else
-		{
-		$sql_union .=" UNION ".$sql;
-		}
-		}
-		}
 		$sql_union .= "ORDER BY dat_date DESC LIMIT 0,10";
-		*/
+
 
 ?>
     <table width="680" border="0" cellpadding="0" cellspacing="0">
@@ -445,8 +411,6 @@ if ($mySUser->checkRight("elm_content"))
       </tr>
     </table><br>  
 	<?php
-	$sql = "DROP TABLE " . $table;
-	$rs = $myDB->query($sql);
 	}
 } // -- Content
 ?>

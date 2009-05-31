@@ -325,22 +325,18 @@ if ($language_copy)
 // Ueberpruefung auf angehaengte Tickets
 if ($mySUser->checkRight("elm_task"))
 {
-  // Meine Hinweise und Anfragen in temporaere Tabellen
-  $sql_request = " SELECT tik_id,tik_request FROM ticketrequest WHERE usr_id=" . $_SESSION["usr_id"];
+  
+	
+  $sql =  "SELECT ticket.*,ticketrequest.*,ticketmarkup.* FROM ticket LEFT JOIN ticketsubject ON ticket.sbj_id = ticketsubject.sbj_id ";
+  $sql .= "LEFT JOIN (SELECT * FROM ticketrequest WHERE ticketrequest.usr_id= " .(int)$_SESSION["usr_id"].") AS ticketrequest ON ticket.tik_id = ticketrequest.tik_id ";
+  $sql .= "LEFT JOIN (SELECT * FROM ticketmarkup WHERE ticketmarkup.usr_id= " .(int)$_SESSION["usr_id"].") AS ticketmarkup ON ticket.tik_id = ticketmarkup.tik_id ";
+  
+  $sql .= "WHERE ((tik_status = 1 ) OR (tik_status = 0 AND tik_closingdate > ". (time()-(3600*12*14)) .")) AND pag_id=" . $id;
 
-  $table_request ="temp_request_" . uniqid("pt");
-  $sql = "CREATE TEMPORARY TABLE " . $table_request . $sql_request;
-  $rs = $myDB->query($sql);
 
-  $sql_markup = " SELECT tik_id,tik_markup FROM ticketmarkup WHERE usr_id=" . $_SESSION["usr_id"];
 
-  $table_markup ="temp_markup_" . uniqid("pt");
-  $sql = "CREATE TEMPORARY TABLE " . $table_markup . $sql_markup;
-  $rs = $myDB->query($sql);
 
-  // Grund-SQL fuer alle Detailabfragen
-
-  $sql = "SELECT *, ticket.tik_id AS tik_id FROM ticket LEFT JOIN ticketsubject ON ticket.sbj_id = ticketsubject.sbj_id LEFT JOIN $table_request ON ticket.tik_id = $table_request.tik_id LEFT JOIN $table_markup ON ticket.tik_id = $table_markup.tik_id WHERE ((tik_status = 1 ) OR (tik_status = 0 AND tik_closingdate > ". (time()-(3600*12*14)) .")) AND pag_id=" . $id;
+  
   $rs = $myDB->query($sql);
   if (mysql_num_rows($rs)!=0)
   {
@@ -366,11 +362,6 @@ if ($mySUser->checkRight("elm_task"))
     </table>
 	<?php
   }
-  // Temptabellen wieder loeschen
-  $sql = "DROP TEMPORARY TABLE " . $table_markup;
-  $rs = $myDB->query($sql);
-  $sql = "DROP TEMPORARY TABLE " . $table_request;
-  $rs = $myDB->query($sql);
 
 }
 
