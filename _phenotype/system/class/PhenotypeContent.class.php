@@ -116,7 +116,8 @@ class PhenotypeContentStandard extends PhenotypeBase
 	protected $datatable_followstatus = false;
 
 
-
+	protected $dat_id_min = false;
+	protected $dat_id_max = false;
 
 	function setStatus($status)
 	{
@@ -158,7 +159,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$sql = "DELETE FROM " . $table . " WHERE dat_id=".$this->id;
 			$rs = $myDB->query($sql);
 		}
-}
+	}
 
 	function edit()
 	{
@@ -208,25 +209,25 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		if ($usr_id_editbuffer===false)
 		{
-			
 
-		$sql = $mySQL->update("content_data", "dat_id=".$this->id);
-		//echo $sql;
-		$myDB->query($sql);
-		$p = $this->updatePosition();
-		if ($p)
-		{
-			$mySQL = new SQLBuilder();
-			$mySQL->addField("dat_pos", $p, DB_NUMBER);
+
 			$sql = $mySQL->update("content_data", "dat_id=".$this->id);
+			//echo $sql;
 			$myDB->query($sql);
-		}
-		$this->buildCache();
+			$p = $this->updatePosition();
+			if ($p)
+			{
+				$mySQL = new SQLBuilder();
+				$mySQL->addField("dat_pos", $p, DB_NUMBER);
+				$sql = $mySQL->update("content_data", "dat_id=".$this->id);
+				$myDB->query($sql);
+			}
+			$this->buildCache();
 
-		// datatables?
-		if ($this->use_datatable){$this->storeDataTable();}
+			// datatables?
+			if ($this->use_datatable){$this->storeDataTable();}
 		}
-		else 
+		else
 		{
 
 			$sql = "SELECT COUNT(*) AS C FROM content_data_editbuffer WHERE usr_id=".(int)$usr_id_editbuffer." AND dat_id=".$this->id. " AND con_id=".$this->content_type;
@@ -241,7 +242,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 				$mySQL->addField("con_id",$this->content_type,DB_NUMBER);
 				$sql = $mySQL->insert("content_data_editbuffer");
 			}
-			else 
+			else
 			{
 				$sql = $mySQL->update("content_data_editbuffer", "dat_id=".$this->id." AND usr_id=".(int)$usr_id_editbuffer);
 			}
@@ -250,7 +251,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$mySQL->addField("dat_altered",1);
 			$sql = $mySQL->update("content_data", "dat_id=".$this->id);
 			$myDB->query($sql);
-			
+
 		}
 		return $s;
 	}
@@ -444,6 +445,35 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$this->mySQL->addField("med_id_thumb", 7); // Default-Icon
 		}
 		$mySQL = $this->mySQL;
+
+		// check if id range is specified
+		if ($this->dat_id_min != false)
+		{
+			$sql = "SELECT MAX(dat_id) AS M FROM content_data WHERE dat_id>=".(int)$this->dat_id_min." AND dat_id <=".(int)$this->dat_id_max;
+			$rs = $myDB->query($sql);
+			$row = mysql_fetch_assoc($rs);
+			$max = $row["M"];
+			if ($max==null) // might be the first record
+			{
+				$sql = "SELECT COUNT(*) AS C FROM content_data WHERE dat_id>=".(int)$this->dat_id_min." AND dat_id <=".(int)$this->dat_id_max;
+				$rs = $myDB->query($sql);
+				$row = mysql_fetch_assoc($rs);
+				$c = $row["C"];
+				if ($c==0) // first record in range, take min value
+				{
+					$mySQL->addField("dat_id",(int)$this->dat_id_min);
+				}
+			}
+			else // we do have records in range 
+			{
+				if ($max!=$this->dat_id_max) // don't use date range, if max dat_id alread is taken
+				{
+					// take next free number
+					$mySQL->addField("dat_id",$max+1);
+				}
+			}
+		}
+		// -- end of id range check
 
 		$sql = $mySQL->insert("content_data");
 		$myDB->query($sql);
@@ -1045,326 +1075,326 @@ class PhenotypeContentStandard extends PhenotypeBase
 		}
 	}
 
-function form_newline()
-{
-	$a = Array (PT_CON_FORM_NEWLINE);
-	if ($this->formmode == 1)
+	function form_newline()
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_NEWLINE);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_sequence($cog_id, $blocknr = 1)
-{
-	$a = Array (PT_CON_FORM_SEQUENCE, $cog_id, $blocknr);
-	if ($this->formmode == 1)
+	function form_sequence($cog_id, $blocknr = 1)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_SEQUENCE, $cog_id, $blocknr);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_image_selector($input, $bez, $folder, $changefolder = 1, $x = 0, $y = 0)
-{
-	$a = Array (PT_CON_FORM_IMAGESELECTOR, $input, $bez, $folder, $changefolder, $x, $y);
-	if ($this->formmode == 1)
+	function form_image_selector($input, $bez, $folder, $changefolder = 1, $x = 0, $y = 0)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_IMAGESELECTOR, $input, $bez, $folder, $changefolder, $x, $y);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_image_extern($input, $bez)
-{
-	$a = Array (PT_CON_FORM_IMAGEEXTERN, $input, $bez);
-	if ($this->formmode == 1)
+	function form_image_extern($input, $bez)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_IMAGEEXTERN, $input, $bez);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_richtext($input, $bez, $x, $rows, $filter = 1)
-{
-	$a = Array (PT_CON_FORM_RICHTEXT, $input, $bez, $x, $rows, $filter);
-	if ($this->formmode == 1)
+	function form_richtext($input, $bez, $x, $rows, $filter = 1)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_RICHTEXT, $input, $bez, $x, $rows, $filter);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_doubletextfield($input, $bez, $size, $bez2, $size2)
-{
-	$a = Array (PT_CON_FORM_DOUBLETEXTFIELD, $input, $bez, $size, $bez2, $size2);
-	if ($this->formmode == 1)
+	function form_doubletextfield($input, $bez, $size, $bez2, $size2)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_DOUBLETEXTFIELD, $input, $bez, $size, $bez2, $size2);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_checkbox($input, $bez, $text)
-{
-	$a = Array (PT_CON_FORM_CHECKBOX, $input, $bez, $text);
-	if ($this->formmode == 1)
+	function form_checkbox($input, $bez, $text)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_CHECKBOX, $input, $bez, $text);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_link($input, $bez, $link_title=true, $link_target=true, $link_pageselector=false, $link_text=false, $link_popup=false, $link_source=false, $link_type=false, $link_type_options=Array())
-{
-	$a = Array (PT_CON_FORM_LINK, $input, $bez,$link_title,$link_target,$link_text,$link_popup,$link_source,$link_type,$link_type_options,$link_pageselector);
-	if ($this->formmode == 1)
+	function form_link($input, $bez, $link_title=true, $link_target=true, $link_pageselector=false, $link_text=false, $link_popup=false, $link_source=false, $link_type=false, $link_type_options=Array())
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_LINK, $input, $bez,$link_title,$link_target,$link_text,$link_popup,$link_source,$link_type,$link_type_options,$link_pageselector);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_upload($input, $bez,$folder="_upload",$grp_id=2,$imageasdocument=0)
-{
-	$a = Array (PT_CON_FORM_UPLOAD, $input, $bez,$folder,$grp_id,$imageasdocument);
-	if ($this->formmode == 1)
+	function form_upload($input, $bez,$folder="_upload",$grp_id=2,$imageasdocument=0)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_UPLOAD, $input, $bez,$folder,$grp_id,$imageasdocument);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_document($input, $bez, $infozeile = 0)
-{
-	$a = Array (PT_CON_FORM_DOCUMENT, $input, $bez, $infozeile);
-	if ($this->formmode == 1)
+	function form_document($input, $bez, $infozeile = 0)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_DOCUMENT, $input, $bez, $infozeile);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_document_selector($input, $bez, $folder, $changefolder = 1, $infozeile = 0, $doctype = "")
-{
-	$a = Array (PT_CON_FORM_DOCUMENTSELECTOR, $input, $bez, $folder, $changefolder, $infozeile, $doctype);
-	if ($this->formmode == 1)
+	function form_document_selector($input, $bez, $folder, $changefolder = 1, $infozeile = 0, $doctype = "")
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_DOCUMENTSELECTOR, $input, $bez, $folder, $changefolder, $infozeile, $doctype);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_media_selector($input, $bez, $folder, $changefolder = 1, $infozeile = 0, $doctype = "")
-{
-	$a = Array (PT_CON_FORM_MEDIASELECTOR, $input, $bez, $folder, $changefolder, $infozeile, $doctype);
-	if ($this->formmode == 1)
+	function form_media_selector($input, $bez, $folder, $changefolder = 1, $infozeile = 0, $doctype = "")
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_MEDIASELECTOR, $input, $bez, $folder, $changefolder, $infozeile, $doctype);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_script($input, $bez, $x, $rows, $filename)
-{
-	$a = Array (PT_CON_FORM_SCRIPT, $input, $bez, $x, $rows, $filename);
-	if ($this->formmode == 1)
+	function form_script($input, $bez, $x, $rows, $filename)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_SCRIPT, $input, $bez, $x, $rows, $filename);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_comment($input, $text)
-{
-	$a = Array (PT_CON_FORM_COMMENT, $input, $text);
-	if ($this->formmode == 1)
+	function form_comment($input, $text)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_COMMENT, $input, $text);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_editlink($input, $text, $url, $target = "_self")
-{
-	$a = Array (PT_CON_FORM_EDITLINK, $input, $text, $url, $target);
-	if ($this->formmode == 1)
+	function form_editlink($input, $text, $url, $target = "_self")
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_EDITLINK, $input, $text, $url, $target);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_button($input, $name, $formname, $url = "", $target = "")
-{
-	$a = Array (PT_CON_FORM_BUTTON, $input, $name, $formname, $url, $target);
-	if ($this->formmode == 1)
+	function form_button($input, $name, $formname, $url = "", $target = "")
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_BUTTON, $input, $name, $formname, $url, $target);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_wrap($input, $methodname, $params = Array (), $colspan = 0)
-{
-	$a = Array (PT_CON_FORM_WRAP, $input, $methodname, $colspan, $params);
-	if ($this->formmode == 1)
+	function form_wrap($input, $methodname, $params = Array (), $colspan = 0)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_WRAP, $input, $methodname, $colspan, $params);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_ajax($input, $token="ajax",$height=50,$colspan = 0)
-{
-	$a = Array (PT_CON_FORM_AJAX, $input, $token,$colspan,$height);
-	if ($this->formmode == 1)
+	function form_ajax($input, $token="ajax",$height=50,$colspan = 0)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_AJAX, $input, $token,$colspan,$height);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_ddupload($input, $folder, $x, $y)
-{
-	$a = Array (PT_CON_FORM_DDUPLOAD, $input, $folder, $x, $y);
-	if ($this->formmode == 1)
+	function form_ddupload($input, $folder, $x, $y)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_DDUPLOAD, $input, $folder, $x, $y);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_ddpositioner($input, $bez, $quantity, $methodname)
-{
-	$a = Array (PT_CON_FORM_DDPOSITIONER, $input, $bez, $quantity, $methodname);
-	if ($this->formmode == 1)
+	function form_ddpositioner($input, $bez, $quantity, $methodname)
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_DDPOSITIONER, $input, $bez, $quantity, $methodname);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
-}
 
-function form_table($input, $size, $_table, $column_status=0,$colum_edit =0,$_align="",$_width="")
-{
-	$a = Array (PT_CON_FORM_TABLE, $input, $size, $_table, $column_status,$colum_edit,$_align,$_width);
-	if ($this->formmode == 1)
+	function form_table($input, $size, $_table, $column_status=0,$colum_edit =0,$_align="",$_width="")
 	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
-	}
-}
-
-
-function form_hidden($bez, $value)
-{
-	$a = Array (PT_CON_FORM_HIDDEN, $bez, $value);
-	if ($this->formmode == 1)
-	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
+		$a = Array (PT_CON_FORM_TABLE, $input, $size, $_table, $column_status,$colum_edit,$_align,$_width);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
 	}
 
 
-}
-
-
-function form_pager($bez, $count, $p="")
-{
-	if ($p=="")
+	function form_hidden($bez, $value)
 	{
+		$a = Array (PT_CON_FORM_HIDDEN, $bez, $value);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
+
+
+	}
+
+
+	function form_pager($bez, $count, $p="")
+	{
+		if ($p=="")
+		{
+			global $myRequest;
+			$p = $myRequest->getI("p");
+			if ($p==0){$p=1;}
+		}
+		$a = Array(PT_CON_FORM_PAGER, $bez, $count, $p);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
+	}
+
+
+	function form_javascript_onload($js)
+	{
+		$a = Array(PT_CON_FORM_JAVASCRIPTONLOAD, $js);
+		$this->form[] = $a;
+	}
+
+	function form_user($title,$property,$null=true)
+	{
+		$this->form[] = array(
+		"form_method" =>"form_user",
+		"property" =>$property,
+		"title" =>$title,
+		"null" => $null
+		);
+	}
+
+	function displayEditForm($myCO)
+	{
+		$form = $myCO->form;
+		$id = $myCO->id;
+		return $this->displayForm($myCO, $form, $id);
+	}
+
+	function displayForm($myCO, $form, $id)
+	{
+		// Bei Erweiterungen dran denken, dass $i belegt ist !!!
+
+		global $myLayout;
+		global $myDB;
+		global $mySUser;
+		global $myPT;
 		global $myRequest;
-		$p = $myRequest->getI("p");
-		if ($p==0){$p=1;}
-	}
-	$a = Array(PT_CON_FORM_PAGER, $bez, $count, $p);
-	if ($this->formmode == 1)
-	{
-		$this->form[] = $a;
-	} else
-	{
-		$this->configform[] = $a;
-	}
-}
-
-
-function form_javascript_onload($js)
-{
-	$a = Array(PT_CON_FORM_JAVASCRIPTONLOAD, $js);
-	$this->form[] = $a;
-}
-
-function form_user($title,$property,$null=true)
-{
-	$this->form[] = array(
-	"form_method" =>"form_user",
-	"property" =>$property,
-	"title" =>$title,
-	"null" => $null
-	);
-}
-
-function displayEditForm($myCO)
-{
-	$form = $myCO->form;
-	$id = $myCO->id;
-	return $this->displayForm($myCO, $form, $id);
-}
-
-function displayForm($myCO, $form, $id)
-{
-	// Bei Erweiterungen dran denken, dass $i belegt ist !!!
-
-	global $myLayout;
-	global $myDB;
-	global $mySUser;
-	global $myPT;
-	global $myRequest;
-	global $myApp;
+		global $myApp;
 ?>
 <input type="hidden" name="http_referer" value ="<?php echo $_SERVER["HTTP_REFERER"] ?>">   
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -3001,12 +3031,12 @@ function displayForm($myCO, $form, $id)
 	<?php
 	return ($_jsarray);
 
-}
+	}
 
 
-function display_form_user($_params)
-{
-	global $myDB;
+	function display_form_user($_params)
+	{
+		global $myDB;
   	?>
     <tr>
         <td width="120" class="padding30"><p><strong><?php echo $_params["title"] ?></strong></p>
@@ -3040,10 +3070,10 @@ function display_form_user($_params)
     <option value="<?php echo $row["usr_id"] ?>" <?php echo $selected ?>><?php echo $name ?></option>
     <?php 
     }
-}
+	}
 
-function displayDHtmlWZJavascript($token, $anzahl,$spacer)
-{
+	function displayDHtmlWZJavascript($token, $anzahl,$spacer)
+	{
 ?>
   				 <?php
 
@@ -3190,669 +3220,669 @@ function displayDHtmlWZJavascript($token, $anzahl,$spacer)
     <?php
 
 
-}
+	}
 
-function fetchEditForm($myCO)
-{
-	$form = $myCO->form;
-	$id = $myCO->formid;
-	$this->fetchForm($myCO, $form, $id);
-}
-
-function fetchForm($myCO, $form, $id)
-{
-	// Bei Erweiterungen dran denken, dass $i belegt ist !!!
-
-	global $myDB;
-	global $myAdm;
-	global $myPT;
-	global $myRequest;
-	global $myApp;
-
-	for ($i = 0; $i < count($form); $i ++)
+	function fetchEditForm($myCO)
 	{
-		$a = $form[$i];
-		if (array_key_exists("form_method",$a))
+		$form = $myCO->form;
+		$id = $myCO->formid;
+		$this->fetchForm($myCO, $form, $id);
+	}
+
+	function fetchForm($myCO, $form, $id)
+	{
+		// Bei Erweiterungen dran denken, dass $i belegt ist !!!
+
+		global $myDB;
+		global $myAdm;
+		global $myPT;
+		global $myRequest;
+		global $myApp;
+
+		for ($i = 0; $i < count($form); $i ++)
 		{
-			$mname = "fetch_".$a["form_method"];
-			if (method_exists($this,$mname))
+			$a = $form[$i];
+			if (array_key_exists("form_method",$a))
 			{
-				$myCO->$mname($a);
+				$mname = "fetch_".$a["form_method"];
+				if (method_exists($this,$mname))
+				{
+					$myCO->$mname($a);
+				}
+				else
+				{
+					die($a["form_method"] ." implemented imperfectly. Missing update method: ".$mname);
+				}
 			}
 			else
 			{
-				die($a["form_method"] ." implemented imperfectly. Missing update method: ".$mname);
-			}
-		}
-		else
-		{
-			switch ($a[0])
-			{
-				case PT_CON_FORM_TEXTFIELD : // Textfeld
-				$fname = $myCO->formid."_".$a[2];
-				$myCO->set($a[2], $myRequest->get($fname));
-				$this->fullsearch .= $myRequest->get($fname)." | ";
-				break;
-
-				case PT_CON_FORM_NUMBER : // Number
-				$fname = $myCO->formid."_".$a[2];
-				$v = $myRequest->get($fname);
-				$v = str_replace(",", ".", $v);
-				$v = sprintf("%01.".$a[4]."f", $v);
-				$myCO->set($a[2], $v);
-				$this->fullsearch .= $myRequest->get($fname)." | ";
-				break;
-
-				case PT_CON_FORM_TEXTFIELDCLUSTER : // Textfeld Cluster
-				$n = $a[4];
-				for ($j = 1; $j <= $n; $j ++)
+				switch ($a[0])
 				{
-					$fname = $myCO->formid."_".$a[2]."_".$j;
-					$myCO->set($a[2]."_".$j, $myRequest->get($fname));
-					$this->fullsearch .= $myRequest->get($fname)." | ";
-				}
-
-				break;
-
-				case PT_CON_FORM_TEXTAREA :
+					case PT_CON_FORM_TEXTFIELD : // Textfeld
 					$fname = $myCO->formid."_".$a[2];
 					$myCO->set($a[2], $myRequest->get($fname));
 					$this->fullsearch .= $myRequest->get($fname)." | ";
 					break;
 
-				case PT_CON_FORM_DATE :
+					case PT_CON_FORM_NUMBER : // Number
 					$fname = $myCO->formid."_".$a[2];
-					$data = $myRequest->get($fname);
-					$data = $myPT->german2Timestamp($data);
-					$myCO->set($a[2], $data);
-					break;
-
-				case PT_CON_FORM_DATETIME :
-					$fname = $myCO->formid."_".$a[2];
-					$data = $myRequest->get($fname);
-					$data = $myPT->germanDT2Timestamp($data);
-					$myCO->set($a[2], $data);
-					break;
-
-				case PT_CON_FORM_HTML :
-					$fname = $myCO->formid."_".$a[2];
-					$myCO->set($a[2], $myAdm->decodeRequest_HTMLArea($myRequest->get($fname)));
-					break;
-
-					// form_selectbox
-				case PT_CON_FORM_SELECTBOX :
-					$fname = $myCO->formid."_".$a[2];
-					$myCO->set($a[2], $myRequest->get($fname));
-					$myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
-					break;
-
-				case PT_CON_FORM_CONTENTSELECTBOX :
-					$fname = $myCO->formid."_".$a[2];
-					$myCO->set($a[2], $myRequest->get($fname));
-					//$myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
-					break;
-
-					// form_doubleselectbox
-				case PT_CON_FORM_DOUBLESELECTBOX :
-					$fname = $myCO->formid."_".$a[2];
-					$myCO->set($a[2], $myRequest->get($fname));
-					$myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
-					$fname = $myCO->formid."_".$a[5];
-					$myCO->set($a[5], $myRequest->get($fname));
-					$myCO->set($a[5]."_value", @ $a[6][$myRequest->get($fname)]);
-					break;
-
-					// form_multiselectbox
-				case PT_CON_FORM_MULTISELECTBOX :
-					$fname = $myCO->formid."_".$a[2];
-
-					$_selections = $_REQUEST[$fname];
-					if (!is_array($_selections))
-					{
-						$_selections = Array ();
-					}
-
-					$myCO->set($a[2], $_selections);
-					break;
-
-
-					// form_content_multiselectbox
-				case PT_CON_FORM_CONTENTMULTISELECTBOX :
-					$fname = $myCO->formid."_".$a[2];
-
-					$_selections = $_REQUEST[$fname];
-					if (!is_array($_selections))
-					{
-						$_selections = Array ();
-					}
-
-					$myCO->set($a[2], $_selections);
-					break;
-
-					// form_expandinglist
-				case PT_CON_FORM_EXLIST :
-					$fname = $myCO->formid."_".$a[2];
-					$myCO->set($a[2], $myRequest->get($fname));
-					$fname = $myCO->formid."_".$a[2]."_new";
-					if ($myRequest->get($fname) != "")
-					{
-						$neu = $myRequest->get($fname);
-						$myList = new PhenotypeExpandingList($a[3]);
-						$myList->addItem($neu);
-						$myList->store();
-						$myCO->set($a[2], $neu);
-					}
-					break;
-
-				case PT_CON_FORM_SEQUENCE : // Sequenz
-
-				$block_nr = $a[2];
-				$cog_id = $a[1];
-
-
-				$sql = "SELECT * FROM sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr=" . $block_nr . " AND dat_editbuffer = 1 AND usr_id = ". (int)$_SESSION["usr_id"] ." ORDER BY dat_pos";
-				$rs = $myDB->query($sql);
-
-				while ($row = mysql_fetch_array($rs))
-				{
-					$i++;
-					$tname = "PhenotypeComponent_" . $row["com_id"];
-					$myComponent = new $tname;
-					$myComponent->init($row);
-					if (isset($_REQUEST[$row["dat_id"]."_visible"]))
-					{
-						$myComponent->visible =1;
-					}
-					else
-					{
-						$myComponent->visible =0;
-					}
-
-					$myComponent->update();
-					$myComponent->store();
-					// has a component been deleted?
-					if (isset($_REQUEST[$row["dat_id"]."_delete_x"]))
-					{
-						$myComponent->delete();
-						$pos=($i-1);
-						//$del_tool_id = $row["dat_id"];
-					}
-					// move component up
-					if (isset($_REQUEST[$row["dat_id"]."_moveup_x"]))
-					{
-						$myComponent->moveup();
-						$pos=$i;
-					}
-					// move component downs
-					if (isset($_REQUEST[$row["dat_id"]."_movedown_x"]))
-					{
-						$myComponent->movedown();
-						$pos=$i;
-					}
-				}
-
-				// new component inserted?
-				$new_tool_id = $_REQUEST["newtool_id"];
-				if ($new_tool_id !="")
-				{
-					$tname = "PhenotypeComponent_" . $_REQUEST["newtool_type"];
-					$myComponent = new $tname;
-					$myComponent->addNew(0,0,$this->id,$block_nr,$new_tool_id);
-				}
-
-				if ($myRequest->check("save"))
-				{
-					// save button pressed
-					$sql = "DELETE FROM  sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr = ".$block_nr ." AND dat_editbuffer=0";
-					$myDB->query($sql);
-
-					$sql = "INSERT INTO sequence_data(dat_id,dat_id_content,dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible,usr_id) SELECT dat_id, dat_id_content, 0 AS dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible, usr_id  FROM sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr = " .$block_nr." AND dat_editbuffer=1 AND usr_id = " .(int)$_SESSION["usr_id"];
-					$myDB->query($sql);
-					//echo $sql;
-
-				}
-
-				// end sequence
-				break;
-
-				case PT_CON_FORM_IMAGESELECTOR :
-					$fname = $myCO->formid."_".$a[2]."img_id";
-					$myCO->set($a[2]."_img_id", $myRequest->get($fname));
-
-					break;
-
-				case PT_CON_FORM_IMAGEEXTERN :
-					$fname = $myCO->formid."_".$a[2];
-					$myCO->set($a[2], $myRequest->get($fname));
-					break;
-
-				case PT_CON_FORM_RICHTEXT : // Richtext
-				$fname = $myCO->formid."_".$a[2];
-				$s = $myRequest->get($fname);
-				if ($a[5] == 1)
-				{
-					$s = $myApp->richtext_strip_tags($s);
-				}
-				$s = $myApp->richtext_postfilter($s,$myCO);
-				$myCO->set($a[2], $s);
-				$this->fullsearch .= strip_tags($s)." | ";
-				break;
-
-				case PT_CON_FORM_DOUBLETEXTFIELD :
-					$fname = $myCO->formid."_".$a[2];
-					$myCO->set($a[2], $myRequest->get($fname));
-					$this->fullsearch .= $myRequest->get($fname)." | ";
-					$fname = $myCO->formid."_".$a[4];
-					$myCO->set($a[4], $myRequest->get($fname));
+					$v = $myRequest->get($fname);
+					$v = str_replace(",", ".", $v);
+					$v = sprintf("%01.".$a[4]."f", $v);
+					$myCO->set($a[2], $v);
 					$this->fullsearch .= $myRequest->get($fname)." | ";
 					break;
 
-				case PT_CON_FORM_CHECKBOX : // Checkbox
-				$fname = $myCO->formid."_".$a[2];
-				if ($myRequest->check($fname))
-				{
-					$myCO->set($a[2], 1);
-				} else
-				{
-					$myCO->set($a[2], 0);
-				}
-				break;
-
-				case PT_CON_FORM_LINK : // Link
-				// $a[3] $link_title=true
-				// $a[4] $link_target=true
-				// $a[5] $link_text=false
-				// $a[6] $link_popup=false
-				// $a[7] $link_source=false
-				// $a[8] $link_type=false
-				// $a[9] $link_type_options
-
-				$fname = $myCO->formid."_".$a[2];
-				$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
-				$this->fullsearch .= $myRequest->get($fname."bez")." | ";
-				$myCO->set($a[2]."_url", $myRequest->get($fname."url"));
-				$myCO->set($a[2]."_target", $myRequest->get($fname."target"));
-				$myCO->set($a[2]."_type", $myRequest->get($fname."type"));
-				$myCO->set($a[2]."_text", $myRequest->get($fname."text"));
-				$myCO->set($a[2]."_source", $myRequest->get($fname."source"));
-				$myCO->set($a[2]."_x", $myRequest->get($fname."x"));
-				$myCO->set($a[2]."_y", $myRequest->get($fname."y"));
-				if ($myCO->get($a[2]."_target")=="_self"){$myCO->set($a[2]."_x","");$myCO->set($a[2]."_y","");}
-				break;
-
-				case PT_CON_FORM_UPLOAD:
-					$fname = $myCO->formid."_".$a[2]."_userfile";
-
-					$dateiname_original =  $_FILES[$fname]["name"];
-					$suffix = strtolower(substr($dateiname_original,strrpos($dateiname_original,".")+1));
-
-					$myMB = new PhenotypeMediabase();
-					$grp_id = $a[4];
-
-					$myMB->setMediaGroup($grp_id);
-
-					$folder = $a[3];
-
-					$type = MB_DOCUMENT;
-					$_suffix = Array("jpg","gif","jpeg","png");
-					if (in_array($suffix,$_suffix))
+					case PT_CON_FORM_TEXTFIELDCLUSTER : // Textfeld Cluster
+					$n = $a[4];
+					for ($j = 1; $j <= $n; $j ++)
 					{
+						$fname = $myCO->formid."_".$a[2]."_".$j;
+						$myCO->set($a[2]."_".$j, $myRequest->get($fname));
+						$this->fullsearch .= $myRequest->get($fname)." | ";
+					}
+
+					break;
+
+					case PT_CON_FORM_TEXTAREA :
+						$fname = $myCO->formid."_".$a[2];
+						$myCO->set($a[2], $myRequest->get($fname));
+						$this->fullsearch .= $myRequest->get($fname)." | ";
+						break;
+
+					case PT_CON_FORM_DATE :
+						$fname = $myCO->formid."_".$a[2];
+						$data = $myRequest->get($fname);
+						$data = $myPT->german2Timestamp($data);
+						$myCO->set($a[2], $data);
+						break;
+
+					case PT_CON_FORM_DATETIME :
+						$fname = $myCO->formid."_".$a[2];
+						$data = $myRequest->get($fname);
+						$data = $myPT->germanDT2Timestamp($data);
+						$myCO->set($a[2], $data);
+						break;
+
+					case PT_CON_FORM_HTML :
+						$fname = $myCO->formid."_".$a[2];
+						$myCO->set($a[2], $myAdm->decodeRequest_HTMLArea($myRequest->get($fname)));
+						break;
+
+						// form_selectbox
+					case PT_CON_FORM_SELECTBOX :
+						$fname = $myCO->formid."_".$a[2];
+						$myCO->set($a[2], $myRequest->get($fname));
+						$myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
+						break;
+
+					case PT_CON_FORM_CONTENTSELECTBOX :
+						$fname = $myCO->formid."_".$a[2];
+						$myCO->set($a[2], $myRequest->get($fname));
+						//$myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
+						break;
+
+						// form_doubleselectbox
+					case PT_CON_FORM_DOUBLESELECTBOX :
+						$fname = $myCO->formid."_".$a[2];
+						$myCO->set($a[2], $myRequest->get($fname));
+						$myCO->set($a[2]."_value", @ $a[3][$myRequest->get($fname)]);
+						$fname = $myCO->formid."_".$a[5];
+						$myCO->set($a[5], $myRequest->get($fname));
+						$myCO->set($a[5]."_value", @ $a[6][$myRequest->get($fname)]);
+						break;
+
+						// form_multiselectbox
+					case PT_CON_FORM_MULTISELECTBOX :
+						$fname = $myCO->formid."_".$a[2];
+
+						$_selections = $_REQUEST[$fname];
+						if (!is_array($_selections))
+						{
+							$_selections = Array ();
+						}
+
+						$myCO->set($a[2], $_selections);
+						break;
+
+
+						// form_content_multiselectbox
+					case PT_CON_FORM_CONTENTMULTISELECTBOX :
+						$fname = $myCO->formid."_".$a[2];
+
+						$_selections = $_REQUEST[$fname];
+						if (!is_array($_selections))
+						{
+							$_selections = Array ();
+						}
+
+						$myCO->set($a[2], $_selections);
+						break;
+
+						// form_expandinglist
+					case PT_CON_FORM_EXLIST :
+						$fname = $myCO->formid."_".$a[2];
+						$myCO->set($a[2], $myRequest->get($fname));
+						$fname = $myCO->formid."_".$a[2]."_new";
+						if ($myRequest->get($fname) != "")
+						{
+							$neu = $myRequest->get($fname);
+							$myList = new PhenotypeExpandingList($a[3]);
+							$myList->addItem($neu);
+							$myList->store();
+							$myCO->set($a[2], $neu);
+						}
+						break;
+
+					case PT_CON_FORM_SEQUENCE : // Sequenz
+
+					$block_nr = $a[2];
+					$cog_id = $a[1];
+
+
+					$sql = "SELECT * FROM sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr=" . $block_nr . " AND dat_editbuffer = 1 AND usr_id = ". (int)$_SESSION["usr_id"] ." ORDER BY dat_pos";
+					$rs = $myDB->query($sql);
+
+					while ($row = mysql_fetch_array($rs))
+					{
+						$i++;
+						$tname = "PhenotypeComponent_" . $row["com_id"];
+						$myComponent = new $tname;
+						$myComponent->init($row);
+						if (isset($_REQUEST[$row["dat_id"]."_visible"]))
+						{
+							$myComponent->visible =1;
+						}
+						else
+						{
+							$myComponent->visible =0;
+						}
+
+						$myComponent->update();
+						$myComponent->store();
+						// has a component been deleted?
+						if (isset($_REQUEST[$row["dat_id"]."_delete_x"]))
+						{
+							$myComponent->delete();
+							$pos=($i-1);
+							//$del_tool_id = $row["dat_id"];
+						}
+						// move component up
+						if (isset($_REQUEST[$row["dat_id"]."_moveup_x"]))
+						{
+							$myComponent->moveup();
+							$pos=$i;
+						}
+						// move component downs
+						if (isset($_REQUEST[$row["dat_id"]."_movedown_x"]))
+						{
+							$myComponent->movedown();
+							$pos=$i;
+						}
+					}
+
+					// new component inserted?
+					$new_tool_id = $_REQUEST["newtool_id"];
+					if ($new_tool_id !="")
+					{
+						$tname = "PhenotypeComponent_" . $_REQUEST["newtool_type"];
+						$myComponent = new $tname;
+						$myComponent->addNew(0,0,$this->id,$block_nr,$new_tool_id);
+					}
+
+					if ($myRequest->check("save"))
+					{
+						// save button pressed
+						$sql = "DELETE FROM  sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr = ".$block_nr ." AND dat_editbuffer=0";
+						$myDB->query($sql);
+
+						$sql = "INSERT INTO sequence_data(dat_id,dat_id_content,dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible,usr_id) SELECT dat_id, dat_id_content, 0 AS dat_editbuffer,dat_blocknr,dat_pos,com_id,dat_comdata,dat_fullsearch,dat_visible, usr_id  FROM sequence_data WHERE dat_id_content = " . $this->id . " AND dat_blocknr = " .$block_nr." AND dat_editbuffer=1 AND usr_id = " .(int)$_SESSION["usr_id"];
+						$myDB->query($sql);
+						//echo $sql;
+
+					}
+
+					// end sequence
+					break;
+
+					case PT_CON_FORM_IMAGESELECTOR :
+						$fname = $myCO->formid."_".$a[2]."img_id";
+						$myCO->set($a[2]."_img_id", $myRequest->get($fname));
+
+						break;
+
+					case PT_CON_FORM_IMAGEEXTERN :
+						$fname = $myCO->formid."_".$a[2];
+						$myCO->set($a[2], $myRequest->get($fname));
+						break;
+
+					case PT_CON_FORM_RICHTEXT : // Richtext
+					$fname = $myCO->formid."_".$a[2];
+					$s = $myRequest->get($fname);
+					if ($a[5] == 1)
+					{
+						$s = $myApp->richtext_strip_tags($s);
+					}
+					$s = $myApp->richtext_postfilter($s,$myCO);
+					$myCO->set($a[2], $s);
+					$this->fullsearch .= strip_tags($s)." | ";
+					break;
+
+					case PT_CON_FORM_DOUBLETEXTFIELD :
+						$fname = $myCO->formid."_".$a[2];
+						$myCO->set($a[2], $myRequest->get($fname));
+						$this->fullsearch .= $myRequest->get($fname)." | ";
+						$fname = $myCO->formid."_".$a[4];
+						$myCO->set($a[4], $myRequest->get($fname));
+						$this->fullsearch .= $myRequest->get($fname)." | ";
+						break;
+
+					case PT_CON_FORM_CHECKBOX : // Checkbox
+					$fname = $myCO->formid."_".$a[2];
+					if ($myRequest->check($fname))
+					{
+						$myCO->set($a[2], 1);
+					} else
+					{
+						$myCO->set($a[2], 0);
+					}
+					break;
+
+					case PT_CON_FORM_LINK : // Link
+					// $a[3] $link_title=true
+					// $a[4] $link_target=true
+					// $a[5] $link_text=false
+					// $a[6] $link_popup=false
+					// $a[7] $link_source=false
+					// $a[8] $link_type=false
+					// $a[9] $link_type_options
+
+					$fname = $myCO->formid."_".$a[2];
+					$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
+					$this->fullsearch .= $myRequest->get($fname."bez")." | ";
+					$myCO->set($a[2]."_url", $myRequest->get($fname."url"));
+					$myCO->set($a[2]."_target", $myRequest->get($fname."target"));
+					$myCO->set($a[2]."_type", $myRequest->get($fname."type"));
+					$myCO->set($a[2]."_text", $myRequest->get($fname."text"));
+					$myCO->set($a[2]."_source", $myRequest->get($fname."source"));
+					$myCO->set($a[2]."_x", $myRequest->get($fname."x"));
+					$myCO->set($a[2]."_y", $myRequest->get($fname."y"));
+					if ($myCO->get($a[2]."_target")=="_self"){$myCO->set($a[2]."_x","");$myCO->set($a[2]."_y","");}
+					break;
+
+					case PT_CON_FORM_UPLOAD:
+						$fname = $myCO->formid."_".$a[2]."_userfile";
+
+						$dateiname_original =  $_FILES[$fname]["name"];
+						$suffix = strtolower(substr($dateiname_original,strrpos($dateiname_original,".")+1));
+
+						$myMB = new PhenotypeMediabase();
+						$grp_id = $a[4];
+
+						$myMB->setMediaGroup($grp_id);
+
+						$folder = $a[3];
+
+						$type = MB_DOCUMENT;
+						$_suffix = Array("jpg","gif","jpeg","png");
+						if (in_array($suffix,$_suffix))
+						{
+							$type = MB_IMAGE;
+							if ($a[5]==1)
+							{
+								$type = MB_DOCUMENT;
+							}
+						}
+
+						if ($type== MB_IMAGE)
+						{
+							$id = $myMB->uploadImage($fname,$folder);
+						}
+						else
+						{
+							$id = $myMB->uploadDocument($fname,$folder);
+						}
+
+						if ($id) // Hochladen erfolgreich
+						{
+							$this->set($a[2]."_med_id",$id);
+						}
+						break;
+
+					case PT_CON_FORM_DOCUMENT : // Dokument
+					$fname = $myCO->formid."_".$a[2];
+					$myCO->set($a[2]."_med_id", $myRequest->get($fname."med_id"));
+					if ($a[3])
+					{
+						$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
+					} else
+					{
+						$myCO->set($a[2]."_bez", "");
+					}
+					break;
+
+					case PT_CON_FORM_DOCUMENTSELECTOR : // Dokument2
+					$fname = $myCO->formid."_".$a[2];
+					$myCO->set($a[2]."_med_id", $myRequest->get($fname."med_id"));
+					if ($a[3])
+					{
+						$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
+					} else
+					{
+						$myCO->set($a[2]."_bez", "");
+					}
+					break;
+
+					case PT_CON_FORM_MEDIASELECTOR : // Mediaselector
+					$fname = $myCO->formid."_".$a[2];
+					$img_id = $myRequest->get($fname."img_id");
+					$med_id = 0;
+					$type = 0;
+					if ($img_id <> 0)
+					{
+						$med_id = $img_id;
 						$type = MB_IMAGE;
-						if ($a[5]==1)
+					} else
+					{
+						$med_id = $myRequest->get($fname."med_id");
+						if ($med_id <> 0)
 						{
 							$type = MB_DOCUMENT;
 						}
 					}
-
-					if ($type== MB_IMAGE)
+					$myCO->set($a[2]."_med_id", $med_id);
+					$myCO->set($a[2]."_med_type", $type);
+					$mimetype = "";
+					if ($med_id != 0)
 					{
-						$id = $myMB->uploadImage($fname,$folder);
+						$sql = "SELECT med_mimetype FROM media WHERE med_id=".$med_id;
+						$rs = $myDB->query($sql);
+						$row = mysql_fetch_array($rs);
+						$mimetype = $row["med_mimetype"];
 					}
-					else
+					$myCO->set($a[2]."_mimetype", $mimetype);
+					if ($a[3])
 					{
-						$id = $myMB->uploadDocument($fname,$folder);
-					}
-
-					if ($id) // Hochladen erfolgreich
+						$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
+					} else
 					{
-						$this->set($a[2]."_med_id",$id);
+						$myCO->set($a[2]."_bez", "");
 					}
 					break;
 
-				case PT_CON_FORM_DOCUMENT : // Dokument
-				$fname = $myCO->formid."_".$a[2];
-				$myCO->set($a[2]."_med_id", $myRequest->get($fname."med_id"));
-				if ($a[3])
-				{
-					$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
-				} else
-				{
-					$myCO->set($a[2]."_bez", "");
-				}
-				break;
+					case PT_CON_FORM_SCRIPT :
+						$fname = $myCO->formid."_".$a[2];
+						$buffer = $myAdm->decodeRequest_HTMLArea($myRequest->get($fname));
+						$myCO->set($a[2], $buffer);
+						$filename = $a[5];
+						$fp = fopen($filename, "w");
+						fputs($fp, $buffer);
+						fclose($fp);
+						@ chmod($filename, UMASK);
+						break;
 
-				case PT_CON_FORM_DOCUMENTSELECTOR : // Dokument2
-				$fname = $myCO->formid."_".$a[2];
-				$myCO->set($a[2]."_med_id", $myRequest->get($fname."med_id"));
-				if ($a[3])
-				{
-					$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
-				} else
-				{
-					$myCO->set($a[2]."_bez", "");
-				}
-				break;
+					case PT_CON_FORM_DDPOSITIONER : // Positioner
+					$fname = $myCO->formid."_".$a[2]."_ddp_";
 
-				case PT_CON_FORM_MEDIASELECTOR : // Mediaselector
-				$fname = $myCO->formid."_".$a[2];
-				$img_id = $myRequest->get($fname."img_id");
-				$med_id = 0;
-				$type = 0;
-				if ($img_id <> 0)
-				{
-					$med_id = $img_id;
-					$type = MB_IMAGE;
-				} else
-				{
-					$med_id = $myRequest->get($fname."med_id");
-					if ($med_id <> 0)
+					$posstart = $myRequest->get($fname."_posstart");
+					$poschange = $myRequest->get($fname."_poschange");
+					$_posstart = explode(",", $posstart);
+					$_poschange = explode(",", $poschange);
+					$anzahl = $a[3];
+					$_posstore = Array ();
+
+					for ($j = 1; $j <= $anzahl; $j ++)
 					{
-						$type = MB_DOCUMENT;
+						$tpos = $_poschange[$j] - 1;
+						$_posstore[] = $_posstart[$tpos];
 					}
-				}
-				$myCO->set($a[2]."_med_id", $med_id);
-				$myCO->set($a[2]."_med_type", $type);
-				$mimetype = "";
-				if ($med_id != 0)
-				{
-					$sql = "SELECT med_mimetype FROM media WHERE med_id=".$med_id;
-					$rs = $myDB->query($sql);
-					$row = mysql_fetch_array($rs);
-					$mimetype = $row["med_mimetype"];
-				}
-				$myCO->set($a[2]."_mimetype", $mimetype);
-				if ($a[3])
-				{
-					$myCO->set($a[2]."_bez", $myRequest->get($fname."bez"));
-				} else
-				{
-					$myCO->set($a[2]."_bez", "");
-				}
-				break;
 
-				case PT_CON_FORM_SCRIPT :
-					$fname = $myCO->formid."_".$a[2];
-					$buffer = $myAdm->decodeRequest_HTMLArea($myRequest->get($fname));
-					$myCO->set($a[2], $buffer);
-					$filename = $a[5];
-					$fp = fopen($filename, "w");
-					fputs($fp, $buffer);
-					fclose($fp);
-					@ chmod($filename, UMASK);
+					$myCO->set($a[2], $_posstore);
 					break;
 
-				case PT_CON_FORM_DDPOSITIONER : // Positioner
-				$fname = $myCO->formid."_".$a[2]."_ddp_";
+					case PT_CON_FORM_DDTEXTFIELDCLUSTER : // DD-Textfieldcluster
+					$fname = $myCO->formid."_".$a[2]."_ddp_";
 
-				$posstart = $myRequest->get($fname."_posstart");
-				$poschange = $myRequest->get($fname."_poschange");
-				$_posstart = explode(",", $posstart);
-				$_poschange = explode(",", $poschange);
-				$anzahl = $a[3];
-				$_posstore = Array ();
+					$posstart = $myRequest->get($fname."_posstart");
+					$poschange = $myRequest->get($fname."_poschange");
+					$_posstart = explode(",", $posstart);
+					$_poschange = explode(",", $poschange);
+					$anzahl = $a[4];
+					$_posstore = Array ();
 
-				for ($j = 1; $j <= $anzahl; $j ++)
-				{
-					$tpos = $_poschange[$j] - 1;
-					$_posstore[] = $_posstart[$tpos];
-				}
-
-				$myCO->set($a[2], $_posstore);
-				break;
-
-				case PT_CON_FORM_DDTEXTFIELDCLUSTER : // DD-Textfieldcluster
-				$fname = $myCO->formid."_".$a[2]."_ddp_";
-
-				$posstart = $myRequest->get($fname."_posstart");
-				$poschange = $myRequest->get($fname."_poschange");
-				$_posstart = explode(",", $posstart);
-				$_poschange = explode(",", $poschange);
-				$anzahl = $a[4];
-				$_posstore = Array ();
-
-				for ($j = 1; $j <= $anzahl; $j ++)
-				{
-					$tpos = $_poschange[$j] - 1;
-					$_posstore[] = $_posstart[$tpos];
-
-					$fname = $myCO->formid."_".$a[2]."_".$j;
-					$myCO->set($a[2]."_".$j, $myRequest->get($fname));
-					$this->fullsearch .= $myRequest->get($fname)." | ";
-				}
-				if ($a[5]==1)
-				{
-					// Umsortieren
-					$_valtemp = Array();
 					for ($j = 1; $j <= $anzahl; $j ++)
 					{
-						$_valtemp[$j] = $myCO->get($a[2]."_".$_posstore[$j-1]);
-					}
-					$_posstore = Array();
-					for ($j = 1; $j <= $anzahl; $j ++)
-					{
-						$_posstore[] = $j;
-						$myCO->set($a[2]."_".$j,$_valtemp[$j]);
-					}
-				}
+						$tpos = $_poschange[$j] - 1;
+						$_posstore[] = $_posstart[$tpos];
 
-				$myCO->set($a[2]."_pos", $_posstore);
-				break;
+						$fname = $myCO->formid."_".$a[2]."_".$j;
+						$myCO->set($a[2]."_".$j, $myRequest->get($fname));
+						$this->fullsearch .= $myRequest->get($fname)." | ";
+					}
+					if ($a[5]==1)
+					{
+						// Umsortieren
+						$_valtemp = Array();
+						for ($j = 1; $j <= $anzahl; $j ++)
+						{
+							$_valtemp[$j] = $myCO->get($a[2]."_".$_posstore[$j-1]);
+						}
+						$_posstore = Array();
+						for ($j = 1; $j <= $anzahl; $j ++)
+						{
+							$_posstore[] = $j;
+							$myCO->set($a[2]."_".$j,$_valtemp[$j]);
+						}
+					}
+
+					$myCO->set($a[2]."_pos", $_posstore);
+					break;
+
+				}
 
 			}
-
 		}
 	}
-}
 
 
-function fetch_form_user($_params)
-{
-	global $myRequest;
-	$fname = $this->formid."_".$_params["property"];
-	$val = $myRequest->getI($fname);
-	$this->set($_params["property"],$val);
-}
-
-function setErrorText($s)
-{
-	$this->errorText = $s;
-}
-
-function setInfoText($s)
-{
-	$this->infoText = $s;
-}
-
-function setAlertText($s)
-{
-	$this->alertText = $s;
-}
-
-function getErrorText()
-{
-	return $this->errorText;
-}
-
-function getInfoText()
-{
-	return $this->infoText;
-}
-
-function getAlertText()
-{
-	return $this->alertText;
-}
-
-function changeUserStatus($usr_id, $time = "")
-{
-	global $myDB;
-	$mySQL = new SQLBuilder();
-	if ($time == "")
+	function fetch_form_user($_params)
 	{
-		$time = time();
+		global $myRequest;
+		$fname = $this->formid."_".$_params["property"];
+		$val = $myRequest->getI($fname);
+		$this->set($_params["property"],$val);
 	}
-	$mySQL->addField("dat_date", $time, DB_NUMBER);
-	$mySQL->addField("usr_id", $usr_id, DB_NUMBER);
-	$sql = $mySQL->update("content_data", "dat_id=".$this->id);
-	$myDB->query($sql);
-}
 
-function isLoaded()
-{
-	return $this->loaded;
-}
-
-function buttonClicked($button)
-{
-	if (isset ($_REQUEST[$button]))
+	function setErrorText($s)
 	{
-		return true;
-	} else
-	{
-		return false;
+		$this->errorText = $s;
 	}
-}
 
-function rawXMLDataImport($buffer)
-{
-	global $myDB;
-
-	$_xml = @simplexml_load_string($buffer);
-	if ($_xml)
+	function setInfoText($s)
 	{
-		$con_id = (int)utf8_decode($_xml->meta->con_id);
-		$importmethod = (string)utf8_decode($_xml->meta->importmethod);
-		$keepid = (int)utf8_decode($_xml->meta->keepid);
+		$this->infoText = $s;
+	}
 
-		$dat_id = (int)utf8_decode($_xml->meta->dat_id);
+	function setAlertText($s)
+	{
+		$this->alertText = $s;
+	}
 
-		$sql ="SELECT dat_id, con_id FROM content_data WHERE dat_id=".$dat_id;
-		$rs = $myDB->query($sql);
+	function getErrorText()
+	{
+		return $this->errorText;
+	}
 
-		if (mysql_num_rows($rs)==0 OR $dat_id==0)
-		{
-			$action ="insert";
-		}
-		else
-		{
-			$action="update";
-		}
+	function getInfoText()
+	{
+		return $this->infoText;
+	}
 
-		if ($importmethod=="append")
-		{
-			$dat_id=0;
-			$action ="insert";
-		}
+	function getAlertText()
+	{
+		return $this->alertText;
+	}
 
-		$buildindex = (int)utf8_decode($_xml->meta->buildindex);
-
+	function changeUserStatus($usr_id, $time = "")
+	{
+		global $myDB;
 		$mySQL = new SQLBuilder();
-		$mySQL->addField("con_id",$con_id,DB_NUMBER);
-
-		$dat_uid = (string)utf8_decode($_xml->content->dat_uid);
-		$mySQL->addField("dat_uid",$dat_uid);
-		$dat_bez = (string)utf8_decode($_xml->content->dat_bez);
-		$mySQL->addField("dat_bez",$dat_bez);
-		$dat_props = (string)utf8_decode($_xml->content->dat_props);
-		$mySQL->addField("dat_props",base64_decode($dat_props));
-		$dat_fullsearch = (string)utf8_decode($_xml->content->dat_fullsearch);
-		$mySQL->addField("dat_fullsearch",$dat_fullsearch);
-
-		// Default-Properties
-
-		$_default = Array();
-
-		$_default["usr_id_creator"]=2; // User Importer
-		$_default["dat_creationdate"]=time();;
-		$_default["usr_id"]=2; // User Importer
-		$_default["dat_date"]=time();
-		$_default["dat_pos"]=0;
-		$_default["dat_status"]=1;
-		$_default["med_id_thumb"]=7;
-
-		foreach ($_default AS $k => $v)
+		if ($time == "")
 		{
-			$p = (string)utf8_decode($_xml->content->$k);
-			if ($p!="")
-			{
-				$v = (int)$p;
-			}
-			$mySQL->addField($k,$v,DB_NUMBER);
+			$time = time();
 		}
+		$mySQL->addField("dat_date", $time, DB_NUMBER);
+		$mySQL->addField("usr_id", $usr_id, DB_NUMBER);
+		$sql = $mySQL->update("content_data", "dat_id=".$this->id);
+		$myDB->query($sql);
+	}
 
+	function isLoaded()
+	{
+		return $this->loaded;
+	}
 
-
-		if ($action=="insert")
+	function buttonClicked($button)
+	{
+		if (isset ($_REQUEST[$button]))
 		{
-			if ($dat_id!=0)
+			return true;
+		} else
+		{
+			return false;
+		}
+	}
+
+	function rawXMLDataImport($buffer)
+	{
+		global $myDB;
+
+		$_xml = @simplexml_load_string($buffer);
+		if ($_xml)
+		{
+			$con_id = (int)utf8_decode($_xml->meta->con_id);
+			$importmethod = (string)utf8_decode($_xml->meta->importmethod);
+			$keepid = (int)utf8_decode($_xml->meta->keepid);
+
+			$dat_id = (int)utf8_decode($_xml->meta->dat_id);
+
+			$sql ="SELECT dat_id, con_id FROM content_data WHERE dat_id=".$dat_id;
+			$rs = $myDB->query($sql);
+
+			if (mysql_num_rows($rs)==0 OR $dat_id==0)
+			{
+				$action ="insert";
+			}
+			else
+			{
+				$action="update";
+			}
+
+			if ($importmethod=="append")
+			{
+				$dat_id=0;
+				$action ="insert";
+			}
+
+			$buildindex = (int)utf8_decode($_xml->meta->buildindex);
+
+			$mySQL = new SQLBuilder();
+			$mySQL->addField("con_id",$con_id,DB_NUMBER);
+
+			$dat_uid = (string)utf8_decode($_xml->content->dat_uid);
+			$mySQL->addField("dat_uid",$dat_uid);
+			$dat_bez = (string)utf8_decode($_xml->content->dat_bez);
+			$mySQL->addField("dat_bez",$dat_bez);
+			$dat_props = (string)utf8_decode($_xml->content->dat_props);
+			$mySQL->addField("dat_props",base64_decode($dat_props));
+			$dat_fullsearch = (string)utf8_decode($_xml->content->dat_fullsearch);
+			$mySQL->addField("dat_fullsearch",$dat_fullsearch);
+
+			// Default-Properties
+
+			$_default = Array();
+
+			$_default["usr_id_creator"]=2; // User Importer
+			$_default["dat_creationdate"]=time();;
+			$_default["usr_id"]=2; // User Importer
+			$_default["dat_date"]=time();
+			$_default["dat_pos"]=0;
+			$_default["dat_status"]=1;
+			$_default["med_id_thumb"]=7;
+
+			foreach ($_default AS $k => $v)
+			{
+				$p = (string)utf8_decode($_xml->content->$k);
+				if ($p!="")
+				{
+					$v = (int)$p;
+				}
+				$mySQL->addField($k,$v,DB_NUMBER);
+			}
+
+
+
+			if ($action=="insert")
+			{
+				if ($dat_id!=0)
+				{
+					$mySQL->addField("dat_id",$dat_id,DB_NUMBER);
+				}
+				$sql = $mySQL->insert("content_data");
+				$myDB->query($sql);
+				$dat_id = mysql_insert_id();
+			}
+			else
 			{
 				$mySQL->addField("dat_id",$dat_id,DB_NUMBER);
+				$sql = $mySQL->update("content_data","dat_id=".$dat_id);
+				$myDB->query($sql);
 			}
-			$sql = $mySQL->insert("content_data");
-			$myDB->query($sql);
-			$dat_id = mysql_insert_id();
+
+			// Bausteine
+			$sql = "DELETE FROM sequence_data WHERE dat_id_content=".$dat_id;
+			foreach ($_xml->content->sequence_data->component AS $_xml_component)
+			{
+				$mySQL = new SQLBuilder();
+				$mySQL->addField("dat_id_content",$dat_id,DB_NUMBER);
+				$mySQL->addField("dat_visible",(int)utf8_decode($_xml_component->dat_visible),DB_NUMBER);
+				$mySQL->addField("dat_blocknr",(int)utf8_decode($_xml_component->dat_blocknr),DB_NUMBER);
+				$mySQL->addField("dat_pos",(int)utf8_decode($_xml_component->dat_pos),DB_NUMBER);
+				$mySQL->addField("com_id",(int)utf8_decode($_xml_component->com_id),DB_NUMBER);
+				$mySQL->addField("dat_comdata",base64_decode((string)utf8_decode($_xml_component->dat_comdata)));
+				$mySQL->addField("dat_fullsearch",(string)utf8_decode($_xml_component->dat_fullsearch));
+				$sql= $mySQL->insert("sequence_data");
+				$myDB->query($sql);
+			}
+
+
+			if ($buildindex==1)
+			{
+				$fname = "PhenotypeContent_".$con_id;
+				$myCO = new $fname;
+				$myCO->load($dat_id);
+				$myCO->store();
+			}
+
+			return $dat_id;
 		}
 		else
 		{
-			$mySQL->addField("dat_id",$dat_id,DB_NUMBER);
-			$sql = $mySQL->update("content_data","dat_id=".$dat_id);
-			$myDB->query($sql);
+			return (false);
 		}
-
-		// Bausteine
-		$sql = "DELETE FROM sequence_data WHERE dat_id_content=".$dat_id;
-		foreach ($_xml->content->sequence_data->component AS $_xml_component)
-		{
-			$mySQL = new SQLBuilder();
-			$mySQL->addField("dat_id_content",$dat_id,DB_NUMBER);
-			$mySQL->addField("dat_visible",(int)utf8_decode($_xml_component->dat_visible),DB_NUMBER);
-			$mySQL->addField("dat_blocknr",(int)utf8_decode($_xml_component->dat_blocknr),DB_NUMBER);
-			$mySQL->addField("dat_pos",(int)utf8_decode($_xml_component->dat_pos),DB_NUMBER);
-			$mySQL->addField("com_id",(int)utf8_decode($_xml_component->com_id),DB_NUMBER);
-			$mySQL->addField("dat_comdata",base64_decode((string)utf8_decode($_xml_component->dat_comdata)));
-			$mySQL->addField("dat_fullsearch",(string)utf8_decode($_xml_component->dat_fullsearch));
-			$sql= $mySQL->insert("sequence_data");
-			$myDB->query($sql);
-		}
-
-
-		if ($buildindex==1)
-		{
-			$fname = "PhenotypeContent_".$con_id;
-			$myCO = new $fname;
-			$myCO->load($dat_id);
-			$myCO->store();
-		}
-
-		return $dat_id;
 	}
-	else
+
+
+	function rawXMLDataExport($importmethod="overwrite")
 	{
-		return (false);
-	}
-}
 
+		global $myPT;
+		global $myDB;
 
-function rawXMLDataExport($importmethod="overwrite")
-{
-
-	global $myPT;
-	global $myDB;
-
-	$sql ="SELECT * FROM content_data WHERE dat_id=".$this->id;
-	$rs =$myDB->query($sql);
-	$row = mysql_fetch_array($rs);
-	$xml ='<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$sql ="SELECT * FROM content_data WHERE dat_id=".$this->id;
+		$rs =$myDB->query($sql);
+		$row = mysql_fetch_array($rs);
+		$xml ='<?xml version="1.0" encoding="ISO-8859-1" ?>
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
@@ -3865,21 +3895,21 @@ function rawXMLDataExport($importmethod="overwrite")
 	</meta>
 	<content>
 	';
-	$_felder = Array("dat_uid","dat_bez","usr_id_creator","dat_creationdate","usr_id","dat_date","dat_pos","dat_status","med_id_thumb","dat_fullsearch");
-	foreach ($_felder AS $k)
-	{
-		$xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
-	}
+		$_felder = Array("dat_uid","dat_bez","usr_id_creator","dat_creationdate","usr_id","dat_date","dat_pos","dat_status","med_id_thumb","dat_fullsearch");
+		foreach ($_felder AS $k)
+		{
+			$xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
+		}
 
-	$xml.='
+		$xml.='
 		<dat_props>'.base64_encode($row["dat_props"]).'</dat_props>
 		<sequence_data>';
 
-	$sql = "SELECT * FROM sequence_data WHERE dat_id_content=". $this->id. " AND dat_editbuffer=0 ORDER BY dat_blocknr , dat_pos";
-	$rs = $myDB->query($sql);
-	while ($row=mysql_fetch_array($rs))
-	{
-		$xml .='
+		$sql = "SELECT * FROM sequence_data WHERE dat_id_content=". $this->id. " AND dat_editbuffer=0 ORDER BY dat_blocknr , dat_pos";
+		$rs = $myDB->query($sql);
+		while ($row=mysql_fetch_array($rs))
+		{
+			$xml .='
 			<component>
 				<com_id>'.$myPT->codeX($row["com_id"]).'</com_id>
 				<dat_blocknr>'.$myPT->codeX($row["dat_blocknr"]).'</dat_blocknr>
@@ -3888,36 +3918,36 @@ function rawXMLDataExport($importmethod="overwrite")
 				<dat_comdata>'.base64_encode($row["dat_comdata"]).'</dat_comdata>
 				<dat_fullsearch>'.$myPT->codeX($row["dat_fullsearch"]).'</dat_fullsearch>
 			</component>';
-	}
-	$xml.='
+		}
+		$xml.='
 		</sequence_data>
 	</content>
 </phenotype>';		
-	return ($xml);
-}
-
-
-
-function rawXMLExport($content_type=-1)
-{
-	global $myDB;
-	global $myPT;
-
-	if ($content_type==-1)
-	{
-		$conten_type = $this->content_type;
+		return ($xml);
 	}
 
-	$sql = 'SELECT * FROM content WHERE con_id='. $content_type;
-	$rs = $myDB->query($sql);
-	$row = mysql_fetch_array($rs);
 
 
-	$file= APPPATH ."content/PhenotypeContent_"  .$content_type . ".class.php";
+	function rawXMLExport($content_type=-1)
+	{
+		global $myDB;
+		global $myPT;
 
-	$buffer = @file_get_contents($file);
+		if ($content_type==-1)
+		{
+			$conten_type = $this->content_type;
+		}
 
-	$xml = '<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$sql = 'SELECT * FROM content WHERE con_id='. $content_type;
+		$rs = $myDB->query($sql);
+		$row = mysql_fetch_array($rs);
+
+
+		$file= APPPATH ."content/PhenotypeContent_"  .$content_type . ".class.php";
+
+		$buffer = @file_get_contents($file);
+
+		$xml = '<?xml version="1.0" encoding="ISO-8859-1" ?>
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
@@ -3933,123 +3963,123 @@ function rawXMLExport($content_type=-1)
 	<script>'.$myPT->codeX($buffer).'</script>
 	<templates>'."\n";
 
-	$sql = 'SELECT * FROM content_template WHERE con_id = ' 	. $content_type . ' ORDER BY tpl_bez';
-	$rs = $myDB->query($sql);
-	while ($row=mysql_fetch_array($rs))
-	{
-		$file = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $content_type, $row["tpl_id"]);
-		$buffer = @file_get_contents($file);
-		$xml .= '<template access="'.$myPT->codeX($row['tpl_bez']).'">'.$myPT->codeX($buffer).'</template>'."\n";
-	}
+		$sql = 'SELECT * FROM content_template WHERE con_id = ' 	. $content_type . ' ORDER BY tpl_bez';
+		$rs = $myDB->query($sql);
+		while ($row=mysql_fetch_array($rs))
+		{
+			$file = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $content_type, $row["tpl_id"]);
+			$buffer = @file_get_contents($file);
+			$xml .= '<template access="'.$myPT->codeX($row['tpl_bez']).'">'.$myPT->codeX($buffer).'</template>'."\n";
+		}
 
 
-	$xml.='   	</templates>
+		$xml.='   	</templates>
 </phenotype>';
 
-	return $xml;
-}
+		return $xml;
+	}
 
-function rawXMLImport($buffer)
-{
-	global $myDB;
-	global $myPT;
-
-	$_xml = @simplexml_load_string($buffer);
-	if ($_xml)
+	function rawXMLImport($buffer)
 	{
-		$con_id = (int)utf8_decode($_xml->meta->con_id);
+		global $myDB;
+		global $myPT;
 
-		// Zunächst evtl. vorhanden alte Templates löschen
-
-		$sql = "SELECT * FROM content_template WHERE con_id = " . $con_id . " ORDER BY tpl_id";
-		$rs = $myDB->query($sql);
-		while ($row_ttp=mysql_fetch_array($rs))
+		$_xml = @simplexml_load_string($buffer);
+		if ($_xml)
 		{
-			$dateiname = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $con_id, $row_ttp["tpl_id"]);
-			@unlink($dateiname);
-		}
-		$sql = "DELETE FROM content_template WHERE con_id = " . $con_id;
-		$myDB->query($sql);
+			$con_id = (int)utf8_decode($_xml->meta->con_id);
 
-		// Jetzt die eigentliche Klasse
-		$dateiname = APPPATH . "includes/PhenotypeContent_"  .$con_id . ".class.php";
-		@unlink($dateiname);
+			// Zunächst evtl. vorhanden alte Templates löschen
 
-		$sql = "DELETE FROM content WHERE con_id = " . $con_id;
-		$myDB->query($sql);
-
-		// Und wieder bzw. neu anlegen
-
-		$mySQL = new SQLBuilder();
-		$mySQL->addField("con_id",$con_id,DB_NUMBER);
-		$con_bez = (string)utf8_decode($_xml->meta->con_bez);
-		$mySQL->addField("con_bez",$con_bez);
-		$con_description = (string)utf8_decode($_xml->meta->con_description);
-		$mySQL->addField("con_description",$con_description);
-		$con_rubrik = (string)utf8_decode($_xml->meta->con_rubrik);
-		$mySQL->addField("con_rubrik",$con_rubrik);
-
-		$con_usage = (int)utf8_decode($_xml->meta->con_anlegen);
-		$mySQL->addField("con_anlegen",$con_usage);
-
-		$con_usage = (int)utf8_decode($_xml->meta->con_bearbeiten);
-		$mySQL->addField("con_bearbeiten",$con_usage);
-
-		$con_usage = (int)utf8_decode($_xml->meta->con_loeschen);
-		$mySQL->addField("con_loeschen",$con_usage);
-
-
-		$sql = $mySQL->insert("content");
-		$myDB->query($sql);
-
-
-		$script = (string)utf8_decode($_xml->script);
-
-		$file = APPPATH . "content/PhenotypeContent_"  .$con_id . ".class.php";
-
-		$fp = fopen ($file,"w");
-		fputs ($fp,$script);
-		fclose ($fp);
-		@chmod ($file,UMASK);
-
-		// Templates anlegen
-
-		$tpl_id = 1;
-		foreach ($_xml->templates->template AS $_xml_template)
-		{
-			$access = (string)utf8_decode($_xml_template["access"]);
-			$mySQL = new SQLBuilder();
-			$mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
-			$mySQL->addField("con_id",$con_id,DB_NUMBER);
-			$mySQL->addField("tpl_bez",$access);
-			$sql = $mySQL->insert("content_template");
+			$sql = "SELECT * FROM content_template WHERE con_id = " . $con_id . " ORDER BY tpl_id";
+			$rs = $myDB->query($sql);
+			while ($row_ttp=mysql_fetch_array($rs))
+			{
+				$dateiname = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $con_id, $row_ttp["tpl_id"]);
+				@unlink($dateiname);
+			}
+			$sql = "DELETE FROM content_template WHERE con_id = " . $con_id;
 			$myDB->query($sql);
-			$html = (string)utf8_decode($_xml_template);
-			$file = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $con_id, $tpl_id);
+
+			// Jetzt die eigentliche Klasse
+			$dateiname = APPPATH . "includes/PhenotypeContent_"  .$con_id . ".class.php";
+			@unlink($dateiname);
+
+			$sql = "DELETE FROM content WHERE con_id = " . $con_id;
+			$myDB->query($sql);
+
+			// Und wieder bzw. neu anlegen
+
+			$mySQL = new SQLBuilder();
+			$mySQL->addField("con_id",$con_id,DB_NUMBER);
+			$con_bez = (string)utf8_decode($_xml->meta->con_bez);
+			$mySQL->addField("con_bez",$con_bez);
+			$con_description = (string)utf8_decode($_xml->meta->con_description);
+			$mySQL->addField("con_description",$con_description);
+			$con_rubrik = (string)utf8_decode($_xml->meta->con_rubrik);
+			$mySQL->addField("con_rubrik",$con_rubrik);
+
+			$con_usage = (int)utf8_decode($_xml->meta->con_anlegen);
+			$mySQL->addField("con_anlegen",$con_usage);
+
+			$con_usage = (int)utf8_decode($_xml->meta->con_bearbeiten);
+			$mySQL->addField("con_bearbeiten",$con_usage);
+
+			$con_usage = (int)utf8_decode($_xml->meta->con_loeschen);
+			$mySQL->addField("con_loeschen",$con_usage);
+
+
+			$sql = $mySQL->insert("content");
+			$myDB->query($sql);
+
+
+			$script = (string)utf8_decode($_xml->script);
+
+			$file = APPPATH . "content/PhenotypeContent_"  .$con_id . ".class.php";
+
 			$fp = fopen ($file,"w");
-			fputs ($fp,$html);
+			fputs ($fp,$script);
 			fclose ($fp);
-			@chmod ($dateiname,UMASK);
-			$tpl_id++;
+			@chmod ($file,UMASK);
+
+			// Templates anlegen
+
+			$tpl_id = 1;
+			foreach ($_xml->templates->template AS $_xml_template)
+			{
+				$access = (string)utf8_decode($_xml_template["access"]);
+				$mySQL = new SQLBuilder();
+				$mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
+				$mySQL->addField("con_id",$con_id,DB_NUMBER);
+				$mySQL->addField("tpl_bez",$access);
+				$sql = $mySQL->insert("content_template");
+				$myDB->query($sql);
+				$html = (string)utf8_decode($_xml_template);
+				$file = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $con_id, $tpl_id);
+				$fp = fopen ($file,"w");
+				fputs ($fp,$html);
+				fclose ($fp);
+				@chmod ($dateiname,UMASK);
+				$tpl_id++;
+			}
+
+			// war nur ein Test, wird umgebaut ...
+			//$fname = "PhenotypeContent_".$con_id;
+			//$myCO = new $fname;
+			//$myCO->snapshot(3,"config");
+
+
+			return $con_id;
+
 		}
-
-		// war nur ein Test, wird umgebaut ...
-		//$fname = "PhenotypeContent_".$con_id;
-		//$myCO = new $fname;
-		//$myCO->snapshot(3,"config");
-
-
-		return $con_id;
-
+		else
+		{
+			return (false);
+		}
 	}
-	else
-	{
-		return (false);
-	}
-}
 
 
-/**
+	/**
 	 * writes an actual snapshot of the contentobject data or configuration into the snapshot table and
 	 * returns the snapshot-xml
 	 *
@@ -4058,19 +4088,19 @@ function rawXMLImport($buffer)
 	 * @return string
 	 */
 
-function snapshot($usr_id=1,$mode="data")
-{
-	if ($mode=="data")
+	function snapshot($usr_id=1,$mode="data")
 	{
-		return $this->snapshotData($usr_id);
+		if ($mode=="data")
+		{
+			return $this->snapshotData($usr_id);
+		}
+		else // config
+		{
+			return $this->snapshotConfiguration($usr_id);
+		}
 	}
-	else // config
-	{
-		return $this->snapshotConfiguration($usr_id);
-	}
-}
 
-/**
+	/**
 	 * writes an actual snapshot of the contentobject data into the snapshot table and
 	 * returns the snapshot-xml
 	 *
@@ -4078,34 +4108,34 @@ function snapshot($usr_id=1,$mode="data")
 	 * @return string
 	 */
 
-function snapshotData($usr_id)
-{
-	global $myDB;
-	global $myLog;
-	$xml = $this->rawXMLDataExport();
+	function snapshotData($usr_id)
+	{
+		global $myDB;
+		global $myLog;
+		$xml = $this->rawXMLDataExport();
 
-	$mySQL = new SQLBuilder();
-	$mySQL->addField("sna_type","CO");
-	$mySQL->addField("key_id",$this->id,DB_NUMBER);
-	$mySQL->addField("sec_id",$this->content_type,DB_NUMBER);
-	$mySQL->addField("sna_date",time(),DB_NUMBER);
-	$mySQL->addField("usr_id",$usr_id,DB_NUMBER);
-	$mySQL->addField("sna_zip",0,DB_NUMBER);
-	// too many problems with gzcompress, maybe in a later version
-	//$mySQL->addField("sna_xml",gzcompress($xml));
-	$mySQL->addField("sna_xml",$xml);
-	$mySQL->addField("sna_sync",0,DB_NUMBER);
-	$sql = $mySQL->insert("snapshot");
-	$myDB->query($sql);
-
-
-	$myLog->log("Snapshot " . mysql_insert_id() . " zu Datensatz " . $this->id . " (Content-Type " . $this->content_type .") erstellt.",PT_LOGFACILITY_SYS);
-
-	return $xml;
-}
+		$mySQL = new SQLBuilder();
+		$mySQL->addField("sna_type","CO");
+		$mySQL->addField("key_id",$this->id,DB_NUMBER);
+		$mySQL->addField("sec_id",$this->content_type,DB_NUMBER);
+		$mySQL->addField("sna_date",time(),DB_NUMBER);
+		$mySQL->addField("usr_id",$usr_id,DB_NUMBER);
+		$mySQL->addField("sna_zip",0,DB_NUMBER);
+		// too many problems with gzcompress, maybe in a later version
+		//$mySQL->addField("sna_xml",gzcompress($xml));
+		$mySQL->addField("sna_xml",$xml);
+		$mySQL->addField("sna_sync",0,DB_NUMBER);
+		$sql = $mySQL->insert("snapshot");
+		$myDB->query($sql);
 
 
-/**
+		$myLog->log("Snapshot " . mysql_insert_id() . " zu Datensatz " . $this->id . " (Content-Type " . $this->content_type .") erstellt.",PT_LOGFACILITY_SYS);
+
+		return $xml;
+	}
+
+
+	/**
 	 * writes an actual snapshot of the contentclass configuration into the snapshot table and
 	 * returns the snapshot-xml
 	 *
@@ -4113,167 +4143,167 @@ function snapshotData($usr_id)
 	 * @return string
 	 */
 
-function snapshotConfiguration($usr_id)
-{
-	global $myDB;
-	$xml = $this->rawXMLExport();
-
-	// erst ab 2.5 aktiv
-	/*
-	$mySQL = new SQLBuilder();
-	$mySQL->addField("sna_date",time(),DB_NUMBER);
-	$mySQL->addField("con_id",$this->content_type,DB_NUMBER);
-	$mySQL->addField("usr_id",$usr_id,DB_NUMBER);
-	$mySQL->addField("sna_xml",$xml);
-	$sql = $mySQL->insert("snapshot_content");
-	$myDB->query($sql);
-	*/
-	return $xml;
-}
-
-
-function getRSSHeader($mode)
-{
-	// check details at http://www.rssboard.org/rss-2-0
-
-	$_rss = Array(
-	"title"=>"Phenotype Contentfeed for " . $this->bez,
-	"link"=>"http://www.phenotype.de",
-	"description"=>"This feed lists all recently changed items of content-type " .$this->content_type . " - " .$this->bez,
-	"pubDate"=>date("r")
-	);
-
-	return ($_rss);
-}
-
-function getRSSItem($mode)
-{
-
-	$_rss = Array(
-	"title"=>$this->id . " - " . $this->get("bez"),
-	"link"=>ADMINFULLURL . "backend.php?page=Editor,Content,edit&id=".$this->id."&uid=".$this->uid,
-	"description"=>"",
-	"author"=>"", // nobody@phenotype.de
-	"date"=> $this->date
-	);
-
-	return ($_rss);
-}
-
-function getRSSHeaderImage($mode)
-{
-	$_rss = Array(
-	"url"=>ADMINFULLURL ."img/rsslogo.gif",
-	"title"=>"Phenotype RSS Feed",
-	"link"=>"http://www.phenotype.de"
-	);
-
-	return ($_rss);
-}
-
-function displayRSS($mode,$items=25,$days=7)
-{
-	global $myPT;
-
-	$xml= '<?xml version="1.0" encoding="ISO-8859-1"?>
-		<rss version="2.0">
-  			<channel>';
-
-	$_rss = $this->getRSSHeader($mode);
-	foreach ($_rss AS $k => $v)
+	function snapshotConfiguration($usr_id)
 	{
-		$xml .='<'.$k.'>'.$myPT->codeX($v) .'</'.$k.'>'."\n";
+		global $myDB;
+		$xml = $this->rawXMLExport();
+
+		// erst ab 2.5 aktiv
+		/*
+		$mySQL = new SQLBuilder();
+		$mySQL->addField("sna_date",time(),DB_NUMBER);
+		$mySQL->addField("con_id",$this->content_type,DB_NUMBER);
+		$mySQL->addField("usr_id",$usr_id,DB_NUMBER);
+		$mySQL->addField("sna_xml",$xml);
+		$sql = $mySQL->insert("snapshot_content");
+		$myDB->query($sql);
+		*/
+		return $xml;
 	}
 
 
-	$_rss=$this->getRSSHeaderImage($mode);
-
-	if (is_array($_rss))
+	function getRSSHeader($mode)
 	{
-		$xml .="<image>";
+		// check details at http://www.rssboard.org/rss-2-0
+
+		$_rss = Array(
+		"title"=>"Phenotype Contentfeed for " . $this->bez,
+		"link"=>"http://www.phenotype.de",
+		"description"=>"This feed lists all recently changed items of content-type " .$this->content_type . " - " .$this->bez,
+		"pubDate"=>date("r")
+		);
+
+		return ($_rss);
+	}
+
+	function getRSSItem($mode)
+	{
+
+		$_rss = Array(
+		"title"=>$this->id . " - " . $this->get("bez"),
+		"link"=>ADMINFULLURL . "backend.php?page=Editor,Content,edit&id=".$this->id."&uid=".$this->uid,
+		"description"=>"",
+		"author"=>"", // nobody@phenotype.de
+		"date"=> $this->date
+		);
+
+		return ($_rss);
+	}
+
+	function getRSSHeaderImage($mode)
+	{
+		$_rss = Array(
+		"url"=>ADMINFULLURL ."img/rsslogo.gif",
+		"title"=>"Phenotype RSS Feed",
+		"link"=>"http://www.phenotype.de"
+		);
+
+		return ($_rss);
+	}
+
+	function displayRSS($mode,$items=25,$days=7)
+	{
+		global $myPT;
+
+		$xml= '<?xml version="1.0" encoding="ISO-8859-1"?>
+		<rss version="2.0">
+  			<channel>';
+
+		$_rss = $this->getRSSHeader($mode);
 		foreach ($_rss AS $k => $v)
 		{
 			$xml .='<'.$k.'>'.$myPT->codeX($v) .'</'.$k.'>'."\n";
 		}
-		$xml .="</image>";
+
+
+		$_rss=$this->getRSSHeaderImage($mode);
+
+		if (is_array($_rss))
+		{
+			$xml .="<image>";
+			foreach ($_rss AS $k => $v)
+			{
+				$xml .='<'.$k.'>'.$myPT->codeX($v) .'</'.$k.'>'."\n";
+			}
+			$xml .="</image>";
+		}
+
+		$xml .=$this->renderRSSItems($mode,$items,$days);
+
+		$xml .="</channel></rss>";
+		echo $xml;
 	}
 
-	$xml .=$this->renderRSSItems($mode,$items,$days);
-
-	$xml .="</channel></rss>";
-	echo $xml;
-}
 
 
-
-function renderRSSItems($mode,$items,$days)
-{
-	global $myDB;
-	$sql = "SELECT * FROM content_data WHERE con_id = " .$this->content_type . " AND dat_status = 1 ORDER BY dat_date DESC";
-
-	$rs = $myDB->query($sql);
-	$xml ="";
-	$cname ="PhenotypeContent_".$this->content_type;
-	$myCO = new $cname;
-	while ($row=mysql_fetch_array($rs))
+	function renderRSSItems($mode,$items,$days)
 	{
-		$myCO->init($row);
-		$xml .= $myCO->renderRSSItem($mode);
+		global $myDB;
+		$sql = "SELECT * FROM content_data WHERE con_id = " .$this->content_type . " AND dat_status = 1 ORDER BY dat_date DESC";
+
+		$rs = $myDB->query($sql);
+		$xml ="";
+		$cname ="PhenotypeContent_".$this->content_type;
+		$myCO = new $cname;
+		while ($row=mysql_fetch_array($rs))
+		{
+			$myCO->init($row);
+			$xml .= $myCO->renderRSSItem($mode);
+		}
+		return ($xml);
 	}
-	return ($xml);
-}
 
-function renderRSSItem($mode)
-{
-	global $myPT;
-
-	$_rss = $this->getRSSItem($mode);
-
-	if ($link=="")
+	function renderRSSItem($mode)
 	{
-		$link =ADMINFULLURL . "backend.php?page=Editor,Content,edit&id=".$this->id."&uid=".$this->uid;
-	}
-	$xml ='<item>
+		global $myPT;
+
+		$_rss = $this->getRSSItem($mode);
+
+		if ($link=="")
+		{
+			$link =ADMINFULLURL . "backend.php?page=Editor,Content,edit&id=".$this->id."&uid=".$this->uid;
+		}
+		$xml ='<item>
 	  <pubDate>'.date("r",$_rss["date"]).'</pubDate>	
       <title>'.$myPT->codeX($_rss["title"]).'</title>
       <description>'.$myPT->codeX($_rss["description"]).'</description>
       <link>'.$myPT->codeX($_rss["link"]).'</link>
       <author>'.$myPT->codeX($_rss["author"]).'</author>
     </item>';
-	return $xml;
-}
+		return $xml;
+	}
 
-// ToDO: Suchmethode, die den term nach und/oder segmentiert und ein Query auf den
-// Volltextindex absetzt (analog EVOI-Include 19)
+	// ToDO: Suchmethode, die den term nach und/oder segmentiert und ein Query auf den
+	// Volltextindex absetzt (analog EVOI-Include 19)
 
-/**
+	/**
 	 * Enter description here...
 	 *
 	 * @return recordset
 	 */
-function search($term,$limit)
-{
+	function search($term,$limit)
+	{
 
-	return $rs;
-}
-
-
-function execute_form_ajax($token,$step)
-{
-	$nextstep="stop";
-	echo "TOKEN:". $token . " STEP:".$step;
-	sleep(1);
-	return $nextstep;
-}
+		return $rs;
+	}
 
 
-function getAjaxJSLink($token,$step)
-{
-	return ("ajax_".$token."_doit('".$step."');");
-}
+	function execute_form_ajax($token,$step)
+	{
+		$nextstep="stop";
+		echo "TOKEN:". $token . " STEP:".$step;
+		sleep(1);
+		return $nextstep;
+	}
 
 
-/**
+	function getAjaxJSLink($token,$step)
+	{
+		return ("ajax_".$token."_doit('".$step."');");
+	}
+
+
+	/**
    * retrieves URL of a page using the DAO cache
    * 
    * You should not overwerite this method. If you want to change URL behaviour
@@ -4283,28 +4313,28 @@ function getAjaxJSLink($token,$step)
    * @return string
    */
 
-public function getURL($action="show",$lng_id=null)
-{
-	return url_for_co($this,$action,$lng_id,array());
+	public function getURL($action="show",$lng_id=null)
+	{
+		return url_for_co($this,$action,$lng_id,array());
 
-	//return $this->buildURL($action,$lng_id);
-}
+		//return $this->buildURL($action,$lng_id);
+	}
 
-public function getHUrl($action="show",$lng_id=null)
-{
-	global $myPT;
-	return $myPT->codeH($this->getUrl($action,$lng_id));
-}
+	public function getHUrl($action="show",$lng_id=null)
+	{
+		global $myPT;
+		return $myPT->codeH($this->getUrl($action,$lng_id));
+	}
 
-public function buildURL($action="show",$lng_id=null)
-{
-	return "undefined";
-}
+	public function buildURL($action="show",$lng_id=null)
+	{
+		return "undefined";
+	}
 
-public function __call($methodname,$params)
-{
-	throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
-}
+	public function __call($methodname,$params)
+	{
+		throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
+	}
 
 	/**
   * previewRender method render the preview properties from the content object
@@ -4316,11 +4346,11 @@ public function __call($methodname,$params)
 	{
 		$sHTML = $this->preRender($skin);
 		return $sHTML;
-		
+
 		/* example with content template
-		eval ($this->initRendering()); 
-		$mySmarty->assign("sContent", $sHTML); 
-		return $mySmarty->fetch($TPL_PreviewSite);  
+		eval ($this->initRendering());
+		$mySmarty->assign("sContent", $sHTML);
+		return $mySmarty->fetch($TPL_PreviewSite);
 		*/
 	}
 }

@@ -56,6 +56,8 @@ $mySmarty = new PhenotypeSmarty();
 $mySmarty->template_dir = SYSTEMPATH  . "templates/";	
 $mySmarty->compile_dir = SMARTYCOMPILEPATH;	
 $mySmarty->assign("id", $id);
+$mySmarty->assign("dat_id_min", $id*1000);
+$mySmarty->assign("dat_id_max", ($id+1)*1000-1);
 
 $html = $mySmarty->fetch("contentobject_defaultcode.tpl");
 

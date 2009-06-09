@@ -9,6 +9,9 @@ class PhenotypeContent_{/literal}{$id}{literal} extends PhenotypeContent
 {
   public $content_type = {/literal}{$id}{literal};
   
+  protected $dat_id_min = {/literal}{$dat_id_min}{literal};
+  protected $dat_id_max = {/literal}{$dat_id_max}{literal};
+  
   // Remove comment slashes for multiple tabs
   // public $_blocks = Array("Config","Items");
   // public $_icons = Array("b_konfig.gif","b_items.gif");
