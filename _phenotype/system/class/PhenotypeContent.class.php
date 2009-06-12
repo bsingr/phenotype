@@ -709,15 +709,15 @@ class PhenotypeContentStandard extends PhenotypeBase
 	{
 		global $myPT;
 		$myPT->startbuffer();
-		echo "<pre>";
-		$_props = $this->_props;
-		ksort($_props);
-		print_r($_props);
-		echo "</pre>";
+		$this->printProperties();	
 		$html = $myPT->stopbuffer();
-		return ($html);
+		return ($html);	
 	}
 
+	
+
+
+	
 	// Diese Funktion wird in Includes und Pagescripts aufgerufen
 	function render($skin = "debug", $count = 0)
 	{
@@ -4337,21 +4337,15 @@ class PhenotypeContentStandard extends PhenotypeBase
 	}
 
 	/**
-  * previewRender method render the preview properties from the content object
+  * preview method render the preview properties from the content object
   *
-   * @param string $skin which skin be used
+  * @param integer $block_nr number of selected tab while editing the content record
    * @return string return the preview HTML code
   */
-	public function previewRender($skin = "")
+	public function preview($block_nr)
 	{
-		$sHTML = $this->preRender($skin);
-		return $sHTML;
+		$this->printProperties();
 
-		/* example with content template
-		eval ($this->initRendering());
-		$mySmarty->assign("sContent", $sHTML);
-		return $mySmarty->fetch($TPL_PreviewSite);
-		*/
 	}
 }
 ?>

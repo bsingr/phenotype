@@ -2277,6 +2277,8 @@ function initoid()
 			document.write ('<param name="archive" value="<?php echo ADMINFULLURL ?>dndlite.jar">');
 			document.write ('<param name="code" value="com.radinks.dnd.DNDAppletLite">');
 			document.write ('<param name="name" value="Rad Upload Lite">');
+			document.write ('<param name="max_upload_message" value="<?php echo localeH('msg_rad_upload')?>"');
+			
 		   	document.write ('<param name = "url" value = "<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,ddupload&usr_id=<?php echo $mySUser->id ?>&PHPSESSID=<?php echo session_id() ?>">'); 
    			document.write ('<param name = "message" value="<br\>&nbsp;Drag & Drop - Upload">');
  		  	<?php

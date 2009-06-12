@@ -239,10 +239,8 @@ class PhenotypeApplicationManager
 
 		}
 
-		$sql = "DELETE FROM sequence_data WHERE dat_id_content<>0";
-		$rs = $myDB->query($sql);
 
-		$sql = "TRUNCATE table include_template";
+		$sql = "TRUNCATE table content_template";
 		$rs = $myDB->query($sql);
 	}
 
@@ -269,6 +267,13 @@ class PhenotypeApplicationManager
 
 		$sql = "TRUNCATE  content_data";
 		$rs = $myDB->query($sql);
+		
+		$sql = "TRUNCATE  content_data_editbuffer";
+		$rs = $myDB->query($sql);
+		
+		
+		$sql = "DELETE FROM sequence_data WHERE dat_id_content<>0";
+		$rs = $myDB->query($sql);		
 
 		$sql = "DELETE FROM content_statistics";
 		$rs = $myDB->query($sql);
@@ -546,6 +551,7 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
 			<show_quickfinder>1</show_quickfinder>
 			<show_pageurl>1</show_pageurl>
 			<auto_pageurl>1</auto_pageurl>
+		    <show_ButtonBarOnTop>0</show_ButtonBarOnTop>
 		</section>
 		<section name="edit_content">
 			<flat_tree>1</flat_tree>
@@ -555,6 +561,10 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
 			<auto_deleteimportbox>1</auto_deleteimportbox>
 			<build_snapshot>0</build_snapshot>
 		</section>
+		<section name="preview_dialog">
+			<dialog_width>800</dialog_width>
+			<dialog_heigth>500</dialog_heigth>
+		</section>		
 		<section name="config_pages">
 		</section>
 		<section name="config_content">

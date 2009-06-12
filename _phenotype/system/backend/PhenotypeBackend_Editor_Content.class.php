@@ -1261,7 +1261,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 		<html>
 		<head>
-			<title>Debug property view - record nrr. <?php echo $myRequest->getI("id") ?></title>
+			<title>Debug property view - record nr. <?php echo $myRequest->getI("id") ?></title>
 		</head>
 
 		<body>
@@ -1311,9 +1311,9 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     $myCO = $this->buildCO($dat_id,$block_nr);
 
-		echo $myCO->previewRender();
+	$myCO->preview($block_nr);
 		
-		exit();
+	exit();
   }
 
   function copy()
