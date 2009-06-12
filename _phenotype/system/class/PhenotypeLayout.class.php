@@ -3002,36 +3002,38 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
       </table>
 <?php
 
-
-$table ="temp_stats_" .uniqid("pt");
 if ($scope==1) // Monatsansicht
 {
 	$zeitraum = date("Ym",$datum);
 	//$sql = "CREATE TEMPORARY TABLE " . $table . " SELECT pag_id, SUM(sta_pageview) AS sum FROM page_statistics WHERE sta_datum >" . $zeitraum ."00" . " AND sta_datum <" . $zeitraum . "99 GROUP BY pag_id";
-	$sql = "CREATE TEMPORARY TABLE " . $table . " SELECT page.pag_id, SUM(sta_pageview) AS sum FROM page_statistics LEFT JOIN page ON page_statistics.pag_id = page.pag_id WHERE sta_datum >" . $zeitraum ."00" . " AND sta_datum <" . $zeitraum . "99";
+	$subquery = "(SELECT page.pag_id, SUM(sta_pageview) AS sum FROM page_statistics LEFT JOIN page ON page_statistics.pag_id = page.pag_id WHERE sta_datum >" . $zeitraum ."00" . " AND sta_datum <" . $zeitraum . "99";
 	if ($grp_id!=-1)
 	{
-		$sql.= " AND page.grp_id = " . $grp_id;
+		$subquery.= " AND page.grp_id = " . $grp_id;
 	}
-	$sql.=" GROUP BY page.pag_id";
+	$subquery.= " GROUP BY page.pag_id) AS SubQuery";
 
 
 }
 else
 {
-	$sql = "CREATE TEMPORARY TABLE " . $table . " SELECT page.pag_id, sta_pageview AS sum FROM page_statistics LEFT JOIN page ON page_statistics.pag_id = page.pag_id WHERE sta_datum =". date ("Ymd",$datum);
+	$subquery = "(SELECT page.pag_id, sta_pageview AS sum FROM page_statistics LEFT JOIN page ON page_statistics.pag_id = page.pag_id WHERE sta_datum =". date ("Ymd",$datum);
 	if ($grp_id!=-1)
 	{
 		$sql.= " AND page.grp_id = " . $grp_id;
-	};
+	}
+	$subquery.= ") AS SubQuery";
 }
+
 $rs = $myDB->query($sql);
-$sql = "SELECT COUNT(*) AS C FROM " . $table;
+$sql = "SELECT COUNT(*) AS C FROM " . $subquery;
+
 $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
 $c = $row["C"];
 
-$sql = "SELECT MAX(sum) AS M, SUM(sum) AS S FROM " . $table;
+$sql = "SELECT MAX(sum) AS M, SUM(sum) AS S FROM " . $subquery;
+
 $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
 $max = $row["M"];
@@ -3058,8 +3060,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 	}
 	</style>
 			  <?php
-			  $sql = "SELECT * FROM " . $table . " LEFT JOIN page ON " . $table . ".pag_id = page.pag_id ORDER BY sum DESC LIMIT 0," . $anzahl;
-
+			  $sql = "SELECT * FROM " . $subquery . " LEFT JOIN page ON SubQuery.pag_id = page.pag_id ORDER BY sum DESC LIMIT 0," . $anzahl;
 			  $rs = $myDB->query($sql);
 			  while ($row = mysql_fetch_array($rs))
 			  {
@@ -3112,8 +3113,6 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
         </tr>
       </table>
 <?php
-$sql = "DROP TABLE ".  $table;
-$myDB->query($sql);
 			  }
 			  // -- Abrufe
 			  // ####################################################
