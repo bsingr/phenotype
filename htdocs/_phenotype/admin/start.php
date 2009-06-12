@@ -320,7 +320,7 @@ if ($mySUser->checkRight("elm_content"))
 				{
 					$filter = " AND " . $filter;
 				}
-				$sql = "(SELECT content_data.dat_bez, content_data.dat_id,content_data.dat_id,content_data.usr_id,content_data.dat_date,content_data.dat_status, content_data.med_id_thumb, content.con_bearbeiten ,content.con_loeschen , content.con_bez FROM content_data LEFT JOIN content ON content_data.con_id = content.con_id WHERE content_data.con_id = " . $row["con_id"] . $filter. " ORDER BY dat_date DESC LIMIT 0,3)";
+				$sql = "(SELECT content_data.dat_bez, content_data.dat_id,content_data.dat_id,content_data.usr_id,content_data.dat_date,content_data.dat_status, content_data.med_id_thumb, content.con_bearbeiten ,content.con_loeschen , content.con_bez, dat_altered FROM content_data LEFT JOIN content ON content_data.con_id = content.con_id WHERE content_data.con_id = " . $row["con_id"] . $filter. " ORDER BY dat_date DESC LIMIT 0,3)";
 				if ($sql_union=="")
 				{
 					$sql_union = $sql;
@@ -382,9 +382,16 @@ if ($mySUser->checkRight("elm_content"))
 			<td class="tableBody"><?php echo $row_data["con_bez"] ?></td>
             <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["dat_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
-			<?php if ($row_data["dat_status"]==1){ ?>
-			<img src="img/i_online.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22">
-			<?php }else{ ?>
+			<?php if ($row_data["dat_status"]==1){
+							if($row_data["dat_altered"]==1) {
+								?>
+								<img src="img/i_changed.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22" border="0">
+								<?php
+							} else {
+				?>
+			  <img src="img/i_online.gif" alt="<?php echo localeH("Status: online");?>" width="30" height="22" border="0">
+			<?php 	}
+						}else{ ?>
 			<img src="img/i_offline.gif" alt="<?php echo localeH("Status: offline");?>" width="30" height="22">
 			<?php } ?>
 			</td>

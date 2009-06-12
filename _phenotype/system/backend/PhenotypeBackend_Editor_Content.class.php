@@ -827,7 +827,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     }
 
     $row = mysql_fetch_array($rs);
-    
+
 		/*
 		echo "<pre>";
 		var_dump($row);
@@ -843,6 +843,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     	if (mysql_num_rows($rs)==1)
     	{
     		$row = mysql_fetch_array($rs);
+				$row["dat_altered"]=1;
     	}   	
     }
 
@@ -855,6 +856,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     	if (mysql_num_rows($rs)==1)
     	{
     		$row = mysql_fetch_array($rs);
+				$row["dat_altered"]=1;
     	}   	
     }
 

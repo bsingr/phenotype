@@ -165,6 +165,10 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
     	$con_id=0;
     	while ($row_data=mysql_fetch_array($rs))
     	{
+				$cname = "PhenotypeContent_".$row_data["con_id"];
+				$myCO = new $cname;
+				$myCO->init($row_data);
+
     		if ($con_id==0)
     		{
     			$sql_con = "SELECT * FROM content WHERE con_id = " .$row_data["con_id"];
@@ -203,9 +207,19 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			</td>
             <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["dat_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td class="tableBody">
-			<?php if ($row_data["dat_status"]==1){ ?>
+			<?php if ($row_data["dat_status"]==1){ 
+							if($myCO->publishmode == true && $myCO->isAltered()) {
+								?>
+								<img src="img/i_changed.gif" alt="Status: online" width="30" height="22">
+								<?php
+							} else {
+				?>
+						
+
 			<img src="img/i_online.gif" alt="Status: online" width="30" height="22">
-			<?php }else{ ?>
+			<?php 
+							}
+				}else{ ?>
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
 			<?php } ?>
 			</td>
@@ -239,9 +253,15 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 				<?php
 				if ($myCO->status ==1)
 				{
+					if($myCO->publishmode == true && $myCO->isAltered()) {
+						?>
+						<img src="img/i_site_changed.gif" width="24" height="18">
+						<?php
+					} else {
 				?>
 				<img src="img/i_site_on.gif" width="24" height="18">
 				<?php
+					}
 				}else{
 				?>
 				<img src="img/i_site_off.gif" width="24" height="18">

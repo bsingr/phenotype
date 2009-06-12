@@ -4347,5 +4347,16 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$this->printProperties();
 
 	}
+
+	/**
+  * preview method render the preview properties from the content object
+  *
+   * @return boolean return the database col dat_altered (1=true / 0=false)
+  */
+	public function isAltered()
+	{
+		return (boolean) $this->row["dat_altered"];
+
+	}
 }
 ?>
