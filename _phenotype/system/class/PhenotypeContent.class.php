@@ -1291,7 +1291,24 @@ class PhenotypeContentStandard extends PhenotypeBase
 		}
 	}
 
-	function form_ddupload($input, $folder, $x, $y)
+	/**
+	 * Provides a Drag & Drop Upload Zone
+	 *
+	 * @param string label name
+	 * @param string target folder for uploaded files (on top of PT_TEMPPATH/contentupload/con_id/usr_id)
+	 * @param integer width
+	 * @param integer height
+	 * 
+	 * 
+	 * If you use this form_xy method you must overwrite the update-method, 
+	 * look into the upload folder and process the uploads somehow ...
+	 * 
+	 * Usally the parameter $folder is best initialized with "$this->id", so you get the uploaded
+	 * file related to your record. If you have more than one form_ddupload method on your content entry form
+	 * you must specify different folder names. (Sub folders are not possible here.)
+	 * 
+	 */
+	function form_ddupload($input, $folder="", $x=405, $y=100)
 	{
 		$a = Array (PT_CON_FORM_DDUPLOAD, $input, $folder, $x, $y);
 		if ($this->formmode == 1)
@@ -2653,35 +2670,16 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		// ######## DD-Upload
 				case PT_CON_FORM_DDUPLOAD :
-?>
+					$target_url = ADMINFULLURL ."admin_ddcontentupload.php?con_id=".$this->content_type ."&userid=".$mySUser->id."&savepath=".$a[2]; 
+					$md5hash = md5("con_id".$this->content_type."userid".$mySUser->id."savepath".$a[2].PT_SECRETKEY);
+					?>
+	
              <tr>
              <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
              <td width="509" class="formarea">
-            <?php 		if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE")) { ?>
-			<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
-				width= "<?php echo $a[3] ?>" height= "<?php echo $a[4] ?>"  
-				codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">
-<?php 		} else { ?>
-			<object type="application/x-java-applet;version=1.4.1"
-				width= "<?php echo $a[3] ?>" height= "<?php echo $a[4] ?>"  >
-	<?php 	} ?>
-				<param name="archive" value="<?php echo ADMINFULLURL ?>dndlite.jar">
-				<param name="code" value="com.radinks.dnd.DNDAppletLite">
-				<param name="name" value="Rad Upload Lite">
-		   		<param name = "url" value = "<?php echo ADMINFULLURL ?>admin_ddcontentupload.php?con_id=<?php echo $this->content_type ?>&userid=<?php echo $mySUser->id ?>&savepath=<?php echo urlencode($a[2]) ?>"> 
-   				<param name = "message" value="<br\>&nbsp;Drag & Drop - Upload">
-
-
-   		<?php
-
-
-   		if (isset ($_SERVER['PHP_AUTH_USER']))
-   		{
-   			printf('<param name="chap" value="%s">', base64_encode($_SERVER['PHP_AUTH_USER'].":".$_SERVER['PHP_AUTH_PW']));
-   		}
-?>	</object>
-			 </td>
+             <?php echo $myLayout->workarea_form_ddupload((int)$a[3],(int)$a[4],$target_url,"Drag & Drop - Upload",$md5hash);?>
+             </td>
              </tr>
 		<?php
 

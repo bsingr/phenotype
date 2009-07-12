@@ -37,6 +37,7 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
 
   public $stored = false;
   public $loaded = false;
+  public $changed= false;
 
   function __construct($bez,$params=array(), $forceBuild=false,$clearOnEdit = false)
   {

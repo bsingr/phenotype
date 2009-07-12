@@ -42,17 +42,21 @@ class PhenotypeBackend_Session_Login_Standard extends PhenotypeBackend_Session
 		$login = false;
 		if ($_REQUEST['user']!="")
 		{
-			$sql = "SELECT * FROM user WHERE usr_login = '" . $myRequest->getSQL("user") ."' AND usr_status=1";
+			$sql = "SELECT * FROM user WHERE usr_login = '" . $myRequest->getA("user",PT_ALPHANUMERICINT."_") ."' AND usr_status=1";
 			$rs = $myDB->query($sql);
 			if ($row=mysql_fetch_array($rs))
 			{
-				if ( $row["usr_pass"] ==  crypt(strtolower($myRequest->get("pass")),"phenotype"))
+				$salt = $row["usr_salt"];
+				if ($salt=="") // backward compatibility for users without salt
+				{
+					$salt="phenotype";
+				}
+				if ( $row["usr_pass"] ==  crypt($myRequest->get("pass"),$salt))
 				{
 					$login = true;
 				}
 			}
 		}
-
 
 		if ($login == true)
 		{

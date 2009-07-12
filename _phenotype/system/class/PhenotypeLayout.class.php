@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -28,49 +28,49 @@ class PhenotypeLayoutStandard
 {
 	// :TODO: necessary any longer?
 	//var $props_topline = Array();
-	
+
 	var $props_tab = Array();
 	var $props_iconbar = Array();
 	var $props_tree = Array();
-	
+
 	public $component_count = 0;
 
 	public $dhtmlwz_init = 0;
-	
-	/*
-	 * @var Array	shows the state of rtf editor setup.
-	 *
-	 * if an editor is included in the page, in this array is stored the following:
-	 * $editorInit[editorName] = 1;
-	 */
-	private $editorInit = Array();
-	
-	/*
-	 * @var	Array	contains the state of the config setup for the rtfEditor
-	 *
-	 * if an editor config is included in the page, in this array is stored the following:
-	 * $rtfEditorConfigs[configSet] = 1;
-	 */
-	private $rtfEditorConfigs = Array();
-	
-	/*
-	 * @var	Array	contains the state of the config setup for the codeEditor
-	 *
-	 * if an editor config is included in the page, in this array is stored the following:
-	 * $codeEditorConfigs[configSet] = 1;
-	 */
-	private $codeEditorConfigs = Array();
-	
 
 	/*
-	 * :TODO: necessary anyl longer?
+	* @var Array	shows the state of rtf editor setup.
+	*
+	* if an editor is included in the page, in this array is stored the following:
+	* $editorInit[editorName] = 1;
+	*/
+	private $editorInit = Array();
+
+	/*
+	* @var	Array	contains the state of the config setup for the rtfEditor
+	*
+	* if an editor config is included in the page, in this array is stored the following:
+	* $rtfEditorConfigs[configSet] = 1;
+	*/
+	private $rtfEditorConfigs = Array();
+
+	/*
+	* @var	Array	contains the state of the config setup for the codeEditor
+	*
+	* if an editor config is included in the page, in this array is stored the following:
+	* $codeEditorConfigs[configSet] = 1;
+	*/
+	private $codeEditorConfigs = Array();
+
+
+	/*
+	* :TODO: necessary anyl longer?
 	function topline_addEntry($bez,$url)
 	{
-		$_entry["url"]=$url;
-		$_entry["bez"]=$bez;
-		$this->props_topline[] = $_entry;
+	$_entry["url"]=$url;
+	$_entry["bez"]=$bez;
+	$this->props_topline[] = $_entry;
 	}
-	 */
+	*/
 
 	/**
 	 * adds a entry in the tab bar of the Layout
@@ -205,10 +205,10 @@ class PhenotypeLayoutStandard
 	</table>
 	<?php
 	}
-	
+
 
 	// ab hier aktuell
-	
+
 	/**
 	 * draws the tabs set in the layout
 	 *
@@ -274,19 +274,19 @@ class PhenotypeLayoutStandard
 	<input type="hidden" name="<?php echo $name ?>" value="<?php echo $val ?>">
 
 	<?php
-		$i=0;
-		foreach ($this->props_iconbar as $_entry)
+	$i=0;
+	foreach ($this->props_iconbar as $_entry)
+	{
+		$url = $_entry["url_inactive"];
+		$alt = $_entry["alt"];
+		$value = $_entry["value"];
+		if ($value==$val)
 		{
-			$url = $_entry["url_inactive"];
-			$alt = $_entry["alt"];
-			$value = $_entry["value"];
-			if ($value==$val)
-			{
-				$url =$_entry["url_active"];
-			}
-			?><a href="javascript:switch_<?php echo $name ?>('<?php echo $value ?>',<?php echo $i ?>,'<?php echo $_entry["url_active"] ?>');"><img src="img/<?php echo $url ?>" alt="<?php echo $alt ?>" width="22" height="22" border="0" align="absmiddle" name="<?php echo $name. "_img_".$i ?>"></a><?php
-			$i++;
+			$url =$_entry["url_active"];
 		}
+		?><a href="javascript:switch_<?php echo $name ?>('<?php echo $value ?>',<?php echo $i ?>,'<?php echo $_entry["url_active"] ?>');"><img src="img/<?php echo $url ?>" alt="<?php echo $alt ?>" width="22" height="22" border="0" align="absmiddle" name="<?php echo $name. "_img_".$i ?>"></a><?php
+		$i++;
+	}
 	?>
 	<script language="JavaScript">
 	function switch_<?php echo $name ?>(v,i,url)
@@ -434,7 +434,7 @@ class PhenotypeLayoutStandard
     </table>
 	<?php  
 	}
-	
+
 	/**
 	 * draws the head line of the content area with ID of current media object, online state etc..
 	 * this function is specific to media object editing mode I guess
@@ -733,7 +733,7 @@ class PhenotypeLayoutStandard
 		if ($br==1){$html.="<br>";}
 		return $html;
 	}
-	
+
 	/**
 	 * initializes the javascript editor for RichText or HTML
 	 *
@@ -745,7 +745,7 @@ class PhenotypeLayoutStandard
 	{
 		global $myPT;
 		global $myLog;
-		
+
 		$key = '';
 		if ($mode == PT_EDITOR_RTF)
 		{
@@ -762,7 +762,7 @@ class PhenotypeLayoutStandard
 			$myLog->log("initJSEditor: method call without mode not valid!", PT_LOGFACILITY_SYS, PT_LOGLVL_ERROR);
 			return false;
 		}
-		
+
 		// ** load the configured editor if necessary
 		if (! (array_key_exists($myPT->getPref($key), $this->editorInit) && ($this->editorInit[$myPT->getPref($key)] == 1)) )
 		{
@@ -787,26 +787,26 @@ class PhenotypeLayoutStandard
 <?php
 			}
 			$this->editorInit[$myPT->getPref($key)] = 1;
-			
+
 		}
-		
+
 		// now setup the configurations array in JS
 		if (count($configArray) == 0)
 		{
 ?>
 <script type="text/javascript">
-	var <?php echo($js_var); ?> = Object();
+var <?php echo($js_var); ?> = Object();
 </script>
 <?php
 		}
-		
+
 		// ** get config for tinyMCE, fckEditor uses external config files directly
 		if (! array_key_exists($configSet, $configArray) && ($myPT->getPref($key) == PT_RTF_EDITOR_TINYMCE))
 		{
 ?>
 	<script type="text/javascript" src="<?php echo(SERVERURL . $myPT->getPref($key .'_config_path') . $configSet .'.js'); ?>"></script>
 <?php
-			$configArray[$configSet] = 1;
+$configArray[$configSet] = 1;
 		}
 	}
 
@@ -825,41 +825,41 @@ class PhenotypeLayoutStandard
 	{
 		global $myAdm;
 		global $myPT;
-		
+
 		$configSet = 'default'; // could be used to have different setups for code editors. currently not used and no argument for that, but build into code.
 
 		$content = $myAdm->get_filecontents_highlighted($filename);
-		
+
 		$this->init_js_editor(PT_EDITOR_CODE, $configSet);
-		
+
 		// ** now render and setup the particular editor field
 ?>
 	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" style="width: <?php echo $x ?>px" class="input RichText"><?php echo $content ?></textarea>
 <?php
-		if ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_TINYMCE)
-		{
+if ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_TINYMCE)
+{
 ?>
 	<script type="text/javascript">
-		var myOpts = pt_code_opts["<?php echo $configSet ?>"];
-		myOpts.mode = "exact";
-		myOpts.theme = "advanced";
-		myOpts.elements = "<?php echo $name ?>";
-		tinyMCE.init(myOpts);
+	var myOpts = pt_code_opts["<?php echo $configSet ?>"];
+	myOpts.mode = "exact";
+	myOpts.theme = "advanced";
+	myOpts.elements = "<?php echo $name ?>";
+	tinyMCE.init(myOpts);
 	</script>
 <?php
-    	} elseif ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_FCKEDITOR)
-    	{
+} elseif ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_FCKEDITOR)
+{
 ?>
 	<script type="text/javascript">
-		var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
-		oFCKeditor.BasePath	= '<?php echo ADMINURL ?>lib/fckeditor/fckeditor/' ;
-		oFCKeditor.Width = <?php echo $x ?>;
-		oFCKeditor.Height = <?php echo $rows*17 ?> ;
-		oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo(SERVERURL . $myPT->getPref('backend.code_editor_config_path') . $configSet .'.js'); ?>";
-		oFCKeditor.ReplaceTextarea() ;
+	var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
+	oFCKeditor.BasePath	= '<?php echo ADMINURL ?>lib/fckeditor/fckeditor/' ;
+	oFCKeditor.Width = <?php echo $x ?>;
+	oFCKeditor.Height = <?php echo $rows*17 ?> ;
+	oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo(SERVERURL . $myPT->getPref('backend.code_editor_config_path') . $configSet .'.js'); ?>";
+	oFCKeditor.ReplaceTextarea() ;
 	</script>
 <?php
-    	}
+}
 	}
 
 
@@ -877,40 +877,40 @@ class PhenotypeLayoutStandard
 	function form_Richtext($name, $val, $cols=80, $rows=10, $x=410, $configSet="default")
 	{
 		global $myPT;
-		
+
 		$val = htmlentities($val);
-		
+
 		$this->init_js_editor(PT_EDITOR_RTF, $configSet);
-		
-		
+
+
 		// ** now render and setup the particular editor field
 ?>
 	<textarea cols="<?php echo $cols ?>" rows="<?php echo $rows ?>" wrap="physical" name="<?php echo $name ?>" id="<?php echo $name ?>" style="width: <?php echo $x ?>px" class="input RichText"><?php echo $val ?></textarea>
 <?php
-		if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
-		{
+if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
+{
 ?>
 	<script type="text/javascript">
-		var myOpts = pt_rtf_opts["<?php echo $configSet ?>"];
-		myOpts.mode = "exact";
-		myOpts.theme = "advanced";
-		myOpts.elements = "<?php echo $name ?>";
-		tinyMCE.init(myOpts);
+	var myOpts = pt_rtf_opts["<?php echo $configSet ?>"];
+	myOpts.mode = "exact";
+	myOpts.theme = "advanced";
+	myOpts.elements = "<?php echo $name ?>";
+	tinyMCE.init(myOpts);
 	</script>
 <?php
-    	} elseif ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_FCKEDITOR)
-    	{
+} elseif ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_FCKEDITOR)
+{
 ?>
 	<script type="text/javascript">
-		var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
-		oFCKeditor.BasePath	= '<?php echo ADMINURL ?>lib/fckeditor/fckeditor/' ;
-		oFCKeditor.Width = <?php echo $x ?>;
-		oFCKeditor.Height = <?php echo $rows*17 ?> ;
-		oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo(SERVERURL . $myPT->getPref('backend.rtf_editor_config_path') . $configSet .'.js'); ?>";
-		oFCKeditor.ReplaceTextarea() ;
+	var oFCKeditor = new FCKeditor( '<?php echo $name ?>' ) ;
+	oFCKeditor.BasePath	= '<?php echo ADMINURL ?>lib/fckeditor/fckeditor/' ;
+	oFCKeditor.Width = <?php echo $x ?>;
+	oFCKeditor.Height = <?php echo $rows*17 ?> ;
+	oFCKeditor.Config["CustomConfigurationsPath"] = "<?php echo(SERVERURL . $myPT->getPref('backend.rtf_editor_config_path') . $configSet .'.js'); ?>";
+	oFCKeditor.ReplaceTextarea() ;
 	</script>
 <?php
-    	}
+}
 	}
 
 	/**
@@ -1116,10 +1116,10 @@ class PhenotypeLayoutStandard
 			case "links":
 				$align="left";
 				break;
-				case "rechts":
+			case "rechts":
 				$align="right";
 				break;
-				case "mittig":
+			case "mittig":
 				$align="center";
 				break;
 		}
@@ -1184,23 +1184,23 @@ class PhenotypeLayoutStandard
      $this->iconbar_draw($name."img_align",$align,"editform");
      //$this->workarea_form_iconbar($name_org."bildausrichtung",$align);
      echo "<br>";
-	 if ($version !== false) {
+     if ($version !== false) {
      echo locale("Version")?>:<br/>
     <select name="<?php echo $name ?>version" class="listmenu">
     <?php
-     $html = '<option value="0" >Original</option>';
-	 $sql = "SELECT * FROM mediaversion WHERE med_id = ".$myImg->id." ORDER BY ver_bez, ver_id DESC";
-	 $rs = $myDB->query($sql);
-     while ($row = mysql_fetch_array($rs))
-     {
-	 $selected ="";
-	 if ($row["ver_id"] == $version)
-	 {
-		$selected = "selected";
-	 }
-		$html .='<option value="'. $row["ver_id"] .'" ' . $selected . '>' . $row["ver_bez"] . '</option>';
-     }
-     echo $html;
+    $html = '<option value="0" >Original</option>';
+    $sql = "SELECT * FROM mediaversion WHERE med_id = ".$myImg->id." ORDER BY ver_bez, ver_id DESC";
+    $rs = $myDB->query($sql);
+    while ($row = mysql_fetch_array($rs))
+    {
+    	$selected ="";
+    	if ($row["ver_id"] == $version)
+    	{
+    		$selected = "selected";
+    	}
+    	$html .='<option value="'. $row["ver_id"] .'" ' . $selected . '>' . $row["ver_bez"] . '</option>';
+    }
+    echo $html;
      ?>				 
     </select>
     <?php } ?>
@@ -1214,19 +1214,19 @@ class PhenotypeLayoutStandard
 				<?php echo locale("Version")?>:<br/>
     <select name="<?php echo $name ?>version" class="listmenu">
     <?php
-     $html = '<option value="0" >Original</option>';
-	 $sql = "SELECT * FROM mediaversion WHERE med_id = ".$myImg->id." ORDER BY ver_bez, ver_id DESC";
-	 $rs = $myDB->query($sql);
-     while ($row = mysql_fetch_array($rs))
-     {
-	 $selected ="";
-	 if ($row["ver_id"] == $version)
-	 {
-		$selected = "selected";
-	 }
-		$html .='<option value="'. $row["ver_id"] .'" ' . $selected . '>' . $row["ver_bez"] . '</option>';
-     }
-     echo $html. '</td></tr></table>';
+    $html = '<option value="0" >Original</option>';
+    $sql = "SELECT * FROM mediaversion WHERE med_id = ".$myImg->id." ORDER BY ver_bez, ver_id DESC";
+    $rs = $myDB->query($sql);
+    while ($row = mysql_fetch_array($rs))
+    {
+    	$selected ="";
+    	if ($row["ver_id"] == $version)
+    	{
+    		$selected = "selected";
+    	}
+    	$html .='<option value="'. $row["ver_id"] .'" ' . $selected . '>' . $row["ver_bez"] . '</option>';
+    }
+    echo $html. '</td></tr></table>';
  	}
  	?>
  	<?php }?>
@@ -1336,7 +1336,7 @@ return $myPT->stopBuffer();
                 	echo '<a href="'.$myDoc->url.'" target="_blank">Dokument Nr. ' . $myDoc->id . " - " . $myDoc->bez."</a>";
                 	echo '<a href="backend.php?page=Editor,Media,edit&id='.$myDoc->id .'"><img src="img/b_edit_b.gif" alt="" style="padding-top:0px;padding-left:5px;vertical-align:bottom" border="0"/></a>';
                 }
-                else 
+                else
                 {
                 	echo localeH("msg_selected_image_not_found",Array($med_id));
                 }
@@ -1413,7 +1413,7 @@ return $myPT->stopBuffer();
                 	echo '<a href="'.$myDoc->url.'" target="_blank">Dokument Nr. ' . $myDoc->id . " - " . $myDoc->bez."</a>";
                 	echo '<a href="backend.php?page=Editor,Media,edit&id='.$myDoc->id .'"><img src="img/b_edit_b.gif" alt="" style="padding-top:0px;padding-left:5px;vertical-align:bottom" border="0"/></a>';
                 }
-                else 
+                else
                 {
                 	echo localeH("msg_selected_image_not_found",Array($med_id));
                 }
@@ -1614,7 +1614,7 @@ return $myPT->stopBuffer();
     <?php }
     else // No info entered yet
     {
-   
+
     	$style='style="visibility: hidden;display:none"';
 	?>
 
@@ -1645,31 +1645,31 @@ return $myPT->stopBuffer();
      {
      	echo $this->workarea_form_select2(locale("Link type"),$name."type",$linktype,$linktype_options,100);
      }
-     else 
+     else
      {
      	echo $this->workarea_form_hidden($name."type",0);
      }
      if ($bez!==false)
      {
-     echo $this->workarea_form_text(locale("Linkname"),$name."bez",$bez);
+     	echo $this->workarea_form_text(locale("Linkname"),$name."bez",$bez);
      }
-     else 
+     else
      {
      	echo $this->workarea_form_hidden($name."bez","");
      }
      if ($linktext!==false)
      {
-     echo $this->workarea_form_textarea(locale("Link text"),$name."text",$linktext,3,300);
+     	echo $this->workarea_form_textarea(locale("Link text"),$name."text",$linktext,3,300);
      }
-     else 
+     else
      {
      	echo $this->workarea_form_hidden($name."text","");
      }
      if ($linksource!==false)
      {
-     echo $this->workarea_form_text(locale("Source"),$name."source",$linksource,100);
+     	echo $this->workarea_form_text(locale("Source"),$name."source",$linksource,100);
      }
-     else 
+     else
      {
      	echo $this->workarea_form_hidden($name."source","");
      }
@@ -1680,15 +1680,15 @@ return $myPT->stopBuffer();
      <?php
      if ($target!==false)
      {
-     if($target==""){$target="_self";}
-      $this->iconbar_new();
-     $this->iconbar_addentry("b_link_target_self.gif","b_link_target_self_activ.gif","_self","im gleichen Fenster");
-     $this->iconbar_addentry("b_link_target_blank.gif","b_link_target_blank_activ.gif","_blank","in neuem Fenster");
-     echo "<td>";
-     $this->iconbar_draw($name."target",$target,"editform");
-     echo "</td>";
+     	if($target==""){$target="_self";}
+     	$this->iconbar_new();
+     	$this->iconbar_addentry("b_link_target_self.gif","b_link_target_self_activ.gif","_self","im gleichen Fenster");
+     	$this->iconbar_addentry("b_link_target_blank.gif","b_link_target_blank_activ.gif","_blank","in neuem Fenster");
+     	echo "<td>";
+     	$this->iconbar_draw($name."target",$target,"editform");
+     	echo "</td>";
      }
-     else 
+     else
      {
      	echo $this->workarea_form_hidden($name."target","");
      }
@@ -1697,7 +1697,7 @@ return $myPT->stopBuffer();
      	echo "<td>&nbsp;X".$this->workarea_form_text("",$name."x",$popup_x,25,0) ." Y";
      	echo $this->workarea_form_text("",$name."y",$popup_y,25,0)."</td>";
      }
-     else 
+     else
      {
      	echo $this->workarea_form_hidden($name."x","");
      	echo $this->workarea_form_hidden($name."y","");
@@ -2019,7 +2019,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
 	  <?php
 	}
 
-	
+
 	/**
 	 * :TODO: remove
 	 *
@@ -2759,7 +2759,7 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 	<?php
 	}
 
-  /**
+	/**
    * :TODO: Check if used anywhere
    *
    */
@@ -3771,7 +3771,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		$myUser = new PhenotypeUser();
 
 		$letter = strtolower($row["tik_eisenhower"]);
-		
+
 		switch ($scope)
 		{
 			case "Process":
@@ -3784,11 +3784,11 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 				$popup = $myPT->getIPref("tickets.popup_ticketaction_editmode");
 				break;
 		}
-		
-	
+
+
 		// Dann kommen wir aus dem Redaktionsmodus, beim Pinnen soll in Process gewechselt werden
 		if ($scope==""){$scope="Process";}
-	
+
 		// Wenn ein Ticket noch nicht kalkuliert wurde, seit die Rueckstellung geendet hat
 		if ($letter>"d" AND $row["tik_sleepdate"]<time() AND $row["tik_status"]==1)
 		{
@@ -3832,11 +3832,11 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		else
 		{
 			$color="black";
-			
-    		echo '<td class="taskTopCorner" height="26">';
-    		echo '<a name="tik'.$row["tik_id"].'"></a>';
-    		echo '<img src="img/t_closed_white.gif" alt="' . localeH("Ticket closed").'" width="25" height="22" border="0"></td>';
- 	  	
+
+			echo '<td class="taskTopCorner" height="26">';
+			echo '<a name="tik'.$row["tik_id"].'"></a>';
+			echo '<img src="img/t_closed_white.gif" alt="' . localeH("Ticket closed").'" width="25" height="22" border="0"></td>';
+
 		}
 		?>
 			<td valign="top" class="taskData" align="right"><?php echo $row["tik_id"] ?></td>
@@ -3886,7 +3886,137 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
           </tr>
 		<?php
 	}
+
+
+
+	/**
+	 * render Drag & Drop Zone
+	 *
+	 * @param integer $width
+	 * @param integer $height
+	 * @param string $target_url
+	 * @param string Message to be displayed or url to be loaded
+	 * @return string
+	 */
+	public function workarea_form_ddupload($width,$height,$target_url,$message="Drag & Drop - Upload",$md5hash="")
+	{
+		global $myPT;
+
+		$target_url = $target_url ."&md5=".$md5hash;
+		
+		if ($myPT->getPref("backend.rad_upload")=="plus")
+		{
+			$html = $this->workarea_form_ddupload_radplus($width,$height,$target_url,$message,$md5hash);
+		}
+		else
+		{
+			$html = $this->workarea_form_ddupload_radlite($width,$height,$target_url,$message,$md5hash);
+		}
+		return $html;
+	}
+
+	protected function workarea_form_ddupload_radplus($width,$height,$target_url,$message,$md5hash)
+	{
+		$id = "rad";
+		$pathToRad = ADMINFULLURL;
+
+		$html = '
+		<script type="text/javascript">
+		var _info = navigator.userAgent;
+        var ie = (_info.indexOf("MSIE") > 0);
+        var win = (_info.indexOf("Win") > 0);
+        if(win)
+        {
+
+            if(ie)
+            {
+		         document.writeln(\'<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"\');
+		         document.writeln(\'      width= "'.$width.'" height= "'.$height.'" id="'.$id.'"\');
+		         document.writeln(\'      codebase="http://java.sun.com/update/1.5.0/jinstall-1_5-windows-i586.cab#version=1,4,1">\');
+            }
+            else
+            {
+                document.writeln(\'<object type="application/x-java-applet;version=1.4.1"\');
+                document.writeln(\'width= "'.$width.'" height= "'.$height.'"  id="'.$id.'" >\');
+            }
+            document.writeln(\'<param name="archive" value="'.$pathToRad.'dndplus.jar">\');
+            document.writeln(\'<param name="code" value="com.radinks.dnd.DNDAppletPlus">\');
+            document.writeln(\'<param name="name" value="Rad Upload Plus">\');
+
+        }
+        else
+        {
+            /* mac and linux */
+            document.writeln(\'<applet \');
+            document.writeln(\'         archive  = "'.$pathToRad.'dndplus.jar"\');
+            document.writeln(\'         code     = "com.radinks.dnd.DNDAppletPlus"\');
+            document.writeln(\'         name     = "Rad Upload Plus"\');
+            document.writeln(\'         hspace   = "0"\');
+            document.writeln(\'         vspace   = "0" MAYSCRIPT="yes"\');
+            document.writeln(\'         width = "'.$width.'"\');
+            document.writeln(\'         height = "'.$height.'"\');
+            document.writeln(\'         align    = "middle" id="'.$id.'">\');
+        }
+
+		/******    BEGIN APPLET CONFIGURATION PARAMETERS   ******/
+
+		document.writeln(\'<param name="max_upload" value="0">\');
+		document.writeln(\'<param name="message" value="<br\>&nbsp;'.codeH($message).'">\');
+		document.writeln(\'<param name="url" value="'.$target_url.'" />\');
+		//document.writeln(\'<param name="props_file" value="'.$pathToRad.'radupload_properties.php" />\');
+
+		/******    END APPLET CONFIGURATION PARAMETERS     ******/
+	    if(win)
+		{
+			document.writeln(\'</object>\');
+		}
+		else
+		{
+		  document.writeln(\'</applet>\');
+		}
+		</script>';
+		return $html;
+
+	}
+
+	protected function workarea_form_ddupload_radlite($width,$height,$target_url,$message,$md5hash)
+	{
+		global $myPT;
+		$myPT->startBuffer();
+
+		if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE"))
+		{
+		?>
+		<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
+			width= "<?php echo $width ?>" height= "<?php echo $height ?>"  
+			codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">
+		<?php 		
+		} 
+		else
+		{
+		?>
+		<object type="application/x-java-applet;version=1.4.1"
+			width= "<?php echo $width ?>" height= "<?php echo $height ?>"  
+		<?php 	
+		}
+		?>
+		<param name="archive" value="<?php echo ADMINFULLURL ?>dndlite.jar">
+		<param name="code" value="com.radinks.dnd.DNDAppletLite">
+		<param name="name" value="Rad Upload Lite">
+   		<param name = "url" value = "<?php echo $target_url?>"> 
+		<param name = "message" value="<br\>&nbsp;<?php echo codeH($message)?>">
+   		<?php
+   		if (isset ($_SERVER['PHP_AUTH_USER']))
+   		{
+   			printf('<param name="chap" value="%s">', base64_encode($_SERVER['PHP_AUTH_USER'].":".$_SERVER['PHP_AUTH_PW']));
+   		}
+   		?>	
+   		</object>
+   		<?php
+   		$html = $myPT->stopBuffer();
+   		return $html;
+	}
 }
 
 
-?>
+

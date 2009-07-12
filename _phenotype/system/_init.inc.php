@@ -53,13 +53,16 @@ ini_set("gpc_order","GP");
 switch (PT_LOCALE)
 {
 	case "de":
+		define ("PT_ALPHAINT","ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 		define ("PT_ALPHA","ABCDEFGHIJKLMNOPQRSTUVWXYZÖÄÜßabcdefghijklmnopqrstuvwxyzöäü");
 		break;
 	default:
+		define ("PT_ALPHAINT","ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 		define ("PT_ALPHA","ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 		break;
 }
 define ("PT_ALPHANUMERIC",PT_ALPHA."0123456789");
+define ("PT_ALPHANUMERICINT",PT_ALPHAINT."0123456789");
 define ("PT_ALPHAPLUS",PT_ALPHANUMERIC.".,:;-_*+!§$%&()[]=?^#~?@");
 define ("PT_ALPHAPLUSQUOTES",PT_ALPHAPLUS."'\"'");
 

@@ -20,7 +20,15 @@
 ?>
 <?php
 require("_config.inc.php");
-//require("_session.inc.php");
+$md5hash = md5("con_id".$myRequest->get("con_id")."userid".$myRequest->get("userid")."savepath".$myRequest->get("savepath").PT_SECRETKEY);
+
+if ($myRequest->get("md5")!=$md5hash)
+{
+	echo "MD5 Error";
+	exit();
+}
+
+
 $myPT->loadTMX("Admin");
 ?>
 <html>
@@ -47,11 +55,11 @@ body {
 
 $save_path=TEMPPATH. "/contentupload/";    
 if(!file_exists($save_path)){mkdir ($save_path,UMASK);}
-$save_path.=$_REQUEST["con_id"]."/";
+$save_path.=$myRequest->getI("con_id")."/";
 if(!file_exists($save_path)){mkdir ($save_path,UMASK);}
-$save_path.=$_REQUEST["userid"]."/";
+$save_path.=$myRequest->getI("userid")."/";
 if(!file_exists($save_path)){mkdir ($save_path,UMASK);}
-$save_path.=$_REQUEST["savepath"]."/";
+$save_path.=$myRequest->getA("savepath",PT_ALPHANUMERICINT)."/";
 if(!file_exists($save_path)){mkdir ($save_path,UMASK);}
 
 $file = $_FILES['userfile'];

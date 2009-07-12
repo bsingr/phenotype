@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -27,7 +27,15 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 {
 	public $tmxfile = "Admin_Users";
 
-	public $pwstatus = 0; // shows wether the user changed his password or not
+	/**
+	 * indicates which password status message should be shown
+	 * 
+	 * 0: none
+	 * 1: password change failed (caused by a typo)
+	 * 
+	 * @var integer
+	 */
+	protected $pwstatus = 0; // shows wether the user changed his password or not
 
 	function execute($scope,$action)
 	{
@@ -480,7 +488,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		if ($myRequest->get("b")==0)
 		{
 
-			$mySQL->addField("usr_login",$myRequest->get("login"));
+			$mySQL->addField("usr_login",$myRequest->getA("login",PT_ALPHANUMERICINT."_"));
 			$mySQL->addField("usr_vorname",$myRequest->get("vorname"));
 			$mySQL->addField("usr_nachname",$myRequest->get("nachname"));
 			$mySQL->addField("usr_email",$myRequest->get("email"));
@@ -490,12 +498,16 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 			if (($myRequest->get("pass1")!="pass") OR ($myRequest->get("pass2")!="pass"))
 			{
 				$this->pwstatus = 1;
+
 				if (strtolower($myRequest->get("pass1"))==strtolower($myRequest->get("pass2")) AND ($myRequest->get("pass1")!=""))
 				{
-					$newpass = crypt(strtolower($myRequest->get("pass1")),"phenotype");
-					$mySQL->addField("usr_pass",$newpass);
+					$salt = md5(uniqid(mt_rand(), true)) . md5(uniqid(mt_rand(), true));
+					$newpass = crypt($myRequest->get("pass1"),$salt);
+					$mySQL->addField("usr_pass",$newpass);					
+					$mySQL->addField("usr_salt",$salt);	
 					$this->pwstatus = 2;
 				}
+				
 			}
 			// Preferences
 			$_preferences = Array();

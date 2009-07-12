@@ -377,7 +377,7 @@ class PhenotypeUserStandard
 	</meta>
 	<content>
 	';
-		$_felder = Array("usr_vorname","usr_nachname","usr_login","usr_pass","usr_email","usr_createdate","usr_lastlogin","usr_su","usr_status","med_id_thumb");
+		$_felder = Array("usr_vorname","usr_nachname","usr_login","usr_pass","usr_salt","usr_email","usr_createdate","usr_lastlogin","usr_su","usr_status","med_id_thumb");
 		foreach ($_felder AS $k)
 		{
 			$xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
@@ -417,7 +417,7 @@ class PhenotypeUserStandard
 
 			$mySQL = new SqlBuilder();
 			$mySQL->addField("usr_id",$usr_id,DB_NUMBER);
-			$_felder = Array("usr_vorname","usr_nachname","usr_login","usr_pass","usr_email","usr_createdate","usr_lastlogin","usr_su","usr_status","med_id_thumb");
+			$_felder = Array("usr_vorname","usr_nachname","usr_login","usr_pass","usr_salt","usr_email","usr_createdate","usr_lastlogin","usr_su","usr_status","med_id_thumb");
 			foreach ($_felder AS $k)
 			{
 				$mySQL->addField($k,(string)utf8_decode($_xml->content->$k));

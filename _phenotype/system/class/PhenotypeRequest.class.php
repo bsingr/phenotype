@@ -166,6 +166,44 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				}
 			}
 		}
+		else // we're in the backend
+		{
+			if (PT_PHPIDS ==1)
+			{
+				// exclude params used to transfer scripts (e.g. of an Include)
+				$_excludes = Array(
+				"skript",
+				"script"
+				);
+				foreach ($this->_props AS $param => $value)
+				{
+					// anything entered by the user, when editing page components
+					if (substr($param,0,4)=="com_")
+					{
+						$_excludes[]=$param;
+					}
+					// anything entered by the user, when editing content records
+					if (substr($param,0,4)=="con_")
+					{
+						$_excludes[]=$param;
+					}
+					// component templates
+					if (substr($param,0,4)=="ttp_")
+					{
+						$_excludes[]=$param;
+					}
+				}
+				// the comment & description fields, as often used on admin and config pages (just to avoid annoying disturbances)
+				$_excludes[]="comment";
+				$_excludes[]="descirption";
+				
+				// the layout templates
+				$_excludes[]="template_normal";
+				$_excludes[]="template_print";
+				
+				$this->phpIDS($_excludes);
+			}
+		}
 	}
 
 
@@ -316,7 +354,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		return $_pager;
 	}
 
-	public function phpIDS()
+	public function phpIDS($_excludes=Array())
 	{
 		set_include_path(
 		get_include_path()
@@ -327,7 +365,10 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		require_once 'IDS/Init.php';
 
 		$request = $this->_props;
-		//$request = $_REQUEST;
+		foreach ($_excludes as $exclude)
+		{
+			unset($request[$exclude]);
+		}
 		$init = IDS_Init::init(dirname(__FILE__) . '/../phpids/lib/IDS/Config/Config.ini');
 		
 		

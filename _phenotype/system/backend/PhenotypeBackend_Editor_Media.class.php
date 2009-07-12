@@ -141,6 +141,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				break;
 
 			case "import":
+				/*
 				if ($block_nr==99)
 				{
 					Header ("Content-type: application/x-javascript");
@@ -153,6 +154,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 					echo '<br\>&nbsp;'.localeH("Drag & Drop - Upload");
 					exit();
 				}
+				*/
 				if ($block_nr==1)
 				{
 					$this->fillContentArea1($this->renderImport_Step2());
@@ -2103,6 +2105,7 @@ function initoid()
 		global $mySUser;
 		global $myRequest;
 		global $myPT;
+		global $myLayout;
 
 		$myPT->startBuffer();
 
@@ -2150,18 +2153,10 @@ function initoid()
              <td width="120" class="padding30" valign="top"><p><strong>&nbsp;</strong></p>
              </td>
              <td width="509" class="formarea">
-             <?php
-             if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE"))
-             {
-			 ?>
-			 <script type="text/javascript" src="backend.php?page=Editor,Media,import&b=99"></script>
-			 <?php
-             }else{
-			 ?>
-			 <script type="text/javascript"><?php echo $this->displayImport_Step1RadJS(); ?></script>
-             <?php
-             }
-             ?>
+              <?php
+              $md5hash=""; 
+              $target_url = ADMINFULLURL. "backend.php?page=Editor,Media,ddupload&usr_id=" . $mySUser->id ."&PHPSESSID=".session_id();
+              echo $myLayout->workarea_form_ddupload(400,400,$target_url,"Drag & Drop - Upload",$md5hash);?>
 			 </td>
         </tr>
         </table>
@@ -2182,119 +2177,8 @@ function initoid()
 		return $myPT->stopBuffer();
 	}
 
-	function displayImport_Step1RadJS()
-	{
-
-		global $myPT;
-		global $mySUser;
-
-		if ($myPT->getPref("backend.rad_upload")=="plus")
-		{
-
-			$width = 400;
-			$height = 400;
-			$id = "rad";
-			$adUid = $_GET['adUid'];
-
-			$pathToRad = ADMINFULLURL;
-			$uploadUrl = ADMINFULLURL. "backend.php?page=Editor,Media,ddupload&usr_id=" . $mySUser->id ."&PHPSESSID=".session_id();
-			$messageUrl = ADMINFULLURL. "backend.php?page=Editor,Media,import&b=98";
-			$content.= 'var _info = navigator.userAgent;
-        var ie = (_info.indexOf("MSIE") > 0);
-        var win = (_info.indexOf("Win") > 0);
-        if(win)
-        {
-
-            if(ie)
-            {
-		         document.writeln(\'<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"\');
-		         document.writeln(\'      width= "'.$width.'" height= "'.$height.'" id="'.$id.'"\');
-		         document.writeln(\'      codebase="http://java.sun.com/update/1.5.0/jinstall-1_5-windows-i586.cab#version=1,4,1">\');
-            }
-            else
-            {
-                document.writeln(\'<object type="application/x-java-applet;version=1.4.1"\');
-                document.writeln(\'width= "'.$width.'" height= "'.$height.'"  id="'.$id.'" >\');
-            }
-            document.writeln(\'<param name="archive" value="'.$pathToRad.'dndplus.jar">\');
-            document.writeln(\'<param name="code" value="com.radinks.dnd.DNDAppletPlus">\');
-            document.writeln(\'<param name="name" value="Rad Upload Plus">\');
-
-        }
-        else
-        {
-            /* mac and linux */
-            document.writeln(\'<applet \');
-            document.writeln(\'         archive  = "'.$pathToRad.'dndplus.jar"\');
-            document.writeln(\'         code     = "com.radinks.dnd.DNDAppletPlus"\');
-            document.writeln(\'         name     = "Rad Upload Plus"\');
-            document.writeln(\'         hspace   = "0"\');
-            document.writeln(\'         vspace   = "0" MAYSCRIPT="yes"\');
-            document.writeln(\'         width = "'.$width.'"\');
-            document.writeln(\'         height = "'.$height.'"\');
-            document.writeln(\'         align    = "middle" id="'.$id.'">\');
-        }
-
-/******    BEGIN APPLET CONFIGURATION PARAMETERS   ******/
-
-	document.writeln(\'<param name="max_upload" value="0">\');
-	document.writeln(\'<param name="message" value="'.$messageUrl.'">\');
-	document.writeln(\'<param name="url" value="'.$uploadUrl.'" />\');
-	//document.writeln(\'<param name="props_file" value="'.$pathToRad.'radupload_properties.php" />\');
-
-
-/******    END APPLET CONFIGURATION PARAMETERS     ******/
-       if(win)
-	   {
-		  document.writeln(\'</object>\');
-	   }
-	   else
-
-	   {
-
-		  document.writeln(\'</applet>\');
-	   }
-
-					'; // end $content =
-
-			echo $content;
-		}
-		else // DND Lite
-		{
-			if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE"))
-			{
-            ?>
-			document.write ('<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" width= "400" height= "400" cobase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">');
-			<?php
-			}
-			else
-			{
-			?>
-			document.write ('<object type="application/x-java-applet;version=1.4.1" width= "400" height= "400" >');
-			<?php	
-			}
-			?>
-			document.write ('<param name="archive" value="<?php echo ADMINFULLURL ?>dndlite.jar">');
-			document.write ('<param name="code" value="com.radinks.dnd.DNDAppletLite">');
-			document.write ('<param name="name" value="Rad Upload Lite">');
-			document.write ('<param name="max_upload_message" value="<?php echo localeH('msg_rad_upload')?>"');
-			
-		   	document.write ('<param name = "url" value = "<?php echo ADMINFULLURL ?>backend.php?page=Editor,Media,ddupload&usr_id=<?php echo $mySUser->id ?>&PHPSESSID=<?php echo session_id() ?>">'); 
-   			document.write ('<param name = "message" value="<br\>&nbsp;Drag & Drop - Upload">');
- 		  	<?php
- 		  	if (isset ($_SERVER['PHP_AUTH_USER']))
- 		  	{
- 		  		?>
- 		  		document.write ('<?php echo printf('<param name="chap" value="%s">', base64_encode($_SERVER['PHP_AUTH_USER'].":".$_SERVER['PHP_AUTH_PW'])); ?>');
- 		  		<?php
- 		  	}
-			?>
-			document.write ('</object>');
-			<?php
-		}
-
-
-	}
+	
+	
 
 	function renderImport_Step2()
 	{
