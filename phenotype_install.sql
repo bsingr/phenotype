@@ -1100,6 +1100,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `usr_status` int(11) NOT NULL default '0',
   `usr_login` varchar(50) collate latin1_general_ci NOT NULL default '',
   `usr_pass` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `usr_salt` varchar(255) collate latin1_general_ci NOT NULL default '',
   `usr_vorname` varchar(50) collate latin1_general_ci NOT NULL default '',
   `usr_nachname` varchar(50) collate latin1_general_ci NOT NULL default '',
   `usr_email` varchar(200) collate latin1_general_ci NOT NULL default '',

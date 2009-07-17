@@ -184,7 +184,7 @@ width: 350px;
 </style>
 </head>
 <body>
-<div id="logo"><a href="http://www.phenotype.de/"><img	src="_phenotype/admin/img/phenotypelogo.gif" alt="Phenotype" style="border:0px"/></a></div>
+<div id="logo"><a href="http://www.phenotype-cms.com/"><img	src="_phenotype/admin/img/phenotypelogo.gif" alt="Phenotype" style="border:0px"/></a></div>
 <div id="main">
 <?php if($myInstaller->getStep()==1):?>
 <form action="install.php" method="post">
@@ -315,6 +315,7 @@ Please provide your database settings, check wether your environment meets all r
 <li><span class="title">&nbsp;</span><span class="update"><input type="submit" value="Update!"/></span></li>
 </ul>
 
+<?php /*?>
 <br/>
 <br/>
 <em>Web Access Security (HTTP Authentification):</em><br />
@@ -332,6 +333,7 @@ Please provide your database settings, check wether your environment meets all r
 <?php endif?>
 <li><span class="title">&nbsp;</span><span class="update"><input type="submit" value="Update!"/></span></li>
 </ul>
+<?php */?>
 
 <br/>
 <br/>

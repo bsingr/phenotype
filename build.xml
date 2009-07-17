@@ -15,7 +15,7 @@
   <!--<svnlastrevision svnpath="svn" workingcopy="." propertyname="revision"/>-->
   <!-- if you have trouble with evaluating the last revision from svn, try the manually way -->
   <!-- be sure to set the value to the current svn revision -->
-  <property name="revision" value="347" /> 
+  <property name="revision" value="376" /> 
 
 	
   <property name="buildNo" value="r${revision}" />
