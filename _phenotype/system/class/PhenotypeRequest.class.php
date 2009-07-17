@@ -11,8 +11,7 @@
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
-// www.phenotype.de - offical homepage
-// www.phenotype-cms.de - documentation
+// www.phenotype-cms.com - offical homepage
 // www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
@@ -77,7 +76,8 @@ class PhenotypeRequestStandard extends PhenotypeBase
 			// check for intrusions
 			if (PT_PHPIDS ==1)
 			{
-				$this->phpIDS();
+				$_excludes = split(',',PT_PHPIDS_EXCLUDES);
+				$this->phpIDS($_excludes);
 			}
 			if ($this->check("smartURL") AND !$this->check("id"))
 			{
@@ -184,11 +184,10 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		{
 			if (PT_PHPIDS ==1)
 			{
+				$_excludes = split(',',PT_PHPIDS_EXCLUDES);
 				// exclude params used to transfer scripts (e.g. of an Include)
-				$_excludes = Array(
-				"skript",
-				"script"
-				);
+				$_excludes[]="skript";
+				$_excludes[]="script";
 				foreach ($this->_props AS $param => $value)
 				{
 					// anything entered by the user, when editing page components
@@ -209,7 +208,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				}
 				// the comment & description fields, as often used on admin and config pages (just to avoid annoying disturbances)
 				$_excludes[]="comment";
-				$_excludes[]="descirption";
+				$_excludes[]="description";
 
 				// the layout templates
 				$_excludes[]="template_normal";

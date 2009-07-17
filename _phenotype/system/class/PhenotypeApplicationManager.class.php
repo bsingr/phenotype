@@ -11,8 +11,7 @@
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
-// www.phenotype.de - offical homepage
-// www.phenotype-cms.de - documentation
+// www.phenotype-cms.com - offical homepage
 // www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
@@ -414,7 +413,7 @@ class PhenotypeApplicationManager
 	public function cleanupWebroot()
 	{
 		global $myAdm;
-		$_files = Array (".svn",".htaccess","php.ini","_phenotype","media","index.php","pindex.php","preview.php","print.php","xmlpage.php","xmlcontent.php","404.php","reload.php","debuginfo.php","install.php","install.4build.php","installcheck.txt");
+		$_files = Array (".svn",".htaccess","php.ini","_phenotype","media","index.php","pindex.php","preview.php","print.php","xmlpage.php","xmlcontent.php","404.php","reload.php","debuginfo.php","install.php","install.4build.php","installcheck.txt","favicon.ico");
 
 		$dir = SERVERPATH;
 
@@ -585,8 +584,8 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
 			Possibility to add a second organizational category to your tickets, based upon datasets of any contentobject
 			-->
 			<con_id_2ndorder>0</con_id_2ndorder>
-			<bez_2ndorder>Projekt</bez_2ndorder>
-			<tab_2ndorder>Projekte</tab_2ndorder>
+			<bez_2ndorder>Project</bez_2ndorder>
+			<tab_2ndorder>Projects</tab_2ndorder>
 		</section>
 		<section name="frontend">
 		</section>
@@ -594,19 +593,19 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
     <default_cache_seconds>86400</default_cache_seconds> 
     <cachetime>
     <cache_item1>
-    <name>kein Cache</name> 
+    <name>no cache</name> 
     <seconds>0</seconds> 
     </cache_item1>
     <cache_item2>
-    <name>15 Sekunden</name> 
+    <name>15 seconds</name> 
     <seconds>15</seconds> 
     </cache_item2>
     <cache_item3>
-    <name>30 Sekunden</name> 
+    <name>30 seconds</name> 
     <seconds>30</seconds> 
     </cache_item3>
     <cache_item4>
-    <name>45 Sekunden</name> 
+    <name>45 seconds</name> 
     <seconds>45</seconds> 
     </cache_item4>
     <cache_item5>
@@ -614,23 +613,23 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
     <seconds>60</seconds> 
     </cache_item5>
     <cache_item6>
-    <name>2 Minuten</name> 
+    <name>2 minutes</name> 
     <seconds>120</seconds> 
     </cache_item6>
     <cache_item7>
-    <name>5 Minuten</name> 
+    <name>5 minutes</name> 
     <seconds>300</seconds> 
     </cache_item7>
     <cache_item8>
-    <name>10 Minuten</name> 
+    <name>10 minutes</name> 
     <seconds>600</seconds> 
     </cache_item8>
     <cache_item9>
-    <name>60 Minuten</name> 
+    <name>60 minutes</name> 
     <seconds>3600</seconds> 
     </cache_item9>
     <cache_item10>
-    <name>24 Stunden</name> 
+    <name>24 hours</name> 
     <seconds>86400</seconds> 
     </cache_item10>
     </cachetime>

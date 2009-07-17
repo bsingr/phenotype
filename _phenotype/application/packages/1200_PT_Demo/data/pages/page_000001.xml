@@ -23,7 +23,7 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153067027</pag_creationdate>
 <usr_id>13</usr_id>
-<pag_date>1232356934</pag_date>
+<pag_date>1247839544</pag_date>
 <pag_url>Startpage</pag_url>
 <pag_url1>Startpage</pag_url1>
 <pag_url2>Startpage</pag_url2>
@@ -33,7 +33,7 @@
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
 		<pageversions>  			<version>
-				<ver_id>1</ver_id>
+				<ver_id>2</ver_id>
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
@@ -44,8 +44,7 @@
     &#60;li&#62;a table&#60;&#47;li&#62;
     &#60;li&#62;a gallery component&#60;&#47;li&#62;
     &#60;li&#62;another richtext component - this time in a different style&#60;&#47;li&#62;
-&#60;&#47;ul&#62;||Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62;www.phenotype-cms.de&#60;&#47;a&#62;.&#60;&#47;p&#62;
-&#60;p&#62;&#60;&#47;p&#62;|Welcome to the Phenotype demonstration website|||</pag_fullsearch>
+&#60;&#47;ul&#62;||Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.com&#34;&#62;www.phenotype-cms.com&#60;&#47;a&#62;.&#60;&#47;p&#62;||Welcome to the Phenotype demonstration website||</pag_fullsearch>
 				<script></script>
 				<inc_id1>0</inc_id1>
 				<inc_id2>0</inc_id2>
@@ -60,8 +59,21 @@
 		</languages>
 		<sequence_data>
 			<component>
-				<com_id>1101</com_id>
+				<com_id>1001</com_id>
 				<ver_id>1</ver_id>
+				<lng_id>1</lng_id>
+				<dat_blocknr>1</dat_blocknr>
+				<dat_visible>1</dat_visible>
+				<dat_pos>1</dat_pos>
+				<dat_comdata>YToxMDp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjg6ImhlYWRsaW5lIjtzOjEzOiJQaGVub3R5cGUgQ01TIjtzOjEzOiJpbWFnZTFfaW1nX2lkIjtzOjE6IjAiO3M6MTM6ImltYWdlMV9tZWRfaWQiO3M6MToiMCI7czoxMDoiaW1hZ2UxX2FsdCI7czowOiIiO3M6MTI6ImltYWdlMV9hbGlnbiI7czo0OiJsZWZ0IjtzOjQ6InRleHQiO3M6MzQwOiI8cD48c3Ryb25nPldlbGNvbWUgdG8gUGhlbm90eXBlITwvc3Ryb25nPjwvcD4NCjxwPklmIHlvdSBjYW4gcmVhZCB0aGlzIHRleHQsIFBoZW5vdHlwZSB3YXMgaW5zdGFsbGVkIHN1Y2Nlc2Z1bGwgd2l0aCB0aGUgUFRfQ09SRSBwYWNrYWdlLjwvcD4NCjxwPklmIHlvdSdyZSBuZXcgdG8gUGhlbm90eXBlIHRyeSB0byBpbnN0YWxsIFBUX0RFTU8gZm9yIGEgZmlyc3QgaW1wcmVzc2lvbiBvbiBob3cgUGhlbm90eXBlIHdvcmtzLjwvcD4NCjxwPkZvciBtb3JlIGluZm9zIHZpc2l0IHRoZSA8YSBocmVmPSJodHRwOi8vd3d3LnBoZW5vdHlwZS1jbXMuY29tIj5vZmZpY2FsIGhvbWVwYWdlPC9hPi48L3A+IjtzOjk6ImxpbmtfbmFtZSI7czowOiIiO3M6ODoibGlua191cmwiO3M6MDoiIjtzOjExOiJsaW5rX3RhcmdldCI7czo1OiJfc2VsZiI7fQ==</dat_comdata>
+				<dat_fullsearch>Phenotype CMS|&#60;p&#62;&#60;strong&#62;Welcome to Phenotype!&#60;&#47;strong&#62;&#60;&#47;p&#62;
+&#60;p&#62;If you can read this text, Phenotype was installed succesfull with the PT_CORE package.&#60;&#47;p&#62;
+&#60;p&#62;If you&#39;re new to Phenotype try to install PT_DEMO for a first impression on how Phenotype works.&#60;&#47;p&#62;
+&#60;p&#62;For more infos visit the &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.com&#34;&#62;offical homepage&#60;&#47;a&#62;.&#60;&#47;p&#62;</dat_fullsearch>
+			</component>
+			<component>
+				<com_id>1101</com_id>
+				<ver_id>2</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -71,7 +83,7 @@
 			</component>
 			<component>
 				<com_id>1001</com_id>
-				<ver_id>1</ver_id>
+				<ver_id>2</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -88,7 +100,7 @@
 			</component>
 			<component>
 				<com_id>1105</com_id>
-				<ver_id>1</ver_id>
+				<ver_id>2</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -98,7 +110,7 @@
 			</component>
 			<component>
 				<com_id>1601</com_id>
-				<ver_id>1</ver_id>
+				<ver_id>2</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -108,14 +120,13 @@
 			</component>
 			<component>
 				<com_id>1001</com_id>
-				<ver_id>1</ver_id>
+				<ver_id>2</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
 				<dat_pos>5</dat_pos>
-				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjIiO3M6ODoiaGVhZGxpbmUiO3M6MTM6IkRvY3VtZW50YXRpb24iO3M6MTM6ImltYWdlMV9pbWdfaWQiO3M6MToiMCI7czoxMzoiaW1hZ2UxX21lZF9pZCI7czoxOiIwIjtzOjEwOiJpbWFnZTFfYWx0IjtzOjA6IiI7czoxMjoiaW1hZ2UxX2FsaWduIjtzOjQ6ImxlZnQiO3M6NDoidGV4dCI7czoxNTQ6IjxwPkV4dGVuc2l2ZSBJbmZvcyBvbiBwaGVub3R5cGUgb24gPGEgaHJlZj0iaHR0cDovL3d3dy5waGVub3R5cGUtY21zLmRlIj53d3cucGhlbm90eXBlLWNtcy5kZTwvYT4uPC9wPg0KPHA+KEN1cnJlbnRseSBtb3N0IGluZm9ybWF0aW9uIGluIGdlcm1hbiBvbmx5KTwvcD4iO3M6OToibGlua19uYW1lIjtzOjA6IiI7czo4OiJsaW5rX3VybCI7czowOiIiO3M6MTE6ImxpbmtfdGFyZ2V0IjtzOjU6Il9zZWxmIjt9</dat_comdata>
-				<dat_fullsearch>Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.de&#34;&#62;www.phenotype-cms.de&#60;&#47;a&#62;.&#60;&#47;p&#62;
-&#60;p&#62;(Currently most information in german only)&#60;&#47;p&#62;</dat_fullsearch>
+				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjIiO3M6ODoiaGVhZGxpbmUiO3M6MTM6IkRvY3VtZW50YXRpb24iO3M6MTM6ImltYWdlMV9pbWdfaWQiO3M6MToiMCI7czoxMzoiaW1hZ2UxX21lZF9pZCI7czoxOiIwIjtzOjEwOiJpbWFnZTFfYWx0IjtzOjA6IiI7czoxMjoiaW1hZ2UxX2FsaWduIjtzOjQ6ImxlZnQiO3M6NDoidGV4dCI7czoxMDQ6IjxwPkV4dGVuc2l2ZSBJbmZvcyBvbiBwaGVub3R5cGUgb24gPGEgaHJlZj0iaHR0cDovL3d3dy5waGVub3R5cGUtY21zLmNvbSI+d3d3LnBoZW5vdHlwZS1jbXMuY29tPC9hPi48L3A+IjtzOjk6ImxpbmtfbmFtZSI7czowOiIiO3M6ODoibGlua191cmwiO3M6MDoiIjtzOjExOiJsaW5rX3RhcmdldCI7czo1OiJfc2VsZiI7fQ==</dat_comdata>
+				<dat_fullsearch>Documentation|&#60;p&#62;Extensive Infos on phenotype on &#60;a href=&#34;http:&#47;&#47;www.phenotype-cms.com&#34;&#62;www.phenotype-cms.com&#60;&#47;a&#62;.&#60;&#47;p&#62;</dat_fullsearch>
 			</component>
 		</sequence_data>
 	</content>

@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `component` (
   `com_description` text collate latin1_general_ci NOT NULL,
   `com_rubrik` varchar(50) collate latin1_general_ci NOT NULL default '',
   PRIMARY KEY  (`com_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1602 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `component`
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `componentgroup` (
   `cog_description` text collate latin1_general_ci NOT NULL,
   `cog_pos` int(11) NOT NULL default '0',
   PRIMARY KEY  (`cog_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `componentgroup`
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `component_template` (
   `com_id` int(11) NOT NULL default '0',
   `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
   PRIMARY KEY  (`tpl_id`,`com_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `component_template`
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `content` (
   `con_importieren` tinyint(4) NOT NULL default '0',
   `con_statistik` int(11) NOT NULL default '0',
   PRIMARY KEY  (`con_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=1 AUTO_INCREMENT=1602 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=1 AUTO_INCREMENT=1;
 
 --
 -- Daten für Tabelle `content`
@@ -221,7 +221,7 @@ CREATE TABLE `content_data` (
   KEY `default_select` (`con_id`,`dat_status`),
   KEY `dat_ikey6` (`dat_ikey6`),
   FULLTEXT KEY `dat_fullsearch` (`dat_fullsearch`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `content_data`
@@ -287,7 +287,7 @@ CREATE TABLE `content_data_editbuffer` (
   KEY `dat_ikey6` (`dat_ikey6`),
   KEY `dat_id` (`dat_id`),
   FULLTEXT KEY `dat_fullsearch` (`dat_fullsearch`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 
 -- --------------------------------------------------------
@@ -369,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `extra` (
   `ext_rubrik` varchar(50) collate latin1_general_ci NOT NULL default '',
   `ext_props` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`ext_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1003 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `extra`
@@ -414,7 +414,7 @@ CREATE TABLE IF NOT EXISTS `include` (
   `inc_usage_includecomponent` tinyint(4) NOT NULL default '0',
   `inc_usage_page` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`inc_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1107 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1;
 
 --
 -- Daten für Tabelle `include`
@@ -454,7 +454,7 @@ CREATE TABLE IF NOT EXISTS `layout` (
   PRIMARY KEY  (`lay_id`),
   UNIQUE KEY `tpl_id` (`lay_id`),
   KEY `tpl_id_2` (`lay_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `layout`
@@ -562,7 +562,7 @@ CREATE TABLE IF NOT EXISTS `media` (
   KEY `med_logical_folder2` (`med_logical_folder2`),
   KEY `med_logical_folder3` (`med_logical_folder3`),
   KEY `med_type` (`med_type`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1;
 
 --
 -- Daten für Tabelle `media`
@@ -595,7 +595,7 @@ CREATE TABLE IF NOT EXISTS `mediagroup` (
   `grp_description` text collate latin1_general_ci NOT NULL,
   `grp_type` tinyint(4) NOT NULL default '1',
   PRIMARY KEY  (`grp_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `mediagroup`
@@ -703,7 +703,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   PRIMARY KEY  (`pag_id`),
   UNIQUE KEY `ver_id` (`ver_id`),
   FULLTEXT KEY `pag_fullsearch` (`pag_fullsearch`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1;
 
 --
 -- Daten für Tabelle `page`
@@ -727,7 +727,7 @@ CREATE TABLE IF NOT EXISTS `pagegroup` (
   `grp_multilanguage` tinyint(4) NOT NULL default '0',
   `grp_smarturl_schema` tinyint(4) NOT NULL default '1',
   PRIMARY KEY  (`grp_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1;
 
 --
 -- Daten für Tabelle `pagegroup`
@@ -756,7 +756,7 @@ CREATE TABLE IF NOT EXISTS `pageversion` (
   `pag_exec_script` tinyint(4) NOT NULL default '0',
   `pag_fullsearch` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`ver_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1;
 
 --
 -- Daten für Tabelle `pageversion`
@@ -857,7 +857,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `rol_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
   `rol_rights` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`rol_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `role`
@@ -890,7 +890,7 @@ CREATE TABLE IF NOT EXISTS `sequence_data` (
   `usr_id` int(11) NOT NULL default '0',
   KEY `con_id` (`dat_id`,`lng_id`),
   KEY `page_select` (`pag_id`,`ver_id`,`lng_id`,`dat_visible`,`dat_blocknr`,`dat_editbuffer`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `sequence_data`
@@ -1062,7 +1062,7 @@ CREATE TABLE IF NOT EXISTS `ticketsubject` (
   `sbj_bez` varchar(150) collate latin1_general_ci NOT NULL default '',
   `sbj_description` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`sbj_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `ticketsubject`
@@ -1111,7 +1111,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `usr_su` tinyint(4) NOT NULL default '0',
   `med_id_thumb` int(11) NOT NULL default '0',
   PRIMARY KEY  (`usr_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `user`

@@ -11,8 +11,7 @@
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
-// www.phenotype.de - offical homepage
-// www.phenotype-cms.de - documentation
+// www.phenotype-cms.com - offical homepage
 // www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
@@ -119,4 +118,9 @@ if (!defined('PT_PHPIDS'))
 if (!defined('PT_PHPIDS_MAXIMPACT'))
 {
 	define ('PT_PHPIDS_MAXIMPACT',10);
+}
+
+if (!defined('PT_PHPIDS_EXCLUDES'))
+{
+	define ('PT_PHPIDS_EXCLUDES','');
 }

@@ -11,8 +11,7 @@
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
-// www.phenotype.de - offical homepage
-// www.phenotype-cms.de - documentation
+// www.phenotype-cms.com - offical homepage
 // www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
@@ -318,7 +317,6 @@ Please provide your database settings, check wether your environment meets all r
 
 <br/>
 <br/>
-<?php /* -not yet
 <em>Web Access Security (HTTP Authentification):</em><br />
 
 <ul class="source">
@@ -337,7 +335,7 @@ Please provide your database settings, check wether your environment meets all r
 
 <br/>
 <br/>
-*/?>
+
 </div>
 </form>
 <?php endif?>

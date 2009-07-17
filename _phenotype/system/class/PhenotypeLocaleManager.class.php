@@ -11,8 +11,7 @@
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
-// www.phenotype.de - offical homepage
-// www.phenotype-cms.de - documentation
+// www.phenotype-cms.com - offical homepage
 // www.sellinger-design.de - inventors of phenotype
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
@@ -297,7 +296,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="same like page";
 		$_token["Config"][]="selective";
 		$_token["Config"][]="use AJAX exporter";
-
+		$_token["Config"][]="Remove pagescript %1";
 
 		// Editor
 
@@ -399,8 +398,8 @@ class PhenotypeLocaleManagerStandard
 		
 		$_token["Editor"][]="Document assigned.";
 		$_token["Editor"][]="Select document";
-
-
+$_token["Editor"][]="Remove Bullet Point";
+$_token["Editor"][]="Add Bullet Point";
 
 		// Editor_Content
 
@@ -685,7 +684,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="online";
 		$_token["Phenotype"][]="pagegroups";
 		$_token["Phenotype"][]="snapshot installed";
-
+		$_token["Phenotype"][]="Media object";
 
 		// Ticket
 
