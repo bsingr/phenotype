@@ -174,7 +174,7 @@ class PhenotypeLayoutStandard
 	?>
 	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
 	<tr>
-	<td width="300" class="top"><a href="http://www.phenotype.de" target="_blank"><img src="img/phenotype_ani_logo.gif" width="27" height="27" border="0"><img src="img/phenotype_typo.gif" width="97" height="27" border="0"></a></td>
+	<td width="300" class="top"><a href="http://www.phenotype-cms.com" target="_blank"><img src="img/phenotype_ani_logo.gif" width="27" height="27" border="0"><img src="img/phenotype_typo.gif" width="97" height="27" border="0"></a></td>
 	<td width="430" class="top"><table height="27"  border="0" cellpadding="0" cellspacing="0">
 	<tr>
 	<?php

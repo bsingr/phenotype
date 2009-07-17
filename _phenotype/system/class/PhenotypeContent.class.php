@@ -4170,7 +4170,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		$_rss = Array(
 		"title"=>"Phenotype Contentfeed for " . $this->bez,
-		"link"=>"http://www.phenotype.de",
+		"link"=>"http://www.phenotype-cms.com",
 		"description"=>"This feed lists all recently changed items of content-type " .$this->content_type . " - " .$this->bez,
 		"pubDate"=>date("r")
 		);
@@ -4197,7 +4197,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$_rss = Array(
 		"url"=>ADMINFULLURL ."img/rsslogo.gif",
 		"title"=>"Phenotype RSS Feed",
-		"link"=>"http://www.phenotype.de"
+		"link"=>"http://www.phenotype-cms.com"
 		);
 
 		return ($_rss);

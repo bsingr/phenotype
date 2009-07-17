@@ -142,7 +142,7 @@ class PhenotypeBackend_Info_Standard extends PhenotypeBackend
               <td class="tableBody">
 			  <table cellspacing="0" cellpadding="0" border="0">
 <tr>
-    <td width="150" valign="top"><a href="http://smarty.php.net" target="_blank">Smarty Template Engine<br><img src="img/smarty_icon.gif" border="0" width="88" height="31" alt="Smarty Template Engine"></a></td>
+    <td width="150" valign="top"><a href="http://www.smarty.net/" target="_blank">Smarty Template Engine<br><img src="img/smarty_icon.gif" border="0" width="88" height="31" alt="Smarty Template Engine"></a></td>
     <td width="150" valign="top"><a href="http://www.fckeditor.net/" target="_blank">FCKeditor*<br><img src="img/htmlarea.gif" border="0" width="88" alt=""></a><br><br></td>
 			   <td valign="top">* IE 5.5+, Firefox 1.0+, Mozilla 1.3+ and Netscape 7+. </td>
 </tr>
