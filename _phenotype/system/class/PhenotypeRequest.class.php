@@ -70,7 +70,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 			}
 		}
 
-		
+
 		// check for smartURL hit
 		if (defined("PT_FRONTEND"))
 		{
@@ -82,6 +82,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 			if ($this->check("smartURL") AND !$this->check("id"))
 			{
 				$smartURL = $this->get("smartURL");
+				$uniqueURL = true;
 
 				// / am Anfang wegfiltern
 				$patterns = "/^[\/]*/";
@@ -109,6 +110,11 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				}
 				else
 				{
+					
+					if (mysql_num_rows($rs)>1)
+					{
+						$uniqueURL=false;
+					}
 					// check for param rewrite
 
 
@@ -158,9 +164,17 @@ class PhenotypeRequestStandard extends PhenotypeBase
 					}
 					else
 					{
-						// no unique hit
+						
 						global $myTC;
 						$myTC->stop();
+						if (mysql_num_rows($rs)>1 OR $uniqueURL==false)// no unique hit
+						{
+							$cookie = md5("on".PT_SECRETKEY);
+							if (PT_DEBUG==1 AND  $_COOKIE["pt_debug"]==$cookie)
+							{
+								throw new Exception("smartURL '".$smartURL."' not unique.\nCheck your smartURL setup. Probably you have to activate 'full path' for some pagegroups.");
+							}
+						}
 						$this->code404=1;
 					}
 				}
@@ -196,11 +210,11 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				// the comment & description fields, as often used on admin and config pages (just to avoid annoying disturbances)
 				$_excludes[]="comment";
 				$_excludes[]="descirption";
-				
+
 				// the layout templates
 				$_excludes[]="template_normal";
 				$_excludes[]="template_print";
-				
+
 				$this->phpIDS($_excludes);
 			}
 		}
@@ -356,6 +370,11 @@ class PhenotypeRequestStandard extends PhenotypeBase
 
 	public function phpIDS($_excludes=Array())
 	{
+		
+		if (phpversion()<"5.1.6")
+		{
+			throw new Exception("Security Warning. PHPIDS needs at least PHP version 5.3.6.\nYou may deactivate PHPIDS by putting define(\"PT_PHPIDS\",0); into your _config.inc.php file.");
+		}
 		set_include_path(
 		get_include_path()
 		. PATH_SEPARATOR
@@ -370,24 +389,24 @@ class PhenotypeRequestStandard extends PhenotypeBase
 			unset($request[$exclude]);
 		}
 		$init = IDS_Init::init(dirname(__FILE__) . '/../phpids/lib/IDS/Config/Config.ini');
-		
-		
+
+
 		$init->config['General']['base_path'] = dirname(__FILE__) . '/../phpids/lib/IDS/';
-    	$init->config['General']['use_base_path'] = true;
-    	$init->config['Caching']['caching'] = 'none';
-    
+		$init->config['General']['use_base_path'] = true;
+		$init->config['Caching']['caching'] = 'none';
+
 		$ids = new IDS_Monitor($request, $init);
-    	$result = $ids->run();
-    	if (!$result->isEmpty())
-    	{
-    		$this->set("smartIDSImpact",$result->getImpact());
-    		if ($result->getImpact()>PT_PHPIDS_MAXIMPACT)
-    		{
-    			throw new Exception("PHP Intrusion Detection\n\n".strip_tags(html_entity_decode($result)));
-    		}
-    	}
-    	
-    	//echo $result;
+		$result = $ids->run();
+		if (!$result->isEmpty())
+		{
+			$this->set("smartIDSImpact",$result->getImpact());
+			if ($result->getImpact()>PT_PHPIDS_MAXIMPACT)
+			{
+				throw new Exception("PHP Intrusion Detection\n\n".strip_tags(html_entity_decode($result)));
+			}
+		}
+
+		//echo $result;
 	}
 }
 ?>

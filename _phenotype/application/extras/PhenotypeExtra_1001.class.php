@@ -63,7 +63,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		<form action="extra_execute.php" method="post">
 		<input type="hidden" name="id" value="<?php echo $this->id ?>">
 		<?php 
-		
+
 		$sql = "SELECT * FROM pagegroup ORDER BY grp_bez";
 		$rs = $myDB->query($sql);
 		$options = "";
@@ -138,7 +138,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
         <tr>
         <td class="tableBody">
         <?php 
-		$this->buildPages();
+        $this->buildPages();
 		 ?>
 		</td>
           </tr>
@@ -147,18 +147,19 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 		$myLayout->workarea_whiteline();
 		$myLayout->workarea_stop_draw();
 	}
-	
+
 	function buildPages()
 	{
 		global $myRequest;
 		global $myDB;
-			    		
+		global $myPT;
+
 		$pag_id = $myRequest->get("pag_id");
 
 		// Array aufbauen
-		
+
 		$lastlevel=0;
-		
+
 		$s = $myRequest->get("tree");
 		$_tree= Array();
 		$s =explode("\n",$s);
@@ -182,7 +183,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 				$params = substr($k,$p+2);
 				$params = trim($params);
 				$k = substr($k,0,$p);
-				
+
 				$p = strpos($params," ");
 				if ($p!==false)
 				{
@@ -196,20 +197,20 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			}
 			if ($k!="")
 			{
-			  
-			  // Korrigiert unmögliche Baumstrukturen
-			  if ($level>$lastlevel+1)
-			  {
-			  	$level=$lastlevel+1;
-			  }
-			  if ($i==1)
-			  {
-			  	$level=0;
-			  }
-			  // -- Unmögliche Baumstrukturen
-			  
-			  $_tree[] = Array($level,$k,$lay_id,$status);
-			  $lastlevel=$level;
+
+				// Korrigiert unmögliche Baumstrukturen
+				if ($level>$lastlevel+1)
+				{
+					$level=$lastlevel+1;
+				}
+				if ($i==1)
+				{
+					$level=0;
+				}
+				// -- Unmögliche Baumstrukturen
+
+				$_tree[] = Array($level,$k,$lay_id,$status);
+				$lastlevel=$level;
 			}
 		}
 
@@ -232,40 +233,40 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			// Erste Seite ermitteln
 			if ($i==0)
 			{
-			  if (strpos($pag_id,"g")===0)
-			  {
-			    $grp_id = (int)substr($pag_id,1);
-			    
-			    // Check, ob in der Gruppe schon Seiten sind !!
-			    $sql = "SELECT * FROM page WHERE grp_id = " . $grp_id . " AND pag_id_top=0 ORDER BY pag_pos DESC";
-			    $rs = $myDB->query($sql);
-			    if (mysql_num_rows($rs)==0)
-			    {
-			      	$_parents[] = 0;
-			      	$insertorder = 3;
-			    }
-			    else
-			    {
-			    	$row = mysql_fetch_array($rs);
-			    	$_parents[] = $row["pag_id"];
-			    	$insertorder = 1;
-			    }
-			  }
-			  else
-			  {
-			  	// Abfangen pag_id=0;
-			  	if ($myRequest->getI("pag_id")==0)
-			  	{
-			  		echo "You must choos either a page or a pagegroup.";
-			  		return false;
-			  	}
-			  	
-			  	$grp_id =NULL;
-			  	$_parents[] = $myRequest->getI("pag_id");
-			  	$insertorder = $myRequest->getI("insertorder");
-			  }
+				if (strpos($pag_id,"g")===0)
+				{
+					$grp_id = (int)substr($pag_id,1);
+
+					// Check, ob in der Gruppe schon Seiten sind !!
+					$sql = "SELECT * FROM page WHERE grp_id = " . $grp_id . " AND pag_id_top=0 ORDER BY pag_pos DESC";
+					$rs = $myDB->query($sql);
+					if (mysql_num_rows($rs)==0)
+					{
+						$_parents[] = 0;
+						$insertorder = 3;
+					}
+					else
+					{
+						$row = mysql_fetch_array($rs);
+						$_parents[] = $row["pag_id"];
+						$insertorder = 1;
+					}
+				}
+				else
+				{
+					// Abfangen pag_id=0;
+					if ($myRequest->getI("pag_id")==0)
+					{
+						echo "You must choos either a page or a pagegroup.";
+						return false;
+					}
+
+					$grp_id =NULL;
+					$_parents[] = $myRequest->getI("pag_id");
+					$insertorder = $myRequest->getI("insertorder");
+				}
 			}
-	
+
 			// -- Erste Seite ermitteln
 			if ($level>$lastlevel)
 			{
@@ -286,12 +287,12 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 					$downgrade++;
 				}
 			}
-			
+
 			$c2 = count($_parents);
 			$pag_id_parent = $_parents[$c2-1-$downgrade];
-			
+
 			echo "Page <strong>" . $bez . "</strong> created.<br/>";
-			
+
 			$myPage = new PhenotypePage();
 			if ($pag_id_parent==0)
 			{
@@ -304,17 +305,17 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 
 			$_parents[] = $id;
 			$lastlevel=$level;
-			
+
 			$myPage->init($id);
-			
+
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("pag_bez",$bez);
 			$mySQL->addField("pag_titel",$bez);
 			$mySQL->addField("pag_status",$status);
-			
+
 			$sql = $mySQL->update("page","pag_id=".$myPage->id);
 			$myDB->query($sql);
-			
+
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("lay_id",$lay_id);
 			$sql = $mySQL->update("pageversion","ver_id=".$myPage->ver_id);
@@ -323,9 +324,17 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			$myPage->buildProps();
 
 
-		}		
-		
+		}
 
+		// Rebuild urls of all pages
+		$sql = "SELECT pag_id FROM page";
+		$rs = $myDB->query($sql);
+		while ($row=mysql_fetch_array($rs))
+		{
+			$myPage = new PhenotypePage($row["pag_id"]);
+			//echo $myPage->smarturl_schema;
+			$myPage->rebuildURLs($false,$true);
+		}
 	}
 
 }

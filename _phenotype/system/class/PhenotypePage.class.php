@@ -2474,10 +2474,29 @@ class PhenotypePageStandard extends PhenotypeBase
 		return $url;
 	}
 
-	public function rebuildURLs($recursive=false)
+	/**
+	 * rebuild smartURL of current page
+	 *
+	 * Notes:
+	 * When changing the url of a page, the whole cache must get cleard ($myPT->clearcache());
+	 * If the page has child pages, the url of all child pages must get rebuilt also! Then
+	 * you have to set $recursive to true. It's false by default, since a common way to use this
+	 * method is to rebuild the urls of all pages (and you don't want the recursion happe to often
+	 * then). After that you have to clear the cache (which equally would happen to often, if it would
+	 * be true by default)
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @param boolean $recursive
+	 * @param boolean $clearcache
+	 */
+	public function rebuildURLs($recursive=false,$clearcache=false)
 	{
 		global $myDB;
 		global $PTC_LANGUAGES;
+		global $myPT;
 
 		$url_changed = false;
 
@@ -2519,6 +2538,10 @@ class PhenotypePageStandard extends PhenotypeBase
 				$myPage->rebuildURLs(true);
 
 			}
+		}
+		if ($clearcache==true)
+		{
+			$myPT->clearcache();
 		}
 	}
 

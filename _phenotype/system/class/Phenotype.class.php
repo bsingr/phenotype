@@ -188,7 +188,11 @@ class PhenotypeStandard extends PhenotypeBase
 	function stopBuffer()
 	{
 		$s=ob_get_contents();
-		ob_end_clean();
+		if (ob_get_length() > 0) 
+		{
+    		ob_end_clean();
+  		}
+
 		return $s;
 	}
 

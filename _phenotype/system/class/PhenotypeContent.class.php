@@ -26,7 +26,7 @@
  */
 class PhenotypeContentStandard extends PhenotypeBase
 {
-	public $id;
+	public $id =null;
 	public $content_type;
 	public $uid;
 	public $formid;
@@ -174,6 +174,11 @@ class PhenotypeContentStandard extends PhenotypeBase
 	function store($usr_id_editbuffer = false)
 	{
 
+		if ($this->id == null)
+		{
+			throw new Exception("No record at hand. Cannot store a PhenotypeContent object without a designated record.\nSee ->init(), ->load() and/or ->addNew().");	
+		}
+		
 		global $myDB;
 		$s = serialize($this->_props);
 

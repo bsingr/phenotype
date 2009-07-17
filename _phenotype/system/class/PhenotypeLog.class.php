@@ -35,6 +35,11 @@ class PhenotypeLog {
 	function log($message, $facility=PT_LOGFACILITY_APP, $level=PT_LOGLVL_INFO)
 	{
 		global $mySUser;
+		$userId=0;
+		if (is_object($mySUser))
+		{
+			$userId = (int)$mySUser->id;
+		}
 
 		if (PT_LOG_LEVEL >= $level || $level == 1) // log errors always
 		{
@@ -45,7 +50,7 @@ class PhenotypeLog {
 			} else {
 				$remote_addr = $_SERVER[PT_LOG_CLIENTINFO_SERVER];
 			}
-			$userId = (int)$mySUser->id;
+
 			switch($level)
 			{
 				case PT_LOGLVL_ERROR:
