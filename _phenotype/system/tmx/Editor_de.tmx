@@ -13,7 +13,7 @@
         <tmx:seg>Add Bullet Point</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Listenpunkt hinzufügen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Add Link">
       <tmx:tuv xml:lang="en">
@@ -356,7 +356,7 @@
         <tmx:seg>Remove Bullet Point</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Listenpunkt entfernen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Remove Document">
       <tmx:tuv xml:lang="en">
@@ -694,12 +694,26 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Aufgaben</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Select/Deselect all">
+			<tmx:tu tuid="Add Bullet Point">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Select/Deselect all</tmx:seg>
+        <tmx:seg>Add Bullet Point</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>Alle wählen</tmx:seg>
+        <tmx:seg>Listenpunkt hinzufügen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Publish">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Publish</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Publizieren</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove Bullet Point">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove Bullet Point</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Listenpunkt entfernen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

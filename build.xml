@@ -4,7 +4,7 @@
   <php expression="PHP_OS" returnProperty="buildOS"/>
   <php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>
 
-  <property name="ptVersion" value="2.8" />
+  <property name="ptVersion" value="2.9" />
   
   <tstamp>
   	<format property="DATE" pattern="%d.%m.%Y" locale="de_DE"/>
@@ -152,9 +152,9 @@
   
   <target name="phpdoc">
   <delete dir="phpdoc" includeemptydirs="true" />
-  <phpdoc title="API Documentation"
+  <phpdoc title="Phenotype CMS API Documentation"
   destdir="phpdoc"
-  sourcecode="no"
+  sourcecode="yes"
   output="HTML:frames:l0l33t">
    <fileset dir="${buildDir}${pathSep}_phenotype${pathSep}system${pathSep}class">
       <include name="**/*.php" />

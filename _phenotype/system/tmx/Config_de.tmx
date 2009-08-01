@@ -580,7 +580,7 @@
         <tmx:seg>Remove pagescript %1</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Entferne Seitenskript %1</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Remove placeholder">
       <tmx:tuv xml:lang="en">
@@ -966,6 +966,20 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Ajax-Exporter verwenden.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove pagescript %1">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove pagescript %1</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Entferne Seitenskript %1</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Target folder already existing. Package not copied.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Target folder already existing. Package not copied.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Zielverzeichnis existiert bereits. Paket wurde nicht kopiert.</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

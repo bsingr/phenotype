@@ -477,33 +477,5 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>stark</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Clear lightbox">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Clear lightbox</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Sammelbox leeren</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Delete objects in mediabase">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Delete objects in mediabase</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Objekte in der Mediabase löschen</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Go!">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Go!</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Los!</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Really delete this objects in the mediabase?">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Really delete this objects in the mediabase?</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Diese Objekte wirklich in der Mediabase unwiderruflich löschen?</tmx:seg>
-      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

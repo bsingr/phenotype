@@ -356,7 +356,7 @@
         <tmx:seg>Media object</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg></tmx:seg>
+        <tmx:seg>Mediaobjekt</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Mediagroup">
       <tmx:tuv xml:lang="en">
@@ -771,12 +771,82 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Snapshot eingespielt.</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Change Image">
+			<tmx:tu tuid="Add ticket to watch list.">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Change Image</tmx:seg>
+        <tmx:seg>Add ticket to watch list.</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>Bild wechseln</tmx:seg>
+        <tmx:seg>Ticket zur Sammelbox hinzufügen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Content Record">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Content Record</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Content Datensatz</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media object">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Media object</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Mediaobjekt</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Pending question">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Pending question</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Ausstehende Frage</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Process task.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Process task.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabe bearbeiten</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Processors/Creator">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Processors/Creator</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bearbeiter/Ersteller</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Realm">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Realm</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Bereich</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Task is connected to a content record.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task is connected to a content record.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabe gehört zu einem Content Datensatz.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Task is connected to a media object">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task is connected to a media object</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabe gehört zu einem Mediaobjekt</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Task is connected to a page.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task is connected to a page.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Aufgabe gehört zu einer Seite.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket Notice">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket Notice</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Hinweis</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

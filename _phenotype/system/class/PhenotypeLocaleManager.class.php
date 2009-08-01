@@ -32,7 +32,6 @@ class PhenotypeLocaleManagerStandard
 		$_token = Array();
 
 
-
 		// Admin
 
 		$_token["Admin"][]="* all pages *";
@@ -251,6 +250,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Storage folder";
 		$_token["Config"][]="Structure";
 		$_token["Config"][]="Structures";
+		$_token["Config"][]="Target folder already existing. Package not copied.";
 		$_token["Config"][]="Templates";
 		$_token["Config"][]="This Layout is not used in any page.";
 		$_token["Config"][]="This layout is used in %1 pages";
@@ -583,6 +583,7 @@ class PhenotypeLocaleManagerStandard
 
 		$_token["Phenotype"][]="Action";
 		$_token["Phenotype"][]="Actions";
+		$_token["Phenotype"][]="Add ticket to watch list.";
 		$_token["Phenotype"][]="Admin";
 		$_token["Phenotype"][]="Alert";
 		$_token["Phenotype"][]="Analyze";
@@ -596,6 +597,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="Comment";
 		$_token["Phenotype"][]="Config";
 		$_token["Phenotype"][]="Content";
+		$_token["Phenotype"][]="Content Record";
 		$_token["Phenotype"][]="Content objects";
 		$_token["Phenotype"][]="Contentobjects";
 		$_token["Phenotype"][]="Copy of";
@@ -645,8 +647,12 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="Pagegroups";
 		$_token["Phenotype"][]="Pages";
 		$_token["Phenotype"][]="Password";
+		$_token["Phenotype"][]="Pending question";
 		$_token["Phenotype"][]="Please remember to delete the user starter.";
+		$_token["Phenotype"][]="Process task.";
+		$_token["Phenotype"][]="Processors/Creator";
 		$_token["Phenotype"][]="Properties";
+		$_token["Phenotype"][]="Realm";
 		$_token["Phenotype"][]="Rights";
 		$_token["Phenotype"][]="Role";
 		$_token["Phenotype"][]="Roles";
@@ -657,8 +663,12 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="Start";
 		$_token["Phenotype"][]="State";
 		$_token["Phenotype"][]="Status";
+		$_token["Phenotype"][]="Task is connected to a content record.";
+		$_token["Phenotype"][]="Task is connected to a media object";
+		$_token["Phenotype"][]="Task is connected to a page.";
 		$_token["Phenotype"][]="Task subjects";
 		$_token["Phenotype"][]="Tasks";
+		$_token["Phenotype"][]="Ticket Notice";
 		$_token["Phenotype"][]="Title";
 		$_token["Phenotype"][]="User";
 		$_token["Phenotype"][]="Username";
@@ -847,7 +857,6 @@ class PhenotypeLocaleManagerStandard
 		$_token["Ticket"][]="today";
 		$_token["Ticket"][]="tomorrow";
 		$_token["Ticket"][]="week";
-
 
 		$this->_token = $_token;
 
