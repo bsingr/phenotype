@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
-  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="2.9" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="Action">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Action</tmx:seg>
@@ -22,6 +22,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Clear lightbox">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Clear lightbox</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Create new version">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Create new version</tmx:seg>
@@ -32,6 +39,13 @@
 			<tmx:tu tuid="Create new versions">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Create new versions</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete objects in mediabase">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Delete objects in mediabase</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -74,6 +88,13 @@
 			<tmx:tu tuid="Format">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Format</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Go!">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Go!</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -207,6 +228,13 @@
 			<tmx:tu tuid="Really delete this image?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this image?</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this objects in the mediabase?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this objects in the mediabase?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -445,6 +473,34 @@
 			<tmx:tu tuid="very strong">
       <tmx:tuv xml:lang="en">
         <tmx:seg>very strong</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Clear lightbox">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Clear lightbox</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete objects in mediabase">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Delete objects in mediabase</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Go!">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Go!</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this objects in the mediabase?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this objects in the mediabase?</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	# Define the rewrite base, i.e. the "visible" browser path to the main index.php file
+	#RewriteBase /
+
+
+	RewriteRule ^backend.js$ backendjs.php
+	RewriteRule ^backend.css$ backendcss.php
+</IfModule>

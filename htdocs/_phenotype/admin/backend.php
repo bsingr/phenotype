@@ -31,7 +31,7 @@ if ($page=="")
 {
 	$page="Editor,Start";
 }
-$patterns = "/[^a-z0-9A-Z,_]*/";
+$patterns = "/[^a-z0-9A-Z,_-]*/";
 $page = preg_replace($patterns,"", $page);
 
 $_page = split(",",$page);
@@ -61,8 +61,14 @@ if (!class_exists($cname,true))
 }
 
 
-
+$method = "execute".$action;
 $myBP = new $cname;
-$myBP->execute($scope,$action);
-
+if (method_exists($myBP,$method))
+{
+	$myBP->$method();
+}
+else 
+{
+	$myBP->execute($scope,$action);
+}
 ?>

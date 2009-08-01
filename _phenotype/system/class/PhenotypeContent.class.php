@@ -4335,7 +4335,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 	public function __call($methodname,$params)
 	{
-		throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
+		throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->content_type) .".");
 	}
 
 	/**
@@ -4359,6 +4359,17 @@ class PhenotypeContentStandard extends PhenotypeBase
 	{
 		return (boolean) $this->row["dat_altered"];
 
+	}
+
+	/**
+	 * retrieve base path to the tempfolder used when applying form_ddupload
+	 *
+	 * @return string
+	 */
+	protected function getDDUploadPath()
+	{
+		global $mySUser;
+		return TEMPPATH ."contentupload/".$this->content_type."/".(int)$mySUser->id."/";
 	}
 }
 ?>

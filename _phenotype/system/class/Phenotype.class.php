@@ -187,7 +187,7 @@ class PhenotypeStandard extends PhenotypeBase
 	function stopBuffer()
 	{
 		$s=ob_get_contents();
-		if (ob_get_length() > 0) 
+		if (ob_get_length() > 0 OR ob_get_level()>0) 
 		{
     		ob_end_clean();
   		}
@@ -433,7 +433,7 @@ class PhenotypeStandard extends PhenotypeBase
 		}
 		else
 		{
-			return $this->german2Timestamp($date);
+			return self::german2Timestamp($date);
 		}
 	}
 

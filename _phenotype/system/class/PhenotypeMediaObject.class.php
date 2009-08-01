@@ -36,9 +36,29 @@ class PhenotypeMediaObjectStandard
 	public $logical_folder1;
 	public $logical_folder2;
 	public $logical_folder3;
+	
+	/**
+	 * absolute url of the image including mediabase path
+	 *
+	 * @var string
+	 */
 	public $url;
+	
+	/**
+	 * file path of the image
+	 *
+	 * @var string
+	 */
+	public $file;
 
-	public $loaded = 0;
+	/**
+	 * Flag, wether the image has loaded succesfully
+	 * 
+	 * e.g. false, if the object isn't a image, but a document
+	 *
+	 * @var boolean
+	 */
+	public $loaded = false;
 
 
 	function getUrl ()

@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
-  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="2.9" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="Action">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Action</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add Bullet Point">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Add Bullet Point</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -162,6 +169,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Document assigned.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Document assigned.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Document/Image assigned">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Document/Image assigned</tmx:seg>
@@ -302,6 +316,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Publish">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Publish</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Put into / Take out of lightbox">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Put into / Take out of lightbox</tmx:seg>
@@ -326,6 +347,13 @@
 			<tmx:tu tuid="Really delete this record?">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Really delete this record?</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove Bullet Point">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove Bullet Point</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -386,6 +414,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select document">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select document</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Select image">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Select image</tmx:seg>
@@ -396,6 +431,13 @@
 			<tmx:tu tuid="Select link">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Select link</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select/Deselect all">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select/Deselect all</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -648,6 +690,13 @@
 			<tmx:tu tuid="tasks">
       <tmx:tuv xml:lang="en">
         <tmx:seg>tasks</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select/Deselect all">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select/Deselect all</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

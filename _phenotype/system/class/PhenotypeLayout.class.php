@@ -136,9 +136,7 @@ class PhenotypeLayoutStandard
 	{
 		global $myAdm;
 		global $myApp;
-		// spaeter media nur bei redaktion media
-		// site nur bei redaktion seiten
-		// task nur dort, wo tickets eingebunden werden koennen
+
   ?>
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -153,11 +151,14 @@ class PhenotypeLayoutStandard
 <link href="site.css" rel="stylesheet" type="text/css">
 <link href="task.css" rel="stylesheet" type="text/css">
 <link href="css/jqueryui/phenotype/jquery-ui.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="phenotype.js"></script>
+<link href="backend.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="lib/jquery/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery/jquery-ui.js"></script>
+<script type="text/javascript">var pt_bak_id="'.$this->bak_id.'";</script>
+<script type="text/javascript" src="phenotype.js"></script>
 <?php echo $myApp->displayBackendJavascript() ?>
 <script type="text/javascript" src="wz_dragdrop.js"></script> 
+<script type="text/javascript" src="backend.js"></script> 
 </head>
 <?php
 	}
@@ -3376,6 +3377,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
   	?>
   	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
+      <td  class="windowFooterWhite"><input id="btn_select_deselect" class="buttonWhite" type="button" value="<?php echo localeH("Select/Deselect all") ?>" style="width: 102px;" /></td>
         <td align="right" class="windowFooterWhite"><table border="0" cellpadding="0" cellspacing="1">
           <tr>
             <td align="center"><?php echo localeH("Page") ?>: </td>
@@ -3423,7 +3425,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 	<?php
 	$html = $myPT->stopBuffer();
 
-	// Seitenblï¿½ttern, nur wenn notwendig
+	// Seitenblättern, nur wenn notwendig
 	if ($anzahl<=$itemcount AND $forcedisplay==false){$html="";}
 	return $html;
 
@@ -3941,6 +3943,8 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
             document.writeln(\'<param name="archive" value="'.$pathToRad.'dndplus.jar">\');
             document.writeln(\'<param name="code" value="com.radinks.dnd.DNDAppletPlus">\');
             document.writeln(\'<param name="name" value="Rad Upload Plus">\');
+            document.writeln(\'<param name="props_file" value="'.$pathToRad.'radupload_properties.php">\');
+           
 
         }
         else

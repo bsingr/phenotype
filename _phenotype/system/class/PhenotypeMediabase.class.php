@@ -592,6 +592,17 @@ class PhenotypeMediabaseStandard
 		}
 	}
 
+	/**
+	 * import image file into the mediabase
+	 *
+	 * @param unknown_type $logical_folder
+	 * @param unknown_type $url
+	 * @param unknown_type $mimetype
+	 * @param unknown_type $img_id
+	 * @param unknown_type $title
+	 * @param unknown_type $physical_folder
+	 * @return integer|boolean ID of the importer media object or false if something went wrong
+	 */
 	function importImageFromUrl($logical_folder, $url, $mimetype = "", $img_id = -1,$title="", $physical_folder)
 	{
 		global $myDB;

@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
-  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="2.9" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="Action">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Action</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Aktion</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add Bullet Point">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Add Bullet Point</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Add Link">
       <tmx:tuv xml:lang="en">
@@ -162,6 +169,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Dokument hinzugefügt.</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Document assigned.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Document assigned.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Dokument zugeordnet.</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Document/Image assigned">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Document/Image assigned</tmx:seg>
@@ -302,6 +316,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Vorschau</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Publish">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Publish</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Publizieren</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Put into / Take out of lightbox">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Put into / Take out of lightbox</tmx:seg>
@@ -329,6 +350,13 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Den Datensatz wirklich löschen?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Remove Bullet Point">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Remove Bullet Point</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Remove Document">
       <tmx:tuv xml:lang="en">
@@ -386,6 +414,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Referenz auswählen</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select document">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select document</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Select image">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Select image</tmx:seg>
@@ -399,6 +434,13 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Link auswählen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Select/Deselect all">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Select/Deselect all</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Alle wählen</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Send">
       <tmx:tuv xml:lang="en">
@@ -652,27 +694,12 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Aufgaben</tmx:seg>
       </tmx:tuv></tmx:tu>
-       <tmx:tu tuid="Document assigned.">
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Dokument zugeordnet.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-      <tmx:tu tuid="Select document">
+			<tmx:tu tuid="Select/Deselect all">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Dokument wählen</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Publish">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Publish</tmx:seg>
+        <tmx:seg>Select/Deselect all</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>Publizieren</tmx:seg>
+        <tmx:seg>Alle wählen</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Preview">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Preview</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Vorschau</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			</tmx:body>
+			  </tmx:body>
 </tmx:tmx>

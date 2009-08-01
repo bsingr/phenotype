@@ -213,6 +213,9 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				// the layout templates
 				$_excludes[]="template_normal";
 				$_excludes[]="template_print";
+				
+				// to be checked ...
+				$_excludes[]="http_referer";
 
 				$this->phpIDS($_excludes);
 			}

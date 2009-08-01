@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
-  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="2.9" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="Access time">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Access time</tmx:seg>

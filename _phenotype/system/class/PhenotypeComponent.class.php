@@ -1427,7 +1427,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 	public function __call($methodname,$params)
 	{
-		throw new Exception("There's no method ".$methodname."() in PhenotypeContent_".sprintf('%02d',$this->id) .".");
+		throw new Exception("There's no method ".$methodname."() in PhenotypeComponent_".sprintf('%02d',$this->com_id) .".");
 	}
 }
 ?>

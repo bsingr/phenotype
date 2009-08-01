@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
-  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="2.9" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body><tmx:tu tuid="Action">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Action</tmx:seg>
@@ -36,6 +36,10 @@
 			<tmx:tu tuid="Cache">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Cache</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Change Image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Change Image</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Changes saved">
       <tmx:tuv xml:lang="en">
@@ -196,6 +200,10 @@
 			<tmx:tu tuid="Media">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Media</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Media object">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Media object</tmx:seg>
       </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Mediagroup">
       <tmx:tuv xml:lang="en">
@@ -432,6 +440,10 @@
 			<tmx:tu tuid="snapshot installed">
       <tmx:tuv xml:lang="en">
         <tmx:seg>snapshot installed</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Change Image">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Change Image</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

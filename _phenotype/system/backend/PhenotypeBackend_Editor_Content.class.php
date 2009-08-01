@@ -59,12 +59,12 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     switch ($action)
     {
-      case "showPreview":
+      case "showPreview": // Iframe call
         $this->showPreview();
         break;
-      case "preview":
-				$this->update();
-				break;
+      case "preview": // Preview button pressed
+		$this->update();
+		break;
       case "edit":
         $this->fillContentArea1($this->renderEdit());
         $body_onload = $this->_jsarray["body_onload"];
@@ -1003,7 +1003,20 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
  	   <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
-		    &nbsp;
+		    &nbsp;&nbsp;
+		    <?php
+		    if($myCO->previewmode == true) {
+			?>
+			<input name="preview" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Preview");?>" tabindex="1" accesskey="p" onclick="this.form.page.value = 'Editor,Content,preview';">
+			<?php
+			if($myRequest->check("preview")) 
+			{
+			?>
+			<script type="text/javascript">previewContent("backend.php?page=Editor,Content,showPreview&id=<?=$dat_id?>",<? echo $myPT->getPref("preview_dialog.dialog_width",800) ?>,<?php echo $myPT->getPref("preview_dialog.dialog_height",500)?>, "<?php echo localeH("Preview");?>");</script>
+			<?
+			}
+		    }
+			?>
 			</td>
             <td align="right" class="windowFooterWhite" tabindex="99">
             <input type="image" src="transparentpixel.gif" width="1" height="1" onclick="return false;"/>
@@ -1018,16 +1031,6 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		?>
 		<input name="publish" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Publish");?>" tabindex="1" accesskey="p">
 		<?
-		}
-		if($myCO->previewmode == true) {
-		?>
-		<input name="preview" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Preview");?>" tabindex="1" accesskey="p" onclick="this.form.page.value = 'Editor,Content,preview';">
-		<?
-		if($myRequest->check("preview")) {
-			?>
-			<script type="text/javascript">previewContent("backend.php?page=Editor,Content,showPreview&id=<?=$dat_id?>",<? echo $myPT->getPref("preview_dialog.dialog_width") ?>,<?php echo $myPT->getPref("preview_dialog.dialog_heigth")?>, "<?php echo localeH("Preview");?>");</script>
-			<?
-		}
 		}
 		?>
 		&nbsp;&nbsp;</td>

@@ -25,7 +25,8 @@
 class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 {
 
-  public $tmxfile = "Editor_Media";
+	public $bak_id = "Editor_Media";
+  	public $tmxfile = "Editor_Media";
   
 	// Following variables determines the focus of the media browser, they should not get lost during
 	// the work with the mediabase and are passed with every link. The parameter are named like
@@ -98,7 +99,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		// -- media browser setup
 
 
-		$this->setPageTitle("Phenotype ".$myPT->version. locale("Mediabase"));
+		$this->setPageTitle("Phenotype ".$myPT->version. " ".locale("Mediabase"));
 
 		$this->selectMenuItem(2);
 		$this->selectLayout(1);
@@ -497,26 +498,55 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		global  $myPT;
 		global $mySUser;
 		global $myRequest;
+		global $myLog;
+		
+		$displayLightbox=false;
+			
+		$myPT->startBuffer();
 		?>
 		<div id="lightbox">
 		<?php
-
+		$reload=false;
 		$myDO = new PhenotypeSystemDataObject("MediaLightbox",array("usr_id"=>$mySUser->id));
 
 		$_objects = $myDO->get("objects");
 
 		if ($myRequest->check("med_id"))
 		{
-			$med_id = $myRequest->getI("med_id");
+			$med_id = $myRequest->getA("med_id","-0123456789,");
 
-			if (in_array($med_id,$_objects))
+			// Special Cases ...
+			switch ($med_id)
 			{
-				unset($_objects[$med_id]);
+				case -1:
+					$_objects=Array();
+				break;
+				case -99;
+				foreach ($_objects AS $med_id)
+				{
+					PhenotypeMediabase::deleteMediaObject($med_id);
+				}
+				$reload=true;
+				$_objects=Array();
+				break;
+				default:
+					// med_id can be one value or a comma separated list
+					$_med_id = split(",",$med_id);
+					foreach ($_med_id AS $med_id)
+					{
+						if (in_array($med_id,$_objects))
+						{
+							unset($_objects[$med_id]);
+						}
+						else
+						{
+							$_objects[$med_id]=$med_id;
+						}
+					}
+					break;
 			}
-			else
-			{
-				$_objects[$med_id]=$med_id;
-			}
+			
+
 			$myDO->set("objects",$_objects);
 			$myDO->store();
 		}
@@ -528,22 +558,25 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			$this->tab_addEntry(locale("Lightbox"),$url,"b_pinadd.gif");
 			$this->tab_draw(locale("Lightbox"),$x=260,1);
 
-
+			
+		
 		?>
 		<table width="260" border="0" cellpadding="0" cellspacing="0">
       	<tr>
         	<td class="windowMenu">
 			<table  border="0" cellspacing="8" cellpadding="0">
 				<?php
+				
 				foreach ($_objects AS $object)
 				{
 					$url = "backend.php?page=Editor,Media,edit&grp_id=".$this->grp_id."&folder=".urlencode($this->folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount;
 					$myImg = new PhenotypeImage($object);
 					if ($myImg->loaded==1)
 					{
+						$displayLightbox=true;
 					?>
 					<tr>
-	    	        	<td width="10"><input type="checkbox" checked="checked" onclick="lightbox_switch(<?php echo $myImg->id ?>,1)"></td>
+	    	        	<td width="10"><input type="checkbox" checked="checked" onclick="lightbox_switch(<?php echo $myImg->id ?>,1)" rel="<?php echo $myImg->id ?>"></td>
 	    	        	<td width="40">
 	    	        	<a href="<?php echo $url ?>&id=<?php echo $myImg->id ?>"><?php echo $myImg->display_thumbX(45); ?></a></td>
 	    	        	<td ><a href="<?php echo $url ?>&id=<?php echo $myImg->id ?>"><?php echo $myPT->codeH($myPT->cutString($myImg->bez,23)) ?></a></td>
@@ -555,6 +588,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 						$myDoc = new PhenotypeDocument($object);
 						if ($myDoc->loaded==1)
 						{
+							$displayLightbox=true;
 					?>
 					<tr>
 	    	        	<td width="10"><input type="checkbox" checked="checked" onclick="lightbox_switch(<?php echo $myDoc->id ?>,1)"></td>
@@ -565,6 +599,18 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 					}
 				}
 				?>
+				<tr>
+				<td colspan="3">
+				<form action="#" id="lightboxselect">
+				<select class="listmenu" style="float:left" name="select">
+				<option>
+				<option value="1"><?php echo $myPT->localeH('Clear lightbox')?></option>
+				<option value="2"><?php echo $myPT->localeH('Delete objects in mediabase')?></option>
+				</select>
+				<div style="width:30px;float:left;padding-left:5px"><a id="btn_lightbox_mediabase" class="tabmenuType" href="#"><?php echo $myPT->localeH('Go!')?></a></div>
+				</form>
+				</td>
+				</tr>
         	</table>
 			</td>
 	        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
@@ -575,10 +621,25 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
         </tr>    	  
     	</table>
     	<?php
-		}
+    	}
     	?>
     	</div>      
 		<?php
+		$html= $myPT->stopBuffer();
+		if ($displayLightbox==true)
+		{
+			echo $html;
+		}
+		else 
+		{
+			echo '<div id="lightbox"/>';
+		}
+		if ($reload==true)
+		{
+		?>
+		<div id="redirect" style="display:none"><?=ADMINFULLURL?>backend.php?page=Editor,Media,browse&grp_id=<?php echo $this->grp_id."&folder=".urlencode($this->folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount;?></div>
+		<?
+		}
 	}
 
 
@@ -587,19 +648,32 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		global $myPT;
 		?>
 		<script type="text/javascript">
+		function lightbox_checkup()
+		{
+			$('#content input:checkbox:checked').each(function()
+			{
+			 	$(this).removeAttr('checked');
+			 	$('#lightbox input:checkbox:checked').each(function()
+			 	{
+			 		var nr = $(this).attr("rel");
+			 		$('#lb'+nr).attr('checked','checked');
+			 		//console.log(nr);
+			 	});
+			});
+		}
 		function lightbox_switch(med_id,check)
 		{
 
-			if (check==1)
+			if (med_id==-99)
 			{
-				var obj = document.getElementById('lb'+med_id);
-				if (obj!=null)
+				rc = confirm ('<?php echo locale('Really delete this objects in the mediabase?')?>');
+				if (rc==false)
 				{
-					obj.checked=!obj.checked;
+					return;
 				}
 			}
-
-			var ajax = new sack();
+			
+						var ajax = new sack();
 			ajax.resetData();
 			ajax.requestFile = "backend.php";
 			ajax.method = "POST";
@@ -618,7 +692,37 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 
 			//ajax.onLoading = whenLoading;
-			//ajax.onLoaded = whenLoaded;
+			ajax.onCompletion = function()
+			{
+				$('#redirect').each(function()
+				{
+					document.location.href = ($(this).html());
+					return;	
+				});
+				$('#btn_lightbox_mediabase').click(function()
+				{
+					var option = $('#lightboxselect select[name=select]').val();
+					if (option==1) // clear lightbox
+					{
+						lightbox_switch(-1);
+					}
+					if (option==2) // delete lightbox objects in mediabase
+					{
+						lightbox_switch(-99);
+					}
+				});
+				lightbox_checkup();
+				//if (check==1) // remove check from all elements, then activate them one by one out of the lightbox
+				//{
+				 
+				/*
+				var obj = document.getElementById('lb'+med_id);
+				if (obj!=null)
+				{
+					obj.checked=!obj.checked;
+				}*/
+				
+			}
 			//ajax.onInteractive = whenInteractive;
 			//ajax.onCompletion = whenCompleted;
 			ajax.runAJAX();
@@ -854,7 +958,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	              </table>
 	              
 	                <a href="backend.php?page=Editor,Media,edit&id=<?php echo $row["med_id"] ?>&grp_id=<?php echo $this->grp_id ?>&folder=<?php echo $myPT->codeH($this->folder) ?>&type=<?php echo $this->type ?>&sortorder=<?php echo $this->sortorder ?>&p=<?php echo $this->pagenr ?>&a=<?php echo $this->itemcount ?>"><img src="img/b_edit.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("edit");?></a><br/> 
-	                <a href="backend.php?page=Editor,Media,delete&id=<?php echo $row["med_id"] ?>" onclick="javascript:return confirm('<?php if ($type==MB_IMAGE){echo localeH("Really delete this image?");}else{echo localeH("Really delete this document?");} ?>')"><img src="img/b_delete.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Delete");?></a><br>
+	                <a href="backend.php?page=Editor,Media,delete&id=<?php echo $row["med_id"] ?>&grp_id=<?php echo $this->grp_id ?>&folder=<?php echo $myPT->codeH($this->folder) ?>&type=<?php echo $this->type ?>&sortorder=<?php echo $this->sortorder ?>&p=<?php echo $this->pagenr ?>&a=<?php echo $this->itemcount ?>" onclick="javascript:return confirm('<?php if ($type==MB_IMAGE){echo localeH("Really delete this image?");}else{echo localeH("Really delete this document?");} ?>')"><img src="img/b_delete.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Delete");?></a><br>
 					
 					<?php echo localeH("Folder");?>: <?php echo $row["med_logical_folder1"] ?><br>
 					<?php
@@ -1048,24 +1152,6 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 
 
-		/*
-		$blocknr_oie???
-		if ($type == MB_IMAGE)
-		{
-		$agent = $_SERVER["HTTP_USER_AGENT"];
-		if ($agent == "")
-		{
-		$agent = $_ENV["HTTP_USER_AGENT"];
-		}
-		$agent = strtoupper($agent);
-		if (strpos($agent, "MSIE"))
-		{
-		$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=".$blocknr_oie."&folder=".urlencode($_REQUEST["folder"])."&type=".$_REQUEST["type"]."&sortorder=".$_REQUEST["sortorder"]."&p=".$_REQUEST["p"]."&a=".$_REQUEST["a"];
-		$this->tab_addEntry("Bearbeiten", $url, "b_edit.gif");
-		}
-		}
-		*/
-
 
 		switch ($block_nr)
 		{
@@ -1075,9 +1161,6 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			case $blocknr_painter:
 				$this->displayEdit_Painter($myObj);
 				break;
-				//case $blocknr_oie:
-				//	$this->displayEdit_OIE($myObj);
-				//	break;
 			case 0:
 				$this->displayEdit_Properties($myObj);
 				break;
@@ -1268,7 +1351,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		$row = mysql_fetch_array($rs);
 		$grp_type = $row["grp_type"];
 
-		$this->tab_draw("Versionen");
+		$this->tab_draw(localeH("Versions"));
 		$this->workarea_start_draw();
 		$sql = "SELECT * FROM mediaversion WHERE med_id = ".$myObj->id." ORDER BY ver_bez, ver_id DESC";
 		$rs = $myDB->query($sql);
@@ -2246,7 +2329,10 @@ function initoid()
 				{
 					$iptc = iptcparse($info["APP13"]);
 
-					$titel = @ $iptc["2#105"][0];
+					if (@$iptc["2#105"][0]!="")
+					{
+						$titel = @ $iptc["2#105"][0];
+					}
 					$keywords = @ $iptc["2#020"][0];
 					$comment = $myMB->iptc($info);
 				}
@@ -2260,7 +2346,7 @@ function initoid()
 				$myPT->startBuffer();
 				$name = "folder_".sha1($file);
 				?>
-				Ordner<br/>
+				<?php echo localeH("Folder")?><br/>
 				<select name="<?php echo $name ?>" class="input" style="width:200px" onchange="document.forms.editform.<?php echo $name ?>_new.value='';">
 				<option value="" selected>...</option>
 				<?php
@@ -2487,7 +2573,16 @@ function initoid()
 		
 		$myMB = new PhenotypeMediabase();
 		$myMB->deleteMediaObject($img_id);
-		$this->_params["info"]= localeH("Object deleted.");
+		$_params = Array();
+		$_params["id"]=$img_id;
+		$_params["b"]=$block_nr;
+		$_params["folder"]=$this->folder;
+		$_params["type"]=$this->type;
+		$_params["sortorder"]=$this->sortorder;
+		$_params["p"]=$this->pagenr;
+		$_params["a"]=$this->itemcount;
+		$_params["info"]= localeH("Object deleted.");
+		$this->_params = $_params;
 		$this->gotoPage("Editor","Media","browse",$this->_params);
 	}
 

@@ -241,6 +241,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Remove include";
 		$_token["Config"][]="Remove include %1";
 		$_token["Config"][]="Remove layout %1";
+		$_token["Config"][]="Remove pagescript %1";
 		$_token["Config"][]="Remove placeholder";
 		$_token["Config"][]="Remove template";
 		$_token["Config"][]="Script";
@@ -296,11 +297,12 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="same like page";
 		$_token["Config"][]="selective";
 		$_token["Config"][]="use AJAX exporter";
-		$_token["Config"][]="Remove pagescript %1";
+
 
 		// Editor
 
 		$_token["Editor"][]="Action";
+		$_token["Editor"][]="Add Bullet Point";
 		$_token["Editor"][]="Add Link";
 		$_token["Editor"][]="Add first page in group";
 		$_token["Editor"][]="Add new record";
@@ -323,6 +325,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="Display debug skin";
 		$_token["Editor"][]="Document No.";
 		$_token["Editor"][]="Document assigned";
+		$_token["Editor"][]="Document assigned.";
 		$_token["Editor"][]="Document/Image assigned";
 		$_token["Editor"][]="Edit page";
 		$_token["Editor"][]="Edit record";
@@ -343,10 +346,12 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="Page";
 		$_token["Editor"][]="Pages";
 		$_token["Editor"][]="Preview";
+		$_token["Editor"][]="Publish";
 		$_token["Editor"][]="Put into / Take out of lightbox";
 		$_token["Editor"][]="Reallocate page";
 		$_token["Editor"][]="Really delete record?";
 		$_token["Editor"][]="Really delete this record?";
+		$_token["Editor"][]="Remove Bullet Point";
 		$_token["Editor"][]="Remove Document";
 		$_token["Editor"][]="Remove Document/Image";
 		$_token["Editor"][]="Remove Image";
@@ -355,8 +360,10 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="Search Content";
 		$_token["Editor"][]="Search Pages";
 		$_token["Editor"][]="Select Link";
+		$_token["Editor"][]="Select document";
 		$_token["Editor"][]="Select image";
 		$_token["Editor"][]="Select link";
+		$_token["Editor"][]="Select/Deselect all";
 		$_token["Editor"][]="Send";
 		$_token["Editor"][]="Source";
 		$_token["Editor"][]="State";
@@ -393,13 +400,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor"][]="select";
 		$_token["Editor"][]="send";
 		$_token["Editor"][]="tasks";
-		$_token["Editor"][]="Publish";
-		$_token["Editor"][]="Preview";
-		
-		$_token["Editor"][]="Document assigned.";
-		$_token["Editor"][]="Select document";
-$_token["Editor"][]="Remove Bullet Point";
-$_token["Editor"][]="Add Bullet Point";
+
 
 		// Editor_Content
 
@@ -414,14 +415,17 @@ $_token["Editor"][]="Add Bullet Point";
 		$_token["Editor_Media"][]="Action";
 		$_token["Editor_Media"][]="All Files";
 		$_token["Editor_Media"][]="Alternate";
+		$_token["Editor_Media"][]="Clear lightbox";
 		$_token["Editor_Media"][]="Create new version";
 		$_token["Editor_Media"][]="Create new versions";
+		$_token["Editor_Media"][]="Delete objects in mediabase";
 		$_token["Editor_Media"][]="Document upload succesful";
 		$_token["Editor_Media"][]="Drag & Drop - Upload";
 		$_token["Editor_Media"][]="Files";
 		$_token["Editor_Media"][]="First version added";
 		$_token["Editor_Media"][]="Folder";
 		$_token["Editor_Media"][]="Format";
+		$_token["Editor_Media"][]="Go!";
 		$_token["Editor_Media"][]="Group/Folder";
 		$_token["Editor_Media"][]="Image (%1x%2)";
 		$_token["Editor_Media"][]="Image / Document";
@@ -441,6 +445,7 @@ $_token["Editor"][]="Add Bullet Point";
 		$_token["Editor_Media"][]="Quality";
 		$_token["Editor_Media"][]="Really delete this document?";
 		$_token["Editor_Media"][]="Really delete this image?";
+		$_token["Editor_Media"][]="Really delete this objects in the mediabase?";
 		$_token["Editor_Media"][]="Really delete this version?";
 		$_token["Editor_Media"][]="Search Media";
 		$_token["Editor_Media"][]="Select image";
@@ -585,6 +590,7 @@ $_token["Editor"][]="Add Bullet Point";
 		$_token["Phenotype"][]="Attention";
 		$_token["Phenotype"][]="August";
 		$_token["Phenotype"][]="Cache";
+		$_token["Phenotype"][]="Change Image";
 		$_token["Phenotype"][]="Changes saved";
 		$_token["Phenotype"][]="Changes saved.";
 		$_token["Phenotype"][]="Comment";
@@ -625,6 +631,7 @@ $_token["Editor"][]="Add Bullet Point";
 		$_token["Phenotype"][]="March";
 		$_token["Phenotype"][]="May";
 		$_token["Phenotype"][]="Media";
+		$_token["Phenotype"][]="Media object";
 		$_token["Phenotype"][]="Mediagroup";
 		$_token["Phenotype"][]="Mediagroups";
 		$_token["Phenotype"][]="Month";
@@ -684,7 +691,7 @@ $_token["Editor"][]="Add Bullet Point";
 		$_token["Phenotype"][]="online";
 		$_token["Phenotype"][]="pagegroups";
 		$_token["Phenotype"][]="snapshot installed";
-		$_token["Phenotype"][]="Media object";
+
 
 		// Ticket
 
@@ -894,9 +901,15 @@ $_token["Editor"][]="Add Bullet Point";
 
 	public function writeTMX($file,$_token,$_english,$locale = false, $_translation =array())
 	{
+		/*
+		echo "<pre>";
+		print_r ($_token);
+		echo "</pre>";
+		*/
+
 		$xml ='<?xml version="1.0" encoding="UTF-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
-  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="##!PT_VERSION!##" o-tmf="unknown" segtype="block" srclang="*all*"/>
+  <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="2.9" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body>';
 		foreach ($_token AS $token)
 		{
@@ -921,7 +934,7 @@ $_token["Editor"][]="Add Bullet Point";
 		$xml .='  </tmx:body>
 </tmx:tmx>';
 
-		//echo htmlentities($xml);
+		//echo "<br/>".$file."<br/>";
 		file_put_contents($file,$xml);
 	}
 
@@ -1003,8 +1016,8 @@ $_token["Editor"][]="Add Bullet Point";
 	}
 
 	/**
-	 * sorts alle localization tokens for optimizing the LocaleManager class
-	 *
+	 * sorts and print out all localization tokens for optimizing the LocaleManager class
+	 * 
 	 * interal (system developer) usage only
 	 *
 	 */
@@ -1048,35 +1061,54 @@ $_token["Editor"][]="Add Bullet Point";
 	 * 
 	 * 
 	 * internal (system developer) usage only
+	 * 
+	 * all parameters are only relevant, if you want to add new tokens or insert new translations during rebuild
+	 * 
+	 * @param string name of section insertions are ment for
+	 * @param array $_englishinsert
+	 * @param array $_germaninsert
 	 */
 	public function rebuildTMXFiles($insert="",$_englishinsert=array(),$_germaninsert=array())
 	{
 		foreach ($this->_token AS $name => $_token)
 		{
 
-			$file = SYSTEMPATH . "tmx/". $name ."_en.tmx";
+			// Process all section files, if no insert section is given
+			// otherwise only the file of the given insert seciton
+			if ($insert=="" OR ($insert==$name))
+			{
+				$file = SYSTEMPATH . "tmx/". $name ."_en.tmx";
 
-			$_english = $this->readTMX($file,"en");
-			if ($name==$insert)
-			{
-				$_english = array_merge($_english,$_englishinsert);
-			}
-			$this->writeTMX($file,$_token,$_english);
-			foreach ($this->_locales AS $locale)
-			{
-				$file = SYSTEMPATH . "tmx/". $name ."_".$locale.".tmx";
-				$_translation = $this->readTMX($file,$locale);
-				if ($name==$insert AND $locale == "de")
+				$_english = $this->readTMX($file,"en");
+				if ($name==$insert)
 				{
-					$_translation = array_merge($_translation,$_germaninsert);
+					$_english = array_merge($_english,$_englishinsert);
+					foreach($_englishinsert AS $newtoken => $v)
+					{
+						if (!in_array($newtoken))
+						{
+							$_token[]=$newtoken;
+						}
+					}
 				}
-				$this->writeTMX($file,$_token,$_english,$locale,$_translation);
+				$this->_token[$name]=$_token;
+				$this->writeTMX($file,$_token,$_english);
+				foreach ($this->_locales AS $locale)
+				{
+					$file = SYSTEMPATH . "tmx/". $name ."_".$locale.".tmx";
+					$_translation = $this->readTMX($file,$locale);
+					if ($name==$insert AND $locale == "de")
+					{
+						$_translation = array_merge($_translation,$_germaninsert);
+					}
+					$this->writeTMX($file,$_token,$_english,$locale,$_translation);
+				}
 			}
 		}
 	}
 
 	/**
-	 * This functions pastes token names into the english content (if empty)
+	 * This function pastes token names into the english content (if empty)
 	 * 
 	 * Very usefull since most english translations for a token are identical to the token itself
 	 * 
@@ -1099,6 +1131,53 @@ $_token["Editor"][]="Add Bullet Point";
 			$this->writeTMX($file,$_token,$_english);
 		}
 	}
+
+	/**
+	 * This method transfers all new found tokens from the table tokens 
+	 * including translations into the the tmx file
+	 * 
+	 * internal (system developer) usage only
+	 *  
+	 */
+	public function injectNewTokensFromDatabase($testrun=true)
+	{
+		global $myDB;
+		foreach ($this->_token AS $name => $_token)
+		{
+			echo "<br/>Processing ".$name.":<br/>";
+
+			$sql = "SELECT * FROM tokens WHERE section='".$name."' ORDER BY token";
+			$rs =$myDB->query($sql);
+			$_englishinsert = Array();
+			$_germaninsert = Array();
+			while ($row=mysql_fetch_array($rs))
+			{
+				$token = utf8_encode($row["token"]);
+				if ($row["en"]!="")
+				{
+					$_englishinsert[$token]=utf8_encode($row["en"]);
+				}
+				else
+				{
+					$_englishinsert[$token]=$token;
+				}
+				$_germaninsert[$token]=utf8_encode($row["de"]);
+			}
+			print_r ($_englishinsert);
+			echo "<br/>";
+			print_r ($_germaninsert);
+			if ($testrun==false)
+			{
+				$this->rebuildTMXFiles($name,$_englishinsert,$_germaninsert);
+			}
+		}
+		if ($testrun==false)
+		{
+			echo "<br/>=========Please transfer:============<br/>";
+			$this->sortTokens();
+		}
+	}
+
 
 }
 

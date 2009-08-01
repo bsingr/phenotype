@@ -25,14 +25,47 @@
  */
 class PhenotypeImageStandard extends PhenotypeMediaObject
 {
+	/**
+	 * object type
+	 * 
+	 * currently MB_IMAGE or MB_DOCUMENT
+	 *
+	 * @var integer
+	 */
 	public $type = MB_IMAGE;
+	
+	/**
+	 * width
+	 *
+	 * @var integer
+	 */
 	public $x;
+	
+	/**
+	 * height
+	 *
+	 * @var integer
+	 */
 	public $y;
 	public $align = "";
 	public $class = "";
 	public $style = "";
 	public $thumburl;
 
+	/**
+	 * Name/Title of the object
+	 *
+	 * @var string
+	 */
+	public $bez;
+	
+	/**
+	 * original file name (before importing/uploading into the mediabase)
+	 *
+	 * @var string
+	 */
+	public $bez_original;
+	
 	function __construct($img_id)
 	{
 		global $myDB;
@@ -480,5 +513,31 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 		}
 		return false;
 	}	
+	
+	/**
+	 * Get recording date and time of the image, if exif data is present
+	 *
+	 * @return integer timestamp
+	 */
+	public function getExifRecordDateTime()
+	{
+		$_exif = exif_read_data($this->file);
+		if ($_exif["DateTime"]!="")
+		{
+			$datumzeit=explode(" ",$_exif["DateTime"]);
+			$aufnahmezeit=$datumzeit[1];
+			$aufnahmedatum=explode(":",$datumzeit[0]);
+			$aufnahmedatumzeit=$aufnahmedatum[1].".".$aufnahmedatum[1].".".$aufnahmedatum[0]." ".$aufnahmezeit."<br>";
+
+
+			$t = Phenotype::germanDT2Timestamp($aufnahmedatumzeit);
+			return $t;
+
+		}
+		else 
+		{
+			return false;		
+		}
+	}
 }
 ?>

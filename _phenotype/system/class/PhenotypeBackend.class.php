@@ -23,8 +23,16 @@
  */
 class PhenotypeBackendStandard extends PhenotypeLayout
 {
-  
-  /**
+
+
+	/**
+	 * "ID" of the backend page. This id is available within the Javascript variable pt_bak_id all time
+	 *
+	 * @var unknown_type
+	 */
+	public $bak_id = "_";
+
+	/**
    * Name of TMX-File to load for localization, e.g. "Phenotype".
    *
    * Please leave the default value empty, since PhenotypeBackend-Classes might be constructed elsewhere and you don't want to loose
@@ -373,14 +381,17 @@ exit();
 <link href="image-crop.css" rel="stylesheet" type="text/css">
 <link href="content.css" rel="stylesheet" type="text/css">
 <link href="css/jqueryui/phenotype/jquery-ui.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="phenotype.js"></script>
+<link href="backend.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="lib/jquery/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery/jquery-ui.js"></script>
+<script type="text/javascript">var pt_bak_id="'.$this->bak_id.'";</script>
+<script type="text/javascript" src="phenotype.js"></script>
 ';
 		$myApp->displayBackendJavascript();
 
 		echo '<script type="text/javascript" src="wz_dragdrop.js"></script>
 		<script type="text/javascript" src="tw-sack.js"></script>
+		<script type="text/javascript" src="backend.js"></script>
 </head>';
 
 		if ($body_onload!="")
@@ -400,7 +411,7 @@ exit();
 
 				echo $this->html_leftarea;
 
-				echo '</td><td width="700" valign="top">';
+				echo '</td><td width="700" valign="top" id="content">';
 
 				echo $this->html_contentarea1;
 
