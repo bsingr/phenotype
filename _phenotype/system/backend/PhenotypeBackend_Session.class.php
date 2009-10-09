@@ -67,7 +67,8 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 		<html>
 		<head>
 		<title>Phenotype <?php echo $myPT->version ?></title>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
+		<meta http-equiv="X-UA-Compatible" content="IE=7" />
 		<link href="phenotype.css" rel="stylesheet" type="text/css">
 		<link href="navigation.css" rel="stylesheet" type="text/css">
 		<link href="content.css" rel="stylesheet" type="text/css">
@@ -153,7 +154,8 @@ class PhenotypeBackend_Session_Standard extends PhenotypeBackend
 <html>
 <head>
 <title>Phenotype <?php echo $myPT->version ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="content.css" rel="stylesheet" type="text/css">

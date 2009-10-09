@@ -132,6 +132,7 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 <head>
 <title>phenotype <?php echo $myPT->version ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="content.css" rel="stylesheet" type="text/css">
@@ -208,7 +209,8 @@ exit();
 <html>
 <head>
 <title>Phenotype <?php echo $myPT->version ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="content.css" rel="stylesheet" type="text/css">
@@ -372,7 +374,8 @@ exit();
 <html>
 <head>
 <title>' . $this->getH($this->title) .'</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset='.  PT_CHARSET.'">
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="media.css" rel="stylesheet" type="text/css">
