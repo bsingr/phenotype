@@ -187,7 +187,7 @@ class PhenotypeStandard extends PhenotypeBase
 	function stopBuffer()
 	{
 		$s=ob_get_contents();
-		if (ob_get_length() > 0 OR ob_get_level()>0) 
+		if (ob_get_length() > 0 OR ob_get_level()>0)
 		{
     		ob_end_clean();
   		}
@@ -1073,7 +1073,7 @@ class PhenotypeStandard extends PhenotypeBase
 	public function displayErrorPage($headline,$message,$file="",$line=0,$sql="",$e = false)
 	{
 		ob_get_clean();
-		
+
 		global $myRequest;
 		global $myDB;
 		global $myApp;
@@ -1092,7 +1092,7 @@ class PhenotypeStandard extends PhenotypeBase
 			$message .="\n\n".$sql;
 		}
 		$myLog->log($message,PT_LOGFACILITY_SYS,PT_LOGLVL_ERROR);
-		
+
 		// first get the current output
 		$html = $this->stopBuffer();
 		$html = $this->colorcodeHTML($html);
@@ -1258,7 +1258,11 @@ em {
 		<?php if (is_object($myRequest)){?> <em>Request:</em><br />
 <div id="request">
 <ul class="request">
-<?php foreach ($myRequest->getParamsArray() AS $k => $v){?>
+<?php foreach ($myRequest->getParamsArray() AS $k => $v){
+	if (is_array($v)) {
+		$v = implode(",",$v);
+	}
+?>
 	<li><span class="param_key">#<?php echo $this->codeH($k)?></span>: <span
 		class="param_value"><?php echo $this->codeH($v)?></span></li>
 		<?php }?>
@@ -1298,12 +1302,12 @@ foreach ($_traces AS $_trace)
 		$line = $_trace["line"];
 		$c = count($_lines);
 	}
-	else // We don't have a line, so we don't have a file to be printed out (e.g in case of "magic" calls) 
+	else // We don't have a line, so we don't have a file to be printed out (e.g in case of "magic" calls)
 	{
 		$_trace["file"]="";
 		$c=0;
 	}
-	
+
 
 	$start = max(1,$line-2);
 	$stop = min($c,$line+2);
@@ -1564,7 +1568,11 @@ em {
 	<?php if (is_object($myRequest)){?> <em>Request:</em><br />
 <div id="request">
 <ul class="request">
-<?php foreach ($myRequest->getParamsArray() AS $k => $v){?>
+<?php foreach ($myRequest->getParamsArray() AS $k => $v){
+	if (is_array($v)) {
+		$v = implode(",",$v);
+	}
+?>
 	<li><span class="param_key">#<?php echo $this->codeH($k)?></span>: <span
 		class="param_value"><?php echo $this->codeH($v)?></span></li>
 		<?php }?>
