@@ -67,6 +67,16 @@ function codeAH($value,$allowedchars=PT_ALPHANUMERIC)
   return $myPT->codeAH($value,$allowedchars);
 }
 
+function codeWSL($value)
+{
+  global $myPT;
+  return $myPT->codeWSL($value);
+}
+function codeHWSL($value)
+{
+  global $myPT;
+  return $myPT->codeHWSL($value);
+}
 
 function url_for_page($pag_id, $_params=null, $lng_id=null, $smartUID="", $fullUrl=false)
 {
@@ -148,6 +158,7 @@ function localeShortDate($timestamp)
 
 function urlstrip($s,$lowercase=false)
 {
+	$s = trim($s);
 	$s = str_replace(array(" ","/","_","&","?","---","--"),"-",$s);
 	$s = str_replace("ä","ae",$s);
 	$s = str_replace("ö","oe",$s);
@@ -156,6 +167,7 @@ function urlstrip($s,$lowercase=false)
 	$s = str_replace("Ö","Oe",$s);
 	$s = str_replace("Ü","Ue",$s);
 	$s = str_replace("ß","ss",$s);
+	$s = trim($s);
 
 
 	// Alle Sonderzeichen, die nicht URL-typisch sind rausfiltern

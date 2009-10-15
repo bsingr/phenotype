@@ -48,6 +48,10 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 	/**
 	 * reserved for future usage
 	 *
+	 * If set to true page layout rendering is canceled, when executing this include
+     * 
+     * Attention: That also means, that the whole rendering process is stopped after execution of this Include, so be sure, to place
+   	 * it in the right order
 	 * @var unknown_type
 	 */
 	protected $disableLayout = false;
@@ -78,19 +82,12 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 
 
 
-	/**
-   * If set to true page layout rendering is canceled, when executing this include
-   * 
-   * Attention: That also means, that the whole rendering process is stopped after execution of this Include, so be sure, to place
-   * it in the right order
-   *
-   * @var boolean
-   */
 
 
 
 	public function __construct($p1="",$p2="")
 	{
+		global $myDebug;
 		if (get_class ($this)=="PhenotypeInclude")
 		{
 			// Abwärtskompatibel PT 2.1
@@ -107,6 +104,7 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 			// Abwärtskompatibel PT 2.0
 			$this->html = $p1;
 		}
+		$myDebug->notifyIncludeUsage($this->id);
 	}
 
 	function initRendering()

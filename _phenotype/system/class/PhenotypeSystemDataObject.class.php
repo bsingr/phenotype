@@ -27,6 +27,23 @@ class PhenotypeSystemDataObjectStandard extends PhenotypeDataObject
 {
 	public $dao_type = self::dao_system;
 
+	public function buildDataUrlHelper($_params=array())
+	{
+		global $myDB;
+		global $PTC_LANGUAGES;
+		$sql ="SELECT * FROM page ORDER BY pag_id LIMIT 0,250";
+		$rs = $myDB->query($sql);
+		while ($row=mysql_fetch_array($rs))
+		{
+			foreach ($PTC_LANGUAGES AS $k =>$v)
+			{
+				$token = "url_p".$row["pag_id"]."l".$k;
+				$url = $row["pag_url".$k];
+				$this->set($token,$url);
+			}
+		}
+		$this->store();
+	}
 	/**
    * build lookup table for contentobjects, includes and components for debug display
    *
@@ -75,6 +92,16 @@ class PhenotypeSystemDataObjectStandard extends PhenotypeDataObject
 		$this->store(0);
 	}
 
+	/**
+   * Provide an empty lightbox on first call
+   *
+   * @param array() usr_id => id of the user who owns the lightbox
+   */
+	public function buildDataContentLightbox($_params = array())
+	{
+		$this->set("objects",array());
+		$this->store(0);
+	}
 	/**
    * provide a temporay list of application objects (pages, contentobjects, media and tickets)
    * during AJAX export to reduce DB traffic.

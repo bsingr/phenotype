@@ -131,9 +131,9 @@ require_once (APPPATH . "_host.config.inc.php");
 // start engine
 // ------------------------------------------------------
 
-// Time check initialize
-$myTC = new TCheck();
-$myTC->start();
+$myDebug = new PhenotypeDebugger();
+$myDebug->start(); 
+
 
 //date_default_timezone_set('Etc/GMT-1');
 require_once (APPPATH . "_application.inc.php");

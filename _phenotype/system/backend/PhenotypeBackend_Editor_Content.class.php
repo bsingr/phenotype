@@ -24,7 +24,7 @@
  */
 class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 {
-
+	public $bak_id = "Editor_Content";
   public $tmxfile = "Editor_Content";
 
 
@@ -105,6 +105,9 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         $myPT->clearCache();
         $this->installSnapshot($myRequest->getI("id"),$myRequest->get("sna_type"));
         break;
+			case "lightbox"; // Wird per Ajax aufgerufen
+				$this->displayLightBox(true);
+			return;				
       case "form_ajax":
         $this->execute_form_ajax();
         break;
@@ -172,6 +175,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $this->displayClassTree();
 
     $this->displaySearchForm();
+		$this->displayLightBox();
 
     return $myPT->stopBuffer();
   }
@@ -334,6 +338,259 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 	  <?php
   }
 
+	function displayLightBox($ajax=false)
+	{
+		global  $myPT;
+		global $mySUser;
+		global $myRequest;
+		global $myLog;
+		// No lightbox on overview page
+		if ($this->con_id==0 AND $ajax==false)
+		{
+			return;
+		}
+		$displayLightbox=false;
+		$myPT->startBuffer();
+		?>
+		<div id="lightbox" rel="<?php echo $this->con_id?>">
+		<?php
+		$reload=false;
+		$myDO = new PhenotypeSystemDataObject("ContentLightbox",array("usr_id"=>$mySUser->id,"con_id"=>$this->con_id));
+		$_objects = $myDO->get("objects");
+		if ($myRequest->check("dat_id") AND $ajax==true)
+		{
+			$dat_id = $myRequest->getA("dat_id","-0123456789,");
+			$cname = "PhenotypeContent_".$this->con_id;
+			// Special Cases ...
+			switch ($dat_id)
+			{
+				case -1:
+					$_objects=Array();
+					break;
+				case -99;
+				foreach ($_objects AS $dat_id)
+				{
+					$myCO = new $cname($dat_id);
+					if ($myCO->loaded)
+					{
+						$myCO->delete();
+					}
+				}
+				$reload=true;
+				$_objects=Array();
+				break;
+				case -2://online
+				foreach ($_objects AS $dat_id)
+				{
+					$myCO = new $cname($dat_id);
+					if ($myCO->loaded)
+					{
+						$myCO->setStatus(true);
+						$myCO->changeUserStatus($mySUser->id);
+						$myCO->store();
+					}
+				}
+				$reload=true;
+				break;
+				case -3://offline
+				foreach ($_objects AS $dat_id)
+				{
+					$myCO = new $cname($dat_id);
+					if ($myCO->loaded)
+					{
+						$myCO->setStatus(false);
+						$myCO->changeUserStatus($mySUser->id);
+						$myCO->store();
+					}
+				}
+				$reload=true;				
+				break;
+				default:
+					// med_id can be one value or a comma separated list
+					$_dat_id = split(",",$dat_id);
+					foreach ($_dat_id AS $dat_id)
+					{
+						if (in_array($dat_id,$_objects))
+						{
+							unset($_objects[$dat_id]);
+						}
+						else
+						{
+							$_objects[$dat_id]=$dat_id;
+						}
+					}
+					break;
+			}
+			$myDO->set("objects",$_objects);
+			$myDO->store();
+		}
+		if (count($_objects)!=0)
+		{
+			$this->tab_new();
+			$url = "backend.php?page=Editor,Content,select&con_id=".$this->con_id."&c=akt";
+			$this->tab_addEntry(locale("Lightbox"),$url,"b_pinadd.gif");
+			$this->tab_draw(locale("Lightbox"),$x=260,1);
+		?>
+		<table width="260" border="0" cellpadding="0" cellspacing="0">
+      	<tr>
+        	<td class="windowMenu">
+			<table  border="0" cellspacing="8" cellpadding="0">
+				<?php
+				foreach ($_objects AS $object)
+				{
+					$cname = "PhenotypeContent_".$this->con_id;
+					$myCO = new $cname($object);
+					$url = "backend.php?page=Editor,Content,edit";
+					if ($myCO->loaded==1)
+					{
+						$displayLightbox=true;
+						$myImg = new PhenotypeImage($myCO->img_id);
+					?>
+					<tr>
+	    	        	<td width="10"><input type="checkbox" checked="checked" onclick="lightbox_switch(<?php echo $myCO->id ?>,<?php echo $myCO->content_type?>,1)" rel="<?php echo $myCO->id ?>"></td>
+	    	        	<td width="40">
+	    	        	<a href="<?php echo $url ?>&amp;id=<?php echo $myCO->id ?>&amp;uid=<?php echo $myCO->uid?>"><?php echo $myImg->display_thumbX(45,$myCO->bez); ?></a></td>
+	    	        	<td ><a href="<?php echo $url ?>&amp;id=<?php echo $myCO->id ?>&amp;uid=<?php echo $myCO->uid?>"><?php echo $myPT->codeH($myPT->cutString($myCO->bez,23)) ?></a></td>
+	          	  	</tr>
+	          	  	<?php
+					}
+				}
+				?>
+				<tr>
+				<td colspan="3">
+				<form action="#" id="lightboxselect">
+				<select class="listmenu" style="float:left" name="select">
+				<option>
+				<option value="1"><?php echo $myPT->localeH('Clear lightbox')?></option>
+				<option value="2"><?php echo $myPT->localeH('Delete records permanently')?></option>
+				<option value="3"><?php echo $myPT->localeH('Set status online')?></option>
+				<option value="4"><?php echo $myPT->localeH('Set status offline')?></option>
+				</select>
+				<div style="width:30px;float:left;padding-left:5px"><a id="btn_lightbox_content" class="tabmenuType" href="#"><?php echo $myPT->localeH('Go!')?></a></div>
+				</form>
+				</td>
+				</tr>
+        	</table>
+			</td>
+	        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
+    	  </tr>
+        <tr>
+          <td class="windowBottomShadow" width="250"><img src="img/win_sh_bo_le.gif" width="10" height="10"></td>
+          <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
+        </tr>    	  
+    	</table>
+    	<?php
+		}
+    	?>
+    	</div>      
+		<?php
+		$html= $myPT->stopBuffer();
+		if ($displayLightbox==true)
+		{
+			echo $html;
+		}
+		else
+		{
+			echo '<div id="lightbox" rel="'.$this->con_id.'"/>';
+		}
+		if ($reload==true)
+		{
+		?>
+		<div id="redirect" style="display:none"><?=ADMINFULLURL?>backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id."&c=akt"?></div>
+		<?
+		}
+	}
+	function displayJS_Lightbox()
+	{
+		global $myPT;
+		?>
+		<script type="text/javascript">
+		function lightbox_checkup()
+		{
+			$('#content input:checkbox:checked').each(function()
+			{
+			 	$(this).removeAttr('checked');
+			 	$('#lightbox input:checkbox:checked').each(function()
+			 	{
+			 		var nr = $(this).attr("rel");
+			 		$('#lb'+nr).attr('checked','checked');
+			 		//console.log(nr);
+			 	});
+			});
+		}
+		function lightbox_switch(dat_id,con_id,check)
+		{
+			if (dat_id==-99)
+			{
+				rc = confirm ('<?php echo locale('Really delete this records permanently');?>');
+				if (rc==false)
+				{
+					return;
+				}
+			}
+			var ajax = new sack();
+			ajax.resetData();
+			ajax.requestFile = "backend.php";
+			ajax.method = "POST";
+			ajax.element = 'lightbox';
+			ajax.setVar("page","Editor,Content,lightbox");
+			ajax.setVar("dat_id",dat_id);
+			ajax.setVar("con_id",con_id);
+			// following variables are necessary for correct edit links...
+			/*ajax.setVar("grp_id",<?php echo $this->grp_id ?>);
+			ajax.setVar("folder","<?php echo $myPT->codeH($this->folder) ?>");
+			ajax.setVar("type",<?php echo $this->type ?>);
+			ajax.setVar("sortorder",<?php echo $this->sortorder ?>);
+			ajax.setVar("p",<?php echo $this->pagenr ?>);
+			ajax.setVar("a",<?php echo $this->itemcount ?>);
+			*/
+			//ajax.onLoading = whenLoading;
+			ajax.onCompletion = function()
+			{
+				$('#redirect').each(function()
+				{
+					document.location.href = ($(this).text());
+					return;	
+				});
+				$('#btn_lightbox_content').click(function()
+				{
+					var option = $('#lightboxselect select[name=select]').val();
+					var con_id = $('#lightbox').attr('rel');
+					if (option==1) // clear lightbox
+					{
+						lightbox_switch(-1,con_id);
+					}
+					if (option==2) // delete content records
+					{
+						lightbox_switch(-99,con_id);
+					}
+					if (option==3) // status online
+					{
+						lightbox_switch(-2,con_id);
+					}
+					if (option==4) // status offline
+					{
+						lightbox_switch(-3,con_id);
+					}
+					return false;
+				});
+				lightbox_checkup();
+				//if (check==1) // remove check from all elements, then activate them one by one out of the lightbox
+				//{
+				/*
+				var obj = document.getElementById('lb'+med_id);
+				if (obj!=null)
+				{
+					obj.checked=!obj.checked;
+				}*/
+			}
+			//ajax.onInteractive = whenInteractive;
+			//ajax.onCompletion = whenCompleted;
+			ajax.runAJAX();
+		}
+		</script>
+		<?php
+	}
   /**
 	 * Display few items of every content type, when no content type is selected.
 	 * Accounts category, if submitted
@@ -348,6 +605,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     global $myPT;
 
     $myPT->startBuffer();
+		$this->displayJS_Lightbox();
     $headline = locale("Overview");
     if ($this->category!=""){$headline=$this->category;}
     $this->displayHeadline($headline,"http://www.phenotype-cms.de/docs.php?v=23&con_id=2");
@@ -423,8 +681,11 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     global $myRequest;
     global $myPT;
 
+		$myDO = new PhenotypeSystemDataObject("ContentLightbox",array("usr_id"=>$mySUser->id,"con_id"=>$this->con_id));
+		$_objects = $myDO->get("objects");
     $myPT->startBuffer();
 
+		$this->displayJS_Lightbox();
     $sql = "FROM content_data WHERE con_id = " . $this->con_id;
     $cname = "PhenotypeContent_" . $this->con_id;
     $myCO = new $cname;
@@ -603,11 +864,11 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 		$rs = $myDB->query($sql2);
 
-		$this->displayContentRecords($rs);
+		$this->displayContentRecords($rs,true,false,$_objects);
 		//$this->overview_content_draw($sql2,$this->con_id,2);
 
 		$url = "backend.php?page=Editor,Content,select&con_id=".$this->con_id."&r=".$this->category."&b=0&c=".$order."&p=";
-		echo $this->renderPageBrowser($p,$anzahl,$url);
+		echo $this->renderPageBrowser($p,$anzahl,$url,10,false,true);
 
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
@@ -647,6 +908,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     $myPT->startBuffer();
 
+		$this->displayJS_Lightbox();
     if ($this->con_id!=0)
     {
       $sql = "FROM content_data WHERE con_id = " . $this->con_id;
@@ -891,7 +1153,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 
     $myPT->startBuffer();
-
+		$this->displayJS_Lightbox();
 
     $this->displayIDLineContentRecord($myCO);
 
@@ -1393,6 +1655,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     $myPT->startBuffer();
 
+		$this->displayJS_Lightbox();
     $this->displayIDLineContentRecord($myCO);
 
 

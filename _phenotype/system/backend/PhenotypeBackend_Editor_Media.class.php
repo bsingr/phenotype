@@ -188,7 +188,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 
 			case "lightbox"; // Wird per Ajax aufgerufen
-			$this->displayLightBox();
+			$this->displayLightBox(true);
 			return;
 			break;
 			case "streamPainterPreviewImage";
@@ -493,7 +493,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 
 
-	function displayLightBox()
+	function displayLightBox($ajax=false)
 	{
 		global  $myPT;
 		global $mySUser;
@@ -696,7 +696,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			{
 				$('#redirect').each(function()
 				{
-					document.location.href = ($(this).html());
+					document.location.href = ($(this).text());
 					return;	
 				});
 				$('#btn_lightbox_mediabase').click(function()
@@ -1009,7 +1009,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 	    $url = "backend.php?page=Editor,Media,browse&grp_id=".$this->grp_id . "&folder=" .$myPT->codeH($this->folder) ."&type=" .$this->type . "&sortorder=" . $this->sortorder . "&a=" . $this->itemcount."&p=";
 
-	    echo $this->renderPageBrowser($p,$anzahl,$url,$this->itemcount,true);
+	    echo $this->renderPageBrowser($p,$anzahl,$url,$this->itemcount,true,true);
 	    echo '<br/>';
 	    return $myPT->stopBuffer();
 	}

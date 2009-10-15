@@ -110,9 +110,17 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		{
 			$this->tool_type = (int)($this->com_id);
 		}
+		else 
+		{
+			$this->com_id = $this->tool_type;
+		}
 		if ($this->name!="")
 		{
 			$this->bez = $this->name;
+		}
+		else 
+		{
+			$this->name = $this->bez;;
 		}
 		// -- //
 
@@ -121,6 +129,8 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		{
 			$this->load($id);
 		}
+		global $myDebug;
+		$myDebug->notifyPageComponentUsage($this->com_id);
 	}
 
 
@@ -377,6 +387,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	    $dateiname =  $myPT->getTemplateFileName(PT_CFG_COMPONENT, $this->tool_type, $row_ttp["tpl_id"]);
 	    $$tpl = $dateiname;
 		 }	 
+		 $mySmarty->assign("component",$this);
 	<?php
 	$code = $myPT->stopbuffer();
 
@@ -436,7 +447,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		);
 	}
 
-	private function _form_textfield_display($_fconfig)
+	protected function _form_textfield_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
@@ -450,26 +461,38 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		echo $this->myLayout->workarea_form_text($title,$formname,$this->get($property),$width);
 	}
 
-	private function _form_textfield_fetch($_fconfig)
+	protected function _form_textfield_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
 		$this->set($property,$this->fget($property));
 	}
 	
-	public function form_headline($title)
+	public function form_headline($title,$margin_top = true)
 	{
 		$this->_form[] = array(
 		"form_method" =>"form_headline",
-		"title" =>$title
+		"title" =>$title,
+		"margin_top" =>$margin_top
 		);
 	}
 
-	private function _form_headline_display($_fconfig)
+	protected function _form_headline_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
-		echo "<br /><b>". $title . "</b><br />";
+		$margin_top = $_fconfig["margin_top"];
+		if ($margin_top)
+		{
+			echo '<div style="margin-bottom:5px;margin-top:20px"><b>'. $title . "</b></div>";
+		}
+		else 
+		{
+			echo '<div style="margin-bottom:5px;"><b>'. $title . "</b></div>";
+		}
 	}
 
+	protected function _form_headline_fetch($_fconfing)
+	{
+	}
 	public function form_textarea($title, $property, $width, $rows)
 	{
 		$this->_form[] = array(
@@ -481,7 +504,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		);
 	}
 
-	private function _form_textarea_display($_fconfig)
+	protected function _form_textarea_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
@@ -496,30 +519,32 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		echo $this->myLayout->workarea_form_textarea($title,$formname,$this->get($property),$rows,$width);
 	}
 
-	private function _form_textarea_fetch($_fconfig)
+	protected function _form_textarea_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
 		$this->set($property,$this->fget($property));
 	}
 
 
-	public function form_enumeration($title, $property, $start = 3, $max=99)
+	public function form_enumeration($title, $property, $start = 3, $max=99,$rows=1)
 	{
 		$this->_form[] = array(
 		"form_method" =>"form_enumeration",
 		"property" =>$property,
 		"title" =>$title,
 		"start" =>$start,
-		"max" =>$max
+		"max" =>$max,
+		"rows"=>$rows
 		);
 	}
 
-	private function _form_enumeration_display($_fconfig)
+	protected function _form_enumeration_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
 		$start = (int)$_fconfig["start"];
 		$max = (int)$_fconfig["max"];
+		$rows= (int)$_fconfig["rows"];
 
 
 		$formname = $this->formid . $property;
@@ -537,10 +562,20 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		<?php
 		for ($i=1;$i<=$this->getI($property."_count",$start);$i++)
 		{
+			if ($rows==1)
+			{
 		    ?> 
 			<input name="<?php echo $formname ?>_item<?php echo $i ?>" type="text" class="input" style="width: 355px" value="<?php echo $this->getH($property."_item".$i) ?>">&nbsp;
 		    <?php if ($this->getI($property."_count",$start)>1){ ?><input type="image" src="img/b_minus.gif" alt="<?php echo localeH("Remove Bullet Point")?>" width="18" height="18" border="0" align="absmiddle" name="<?php echo $formname ?>_minus_r<?php echo $i ?>"><?php } ?> <input type="image" src="img/b_plus.gif" alt="<?php echo localeH("Add Bullet Point")?>" width="18" height="18" border="0" align="absmiddle" name="<?php echo $formname ?>_plus_r<?php echo $i ?>"><br> 
       		<?php 
+			}
+			else 
+			{
+				?> 
+				<textarea name="<?php echo $formname ?>_item<?php echo $i ?>" class="input" style="width: 355px" rows="<?php echo $rows-1?>"><?php echo $this->getH($property."_item".$i) ?></textarea>&nbsp;
+			    <?php if ($this->getI($property."_count",$start)>1){ ?><input type="image" src="img/b_minus.gif" alt="<?php echo localeH("Remove Bullet Point")?>" width="18" height="18" border="0" align="absmiddle" name="<?php echo $formname ?>_minus_r<?php echo $i ?>"><?php } ?> <input type="image" src="img/b_plus.gif" alt="<?php echo localeH("Add Bullet Point")?>" width="18" height="18" border="0" align="absmiddle" name="<?php echo $formname ?>_plus_r<?php echo $i ?>"><br> 
+	      		<?php 
+			}
 		}
       	?> 
       	</td> 
@@ -550,7 +585,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	}
 
 
-	private function _form_enumeration_fetch($_fconfig)
+	protected function _form_enumeration_fetch($_fconfig)
 	{
 		global $myRequest;
 		$property = $_fconfig["property"];
@@ -597,7 +632,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		);
 	}
 
-	private function _form_selectbox_display($_fconfig)
+	protected function _form_selectbox_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
@@ -621,12 +656,22 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	}
 
 
-	private function _form_selectbox_fetch($_fconfig)
+	protected function _form_selectbox_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
 		$this->set($property,$this->fget($property));
 	}
 
+	/**
+     * selectbox for selection of content object records
+	 *
+	 * @param string $title
+	 * @param string $property
+	 * @param integer|array(integer) $con_id
+	 * @param boolean $addzerodots
+	 * @param boolean $statuscheck
+	 * @param string $sql_where
+	 */
 	public function form_content_selectbox($title, $property, $con_id, $addzerodots=true, $statuscheck=true,$sql_where="")
 	{
 		// realized a special editon of form_selectbox
@@ -634,10 +679,16 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 		global $myDB;
 
+		if (is_array($con_id))
+		{
+			$sql  = "SELECT dat_id,dat_bez FROM content_data WHERE con_id IN (".join(",",$con_id).")";
+		}
+		else 
+		{
 		$con_id = (int)$con_id;
 
 		$sql  = "SELECT dat_id,dat_bez FROM content_data WHERE con_id=".$con_id;
-
+		}
 		if ($statuscheck==true)
 		{
 			$sql .=" AND dat_status=1";
@@ -690,7 +741,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		);
 	}
 
-	private function _form_link_display($_fconfig)
+	protected function _form_link_display($_fconfig)
 	{
 
 		$title = $_fconfig["title"];
@@ -726,7 +777,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 	}
 
-	private function _form_link_fetch($_fconfig)
+	protected function _form_link_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
 		$_options = $_fconfig["options"];
@@ -790,7 +841,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		);
 	}
 
-	private function _form_richtext_display($_fconfig)
+	protected function _form_richtext_display($_fconfig)
 	{
 		global $myApp;
 
@@ -816,7 +867,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 	}
 
-	private function _form_richtext_fetch($_fconfig)
+	protected function _form_richtext_fetch($_fconfig)
 	{
 		global $myApp;
 		$property = $_fconfig["property"];
@@ -850,7 +901,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		);
 	}
 
-	private function _form_html_display($_fconfig)
+	protected function _form_html_display($_fconfig)
 	{
 		global $myApp;
 
@@ -880,7 +931,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		unlink ($filename_bak);
 	}
 
-	private function _form_html_fetch($_fconfig)
+	protected function _form_html_fetch($_fconfig)
 	{
 		global $myAdm;
 
@@ -901,7 +952,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		);
 	}
 
-	private function _form_imageupload_display($_fconfig)
+	protected function _form_imageupload_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
@@ -923,7 +974,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		echo $this->myLayout->workarea_form_imageupload($formname,$img_id,$alt,$align);
 	}
 
-	private function _form_imageupload_fetch($_fconfig)
+	protected function _form_imageupload_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
 		$path = $_fconfig["path"];
@@ -972,20 +1023,20 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		);
 	}
 
-	private function _form_wrap_display($_fconfig)
+	protected function _form_wrap_display($_fconfig)
 	{
 		$mname = $_fconfig["method"];
 		$_params = $_fconfig["params"];
 		$this->$mname ($_params);
 	}
 
-	private function _form_wrap_fetch($_fconfig)
+	protected function _form_wrap_fetch($_fconfig)
 	{
 		// Nothing to do here
 	}
 
 	/*
-	private function form_html_display($_fconfig)
+	protected function form_html_display($_fconfig)
 	{
 	global $myLayout;
 	$name = $this->formid . $name;
@@ -1090,7 +1141,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		}
 	}
 
-	private function _form_image_selector_display($_fconfig)
+	protected function _form_image_selector_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
@@ -1130,7 +1181,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	}
 
 
-	private function _form_image_selector_fetch($_fconfig)
+	protected function _form_image_selector_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
 		$_options = $_fconfig["options"];
@@ -1172,7 +1223,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		}
 	}
 
-	private function _form_document_selector_display($_fconfig)
+	protected function _form_document_selector_display($_fconfig)
 	{
 		$title = $_fconfig["title"];
 		$property = $_fconfig["property"];
@@ -1194,16 +1245,20 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		//echo $this->myLayout->workarea_form_image($formname, $img_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["x"],$_fconfig["y"],$alt,$align,$mode,$versionselect);
 
 		echo $this->myLayout->workarea_form_document2($formname, $doc_id, $_fconfig["folder"],$_fconfig["changefolder"],$_fconfig["type_filter"]);
+		$info = $this->get($property."_info");
+		$formname = $this->formid . $property."_info";
+		$width = 405;
+		echo $this->myLayout->workarea_form_text(locale("info line"),$formname,$info,$width);
 	}
 
-	private function _form_document_selector_fetch($_fconfig)
+	protected function _form_document_selector_fetch($_fconfig)
 	{
 		$property = $_fconfig["property"];
 		$formname = $this->formid . $property;
-		//$this->_form_fetch_debugprint();
+
 		$this->set($property."_doc_id",$this->fget($property."med_id"));
 		$this->set($property."_med_id",$this->fget($property."med_id"));
-
+		$this->set($property."_info",$this->fget($property."_info"));
 
 
 	}

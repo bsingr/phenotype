@@ -26,7 +26,7 @@ function __autoload($class_name) {
 
   // create inheritage of standard classes, if not inherited by application
 
-  $_classes = Array("Phenotype","PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeSystemDataObject","PhenotypeNavigationHelper","PhenotypeSmarty","PhenotypeLocaleManager","PhenotypeSoapServer","PhenotypePeer");
+  $_classes = Array("Phenotype","PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeSystemDataObject","PhenotypeNavigationHelper","PhenotypeSmarty","PhenotypeLocaleManager","PhenotypeSoapServer","PhenotypePeer","PhenotypeDebugger");
 
   if (in_array($class_name,$_classes))
   {
@@ -48,7 +48,7 @@ function __autoload($class_name) {
   }
 
 
-  // deprecated, but still needed and ineritable
+  // deprecated, but still needed and inheritable
 
   if ($class_name=="PhenotypeAdminLayout")
   {
@@ -139,7 +139,15 @@ function __autoload($class_name) {
       }
     }
   }
-     // Am Ende ein erneuter Check im class-Ordner
+  
+    // Evtl. eine freie Applikations-Klasse?
+    $file =  APPPATH . "class/". $class_name . ".class.php";
+    if (file_exists ( $file ))
+    {
+      require_once ($file);
+      return;
+    }
+     // Am Ende ein erneuter Check im class-Ordner (ohne Beschränkung auf Klassen, die Standard im Namen tragen)
     $file = CLASSPATH . $class_name . ".class.php";
     if (file_exists ( $file ))
     {

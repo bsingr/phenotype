@@ -828,10 +828,12 @@ class PhenotypePageStandard extends PhenotypeBase
 		global $myPT;
 		global $myRequest;
 		global $myDB;
+		global $myTC;
 		$myPage = &$this; // Zugriff fuer Includes und dergleichen
 
 
 		$html = str_replace("#!#title#!#",$myPT->codeH($myPage->titel),$html);
+		$html = str_replace("#!#canonical_url#!#",$myPT->codeH($this->getUrl($this->lng_id)),$html);
 		$html = str_replace("#!#alttitle#!#",$myPT->codeH($myPage->alttitel),$html);
 		$html = str_replace("#!#keywords#!#",$myPT->codeH($myPage->row["pag_searchtext"]),$html);
 
@@ -844,12 +846,12 @@ class PhenotypePageStandard extends PhenotypeBase
 	    ?>
 	    <div id="pt_debug" style="margin:0px;opacity:0.65;filter:alpha(opacity=75);padding:0px;padding-left:3px;position:absolute;right:0px;top:0px;z-index:10000;background-color:#000;color:#fff;font-family:Arial;font-size:12px;vertical-align:top;height:22px;}">
 	    <ul style="list-style-type:none;display:block;margin:0px;padding:0px">
-	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug').style.display='none'; document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close"  border="0"/></a></li>
-	    <li style="display:inline;"><a href="<?php echo ADMINFULLURL?>page_edit.php?id=<?php echo $this->id?>" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_edit.gif" alt="edit page" title="edit page" border="0"/></a></li>
-	    <li style="display:inline;"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='';document.getElementById('pt_debug_details').style.display=''; return false;"><img src="<?php echo ADMINFULLURL?>img/b_debug.gif" alt="display debug info" title="display debug info" border="0"/></a></li>
-	    <li style="display:inline;"><a href="<?php echo $myPT->codeH($url_reload)?>"><img src="<?php echo ADMINFULLURL?>img/b_aktivieren.gif" alt="clear cache and reload page" title="clear cache and reload page" border="0"/></a></li>
-	    <li style="display:inline;line-height:22px;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms [<?php echo $info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
-	    <li style="display:inline;"><a href="http://www.phenotype-cms.com" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo" border="0"/></a></li>
+	    <li style="display:inline;margin:0px;padding:0px"><a href="#" onclick="document.getElementById('pt_debug').style.display='none'; document.getElementById('pt_debug_cover').style.display='none';document.getElementById('pt_debug_details').style.display='none'; return false;"><img src="<?php echo ADMINFULLURL?>img/b_close_stat.gif" alt="close" title="close"  border="0"/></a></li>
+	    <li style="display:inline;margin:0px;padding:0px"><a href="<?php echo ADMINFULLURL?>page_edit.php?id=<?php echo $this->id?>" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_edit.gif" alt="edit page" title="edit page" border="0"/></a></li>
+	    <li style="display:inline;margin:0px;padding:0px"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='';document.getElementById('pt_debug_details').style.display=''; return false;"><img src="<?php echo ADMINFULLURL?>img/b_debug.gif" alt="display debug info" title="display debug info" border="0"/></a></li>
+	    <li style="display:inline;margin:0px;padding:0px"><a href="<?php echo $myPT->codeH($url_reload)?>"><img src="<?php echo ADMINFULLURL?>img/b_aktivieren.gif" alt="clear cache and reload page" title="clear cache and reload page" border="0"/></a></li>
+	    <li style="display:inline;margin:0px;padding:0px;line-height:22px;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms <?php echo count($myPT->_debughints)?>h [<?php echo $info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb [L<?php echo (int)$myPage->lay_id?>]<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
+	    <li style="display:inline;margin:0px;padding:0px"><a href="http://www.phenotype-cms.com" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo" border="0"/></a></li>
 	    </ul>
 	    </div>
 	    
@@ -1328,6 +1330,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		$mySmarty->assign("alttitel","#!#alttitle#!#");
 		$mySmarty->assign("alttitle","#!#alttitle#!#");
 		$mySmarty->assign("keywords","#!#keywords#!#");
+		$mySmarty->assign("canonical_url","#!#canonical_url#!#");
 
 		if (PT_DEBUG==1)
 		{
@@ -2358,12 +2361,21 @@ class PhenotypePageStandard extends PhenotypeBase
 	{
 		return ($this->titel);
 	}
+	public function setCanonicalUrl($s)
+	{
+		$this->canonical_url = $s;
+	}
 
+	public function getCanonicalUrl()
+	{
+		return ($this->canonical_url);
+	}	
 	/**
    * retrieves URL of a page using the DAO cache
    * 
    * You should not overwerite this method. If you want to change URL behaviour
-   * stick to buildURL instead.
+   * stick to buildURL instead. (But keep in mind, that buildURL is only uses
+   * when saving a page (on config tab) or chaning the pagegroup smartURL schema)
    *
    * @param integer $lng_id
    * @return string
@@ -2371,7 +2383,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	public function getURL($lng_id)
 	{
 		global $myPT;
-		return $myPT->url_for_page($pag_id,null,$lng_id);
+		return $myPT->url_for_page($this->id,null,$lng_id);
 	}
 
 	public function buildURL($lng_id=null)
@@ -2392,7 +2404,11 @@ class PhenotypePageStandard extends PhenotypeBase
 		}
 		else
 		{
-
+			// no url for startpage (only for language 1 to have a possibility to distinct them)
+			if ($lng_id==1 AND $this->id == PAG_ID_STARTPAGE)
+			{
+				return "";
+			}
 			$schema = "fulltree";
 			$multilanguage = $this->multilanguage;
 			$url="";
@@ -2486,8 +2502,6 @@ class PhenotypePageStandard extends PhenotypeBase
 	 * 
 	 * 
 	 * 
-	 * 
-	 * 
 	 * @param boolean $recursive
 	 * @param boolean $clearcache
 	 */
@@ -2512,10 +2526,10 @@ class PhenotypePageStandard extends PhenotypeBase
 
 		foreach ($PTC_LANGUAGES AS $k =>$v)
 		{
-			if ($this->multilanguage)
-			{
+			//if ($this->multilanguage)
+			//{
 				$url = $this->buildURL($k);
-			}
+			//}
 
 			$mySQL->addField("pag_url".$k,$url);
 			if ($url!=$this->row["pag_url".$k])

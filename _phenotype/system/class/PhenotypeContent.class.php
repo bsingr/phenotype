@@ -549,6 +549,8 @@ class PhenotypeContentStandard extends PhenotypeBase
 		{
 			$this->load($id);
 		}
+		global $myDebug;
+		$myDebug->notifyContentClassUsage($this->content_type);
 	}
 
 	function load($id)
@@ -1389,15 +1391,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$this->form[] = $a;
 	}
 
-	function form_user($title,$property,$null=true)
-	{
-		$this->form[] = array(
-		"form_method" =>"form_user",
-		"property" =>$property,
-		"title" =>$title,
-		"null" => $null
-		);
-	}
+
 
 	function displayEditForm($myCO)
 	{
@@ -1430,14 +1424,23 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		if (array_key_exists("form_method",$a))
 		{
-			$mname = "display_".$a["form_method"];
-			if (method_exists($this,$mname))
+			$methodname = "_".$a["form_method"]."_display";
+			if (method_exists($this,$methodname))
 			{
-				$myCO->$mname($a);
+				?>
+				<tr>
+            		<td width="120" class="padding30"><p><strong><?php echo $a["title"] ?></strong></p>
+            		</td>
+            		<td width="509" class="formarea"><p>
+            		<?php $this->$methodname($a);?>
+            		</p>
+            		</td>
+            	</tr>
+            <?php
 			}
 			else
 			{
-				die($a["form_method"] ." implemented imperfectly. Missing display method: ".$mname);
+				throw new Exception($a["form_method"] ." implemented imperfectly. Missing display method: ".$methodname);
 			}
 		}
 		else
@@ -3036,43 +3039,6 @@ class PhenotypeContentStandard extends PhenotypeBase
 	}
 
 
-	function display_form_user($_params)
-	{
-		global $myDB;
-  	?>
-    <tr>
-        <td width="120" class="padding30"><p><strong><?php echo $_params["title"] ?></strong></p>
-        </td>
-        <td width="509" class="formarea"><p>
-    <select name="<?php echo $this->formid ?>_<?php echo $_params["property"] ?>" class="input">
-    <?php 
-    if ($_params["null"]==true){
-    ?>
-    <option value="0">...</option>
-    <?php
-    }
-    $sql = "SELECT usr_nachname, usr_vorname, usr_id  FROM user WHERE usr_status = 1  ORDER BY usr_nachname,usr_vorname";
-    $rs = $myDB->query($sql);
-    while ($row = mysql_fetch_assoc($rs))
-    {
-    	if ($row["usr_nachname"]!="" AND $row["usr_vorname"]!="")
-    	{
-    		$name = $row["usr_nachname"].", ".$row["usr_vorname"];
-    	}
-    	else
-    	{
-    		$name =$row["usr_nachname"].$row["usr_vorname"];
-    	}
-    	$name = trim($name);
-    	if ($row["usr_id"] == $this->getI($_params["property"]))
-    	{
-    		$selected = 'selected="selected"';
-    	}
-    ?>
-    <option value="<?php echo $row["usr_id"] ?>" <?php echo $selected ?>><?php echo $name ?></option>
-    <?php 
-    }
-	}
 
 	function displayDHtmlWZJavascript($token, $anzahl,$spacer)
 	{
@@ -3246,6 +3212,16 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$a = $form[$i];
 			if (array_key_exists("form_method",$a))
 			{
+				$methodname = "_".$a["form_method"]."_fetch";
+				if (method_exists($myCO,$methodname))
+				{
+					$myCO->$methodname($a);
+				}
+				else
+				{
+					throw new Exception($a["form_method"] ." implemented imperfectly. Missing update method: ".$methodname);
+				}
+				/*
 				$mname = "fetch_".$a["form_method"];
 				if (method_exists($this,$mname))
 				{
@@ -3255,6 +3231,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 				{
 					die($a["form_method"] ." implemented imperfectly. Missing update method: ".$mname);
 				}
+				*/
 			}
 			else
 			{
@@ -3687,7 +3664,52 @@ class PhenotypeContentStandard extends PhenotypeBase
 	}
 
 
-	function fetch_form_user($_params)
+	// additional form_xy methods (new style)
+	function form_user($title,$property,$addzerodots=true)
+	{
+		$this->form[] = array(
+		"form_method" =>"form_user",
+		"property" =>$property,
+		"title" =>$title,
+		"null" => $addzerodots
+		);
+	}
+	protected function _form_user_display($_params)
+	{
+		global $myDB;
+	  	?>
+	    <select name="<?php echo $this->formid ?>_<?php echo $_params["property"] ?>" class="input">
+	    <?php 
+	    if ($_params["null"]==true){
+	    ?>
+	    <option value="0">...</option>
+	    <?php
+	    }
+	    $sql = "SELECT usr_nachname, usr_vorname, usr_id  FROM user WHERE usr_status = 1  ORDER BY usr_nachname,usr_vorname";
+	    $rs = $myDB->query($sql);
+	    while ($row = mysql_fetch_assoc($rs))
+	    {
+	    	$selected='';
+	    	if ($row["usr_nachname"]!="" AND $row["usr_vorname"]!="")
+	    	{
+	    		$name = $row["usr_nachname"].", ".$row["usr_vorname"];
+	    	}
+	    	else
+	    	{
+	    		$name =$row["usr_nachname"].$row["usr_vorname"];
+	    	}
+	    	$name = trim($name);
+	    	if ($row["usr_id"] == $this->getI($_params["property"]))
+	    	{
+	    		$selected = 'selected="selected"';
+	    	}
+	    ?>
+	    <option value="<?php echo $row["usr_id"] ?>" <?php echo $selected ?>><?php echo $name ?></option>
+	    <?php 
+	    }
+	    echo '</select>';
+	}	
+	protected function _form_user_fetch($_params)
 	{
 		global $myRequest;
 		$fname = $this->formid."_".$_params["property"];
@@ -3695,6 +3717,100 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$this->set($_params["property"],$val);
 	}
 
+	/**
+	 * Provides a drag & drop list of content records for sorting
+	 * 
+	 * Sort order will be stored in the dat_pos column of content_data for all selected records
+	 * 
+	 * Attention, if you use the parameter $sql_where, be sure not to mixup records within two different forms
+	 *
+	 * @param string $title
+	 * @param string $property only temporary used, nothing will be stored permanently in this property, since sorting order gets stored in dat_pos columns of referred content records
+	 * @param int $con_id
+	 * @param boolean $status
+	 * @param string $sql_where
+	 */
+	public function form_dd_sort_contentrecords($title,$property,$con_id,$status=true,$sql_where="")
+	{
+		$this->form[] = array(
+		"form_method" =>"form_dd_sort_contentrecords",
+		"title" =>$title,
+		"property" => $property,
+		"con_id"=>(int)$con_id,
+		"status" => (boolean)$status,
+		"sql_where" =>$sql_where
+		);
+	}
+	protected function _form_dd_sort_contentrecords_display($_fconfig)
+	{
+		global $myDB;
+    	$sql = "SELECT * FROM content_data WHERE con_id = ".$_fconfig["con_id"];
+    	if ($_fconfig["status"]==true)
+    	{
+    		$sql .=" AND dat_status = 1";
+    	}
+    	if ($_fconfig["sql_where"]!="")
+    	{
+    		$sql .=" AND ".$_fconfig["sql_where"];
+    	}
+    	$sql .= " ORDER BY dat_pos, dat_id";
+    	$rs = $myDB->query($sql);
+    	$count = mysql_num_rows($rs);
+    	$i=0;
+    	$token = $this->formid."_".$_fconfig["property"]."_ddp_";
+   		$chain="";
+    	while ($row=mysql_fetch_array($rs))
+    	{
+      		$i++;
+      		$_posarray_title[$i]=$row["dat_bez"];
+      		$_posarray_dat_id[$i]=$row["dat_id"];
+      		$idchain .= $row["dat_id"].",";
+      		$poschain .= ",".$i;
+    	}
+    	?>
+		<input type="hidden" name="<?php echo $token ?>_poschange" value="<?php echo $poschain; ?>"/>
+		<input type="hidden" name="<?php echo $token ?>_posstart" value="<?php echo substr($idchain,0,-1) ?>"/>
+		<?php
+		$this->displayDHtmlWZJavascript($token, $count,16);
+  	    for ($j = 1; $j <= $count; $j ++)
+		{
+		?>
+		<div id="<?php echo $token.$j ?>" style="width:404px;position:relative;background:url(img/moveit.gif) top left no-repeat">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:<?php echo $token ?>movedown(<?php echo $j ?>)"><img src="img/b_down2.gif" width="18" height="18" border="0"></a>
+		<a href="javascript:<?php echo $token ?>moveup(<?php echo $j ?>)"><img src="img/b_up2.gif" width="18" height="18" border="0"></a><br/>
+		<div style="background-color:#D1D6DB;padding:2px;width:404px;"><p><?php echo $_posarray_title[$j]?></p></div>
+		</div><br/>
+		<script type="text/javascript">ADD_DHTML_DELAYED("<?php echo $token ?><?php echo $j ?>"+VERTICAL+TRANSPARENT);</script>
+		<?php
+		}
+		?>
+		<script type="text/javascript">
+		<?php
+		for ($j = 1; $j <= $count; $j ++)
+		{
+		?>
+		SET_DHTML_DROPFUNC_DELAYED('<?php echo $token ?><?php echo $j ?>',<?php echo $token ?>dropTopListItem);
+		<?php
+		}
+		?>
+		</script>
+		<?php
+	}
+	protected function _form_dd_sort_contentrecords_fetch($_fconfig)
+	{
+		global $myRequest;
+		global $myDB;
+		$fname = $this->formid."_".$_fconfig["property"]."_ddp_";
+		$_sorting = explode(",",$myRequest->get($fname."_poschange"));
+		array_shift($_sorting);
+		$_ids = explode(",",$myRequest->get($fname."_posstart"));
+		$i=0;
+		foreach ($_sorting AS $nr)
+		{
+			$i++;
+			$sql ="UPDATE content_data SET dat_pos=".$i." WHERE dat_id=".(int)$_ids[$nr-1];
+			$myDB->query($sql);
+		}
+	}
 	function setErrorText($s)
 	{
 		$this->errorText = $s;
@@ -4372,4 +4488,3 @@ class PhenotypeContentStandard extends PhenotypeBase
 		return TEMPPATH ."contentupload/".$this->content_type."/".(int)$mySUser->id."/";
 	}
 }
-?>

@@ -29,11 +29,11 @@ class PhenotypeNavigationHelperStandard
    *
    * @var unknown_type
    */
-  private $myDAO = false;
+  protected $myDAO = false;
 
 
-  private $_path = Array();
-  private $_pages = Array();
+  protected $_path = Array();
+  protected $_pages = Array();
 
   public function __construct()
   {

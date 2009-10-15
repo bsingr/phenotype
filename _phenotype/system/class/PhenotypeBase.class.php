@@ -29,7 +29,15 @@ class PhenotypeBase
 
 
 	public $_props = Array ();
-	private $changed = false;
+	protected $changed = false;
+	/**
+	 * flag wether currently in HWSL coding mode
+	 * 
+	 * use by callback functions
+	 *
+	 * @var boolean
+	 */
+	private $HWSL = false;
 
 	public function __construct()
 	{
@@ -153,9 +161,15 @@ class PhenotypeBase
 		return codeH($val);
 	}
 
-	public	function getQ($property)
+	public function getWSL($property)
 	{
-		throw new Exception("Deprecated call of function getQ");
+		return $this->codeWSL($this->get($property));
+	}
+
+
+	public function getHWSL($property)
+	{
+		return $this->codeHWSL($this->get($property));
 	}
 
 	/**
@@ -178,7 +192,10 @@ class PhenotypeBase
 		//return (string) @ addslashes($this->_props[$property]);
 	}
 
-
+	public	function getQ($property)
+	{
+		throw new Exception("Deprecated call of function getQ");
+	}
 
 
 
@@ -323,6 +340,21 @@ class PhenotypeBase
 		return codeH(codeA($s,$allowedchars));
 	}
 
+	public function codeWSL($s)
+	{
+		$s = preg_replace_callback('/\[\[p(.*?)]]/', array($this,'callback_wikiurls_p'), $s);
+		$s = preg_replace_callback('/\[\[c(.*?)]]/', array($this,'callback_wikiurls_c'), $s);
+		$s = preg_replace_callback('/\[\[u(.*?)]]/', array($this,'callback_wikiurls_u'), $s);
+		$s = preg_replace_callback('/\[\[i(.*?)]]/', array($this,'callback_wikiurls_i'), $s);
+		$s = preg_replace_callback('/\[\[d(.*?)]]/', array($this,'callback_wikiurls_d'), $s);
+		return $s;
+	}
+	public function codeHWSL($s)
+	{
+		$this->HWSL = true;
+		return $this->codeWSL($s);
+		$this->HWSL = false;
+	}
 	public function isValidProperty($property)
 	{
 
@@ -409,5 +441,151 @@ class PhenotypeBase
 		echo "</pre>";
 
 	}
+	/**
+	 * callback methos for wiki style links
+	 */
+	private function callback_wikiurls_p($matches)
+	{
+		$match = $matches[1];
+		if (strpos($match,"|")===false)
+		{
+			$pag_id = (int)$match;
+			if ($this->HWSL==true)
+			{
+				return codeH(url_for_page($pag_id));
 }
-?>
+			else
+			{
+				return url_for_page($pag_id);
+			}
+		}
+		else
+		{
+			$_split = explode("|",$match);
+			$url = url_for_page((int)$_split[0]);
+			$linktext = $_split[1];
+			if ($this->HWSL==true)
+			{
+				return '<a href="'.codeH($url).'">'.codeH($linktext).'</a>';
+			}
+			else
+			{
+				return '<a href="'.$url.'">'.$linktext.'</a>';
+			}
+		}
+	}
+
+	private function callback_wikiurls_c($matches)
+	{
+		$match = $matches[1];
+		if (strpos($match,"|")===false)
+		{
+			$dat_id = (int)$match;
+			if ($this->HWSL==true)
+			{
+				return codeH(url_for_content($dat_id));
+			}
+			else
+			{
+				return  url_for_content($dat_id);
+			}
+		}
+		else
+		{
+			$_split = explode("|",$match);
+			$url = url_for_content((int)$_split[0]);
+			$linktext = $_split[1];
+			return '<a href="'.$url.'">'.$linktext.'</a>';
+			if ($this->HWSL==true)
+			{
+				return '<a href="'.codeH($url).'">'.codeH($linktext).'</a>';
+			}
+			else
+			{
+				return '<a href="'.$url.'">'.$linktext.'</a>';
+			}
+		}
+	}
+	private function callback_wikiurls_u($matches)
+	{
+		$match = $matches[1];
+		if (strpos($match,"|")===false)
+		{
+			$url = $match;
+			$linktext = str_replace("http://","",$url);
+			if ($this->HWSL==true)
+			{
+				return '<a href="'.codeH($url).'">'.codeH($linktext).'</a>';
+			}
+			else
+			{
+				return '<a href="'.$url.'">'.$linktext.'</a>';
+			}
+		}
+		else
+		{
+			$_split = explode("|",$match);
+			$url = $_split[0];
+			$linktext = $_split[1];
+			if ($this->HWSL==true)
+			{
+				return '<a href="'.codeH($url).'">'.codeH($linktext).'</a>';
+			}
+			else
+			{
+				return '<a href="'.$url.'">'.$linktext.'</a>';
+			}
+		}
+	}
+	private function callback_wikiurls_i($matches)
+	{
+		$match = $matches[1];
+		if (strpos($match,"|")===false)
+		{
+			$img_id = (int)$match;
+			$myImg = new PhenotypeImage($img_id);
+			return $myImg->render("");
+		}
+		else
+		{
+			$_split = explode("|",$match);
+			$img_id = (int)$_split[0];
+			$alt = $_split[1];
+			$myImg = new PhenotypeImage($img_id);
+			return $myImg->render($alt);
+		}
+	}
+	private function callback_wikiurls_d($matches)
+	{
+		$match = $matches[1];
+		if (strpos($match,"|")===false)
+		{
+			$doc_id = (int)$match;
+			$myDoc = new PhenotypeDocument($doc_id);
+			return $myDoc->url;
+			if ($this->HWSL==true)
+			{
+				return ;
+			}
+			else
+			{
+				return ;
+			}
+		}
+		else
+		{
+			$_split = explode("|",$match);
+			$doc_id = (int)$_split[0];
+			$linktext = $_split[1];
+			$myDoc = new PhenotypeDocument($doc_id);
+			if ($this->HWSL==true)
+			{
+				return '<a href="'.codeH($myDoc->url).'">'.codeH($linktext).'</a>';;
+			}
+			else
+			{
+				return '<a href="'.$myDoc->url.'">'.$linktext.'</a>';;
+			}
+		}
+	}
+}

@@ -135,7 +135,15 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 	}
 
 
-	function displayContentRecords($rs,$caption=true,$display_content_type=false)
+	/**
+	 *
+	 *
+	 * @param unknown_type $rs
+	 * @param unknown_type $caption
+	 * @param unknown_type $display_content_type
+	 * @param boolean|array false or array of content record ids, that are currently in the user's lightbox
+	 **/
+	function displayContentRecords($rs,$caption=true,$display_content_type=false,$lightbox_objects=false)
 	{
 		global $myDB;
 		global $myAdm;
@@ -176,7 +184,20 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
     		}
           ?>
           <tr>
-            <td class="tableBody"><?php echo $row_data["dat_id"] ?></td>
+            <td class="tableBody">
+            <?php
+            echo $row_data["dat_id"];
+            if ($lightbox_objects!==false)
+            {
+            	$checked="";
+            	if (in_array($row_data["dat_id"],$lightbox_objects))
+            	{
+            		$checked='checked="checked"';
+            	}
+            	echo '<br/><input type="checkbox" onclick="lightbox_switch('.$row_data["dat_id"].','.$row_data["con_id"].',0)" '.$checked.' id="lb'.$row_data["dat_id"].'">';
+            }
+            ?>
+            </td>
             <td class="tableBody"><?php
 			if ($row["con_bearbeiten"]==1)
 			{
@@ -222,7 +243,9 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
 			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('<?php echo localeH("Really delete record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
+            <td align="right" nowrap class="tableBody">
+            <?php if ($row["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('<?php echo localeH("Really delete record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?>
+            </td>
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -297,6 +320,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 				<?php
 				}
 				?>
+				<a href="#" onclick="lightbox_switch(<?php echo $myCO->id ?>,<?php echo $myCO->content_type?>,0);return false;"><img src="img/b_pinadd.gif" alt="<?php echo localeH("Put into / Take out of lightbox");?>" title="<?php echo localeH("Put into / Take out of lightbox");?>" width="22" height="22" border="0" ></a>
 				<a href="http://www.phenotype-cms.de/docs.php?v=23&t=2" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>
 				</td>
 	          </tr>
@@ -322,13 +346,13 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
             <td width="18">
 			<img src="img/i_site_on.gif" width="24" height="18">
 			</td>
-            <td class="windowTitle"><?php echo $myObj->id ?> <?php echo $myPT->cutString($myObj->bez,45,45); ?></td>
+            <td class="windowTitle" width="80%"><?php echo $myObj->id ?> <?php echo $myPT->cutString($myObj->bez,45,45); ?></td>
 			<?php
 			$n=strlen($myObj->bez);
 			if($n>45){$n=48;}
 			?>
 			<td align="right" nowrap >[<?php echo $myPT->cutString($myObj->physical_folder."/".$myObj->filename,(65-$n),(65-$n)); ?>]</td>
-			<td align="right" width="55" nowrap class="windowTitle"><?php
+			<td align="right" nowrap class="windowTitle"><?php
 			global $mySUser;
 			if ($mySUser->checkRight("elm_task"))
 			{

@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krï¿½mer.
+// Peter Sellinger, Michael Krämer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -3368,7 +3368,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
   <?php
 	}
 
-	function renderPageBrowser($currentpage,$entries,$url,$itemcount=10,$forcedisplay=false)
+	function renderPageBrowser($currentpage,$entries,$url,$itemcount=10,$forcedisplay=false,$selectallbutton=false)
 	{
 		global $myPT;
 		$p=$currentpage;
@@ -3377,7 +3377,11 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
   	?>
   	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
-      <td  class="windowFooterWhite"><input id="btn_select_deselect" class="buttonWhite" type="button" value="<?php echo localeH("Select/Deselect all") ?>" style="width: 102px;" /></td>
+      <td  class="windowFooterWhite">
+	  <?php if ($selectallbutton==true):?>
+      <input id="btn_select_deselect" class="buttonWhite" type="button" value="<?php echo localeH("Select/Deselect all") ?>" style="width: 102px;" />
+      <?php endif?>
+      </td>
         <td align="right" class="windowFooterWhite"><table border="0" cellpadding="0" cellspacing="1">
           <tr>
             <td align="center"><?php echo localeH("Page") ?>: </td>

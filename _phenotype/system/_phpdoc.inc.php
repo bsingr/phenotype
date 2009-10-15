@@ -14,6 +14,12 @@ class Phenotype extends PhenotypeStandard {}
  * @subpackage application
  *
  */
+class PhenotypeDebugger extends PhenotypeDebuggerStandard {}
+/**
+ * @package phenotype
+ * @subpackage application
+ *
+ */
 class PhenotypeAdmin extends PhenotypeAdminStandard {}
 
 /**

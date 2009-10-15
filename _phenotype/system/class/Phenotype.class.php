@@ -170,6 +170,24 @@ class PhenotypeStandard extends PhenotypeBase
 		$myPage->display($cache);
 		return $myPage;
 	}
+	public function executePreview()
+	{
+		global $myPage;
+		global $myTC;
+		global $myRequest;
+		// Since preview is part of the backend, usally PHP warnings are supressed,
+		// but we need them during preview
+		$this->respectPHPWarnings();
+		$id = $myRequest->getI("id");
+		$ver_id= $myRequest->getI("ver_id",0);
+		$lng_id = $myRequest->getI("lng_id");
+		$editbuffer = $myRequest->getI("editbuffer",1);
+		$myPage = new PhenotypePage($id,$ver_id);
+		$myPage->switchLanguage($lng_id);
+		//$mySmarty = new PhenotypeSmarty;
+		$myPage->preview($editbuffer);
+		return $myPage;
+	}
 
 	function getPage($id=-1)
 	{
@@ -1258,11 +1276,7 @@ em {
 		<?php if (is_object($myRequest)){?> <em>Request:</em><br />
 <div id="request">
 <ul class="request">
-<?php foreach ($myRequest->getParamsArray() AS $k => $v){
-	if (is_array($v)) {
-		$v = implode(",",$v);
-	}
-?>
+<?php foreach ($myRequest->getParamsArray() AS $k => $v){?>
 	<li><span class="param_key">#<?php echo $this->codeH($k)?></span>: <span
 		class="param_value"><?php echo $this->codeH($v)?></span></li>
 		<?php }?>
@@ -1419,304 +1433,36 @@ for ($i=$stop;$i>=$start;$i--){
 
 	public function displayDebugInfo()
 	{
-		global $myDB;
-		global $myRequest;
+		global $myDebug;
 
-		$headline = "Phenotype DebugInfo";
-	?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type"
-	content="text/html; charset=<?php echo PT_CHARSET?>" />
-<title><?php echo $this->codeH($headline)?></title>
-<meta name="generator" content="Phenotype CMS" />
-<style type="text/css">
-body {
-	background-color: #fff;
-	font-family: Verdana, Arial;
-	font-size: 12px;
-}
-
-em {
-	font-family: Verdana, Arial;
-	font-size: 12px;
-	font-style: normal;
-	font-variant: small-caps;
-	border-bottom: 1px solid #CFCFCF;
-	padding: 0px 1px 0px 1px;
-	line-height: 40px;
-	letter-spacing: 4px;
-}
-
-#main {
-	background: #F7F7F7 none repeat scroll 0%;
-	border-bottom: 1px solid #CFCFCF;
-	border-top: 1px solid #CFCFCF;
-	width: 780px;
-	padding: 10px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#footer {
-	font-size: 10px;
-	width: 780px;
-	padding: 10px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: right;
-	height: 50px;
-}
-
-#header {
-	color: #000;
-}
-
-#message {
-	color: #f00;
-	font-weight: bold;
-	background-color: #fff;
-	padding: 7px; #
-	margin: 5px;
-	margin-top: 10px;
-	margin-bottom: 0px;
-}
-
-.request {
-	font-family: Courier;
-	list-style: none;
-	font-size: 11px;
-	background-color: #fff;
-	padding: 7px; #
-	margin: 5px;
-	margin-top: 0px;
-	margin-bottom: 20px;
-	overflow: auto;
-}
-
-.param_key {
-	display: block;
-	width: 125px;
-	float: left;
-}
-
-.param_value {
-	color: #cfcfcf;
-}
-
-.filename {
-	font-size: 9px;
-	color: #cfcfcf;
-	padding: 2px;
-	line-height: 18px;
-}
-
-.exec_context {
-	background-color: #cfcfcf;
-	font-size: 9px;
-	color: #fff;
-	padding: 2px 5px 5px 10px;
-	margin: 0px;
-	line-height: 18px;
-}
-
-.source {
-	font-family: Courier;
-	list-style: none;
-	font-size: 11px;
-	background-color: #fff;
-	padding: 7px; #
-	margin: 5px;
-	margin-top: 0px;
-	margin-bottom: 20px;
-	overflow: auto;
-}
-
-.current {
-	background-color: #CFCFCF;
-}
-
-.query {
-	background-color: #fff;
-	font-family: Courier;
-	color: #cfcfcf;
-	font-weight: normal;
-	font-size: 9px;
-	width: 780px;
-}
-
-.querynr {
-	color: #000;
-	width: 60px;
-}
-
-.querydetails {
-	width: 720px;
-	font-size: 9px;
-	font-family: Verdana, Arial;
-}
-
-.querydetails td,th {
-	border: 1px solid #cfcfcf;
-}
-</style>
-</head>
-<body>
-<div id="main">
-<div id="header"><strong><?php echo $this->codeH($headline)?></strong></div>
-	<?php if (is_object($myRequest)){?> <em>Request:</em><br />
-<div id="request">
-<ul class="request">
-<?php foreach ($myRequest->getParamsArray() AS $k => $v){
-	if (is_array($v)) {
-		$v = implode(",",$v);
-	}
-?>
-	<li><span class="param_key">#<?php echo $this->codeH($k)?></span>: <span
-		class="param_value"><?php echo $this->codeH($v)?></span></li>
-		<?php }?>
-</ul>
-</div>
-		<?php }?>
-<div id="database"><em>SQL Queries</em><br />
-		<?php
-		$c = count($myDB->_sql);
-		$border = 0.0001; // meaning no border at the moment
-		$context ="";
-		for ($j=1;$j<=$c;$j++)
-		{
-			$i=$j-1;
-			$zeit = sprintf("%0.4f",$myDB->_times[$i]);
-			$querydetails ="";
-			if ($zeit>$border)
-			{
-				$sql = "EXPLAIN ". $myDB->_sql[$i];
-				$result = mysql_query ($sql, $myDB->dbhandle);
-				if ($result)
-				{
-					$_keys = Array ("id","select_type","table","type","possible_keys","key","key_len","ref","rows","Extra");
-					$html = '<table class="querydetails"><tr>';
-					foreach ($_keys AS $key)
-					{
-						$html .= '<th>'.codeH($key).'</th>';
-					}
-					$html .= '</tr>';
-					while ($row = mysql_fetch_assoc($result))
-					{
-						$html .='<tr>';
-						foreach ($_keys AS $key)
-						{
-							$html .= '<td>'.codeH($row[$key]).'</td>';
-						}
-						$html .= '</tr>';
-					}
-					$html .= '</table>';
-					$querydetails = $html;
-
-				}
-			}
-			if ($myDB->_context[$i]!=$context)
-			{
-				$context = $myDB->_context[$i];
-				if ($context !=""){
-					?><span class="exec_context"><?php echo $context?></span><?php
-				}
-			}
-
-			$sql_cut = $myDB->_sql[$i];
-
-			if (strlen($sql_cut) > 512)
-			{
-				$sql_cut = substr($sql_cut,0,512)."...";
-			}
-?><span class="filename">[<?php echo $this->getFilenameOutOfPath($myDB->_files[$i])?>
-in line <?php echo $myDB->_lines[$i]?>]</span><br />
-<table class="query">
-	<tr>
-		<td rowspan="3" class="querynr" valign="top">#<?php echo sprintf('%04d',$i+1)?>:</td>
-		<td><?php echo $this->codeH($sql_cut)?></td>
-	</tr>
-	<tr>
-		<td><?php echo $myDB->_results[$i]?> record(s) in <?php echo $zeit?>
-		seconds</td>
-	</tr>
-	<?php if ($querydetails!=""){?>
-	<tr>
-		<td><?php echo $querydetails ?></td>
-	</tr>
-	<?php } ?>
-</table>
-<br />
-<br />
-	<?php }?></div>
-	<?php if (count ($this->_debughints)!=0){?>
-<div id="hints"><em>PHP Hints:</em><br />
-	<?php foreach ($this->_debughints AS $_hint)
-	{
-		if (file_exists($_hint["file"]))
-		{
-			$_lines = file ($_hint["file"]);
-			$line = $_hint["line"];
-		}
-		else
-		{
-			$_lines = Array();
-			$line=0;
-		}
-		$c = count($_lines);
+		$myDebug->displayDebugInfo();	
 
 
-		$start = max(1,$line-2);
-		$stop = min($c,$line+2);
-		?> <span class="exec_context"><?php echo $this->codeH($_hint["message"])?></span><span
-	class="filename">[<?php echo $this->getFilenameOutOfPath($_hint["file"])?>]</span>
-<ul class="source">
-<?php for ($i=$start;$i<=$stop;$i++){?>
-	<li <?php if ($i==$line){?> class="current" <?php }?>><span>#<?php echo sprintf('%04d',$i)?>:
-	</span><?php echo $this->colorcodeHTML($_lines[$i-1])?></li>
-	<?php }?>
-</ul>
-	<?php }?></div>
 
-	<?php
-	$myDao = new PhenotypeSystemDataObject("DebugLookUpTable");
 
-	?>
-<div id="lookup"><em>Quick Lookup</em><br />
-<?php if (count($myDao->get("components"))!=0){?>
-<span class="exec_context">components</span>
-<ul class="source">
-<?php foreach ($myDao->get("components") AS $k=>$v){?>
-	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
-	<?php }?>
-</ul>
-<?php }?>
-<?php if (count($myDao->get("content"))!=0){?>
-<span class="exec_context">content object classes</span>
-<ul class="source">
-<?php foreach ($myDao->get("content") AS $k=>$v){?>
-	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
-	<?php }?>
-</ul>
-<?php }?>
-<?php if (count($myDao->get("includes"))!=0){?>
-<span class="exec_context">includes</span>
-<ul class="source">
-<?php foreach ($myDao->get("includes") AS $k=>$v){?>
-	<li><span>#<?php echo sprintf('%04d',$k)?>: </span><?php echo $v?></li>
-	<?php }?>
-</ul>
-<?php }?>
-</div>
-	<?php }?></div>
-<div id="footer"><?php echo date('d.m.Y H:i');?></div>
 
-</body>
-</html>
-	<?php
+
+
+
+
+
+
+
+
+
+
 
 	}
+	
+
+
+
+
+
+
+
+
+
 
 	// =========================================================================================================
 	// functions for url/link management
@@ -1745,7 +1491,16 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 		if ($lng_id==null)
 		{
 			global $myPage;
+			if (is_object($myPage))
+			{
 			$lng_id = $myPage->lng_id;
+			}
+			else 
+			{
+				// If url_for_page is called in an non frontend context without providing
+				// a language id, use 1 as default language
+				$lng_id=1;
+			}
 		}
 
 
@@ -1767,7 +1522,8 @@ in line <?php echo $myDB->_lines[$i]?>]</span><br />
 		else
 		{
 			$myTempPage = new PhenotypePage($pag_id);
-			$url = $myTempPage->buildURL($lng_id);
+			//$url = $myTempPage->buildURL($lng_id);
+			$url = $myTempPage->row["pag_url".(int)$lng_id];
 			$myDAO->set($token,$url);
 		}
 
