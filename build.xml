@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <project name="phenotype" default="default" basedir=".">
   
-  <property name="ptVersion" value="2.93" />	
+  <property name="ptVersion" value="2.92" />	
 
   
   <!-- svn stuff -->
   <!--<svnlastrevision svnpath="svn" workingcopy="." propertyname="revision"/>-->
   <!-- if you have trouble with evaluating the last revision from svn, try the manually way -->
   <!-- be sure to set the value to the current svn revision -->
-  <property name="revision" value="382" /> 
+  <property name="revision" value="383" /> 
 	
   <property name="buildNo" value="r${revision}" />
   
@@ -25,6 +25,7 @@
   	<exclude name="install.4build.php"/>
   	<exclude name=".htaccess"/>
   	<exclude name=".htpasswd"/>
+  	<exclude name="dndplus.jar"/>
   </fileset>
   
   <fileset dir="${_phenotypeDir}" id="all_phenotypeFiles">

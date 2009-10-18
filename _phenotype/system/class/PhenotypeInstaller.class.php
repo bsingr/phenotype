@@ -816,16 +816,17 @@ class PhenotypeInstaller
 		global $myPT;
 		global $myApp;
 		global $myAdm;
-
+		global $myDebug;
+		
 		$_logs[]="Preparing installation of PT_DEMO";
 		$_logs[]="";
 
 
-
 		$_logs[] = "Resetting _application.inc.php";
-		if (!@copy (SAMPLE_APP_CONFIG, APP_CONFIG))
+
+		if (!copy (SAMPLE_APP_CONFIG, APP_CONFIG))
 		{
-			$this->installation = "Could not write _host.config.inc.php. Check read/write permissions";
+			$this->installation_status = "Could not write _application.inc.php. Check read/write permissions";
 			$this->error_globalfeedback=true;
 			return $_logs;
 		}
