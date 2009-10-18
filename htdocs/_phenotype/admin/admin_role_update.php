@@ -54,7 +54,7 @@ $_element[locale("Tasks")]="task";
 
 $_element[locale("Admin rights")]="admin";
 $_element[locale("Rollback")]="rollback";
-
+$_element[locale("Lightbox")]="lightbox";
 
 
 

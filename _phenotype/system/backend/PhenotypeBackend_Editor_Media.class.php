@@ -188,7 +188,9 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 
 			case "lightbox"; // Wird per Ajax aufgerufen
+			
 			$this->displayLightBox(true);
+			
 			return;
 			break;
 			case "streamPainterPreviewImage";
@@ -242,8 +244,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 		$this->displaySearchForm();
 
-		$this->displayLightBox();
-
+		if ($mySUser->checkRight("elm_lightbox"))
+		{
+			$this->displayLightBox();
+		}
 		return $myPT->stopBuffer();
 	}
 
@@ -905,7 +909,10 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 					  {
 					  	$myIMG = new PhenotypeImage($row["med_id"]);
 					  	$myIMG->display_thumb();
+					  	if ($mySUser->checkRight("elm_lightbox"))
+					  	{
 					  	echo '</a><br/><input type="checkbox" onclick="lightbox_switch('.$row["med_id"].',0)" '.$checked.' id="lb'.$row["med_id"].'">';
+					  	}
 					  }
 					  else
 					  {
@@ -950,7 +957,11 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 					  	}
 
-					  	echo "&lt;".$icon.'&gt;</a><br/><input type="checkbox" onclick="lightbox_switch('.$row["med_id"].',0)" '.$checked.' id="lb'.$row["med_id"].'">';
+					  	echo "&lt;".$icon.'&gt;</a><br/>';
+					  	if ($mySUser->checkRight("elm_lightbox"))
+					  	{
+					  	echo '<input type="checkbox" onclick="lightbox_switch('.$row["med_id"].',0)" '.$checked.' id="lb'.$row["med_id"].'">';
+					  	}
 					  }
 						?>
 					  </td>

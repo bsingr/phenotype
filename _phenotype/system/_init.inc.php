@@ -113,7 +113,14 @@ if (!function_exists('json_encode'))
 
 if (!defined('PT_PHPIDS'))
 {
-	define ('PT_PHPIDS',1);
+	if (phpversion()<"5.1.6")
+	{
+		define ('PT_PHPIDS',0);
+	}
+	else 
+	{
+		define ('PT_PHPIDS',1);
+	}
 }
 if (!defined('PT_PHPIDS_MAXIMPACT'))
 {

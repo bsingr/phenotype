@@ -147,6 +147,13 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 	{
 		global $myDB;
 		global $myAdm;
+		global $mySUser;
+		
+		if (!$mySUser->checkRight("elm_lightbox"))
+		{
+			$lightbox_objects=false;
+		}
+		
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
     	<?php
@@ -319,8 +326,12 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 				<a href="<?php echo $url ?>" ><img src="img/b_rollback.gif" alt="<?php echo localeH("Install snapshot");?>" title="<?php echo localeH("Install snapshot");?>" width="22" height="22" border="0"></a>
 				<?php
 				}
+				if ($mySUser->checkRight("elm_lightbox"))
+	            {
 				?>
-				<a href="#" onclick="lightbox_switch(<?php echo $myCO->id ?>,<?php echo $myCO->content_type?>,0);return false;"><img src="img/b_pinadd.gif" alt="<?php echo localeH("Put into / Take out of lightbox");?>" title="<?php echo localeH("Put into / Take out of lightbox");?>" width="22" height="22" border="0" ></a>
+				<a href="#" onclick="lightbox_switch(<?php echo $myCO->id ?>,<?php echo $myCO->content_type?>,0);return false;"><img src="img/b_pinadd.gif" alt="<?php echo localeH("Put into / Take out of lightbox");?>" title="<?php echo localeH("Put into / Take out of lightbox");?>" width="22" height="22" border="0" ></a><?php
+	            }
+	            ?>
 				<a href="http://www.phenotype-cms.de/docs.php?v=23&t=2" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>
 				</td>
 	          </tr>
@@ -367,7 +378,9 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 				<a href="<?php echo $url ?>" ><img src="img/b_rollback.gif" alt="<?php echo localeH("Install snapshot");?>" title="<?php echo localeH("Install snapshot");?>" width="22" height="22" border="0"></a>
 				<?php
 				}
-				?><a href="#" onclick="lightbox_switch(<?php echo $myObj->id ?>,0);return false;"><img src="img/b_pinadd.gif" alt="<?php echo localeH("Put into / Take out of lightbox");?>" title="<?php echo localeH("Put into / Take out of lightbox");?>" width="22" height="22" border="0" ></a> <a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" title="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>
+				if ($mySUser->checkRight("elm_lightbox"))
+				{
+				?><a href="#" onclick="lightbox_switch(<?php echo $myObj->id ?>,0);return false;"><img src="img/b_pinadd.gif" alt="<?php echo localeH("Put into / Take out of lightbox");?>" title="<?php echo localeH("Put into / Take out of lightbox");?>" width="22" height="22" border="0" ></a><?php }?> <a href="http://www.phenotype-cms.de/docs.php?v=23&t=4" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" title="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a>
 			</td>
           </tr>
         </table></td>

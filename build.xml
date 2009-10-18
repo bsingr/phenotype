@@ -1,26 +1,18 @@
 <?xml version="1.0"?>
 <project name="phenotype" default="default" basedir=".">
-	
-  <php expression="PHP_OS" returnProperty="buildOS"/>
-  <php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>
-
-  <property name="ptVersion" value="2.9" />
   
-  <tstamp>
-  	<format property="DATE" pattern="%d.%m.%Y" locale="de_DE"/>
-  	<format property="YEAR" pattern="%Y" locale="de_DE"/>
-  </tstamp>
+  <property name="ptVersion" value="2.93" />	
+
   
   <!-- svn stuff -->
   <!--<svnlastrevision svnpath="svn" workingcopy="." propertyname="revision"/>-->
   <!-- if you have trouble with evaluating the last revision from svn, try the manually way -->
   <!-- be sure to set the value to the current svn revision -->
-  <property name="revision" value="376" /> 
-
+  <property name="revision" value="382" /> 
 	
   <property name="buildNo" value="r${revision}" />
-  <property name="buildId" value="Phenotype ${ptVersion}, build ${buildNo} PHP${php.version}@${buildOS}/${host.arch}(${host.name})" />
   
+ 
   <!-- directory setup -->
   <property name="buildDir" value="../srv_build" />
   <property name="htdocsDir" value="htdocs" />
@@ -43,20 +35,40 @@
     <include name="**" />
   </fileset>
   
-  <fileset dir="${mirrorDir}${pathSep}htdocs" id="htdocsMirrorFiles">
+  <fileset dir="${mirrorDir}/htdocs" id="htdocsMirrorFiles">
     <include name="**" />
   </fileset>
 
-  <fileset dir="${mirrorDir}${pathSep}_phenotype" id="_phenotypeMirrorFiles">
+  <fileset dir="${mirrorDir}/_phenotype" id="_phenotypeMirrorFiles">
     <include name="**" />
   </fileset>
+  
+  <!-- Following fileset for phpDoc -->
+  <fileset dir="${buildDir}/_phenotype/system/class" id="phpdoc1">
+    <include name="**/*.php" />
+  </fileset>
+  <fileset dir="${buildDir}/_phenotype/system/backend" id="phpdoc2">
+    <include name="**/*.php" />
+  </fileset>
+  <fileset dir="${buildDir}/_phenotype/system" id="phpdoc3">
+    <include name="*.php" />
+  </fileset>
+  
+  <target name="startup">
+  	<php expression="PHP_OS" returnProperty="buildOS"/>
+  	<!--<php expression="DIRECTORY_SEPARATOR" returnProperty="pathSep"/>-->
+  	<php expression="date('d.m.Y')" returnProperty="dateInfo"/>
+  	<php expression="date('Y')" returnProperty="year"/>
+  	<property name="buildId" value="Phenotype ${ptVersion}, build ${buildNo} PHP${php.version}@${buildOS}/${host.arch}(${host.name})" />
+  </target>
+  
   
   <target name="default">
     <echo msg="Please specify build target"/>
     <echo msg="a) build = full build including prior deletion of target folder"/>
     <echo msg="b) phpdoc"/>
   </target>
-  
+
   <target name="clean">
     <echo msg="Cleaning up..."/>
     <delete dir="${buildDir}" includeemptydirs="true" />
@@ -65,16 +77,17 @@
   <target name="prepare" >
     <echo msg="Preparing build..." />
     <mkdir dir="${buildDir}" />
-  </target>
-
-  <target name="build" depends="clean, prepare">
-    <echo>Building buildNo ${buildNo}...</echo>
+  </target>  
+  
+   <target name="build" depends="startup, clean, prepare">
+    <echo>Building buildId ${buildId}...</echo>
     
-    <copy todir="${buildDir}${pathSep}${htdocsDir}">
+
+    <copy todir="${buildDir}/${htdocsDir}">
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
-		  <token key="BUILD_DATE" value="${DATE}" />
-		  <token key="BUILD_YEAR" value="${YEAR}" />
+		  <token key="BUILD_DATE" value="${dateInfo}" />
+		  <token key="BUILD_YEAR" value="${year}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
@@ -84,25 +97,28 @@
       <fileset refid="htdocsMirrorFiles" />    
     </copy>
     
-    <copy todir="${buildDir}${pathSep}${_phenotypeDir}">
+    
+    <copy todir="${buildDir}/${_phenotypeDir}">
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
-		  <token key="BUILD_DATE" value="${DATE}" />
-		  <token key="BUILD_YEAR" value="${YEAR}" />
+		  <token key="BUILD_DATE" value="${dateInfo}" />
+		  <token key="BUILD_YEAR" value="${year}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
 		</replacetokens>
-	  </filterchain>
+	  	</filterchain>
+	
       <fileset refid="all_phenotypeFiles" />    
-      <fileset refid="_phenotypeMirrorFiles" />    
+      <fileset refid="_phenotypeMirrorFiles" />  
     </copy>
+  
     
     <copy file="buildinfo.inc.php" todir="${buildDir}">
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
-		  <token key="BUILD_DATE" value="${DATE}" />
-		  <token key="BUILD_YEAR" value="${YEAR}" />
+		  <token key="BUILD_DATE" value="${dateInfo}" />
+		  <token key="BUILD_YEAR" value="${year}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
@@ -126,8 +142,8 @@
 	<copy file="install.txt" todir="${buildDir}">
 	  <filterchain>
 		<replacetokens begintoken="##!" endtoken="!##">
-		  <token key="BUILD_DATE" value="${DATE}" />
-		  <token key="BUILD_YEAR" value="${YEAR}" />
+		  <token key="BUILD_DATE" value="${dateInfo}" />
+		  <token key="BUILD_YEAR" value="${year}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
@@ -136,11 +152,11 @@
 	</copy>
 
 	<!-- copy the installer to htdocs -->
-	<copy file="htdocs/install.4build.php" tofile="${buildDir}${pathSep}${htdocsDir}${pathSep}install.php" >
+	<copy file="htdocs/install.4build.php" tofile="${buildDir}/${htdocsDir}/install.php" >
 	  <filterchain>
 	    <replacetokens begintoken="##!" endtoken="!##">
-		  <token key="BUILD_DATE" value="${DATE}" />
-		  <token key="BUILD_YEAR" value="${YEAR}" />
+		  <token key="BUILD_DATE" value="${dateInfo}" />
+		  <token key="BUILD_YEAR" value="${year}" />
 		  <token key="BUILD_ID" value="${buildId}" />
 		  <token key="BUILD_NO" value="${buildNo}" />
 		  <token key="PT_VERSION" value="${ptVersion}" />
@@ -150,23 +166,18 @@
 	
   </target>
   
+  <!--
   <target name="phpdoc">
-  <delete dir="phpdoc" includeemptydirs="true" />
-  <phpdoc title="Phenotype CMS API Documentation"
-  destdir="phpdoc"
+  		<delete dir="../phpdoc" includeemptydirs="true" />
+  		<phpdoc title="Phenotype CMS API Documentation"
+  destdir="../phpdoc"
   sourcecode="yes"
   output="HTML:frames:l0l33t">
-   <fileset dir="${buildDir}${pathSep}_phenotype${pathSep}system${pathSep}class">
-      <include name="**/*.php" />
-   </fileset>
-      <fileset dir="${buildDir}${pathSep}_phenotype${pathSep}system${pathSep}backend">
-   <include name="**/*.php" />
-   </fileset>
-   <fileset dir="${buildDir}${pathSep}_phenotype${pathSep}system">
-   <include name="*.php" />
-   </fileset>
-	</phpdoc>	
-	</target>
-  
+			<fileset refid="phpdoc1" />  
+			<fileset refid="phpdoc1" />
+			<fileset refid="phpdoc1" />
+		</phpdoc>	
+	</target>-->
+
 </project>
 

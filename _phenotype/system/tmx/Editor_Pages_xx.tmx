@@ -568,5 +568,12 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="info line">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>info line</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

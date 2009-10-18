@@ -25,7 +25,7 @@
 class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 {
 	public $bak_id = "Editor_Content";
-  public $tmxfile = "Editor_Content";
+  	public $tmxfile = "Editor_Content";
 
 
   // Following variables determines the focus of the content browser
@@ -106,7 +106,9 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         $this->installSnapshot($myRequest->getI("id"),$myRequest->get("sna_type"));
         break;
 			case "lightbox"; // Wird per Ajax aufgerufen
+			
 				$this->displayLightBox(true);
+			
 			return;				
       case "form_ajax":
         $this->execute_form_ajax();
@@ -175,8 +177,10 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $this->displayClassTree();
 
     $this->displaySearchForm();
+    if ($mySUser->checkRight("elm_lightbox"))
+	{
 		$this->displayLightBox();
-
+	}
     return $myPT->stopBuffer();
   }
 
@@ -496,7 +500,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		if ($reload==true)
 		{
 		?>
-		<div id="redirect" style="display:none"><?=ADMINFULLURL?>backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id."&c=akt"?></div>
+		<div id="redirect" style="display:none"><?=ADMINFULLURL?>backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id."&c=akt&r=".rand(100000000,999999999)?></div>
 		<?
 		}
 	}

@@ -542,7 +542,7 @@ class PhenotypeAdminStandard
 				}
 				if (is_dir($dir . '/' . $file))
 				{
-					$_subfiles=$this->readDirComplete($dir . '/' . $file);
+					$_subfiles=self::readDirComplete($dir . '/' . $file);
 					if (is_array($_subfiles))
 					{
 						$_files = array_merge($_files,$_subfiles);
@@ -569,7 +569,7 @@ class PhenotypeAdminStandard
 				}
 				if (is_dir($dir . '/' . $file))
 				{
-					$this->removeDirComplete($dir . '/' . $file,0,$debug);
+					self::removeDirComplete($dir . '/' . $file,0,$debug);
 				}
 				else
 				{
@@ -609,7 +609,7 @@ class PhenotypeAdminStandard
 				}
 				if (is_dir($dir_source . '/' . $file))
 				{
-					$this->copyDirComplete($dir_source . '/' . $file,$dir_target . '/' . $file,$copysvn);
+					self::copyDirComplete($dir_source . '/' . $file,$dir_target . '/' . $file,$copysvn);
 				}
 				else
 				{

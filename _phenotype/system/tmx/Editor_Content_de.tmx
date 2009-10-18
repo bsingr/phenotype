@@ -29,5 +29,61 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Datensatz nicht gefunden.</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Clear lightbox">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Clear lightbox</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Sammelbox leeren</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete objects in mediabase">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Delete objects in mediabase</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Objekte in der Mediabase löschen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Delete records permanently">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Delete records permanently</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Datensätze dauerhaft löschen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Go!">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Go!</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Los!</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this objects in the mediabase?">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this objects in the mediabase?</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Wirklich diese Objekte in der Mediabase löschen?</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Really delete this records permanently">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Really delete this records permanently</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Wirklich diese Datensätze dauerhauft löschen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Set status offline">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Set status offline</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Status offline setzen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Set status online">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Set status online</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Status online setzen</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

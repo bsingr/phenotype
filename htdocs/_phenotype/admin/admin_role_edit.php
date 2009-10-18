@@ -124,6 +124,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 
 			$_element[locale("Admin rights")]="admin";
 			$_element[locale("Rollback")]="rollback";
+			$_element[locale("Lightbox")]="lightbox";
 
 			$html = "";
 			foreach ($_element AS $key => $val)

@@ -31,7 +31,6 @@ class PhenotypeLocaleManagerStandard
 	{
 		$_token = Array();
 
-
 		// Admin
 
 		$_token["Admin"][]="* all pages *";
@@ -163,6 +162,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Add new component group";
 		$_token["Config"][]="Application";
 		$_token["Config"][]="Backend classes";
+		$_token["Config"][]="Block 1";
 		$_token["Config"][]="Category";
 		$_token["Config"][]="Cleanup";
 		$_token["Config"][]="Component group";
@@ -404,10 +404,18 @@ class PhenotypeLocaleManagerStandard
 
 		// Editor_Content
 
+		$_token["Editor_Content"][]="Clear lightbox";
+		$_token["Editor_Content"][]="Delete objects in mediabase";
+		$_token["Editor_Content"][]="Delete records permanently";
+		$_token["Editor_Content"][]="Go!";
+		$_token["Editor_Content"][]="Really delete this objects in the mediabase?";
 		$_token["Editor_Content"][]="Really delete this record?";
+		$_token["Editor_Content"][]="Really delete this records permanently";
 		$_token["Editor_Content"][]="Record copied.";
 		$_token["Editor_Content"][]="Record deleted.";
 		$_token["Editor_Content"][]="Record not found.";
+		$_token["Editor_Content"][]="Set status offline";
+		$_token["Editor_Content"][]="Set status online";
 
 
 		// Editor_Media
@@ -551,6 +559,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Pages"][]="Where to locate the new page within the page tree?";
 		$_token["Editor_Pages"][]="Which template should be used?";
 		$_token["Editor_Pages"][]="copy page";
+		$_token["Editor_Pages"][]="info line";
 		$_token["Editor_Pages"][]="marks the average value";
 		$_token["Editor_Pages"][]="move page";
 		$_token["Editor_Pages"][]="msg_editquickfinder1";
@@ -629,6 +638,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Phenotype"][]="June";
 		$_token["Phenotype"][]="Keywords";
 		$_token["Phenotype"][]="Layout";
+		$_token["Phenotype"][]="Lightbox";
 		$_token["Phenotype"][]="Login";
 		$_token["Phenotype"][]="March";
 		$_token["Phenotype"][]="May";
@@ -857,7 +867,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Ticket"][]="today";
 		$_token["Ticket"][]="tomorrow";
 		$_token["Ticket"][]="week";
-
+		
 		$this->_token = $_token;
 
 	}
@@ -1172,9 +1182,11 @@ class PhenotypeLocaleManagerStandard
 				}
 				$_germaninsert[$token]=utf8_encode($row["de"]);
 			}
+			echo "<pre>";
 			print_r ($_englishinsert);
 			echo "<br/>";
 			print_r ($_germaninsert);
+			echo "</pre>";
 			if ($testrun==false)
 			{
 				$this->rebuildTMXFiles($name,$_englishinsert,$_germaninsert);

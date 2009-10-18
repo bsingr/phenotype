@@ -645,6 +645,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Strukturen</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Target folder already existing. Package not copied.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Target folder already existing. Package not copied.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Zielverzeichnis existiert bereits. Paket wurde nicht kopiert.</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Templates">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Templates</tmx:seg>
@@ -967,19 +974,12 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Ajax-Exporter verwenden.</tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Remove pagescript %1">
+			<tmx:tu tuid="Block 1">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Remove pagescript %1</tmx:seg>
+        <tmx:seg>Block 1</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
-        <tmx:seg>Entferne Seitenskript %1</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Target folder already existing. Package not copied.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Target folder already existing. Package not copied.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Zielverzeichnis existiert bereits. Paket wurde nicht kopiert.</tmx:seg>
+        <tmx:seg>Block 1</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

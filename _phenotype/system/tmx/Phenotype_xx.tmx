@@ -15,6 +15,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Add ticket to watch list.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Add ticket to watch list.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Admin">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Admin</tmx:seg>
@@ -102,6 +109,13 @@
 			<tmx:tu tuid="Content">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Content</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Content Record">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Content Record</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -449,6 +463,13 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Pending question">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Pending question</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Please remember to delete the user starter.">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Please remember to delete the user starter.</tmx:seg>
@@ -456,9 +477,30 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Process task.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Process task.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Processors/Creator">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Processors/Creator</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Properties">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Properties</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Realm">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Realm</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -533,6 +575,27 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Task is connected to a content record.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task is connected to a content record.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Task is connected to a media object">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task is connected to a media object</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Task is connected to a page.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Task is connected to a page.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Task subjects">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Task subjects</tmx:seg>
@@ -543,6 +606,13 @@
 			<tmx:tu tuid="Tasks">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Tasks</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="xx">
+        <tmx:seg></tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Ticket Notice">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Ticket Notice</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
@@ -771,79 +841,9 @@
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>
       </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Add ticket to watch list.">
+			<tmx:tu tuid="Lightbox">
       <tmx:tuv xml:lang="en">
-        <tmx:seg>Add ticket to watch list.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Content Record">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Content Record</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Media object">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Media object</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Pending question">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Pending question</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Process task.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Process task.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Processors/Creator">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Processors/Creator</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Realm">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Realm</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Task is connected to a content record.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Task is connected to a content record.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Task is connected to a media object">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Task is connected to a media object</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Task is connected to a page.">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Task is connected to a page.</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="xx">
-        <tmx:seg></tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Ticket Notice">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Ticket Notice</tmx:seg>
+        <tmx:seg>Lightbox</tmx:seg>
       </tmx:tuv>
       <tmx:tuv xml:lang="xx">
         <tmx:seg></tmx:seg>

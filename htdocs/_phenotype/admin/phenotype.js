@@ -641,6 +641,65 @@ $(document).ready(function()
 		}
 	});
 	} // end of pt_bak == "Editor_Media"
+	if (pt_bak_id=="Editor_Content")
+	{
+	$('#btn_select_deselect').click(function()
+	{
+	 	var con_id = $('#lightbox').attr('rel');
+		n = $('#content input:checkbox').length;
+		i = $('#content input:checkbox:checked').length;
+		if (n==i)
+		{
+			var csv="";
+			//deactivate all
+			$('#content :checkbox').each(function()
+			{
+				$(this).removeAttr("checked");	
+				var id = $(this).attr("id").substr(2);
+				csv += id+",";
+			});
+			csv = csv.substr(0,csv.length-1);
+			lightbox_switch(csv,con_id,0);
+		}
+		else //activate missing
+		{
+			var csv="";
+			$('#content :checkbox').each(function()
+			{
+				if ($(this).attr("checked")!=true)
+				{
+					$(this).attr("checked","checked");
+					var id = $(this).attr("id").substr(2);
+					csv += id+","
+				}
+			});
+			csv = csv.substr(0,csv.length-1);
+			lightbox_switch(csv,con_id,0);
+		}
+	});
 	
+	$('#btn_lightbox_content').click(function()
+	{
+		var option = $('#lightboxselect select[name=select]').val();
+		var con_id = $('#lightbox').attr('rel');
+		if (option==1) // clear lightbox
+		{
+			lightbox_switch(-1,con_id);
+		}
+		if (option==2) // delete lightbox objects in mediabase
+		{
+			lightbox_switch(-99,con_id);
+		}
+		if (option==3) // status online
+		{
+			lightbox_switch(-2,con_id);
+		}
+		if (option==4) // status offline
+		{
+			lightbox_switch(-3,con_id);
+		}
+		return false;
+	});
+	} // end of pt_bak == "Editor_Content"	
 	
 });

@@ -368,7 +368,14 @@ class PhenotypeInstaller
 
 		if (phpVersion()>="5.0")
 		{
-			$_array[]=array("title"=>"PHP version","status"=>"o.k. (".phpVersion().")","class"=>"green","hint"=>"");
+			if (phpversion()>="5.1.6")
+			{
+				$_array[]=array("title"=>"PHP version","status"=>"o.k. (".phpVersion().")","class"=>"green","hint"=>"");
+			}
+			else 
+			{
+				$_array[]=array("title"=>"PHP version","status"=>"quite old (".phpVersion().") turning of PHPIDS layer","class"=>"yellow","hint"=>"");
+			}
 		}
 		else
 		{
@@ -728,6 +735,18 @@ class PhenotypeInstaller
 		$exps[] = '/^define \("PT_SECRETKEY",.+\);/';
 		$subs[] = 'define ("PT_SECRETKEY","'. $this->pass_secret .'");';
 
+		
+		//PHPIDS settings
+		$exps[] = '/^define \("PT_PHPIDS",.+\);/';
+		if (phpversion()>="5.1.6")
+		{
+			$subs[] = 'define ("PT_PHPIDS",1);';			
+		}
+		else 
+		{
+			$subs[] = 'define ("PT_PHPIDS",0);';
+		}
+		
 		$templateConfig = file(SAMPLE_CONFIG_FILE);
 
 

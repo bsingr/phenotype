@@ -29,7 +29,7 @@ DROP TABLE IF EXISTS `action`;
 CREATE TABLE IF NOT EXISTS `action` (
   `act_id` int(11) NOT NULL auto_increment,
   `act_status` tinyint(4) NOT NULL default '0',
-  `act_bez` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `act_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `act_description` text collate latin1_general_ci NOT NULL,
   `act_nextrun` int(11) NOT NULL default '0',
   `act_laststart` int(11) NOT NULL default '0',
@@ -53,9 +53,9 @@ CREATE TABLE IF NOT EXISTS `action` (
 DROP TABLE IF EXISTS `component`;
 CREATE TABLE IF NOT EXISTS `component` (
   `com_id` int(11) NOT NULL auto_increment,
-  `com_bez` varchar(150) collate latin1_general_ci NOT NULL default '',
+  `com_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `com_description` text collate latin1_general_ci NOT NULL,
-  `com_rubrik` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `com_rubrik` varchar(255) collate latin1_general_ci NOT NULL default '',
   PRIMARY KEY  (`com_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
@@ -77,7 +77,7 @@ INSERT INTO `component` (`com_id`, `com_bez`, `com_description`, `com_rubrik`) V
 DROP TABLE IF EXISTS `componentgroup`;
 CREATE TABLE IF NOT EXISTS `componentgroup` (
   `cog_id` int(11) NOT NULL auto_increment,
-  `cog_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `cog_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `cog_description` text collate latin1_general_ci NOT NULL,
   `cog_pos` int(11) NOT NULL default '0',
   PRIMARY KEY  (`cog_id`)
@@ -122,7 +122,7 @@ DROP TABLE IF EXISTS `component_template`;
 CREATE TABLE IF NOT EXISTS `component_template` (
   `tpl_id` int(11) NOT NULL auto_increment,
   `com_id` int(11) NOT NULL default '0',
-  `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `tpl_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   PRIMARY KEY  (`tpl_id`,`com_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
@@ -142,9 +142,9 @@ INSERT INTO `component_template` (`tpl_id`, `com_id`, `tpl_bez`) VALUES
 DROP TABLE IF EXISTS `content`;
 CREATE TABLE IF NOT EXISTS `content` (
   `con_id` int(11) NOT NULL auto_increment,
-  `con_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `con_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `con_description` text collate latin1_general_ci NOT NULL,
-  `con_rubrik` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `con_rubrik` varchar(255) collate latin1_general_ci NOT NULL default '',
   `con_pos` int(1) NOT NULL default '0',
   `con_props` text collate latin1_general_ci NOT NULL,
   `con_anlegen` tinyint(4) NOT NULL default '1',
@@ -178,7 +178,7 @@ CREATE TABLE `content_data` (
   `dat_cache4` int(11) NOT NULL default '0',
   `dat_cache5` int(11) NOT NULL default '0',
   `dat_cache6` int(11) NOT NULL default '0',
-  `dat_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `dat_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `con_id` int(11) NOT NULL default '0',
   `dat_props` longtext collate latin1_general_ci NOT NULL,
   `usr_id_creator` int(11) NOT NULL default '0',
@@ -186,12 +186,12 @@ CREATE TABLE `content_data` (
   `usr_id` int(11) NOT NULL default '0',
   `dat_date` int(11) NOT NULL default '0',
   `dat_pos` int(11) NOT NULL default '0',
-  `dat_key1` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key2` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key3` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key4` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key5` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key6` varchar(100) collate latin1_general_ci default NULL,
+  `dat_key1` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key2` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key3` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key4` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key5` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key6` varchar(255) collate latin1_general_ci default NULL,
   `dat_ikey1` int(11) NOT NULL default '0',
   `dat_ikey2` int(11) NOT NULL default '0',
   `dat_ikey3` int(11) NOT NULL default '0',
@@ -253,12 +253,12 @@ CREATE TABLE `content_data_editbuffer` (
   `usr_id` int(11) NOT NULL default '0',
   `dat_date` int(11) NOT NULL default '0',
   `dat_pos` int(11) NOT NULL default '0',
-  `dat_key1` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key2` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key3` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key4` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key5` varchar(100) collate latin1_general_ci default NULL,
-  `dat_key6` varchar(100) collate latin1_general_ci default NULL,
+  `dat_key1` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key2` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key3` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key4` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key5` varchar(255) collate latin1_general_ci default NULL,
+  `dat_key6` varchar(255) collate latin1_general_ci default NULL,
   `dat_ikey1` int(11) NOT NULL default '0',
   `dat_ikey2` int(11) NOT NULL default '0',
   `dat_ikey3` int(11) NOT NULL default '0',
@@ -320,7 +320,7 @@ DROP TABLE IF EXISTS `content_template`;
 CREATE TABLE IF NOT EXISTS `content_template` (
   `tpl_id` int(11) NOT NULL auto_increment,
   `con_id` int(11) NOT NULL default '0',
-  `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `tpl_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   PRIMARY KEY  (`tpl_id`,`con_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
@@ -364,9 +364,9 @@ CREATE TABLE IF NOT EXISTS `dataobject` (
 DROP TABLE IF EXISTS `extra`;
 CREATE TABLE IF NOT EXISTS `extra` (
   `ext_id` int(11) NOT NULL auto_increment,
-  `ext_bez` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `ext_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `ext_description` text collate latin1_general_ci NOT NULL,
-  `ext_rubrik` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `ext_rubrik` varchar(255) collate latin1_general_ci NOT NULL default '',
   `ext_props` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`ext_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
@@ -389,7 +389,7 @@ DROP TABLE IF EXISTS `extra_template`;
 CREATE TABLE IF NOT EXISTS `extra_template` (
   `tpl_id` int(11) NOT NULL auto_increment,
   `ext_id` int(11) NOT NULL default '0',
-  `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `tpl_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   PRIMARY KEY  (`tpl_id`,`ext_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
@@ -407,9 +407,9 @@ CREATE TABLE IF NOT EXISTS `extra_template` (
 DROP TABLE IF EXISTS `include`;
 CREATE TABLE IF NOT EXISTS `include` (
   `inc_id` int(11) NOT NULL auto_increment,
-  `inc_bez` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `inc_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `inc_description` text collate latin1_general_ci NOT NULL,
-  `inc_rubrik` varchar(50) collate latin1_general_ci NOT NULL default '',
+  `inc_rubrik` varchar(255) collate latin1_general_ci NOT NULL default '',
   `inc_usage_layout` tinyint(4) NOT NULL default '0',
   `inc_usage_includecomponent` tinyint(4) NOT NULL default '0',
   `inc_usage_page` tinyint(4) NOT NULL default '0',
@@ -431,7 +431,7 @@ DROP TABLE IF EXISTS `include_template`;
 CREATE TABLE IF NOT EXISTS `include_template` (
   `tpl_id` int(11) NOT NULL auto_increment,
   `inc_id` int(11) NOT NULL default '0',
-  `tpl_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `tpl_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   PRIMARY KEY  (`tpl_id`,`inc_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
@@ -449,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `include_template` (
 DROP TABLE IF EXISTS `layout`;
 CREATE TABLE IF NOT EXISTS `layout` (
   `lay_id` int(11) NOT NULL auto_increment,
-  `lay_bez` varchar(100) collate latin1_general_ci NOT NULL default '0',
+  `lay_bez` varchar(255) collate latin1_general_ci NOT NULL default '0',
   `lay_description` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`lay_id`),
   UNIQUE KEY `tpl_id` (`lay_id`),
@@ -473,7 +473,7 @@ DROP TABLE IF EXISTS `layout_block`;
 CREATE TABLE IF NOT EXISTS `layout_block` (
   `lay_id` int(11) NOT NULL default '0',
   `lay_blocknr` int(11) NOT NULL default '0',
-  `lay_blockbez` varchar(250) collate latin1_general_ci NOT NULL default '',
+  `lay_blockbez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `cog_id` int(11) NOT NULL default '0',
   `lay_context` int(11) NOT NULL default '0',
   PRIMARY KEY  (`lay_id`,`lay_blocknr`)
@@ -536,22 +536,22 @@ DROP TABLE IF EXISTS `media`;
 CREATE TABLE IF NOT EXISTS `media` (
   `med_id` int(11) NOT NULL auto_increment,
   `grp_id` int(11) NOT NULL default '2',
-  `med_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `med_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `med_versioncount` smallint(6) NOT NULL default '0',
-  `med_physical_folder` varchar(50) collate latin1_general_ci NOT NULL default '',
-  `med_bez_original` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `med_physical_folder` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `med_bez_original` varchar(255) collate latin1_general_ci NOT NULL default '',
   `med_type` tinyint(20) NOT NULL default '0',
   `med_subtype` varchar(10) collate latin1_general_ci NOT NULL default '',
   `med_mimetype` varchar(64) collate latin1_general_ci NOT NULL default '',
   `med_x` int(11) NOT NULL default '0',
   `med_y` int(11) NOT NULL default '0',
   `med_thumb` tinyint(4) NOT NULL default '0',
-  `med_alt` varchar(100) collate latin1_general_ci NOT NULL default '',
-  `med_keywords` varchar(250) collate latin1_general_ci NOT NULL default '',
+  `med_alt` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `med_keywords` varchar(255) collate latin1_general_ci NOT NULL default '',
   `med_comment` text collate latin1_general_ci NOT NULL,
-  `med_logical_folder1` varchar(200) collate latin1_general_ci NOT NULL default '',
-  `med_logical_folder2` varchar(200) collate latin1_general_ci NOT NULL default '',
-  `med_logical_folder3` varchar(200) collate latin1_general_ci NOT NULL default '',
+  `med_logical_folder1` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `med_logical_folder2` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `med_logical_folder3` varchar(255) collate latin1_general_ci NOT NULL default '',
   `usr_id_creator` int(11) NOT NULL default '0',
   `med_creationdate` int(11) NOT NULL default '0',
   `med_date` int(11) NOT NULL default '0',
@@ -591,7 +591,7 @@ INSERT INTO `media` (`med_id`, `grp_id`, `med_bez`, `med_versioncount`, `med_phy
 DROP TABLE IF EXISTS `mediagroup`;
 CREATE TABLE IF NOT EXISTS `mediagroup` (
   `grp_id` int(11) NOT NULL auto_increment,
-  `grp_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `grp_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `grp_description` text collate latin1_general_ci NOT NULL,
   `grp_type` tinyint(4) NOT NULL default '1',
   PRIMARY KEY  (`grp_id`)
@@ -616,7 +616,7 @@ DROP TABLE IF EXISTS `mediaversion`;
 CREATE TABLE IF NOT EXISTS `mediaversion` (
   `ver_id` int(11) NOT NULL auto_increment,
   `med_id` int(11) NOT NULL default '0',
-  `ver_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `ver_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `ver_x` int(11) NOT NULL default '0',
   `ver_y` int(11) NOT NULL default '0',
   `ver_subtype` varchar(10) collate latin1_general_ci NOT NULL default '',
@@ -644,9 +644,9 @@ CREATE TABLE IF NOT EXISTS `page` (
   `ver_id` int(11) NOT NULL default '0',
   `ver_nr` tinyint(4) NOT NULL default '0',
   `grp_id` smallint(6) NOT NULL default '0',
-  `pag_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
-  `pag_titel` varchar(250) collate latin1_general_ci NOT NULL default '',
-  `pag_alttitel` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `pag_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `pag_titel` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `pag_alttitel` varchar(255) collate latin1_general_ci NOT NULL default '',
   `pag_comment` text collate latin1_general_ci NOT NULL,
   `pag_status` tinyint(4) NOT NULL default '0',
   `pag_id_top` int(11) NOT NULL default '0',
@@ -664,7 +664,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `pag_xmlcache4` tinyint(4) NOT NULL default '0',
   `pag_xmlcache5` tinyint(4) NOT NULL default '0',
   `pag_xmlcache6` tinyint(4) NOT NULL default '0',
-  `pag_quickfinder` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `pag_quickfinder` varchar(255) collate latin1_general_ci NOT NULL default '',
   `pag_searchtext` text collate latin1_general_ci NOT NULL,
   `pag_date` int(11) NOT NULL default '0',
   `usr_id` int(11) NOT NULL default '0',
@@ -682,7 +682,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `pag_lastcache_time` varchar(20) collate latin1_general_ci NOT NULL default '',
   `pag_lastcachenr` tinyint(4) NOT NULL default '0',
   `pag_ver_nr_max` tinyint(4) NOT NULL default '0',
-  `pag_url` varchar(200) collate latin1_general_ci NOT NULL default '',
+  `pag_url` varchar(255) collate latin1_general_ci NOT NULL default '',
   `pag_url1` varchar(255) collate latin1_general_ci NOT NULL,
   `pag_url2` varchar(255) collate latin1_general_ci NOT NULL,
   `pag_url3` varchar(255) collate latin1_general_ci NOT NULL,
@@ -699,7 +699,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `pag_contenttype` smallint(6) NOT NULL default '1',
   `pag_multilanguage` tinyint(4) NOT NULL default '0',
   `pag_adminlock` tinyint(4) NOT NULL,
-  `pag_redirect` varchar(250) collate latin1_general_ci NOT NULL,
+  `pag_redirect` varchar(255) collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`pag_id`),
   UNIQUE KEY `ver_id` (`ver_id`),
   FULLTEXT KEY `pag_fullsearch` (`pag_fullsearch`)
@@ -721,7 +721,7 @@ INSERT INTO `page` (`pag_id`, `pag_uid`, `pag_id_mimikry`, `ver_id`, `ver_nr`, `
 DROP TABLE IF EXISTS `pagegroup`;
 CREATE TABLE IF NOT EXISTS `pagegroup` (
   `grp_id` int(11) NOT NULL auto_increment,
-  `grp_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `grp_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `grp_description` text collate latin1_general_ci NOT NULL,
   `grp_statistic` tinyint(4) NOT NULL default '1',
   `grp_multilanguage` tinyint(4) NOT NULL default '0',
@@ -750,7 +750,7 @@ CREATE TABLE IF NOT EXISTS `pageversion` (
   `ver_nr` tinyint(4) NOT NULL default '0',
   `pag_id` int(11) NOT NULL default '0',
   `lay_id` int(11) NOT NULL default '0',
-  `ver_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `ver_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `inc_id1` int(11) NOT NULL default '0',
   `inc_id2` int(11) NOT NULL default '0',
   `pag_exec_script` tinyint(4) NOT NULL default '0',
@@ -795,7 +795,7 @@ DROP TABLE IF EXISTS `page_language`;
 CREATE TABLE IF NOT EXISTS `page_language` (
   `pag_id` int(11) NOT NULL default '0',
   `lng_id` smallint(6) NOT NULL default '0',
-  `pag_titel` varchar(250) collate latin1_general_ci NOT NULL default '',
+  `pag_titel` varchar(255) collate latin1_general_ci NOT NULL default '',
   `pag_nextbuild1` int(11) NOT NULL default '0',
   `pag_nextbuild2` int(11) NOT NULL default '0',
   `pag_nextbuild3` int(11) NOT NULL default '0',
@@ -854,7 +854,7 @@ DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
   `rol_id` int(11) NOT NULL auto_increment,
   `rol_description` text collate latin1_general_ci NOT NULL,
-  `rol_bez` varchar(100) collate latin1_general_ci NOT NULL default '',
+  `rol_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `rol_rights` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`rol_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
@@ -941,7 +941,7 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `ver_id` int(11) NOT NULL default '0',
   `med_id` int(11) NOT NULL default '0',
   `dat_id_content` int(11) NOT NULL default '0',
-  `tik_bez` varchar(150) collate latin1_general_ci NOT NULL default '',
+  `tik_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `usr_id_creator` int(11) NOT NULL default '0',
   `usr_id_owner` int(11) NOT NULL default '0',
   `tik_accepted` tinyint(4) NOT NULL default '0',
@@ -1059,7 +1059,7 @@ CREATE TABLE IF NOT EXISTS `ticketrequest` (
 DROP TABLE IF EXISTS `ticketsubject`;
 CREATE TABLE IF NOT EXISTS `ticketsubject` (
   `sbj_id` int(11) NOT NULL auto_increment,
-  `sbj_bez` varchar(150) collate latin1_general_ci NOT NULL default '',
+  `sbj_bez` varchar(255) collate latin1_general_ci NOT NULL default '',
   `sbj_description` text collate latin1_general_ci NOT NULL,
   PRIMARY KEY  (`sbj_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
@@ -1080,7 +1080,9 @@ INSERT INTO `ticketsubject` (`sbj_id`, `sbj_bez`, `sbj_description`) VALUES
 DROP TABLE IF EXISTS `tokens`;
 CREATE TABLE IF NOT EXISTS `tokens` (
   `token` varchar(255) NOT NULL,
-  `section` varchar(255) NOT NULL
+  `section` varchar(255) NOT NULL,
+  `en` varchar(255) NOT NULL,
+  `de` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -1101,9 +1103,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `usr_login` varchar(50) collate latin1_general_ci NOT NULL default '',
   `usr_pass` varchar(50) collate latin1_general_ci NOT NULL default '',
   `usr_salt` varchar(255) collate latin1_general_ci NOT NULL default '',
-  `usr_vorname` varchar(50) collate latin1_general_ci NOT NULL default '',
-  `usr_nachname` varchar(50) collate latin1_general_ci NOT NULL default '',
-  `usr_email` varchar(200) collate latin1_general_ci NOT NULL default '',
+  `usr_vorname` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `usr_nachname` varchar(255) collate latin1_general_ci NOT NULL default '',
+  `usr_email` varchar(255) collate latin1_general_ci NOT NULL default '',
   `usr_createdate` int(11) NOT NULL default '0',
   `usr_lastlogin` int(11) NOT NULL default '0',
   `usr_rights` text collate latin1_general_ci NOT NULL,

@@ -9,6 +9,8 @@ define ("PT_FRONTENDSESSION",0);
 define ("PT_PAGECACHE",1);
 define ("PT_INCLUDECACHE",1);
 define ("PT_URL_STYLE", "smartURL");
+define ("PT_PHPIDS",0);
+define ('PT_PHPIDS_MAXIMPACT',10);
 
 // ------------------------------------------------------
 // pathes and urls - part 1
@@ -130,7 +132,7 @@ require_once (APPPATH . "_host.config.inc.php");
 // ------------------------------------------------------
 // start engine
 // ------------------------------------------------------
-
+$myLog = new PhenotypeLog();
 $myDebug = new PhenotypeDebugger();
 $myDebug->start(); 
 
@@ -142,7 +144,7 @@ $myPT = new Phenotype();
 $myDB = new PhenotypeDatabase();
 $myDB->connect();
 require_once (SYSTEMPATH . "_init.inc.php");
-$myLog = new PhenotypeLog();
+
 
 $myRequest = new PhenotypeRequest();
 if ($myRequest->code404){$myApp->throw404();}
