@@ -22,3 +22,5 @@ FCKConfig.ToolbarSets["Default"] = [
 ['Undo','Redo'],['Find','Replace'],
 ['Print','-','FitWindow']
 ] ;
+
+FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/SilverNarrow/' ;

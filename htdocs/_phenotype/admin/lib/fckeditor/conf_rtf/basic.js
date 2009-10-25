@@ -68,4 +68,4 @@ FCKConfig.CoreStyles =
 	'BackColor'		: { Element : 'span', Styles : { 'background-color' : '#("Color","color")' } }
 };
 
-//FCKConfig.StylesXmlPath = '../../fckstyles.php'; 
+FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/SilverNarrow/' ;

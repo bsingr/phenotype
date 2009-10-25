@@ -17,7 +17,7 @@ FCKConfig.EnterMode = 'p' ;			// p | div | br
 FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
 
 FCKConfig.ToolbarSets["Default"] = [
-['Bold','Italic','Underline','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyFull','-','OrderedList','UnorderedList','-','Link','Unlink'],
+['Bold','Italic','Underline','Rule'],['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],['OrderedList','UnorderedList','Outdent','Indent'],['Link','Unlink'],
 ['Paste','PasteText','PasteWord','RemoveFormat'],
 ['Undo','Redo','-','Find','Replace'],
 ['Print','-','Source','-','FitWindow']
@@ -71,4 +71,16 @@ FCKConfig.CoreStyles =
 	'BackColor'		: { Element : 'span', Styles : { 'background-color' : '#("Color","color")' } }
 };
 
-//FCKConfig.StylesXmlPath = '../../fckstyles.php'; 
+FCKConfig.DocType = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' ;
+
+FCKConfig.LinkDlgHideAdvanced = true;
+FCKConfig.LinkDlgHideTarget = true ;
+FCKConfig.DefaultLinkTarget = '';
+FCKConfig.LinkUpload = false ;
+FCKConfig.LinkBrowser = false ;
+FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/SilverNarrow/' ;
+
+
+
+
+ 

@@ -242,18 +242,18 @@ exit();
 
     $allowed = array(
     'br' => array(),
-    'p' => Array("align"=>1,"target"=>1),
+    'p' => Array("style"=>1,"class"=>1),
     'b' => array(),
     'strong' => array(),
     'i' => array(),
     'em' => array(),
-    'a' => Array("href"=>1,"align"=>1,"target"=>1),
+    'a' => Array("href"=>1,"target"=>1),
     'ol' => array(),
     'ul' => array(),
     'li' => array(),
     //'span' => array(),
-    'div' => Array("align"=>1),
-    'u' => array()
+    'div' => Array("style"=>1),
+    'hr' => array()
     );
 
     $text = kses($text, $allowed);

@@ -441,6 +441,16 @@ class PhenotypeInstaller
 				$_array[]=array("title"=>"safe_mode","status"=>"o.k. (on)","class"=>"yellow","hint"=>"");
 			}
 
+			$sot = (int) ini_get("short_open_tag");
+			if ($sot==1)
+			{
+				$_array[]=array("title"=>"short_open_tag","status"=>"o.k. (on)","class"=>"green","hint"=>"");
+			}
+			else
+			{
+				$_array[]=array("title"=>"short_open_tag","status"=>"wrong setting (active)","class"=>"red","hint"=>"");
+			}			
+			
 			return ($_array);
 	}
 
