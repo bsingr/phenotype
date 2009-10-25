@@ -18,14 +18,9 @@
 // -------------------------------------------------------
 
 set_time_limit(0);
-
-require ("../_phenotype/system/class/PhenotypeBase.class.php");
+require ("../_config.inc.php");
 require ("../_phenotype/system/class/PhenotypeDeployment.class.php");
-require ("../_phenotype/system/class/PhenotypeRequest.class.php");
 
-class PhenotypeRequest extends PhenotypeRequestStandard {};
-
-$myRequest = new PhenotypeRequest();
 $myDeployment = new PhenotypeDeployment();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

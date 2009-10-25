@@ -557,8 +557,16 @@ class PhenotypeAdminStandard
 		return ($_files);
 	}
 
+	/**
+	 * delete a folder and all it's subfolders
+	 *
+	 * @param string folder path
+	 * @param boolean flag wether the outer folder should be kept (not it's content)
+	 * @param boolean flag just to pretend and checking the function before really deleting
+	 */
 	function removeDirComplete ($dir,$keep=0,$debug=0)
 	{
+		
 		if ($fp= @opendir($dir))
 		{
 			while (($file = readdir($fp)) !== false)

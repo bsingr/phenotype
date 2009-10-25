@@ -413,7 +413,7 @@ class PhenotypeApplicationManager
 	public function cleanupWebroot()
 	{
 		global $myAdm;
-		$_files = Array (".svn",".htaccess","php.ini","_phenotype","media","index.php","pindex.php","preview.php","print.php","xmlpage.php","xmlcontent.php","404.php","reload.php","debuginfo.php","install.php","install.4build.php","installcheck.txt","favicon.ico");
+		$_files = Array (".svn",".htaccess","php.ini","_phenotype","media","index.php","pindex.php","preview.php","print.php","xmlpage.php","xmlcontent.php","404.php","reload.php","debuginfo.php","install.php","install.4build.php","installcheck.txt","favicon.ico","deploy.php");
 
 		$dir = SERVERPATH;
 
