@@ -583,7 +583,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 	function printHTML($text)
 	{
-		return @htmlentities(stripslashes($text));
+		return @htmlentities(stripslashes($text),null,PT_CHARSET);
 	}
 	function printH($text)
 	{
@@ -780,7 +780,14 @@ class PhenotypeStandard extends PhenotypeBase
 		// set default values
 		// contenttype
 		if (!array_key_exists('backend.default_contenttype', $this->_preferences)) {
-			$this->_preferences['backend.default_contenttype'] = "text/html;charset=iso-8859-1";
+			$contenttype = "text/html;charset=utf-8"; // html utf-8
+			switch(PT_CHARSET)
+			{
+				case "ISO-8859-1":
+					$contenttype="text/html;charset=iso-8859-1";
+					break;
+			}
+			$this->_preferences['backend.default_contenttype'] = $contenttype;
 		}
 		// editorstuff
 		if (!array_key_exists('backend.rtf_editor', $this->_preferences)) {
@@ -1000,7 +1007,7 @@ class PhenotypeStandard extends PhenotypeBase
 		highlight_string($buffer);
 		$buffer = $this->stopbuffer();
 		$buffer = str_replace('_CHR_ASCII_92_',chr(92),$buffer);
-		return ('<font size="3">' .htmlentities($buffer) . '</font>');
+		return ('<font size="3">' .htmlentities($buffer,null,PT_CHARSET) . '</font>');
 	}
 
 	/**

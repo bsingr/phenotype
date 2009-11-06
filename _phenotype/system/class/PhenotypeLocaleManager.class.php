@@ -886,7 +886,7 @@ class PhenotypeLocaleManagerStandard
 			$xml = str_replace("/tmx:","/",$xml);
 			$xml = str_replace("xml:lang","lang",$xml);
 
-			//echo htmlentities($xml);
+			//echo htmlentities($xml,null,PT_CHARSET);
 			$_xml = simplexml_load_string($xml);
 
 			if (!$_xml)
@@ -1028,7 +1028,7 @@ class PhenotypeLocaleManagerStandard
 					$heading=$k;
 					echo '<tr><td colspan="2"><strong>'.$heading.'<strong></td></tr>';
 				}
-				echo '<tr><td>'.htmlentities('<?php echo localeH("'.$v.'");?>').'</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; locale("'.$v.'")'.'</td></tr>';
+				echo '<tr><td>'.htmlentities('<?php echo localeH("'.$v.'");?>',null,PT_CHARSET).'</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; locale("'.$v.'")'.'</td></tr>';
 			}
 		}
 		echo '</table>';

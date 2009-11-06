@@ -598,7 +598,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		$html = "&nbsp;".localeH("msg_selectusers_comment")."<br><br>".$user."<br><br><br><br><br><br><br><br>";
 		$myLayout->workarea_row_draw(localeH("Users"),$html);
   		?>
-   		<input type="hidden" name="comment" value="<?php echo htmlentities($myRequest->get("comment")) ?>">
+   		<input type="hidden" name="comment" value="<?php echo $myRequest->getH("comment") ?>">
    		<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Execute")?>">&nbsp;&nbsp;</td>
@@ -627,7 +627,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		$html = "&nbsp;".localeH("msg_selectusers_question")."<br/><br/>".$user."<br/><br/><br/><br/><br/><br/><br/><br/>";
 		$myLayout->workarea_row_draw(localeH("Users"),$html);
 		?>
-    <input type="hidden" name="comment" value="<?php echo htmlentities($myRequest->get("comment")) ?>">
+    <input type="hidden" name="comment" value="<?php echo $myRequest->getH("comment") ?>">
    	<table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td align="right" class="windowFooterWhite"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Execute")?>">&nbsp;&nbsp;</td>
@@ -945,7 +945,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -968,7 +968,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -991,7 +991,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td width="55"  align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1050,7 +1050,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1073,7 +1073,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1094,7 +1094,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1112,14 +1112,14 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_edit.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 		}else{
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 		}
@@ -1141,7 +1141,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1213,7 +1213,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1247,7 +1247,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1268,7 +1268,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1289,7 +1289,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25" >&nbsp;</td>
-    <td valign="top" class="taskTopCorner"><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" class="taskTopCorner"><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1309,7 +1309,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25" >&nbsp;</td>
-    <td valign="top" class="taskTopCorner"><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" class="taskTopCorner"><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1333,7 +1333,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1354,7 +1354,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1401,7 +1401,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}
@@ -1422,7 +1422,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 	?>
 	<tr>
 	<td  width="55" align="center" valign="top" height="25"><img src="img/b_comment.gif" width="22" height="22"></td>
-    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"])) ?></td>
+    <td valign="top" ><?php echo nl2br(htmlentities($row["act_comment"],null,PT_CHARSET)) ?></td>
     </tr>	
 	<?php
 	}

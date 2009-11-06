@@ -25,7 +25,7 @@
 class PhenotypeBase
 {
 
-	public $charset="";
+
 
 
 	public $_props = Array ();
@@ -39,10 +39,7 @@ class PhenotypeBase
 	 */
 	private $HWSL = false;
 
-	public function __construct()
-	{
-		$this->charset = PT_CHARSET;
-	}
+
 
 	public function check($k)
 	{
@@ -112,7 +109,8 @@ class PhenotypeBase
 
 	public function getHTML($property,$default=null)
 	{
-		return @ htmlentities(($this->get($property,$default)),null,$this->charset);
+		return $this->get($property,$default);
+		return @ htmlentities($this->get($property,$default),null,PT_CHARSET);
 	}
 
 	public function getH($property,$default=null)
@@ -265,12 +263,12 @@ class PhenotypeBase
 
 	public function codeH($s)
 	{
-		return @ htmlentities($s,null,$this->charset);
+		return @ htmlentities($s,null,PT_CHARSET);
 	}
 
 	public function codeHBR($s)
 	{
-		$html =  @ nl2br(htmlentities($s,null,$this->charset));
+		$html =  @ nl2br(htmlentities($s,null,PT_CHARSET));
 		// Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
 		$html = str_replace(chr(10), "", $html);
 		$html = str_replace(chr(13), "", $html);
@@ -295,7 +293,7 @@ class PhenotypeBase
 		$s = str_replace("</b>","###BB###",$s);
 		$s = str_replace("</strong>","###BB###",$s);
 		$s = str_replace("&nbsp;","###NBSP###",$s);
-		$s = @ htmlentities($s,null,$this->charset);
+		$s = @ htmlentities($s,null,PT_CHARSET);
 		$s = str_replace("###B###","<strong>",$s);
 		$s = str_replace("###BB###","</strong>",$s);
 		$s = str_replace("###BR###","<br/>",$s);

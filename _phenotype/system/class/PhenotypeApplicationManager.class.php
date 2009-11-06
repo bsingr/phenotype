@@ -543,7 +543,6 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
 			<rtf_editor_config_path>_phenotype/admin/lib/fckeditor/conf_rtf/</rtf_editor_config_path><!-- change this to use a config file you created custom, should in this case be in the docroot (htdocs) -->
 			<code_editor>fckEditor</code_editor><!-- possible values are tinyMCE or fckEditor -->
 			<code_editor_config_path>_phenotype/admin/lib/fckeditor/conf_code/</code_editor_config_path><!-- change this to use a config file you created custom, should in this case be in the docroot (htdocs) -->
-			<default_contenttype>text/html;charset=iso-8859-1</default_contenttype><!-- the default http header contenttype for new pages -->
 		</section>
 		<section name="edit_pages">
 			<show_alternative_title>0</show_alternative_title>

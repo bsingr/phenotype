@@ -823,7 +823,7 @@ if ($mySUser->checkRight("elm_task"))
                   $class = "tableVarChange";
                 }
               }
-              $html .='<tr class="'.$class.'"><td><input type="text" name="var'.$n.'" style="width: 120px" class="input" value="'.htmlentities($key).'"></td><td><strong>:</strong></td><td><input type="text" name="val'.$n.'" style="width: 250px" class="input" value="'.htmlentities($val).'">&nbsp;&nbsp;</td></tr>';
+              $html .='<tr class="'.$class.'"><td><input type="text" name="var'.$n.'" style="width: 120px" class="input" value="'.htmlentities($key,null,PT_CHARSET).'"></td><td><strong>:</strong></td><td><input type="text" name="val'.$n.'" style="width: 250px" class="input" value="'.htmlentities($val,null,PT_CHARSET).'">&nbsp;&nbsp;</td></tr>';
             }
           }
 

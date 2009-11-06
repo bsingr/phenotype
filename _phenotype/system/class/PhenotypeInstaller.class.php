@@ -334,7 +334,7 @@ class PhenotypeInstaller
 			{
 				$selected='selected="selected"';
 			}
-			$html.='<option value="'.$k.'" '.$selected.'>'.htmlentities($v).'</option>';
+			$html.='<option value="'.$k.'" '.$selected.'>'.htmlentities($v,null,PT_CHARSET).'</option>';
 		}
 		return $html;
 	}
@@ -949,6 +949,20 @@ class PhenotypeInstaller
 		}
 
 		return $pass;
+	}
+	
+	function switchToUTF8()
+	{
+		global $myDB;
+		$sql = "SHOW TABLES";
+		$rs = $myDB->query($sql);
+		while ($row=mysql_fetch_array($rs))
+		{
+			$sql = "ALTER TABLE `".$row[0]."`  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci"; 
+			$myDB->query($sql);
+		}
+		// ALTER DATABASE `phenotype` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci 
+		// latin1_general_ci  CHARSET=latin1
 	}
 }
 

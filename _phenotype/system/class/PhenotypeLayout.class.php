@@ -626,7 +626,7 @@ class PhenotypeLayoutStandard
 	function workarea_form_hidden($name,$val)
 	{
 		$html="";
-		$html .= '<input type="hidden" name="'.$name .'"  value="'.htmlentities($val).'">';
+		$html .= '<input type="hidden" name="'.$name .'"  value="'.htmlentities($val,null,PT_CHARSET).'">';
 		return $html;
 	}
 
@@ -878,7 +878,7 @@ if ($myPT->getPref("backend.code_editor") == PT_RTF_EDITOR_TINYMCE)
 	{
 		global $myPT;
 
-		$val = htmlentities($val);
+		$val = htmlentities($val,null,PT_CHARSET);
 
 		$this->init_js_editor(PT_EDITOR_RTF, $configSet);
 
@@ -1174,7 +1174,7 @@ if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
               <tr>
                 <td nowrap>
 				<?php echo localeH("Alternate");?>:<br>
-				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
+				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt,null,PT_CHARSET) ?>"><br>
      <?php
      echo localeH("Alignment").":<br>";
      $this->iconbar_new();
@@ -1277,7 +1277,7 @@ return $myPT->stopBuffer();
               <tr>
                 <td nowrap>
 				<?php echo localeH("Alternate");?>:<br>
-				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt) ?>"><br>
+				<input type="text" name="<?php echo $name ?>img_alt" style="width:200px" class="input" value="<?php echo htmlentities($alt,null,PT_CHARSET) ?>"><br>
      <?php
      echo localeH("Alignment").":<br>";
      $this->iconbar_new();
@@ -1972,7 +1972,7 @@ if ($mySUser->checkRight("elm_pageconfig"))
               <td>
 			  <form action="content_select.php" method="post">
  	  		  <input type="hidden" name="t" value="<?php echo $myAdm->explorer_get("con_id") ?>">
-			  <input type="hidden" name="r" value="<?php echo htmlentities($myAdm->explorer_get("rubrik")) ?>">
+			  <input type="hidden" name="r" value="<?php echo htmlentities($myAdm->explorer_get("rubrik"),null,PT_CHARSET) ?>">
 		    <input type="hidden" name="c" value="search">
 			  <input type="text" name="s" style="width: 100
 			  px" class="input"></td>

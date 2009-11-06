@@ -61,7 +61,7 @@ class PhenotypeDatabase
     // for more information about MySQL modes look http://dev.mysql.com/doc/refman/5.0/en/server-sql-mode.html
     $sql = "SET @@session.sql_mode='NO_FIELD_OPTIONS';";
     $this->query($sql,"Setting MySQL operation mode.");
-    if (PT_CHARSET=='utf-8')
+    if (PT_CHARSET=='UTF-8')
     {
       $sql = "SET NAMES 'utf8'";
     }
@@ -228,7 +228,7 @@ filter:alpha(opacity=95);padding-left:10px;">
 	 		?>
 	 		
 	 		<tr><td>Nummer:</td><td><strong><?php echo $i+1?></strong></td></tr>
-	 		<tr><td>SQL:</td><td><strong><?php echo htmlentities($this->_sql[$i])?></strong></td></tr>
+	 		<tr><td>SQL:</td><td><strong><?php echo htmlentities($this->_sql[$i],null,PT_CHARSET)?></strong></td></tr>
 	 		<tr><td>Zeit:</td><td><strong><?php echo $zeit?></strong></td></tr>
 	 		<tr><td>Zeilen:</td><td><strong><?php echo $this->_results[$i]?></strong></td></tr>
 		 	<tr><td>Datei:</td><td><strong><?php echo $this->_files[$i]?></strong></td></tr>

@@ -32,7 +32,7 @@ class PhenotypeDeployment
 	
 	public $version = "2.92";
 
-	public $revision = 285;
+	public $revision = 389;
 
 	public $base_path="";
 

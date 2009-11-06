@@ -38,6 +38,13 @@ ini_set("error_log",TEMPPATH."logs/phperror.log");
 
 set_exception_handler(array("Phenotype","handleException"));
 
+if (!defined('PT_CHARSET'))
+{
+	define ("PT_CHARSET","UTF-8"); // or ISO-8859-1
+}
+
+mb_internal_encoding(PT_CHARSET);
+
 // This function is used for xmlencode preg_replace_callback
 function match2Entity($matches)
 {

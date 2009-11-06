@@ -399,7 +399,7 @@ class PhenotypeAdminStandard
 		// replace the backslashes again
 		$buffer = str_replace('_CHR_ASCII_92_',chr(92),$buffer);
 
-		return ('<font size="3">' .htmlentities($buffer) . '</font>');
+		return ('<font size="3">' .htmlentities($buffer,null,PT_CHARSET) . '</font>');
 	}
 	
 	function decodeRequest_HTMLArea($code)
@@ -421,7 +421,7 @@ class PhenotypeAdminStandard
 		$code = str_replace('&nbsp;',chr(32),$code);
 
 		$code = strip_tags($code);
-		$code = html_entity_decode($code);
+		$code = html_entity_decode($code,null,PT_CHARSET);
 
 
 

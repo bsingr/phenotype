@@ -320,7 +320,7 @@ exit();
 
 	function getH($s)
 	{
-		return @ htmlentities($s);
+		return @ htmlentities($s,null,PT_CHARSET);
 	}
 
 	function getI($s)

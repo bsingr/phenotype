@@ -404,7 +404,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 			$this->set("smartIDSImpact",$result->getImpact());
 			if ($result->getImpact()>PT_PHPIDS_MAXIMPACT)
 			{
-				throw new Exception("PHP Intrusion Detection\n\n".strip_tags(html_entity_decode($result)));
+				throw new Exception("PHP Intrusion Detection\n\n".strip_tags(html_entity_decode($result,null,PT_CHARSET)));
 			}
 		}
 

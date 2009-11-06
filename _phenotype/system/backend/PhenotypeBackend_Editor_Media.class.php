@@ -1383,7 +1383,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	 		<a href="<?php echo $myObj->url ?> " target="_blank"><?php echo $myObj->filename ?></a>
 			<?php
 			}
-			?></a></td><td><?php if ($grp_type == 2 OR $mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin")){ ?><input type="image" src="img/b_delete.gif" name="ver<?php echo $row["ver_id"] ?>_delete"><?php }else echo"&nbsp;"; ?></td></tr></table><br/><p><?php echo localeH("Name");?></p><input name="ver<?php echo $row["ver_id"] ?>_bez" type="text" class="input" value="<?php echo htmlentities($bez) ?>" style="width:250px"><?php
+			?></a></td><td><?php if ($grp_type == 2 OR $mySUser->checkRight("superuser") OR $mySUser->checkRight("elm_admin")){ ?><input type="image" src="img/b_delete.gif" name="ver<?php echo $row["ver_id"] ?>_delete"><?php }else echo"&nbsp;"; ?></td></tr></table><br/><p><?php echo localeH("Name");?></p><input name="ver<?php echo $row["ver_id"] ?>_bez" type="text" class="input" value="<?php echo htmlentities($bez,null,PT_CHARSET) ?>" style="width:250px"><?php
 			$html = $myPT->stopBuffer();
 			if ($myObj->type == MB_IMAGE)
 			{

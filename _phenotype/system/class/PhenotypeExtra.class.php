@@ -72,7 +72,7 @@ class PhenotypeExtraStandard
 
 	function getHTML($bez)
 	{
-		return @ htmlentities(stripslashes($this->props[$bez]));
+		return @ htmlentities(stripslashes($this->props[$bez]),null,PT_CHARSET);
 	}
 
 	function getH($bez)
