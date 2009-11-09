@@ -91,7 +91,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				$patterns = "/[\/]\$/";
 				$smartURL = preg_replace($patterns,"", $smartURL);
 
-				$sql = "SELECT pag_id, pag_url1, pag_url2, pag_url3, pag_url4 FROM page WHERE pag_url='". mysql_escape_string($smartURL)."' OR pag_url1='". mysql_escape_string($smartURL)."' OR pag_url2='". mysql_escape_string($smartURL)."' OR pag_url3='". mysql_escape_string($smartURL)."' OR pag_url4='". mysql_escape_string($smartURL)."'";
+				$sql = "SELECT pag_id, pag_url1, pag_url2, pag_url3, pag_url4 FROM page WHERE pag_url='". mysql_real_escape_string($smartURL)."' OR pag_url1='". mysql_real_escape_string($smartURL)."' OR pag_url2='". mysql_real_escape_string($smartURL)."' OR pag_url3='". mysql_real_escape_string($smartURL)."' OR pag_url4='". mysql_real_escape_string($smartURL)."'";
 				$rs = $myDB->query($sql,"Request");
 				if (mysql_num_rows($rs)==1)
 				{
@@ -118,10 +118,10 @@ class PhenotypeRequestStandard extends PhenotypeBase
 					// check for param rewrite
 
 
-					$sql = "SELECT pag_id, LENGTH(pag_url1) AS L ,1 AS lng_id FROM page WHERE pag_url1 !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url1,'/'))=1";
-					$sql .= " UNION SELECT pag_id, LENGTH(pag_url2) AS L ,2 AS lng_id FROM page WHERE pag_url2 !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url2,'/'))=1";
-					$sql .= " UNION SELECT pag_id, LENGTH(pag_url3) AS L ,3 AS lng_id FROM page WHERE pag_url3 !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url3,'/'))=1";
-					$sql .= " UNION SELECT pag_id, LENGTH(pag_url4) AS L ,4 AS lng_id FROM page WHERE pag_url4 !='' AND INSTR('".mysql_escape_string($smartURL)."',CONCAT(pag_url4,'/'))=1";
+					$sql = "SELECT pag_id, LENGTH(pag_url1) AS L ,1 AS lng_id FROM page WHERE pag_url1 !='' AND INSTR('".mysql_real_escape_string($smartURL)."',CONCAT(pag_url1,'/'))=1";
+					$sql .= " UNION SELECT pag_id, LENGTH(pag_url2) AS L ,2 AS lng_id FROM page WHERE pag_url2 !='' AND INSTR('".mysql_real_escape_string($smartURL)."',CONCAT(pag_url2,'/'))=1";
+					$sql .= " UNION SELECT pag_id, LENGTH(pag_url3) AS L ,3 AS lng_id FROM page WHERE pag_url3 !='' AND INSTR('".mysql_real_escape_string($smartURL)."',CONCAT(pag_url3,'/'))=1";
+					$sql .= " UNION SELECT pag_id, LENGTH(pag_url4) AS L ,4 AS lng_id FROM page WHERE pag_url4 !='' AND INSTR('".mysql_real_escape_string($smartURL)."',CONCAT(pag_url4,'/'))=1";
 					$sql .= " ORDER BY L DESC, lng_id ASC LIMIT 0,1";
 
 					$rs = $myDB->query($sql);
@@ -375,7 +375,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		
 		if (phpversion()<"5.1.6")
 		{
-			throw new Exception("Security Warning. PHPIDS needs at least PHP version 5.3.6.\nYou may deactivate PHPIDS by putting define(\"PT_PHPIDS\",0); into your _config.inc.php file.");
+			throw new Exception("Security Warning. PHPIDS needs at least PHP version 5.1.6.\nYou may deactivate PHPIDS by putting define(\"PT_PHPIDS\",0); into your _config.inc.php file.");
 		}
 		set_include_path(
 		get_include_path()
@@ -396,6 +396,8 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		$init->config['General']['base_path'] = dirname(__FILE__) . '/../phpids/lib/IDS/';
 		$init->config['General']['use_base_path'] = true;
 		$init->config['Caching']['caching'] = 'none';
+		// even though there's no logging activated per default, we need a folder
+		$init->config['Logging']['path']=TEMPPATH."phpids/";
 
 		$ids = new IDS_Monitor($request, $init);
 		$result = $ids->run();

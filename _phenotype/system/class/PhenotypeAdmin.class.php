@@ -402,6 +402,12 @@ class PhenotypeAdminStandard
 		return ('<font size="3">' .htmlentities($buffer,null,PT_CHARSET) . '</font>');
 	}
 	
+	/**
+	 * decode the (color coded) content of a richtext field
+	 *
+	 * @param unknown_type $code
+	 * @return unknown
+	 */
 	function decodeRequest_HTMLArea($code)
 	{
 		// Erst alle echten Returns raus ..
@@ -421,7 +427,7 @@ class PhenotypeAdminStandard
 		$code = str_replace('&nbsp;',chr(32),$code);
 
 		$code = strip_tags($code);
-		$code = html_entity_decode($code,null,PT_CHARSET);
+		$code = html_entity_decode($code,ENT_QUOTES,PT_CHARSET);
 
 
 

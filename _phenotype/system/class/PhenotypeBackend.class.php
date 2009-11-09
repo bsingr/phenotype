@@ -800,7 +800,7 @@ exit();
 		global $myDB;
 		global $mySUser;
 
-		$sql = "SELECT sna_id,usr_id,sna_date FROM snapshot WHERE sna_type='".mysql_escape_string($sna_type)."' AND key_id=".$key_id . " ORDER BY sna_date DESC";
+		$sql = "SELECT sna_id,usr_id,sna_date FROM snapshot WHERE sna_type='".mysql_real_escape_string($sna_type)."' AND key_id=".$key_id . " ORDER BY sna_date DESC";
 		$rs = $myDB->query($sql);
 		?>
 		
@@ -906,7 +906,7 @@ exit();
 		
 		$this->checkRight("superuser",true);
 
-		$sql ="SELECT * FROM snapshot WHERE sna_id=".$sna_id . " AND sna_type='".mysql_escape_string($sna_type)."'";
+		$sql ="SELECT * FROM snapshot WHERE sna_id=".$sna_id . " AND sna_type='".mysql_real_escape_string($sna_type)."'";
 
 		$rs = $myDB->query($sql);
 

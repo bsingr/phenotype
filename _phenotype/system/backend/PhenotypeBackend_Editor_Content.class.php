@@ -622,7 +622,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     }
     else
     {
-      $sql = "SELECT * FROM content WHERE con_rubrik='" .mysql_escape_string($this->category)."' ORDER BY con_bez";
+      $sql = "SELECT * FROM content WHERE con_rubrik='" .mysql_real_escape_string($this->category)."' ORDER BY con_bez";
     }
 
     $rs = $myDB->query($sql);
@@ -813,7 +813,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		    $sql .= " AND LEFT(dat_bez,1) >='v' AND LEFT(dat_bez,1) <='z'";
 		    break;
 		  default:
-		    $sql .= " AND dat_bez LIKE '". mysql_escape_string($order) ."%'";
+		    $sql .= " AND dat_bez LIKE '". mysql_real_escape_string($order) ."%'";
 		    break;
 		}
 

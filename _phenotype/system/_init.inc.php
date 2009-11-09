@@ -44,6 +44,7 @@ if (!defined('PT_CHARSET'))
 }
 
 mb_internal_encoding(PT_CHARSET);
+mb_regex_encoding(PT_CHARSET);
 
 // This function is used for xmlencode preg_replace_callback
 function match2Entity($matches)

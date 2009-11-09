@@ -64,7 +64,7 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
 
     if (!$forceBuild)
     {
-      $sql = "SELECT * FROM dataobject WHERE dao_bez='". mysql_escape_string($bez)."' AND dao_params ='".mysql_escape_string($paramhash)."' AND dao_type=".
+      $sql = "SELECT * FROM dataobject WHERE dao_bez='". mysql_real_escape_string($bez)."' AND dao_params ='".mysql_real_escape_string($paramhash)."' AND dao_type=".
       $this->dao_type;
       $rs = $myDB->query($sql,"DAO \"".$bez."\": initialization");
 
@@ -134,7 +134,7 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
       $context = $context ." Valid until ". (date('d.m.Y H:i',$seconds));
     }
         
-    $sql = "DELETE FROM dataobject WHERE dao_bez='". mysql_escape_string($this->bez)."' AND dao_params ='".$this->paramhash."'";
+    $sql = "DELETE FROM dataobject WHERE dao_bez='". mysql_real_escape_string($this->bez)."' AND dao_params ='".$this->paramhash."'";
     $myDB->query($sql,$context);
 
     $mySQL = new SqlBuilder();
