@@ -468,7 +468,7 @@ if ($mySUser->checkRight("elm_mediabase"))
 			else
 			{
 				$icon = "binary";
-				switch (strtolower($row_data["med_subtype"]))
+				switch (mb_strtolower($row_data["med_subtype"]))
 				{
 					case "gif":
 					case "jpg":

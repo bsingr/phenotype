@@ -229,18 +229,18 @@ class PhenotypeExtraStandard
 		global $myRequest;
 		foreach ($_REQUEST AS $k => $v)
 		{
-			if (strpos($k, "ext_") === 0)
+			if (mb_strpos($k, "ext_") === 0)
 			{
-				$pkey = substr($k,4);
+				$pkey = mb_substr($k,4);
 				$this->set($pkey, $myRequest->get($k));
 			}
 		}
 		// Zweite Schleife für Checkboxen, um die deaktivierten zu ermitteln
 		foreach ($_REQUEST AS $k => $v)
 		{
-			if (strpos($k, "extcb_") === 0)
+			if (mb_strpos($k, "extcb_") === 0)
 			{
-				$pkey = substr($k,6);
+				$pkey = mb_substr($k,6);
 				if (!$myRequest->check("ext_".$pkey))
 				{
 					$this->set($pkey,0);

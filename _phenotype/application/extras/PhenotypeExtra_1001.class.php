@@ -172,23 +172,23 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			$k = str_replace (chr(10),"",$k);
 			$k = str_replace (chr(13),"",$k);
 			$level = 0;
-			while (substr($k,$level,1)==" ")
+			while (mb_substr($k,$level,1)==" ")
 			{
 				$level++;
 			}
 			$k = trim($k);
-			$p = strpos($k,"||");
+			$p = mb_strpos($k,"||");
 			if ($p!==false)
 			{
-				$params = substr($k,$p+2);
+				$params = mb_substr($k,$p+2);
 				$params = trim($params);
-				$k = substr($k,0,$p);
+				$k = mb_substr($k,0,$p);
 
-				$p = strpos($params," ");
+				$p = mb_strpos($params," ");
 				if ($p!==false)
 				{
-					$lay_id = (int)substr($params,0,$p);
-					$status = (int)substr($params,$p+1);
+					$lay_id = (int)mb_substr($params,0,$p);
+					$status = (int)mb_substr($params,$p+1);
 				}
 				else
 				{
@@ -233,9 +233,9 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			// Erste Seite ermitteln
 			if ($i==0)
 			{
-				if (strpos($pag_id,"g")===0)
+				if (mb_strpos($pag_id,"g")===0)
 				{
-					$grp_id = (int)substr($pag_id,1);
+					$grp_id = (int)mb_substr($pag_id,1);
 
 					// Check, ob in der Gruppe schon Seiten sind !!
 					$sql = "SELECT * FROM page WHERE grp_id = " . $grp_id . " AND pag_id_top=0 ORDER BY pag_pos DESC";

@@ -206,8 +206,8 @@ function displaypanel($nr)
     $datum = $myPT->german2Timestamp($_REQUEST["p".$nr."_datum"]); 
     if ($_REQUEST["p".$nr."_monat"]!=date('Ym',$datum))
 	{
-	  $monat = substr($_REQUEST["p".$nr."_monat"],4,2);
-      $jahr = substr($_REQUEST["p".$nr."_monat"],0,4);
+	  $monat = mb_substr($_REQUEST["p".$nr."_monat"],4,2);
+      $jahr = mb_substr($_REQUEST["p".$nr."_monat"],0,4);
       $datum = mktime(0,0,0,$monat,1,$jahr); 
 	  if ($_REQUEST["p".$nr."_monat"]==date('Ym')){$datum=time();}
 	}

@@ -1464,12 +1464,12 @@ class PhenotypeComponentStandard extends PhenotypeBase
 	protected function _debug_print_form_xy_fetch($property)
 	{
 		$formname = $this->formid . $property;
-		$l=strlen($formname);
+		$l=mb_strlen($formname);
 		foreach ($_REQUEST AS $k=>$v)
 		{
-			if (substr($k,0,$l)==$formname)
+			if (mb_substr($k,0,$l)==$formname)
 			{
-				echo substr($k,$l).': '.$v.'<br/>';
+				echo mb_substr($k,$l).': '.$v.'<br/>';
 			}
 		}
 		exit();

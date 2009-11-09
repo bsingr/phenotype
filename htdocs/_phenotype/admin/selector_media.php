@@ -166,7 +166,7 @@ body {
 					  }
 					  else
 					  {
-					    $sql = substr($sql,0,strlen($sql)-4);
+					    $sql = mb_substr($sql,0,strlen($sql)-4);
 					  }
 					}
 					$sql .=")";
@@ -258,7 +258,7 @@ body {
                     else
                     {
                       $icon = "binary";
-                      switch (strtolower($row["med_subtype"]))
+                      switch (mb_strtolower($row["med_subtype"]))
                       {
                         case "gif":
                         case "jpg":

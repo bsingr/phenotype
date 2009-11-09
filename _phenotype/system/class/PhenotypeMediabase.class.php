@@ -68,7 +68,7 @@ class PhenotypeMediabaseStandard
 			{
 				$sql2 .= $k.",";
 			}
-			$sql2 ="WHERE grp_id IN(". substr($sql2,0,-1) . ")";
+			$sql2 ="WHERE grp_id IN(". mb_substr($sql2,0,-1) . ")";
 			
 		}
 		else 
@@ -156,7 +156,7 @@ class PhenotypeMediabaseStandard
 		$_folder2 = Array ();
 		foreach ($_folder AS $k)
 		{
-			if (substr_count($k, "/") == 0)
+			if (mb_substr_count($k, "/") == 0)
 			{
 				$_folder2[] = $k;
 			}
@@ -270,7 +270,7 @@ class PhenotypeMediabaseStandard
 
 			$dateiname_temp = $_FILES[$fname]["tmp_name"];
 
-			$suffix = substr($dateiname_original, strrpos($dateiname_original, ".") + 1);
+			$suffix = mb_substr($dateiname_original, mb_strrpos($dateiname_original, ".") + 1);
 			$mimetype = $_FILES[$fname]["type"];
 
 			// Zusammenbauen des Dateinamens
@@ -325,8 +325,7 @@ class PhenotypeMediabaseStandard
 				$mySQL->addField("med_y", $size[1], DB_NUMBER);
 
 				// Thumbnail
-				//if (strtolower($suffix) == "jpg" OR strtolower($suffix) == "jpeg")
-				if ($size[2] == 2)
+				if ($size[2] == 2) // Jpeg
 				{
 					$this->createThumbnailFromJPEG($dateiname_fix, $dateiname_thumb);
 					$mySQL->addField("med_thumb", 1, DB_NUMBER);
@@ -379,7 +378,7 @@ class PhenotypeMediabaseStandard
 				copy($fname, $dateiname_temp);
 				$mimetype = "";
 				$filesize = filesize($dateiname_temp);
-				$dateiname_original = substr($fname, strrpos($fname, "/") + 1);
+				$dateiname_original = mb_substr($fname, mb_strrpos($fname, "/") + 1);
 				break;
 		}
 		// Vorab Check, ob ein Bild auch ein Bild ist ...
@@ -433,7 +432,7 @@ class PhenotypeMediabaseStandard
 				@ unlink($dateiname);
 			}
 
-			$suffix = substr($dateiname_original, strrpos($dateiname_original, ".") + 1);
+			$suffix = mb_substr($dateiname_original, mb_strrpos($dateiname_original, ".") + 1);
 
 			// Zusammenbauen des Dateinamens
 			if ($type == MB_IMAGE)
@@ -630,11 +629,11 @@ class PhenotypeMediabaseStandard
 			$action = "insert";
 		}
 		$logical_folder = $this->rewriteFolder($logical_folder);
-		$p = strrpos((str_replace('\\','/',$url)), "/");
+		$p = mb_strrpos((str_replace('\\','/',$url)), "/");
 		if ($p)
 		{
-			$dateiname_original = substr($url, $p +1);
-			$suffix = substr($dateiname_original, strrpos($dateiname_original, ".") + 1);
+			$dateiname_original = mb_substr($url, $p +1);
+			$suffix = mb_substr($dateiname_original, mb_strrpos($dateiname_original, ".") + 1);
 		} else
 		{
 			return false;
@@ -731,10 +730,10 @@ class PhenotypeMediabaseStandard
 
 		/* Das doch an der Stelle Blödsinn, oder?
 		// Check auf den zweiten Ordner (nur bei Dokumenten)
-		$p = strpos($folder,"/");
+		$p = mb_strpos($folder,"/");
 		if ($p!==false)
 		{
-		$topfolder = substr($folder,0,$p);
+		$topfolder = mb_substr($folder,0,$p);
 		$top_folder = $med_group_folder ."/".$topfolder;
 		if (!file_exists($top_folder))
 		{
@@ -771,8 +770,7 @@ class PhenotypeMediabaseStandard
 		$mySQL->addField("med_y", $size[1], DB_NUMBER);
 
 		// Thumbnail
-		//if (strtolower($suffix) == "jpg" OR strtolower($suffix) == "jpeg")
-		if ($size[2] == 2)
+		if ($size[2] == 2) // Jpeg
 		{
 			$this->createThumbnailFromJPEG($dateiname_fix, $dateiname_thumb);
 			$mySQL->addField("med_thumb", 1, DB_NUMBER);
@@ -816,11 +814,11 @@ class PhenotypeMediabaseStandard
 		}
 
 		$logical_folder = $this->rewriteFolder($logical_folder);
-		$p = strrpos((str_replace('\\','/',$url)), "/");
+		$p = mb_strrpos((str_replace('\\','/',$url)), "/");
 		if ($p)
 		{
-			$dateiname_original = substr($url, $p +1);
-			$suffix = substr($dateiname_original, strrpos($dateiname_original, ".") + 1);
+			$dateiname_original = mb_substr($url, $p +1);
+			$suffix = mb_substr($dateiname_original, mb_strrpos($dateiname_original, ".") + 1);
 		} else
 		{
 			return false;
@@ -898,13 +896,13 @@ class PhenotypeMediabaseStandard
 			{
 				mkdir($testfolder,UMASK);
 			}
-			$p = strpos($folder,"/");
-			$testfolder .= "/".substr($folder,0,$p);
+			$p = mb_strpos($folder,"/");
+			$testfolder .= "/".mb_substr($folder,0,$p);
 			if (!file_exists($testfolder))
 			{
 				mkdir($testfolder,UMASK);
 			}
-			$testfolder .= "/".substr($folder,$p+1);
+			$testfolder .= "/".mb_substr($folder,$p+1);
 			if (!file_exists($testfolder))
 			{
 				mkdir($testfolder,UMASK);
@@ -945,13 +943,13 @@ class PhenotypeMediabaseStandard
 		}
 
 		global $myDB;
-		$suffix = substr($dateiname_original, strrpos($dateiname_original, ".") + 1);
+		$suffix = mb_substr($dateiname_original, mb_strrpos($dateiname_original, ".") + 1);
 		$type = MB_DOCUMENT;
 
 		if ($documentonly == 0)
 		{
 			// Bilder als Bilder handhaben
-			if (strtolower($suffix) == "jpg" OR strtolower($suffix) == "jpeg" OR strtolower($suffix) == "gif" OR strtolower($suffix) == "png")
+			if (mb_strtolower($suffix) == "jpg" OR mb_strtolower($suffix) == "jpeg" OR mb_strtolower($suffix) == "gif" OR mb_strtolower($suffix) == "png")
 			{
 				$type = MB_IMAGE;
 			}
@@ -1002,8 +1000,7 @@ class PhenotypeMediabaseStandard
 			$mySQL->addField("med_y", $size[1], DB_NUMBER);
 
 			// Thumbnail
-			//if (strtolower($suffix) == "jpg" OR strtolower($suffix) == "jpeg")
-			if ($size[2] == 2)
+			if ($size[2] == 2)//Jpeg
 			{
 				$this->createThumbnailFromJPEG($dateiname_fix, $dateiname_thumb);
 				$mySQL->addField("med_thumb", 1, DB_NUMBER);
@@ -1093,10 +1090,10 @@ class PhenotypeMediabaseStandard
 
 		if ($type == MB_IMAGE)
 		{
-			$folder = "I".date("ymW") . strtoupper(dechex(floor($med_id/128)));
+			$folder = "I".date("ymW") . mb_strtoupper(dechex(floor($med_id/128)));
 		} else
 		{
-			$folder = "D".date("ymW") . strtoupper(dechex(floor($med_id/128)));
+			$folder = "D".date("ymW") . mb_strtoupper(dechex(floor($med_id/128)));
 		}
 
 		$med_physical_folder = MEDIABASEPATH.$this->grp_id."/".$folder;

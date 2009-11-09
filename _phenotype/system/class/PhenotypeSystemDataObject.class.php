@@ -167,9 +167,9 @@ class PhenotypeSystemDataObjectStandard extends PhenotypeDataObject
 		}
 
 		
-		if (strpos($name,"_")!==false)
+		if (mb_strpos($name,"_")!==false)
 		{
-			$_name = split("_",$name);
+			$_name = mb_split("_",$name);
 			$file = SYSTEMPATH . "tmx/".$_name[0] . "_" . $locale .".tmx";
 			if (file_exists($file))
 			{

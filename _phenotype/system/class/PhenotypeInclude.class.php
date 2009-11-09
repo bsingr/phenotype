@@ -419,7 +419,7 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 			}
 		}
 
-		$action = strtoupper($action[0]) . substr ($action,1);
+		$action = mb_strtoupper($action[0]) . mb_substr ($action,1);
 
 		if ($myRequestClone->isPostRequest())
 		{

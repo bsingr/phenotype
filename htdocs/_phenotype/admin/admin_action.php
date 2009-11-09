@@ -181,7 +181,7 @@ if ($action_id==5)
 {
 ;
 ?>
-<?php 		if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE")) { ?>
+<?php 		if(mb_strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR mb_strstr($_SERVER["HTTP_USER_AGENT"],"MSIE")) { ?>
 			<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
 				width= "250" height= "250"  
 				codebase="http://java.sun.com/products/plugin/autodl/jinstall-1_4_1-windows-i586.cab#version=1,4,1">

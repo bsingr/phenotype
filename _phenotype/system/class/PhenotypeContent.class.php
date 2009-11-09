@@ -335,7 +335,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 				if (array_key_exists($name,$this->datatable_fieldlist))
 				{
 					// table field is in definition fieldlist
-					$fielddef = trim(strtolower($this->datatable_fieldlist[$name]));
+					$fielddef = trim(mb_strtolower($this->datatable_fieldlist[$name]));
 
 					if ($fielddef!=$def) // but it it's defined different
 					{
@@ -783,7 +783,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			}
 
 			global $myPage;
-			$skin = strtolower($skin);
+			$skin = mb_strtolower($skin);
 			$tausend = floor($this->id / 1000);
 			$dateiname = CACHEPATH.CACHENR."/content/".$this->content_type."/".$tausend."/content_".sprintf("%04.0f", $this->content_type)."_".sprintf("%04.0f", $this->id)."_skin_".$skin.".inc.php";
 			@ include ($dateiname);
@@ -842,7 +842,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		*/
 		for ($i = 0; $i < count($this->skins); $i ++)
 		{
-			$skin = strtolower($this->skins[$i]);
+			$skin = mb_strtolower($this->skins[$i]);
 
 			$html = $this->preRender($skin);
 
@@ -3493,7 +3493,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 						$fname = $myCO->formid."_".$a[2]."_userfile";
 
 						$dateiname_original =  $_FILES[$fname]["name"];
-						$suffix = strtolower(substr($dateiname_original,strrpos($dateiname_original,".")+1));
+						$suffix = mb_strtolower(mb_substr($dateiname_original,mb_strrpos($dateiname_original,".")+1));
 
 						$myMB = new PhenotypeMediabase();
 						$grp_id = $a[4];
@@ -3769,7 +3769,7 @@ class PhenotypeContentStandard extends PhenotypeBase
     	}
     	?>
 		<input type="hidden" name="<?php echo $token ?>_poschange" value="<?php echo $poschain; ?>"/>
-		<input type="hidden" name="<?php echo $token ?>_posstart" value="<?php echo substr($idchain,0,-1) ?>"/>
+		<input type="hidden" name="<?php echo $token ?>_posstart" value="<?php echo mb_substr($idchain,0,-1) ?>"/>
 		<?php
 		$this->displayDHtmlWZJavascript($token, $count,16);
   	    for ($j = 1; $j <= $count; $j ++)

@@ -158,32 +158,32 @@ class PhenotypeDataObjectStandard extends PhenotypeBase
   {
   global $myDB;
 
-  if (substr($bez,0,22)=="lightbox_media_usr_id_")
+  if (mb_substr($bez,0,22)=="lightbox_media_usr_id_")
   {
-  $usr_id = substr($bez,22);
+  $usr_id = mb_substr($bez,22);
   $bez="lightbox_media";
   }
 
-  if (substr($bez,0,22)=="export_content_con_id_")
+  if (mb_substr($bez,0,22)=="export_content_con_id_")
   {
-  $con_id = substr($bez,22);
+  $con_id = mb_substr($bez,22);
   $bez="export_content";
   }
-  if (substr($bez,0,20)=="export_media_grp_id_")
+  if (mb_substr($bez,0,20)=="export_media_grp_id_")
   {
-  $grp_id = substr($bez,20);
+  $grp_id = mb_substr($bez,20);
   $bez="export_media";
   }
 
-  if (substr($bez,0,20)=="export_pages_grp_id_")
+  if (mb_substr($bez,0,20)=="export_pages_grp_id_")
   {
-  $grp_id = substr($bez,20);
+  $grp_id = mb_substr($bez,20);
   $bez="export_pages";
   }
 
-  if (substr($bez,0,22)=="export_tickets_sbj_id_")
+  if (mb_substr($bez,0,22)=="export_tickets_sbj_id_")
   {
-  $sbj_id = substr($bez,22);
+  $sbj_id = mb_substr($bez,22);
   $bez="export_tickets";
   }
 

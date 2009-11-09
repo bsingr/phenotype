@@ -456,7 +456,7 @@ class PhenotypeLayoutStandard
 			</td>
             <td class="windowTitle"><?php echo $myObj->id ?> <?php echo $myPT->cutString($myObj->bez,45,45); ?></td>
 			<?php
-			$n=strlen($myObj->bez);
+			$n=mb_strlen($myObj->bez);
 			if($n>45){$n=48;}
 			?>
 			<td align="right" nowrap >[<?php echo $myPT->cutString($myObj->physical_folder."/".$myObj->filename,(65-$n),(65-$n)); ?>]</td>
@@ -2063,14 +2063,14 @@ $myNav = new PhenotypeTree();
 
 $_ueberordner = Array();
 $s=$_REQUEST["folder"];
-$p = strrpos($s," /");
+$p = mb_strrpos($s," /");
 $i=1;
 while ($p!==false AND $i<10)
 {
-	$left = substr($s,0,$p);
-	$_ueberordner[substr_count($left,"/")+1]=$left;
+	$left = mb_substr($s,0,$p);
+	$_ueberordner[mb_substr_count($left,"/")+1]=$left;
 	$s=$left;
-	$p = strrpos($s," /");
+	$p = mb_strrpos($s," /");
 	$i++;
 }
 $_current_ebene=$i;
@@ -2090,11 +2090,11 @@ foreach ($_folder AS $folder)
 		{
 			$left .= trim($_tree[$i]) ." / ";
 		}
-		$left = substr($left,0,-3);
+		$left = mb_substr($left,0,-3);
 		$right=trim($_tree[$n-1]);
 	}
 	/*
-	$p = strrpos($folder,' /');
+	$p = mb_strrpos($folder,' /');
 	if ($p===false)
 	{
 	$left ="";
@@ -2102,8 +2102,8 @@ foreach ($_folder AS $folder)
 	}
 	else
 	{
-	$left = substr($folder,0,$p);
-	$right = substr($folder,$p+3);
+	$left = mb_substr($folder,0,$p);
+	$right = mb_substr($folder,$p+3);
 	}
 	*/
 
@@ -2112,7 +2112,7 @@ foreach ($_folder AS $folder)
 
 	$url = "mediabase.php?folder=".urlencode($folder)."&type=".$_REQUEST["type"]."&sortorder=" . $_REQUEST["sortorder"] ."&p=1&a=" . $_REQUEST["a"];
 
-	$ebene = substr_count($folder,"/")+1;
+	$ebene = mb_substr_count($folder,"/")+1;
 	$takeit=0;
 	//echo "Current: " . $_current_ebene . "<br><br>";
 	//echo $folder . " - " .$ebene . "<br>";
@@ -2120,7 +2120,7 @@ foreach ($_folder AS $folder)
 	{
 		//echo "kleiner:" . $folder . "<br>";
 		//echo "Vergleich mit:" . $_ueberordner[$ebene-1] . "<br>";
-		if (strpos($folder,$_ueberordner[$ebene-1])===0)
+		if (mb_strpos($folder,$_ueberordner[$ebene-1])===0)
 		{
 			$takeit=1;
 		}
@@ -2130,7 +2130,7 @@ foreach ($_folder AS $folder)
 		if ($ebene==$_current_ebene+1)
 		{
 			//echo "Vergleich $folder mit:" .$_REQUEST["folder"] . "<br>";
-			if (strpos($folder,$_REQUEST["folder"])===0)
+			if (mb_strpos($folder,$_REQUEST["folder"])===0)
 			{
 				$takeit=1;
 				//echo "ja:" .$folder . "<br>";
@@ -2910,10 +2910,10 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 	  if ($start==""){$start=date("Ymd");}
 	  if ($stop==""){$stop=date("Ymd");}
 
-	  $j1 = substr($start,0,4);
-	  $m1 = substr($start,4,2);
-	  $j2 = substr($stop,0,4);
-	  $m2 = substr($stop,4,2);
+	  $j1 = mb_substr($start,0,4);
+	  $m1 = mb_substr($start,4,2);
+	  $j2 = mb_substr($stop,0,4);
+	  $m2 = mb_substr($stop,4,2);
 
 	  $_options = Array();
 	  //for ($j=$j1;$j<=$j2;$j++)
@@ -3598,7 +3598,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		if ($scope==""){$scope="Process";}
 
 
-		$letter = strtolower($row["tik_eisenhower"]);
+		$letter = mb_strtolower($row["tik_eisenhower"]);
 
 		// Wenn ein Ticket noch nicht kalkuliert wurde, seit die Rueckstellung geendet hat
 		if ($letter>"d" AND $row["tik_sleepdate"]<time() AND $row["tik_status"]==1)
@@ -3775,7 +3775,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		global $myPT;
 		$myUser = new PhenotypeUser();
 
-		$letter = strtolower($row["tik_eisenhower"]);
+		$letter = mb_strtolower($row["tik_eisenhower"]);
 
 		switch ($scope)
 		{
@@ -3991,7 +3991,7 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
 		global $myPT;
 		$myPT->startBuffer();
 
-		if(strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR strstr($_SERVER["HTTP_USER_AGENT"],"MSIE"))
+		if(mb_strstr($_ENV["HTTP_USER_AGENT"],"MSIE") OR mb_strstr($_SERVER["HTTP_USER_AGENT"],"MSIE"))
 		{
 		?>
 		<object classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"

@@ -43,7 +43,7 @@ class PhenotypeLog {
 		if (PT_LOG_LEVEL >= $level || $level == 1) // log errors always
 		{
 
-			if (strlen(PT_LOG_CLIENTINFO_HEADER)) {
+			if (mb_strlen(PT_LOG_CLIENTINFO_HEADER)) {
 				$headers = apache_request_headers();
 				$remote_addr = $headers[PT_LOG_CLIENTINFO_HEADER];
 			} else {

@@ -331,12 +331,12 @@ class PhenotypeStandard extends PhenotypeBase
 	* *****************/
 	function cutLeft($s,$n)
 	{
-		$l = strlen($s);
+		$l = mb_strlen($s);
 		if ($l>=$n)
 		{
-			$s = substr($s,0,($n-2));
-			$p = strrpos($s," ");
-			$s = substr($s,0,$p);
+			$s = mb_substr($s,0,($n-2));
+			$p = mb_strrpos($s," ");
+			$s = mb_substr($s,0,$p);
 			$s .="...";
 		}
 		return $s;
@@ -419,7 +419,7 @@ class PhenotypeStandard extends PhenotypeBase
 	function german2Timestamp($date)
 	{
 		$array=Array();
-		ereg ("([0-9]?[0-9]).([0-9]?[0-9]).([0-9]?[0-9]?[0-9]?[0-9])", $date, $array);
+		mb_ereg ("([0-9]?[0-9]).([0-9]?[0-9]).([0-9]?[0-9]?[0-9]?[0-9])", $date, $array);
 		if((@$array[0]=="")OR(@$array[2]=="")OR(@$array[3]=="")){return "";}
 		if ($array[3]<100)
 		{
@@ -437,15 +437,15 @@ class PhenotypeStandard extends PhenotypeBase
 
 	function germanDT2Timestamp($date)
 	{
-		$p = strpos($date," ");
+		$p = mb_strpos($date," ");
 		if ($p!==false)
 		{
-			$s1= substr($date,0,$p);
+			$s1= mb_substr($date,0,$p);
 			$t = $this->german2Timestamp($date);
-			$s2 = substr($date,$p+1);
-			$p = strpos($s2,":");
-			$h = substr($s2,0,$p);
-			$m = substr($s2,$p+1);
+			$s2 = mb_substr($date,$p+1);
+			$p = mb_strpos($s2,":");
+			$h = mb_substr($s2,0,$p);
+			$m = mb_substr($s2,$p+1);
 			$t = $t + ($h*60*60) + ($m*60);
 			return $t;
 		}
@@ -458,33 +458,33 @@ class PhenotypeStandard extends PhenotypeBase
 	static function cutString ($s, $pos,$maxlen=0)
 	{
 		$border = $pos;
-		$_s = split(" ",$s);
+		$_s = mb_split(" ",$s);
 		if($maxlen!=0 AND count($_s)==1){$border=$maxlen;}
-		if (strlen($s)<$border)
+		if (mb_strlen($s)<$border)
 		{
 			return $s;
 		}
-		$s =  substr ( $s, 0, $pos);
-		$pos = strrpos ($s, " ");
+		$s =  mb_substr ( $s, 0, $pos);
+		$pos = mb_strrpos ($s, " ");
 		if ($pos!==false)
 		{
-			$s =  substr ( $s, 0, $pos);
+			$s =  mb_substr ( $s, 0, $pos);
 		}
 		if ($maxlen!=0)
 		{
 
-			$_s = split(" ",$s);
+			$_s = mb_split(" ",$s);
 			$s="";
 			for ($i=0;$i<count($_s);$i++)
 			{
-				if (strlen($_s[$i])<=$maxlen)
+				if (mb_strlen($_s[$i])<=$maxlen)
 				{
 					$s .= $_s[$i];
 					if ($i<count($_s)){$s.=" ";}
 				}
 				else
 				{
-					$s .= substr($_s[$i],0,($maxlen-4));
+					$s .= mb_substr($_s[$i],0,($maxlen-4));
 					break;
 				}
 			}
@@ -497,8 +497,8 @@ class PhenotypeStandard extends PhenotypeBase
 
 	public function getFilenameOutOfPath($s)
 	{
-		$p = strrpos($s,'\\');
-		return substr($s,$p+1);
+		$p = mb_strrpos($s,'\\');
+		return mb_substr($s,$p+1);
 	}
 
 	/**
@@ -725,7 +725,7 @@ class PhenotypeStandard extends PhenotypeBase
 		}
 
 		// file name
-		$tplFile = $basePath . $folder . sprintf($schema, strtolower($prefix), $obj_id, $tpl_id);
+		$tplFile = $basePath . $folder . sprintf($schema, mb_strtolower($prefix), $obj_id, $tpl_id);
 
 		return $tplFile;
 	}
@@ -1020,7 +1020,7 @@ class PhenotypeStandard extends PhenotypeBase
 		global $myPage;
 
 		// we ignore smarty warnings
-		if (($errno==E_WARNING OR $errno == E_STRICT) AND stripos($errfile,'/smarty/')!==0)
+		if (($errno==E_WARNING OR $errno == E_STRICT) AND mb_stripos($errfile,'/smarty/')!==0)
 		{
 			return;
 		}
@@ -1392,9 +1392,9 @@ foreach ($_traces AS $_trace)
 <?php
 for ($i=$stop;$i>=$start;$i--){
 	$sql_cut = $_sql[$i-1];
-	if (strlen($sql_cut)>255)
+	if (mb_strlen($sql_cut)>255)
 	{
-		$sql_cut = substr($sql_cut,0,255)."...";
+		$sql_cut = mb_substr($sql_cut,0,255)."...";
 	}
 	?>
 	<li><span>#<?php echo sprintf('%04d',$i)?>: </span><span class="query"><?php //echo $this->codeH($sql_cut)?></span></li>
@@ -2103,17 +2103,17 @@ for ($i=$stop;$i>=$start;$i--){
 		// Thanks for the great work
 
 		$isValid = true;
-		$atIndex = strrpos($email, "@");
+		$atIndex = mb_strrpos($email, "@");
 		if (is_bool($atIndex) && !$atIndex)
 		{
 			$isValid = false;
 		}
 		else
 		{
-			$domain = substr($email, $atIndex+1);
-			$local = substr($email, 0, $atIndex);
-			$localLen = strlen($local);
-			$domainLen = strlen($domain);
+			$domain = mb_substr($email, $atIndex+1);
+			$local = mb_substr($email, 0, $atIndex);
+			$localLen = mb_strlen($local);
+			$domainLen = mb_strlen($domain);
 			if ($localLen < 1 || $localLen > 64)
 			{
 				// local part length exceeded

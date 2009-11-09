@@ -257,7 +257,7 @@ class PhenotypeDeployment
 		{
 			if ($use_tokens==true)
 			{
-				$suffix=substr(trim($source),-4,4);
+				$suffix=mb_substr(trim($source),-4,4);
 				if ($suffix==".php")
 				{
 					echo "&nbsp;&nbsp;&nbsp;&nbsp;-- insert tokens<br/>";

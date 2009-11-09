@@ -130,7 +130,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	function getQ ($bez)
 	{
 	// veraltet
-	return ereg_replace('"',"&quot;",stripslashes($this->props[$bez]));
+	return mb_ereg_replace('"',"&quot;",stripslashes($this->props[$bez]));
 	}
 
 	function getHTML ($bez)
@@ -178,12 +178,12 @@ class PhenotypePageStandard extends PhenotypeBase
 	*/
 	function getPageUrl($style = "", $dyn=false)
 	{
-		if (! strlen($style))
+		if (! mb_strlen($style))
 		{
 			$style = PT_URL_STYLE;
 		}
 
-		if ( ($style == "smartURL") && strlen($this->pag_url) )
+		if ( ($style == "smartURL") && mb_strlen($this->pag_url) )
 		{
 			$linkUrl = $this->pag_url;
 		}
@@ -193,9 +193,9 @@ class PhenotypePageStandard extends PhenotypeBase
 		}
 
 		if ($dyn) {
-			if (strpos(linkUrl, "?") === false) {
+			if (mb_strpos(linkUrl, "?") === false) {
 				$linkUrl .= "?";
-			} elseif (strpos(linkUrl, "?") < (strlen(linkUrl)-1)) {
+			} elseif (mb_strpos(linkUrl, "?") < (mb_strlen(linkUrl)-1)) {
 				$linkUrl .= "&";
 			}
 			$linkUrl .= "rand=" . time();
@@ -849,7 +849,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	    <li style="display:inline;margin:0px;padding:0px"><a href="<?php echo ADMINFULLURL?>page_edit.php?id=<?php echo $this->id?>" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_edit.gif" alt="edit page" title="edit page" border="0"/></a></li>
 	    <li style="display:inline;margin:0px;padding:0px"><a href="#" onclick="document.getElementById('pt_debug_cover').style.display='';document.getElementById('pt_debug_details').style.display=''; return false;"><img src="<?php echo ADMINFULLURL?>img/b_debug.gif" alt="display debug info" title="display debug info" border="0"/></a></li>
 	    <li style="display:inline;margin:0px;padding:0px"><a href="<?php echo $myPT->codeH($url_reload)?>"><img src="<?php echo ADMINFULLURL?>img/b_aktivieren.gif" alt="clear cache and reload page" title="clear cache and reload page" border="0"/></a></li>
-	    <li style="display:inline;margin:0px;padding:0px;line-height:22px;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms <?php echo count($myPT->_debughints)?>h [<?php echo $info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(strlen($html)/1024)?>kb [L<?php echo (int)$myPage->lay_id?>]<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
+	    <li style="display:inline;margin:0px;padding:0px;line-height:22px;vertical-align:top">ID: <?php echo $this->id?>.<?php echo sprintf("%02d",$this->ver_id)?>#<?php echo $this->lng_id?> | E: <?php echo (int)($myTC->getSeconds()*1000);?> ms <?php echo count($myPT->_debughints)?>h [<?php echo $info[0]?>] | DB: <?php echo count($myDB->_files)?>q | H: <?php echo ceil(mb_strlen($html)/1024)?>kb [L<?php echo (int)$myPage->lay_id?>]<?php if (function_exists('memory_get_usage')){?> | M: <?php echo sprintf("%0.2f",memory_get_usage()/1024/1024);?> MB<?php }?></li>
 	    <li style="display:inline;margin:0px;padding:0px"><a href="http://www.phenotype-cms.com" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo" border="0"/></a></li>
 	    </ul>
 	    </div>
@@ -860,7 +860,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	    $uri =  uniqid();
 	    $myDao = new PhenotypeSystemDataObject("DebugInfo",array("uri"=>$uri));
 	    $debuginfo = $myPT->stopBuffer();
-	    $debuginfo = substr($debuginfo,0,800000);
+	    $debuginfo = mb_substr($debuginfo,0,800000);
 	    $myDao->set("html",$debuginfo);
 	    //$myDao->storeData("system.debuginfo_".$uri,60);
 	    $myDao->store(60);

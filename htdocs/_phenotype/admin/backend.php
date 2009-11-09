@@ -34,7 +34,7 @@ if ($page=="")
 $patterns = "/[^a-z0-9A-Z,_-]*/";
 $page = preg_replace($patterns,"", $page);
 
-$_page = split(",",$page);
+$_page = mb_split(",",$page);
 
 $page = $_page[0];
 $scope = $_page[1];

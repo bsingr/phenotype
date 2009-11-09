@@ -307,9 +307,9 @@ em {
 
 			$sql_cut = $myDB->_sql[$i];
 
-			if (strlen($sql_cut) > 512)
+			if (mb_strlen($sql_cut) > 512)
 			{
-				$sql_cut = substr($sql_cut,0,512)."...";
+				$sql_cut = mb_substr($sql_cut,0,512)."...";
 			}
 ?><span class="filename">[<?php echo $myPT->getFilenameOutOfPath($myDB->_files[$i])?>
 in line <?php echo $myDB->_lines[$i]?>]</span><br />

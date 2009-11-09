@@ -17,7 +17,7 @@ class PhenotypeInclude extends PhenotypeIncludeStandard
     global $myRequest;
     // We expect urls like xxxx/imageA,B.html
     // We want B
-    $_smartUID = split(",",$myRequest->get("smartUID"));
+    $_smartUID = mb_split(",",$myRequest->get("smartUID"));
     $patterns = "/[^0-9]*/";
     $pag_id = (int)preg_replace($patterns,"",$_smartUID[1]);
     return $pag_id;

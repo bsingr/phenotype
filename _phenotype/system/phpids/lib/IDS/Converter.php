@@ -258,7 +258,7 @@ class IDS_Converter
     public static function convertQuotes($value)
     {
         // normalize different quotes to "
-        $pattern = array('\'', '`', '´', '’', '‘');
+        $pattern = array('\'', '`', '´', '’', '�?');
         $value   = str_replace($pattern, '"', $value);
 
         return $value;

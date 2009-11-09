@@ -75,7 +75,7 @@ for($i=0 ; $i < $k ; $i++)
 
 	if(isset($save_path) && $save_path!="")
 	{
-		$name = split('/',$file['name'][$i]);
+		$name = mb_split('/',$file['name'][$i]);
 		
 		move_uploaded_file($file['tmp_name'][$i], $save_path . $name[count($name)-1]);
 		$_newfiles[] = $file['name'][$i];

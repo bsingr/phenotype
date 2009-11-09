@@ -37,9 +37,9 @@ function __autoload($class_name) {
 
   // all standard classes are most likely in the classpath
 
-  if (substr ($class_name,-8)=="Standard")
+  if (mb_substr ($class_name,-8)=="Standard")
   {
-    $file = CLASSPATH . substr($class_name,0,-8). ".class.php";
+    $file = CLASSPATH . mb_substr($class_name,0,-8). ".class.php";
     if (file_exists($file))
     {
       require_once ($file);
@@ -69,7 +69,7 @@ function __autoload($class_name) {
     }
   }
 
-  if (substr($class_name,0,19)=="PhenotypeComponent_")
+  if (mb_substr($class_name,0,19)=="PhenotypeComponent_")
   {
     $file =  APPPATH . "components/". $class_name . '.class.php';
     if (file_exists($file))
@@ -87,30 +87,30 @@ function __autoload($class_name) {
     }
 
   }
-  if (substr($class_name,0,17)=="PhenotypeInclude_")
+  if (mb_substr($class_name,0,17)=="PhenotypeInclude_")
   {
     require_once  APPPATH . "includes/". $class_name . '.class.php';
     return;
   }
-  if (substr($class_name,0,17)=="PhenotypeContent_")
+  if (mb_substr($class_name,0,17)=="PhenotypeContent_")
   {
     require_once  APPPATH . "content/". $class_name . '.class.php';
     return;
   }
 
-  if (substr($class_name,0,15)=="PhenotypeExtra_")
+  if (mb_substr($class_name,0,15)=="PhenotypeExtra_")
   {
     require_once  APPPATH . "extras/". $class_name . '.class.php';
     return;
   }
 
-  if (substr($class_name,0,16)=="PhenotypeAction_")
+  if (mb_substr($class_name,0,16)=="PhenotypeAction_")
   {
     require_once  APPPATH . "actions/". $class_name . '.class.php';
     return;
   }
 
-  if (substr($class_name,0,17)=="PhenotypeBackend_")
+  if (mb_substr($class_name,0,17)=="PhenotypeBackend_")
   {
     $file = SYSTEMPATH . "backend/". $class_name . '.class.php';
     if (file_exists($file))

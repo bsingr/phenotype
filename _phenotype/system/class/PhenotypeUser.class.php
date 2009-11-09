@@ -225,7 +225,7 @@ class PhenotypeUserStandard
 					}
 					// Überschreiben von allen Userrechten, die in der Rolle auf true stehen
 					// Ignorieren der Start-IDs von Seitenbereichen
-					if ($_allerechte[$key]==0 AND $val !=0 AND !strstr($key,"pag_id_grp"))
+					if ($_allerechte[$key]==0 AND $val !=0 AND !mb_strstr($key,"pag_id_grp"))
 					{
 						$_allerechte[$key]=$val;
 					}

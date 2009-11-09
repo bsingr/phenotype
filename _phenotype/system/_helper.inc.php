@@ -175,7 +175,7 @@ function urlstrip($s,$lowercase=false)
 	$s = preg_replace($patterns,"",$s);
 	if($lowercase)
 	{
-		$s=strtolower($s);
+		$s=mb_strtolower($s);
 	}
 	return $s;
 }

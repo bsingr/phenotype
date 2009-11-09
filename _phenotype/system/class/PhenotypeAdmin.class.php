@@ -427,39 +427,39 @@ class PhenotypeAdminStandard
 
 		// Irgendwie haengt nach dem 1. Speichern ein Leerzeichen zuviel dran
 		// und wird abgeschnitten
-		$l = strlen($code);
-		$c = substr($code,$l-1);
+		$l = mb_strlen($code);
+		$c = mb_substr($code,$l-1);
 		if (ord($c)==32)
 		{
-			$code = substr($code,0,$l-1);
+			$code = mb_substr($code,0,$l-1);
 		}
 
 
 		// Returns am Anfang sind nicht erlaubt ...
-		$l = strlen($code);
+		$l = mb_strlen($code);
 		if ($l>32){ $l==32;}
 		for ($i=0;$i<$l;$i++)
 		{
 			if (ord($code[$i])!=10 AND ord($code[$i])!=13)
 			{
-				$code = substr($code,$i);
+				$code = mb_substr($code,$i);
 				break;
 			}
 		}
 
 		// Returns am Ende sind nicht erlaubt ...
-		$l = strlen($code);
+		$l = mb_strlen($code);
 		for ($i=1;$i<=32;$i++)
 		{
 			if ((ord($code[$l-$i])!=10) AND (ord($code[$l-$i])!=13))
 			{
-				$code = substr($code,0,$l-$i+1);
+				$code = mb_substr($code,0,$l-$i+1);
 				break;
 			}
 		}
 
 		$s="";
-		for ($i=0;$i<=strlen($code);$i++)
+		for ($i=0;$i<=mb_strlen($code);$i++)
 		{
 			$s.= $code[$i] . ":" . ord($code[$i]) . "\n";
 		}

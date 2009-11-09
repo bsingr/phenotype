@@ -28,8 +28,8 @@ if (isset($_REQUEST["act_id"]))
 {
 	$act_id = (int)$_REQUEST["act_id"];
 } else if (isset($argv[1])) {
-	if (substr($argv[1],0,7) == 'act_id=') {
-		$act_id = substr($argv[1], 7);
+	if (mb_substr($argv[1],0,7) == 'act_id=') {
+		$act_id = mb_substr($argv[1], 7);
 	}
 }
 

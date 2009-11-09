@@ -678,14 +678,14 @@ function copyPackageDir($fromDir, $toDir) {
 }
 
 function cleanupPackageDir($baseDir, $dir = "", $ignoreDotFiles = true) {
-	if ($baseDir{strlen($baseDir)-1} != "/") {
+	if ($baseDir{mb_strlen($baseDir)-1} != "/") {
 		$baseDir .= "/";
 	}
-	if ( (strlen($dir)) && ($dir{strlen($dir)-1} != "/") ) {
+	if ( (mb_strlen($dir)) && ($dir{mb_strlen($dir)-1} != "/") ) {
 		$dir .= "/";
 	}
 	
-	if (strlen($dir) ) {
+	if (mb_strlen($dir) ) {
 		$dirEmpty = true;
 	} else {
 		$dirEmpty = false;

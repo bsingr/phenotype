@@ -359,7 +359,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			</td>
             <td class="windowTitle" width="80%"><?php echo $myObj->id ?> <?php echo $myPT->cutString($myObj->bez,45,45); ?></td>
 			<?php
-			$n=strlen($myObj->bez);
+			$n=mb_strlen($myObj->bez);
 			if($n>45){$n=48;}
 			?>
 			<td align="right" nowrap >[<?php echo $myPT->cutString($myObj->physical_folder."/".$myObj->filename,(65-$n),(65-$n)); ?>]</td>

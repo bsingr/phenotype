@@ -411,7 +411,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				break;
 				default:
 					// med_id can be one value or a comma separated list
-					$_dat_id = split(",",$dat_id);
+					$_dat_id = mb_split(",",$dat_id);
 					foreach ($_dat_id AS $dat_id)
 					{
 						if (in_array($dat_id,$_objects))
@@ -746,7 +746,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
        	  			foreach ($_az AS $k)
        	  			{
 		  				?>
-		  				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=<?php echo strtolower($k) ?>" class="tabmenuType<?php if($order==strtolower($k)){echo"Active";} ?>"><?php echo $k ?></a></td>
+		  				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=<?php echo mb_strtolower($k) ?>" class="tabmenuType<?php if($order==mb_strtolower($k)){echo"Active";} ?>"><?php echo $k ?></a></td>
 				  		<?php
        	  			}
 				}
@@ -837,14 +837,14 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		}
 
 		// Check, ob es sich um ein speziell konfigurierten Reiter handelt
-		if (substr($order,0,5)=="etab_")
+		if (mb_substr($order,0,5)=="etab_")
 		{
 		  $sql = "FROM content_data WHERE con_id = " . $this->con_id;
 		  if ($filter !="")
 		  {
 		    $sql .= " AND " . $filter;
 		  }
-		  $extratab  = $myCO->_extratabs[substr($order,5)];
+		  $extratab  = $myCO->_extratabs[mb_substr($order,5)];
 		  $sql .= " AND " .$extratab[1];
 		}
 

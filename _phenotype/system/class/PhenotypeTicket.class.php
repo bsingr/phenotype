@@ -112,7 +112,7 @@ class PhenotypeTicketStandard
 			if ($this->row["tik_enddate"]<time()){$color="red";}
 		}
 
-		$grafik = "t_". strtolower($this->row["tik_eisenhower"])."_".$color.".gif";
+		$grafik = "t_". mb_strtolower($this->row["tik_eisenhower"])."_".$color.".gif";
 
 		if ($this->row["tik_status"]==0)
 		{
@@ -882,7 +882,7 @@ class PhenotypeTicketStandard
 		global $myDB;
 
 		$dateiname_original =  $_FILES[$fname]["name"];
-		$suffix = strtolower(substr($dateiname_original,strrpos($dateiname_original,".")+1));
+		$suffix = mb_strtolower(mb_substr($dateiname_original,mb_strrpos($dateiname_original,".")+1));
 
 		$myMB = new PhenotypeMediabase();
 		$myMB->setMediaGroup(3);

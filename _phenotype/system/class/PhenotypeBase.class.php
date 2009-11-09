@@ -445,7 +445,7 @@ class PhenotypeBase
 	private function callback_wikiurls_p($matches)
 	{
 		$match = $matches[1];
-		if (strpos($match,"|")===false)
+		if (mb_strpos($match,"|")===false)
 		{
 			$pag_id = (int)$match;
 			if ($this->HWSL==true)
@@ -476,7 +476,7 @@ class PhenotypeBase
 	private function callback_wikiurls_c($matches)
 	{
 		$match = $matches[1];
-		if (strpos($match,"|")===false)
+		if (mb_strpos($match,"|")===false)
 		{
 			$dat_id = (int)$match;
 			if ($this->HWSL==true)
@@ -507,7 +507,7 @@ class PhenotypeBase
 	private function callback_wikiurls_u($matches)
 	{
 		$match = $matches[1];
-		if (strpos($match,"|")===false)
+		if (mb_strpos($match,"|")===false)
 		{
 			$url = $match;
 			$linktext = str_replace("http://","",$url);
@@ -538,7 +538,7 @@ class PhenotypeBase
 	private function callback_wikiurls_i($matches)
 	{
 		$match = $matches[1];
-		if (strpos($match,"|")===false)
+		if (mb_strpos($match,"|")===false)
 		{
 			$img_id = (int)$match;
 			$myImg = new PhenotypeImage($img_id);
@@ -556,7 +556,7 @@ class PhenotypeBase
 	private function callback_wikiurls_d($matches)
 	{
 		$match = $matches[1];
-		if (strpos($match,"|")===false)
+		if (mb_strpos($match,"|")===false)
 		{
 			$doc_id = (int)$match;
 			$myDoc = new PhenotypeDocument($doc_id);

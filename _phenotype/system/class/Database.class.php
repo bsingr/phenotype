@@ -130,12 +130,12 @@ class PhenotypeDatabase
 
         $zeile = $_traces[0]["line"];
         $file = $_traces[0]["file"];
-        $p = strrpos($file,'\\');
-        $file = substr($file,$p+1);
+        $p = mb_strrpos($file,'\\');
+        $file = mb_substr($file,$p+1);
         $sql_cut = $sql;
-        if (strlen($sql)>512)
+        if (mb_strlen($sql)>512)
         {
-        	$sql_cut = substr($sql,0,512)."...";
+        	$sql_cut = mb_substr($sql,0,512)."...";
         }
  	  		?>
  	  		<br clear="all">

@@ -76,7 +76,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 			// check for intrusions
 			if (PT_PHPIDS ==1)
 			{
-				$_excludes = split(',',PT_PHPIDS_EXCLUDES);
+				$_excludes = mb_split(',',PT_PHPIDS_EXCLUDES);
 				$this->phpIDS($_excludes);
 			}
 			if ($this->check("smartURL") AND !$this->check("id"))
@@ -131,11 +131,11 @@ class PhenotypeRequestStandard extends PhenotypeBase
 						$this->set("id",$row["pag_id"]);
 						$this->set("lng_id",$row["lng_id"]);
 
-						$params = substr($smartURL,$row["L"]+1);
+						$params = mb_substr($smartURL,$row["L"]+1);
 						$this->set("smartURLParams", $params);
-						$this->set("smartPATH", substr($smartURL,0,$row["L"]));
+						$this->set("smartPATH", mb_substr($smartURL,0,$row["L"]));
 
-						$_params = split('/',$params);
+						$_params = mb_split('/',$params);
 						$i=0;$n=0;
 						foreach ($_params AS $v)
 						{
@@ -184,24 +184,24 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		{
 			if (PT_PHPIDS ==1)
 			{
-				$_excludes = split(',',PT_PHPIDS_EXCLUDES);
+				$_excludes = mb_split(',',PT_PHPIDS_EXCLUDES);
 				// exclude params used to transfer scripts (e.g. of an Include)
 				$_excludes[]="skript";
 				$_excludes[]="script";
 				foreach ($this->_props AS $param => $value)
 				{
 					// anything entered by the user, when editing page components
-					if (substr($param,0,4)=="com_")
+					if (mb_substr($param,0,4)=="com_")
 					{
 						$_excludes[]=$param;
 					}
 					// anything entered by the user, when editing content records
-					if (substr($param,0,4)=="con_")
+					if (mb_substr($param,0,4)=="con_")
 					{
 						$_excludes[]=$param;
 					}
 					// component templates
-					if (substr($param,0,4)=="ttp_")
+					if (mb_substr($param,0,4)=="ttp_")
 					{
 						$_excludes[]=$param;
 					}
@@ -271,7 +271,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		{
 			if (!in_array($k,$_ignore))
 			{
-				if (substr($k,0,2)!="__") // Additionally ignore keys starting with "__" It's ver unlinkely to have them on purpose, but not ignoring them might diable the include cache when using Google Analytics
+				if (mb_substr($k,0,2)!="__") // Additionally ignore keys starting with "__" It's ver unlinkely to have them on purpose, but not ignoring them might diable the include cache when using Google Analytics
 				{
 					$hash  .= $k."#".$v."#";
 				}

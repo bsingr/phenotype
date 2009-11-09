@@ -324,14 +324,14 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 		$_ueberordner = Array();
 		$s=$this->folder;
-		$p = strrpos($s," /");
+		$p = mb_strrpos($s," /");
 		$i=1;
 		while ($p!==false AND $i<10)
 		{
-			$left = substr($s,0,$p);
-			$_ueberordner[substr_count($left,"/")+1]=$left;
+			$left = mb_substr($s,0,$p);
+			$_ueberordner[mb_substr_count($left,"/")+1]=$left;
 			$s=$left;
-			$p = strrpos($s," /");
+			$p = mb_strrpos($s," /");
 			$i++;
 		}
 
@@ -352,7 +352,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				{
 					$left .= trim($_tree[$i]) ." / ";
 				}
-				$left = substr($left,0,-3);
+				$left = mb_substr($left,0,-3);
 				$right=trim($_tree[$n-1]);
 			}
 
@@ -360,12 +360,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 			$url = "backend.php?page=Editor,Media,browse&grp_id=".$this->grp_id."&folder=".urlencode($folder)."&type=".$this->type."&sortorder=" . $this->sortorder ."&p=1&a=" . $this->itemcount;
 
-			$ebene = substr_count($folder,"/")+1;
+			$ebene = mb_substr_count($folder,"/")+1;
 			$takeit=0;
 
 			if ($ebene<=$_current_ebene)
 			{
-				if (strpos($folder,$_ueberordner[$ebene-1])===0)
+				if (mb_strpos($folder,$_ueberordner[$ebene-1])===0)
 				{
 					$takeit=1;
 				}
@@ -376,7 +376,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				{
 					if ($this->folder!="")
 					{
-						if (strpos($folder,$this->folder)===0)
+						if (mb_strpos($folder,$this->folder)===0)
 						{
 							$takeit=1;
 						}
@@ -535,7 +535,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 				break;
 				default:
 					// med_id can be one value or a comma separated list
-					$_med_id = split(",",$med_id);
+					$_med_id = mb_split(",",$med_id);
 					foreach ($_med_id AS $med_id)
 					{
 						if (in_array($med_id,$_objects))
@@ -801,7 +801,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 			{
 				$sqlgrp .= $k.",";
 			}
-			$sql .= substr($sqlgrp,0,-1) . ")";
+			$sql .= mb_substr($sqlgrp,0,-1) . ")";
 		}
 
 		switch ($this->sortorder)
@@ -917,7 +917,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 					  else
 					  {
 					  	$icon = "binary";
-					  	switch (strtolower($row["med_subtype"]))
+					  	switch (mb_strtolower($row["med_subtype"]))
 					  	{
 					  		case "gif":
 					  		case "jpg":
@@ -1239,7 +1239,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		foreach ($_folder AS $k)
 		{
 			$selected = "";
-			if (strtolower($k) == strtolower($myObj->logical_folder1))
+			if (mb_strtolower($k) == mb_strtolower($myObj->logical_folder1))
 			{
 				$selected = 'selected="selected"';
 			}
@@ -1256,7 +1256,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		foreach ($_folder AS $k)
 		{
 			$selected = "";
-			if (strtolower($k) == strtolower($myObj->logical_folder2))
+			if (mb_strtolower($k) == mb_strtolower($myObj->logical_folder2))
 			{
 				$selected = 'selected="selected"';
 			}
@@ -1273,7 +1273,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		foreach ($_folder AS $k)
 		{
 			$selected = "";
-			if (strtolower($k) == strtolower($myObj->logical_folder3))
+			if (mb_strtolower($k) == mb_strtolower($myObj->logical_folder3))
 			{
 				$selected = 'selected="selected"';
 			}
@@ -1997,7 +1997,7 @@ function initoid()
 			else
 			{
 				$icon = "binary";
-				switch (strtolower($row_data["med_subtype"]))
+				switch (mb_strtolower($row_data["med_subtype"]))
 				{
 					case "gif":
 					case "jpg":
@@ -2391,7 +2391,7 @@ function initoid()
 		            <td valign="top" class="padding30" width="120">
 		            <p><strong>
 		            <?php
-		            if (substr($file,-4)==".jpg")
+		            if (mb_substr($file,-4)==".jpg")
 		            {
 		            ?>
 		            <img src="backend.php?page=Editor,Media,streamImportPreviewImage&file=<?php echo urlencode($file) ?>">
@@ -3273,7 +3273,7 @@ function initoid()
 		$fname = "userfile";
 
 		$dateiname_original =  $_FILES[$fname]["name"];
-		$suffix = strtolower(substr($dateiname_original,strrpos($dateiname_original,".")+1));
+		$suffix = mb_strtolower(mb_substr($dateiname_original,mb_strrpos($dateiname_original,".")+1));
 
 		$myMB = new PhenotypeMediabase();
 		$myMB->setMediaGroup($myRequest->getI("grp_id_upload"));
@@ -3407,7 +3407,7 @@ function initoid()
 		{
 			if ($file != "." && $file != "..")
 			{
-				$suffix = strtolower(substr($file,strrpos($file,".")+1));
+				$suffix = mb_strtolower(mb_substr($file,mb_strrpos($file,".")+1));
 				$type = MB_DOCUMENT;
 				if ($suffix == "jpg" OR $suffix == "gif" OR $suffix = "jpeg" OR $suffix =="png")
 				{
@@ -3548,7 +3548,7 @@ function initoid()
 
 		if(isset($save_path) && $save_path!="")
 		{
-			$name = split('/',$file['name'][$i]);
+			$name = mb_split('/',$file['name'][$i]);
 
 			move_uploaded_file($file['tmp_name'][$i], $save_path . $name[count($name)-1]);
 			$_newfiles[] = $file['name'][$i];

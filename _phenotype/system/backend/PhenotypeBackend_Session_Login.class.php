@@ -88,10 +88,10 @@ class PhenotypeBackend_Session_Login_Standard extends PhenotypeBackend_Session
 			$myLog->log("User ".$myUser->id . " - " . $myUser->getName() ." successfully logged in",PT_LOGFACILITY_SYS);
 
 			// set debug cookie to allow displayment of debug console
-			$p = strpos($_SERVER[HTTP_HOST],".");
+			$p = mb_strpos($_SERVER[HTTP_HOST],".");
 			if ($p)
 			{
-				$domain = substr($_SERVER[HTTP_HOST],$p);
+				$domain = mb_substr($_SERVER[HTTP_HOST],$p);
 			}
 			else // if we don't have a dot in our domain name, we're probably in an local environment and don't set a domain cookie
 			{

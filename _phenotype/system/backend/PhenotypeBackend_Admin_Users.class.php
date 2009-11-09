@@ -498,7 +498,7 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 			{
 				$this->pwstatus = 1;
 
-				if (strtolower($myRequest->get("pass1"))==strtolower($myRequest->get("pass2")) AND ($myRequest->get("pass1")!=""))
+				if ($myRequest->get("pass1")==$myRequest->get("pass2") AND ($myRequest->get("pass1")!=""))
 				{
 					$salt = md5(uniqid(mt_rand(), true)) . md5(uniqid(mt_rand(), true));
 					$newpass = crypt($myRequest->get("pass1"),$salt);

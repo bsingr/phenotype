@@ -293,7 +293,7 @@ class PhenotypeInstaller
 		$fullurl = str_replace("localhost","127.0.0.1",$fullurl);
 
 		$socketurl = str_replace("http://","",$fullurl);
-		$socketurl=substr($socketurl,0,strpos($socketurl,"/"));
+		$socketurl=mb_substr($socketurl,0,mb_strpos($socketurl,"/"));
 		// Check only, if host is reachable
 		if ($fsock = @fsockopen($socketurl, 80, $errno, $errstr, 1))
 		{
@@ -552,7 +552,7 @@ class PhenotypeInstaller
 		//see http://bugs.php.net/bug.php?id=27609
 		//see http://bugs.php.net/bug.php?id=30931
 
-		if ($path{strlen($path)-1}=='/')
+		if ($path{mb_strlen($path)-1}=='/')
 		{
 			// recursively return a temporary file path
 			return $this->is_writable($path.uniqid(mt_rand()).'.tmp',$subfolders);
@@ -794,7 +794,7 @@ class PhenotypeInstaller
 		/*
 		if ($this->frontend_login!="" AND $this->frontend_password)
 		{
-		$password = crypt($this->frontend_password, substr($this->frontend_user, 0, 2));
+		$password = crypt($this->frontend_password, mb_substr($this->frontend_user, 0, 2));
 		}
 		$htaccess .="\nAuthType Basic\nAuthName \"Frontend\"\nAuthUserFile .htpasswd\nRequire valid-user\n";
 		*/
@@ -892,7 +892,7 @@ class PhenotypeInstaller
 			$rs = mysql_query($sql);
 			if (mysql_num_rows($rs)==1)
 			{
-				$pass = crypt(strtolower($this->superuser_password),"phenotype");
+				$pass = crypt($this->superuser_password,"phenotype");
 				$sql = "UPDATE `user` SET `usr_login`='".mysql_real_escape_string($this->superuser_login)."', `usr_pass`='".mysql_real_escape_string($pass)."' WHERE `usr_id`=13";
 				$rs = mysql_query($sql);
 				if ($rs)
@@ -944,8 +944,8 @@ class PhenotypeInstaller
 
 		for ($i=1;$i<=$length;$i++)
 		{
-			$p = rand(0, strlen($chars)-1);
-			$pass = $pass .substr($chars, $p, 1);
+			$p = rand(0, mb_strlen($chars)-1);
+			$pass = $pass .mb_substr($chars, $p, 1);
 		}
 
 		return $pass;

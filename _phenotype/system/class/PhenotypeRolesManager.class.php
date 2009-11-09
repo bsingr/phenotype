@@ -77,7 +77,7 @@ class PhenotypeRolesManager
 			$_rights ["elm_content"] = 0;
 			foreach ( $_rights as $k => $v )
 			{
-				if (substr ( $k, 0, 4 ) == "con_")
+				if (mb_substr ( $k, 0, 4 ) == "con_")
 				{
 					unset ( $_rights [$k] );
 				}
@@ -102,7 +102,7 @@ class PhenotypeRolesManager
 			$_rights ["elm_mediabase"] = 0;
 			foreach ( $_rights as $k => $v )
 			{
-				if (substr ( $k, 0, 16 ) == "access_mediagrp_")
+				if (mb_substr ( $k, 0, 16 ) == "access_mediagrp_")
 				{
 					unset ( $_rights [$k] );
 				}
@@ -126,7 +126,7 @@ class PhenotypeRolesManager
 			$_rights ["elm_task"] = 0;
 			foreach ( $_rights as $k => $v )
 			{
-				if (substr ( $k, 0, 4 ) == "sbj_")
+				if (mb_substr ( $k, 0, 4 ) == "sbj_")
 				{
 					unset ( $_rights [$k] );
 				}

@@ -26,7 +26,7 @@ $myPT->loadTMX("Editor_Media");
 $fname = "userfile";
 
 $dateiname_original =  $_FILES[$fname]["name"];
-$suffix = strtolower(substr($dateiname_original,strrpos($dateiname_original,".")+1));
+$suffix = mb_strtolower(mb_substr($dateiname_original,strrpos($dateiname_original,".")+1));
 
 $myMB = new PhenotypeMediabase();
 $grp_id = $myRequest->getI("grp_id");
