@@ -853,8 +853,8 @@ class PhenotypePageStandard extends PhenotypeBase
 	    <li style="display:inline;margin:0px;padding:0px"><a href="http://www.phenotype-cms.com" target="_blank"><img src="<?php echo ADMINFULLURL?>img/b_doku.gif" alt="Phenotype Logo" title="Phenotype Logo" border="0"/></a></li>
 	    </ul>
 	    </div>
-	    
-	    <?php 
+
+	    <?php
 	    $myPT->startBuffer();
 	    $myPT->displayDebugInfo();
 	    $uri =  uniqid();
@@ -1252,7 +1252,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	{
 	   ?>
 	   <block nr="<?php echo $row_block["lay_blocknr"] ?>">
-	   <?php    
+	   <?php
 	   $this->blocknr = $row_block["lay_blocknr"];
 	   $html_block = "";
 	   $sql = "SELECT * FROM sequence_data WHERE pag_id = " . $this->id . " AND ver_id = ". $ver_id . " AND dat_blocknr=" . $row_block["lay_blocknr"];
@@ -1306,14 +1306,18 @@ class PhenotypePageStandard extends PhenotypeBase
 	}
 
 
-	function render($ver_id,$buildcache=0,$editbuffer=0)
+	function render($ver_id,$buildcache=0,$editbuffer=0,$mySmarty=null)
 	{
 		$this->buildingcache = $buildcache;
 
 		global $myDB;
 		global $myPT;
 		// lokale Smartyinstanz, da die Bausteine ja auch welche nutzen koennen
-		$mySmarty = new PhenotypeSmarty();
+		// for use of custom smarty vars in layout templates
+		// $mySmarty can already be created in child class PhenotypePage().
+		if (is_null($mySmarty)) {
+			$mySmarty = new PhenotypeSmarty();
+		}
 
 		// Titel-Tags und Keywords setzen
 		/*
@@ -1818,7 +1822,7 @@ class PhenotypePageStandard extends PhenotypeBase
 				</block>';
 			}
 			$xml.='
-			</blocks>				
+			</blocks>
 			<includes>';
 			$sql ="SELECT * FROM layout_include WHERE lay_id=".$row["lay_id"]." ORDER BY lay_includenr";
 			$rs2 = $myDB->query($sql);
@@ -2037,10 +2041,10 @@ class PhenotypePageStandard extends PhenotypeBase
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
-		<ptsubversion>'.$myPT->subversion.'</ptsubversion>	
+		<ptsubversion>'.$myPT->subversion.'</ptsubversion>
 		<pag_id>'.$this->id.'</pag_id>
 		<importmethod>overwrite</importmethod>
-		<grp_id>'.$this->grp_id.'</grp_id>				
+		<grp_id>'.$this->grp_id.'</grp_id>
 	</meta>
 	<content>
 	';
@@ -2148,7 +2152,7 @@ class PhenotypePageStandard extends PhenotypeBase
 
 	/**
 	 * imports a page in PT-Raw-XML-Format
-	 * 
+	 *
 	 * only importmethod "overwrite" is supported, no consistency checks !
 	 *
 	 * @param string $buffer
@@ -2368,10 +2372,10 @@ class PhenotypePageStandard extends PhenotypeBase
 	public function getCanonicalUrl()
 	{
 		return ($this->canonical_url);
-	}	
+	}
 	/**
    * retrieves URL of a page using the DAO cache
-   * 
+   *
    * You should not overwerite this method. If you want to change URL behaviour
    * stick to buildURL instead. (But keep in mind, that buildURL is only uses
    * when saving a page (on config tab) or chaning the pagegroup smartURL schema)
@@ -2498,9 +2502,9 @@ class PhenotypePageStandard extends PhenotypeBase
 	 * method is to rebuild the urls of all pages (and you don't want the recursion happe to often
 	 * then). After that you have to clear the cache (which equally would happen to often, if it would
 	 * be true by default)
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * @param boolean $recursive
 	 * @param boolean $clearcache
 	 */
@@ -2559,7 +2563,7 @@ class PhenotypePageStandard extends PhenotypeBase
 
 	/**
    * Returns the page description field ("page_bez" in DB page)
-   * 
+   *
 	 * added 2008/05/19 by Dominique Bös
    * @return string page description
    */
