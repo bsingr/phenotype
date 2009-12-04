@@ -130,7 +130,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 	// Holt eine Property aus dem Formular
 	/**
-   * @deprecated 
+   * @deprecated
    *
    * @param unknown_type $value
    * @return unknown
@@ -175,9 +175,9 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		if ($this->id == null)
 		{
-			throw new Exception("No record at hand. Cannot store a PhenotypeContent object without a designated record.\nSee ->init(), ->load() and/or ->addNew().");	
+			throw new Exception("No record at hand. Cannot store a PhenotypeContent object without a designated record.\nSee ->init(), ->load() and/or ->addNew().");
 		}
-		
+
 		global $myDB;
 		$s = serialize($this->_props);
 
@@ -468,7 +468,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 					$mySQL->addField("dat_id",(int)$this->dat_id_min);
 				}
 			}
-			else // we do have records in range 
+			else // we do have records in range
 			{
 				if ($max!=$this->dat_id_max) // don't use date range, if max dat_id alread is taken
 				{
@@ -687,12 +687,12 @@ class PhenotypeContentStandard extends PhenotypeBase
 	{
 		global $myPT;
 		$myPT->startbuffer();
-?> 
+?>
      $mySmarty = new PhenotypeSmarty();
 	 global $myDB;
 	 global $myPT;
-	 
-     $mySmarty->compile_dir = SMARTYCOMPILEPATH;		 
+
+     $mySmarty->compile_dir = SMARTYCOMPILEPATH;
 	 $mySmarty->clear_all_assign();
      $sql = "SELECT * FROM content_template WHERE con_id = " . $this->content_type;
      $rs = $myDB->query($sql);
@@ -701,7 +701,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 	    $tpl = $row_etp["tpl_bez"];
 	    $dateiname =  $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $this->content_type, $row_etp["tpl_id"]);
 	    $$tpl = $dateiname;
-	 }	 
+	 }
 	<?php
 
 
@@ -715,15 +715,15 @@ class PhenotypeContentStandard extends PhenotypeBase
 	{
 		global $myPT;
 		$myPT->startbuffer();
-		$this->printProperties();	
+		$this->printProperties();
 		$html = $myPT->stopbuffer();
-		return ($html);	
+		return ($html);
 	}
 
-	
 
 
-	
+
+
 	// Diese Funktion wird in Includes und Pagescripts aufgerufen
 	function render($skin = "debug", $count = 0)
 	{
@@ -1069,6 +1069,18 @@ class PhenotypeContentStandard extends PhenotypeBase
 		}
 	}
 
+	function form_content_multicheckbox($input, $bez, $x, $y,$con_id,  $statuscheck=true,$sql_where="")
+	{
+		$a = Array (PT_CON_FORM_CONTENTMULTICHECKBOX, $input, $bez, $x, $y, $con_id, $statuscheck,$sql_where);
+		if ($this->formmode == 1)
+		{
+			$this->form[] = $a;
+		} else
+		{
+			$this->configform[] = $a;
+		}
+	}
+
 	function form_expandinglist($input, $bez, $dat_id_expandinglist)
 	{
 		$a = Array (PT_CON_FORM_EXLIST, $input, $bez, $dat_id_expandinglist);
@@ -1304,15 +1316,15 @@ class PhenotypeContentStandard extends PhenotypeBase
 	 * @param string target folder for uploaded files (on top of PT_TEMPPATH/contentupload/con_id/usr_id)
 	 * @param integer width
 	 * @param integer height
-	 * 
-	 * 
-	 * If you use this form_xy method you must overwrite the update-method, 
+	 *
+	 *
+	 * If you use this form_xy method you must overwrite the update-method,
 	 * look into the upload folder and process the uploads somehow ...
-	 * 
+	 *
 	 * Usally the parameter $folder is best initialized with "$this->id", so you get the uploaded
 	 * file related to your record. If you have more than one form_ddupload method on your content entry form
 	 * you must specify different folder names. (Sub folders are not possible here.)
-	 * 
+	 *
 	 */
 	function form_ddupload($input, $folder="", $x=405, $y=100)
 	{
@@ -1411,7 +1423,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		global $myRequest;
 		global $myApp;
 ?>
-<input type="hidden" name="http_referer" value ="<?php echo $_SERVER["HTTP_REFERER"] ?>">   
+<input type="hidden" name="http_referer" value ="<?php echo $_SERVER["HTTP_REFERER"] ?>">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<?php
 
@@ -1458,7 +1470,7 @@ class PhenotypeContentStandard extends PhenotypeBase
           <tr>
             <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-		  </table> 
+		  </table>
    <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
@@ -1482,8 +1494,8 @@ class PhenotypeContentStandard extends PhenotypeBase
 			 <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-      		
-			<?php	
+
+			<?php
 					}
 			?>
             <tr>
@@ -1779,7 +1791,7 @@ class PhenotypeContentStandard extends PhenotypeBase
         </td>
         <td width="509" class="formarea"><p>
 		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>" class="input">
-		<?php 
+		<?php
 		if ($a[4]==true){
 		?>
 		<option value="0">...</option>
@@ -1815,7 +1827,7 @@ class PhenotypeContentStandard extends PhenotypeBase
         </td>
         <td width="509" class="formarea"><p>
 		<select name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>" class="listmenu">
-		<?php 
+		<?php
 		if ($a[3]==true){
 		?>
 		<option value="0">...</option>
@@ -1900,7 +1912,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		}
 ?>
-        </select>		
+        </select>
         </p>
         </td>
         </tr>
@@ -1911,7 +1923,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		// ######## Multiple Selectbox
 				case PT_CON_FORM_MULTISELECTBOX :
-		?>	
+		?>
 		<tr>
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
@@ -1941,7 +1953,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		// ######## Multiple Selectbox auf Basis von Contentdatensätzen
 				case PT_CON_FORM_CONTENTMULTISELECTBOX :
-		?>	
+		?>
 		<tr>
         <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p>
         </td>
@@ -1978,9 +1990,53 @@ class PhenotypeContentStandard extends PhenotypeBase
         </p>
         </td>
         </tr>
-		<?php		
+		<?php
 
 
+		break;
+
+		// ######## Multiple Checkbox auf Basis von Contentdatensätzen
+				case PT_CON_FORM_CONTENTMULTICHECKBOX :
+		?>
+		<tr>
+		<?php if (!empty($a[1])) { ?>
+        <td width="120" class="padding30"><p><strong><?php echo $a[1] ?></strong></p></td>
+        <td width="509" class="formarea">
+        <?php } else { ?>
+        <td colspan="2" class="padding30">
+		<?php } ?>
+        	<p>
+             <div style="border:1px solid grey;width:<?php echo $a[3] ?>px; height:<?php echo $a[4] ?>px; overflow: scroll; background:white; padding:2px;">
+             <p><ul style="padding:0px; margin:0px; list-style: none;">
+		<?php
+		$sql  = "SELECT dat_id,dat_bez FROM content_data WHERE con_id=".$a[5];
+		if ($a[6]==true)
+		{
+			$sql .=" AND dat_status=1";
+		}
+		if ($a[7] !="")
+		{
+			$sql .=" AND " . $a[7];
+		}
+		$sql .= " ORDER BY dat_bez";
+		//echo $sql;
+		$rs = $myDB->query($sql);
+		while ($row=mysql_fetch_array($rs))
+		{
+			$selected = "";
+			if (in_array($row["dat_id"], $myCO->get($a[2])))
+			{
+				$selected = 'checked="checked"';
+			}
+		?>
+		<li style="background:#DDDDDD; margin:2px; padding:2px;"><input type="checkbox" name="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>[]" value="<?php echo $row["dat_id"] ?>" <?php echo $selected ?> id="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>_<?php echo $row["dat_id"] ?>" ><label for="<?php echo $myCO->formid ?>_<?php echo $a[2] ?>_<?php echo $row["dat_id"] ?>"><?php echo $row["dat_bez"] ?></label></li><?php
+		}
+		?>
+			</ul>
+            </p></div>
+        </td>
+        </tr>
+		<?php
 		break;
 
 		// ######## Expanding List
@@ -2064,8 +2120,8 @@ class PhenotypeContentStandard extends PhenotypeBase
       			<td colspan="4">&nbsp;</td>
     		</tr>
             <input type="hidden" value="1" name="editbuffer">
-			<input type="hidden" name="block_nr" value="<?php echo $block_nr ?>">	
-			<input type="hidden" name="newtool_id" value="">	
+			<input type="hidden" name="block_nr" value="<?php echo $block_nr ?>">
+			<input type="hidden" name="newtool_id" value="">
 			<input type="hidden" name="newtool_type" value="">
 			<?php
 			// Das erste Bausteinpulldown
@@ -2122,7 +2178,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			  	<?php
 				}
 			  	?>
-			  	</td>        
+			  	</td>
           		</tr>
        			<?php
        			$myLayout->workarea_componentselector_draw($cog_id,$row["dat_id"]);
@@ -2133,7 +2189,7 @@ class PhenotypeContentStandard extends PhenotypeBase
     		</tr>
     		</table>
 				</td>
-			</tr>    		
+			</tr>
 			<?php
 
 			// Ende Sequenz
@@ -2162,7 +2218,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 ?>
 			 </p>
 			 </td></tr>
-			 
+
 		<?php
 
 
@@ -2218,7 +2274,7 @@ class PhenotypeContentStandard extends PhenotypeBase
              $val = $myApp->richtext_prefilter($val,$myCO);
              echo $myLayout->form_Richtext($name, $val, 80, $a[4], $a[3]);
 ?>
-             
+
              </td>
              </tr>
 		<?php
@@ -2354,9 +2410,9 @@ class PhenotypeContentStandard extends PhenotypeBase
 ?>
              </p>
              </td>
-             </tr>		     
-		
-			 
+             </tr>
+
+
 		<?php
 
 
@@ -2409,15 +2465,15 @@ class PhenotypeContentStandard extends PhenotypeBase
 			       ?></a>
      			</td>
      		  </tr>
-     		  </table> 
+     		  </table>
      		 <?php
              }
 			 ?>
              </p>
              </td>
-             </tr>		     
-		
-			 
+             </tr>
+
+
 		<?php
 
 
@@ -2453,9 +2509,9 @@ class PhenotypeContentStandard extends PhenotypeBase
 ?>
              </p>
              </td>
-             </tr>		     
-		
-			 
+             </tr>
+
+
 		<?php
 
 
@@ -2574,7 +2630,7 @@ class PhenotypeContentStandard extends PhenotypeBase
              </td>
              </tr>
 		<?php }else{ ?>
-	 
+
 			 <tr><td colspan="2" class="padding30"><p>
 			 <?php
 
@@ -2664,12 +2720,12 @@ class PhenotypeContentStandard extends PhenotypeBase
              </td>
              </tr>
 		<?php }else{ ?>
-	 
+
 			 <tr><td colspan="2" class="padding30"><p>
 			 <?php
 			 test
 ?></p></td></tr>
-		<?php		
+		<?php
 
 		}
 		break;
@@ -2677,10 +2733,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		// ######## DD-Upload
 				case PT_CON_FORM_DDUPLOAD :
-					$target_url = ADMINFULLURL ."admin_ddcontentupload.php?con_id=".$this->content_type ."&userid=".$mySUser->id."&savepath=".$a[2]; 
+					$target_url = ADMINFULLURL ."admin_ddcontentupload.php?con_id=".$this->content_type ."&userid=".$mySUser->id."&savepath=".$a[2];
 					$md5hash = md5("con_id".$this->content_type."userid".$mySUser->id."savepath".$a[2].PT_SECRETKEY);
 					?>
-	
+
              <tr>
              <td width="120" class="padding30" valign="top"><p><strong><?php echo $a[1] ?></strong></p>
              </td>
@@ -2854,7 +2910,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			 </p>
              </td>
              </tr>
-			 <?php				
+			 <?php
 			 break;
 
 
@@ -2926,7 +2982,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 							{
 						?>
 						<td  class="tableBody"><img src="img/i_online.gif"></td>
-						<?php	
+						<?php
 							}
 							else
 							{
@@ -2938,7 +2994,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 						case $col_edit:
 					?>
 					<td  class="tableBody"><a href="<?php echo urlencode($_table[$l][$j]) ?>"><img src="img/b_edit.gif" border="0"></a></td>
-					<?php						
+					<?php
 					break;
 						default:
 					?>
@@ -2952,10 +3008,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 			<?php
              }
 			?>
-    				<tr>	
+    				<tr>
               <td colspan="7" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
             </tr>
-			
+
         </table>
         </td>
         </tr>
@@ -2988,7 +3044,7 @@ class PhenotypeContentStandard extends PhenotypeBase
           <tr>
             <td colspan="2" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
           </tr>
-		  </table> 
+		  </table>
    <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite padding30"   width="120" valign="top">
@@ -3009,7 +3065,7 @@ class PhenotypeContentStandard extends PhenotypeBase
              	}
              	$url = "id=" . $this->id . "&amp;uid=".$this->uid."&amp;b=".$this->block_nr."&amp;p=".$j
              	?>
-             	<td align="center"><a href="backend.php?page=Editor,Content,edit&<?php echo $url ?>" class="<?php echo $class ?>"><?php echo $j ?></a></td>			
+             	<td align="center"><a href="backend.php?page=Editor,Content,edit&<?php echo $url ?>" class="<?php echo $class ?>"><?php echo $j ?></a></td>
              	<?php
              }
              	?>
@@ -3327,6 +3383,19 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 						// form_content_multiselectbox
 					case PT_CON_FORM_CONTENTMULTISELECTBOX :
+						$fname = $myCO->formid."_".$a[2];
+
+						$_selections = $_REQUEST[$fname];
+						if (!is_array($_selections))
+						{
+							$_selections = Array ();
+						}
+
+						$myCO->set($a[2], $_selections);
+						break;
+
+						// form_content_multicheckbox
+					case PT_CON_FORM_CONTENTMULTICHECKBOX :
 						$fname = $myCO->formid."_".$a[2];
 
 						$_selections = $_REQUEST[$fname];
@@ -3679,7 +3748,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		global $myDB;
 	  	?>
 	    <select name="<?php echo $this->formid ?>_<?php echo $_params["property"] ?>" class="input">
-	    <?php 
+	    <?php
 	    if ($_params["null"]==true){
 	    ?>
 	    <option value="0">...</option>
@@ -3705,10 +3774,10 @@ class PhenotypeContentStandard extends PhenotypeBase
 	    	}
 	    ?>
 	    <option value="<?php echo $row["usr_id"] ?>" <?php echo $selected ?>><?php echo $name ?></option>
-	    <?php 
+	    <?php
 	    }
 	    echo '</select>';
-	}	
+	}
 	protected function _form_user_fetch($_params)
 	{
 		global $myRequest;
@@ -3719,9 +3788,9 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 	/**
 	 * Provides a drag & drop list of content records for sorting
-	 * 
+	 *
 	 * Sort order will be stored in the dat_pos column of content_data for all selected records
-	 * 
+	 *
 	 * Attention, if you use the parameter $sql_where, be sure not to mixup records within two different forms
 	 *
 	 * @param string $title
@@ -4009,7 +4078,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		<dat_id>'.$this->id.'</dat_id>
 		<dat_id_local>'.$this->id.'</dat_id_local>
 		<importmethod>'.$myPT->codeX($importmethod).'</importmethod>
-		<buildindex>1</buildindex>		
+		<buildindex>1</buildindex>
 	</meta>
 	<content>
 	';
@@ -4040,7 +4109,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$xml.='
 		</sequence_data>
 	</content>
-</phenotype>';		
+</phenotype>';
 		return ($xml);
 	}
 
@@ -4071,7 +4140,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		<ptversion>'.$myPT->version.'</ptversion>
 		<ptsubversion>'.$myPT->subversion.'</ptsubversion>
 		<con_id>'.$myPT->codeX($row['con_id']).'</con_id>
-		<con_bez>'.$myPT->codeX($row['con_bez']).'</con_bez>		
+		<con_bez>'.$myPT->codeX($row['con_bez']).'</con_bez>
 		<con_rubrik>'.$myPT->codeX($row['con_rubrik']).'</con_rubrik>
 		<con_description>'.$myPT->codeX($row['con_description']).'</con_description>
 		<con_anlegen>'.$myPT->codeX($row['con_anlegen']).'</con_anlegen>
@@ -4382,7 +4451,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$link =ADMINFULLURL . "backend.php?page=Editor,Content,edit&id=".$this->id."&uid=".$this->uid;
 		}
 		$xml ='<item>
-	  <pubDate>'.date("r",$_rss["date"]).'</pubDate>	
+	  <pubDate>'.date("r",$_rss["date"]).'</pubDate>
       <title>'.$myPT->codeX($_rss["title"]).'</title>
       <description>'.$myPT->codeX($_rss["description"]).'</description>
       <link>'.$myPT->codeX($_rss["link"]).'</link>
@@ -4423,7 +4492,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 	/**
    * retrieves URL of a page using the DAO cache
-   * 
+   *
    * You should not overwerite this method. If you want to change URL behaviour
    * stick to buildURL instead.
    *
