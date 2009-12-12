@@ -115,11 +115,12 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 			$this->loaded=1;
 		}
 	}
-
+	/*
 	function getUrl ()
 	{
 		return (MEDIABASEURL . $this->physical_folder . "/" . $this->filename);
 	}
+	*/
 	function setClass ($class)
 	{
 		$this->class = $class;

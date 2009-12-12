@@ -872,7 +872,12 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		//$this->overview_content_draw($sql2,$this->con_id,2);
 
 		$url = "backend.php?page=Editor,Content,select&con_id=".$this->con_id."&r=".$this->category."&b=0&c=".$order."&p=";
-		echo $this->renderPageBrowser($p,$anzahl,$url,10,false,true);
+		$selectallbutton=false;
+	    if ($mySUser->checkRight("elm_lightbox"))
+		{
+			$selectallbutton=true;
+		}
+		echo $this->renderPageBrowser($p,$anzahl,$url,10,false,$selectallbutton);
 
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
@@ -1093,11 +1098,8 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     $row = mysql_fetch_array($rs);
 
-		/*
-		echo "<pre>";
-		var_dump($row);
-		echo "</pre>****************************************";
-		*/
+    // Extract User Info to merge with editbuffer, if necessary
+	$row_userinfo = Array("usr_id_creator"=>$row["usr_id_creator"],"usr_id"=>$row["usr_id"],"dat_creationdate"=>$row["dat_creationdate"],"dat_date"=>$row["dat_date"]);
 		
 		//preview mode
     if ($myCO->previewmode==true AND $row["dat_altered"]==1)
@@ -1109,6 +1111,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     	{
     		$row = mysql_fetch_array($rs);
 				$row["dat_altered"]=1;
+			$row = array_merge($row,$row_userinfo);
     	}   	
     }
 
@@ -1122,6 +1125,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     	{
     		$row = mysql_fetch_array($rs);
 				$row["dat_altered"]=1;
+			$row = array_merge($row,$row_userinfo);
     	}   	
     }
 
@@ -1266,6 +1270,18 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		  $this->workarea_row_draw(locale("State"),$html);
 		}
 		?>
+		<?php
+			if($myCO->previewmode == true AND $myRequest->check("preview")) 
+			{
+			?>
+			<script type="text/javascript">
+			$(document).ready(function(){
+				previewContent("backend.php?page=Editor,Content,showPreview&id=<?=$dat_id?>",<? echo $myPT->getPref("preview_dialog.dialog_width",800) ?>,<?php echo $myPT->getPref("preview_dialog.dialog_height",500)?>, "<?php echo localeH("Preview");?>");
+			});	
+			</script>
+			<?
+			}
+			?>
  	   <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td class="windowFooterWhite">
@@ -1275,12 +1291,6 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 			?>
 			<input name="preview" type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Preview");?>" tabindex="1" accesskey="p" onclick="this.form.page.value = 'Editor,Content,preview';">
 			<?php
-			if($myRequest->check("preview")) 
-			{
-			?>
-			<script type="text/javascript">previewContent("backend.php?page=Editor,Content,showPreview&id=<?=$dat_id?>",<? echo $myPT->getPref("preview_dialog.dialog_width",800) ?>,<?php echo $myPT->getPref("preview_dialog.dialog_height",500)?>, "<?php echo localeH("Preview");?>");</script>
-			<?
-			}
 		    }
 			?>
 			</td>
@@ -1415,14 +1425,15 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $myLog->log("Datensatz " . $myCO->id . " (Content-Type " . $myCO->content_type .") bearbeitet.",PT_LOGFACILITY_SYS);
 
     // Update der Userinfo + Status
-
+    if(!$myRequest->check("preview"))
+    {
     $mySQL = new SQLBuilder();
     $mySQL->addField("dat_date",time(),DB_NUMBER);
     $mySQL->addField("usr_id",$mySUser->id);
 
     $sql = $mySQL->update("content_data","dat_id=".$dat_id);
     $myDB->query($sql);
-
+    }
 
     // Snapshot
     if ($myPT->getIPref("edit_content.build_snapshot")==1)

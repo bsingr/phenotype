@@ -46,7 +46,10 @@ body {
 </head>
 
 <body>
+<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery-ui.js"></script>
 <script language="JavaScript" src="phenotype.js"></script>
+<script type="text/javascript">var pt_bak_id="";</script>
 <script type="text/javascript" language="JavaScript">
 self.focus();
 </script>
@@ -77,7 +80,7 @@ self.focus();
 				
 <?php				
 $myLayout->tab_new();
-$url = "mediabase_upload.php";
+$url = "";
 $myLayout->tab_addEntry(locale("Properties"),$url,"b_konfig.gif");
 $myLayout->tab_draw(locale("Properties"),495,0,1);
 

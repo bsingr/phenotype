@@ -510,6 +510,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		$mySQL->addField("grp_id",$grp_id);
 
 		$contenttype = array_search($myPT->getPref("backend.default_contenttype"), $_PT_HTTP_CONTENTTYPES);
+		if (!$contenttype) $contenttype = 1;
 		$mySQL->addField("pag_contenttype", $contenttype, DB_NUMBER);
 
 		$sql = $mySQL->insert("page");

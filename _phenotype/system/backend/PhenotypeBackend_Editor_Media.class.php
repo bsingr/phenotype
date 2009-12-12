@@ -1020,7 +1020,12 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 	    $url = "backend.php?page=Editor,Media,browse&grp_id=".$this->grp_id . "&folder=" .$myPT->codeH($this->folder) ."&type=" .$this->type . "&sortorder=" . $this->sortorder . "&a=" . $this->itemcount."&p=";
 
-	    echo $this->renderPageBrowser($p,$anzahl,$url,$this->itemcount,true,true);
+	    $selectallbutton=false;
+	    if ($mySUser->checkRight("elm_lightbox"))
+		{
+			$selectallbutton=true;
+		}
+	    echo $this->renderPageBrowser($p,$anzahl,$url,$this->itemcount,true,$selectallbutton);
 	    echo '<br/>';
 	    return $myPT->stopBuffer();
 	}

@@ -231,10 +231,18 @@ class PhenotypeLayoutStandard
 	{
 		if ($_entry["bez"]==$item)
 		{
+			if ($_entry["url"]!="")
+			{
 			?>
 			<td><a href="<?php echo $_entry["url"] ?>" class="tabmenuActive"><img src="img/<?php echo $_entry["icon"] ?>" width="22" height="22" border="0" align="absmiddle"> <?php echo $_entry["bez"] ?></a></td>
 			<td width="3"><img src="img/tab_vline.gif" width="3" height="22"></td>
 			<?php
+			}else{
+			?>
+			<td><img src="img/<?php echo $_entry["icon"] ?>" width="22" height="22" border="0" align="absmiddle"> <?php echo $_entry["bez"] ?></td>
+			<td width="3"><img src="img/tab_vline.gif" width="3" height="22"></td>
+			<?php
+			}
 		}
 		else
 		{
@@ -1132,7 +1140,7 @@ if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
 	   <table width="408" border="0" cellpadding="0" cellspacing="0" >
   <tr>
   <td nowrap><a class="bausteineLink" href='javascript:selector_image(
-"editform","<?php echo $name ?>","<?php echo $folder ?>",<?php echo $changefolder ?>,<?php echo $x ?>,<?php echo $y ?>)'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Assign Image");?></a></td>
+"editform","<?php echo $name ?>","<?php echo codeH($folder) ?>",<?php echo $changefolder ?>,<?php echo $x ?>,<?php echo $y ?>)'><img src="img/b_plus_tr.gif" width="18" height="18" border="0" align="absmiddle"> <?php echo localeH("Assign Image");?></a></td>
 </tr>
 </table>
 	 <?php

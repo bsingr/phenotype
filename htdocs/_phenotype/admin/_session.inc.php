@@ -22,7 +22,7 @@ if (PT_BACKEND!=1){exit();}
 $myPT->suppressPHPWarnings();
 
 // cookies must be enabled
-ini_set("session.use_trans_sid",0);
+
 @session_start();
 
 

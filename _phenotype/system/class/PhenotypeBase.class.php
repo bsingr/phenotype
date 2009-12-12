@@ -109,8 +109,7 @@ class PhenotypeBase
 
 	public function getHTML($property,$default=null)
 	{
-		return $this->get($property,$default);
-		return @ htmlentities($this->get($property,$default),null,PT_CHARSET);
+		return @ htmlentities(($this->get($property,$default)),null,$this->charset);
 	}
 
 	public function getH($property,$default=null)

@@ -70,6 +70,7 @@ define ("PACKAGEPATH",APPPATH ."packages/");
 
 define ("MEDIABASEPATH", SERVERPATH . "media/");
 define ("MEDIABASEURL", SERVERURL . "media/");
+define ("MEDIABASEFULLURL", SERVERFULLURL . "media/");
 
 define ("THIRDPARTYPATH", APPPATH . "3rdparty/");
 
@@ -91,6 +92,15 @@ define ("CACHECOUNT",1);
 // ------------------------------------------------------
 
 define ("UMASK",0775);
+
+// ------------------------------------------------------
+// session env
+// ------------------------------------------------------
+
+ini_set("session.use_cookies","On");
+ini_set("session.use_only_cookies","On");
+ini_set("session.auto_start","Off");
+ini_set("session.use_trans_sid",0);
 
 // ------------------------------------------------------
 // initalize system, require all core classes

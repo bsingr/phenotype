@@ -58,6 +58,9 @@ body {
 	   
 	    		  if (count($_mediagroups)==0){$_mediagroups=Array(-1);}
 ?>
+<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery-ui.js"></script>
+<script type="text/javascript">var pt_bak_id="";</script>
 <script language="JavaScript" src="phenotype.js"></script>
 <form action="selector_media.php" name="form1">
 
@@ -110,7 +113,7 @@ body {
 <?php }if ($_REQUEST["cf"]==1){ ?>
 <input type="hidden" name="cf" value="1">
 <?php }else{ ?>
-<input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
+<input type="hidden" name="folder" value="<?php echo $myRequest->getH("folder")?>">
 <input type="hidden" name="cf" value="0">
 <?php } ?>
 <input type="hidden" name="x" value="<?php echo $_REQUEST["x"] ?>">
@@ -136,7 +139,7 @@ body {
                   
                   if ($_REQUEST["folder"]!=-1 AND $_REQUEST["folder"]!="")
                   {
-                    $sql .=" AND( med_logical_folder1 LIKE'" . $_REQUEST["folder"] ."%' OR med_logical_folder2 LIKE'" . $_REQUEST["folder"] ."%' OR med_logical_folder3 LIKE'" . $_REQUEST["folder"] ."%')";
+                    $sql .=" AND( med_logical_folder1 LIKE'" .$myRequest->getH("folder") ."%' OR med_logical_folder2 LIKE'" . $myRequest->getH("folder") ."%' OR med_logical_folder3 LIKE'" . $myRequest->getH("folder") ."%')";
                   }
 
                   if ($_REQUEST["type"]!=-1)
@@ -319,7 +322,7 @@ body {
                 <?php
                 if ($row["med_type"]==MB_IMAGE){
                 ?>
-                <a href="javascript:select_image(<?php echo $row["med_id"] ?>,'<?php echo $myIMG->thumburl ?>',<?php echo $tx ?>,<?php echo $ty ?>);self.close();"><img src="img/b_media.gif" alt="<?php echo localeH("Select image");?>" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("select");?></a>
+                <a href="javascript:select_image(<?php echo $row["med_id"] ?>,'<?php echo $myIMG->thumburl ?>','<?php echo $myIMG->url ?>',<?php echo $tx ?>,<?php echo $ty ?>);self.close();"><img src="img/b_media.gif" alt="<?php echo localeH("Select image");?>" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("select");?></a>
                 <?php
                 }else{
                 ?>

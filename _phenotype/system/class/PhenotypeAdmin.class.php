@@ -161,6 +161,9 @@ class PhenotypeAdminStandard
 		global $myDB;
 		global $myLayout;
 
+		$pag_id = (int)$pag_id;
+		$pag_id_border = (int)$pag_id_border;
+				
 		if ($pag_id_border!=0)
 		{
 			$sql = "SELECT pag_id_top FROM page WHERE pag_id = " . $pag_id_border;

@@ -1119,7 +1119,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 	function form_image_selector($input, $bez, $folder, $changefolder = 1, $x = 0, $y = 0)
 	{
-		$a = Array (PT_CON_FORM_IMAGESELECTOR, $input, $bez, $folder, $changefolder, $x, $y);
+		$a = Array (PT_CON_FORM_IMAGESELECTOR, $input, $bez, $folder, (int)$changefolder, (int)$x, (int)$y);
 		if ($this->formmode == 1)
 		{
 			$this->form[] = $a;

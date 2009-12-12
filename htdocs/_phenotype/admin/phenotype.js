@@ -45,7 +45,7 @@ function showDoc(nr)
 
 function previewPage(id,ver_id,lng_id, dialogWidth, dialogHeight, sHeadline)
 {
-	$("body").after('<div id="pt-dialog"><iframe style="width:100%;height:100%;border:0px" src="preview.php?id=' + id + '&ver_id=' + ver_id +'&lng_id=' + lng_id+ '"></iframe></div>');
+	$("body").after('<div id="pt-dialog"><iframe style="width:100%;height:100%;border:0px" border="0" frameborder="0" src="preview.php?id=' + id + '&ver_id=' + ver_id +'&lng_id=' + lng_id+ '"></iframe></div>');
 	$("#pt-dialog").dialog({
 	closeOnEscape: true,
 	height:dialogHeight,
@@ -58,7 +58,7 @@ function previewPage(id,ver_id,lng_id, dialogWidth, dialogHeight, sHeadline)
 
 function previewContent(url, dialogWidth, dialogHeight, sHeadline)
 {
-	$("body").after('<div id="pt-dialog"><iframe style="width:100%;height:100%;border:0px" src="' + url + '"></iframe></div>');
+	$("body").after('<div id="pt-dialog"><iframe style="width:100%;height:100%;border:0px" border="0" frameborder="0" src="' + url + '"></iframe></div>');
 	$("#pt-dialog").dialog({
 	closeOnEscape: true,
 	height:dialogHeight,
