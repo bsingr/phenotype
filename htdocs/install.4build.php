@@ -19,6 +19,14 @@
 
 set_time_limit(0);
 
+define ("PT_CHARSET","ISO-8859-1");
+define ('PT_PHPIDS',0);
+
+if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get"))
+{
+@date_default_timezone_set(@date_default_timezone_get());
+}
+
 require ("../_phenotype/system/class/PhenotypeBase.class.php");
 require ("../_phenotype/system/class/PhenotypeInstaller.class.php");
 require ("../_phenotype/system/class/PhenotypeRequest.class.php");

@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -48,7 +48,7 @@ class PhenotypeInstaller
 	 *
 	 * @var boolean
 	 */
-	private $develop_mode =false;
+	private $develop_mode = false;
 
 	private $error_globalfeedback = false;
 	private $step = 1;
@@ -293,7 +293,7 @@ class PhenotypeInstaller
 		$fullurl = str_replace("localhost","127.0.0.1",$fullurl);
 
 		$socketurl = str_replace("http://","",$fullurl);
-		$socketurl=mb_substr($socketurl,0,mb_strpos($socketurl,"/"));
+		$socketurl= substr($socketurl,0,strpos($socketurl,"/"));
 		// Check only, if host is reachable
 		if ($fsock = @fsockopen($socketurl, 80, $errno, $errstr, 1))
 		{
@@ -372,7 +372,7 @@ class PhenotypeInstaller
 			{
 				$_array[]=array("title"=>"PHP version","status"=>"o.k. (".phpVersion().")","class"=>"green","hint"=>"");
 			}
-			else 
+			else
 			{
 				$_array[]=array("title"=>"PHP version","status"=>"quite old (".phpVersion().") turning of PHPIDS layer","class"=>"yellow","hint"=>"");
 			}
@@ -413,6 +413,16 @@ class PhenotypeInstaller
 				$this->error_globalfeedback=true;
 			}
 
+			if (extension_loaded("mbstring"))
+			{
+				$_array[]=array("title"=>"mbstring php extension","status"=>"o.k.","class"=>"green","hint"=>"");
+			}
+			else
+			{
+				$_array[]=array("title"=>"mbstring php extension","status"=>"not found","class"=>"red","url"=>"http://php.net/manual/en/book.mbstring.php");
+				$this->error_globalfeedback=true;
+			}
+
 			$m = (int) ini_get("memory_limit");
 			if ($m>=16)
 			{
@@ -449,8 +459,8 @@ class PhenotypeInstaller
 			else
 			{
 				$_array[]=array("title"=>"short_open_tag","status"=>"wrong setting (active)","class"=>"red","hint"=>"");
-			}			
-			
+			}
+
 			return ($_array);
 	}
 
@@ -552,7 +562,7 @@ class PhenotypeInstaller
 		//see http://bugs.php.net/bug.php?id=27609
 		//see http://bugs.php.net/bug.php?id=30931
 
-		if ($path{mb_strlen($path)-1}=='/')
+		if ($path{strlen($path)-1}=='/')
 		{
 			// recursively return a temporary file path
 			return $this->is_writable($path.uniqid(mt_rand()).'.tmp',$subfolders);
@@ -681,6 +691,10 @@ class PhenotypeInstaller
 			}
 		}
 		$_logs[] = "Queries executed";
+
+		$_logs[] = "Adjusting Charset and Collation of all tables (".PT_CHARSET.")";
+		$this->setCharsetAndCollation();
+
 		return $_logs;
 	}
 
@@ -745,18 +759,18 @@ class PhenotypeInstaller
 		$exps[] = '/^define \("PT_SECRETKEY",.+\);/';
 		$subs[] = 'define ("PT_SECRETKEY","'. $this->pass_secret .'");';
 
-		
+
 		//PHPIDS settings
 		$exps[] = '/^define \("PT_PHPIDS",.+\);/';
 		if (phpversion()>="5.1.6")
 		{
-			$subs[] = 'define ("PT_PHPIDS",1);';			
+			$subs[] = 'define ("PT_PHPIDS",1);';
 		}
-		else 
+		else
 		{
 			$subs[] = 'define ("PT_PHPIDS",0);';
 		}
-		
+
 		$templateConfig = file(SAMPLE_CONFIG_FILE);
 
 
@@ -794,7 +808,7 @@ class PhenotypeInstaller
 		/*
 		if ($this->frontend_login!="" AND $this->frontend_password)
 		{
-		$password = crypt($this->frontend_password, mb_substr($this->frontend_user, 0, 2));
+		$password = crypt($this->frontend_password, substr($this->frontend_user, 0, 2));
 		}
 		$htaccess .="\nAuthType Basic\nAuthName \"Frontend\"\nAuthUserFile .htpasswd\nRequire valid-user\n";
 		*/
@@ -827,7 +841,7 @@ class PhenotypeInstaller
 		global $myApp;
 		global $myAdm;
 		global $myDebug;
-		
+
 		$_logs[]="Preparing installation of PT_DEMO";
 		$_logs[]="";
 
@@ -944,25 +958,52 @@ class PhenotypeInstaller
 
 		for ($i=1;$i<=$length;$i++)
 		{
-			$p = rand(0, mb_strlen($chars)-1);
-			$pass = $pass .mb_substr($chars, $p, 1);
+			$p = rand(0, strlen($chars)-1);
+			$pass = $pass .substr($chars, $p, 1);
 		}
 
 		return $pass;
 	}
-	
-	function switchToUTF8()
+
+	function setCharsetAndCollation($charset = PT_CHARSET)
 	{
-		global $myDB;
-		$sql = "SHOW TABLES";
-		$rs = $myDB->query($sql);
-		while ($row=mysql_fetch_array($rs))
+		switch ($charset)
 		{
-			$sql = "ALTER TABLE `".$row[0]."`  DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci"; 
-			$myDB->query($sql);
+			case "UTF-8":
+				$sql_charset = "DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
+				break;
+			case "ISO-8859-1":
+			default:
+				$sql_charset = "DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci";
+				break;
 		}
-		// ALTER DATABASE `phenotype` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci 
-		// latin1_general_ci  CHARSET=latin1
+
+
+		$sql = "SHOW TABLES";
+		$rs = @mysql_query($sql);
+		if ($rs)
+		{
+			while ($row=mysql_fetch_array($rs))
+			{
+				$sql = "ALTER TABLE `".$row[0]."` ".$sql_charset;
+				$rs2 = @mysql_query($sql);
+				if (!$rs2)
+				{
+					$this->installation_status = "Could not adjust charset and collations of the database.";
+					$this->error_globalfeedback=true;
+					return;
+				}
+			}
+		}
+		else
+		{
+			$this->installation_status = "Could not adjust charset and collations of the database. (No right to show tables)";
+			$this->error_globalfeedback=true;
+		}
+		// Finalize. If it's not working, don't mind, as long as all tables are correct
+		
+		$sql = "ALTER DATABASE `".mysql_real_escape_string($this->database_name)."` ".$sql_charset;
+		@mysql_query($sql);
 	}
 }
 

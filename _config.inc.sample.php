@@ -97,10 +97,22 @@ define ("UMASK",0775);
 // session env
 // ------------------------------------------------------
 
-ini_set("session.use_cookies","On");
-ini_set("session.use_only_cookies","On");
-ini_set("session.auto_start","Off");
+ini_set("session.use_cookies",1);
+ini_set("session.use_only_cookies",1);
+ini_set("session.auto_start",1);
 ini_set("session.use_trans_sid",0);
+ini_set('session.gc_probability', 1);
+ini_set('session.gc_divisor', 1);
+ini_set('session.gc_maxlifetime', 3600);
+ini_set('session.cookie_lifetime', 3600);
+
+
+// ------------------------------------------------------
+// currently ISO-8859-1 only, everything else 
+// (e.g. UTF-8) experimental
+// ------------------------------------------------------
+
+define ("PT_CHARSET","ISO-8859-1");
 
 // ------------------------------------------------------
 // initalize system, require all core classes
