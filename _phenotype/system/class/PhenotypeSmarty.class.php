@@ -47,9 +47,9 @@ class PhenotypeSmartyStandard extends Smarty
 		$this->register_function("url_for_content", array($this,"url_for_content"));
 		$this->register_function("url_for_co", array($this,"url_for_co"));
 
-		
+
 		$this->register_function("pt_doctype", array($this,"pt_doctype"));
-		
+
 		// one day we will activate output escaping as default ;) currently it's too big
 		//$this->register_modifier("phenotype", array($this,"default_modifier"));
 
@@ -91,11 +91,13 @@ class PhenotypeSmartyStandard extends Smarty
 		if (isset($_params["pag_id"]))
 		{
 			$pag_id = $_params["pag_id"];
-			return title_of_page($pag_id);
+			$lng_id = isset($_params["lng_id"])? $_params["lng_id"] : null;
+			return title_of_page($pag_id, $lng_id);
 		}
 		else
 		{
-			trigger_error("Missing mandatory parameter pag_id in smarty function title_of_page",E_USER_ERROR);
+			trigger_error("Missing mandatory parameter pag_id in smarty function
+title_of_page",E_USER_ERROR);
 		}
 	}
 
@@ -132,7 +134,7 @@ class PhenotypeSmartyStandard extends Smarty
 			trigger_error("Missing mandatory parameter value in smarty function pt_path",E_USER_ERROR);
 		}
 	}
-	
+
 	public function pt_doctype($_params)
 	{
 		$charset= PT_CHARSET;
@@ -140,12 +142,12 @@ class PhenotypeSmartyStandard extends Smarty
 		{
 			$charset = $_params["charset"];
 		}
-		
+
 		switch($_params["dtd"])
 		{
 			case "HTML2.0":
 				return '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">';
-			break;
+				break;
 			case "HTML3.2":
 				return '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">';
 				break;
@@ -170,10 +172,10 @@ class PhenotypeSmartyStandard extends Smarty
 				break;
 			case "XHTML1.1":
 				return '<?xml version="1.0" encoding="'.$charset.'"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">';
-				break;				
+				break;
 		}
 	}
-	
+
 	public function url_for_content($_params)
 	{
 		if (isset($_params["dat_id"]))
@@ -225,7 +227,7 @@ class PhenotypeSmartyStandard extends Smarty
 	{
 		return mb_strtolower($string);
 	}
-	
+
 	/**
 	 * multibyte save upper modifier
 	 *
