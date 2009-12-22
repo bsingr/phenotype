@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -16,13 +16,11 @@
 // -------------------------------------------------------
 // Version ##!PT_VERSION!## vom ##!BUILD_DATE!##
 // -------------------------------------------------------
-?>
-<?php
+
 require("_config.inc.php");
 require("_session.inc.php");
 $myPT->loadTMX("Editor_Media");
-?>
-<?php
+
 $fname = "userfile";
 
 $dateiname_original =  $_FILES[$fname]["name"];
@@ -33,83 +31,124 @@ $grp_id = $myRequest->getI("grp_id");
 
 $myMB->setMediaGroup($grp_id);
 
-    $folder1_new = $myMB->rewriteFolder($myRequest->get("folder1_new"));
-	//$folder2_new = $myMB->rewriteFolder($myRequest["folder2_new"]);
-	//$folder3_new = $myMB->rewriteFolder($myRequest["folder3_new"]);
-    if ($folder1_new!="")
-    {
-      $folder = $folder1_new;
-    }
-    else
-    {
-      $folder= $myRequest->get("folder1");
-    }
-
+$folder1_new = $myMB->rewriteFolder($myRequest->get("folder1_new"));
+if ($folder1_new!="")
+{
+	$folder = $folder1_new;
+}
+else
+{
+	$folder= $myRequest->get("folder1");
+}
+if ($folder==-1)
+{
+	$folder = "_upload";
+}
 
 $type = MB_DOCUMENT;
 $_suffix = Array("jpg","gif","jpeg","png");
 if (in_array($suffix,$_suffix))
 {
-  $type = MB_IMAGE;
-  if (isset($_REQUEST["documentonly"]))
-  {
-    $type = MB_DOCUMENT;
-  }
+	$type = MB_IMAGE;
+	if (isset($_REQUEST["documentonly"]))
+	{
+		$type = MB_DOCUMENT;
+	}
 }
 
 $iptc="";
 if ($type== MB_IMAGE)
 {
-  $id = $myMB->uploadImage($fname,$folder);
-  if ($id)
-  {
-    $sql = "SELECT med_comment FROM media WHERE med_id = " . $id;
-    $rs = $myDB->query($sql);
-    $row=mysql_fetch_array($rs);
-    $iptc = $row["med_comment"];
-  }
+	$id = $myMB->uploadImage($fname,$folder);
+	if ($id)
+	{
+		$sql = "SELECT med_comment FROM media WHERE med_id = " . $id;
+		$rs = $myDB->query($sql);
+		$row=mysql_fetch_array($rs);
+		$iptc = $row["med_comment"];
+	}
 }
 else
 {
-  $id = $myMB->uploadDocument($fname,$folder);
+	$id = $myMB->uploadDocument($fname,$folder);
 }
 
-if (!$id) // Hochladen fehlgeschlagen
+$msg=0; // no user message
+
+if (!$id) // upload failed
 {
- $url = "selector_media.php?folder=" . urlencode($folder) . "&type=" . $_REQUEST["type"] . "&sortorder=" . $_REQUEST["sortorder"]. "&cf=" .  $_REQUEST["cf"] . "&x=" .  $_REQUEST["x"] . "&y=" .  $_REQUEST["y"] ."&p=1";
-  Header ("Location:" . $url."&".SID);
-  exit();
+	$msg=1;// Inform about upload failure
+	$url = "selector_media.php?folder=" . urlencode($folder) . "&type=" . $myRequest->getI("type") . "&sortorder=" . $myRequest->getI("sortorder"). "&cf=" .  $myRequest->getI("cf") . "&x=" .  $myRequest->getI("x") . "&y=" .  $myRequest->getI("y")."&doc=" .  $myRequest->getA("doc",PT_ALPHANUMERICINT.",") ."&p=1&msg=".$msg;
+	Header ("Location:" . $url);
+	exit();
 }
 
-// EIGENSCHAFTEN
-
+// Additional properties
 
 $mySQL = new SQLBuilder();
 
-if ($_REQUEST["bez"]!="")
+if ($myRequest->get("bez")!="")
 {
-   $mySQL->addField("med_bez",$_REQUEST["bez"]);
+	$mySQL->addField("med_bez",$myRequest->get("bez"));
 }
+
 if ($type==MB_IMAGE)
 {
-  $mySQL->addField("med_alt",$_REQUEST["alt"]);
+	$mySQL->addField("med_alt",$myRequest->get("alt"));
 }
-$mySQL->addField("med_keywords",$_REQUEST["keywords"]);
 
-if ($_REQUEST["comment"] !="" AND $iptc !="")
+$mySQL->addField("med_keywords",$myRequest->get("keywords"));
+
+if ($myRequest->get("comment") !="" AND $iptc !="")
 {
-  $mySQL->addField("med_comment",$_REQUEST["comment"]."\n\n".$iptc);
+	$mySQL->addField("med_comment",$myRequest->get("comment")."\n\n".$iptc);
 }
 else
 {
-  $mySQL->addField("med_comment",$_REQUEST["comment"].$iptc);
+	$mySQL->addField("med_comment",$myRequest->get("comment").$iptc);
 }
 
 $sql = $mySQL->update("media","med_id =" . $id);
 $myDB->query($sql);
 
- $url = "selector_media.php?folder=" . urlencode($folder) . "&type=" . $_REQUEST["type"] . "&sortorder=" . $_REQUEST["sortorder"]. "&cf=" .  $_REQUEST["cf"] . "&x=" .  $_REQUEST["x"] . "&y=" .  $_REQUEST["y"]."&p=1";
+// size check for images, delete uploads with wrong size or format
+$x = $myRequest->getI("x");
+$y = $myRequest->getI("y");
+if ($type==MB_IMAGE)
+{
+
+	if ($x!=0 OR $y!=0)
+	{
+		$myImg = new PhenotypeImage($id);
+		if ($myImg->isLoaded())
+		{
+			if ($x!=0 AND $myImg->x != $x)
+			{
+				$myMB->deleteMediaObject($id);
+				$msg=2;
+			}
+			elseif ($y!=0 AND $myImg->y != $y)
+			{
+				$myMB->deleteMediaObject($id);
+				$msg=2;
+			}
+		}
+		else 
+		{
+			$msg=1;
+		}
+	}
+}
+if ($type==MB_DOCUMENT)
+{
+	if ($x!=0 OR $y!=0)
+	{
+		$myMB->deleteMediaObject($id);
+		$msg=3;
+	}
+}
+
+$url = "selector_media.php?folder=" . urlencode($folder) . "&type=" . $myRequest->getI("type") . "&sortorder=" . $myRequest->getI("sortorder"). "&cf=" .  $myRequest->getI("cf") . "&x=" .  $myRequest->getI("x") . "&y=" .  $myRequest->getI("y")."&doc=" .  $myRequest->getA("doc",PT_ALPHANUMERICINT.",") ."&p=1&msg=".$msg;
 
 
-Header ("Location:" . $url."&".SID);
-?>
+Header ("Location:" . $url);

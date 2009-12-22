@@ -3388,6 +3388,8 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
       <td  class="windowFooterWhite">
 	  <?php if ($selectallbutton==true):?>
       <input id="btn_select_deselect" class="buttonWhite" type="button" value="<?php echo localeH("Select/Deselect all") ?>" style="width: 102px;" />
+      <?php else:?>
+      &nbsp;
       <?php endif?>
       </td>
         <td align="right" class="windowFooterWhite"><table border="0" cellpadding="0" cellspacing="1">

@@ -384,6 +384,11 @@ class PhenotypeMediaObjectStandard
 	{
 		return $this->snapshotData($usr_id);
 	}
+	
+	function isLoaded()
+	{
+		return $this->loaded;
+	}
 
 }
 ?>

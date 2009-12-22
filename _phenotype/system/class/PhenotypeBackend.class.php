@@ -114,7 +114,8 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 	function noAccess()
 	{
 		global $myPT;
-
+		ob_get_clean();
+		
 		$img_id = $myPT->getIPref("backend.img_id_cover_error"); // 385 x 145
 		if ($img_id==0)
 		{

@@ -1018,7 +1018,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 	    <?php
 
 
-	    $url = "backend.php?page=Editor,Media,browse&grp_id=".$this->grp_id . "&folder=" .$myPT->codeH($this->folder) ."&type=" .$this->type . "&sortorder=" . $this->sortorder . "&a=" . $this->itemcount."&p=";
+	    $url = "backend.php?page=Editor,Media,browse&grp_id=".$this->grp_id . "&folder=" .urlencode($this->folder) ."&type=" .$this->type . "&sortorder=" . $this->sortorder . "&a=" . $this->itemcount."&p=";
 
 	    $selectallbutton=false;
 	    if ($mySUser->checkRight("elm_lightbox"))

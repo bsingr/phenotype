@@ -832,14 +832,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			mkdir(CACHEPATH.CACHENR."/content/".$this->content_type."/".$tausend, UMASK);
 		}
 
-		/*
-		// Auskommentiert, weil die Notwendig automatisch Debugskins anzulegen nicht mehr
-		// besteht
-		if (!in_array("debug", $this->skins))
-		{
-		$this->skins[] = "debug";
-		}
-		*/
+
 		for ($i = 0; $i < count($this->skins); $i ++)
 		{
 			$skin = mb_strtolower($this->skins[$i]);
@@ -1213,6 +1206,16 @@ class PhenotypeContentStandard extends PhenotypeBase
 		}
 	}
 
+	/**
+	 * 
+	 *
+	 * @param $input
+	 * @param $bez
+	 * @param $folder
+	 * @param $changefolder
+	 * @param $infozeile
+	 * @param array allowed suffixes 
+	 */
 	function form_document_selector($input, $bez, $folder, $changefolder = 1, $infozeile = 0, $doctype = "")
 	{
 		$a = Array (PT_CON_FORM_DOCUMENTSELECTOR, $input, $bez, $folder, $changefolder, $infozeile, $doctype);

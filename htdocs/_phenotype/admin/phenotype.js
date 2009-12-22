@@ -113,7 +113,7 @@ function selector_image(formname,formelement,folder,changefolder,x,y)
 	});
 	*/
 	
-  popup('selector_media.php?folder=' + folder + '&cf=' + changefolder + '&x=' + x + "&y=" + y + '&sortorder=1&p=1&type=1','selector_image','scrollbars=no,width=501,height=640');
+  popup('selector_media.php?folder=' + folder + '&cf=' + changefolder + '&x=' + x + "&y=" + y + '&sortorder=1&p=1&type=1','selector_image','scrollbars=no,width=501,height=680');
 
   document.formname = formname;
   document.formelement = formelement;
@@ -122,7 +122,7 @@ function selector_image(formname,formelement,folder,changefolder,x,y)
 function selector_document(formname,formelement,folder,changefolder,doctype)
 {
   
-  popup('selector_media.php?folder=' + folder + '&cf=' + changefolder + '&doc=' + doctype + '&sortorder=1&p=1&type=2','selector_image','scrollbars=no,width=501,height=640');
+  popup('selector_media.php?folder=' + folder + '&cf=' + changefolder + '&doc=' + doctype + '&sortorder=1&p=1&type=2','selector_image','scrollbars=no,width=501,height=680');
 
   document.formname = formname;
   document.formelement = formelement;
@@ -131,7 +131,7 @@ function selector_document(formname,formelement,folder,changefolder,doctype)
 function selector_media(formname,formelement,folder,changefolder,doctype)
 {
   
-  popup('selector_media.php?folder=' + folder + '&cf=' + changefolder + '&doc=' + doctype + '&sortorder=1&p=1&type=-1','selector_image','scrollbars=no,width=501,height=640');
+  popup('selector_media.php?folder=' + folder + '&cf=' + changefolder + '&doc=' + doctype + '&sortorder=1&p=1&type=-1','selector_image','scrollbars=no,width=501,height=680');
 
   document.formname = formname;
   document.formelement = formelement;

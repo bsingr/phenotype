@@ -195,6 +195,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $myNav = new PhenotypeTree();
     $nav_id_start = $myNav->addNode(localeH("Overview"),"backend.php?page=Editor,Content",0,"r_");
     $sql = "SELECT * FROM content ORDER BY con_rubrik, con_bez";
+    
     if ($myPT->getPref("edit_content.flat_tree")==1)
     {
       $sql = "SELECT * FROM content ORDER BY con_bez";
@@ -709,31 +710,33 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $this->displayEAIF();
 
     $order = $myRequest->get("c");
+    $category = $myRequest->get("r");
+    
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
     	<tr>
         	<td class="windowTabTypeOnly"><table border="0" cellpadding="0" cellspacing="1">
             <tr>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=akt" class="tabmenuType<?php if($order=="akt"){echo"Active";} ?>"><?php echo localeH("Current");?></a></td>
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&r=<?php echo codeH($category)?>&c=akt" class="tabmenuType<?php if($order=="akt"){echo"Active";} ?>"><?php echo localeH("Current");?></a></td>
 				<?php
 				// Individuelle Tabs
 				foreach ($myCO->_extratabs AS $k => $v)
 				{
 				  $titel = $v[0];
 				?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=etab_<?php echo $k ?>" class="tabmenuType<?php if($order=="etab_".$k){echo"Active";} ?>"><?php echo $titel ?></a></td>
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&r=<?php echo codeH($category)?>&c=etab_<?php echo $k ?>" class="tabmenuType<?php if($order=="etab_".$k){echo"Active";} ?>"><?php echo $titel ?></a></td>
 				<?php
 				}
 				if ($myCO->tab_az)
 				{
 				?>
-			  	<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
+			  	<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&r=<?php echo codeH($category)?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
               		<?php
               		for ($i=1;$i<=26;$i++)
               		{
               		  $c = chr(64+$i);
 			  		?>
-			  		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=<?php echo $c ?>" class="tabmenuType<?php if($order==$c){echo"Active";} ?>"><?php echo $c ?></a></td>
+			  		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&r=<?php echo codeH($category)?>&c=<?php echo $c ?>" class="tabmenuType<?php if($order==$c){echo"Active";} ?>"><?php echo $c ?></a></td>
 				  	<?php
               		}
 				}
@@ -741,24 +744,24 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				{
 				  $_az = Array("ABC","DEF","GHIJ","KLMN","OPQR","STU","VWXYZ");
 		  			?>
-		  	 		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
+		  	 		<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&r=<?php echo codeH($category)?>&c=num" class="tabmenuType<?php if($order=="num"){echo"Active";} ?>">0-9</a></td>
        	  			<?php
        	  			foreach ($_az AS $k)
        	  			{
 		  				?>
-		  				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=<?php echo mb_strtolower($k) ?>" class="tabmenuType<?php if($order==mb_strtolower($k)){echo"Active";} ?>"><?php echo $k ?></a></td>
+		  				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&r=<?php echo codeH($category)?>&c=<?php echo mb_strtolower($k) ?>" class="tabmenuType<?php if($order==mb_strtolower($k)){echo"Active";} ?>"><?php echo $k ?></a></td>
 				  		<?php
        	  			}
 				}
 				if ($myCO->tab_alle)
 				{
 		      	?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=alle" class="tabmenuType<?php if($order=="alle"){echo"Active";} ?>"><?php echo locale("All") ?></a></td><?php
+				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&r=<?php echo codeH($category)?>&c=alle" class="tabmenuType<?php if($order=="alle"){echo"Active";} ?>"><?php echo locale("All") ?></a></td><?php
 				}
 				if ($myCO->tab_id)
 				{
 			  	?>
-				<td align="center"><a href="backend.php?page=Editor,Content,select&con_id=<?php echo $this->con_id ?>&c=id" class="tabmenuType<?php if($order=="id"){echo"Active";} ?>">ID</a></td><?php
+				<td align="center"><a href="backend.php?page=Editor,Content,select&r=<?php echo codeH($category)?>&con_id=<?php echo $this->con_id ?>&c=id" class="tabmenuType<?php if($order=="id"){echo"Active";} ?>">ID</a></td><?php
 			  }?>
             </tr>
         </table></td>
@@ -844,8 +847,19 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		  {
 		    $sql .= " AND " . $filter;
 		  }
-		  $extratab  = $myCO->_extratabs[mb_substr($order,5)];
+		  $etab_key = mb_substr($order,5);
+
+		  if (!is_array($myCO->_extratabs) OR !array_key_exists($etab_key,$myCO->_extratabs))
+		  {
+		  	$this->noAccess();
+		  }
+		  $extratab  = $myCO->_extratabs[$etab_key];
+		  if (!is_array($extratab) OR $extratab[1]=="")
+		  {
+		  	throw new Exception ("Wrong extratab configuration.");
+		  }
 		  $sql .= " AND " .$extratab[1];
+		  
 		}
 
 

@@ -30,7 +30,7 @@ $myAdm = new PhenotypeAdmin();
 <html>
 <head>
 <title>Phenotype <?php echo PT_VERSION ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="site.css" rel="stylesheet" type="text/css">
@@ -54,13 +54,16 @@ body {
 self.focus();
 </script>
 
-	 <form action="selector_media_upload2.php" method="post" enctype="multipart/form-data" name="form1">
-	  <input type="hidden" name="cf" value="<?php echo $_REQUEST["cf"] ?>">
-<input type="hidden" name="x" value="<?php echo $_REQUEST["x"] ?>">
-<input type="hidden" name="y" value="<?php echo $_REQUEST["y"] ?>">
+<form action="selector_media_upload2.php" method="post" enctype="multipart/form-data" name="form1">
+<input type="hidden" name="cf" value="<?php echo $myRequest->getI("cf")?>">
+<input type="hidden" name="folder" value="<?php echo $myRequest->getH("folder")?>">
+<input type="hidden" name="x" value="<?php echo $myRequest->getI("x")?>">
+<input type="hidden" name="y" value="<?php echo $myRequest->getI("y")?>">
 <input type="hidden" name="p" value="1">
-<input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
-<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   
+<input type="hidden" name="sortorder" value="<?php echo $myRequest->getI("sortorder")?>">
+<input type="hidden" name="type" value="<?php echo $myRequest->getI("type")?>">	
+<input type="hidden" name="doc" value="<?php echo $myRequest->getA("doc",PT_ALPHANUMERICINT.",")?>">
+
 				   
 <table width="495" border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -89,17 +92,17 @@ $html = $myLayout->workarea_form_text(locale("Title"),"bez","");
 $html .= $myLayout->workarea_form_text(locale("Alternate"),"alt","");
 $myLayout->workarea_row_draw(locale("Name"),$html); 
 $myPT->startBuffer();
-  ?>
-  <input name="userfile" type="file" class="input"><br>
-  <input type="checkbox" value="1" name="documentonly"> <?php echo localeH("treat images like documents");?>    		
-  <?php
-  $html = $myPT->stopBuffer();
-  $myLayout->workarea_row_draw(locale("Image / Document"),$html); 
+?>
+<input name="userfile" type="file" class="input"><br>
+<input type="checkbox" value="1" name="documentonly"> <?php echo localeH("treat images like documents");?>    		
+<?php
+$html = $myPT->stopBuffer();
+$myLayout->workarea_row_draw(locale("Image / Document"),$html); 
 
 
 $myPT->startBuffer();
 
-if ($_REQUEST["cf"]==1)
+if ($myRequest->getI("cf")==1)
 {
 ?>
 <select name="folder1" class="input" style="width:240px">
@@ -107,25 +110,24 @@ if ($_REQUEST["cf"]==1)
 $myMB = new PhenotypeMediabase();
 $_folder = $myMB->getLogicalFolder();
 if (!in_array("_upload",$_folder))
-		{
-			$_folder[]="_upload";
-			asort($_folder);
-		}
-		if (!in_array($myRequest->get("folder"),$_folder))
-		{
-			$_folder[]=$myRequest->get("folder");
-			asort($_folder);
-		}
-		  foreach ($_folder AS $k)
-          {
-            $selected ="";
-			if ($_REQUEST["folder"]==$k){$selected="selected";}
-
-          ?>
-         <option <?php echo $selected ?>><?php echo $myPT->codeH($k) ?></option>
-          <?php
-          }
-          ?>
+{
+	$_folder[]="_upload";
+	asort($_folder);
+}
+if (!in_array($myRequest->get("folder"),$_folder))
+{
+	$_folder[]=$myRequest->get("folder");
+	asort($_folder);
+}
+foreach ($_folder AS $k)
+{
+    $selected ="";
+	if ($myRequest->get("folder")==$k){$selected="selected";}
+	?>
+ 	<option <?php echo $selected ?>><?php echo $myPT->codeH($k) ?></option>
+  	<?php
+}
+?>
 </select><br><br><input name="folder1_new" type="text" class="input" value="" style="width:230px">
 <?php
 }
@@ -134,8 +136,11 @@ else
 ?>
 <input type="hidden" name="folder1" value="<?php echo $_REQUEST["folder"] ?>">
 <input type="hidden" name="folder1_new" value="<?php echo $_REQUEST["folder"] ?>">
-<?php echo $_REQUEST["folder"] ?>
-<?php
+<?php 
+	if ($myRequest->get("folder")!=-1)
+	{
+		echo $myRequest->getH("folder");
+	}
 }
 
 $html = $myPT->stopBuffer();
@@ -168,27 +173,25 @@ foreach ($_mediagroups AS $k=>$v)
 {
 	$selected="";
 	if ($k == $grp_id){$selected='selected="selected"';} // Standard
-?>
-<option <?php echo $selected ?> value="<?php echo $k ?>"><?php echo $v ?></option>
-<?php
+	?>
+	<option <?php echo $selected ?> value="<?php echo codeH($k) ?>"><?php echo codeH($v) ?></option>
+	<?php
 }
 
 $html = $myPT->stopBuffer();
 $myLayout->workarea_row_draw(locale("Mediagroup"),$html);
 ?>
-   <table width="100%" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td class="windowFooterWhite">
-		    &nbsp;
-			</td>
-            <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Upload");?>">&nbsp;&nbsp;</td>
-          </tr>
-        </table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="windowFooterWhite">
+    &nbsp;
+	</td>
+    <td align="right" class="windowFooterWhite"><input type="submit" class="buttonWhite" style="width:102px"value="<?php echo localeH("Upload");?>">&nbsp;&nbsp;</td>
+  </tr>
+</table>
 <?php
 $myLayout->workarea_stop_draw();
- 
 ?>
 </form>				
-				
 </body>
 </html>
