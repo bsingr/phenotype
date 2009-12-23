@@ -146,7 +146,20 @@ if ($type==MB_DOCUMENT)
 		$myMB->deleteMediaObject($id);
 		$msg=3;
 	}
+}	
+$_docs = explode(",",$myRequest->getA("doc",PT_ALPHANUMERICINT.","));
+$_docs = array_filter($_docs);
+
+if (count($_docs)>0)
+{
+
+	if (!in_array($suffix,$_docs))
+	{
+		$myMB->deleteMediaObject($id);
+		$msg=4;
+	}
 }
+
 
 $url = "selector_media.php?folder=" . urlencode($folder) . "&type=" . $myRequest->getI("type") . "&sortorder=" . $myRequest->getI("sortorder"). "&cf=" .  $myRequest->getI("cf") . "&x=" .  $myRequest->getI("x") . "&y=" .  $myRequest->getI("y")."&doc=" .  $myRequest->getA("doc",PT_ALPHANUMERICINT.",") ."&p=1&msg=".$msg;
 

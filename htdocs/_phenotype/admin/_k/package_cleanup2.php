@@ -119,7 +119,6 @@ $myPT->startBuffer();
     if ($myRequest->getI("application")){$myMgr->cleanupApplication();}
     if ($myRequest->getI("hostconfig")){$myMgr->cleanupHostConfig();}
     if ($myRequest->getI("backend")){$myMgr->cleanupBackend();}
-    if ($myRequest->getI("languagemaps")){$myMgr->cleanupLanguageMaps();}
     if ($myRequest->getI("htdocs")){$myMgr->cleanupWebroot();}    
     if ($myRequest->getI("storage")){$myMgr->cleanupStorage();}  
     if ($myRequest->getI("dirtemp")){$myMgr->cleanupTemp();}    

@@ -65,7 +65,7 @@ if ($mySUser->checkRight("elm_page"))
 		if (isset($rechte["access_grp_" . $row["K"]]))
 		{
 			if ($grp_id=="" OR $grp_id=="-1"){$grp_id=$row["K"];}
-			$html .='<option value="'. $row["K"] .'" ' . $selected . '>' . $row["V"] . '</option>';
+			$html .='<option value="'. codeH($row["K"]) .'" ' . $selected . '>' . $row["V"] . '</option>';
 		}
 	}
 
@@ -130,7 +130,7 @@ if ($mySUser->checkRight("elm_content"))
 		if ($mySUser->checkRight("con_".$row["con_id"])){$access=1;}
 		if ($access==1)
 		{
-			$myNav->addNode($row["con_bez"],"backend.php?page=Editor,Content,select&con_id=".$row["con_id"]."&c=akt",$nav_id,$row["con_id"]);
+			$myNav->addNode($row["con_bez"],"backend.php?page=Editor,Content,select&con_id=".$row["con_id"]."&c=akt&r=".$row["con_rubrik"],$nav_id,$row["con_id"]);
 		}
 
 	}
@@ -515,7 +515,7 @@ if ($mySUser->checkRight("elm_mediabase"))
 		  ?>
 		  </a>
 		   </td>
-            <td class="tableBody"><?php echo $row_data["med_bez"] ?></td>
+            <td class="tableBody"><?php echo codeH($row_data["med_bez"]) ?></td>
 		    <td class="tableBody"><?php echo date('d.m.Y H:i',$row_data["med_date"]) ?><br><?php echo $myAdm->displayUser($row_data["usr_id"]); ?></td>
             <td>&nbsp;</td>
 			<td align="right" nowrap class="tableBody"><a href="backend.php?page=Editor,Media,edit&id=<?php echo $row_data["med_id"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit");?>" width="22" height="22" border="0" align="absmiddle"></a></td>

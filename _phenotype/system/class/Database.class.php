@@ -53,7 +53,7 @@ class PhenotypeDatabase
     }
     $this->selectDatabase();
 
-    if (PT_DEBUG==1)
+    if (PT_DEBUG==1 OR PT_VERBOSE_UNTIL>time())
     {
       $this->debug=1;
     }
@@ -121,7 +121,7 @@ class PhenotypeDatabase
 
     if (mysql_errno($this->dbhandle))
     {
-      if (PT_DEBUG==1)
+      if (PT_DEBUG==1 OR PT_VERBOSE_UNTIL>time())
       {
         global $myPT;
         $_traces =	debug_backtrace();

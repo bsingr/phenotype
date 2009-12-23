@@ -87,7 +87,7 @@ class PhenotypeLog {
 
 				$cookie = md5("on".PT_SECRETKEY);
 
-				if (PT_DEBUG==1 AND $_COOKIE["pt_debug"]==$cookie)
+				if ((PT_DEBUG==1 AND $_COOKIE["pt_debug"]==$cookie) OR PT_VERBOSE_UNTIL>time())
 				{
 					require_once(SYSTEMPATH."firephp/FirePHP.class.php");
 

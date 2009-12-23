@@ -745,6 +745,12 @@ class PhenotypeInstaller
 		$exps[] = '/^define \("PT_DEBUG",.+\);/';
 		$subs[] = 'define ("PT_DEBUG",'.(int)$this->app_debug_mode.');';
 
+		// force Phenotype to be verbose for one week
+		$exps[] = '/^define \("PT_VERBOSE_UNTIL",.+\);/';
+		$subs[] = 'define ("PT_VERBOSE_UNTIL",'.( time() + 3600*24*7).');';
+		
+		
+		
 		// frontend session
 		$exps[] = '/^define \("PT_FRONTENDSESSION",.+\);/';
 		$subs[] = 'define ("PT_FRONTENDSESSION",'.(int)$this->app_frontend_session.');';

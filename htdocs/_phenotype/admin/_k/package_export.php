@@ -185,24 +185,6 @@ $myPT->startBuffer();
 		}
 		$myLayout->workarea_row_draw(locale("Backend classes"), $html);
 		
-		/*
-		$html = "";
-		$directory = APPPATH . "languagemaps/";
-		$fp = @opendir($directory);
-		if ($fp)
-		{
-			while (false !== ($file = readdir($fp)))
-			{
-				if ($file != "." && $file != ".." && $file != ".svn")
-				{
-					$file = str_replace('.',"_",$file);
-					$html = $myLayout->workarea_form_checkbox("", "lmap_".$file, 1,$file);
-
-				}
-			}
-		}
-		$myLayout->workarea_row_draw(locale("Language maps"), $html);
-		*/	
 		$myLayout->workarea_stop_draw();
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">

@@ -190,3 +190,44 @@ width:500px;
 height:100%;
 border: 1px solid green;
 }
+
+.form_coords_container
+{
+position:relative;
+}
+.form_coords_image
+{
+padding:0px;
+margin:0px;
+
+margin-bottom:10px;
+
+}
+.form_coords_image img
+{
+opacity:0.5;
+filter: alpha(opacity=50);
+cursor: crosshair;
+}
+.form_coords_marker
+{
+margin-left:-8px;
+margin-top:-8px;
+top: 0px;
+left: 0px;
+width:16px;
+height:16px;
+position:absolute;
+background: url(img/tag.png);
+cursor: crosshair;
+}
+
+
+// Autocomplete
+
+.autocomplete-w1 { background:url(img/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:6px 0 0 6px; /* IE6 fix: */ _background:none; _margin:1px 0 0 0; }
+.autocomplete { border:3px solid #FFF; background:#e9ecee; cursor:default; text-align:left; max-height:350px; overflow:auto; margin: 4px 6px 6px 0px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
+.autocomplete .selected { background:#d1d6db; }
+.autocomplete div { color:#2C1B08;font-family:sans-serif;font-size:11px;padding:2px 5px; white-space:nowrap; overflow:hidden; }
+.autocomplete strong { font-weight:normal; color:#0056c2; }
+

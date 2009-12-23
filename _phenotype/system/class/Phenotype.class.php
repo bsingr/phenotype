@@ -1028,7 +1028,7 @@ class PhenotypeStandard extends PhenotypeBase
 		$_hint["file"] = $errfile;
 		$_hint["line"] = $errline;
 
-		if (PT_FRONTEND!=1 AND PT_DEBUG==1 AND $errno==E_WARNING)
+		if (PT_FRONTEND!=1 AND (PT_DEBUG==1 OR PT_VERBOSE_UNTIL>time()) AND $errno==E_WARNING)
 		{
 			echo "<br/><strong>".$errstr." in line ". $errline."</strong><br/>";
 		}
@@ -1080,7 +1080,8 @@ class PhenotypeStandard extends PhenotypeBase
 		global $myApp;
 		global $myLog;
 		$cookie = md5("on".PT_SECRETKEY);
-		if (!PT_DEBUG==1 OR  $_COOKIE["pt_debug"]!=$cookie)
+		
+		if (($_COOKIE["pt_debug"]!=$cookie OR PT_DEBUG==0) AND PT_VERBOSE_UNTIL<time() )
 		{
 			ob_clean();
 			$myApp->throw500($myPage->id);

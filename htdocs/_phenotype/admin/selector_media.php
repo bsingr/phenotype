@@ -97,7 +97,10 @@ if (count($_mediagroups)==0){$_mediagroups=Array(-1);}
 		    		break;
 	    		case 3:
 		    		$message = locale("Upload canceled! Unknown image format / not an image.");
-		    		break;		    		
+		    		break;	
+	    		case 4:
+	    			$message = locale("Upload canceled! Wrong file type.");
+	    			break;	    		
 		    }
 		    ?>
 			<p><?php echo codeH($message)?></p>

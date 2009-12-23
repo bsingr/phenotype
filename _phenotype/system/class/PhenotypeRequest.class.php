@@ -170,7 +170,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 						if (mysql_num_rows($rs)>1 OR $uniqueURL==false)// no unique hit
 						{
 							$cookie = md5("on".PT_SECRETKEY);
-							if (PT_DEBUG==1 AND  $_COOKIE["pt_debug"]==$cookie)
+							if ((PT_DEBUG==1 AND  $_COOKIE["pt_debug"]==$cookie) OR PT_VERBOSE_UNTIL>time())
 							{
 								throw new Exception("smartURL '".$smartURL."' not unique.\nCheck your smartURL setup. Probably you have to activate 'full path' for some pagegroups.");
 							}

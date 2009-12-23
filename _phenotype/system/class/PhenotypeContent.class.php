@@ -4005,6 +4005,29 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$this->set($_fconfig["property"],$val);
 	}
 	
+	public function form_content_autocomplete($title, $property, $con_id, $size=200,$addzerodots=true, $statuscheck=true,$sql_where="")
+	{
+		$this->form[] = array(
+		"form_method" =>"form_content_autocomplete",
+		"title" =>$title,
+		"property" => $property,
+		"con_id" => (int)$con_id,
+		"size" => (int)$size,
+		"addzerodots"=>(boolean)$addzerodots,
+		"statuscheck"=>(boolean)$addzerodots,
+		"sql_where"=>(int)$sql_where
+		);
+	}
+	
+	protected function _form_content_autocomplete_display($_fconfig)
+	{
+		global $myLayout;
+		$name = $this->formid."_".$_fconfig["property"];
+		$val = $this->get($_fconfig["property"]);
+	    echo $myLayout->workarea_form_text("", $name, $val, $_fconfig["size"], 0,array("class"=>"form_content_autcomplete"));
+	}
+	
+	
 	function setErrorText($s)
 	{
 		$this->errorText = $s;

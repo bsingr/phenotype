@@ -131,6 +131,10 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         $this->displayDateSelector($date,$element);
         return;
         break;
+      case "autocomplete":
+      	$this->displayAutoCompleteMatches($myRequest->get("query"),$_matches);
+      	return;
+      	break;
       default:
         $this->fillContentArea1($this->renderOverview());
         break;
@@ -1863,6 +1867,18 @@ if (date("m",$nachmonat)==date("m",$highlight)){$nachmonat =mktime(0,0,0, date("
 		
 
 		<?php
+  }
+  
+  
+  function displayAutoCompleteMatches($query,$_matches)
+  {
+  	?>
+	{
+	 query:'<?php echo codeH($query)?>',
+	 suggestions:['Liberia','Libyan Arab Jamahiriya','Liechtenstein','Lithuania'],
+	 data:['LR','LY','LI','LT']
+	}
+  	<?php 
   }
 }
 ?>

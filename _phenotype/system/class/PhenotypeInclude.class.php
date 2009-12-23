@@ -477,7 +477,9 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 
 			if (!method_exists($this,"executeUnknownAction"))
 			{
-				if (!PT_DEBUG==1 OR !isset($_COOKIE["pt_debug"]))
+				$cookie = md5("on".PT_SECRETKEY);
+		
+				if (($_COOKIE["pt_debug"]!=$cookie OR PT_DEBUG==0) AND PT_VERBOSE_UNTIL<time() )
 				{
 					ob_clean();
 
@@ -538,7 +540,9 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 			$template = $action . $view;
 			if ($$template=="")
 			{
-				if (!PT_DEBUG==1 OR !isset($_COOKIE["pt_debug"]))
+				$cookie = md5("on".PT_SECRETKEY);
+		
+				if (($_COOKIE["pt_debug"]!=$cookie OR PT_DEBUG==0) AND PT_VERBOSE_UNTIL<time() )
 				{
 					ob_get_clean();
 

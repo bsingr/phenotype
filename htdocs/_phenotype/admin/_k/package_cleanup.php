@@ -179,7 +179,6 @@ $myPT->startBuffer();
 		$html .= $myLayout->workarea_form_checkbox("", "application", 0,locale("reset _application.inc.php and preferences.xml"));
 		$html .= $myLayout->workarea_form_checkbox("", "hostconfig", 0,locale("clean _host.config.inc.php"));
 		$html .= $myLayout->workarea_form_checkbox("", "backend", 0,locale("delete application specific backend classes"));
-		//$html .= $myLayout->workarea_form_checkbox("", "languagemaps", 0,"Languagemaps löschen");
 		$html .= $myLayout->workarea_form_checkbox("", "dataobject", 0,locale("delete dataobjects"));
 		$html .= $myLayout->workarea_form_checkbox("", "snapshots", 0,locale("delete snapshots"));
 		$myLayout->workarea_row_draw(locale("Application"), $html);

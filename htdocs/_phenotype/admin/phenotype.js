@@ -703,3 +703,54 @@ $(document).ready(function()
 	} // end of pt_bak == "Editor_Content"	
 	
 });
+
+$(document).ready(function()
+ {
+    // Activate form_content_autocomplete
+
+    if ($('.form_content_autcomplete').length > 0) 
+    {
+    	$.getScript("jQuery.autocomplete.js", function(){
+	    	$('.form_content_autcomplete').autocomplete({ 
+	    	    serviceUrl:'backend.php?page=Editor,Content,autocomplete',
+	    	    minChars:2, 
+	      	    maxHeight:400,
+	    	    width:300,
+	    	    // callback function:
+	    	    onSelect: function(value, data){ alert('You selected: ' + value + ', ' + data); }
+	    	  });
+    	});
+    };
+    
+   // Activate form_coords javascript logic	
+   $('.form_coords_image').unbind();
+   $('.form_coords_image').mousedown(function(e)
+   {
+   	    var formid = $(this).attr('rel');
+		var w = $('img',this).width();
+		var h = $('img',this).height();   	
+   		var pos = $('img',this).offset();
+   		
+   		var src = $('img',this).attr('src')
+   		var img = new Image();
+		img.src = src;
+
+		var x = (e.pageX);
+		var y = (e.pageY);
+		var x = (e.pageX - pos.left)/w*img.width;
+		var y = (e.pageY - pos.top)/h*img.height;
+		
+		x = parseInt(x);
+		y = parseInt(y);
+        $(':input[name='+formid+'_x]').val(x);
+        $(':input[name='+formid+'_y]').val(y);
+        
+        // rescale x/y again
+        x=x/img.width*w;
+        y=y/img.height*h;        
+        
+        $('.form_coords_marker',this).css({'left':x+'px','top':y+'px'});
+
+   });
+ });
+

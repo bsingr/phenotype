@@ -368,33 +368,6 @@ $myPT->startBuffer();
     }
 
 
-    // Languagemaps
-	/*
-    $directory = APPPATH . "languagemaps/";
-    $fp = @opendir($directory);
-
-
-    if ($fp)
-    {
-    	while (false !== ($file = readdir($fp)))
-    	{
-    		if ($file != "." && $file != "..")
-    		{
-    			$filecheck = str_replace('.',"_",$file);
-    			if ($myRequest->check("lmap_".$filecheck))
-    			{
-    				echo "Copy languagemap " . $file . "<br/>";
-    				copy ($directory . $file,$dir."config/languagemaps/". $file);
-    				chmod ($dir."config/languagemaps/". $file,UMASK);
-    			}
-
-    		}
-    	}
-    }
-	*/
-
-
-
 
     $sql = "SELECT * FROM pagegroup ORDER BY grp_id";
     $rs = $myDB->query ($sql);

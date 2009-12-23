@@ -22,8 +22,11 @@
  * @subpackage system
  *
  */
-
-if (PT_DEBUG==1)
+if (!defined('PT_VERBOSE_UNTIL'))
+{
+	define ("PT_VERBOSE_UNTIL",0);
+}
+if (PT_DEBUG==1 OR PT_VERBOSE_UNTIL>time())
 {
   error_reporting(E_ALL ^ E_NOTICE); // DEVELOPMENT
   set_error_handler(array("Phenotype","handleError"));

@@ -61,16 +61,6 @@ class PhenotypeLayoutStandard
 	private $codeEditorConfigs = Array();
 
 
-	/*
-	* :TODO: necessary anyl longer?
-	function topline_addEntry($bez,$url)
-	{
-	$_entry["url"]=$url;
-	$_entry["bez"]=$bez;
-	$this->props_topline[] = $_entry;
-	}
-	*/
-
 	/**
 	 * adds a entry in the tab bar of the Layout
 	 *
@@ -207,7 +197,6 @@ class PhenotypeLayoutStandard
 	}
 
 
-	// ab hier aktuell
 
 	/**
 	 * draws the tabs set in the layout
@@ -586,15 +575,25 @@ class PhenotypeLayoutStandard
 	 * @param	string $val	value of the field content
 	 * @param integer $x	width of the field in px
 	 * @param boolean $br	should there be an <br> tag after the field?
-	 *
+	 * @param array attributes
+	 * 
 	 * @return string		html code output
 	 */
-	function workarea_form_text($bez,$name,$val,$x=300,$br=1)
+	function workarea_form_text($bez,$name,$val,$x=300,$br=1,$_attributes=Array())
 	{
 		$html="";
 		if($bez!=""){$html = $bez.'<br>';}
-		//$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities($val,null,PT_CHARSET).'">';
-		$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" class="input" value="'.htmlentities(stripcslashes($val),ENT_COMPAT,PT_CHARSET).'">'; //added 08/05/27 by Dominique B�s
+		if (array_key_exists("class",$_attributes))
+		{
+			$_attributes["class"]="input ".	$_attributes["class"];
+		}
+		else 
+		{
+			$_attributes["class"]="input";
+		}
+		$attributes = $this->htmlattributes($_attributes);
+			
+		$html .= '<input type="text" name="'.$name .'" style="width: '.$x.'px" '.$attributes.' value="'.htmlentities(stripcslashes($val),ENT_COMPAT,PT_CHARSET).'">'; //added 08/05/27 by Dominique B�s
 		if ($br==1){$html.="<br>";}
 		return $html;
 	}
@@ -4032,6 +4031,16 @@ if ($max!=0){$avg = ceil($avg/$max*$pix);}else{$avg=0;}
    		<?php
    		$html = $myPT->stopBuffer();
    		return $html;
+	}
+	
+	protected function htmlattributes($_attributes)
+	{
+		$attributes = "";
+		foreach ($_attributes AS $attribute => $value)
+		{
+			$attributes .=$attribute.'="'.codeH($value).'"';
+		}
+		return $attributes;
 	}
 }
 

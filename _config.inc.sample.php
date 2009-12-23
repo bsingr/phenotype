@@ -12,6 +12,11 @@ define ("PT_URL_STYLE", "smartURL");
 define ("PT_PHPIDS",0);
 define ('PT_PHPIDS_MAXIMPACT',10);
 
+// force Phenotype to be as verbose as in debug mode until .. 
+//(timestamp or 0 to deactivate)
+
+define ("PT_VERBOSE_UNTIL",0);
+
 // ------------------------------------------------------
 // pathes and urls - part 1
 // ------------------------------------------------------
@@ -99,12 +104,9 @@ define ("UMASK",0775);
 
 ini_set("session.use_cookies",1);
 ini_set("session.use_only_cookies",1);
-ini_set("session.auto_start",1);
+ini_set("session.auto_start",0);
 ini_set("session.use_trans_sid",0);
-ini_set('session.gc_probability', 1);
-ini_set('session.gc_divisor', 1);
 ini_set('session.gc_maxlifetime', 3600);
-ini_set('session.cookie_lifetime', 3600);
 
 
 // ------------------------------------------------------

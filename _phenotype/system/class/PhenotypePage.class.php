@@ -845,7 +845,7 @@ class PhenotypePageStandard extends PhenotypeBase
 
 		$cookie = md5("on".PT_SECRETKEY);
 
-		if (PT_DEBUG==1 AND $_COOKIE["pt_debug"]==$cookie)
+		if ((PT_DEBUG==1 AND $_COOKIE["pt_debug"]==$cookie)OR PT_VERBOSE_UNTIL>time())
 		{
 			$url_reload = $myRequest->getReloadUrl();
 			$myPT->startBuffer();

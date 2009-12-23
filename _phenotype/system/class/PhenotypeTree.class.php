@@ -62,7 +62,7 @@ class PhenotypeTree
 	{
 	  if (PT_DEBUG==1)
 	  {
-		echo "kein eindeutiger Wurzelknoten";
+		echo localeH("Inconclusive tree structure");
 	  }
 	  return;
 	}
