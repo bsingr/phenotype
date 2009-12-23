@@ -54,7 +54,6 @@ class PhenotypePackageStandard
 		$this->installApplicationFiles($hostconfig);
 
 		$this->installBackendClasses();
-		//$this->installLanguageMaps();
 
 		$this->configureMediabase();
 		$this->configureComponents();
@@ -1136,27 +1135,6 @@ class PhenotypePackageStandard
 		}
 	}
 
-	/*
-	function installLanguageMaps()
-	{
-		echo "<br/>--installLanguageMaps<br/>";
 
-		$directory = $this->directory . "config/languagemaps/";
-		$fp = @opendir($directory);
-
-		if ($fp)
-		{
-			while (false !== ($file = readdir($fp)))
-			{
-				if ( ($file{0} != ".") && ($file != "CVS") ) // ignore hidden files and CVS
-				{
-					echo "Kopiere Languagemap " . $file . "<br/>";
-					copy ($directory . $file,APPPATH . "languagemaps/". $file);
-					chmod (APPPATH . "languagemaps/". $file,UMASK);
-				}
-			}
-		}
-	}
-	*/
 }
-?>
+

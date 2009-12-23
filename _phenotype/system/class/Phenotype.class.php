@@ -130,14 +130,12 @@ class PhenotypeStandard extends PhenotypeBase
 	{
 		global $myPage;
 		global $myTC;
+		global $myLog;
 
-		// Time check initialize
-		//$myTC = new TCheck();
-		//$myTC->start();
 
 		if (PT_FRONTENDSESSION==1)
 		{
-			ini_set ("session.use_trans_sid",1);
+
 			session_start();
 		}
 
@@ -167,7 +165,9 @@ class PhenotypeStandard extends PhenotypeBase
 		{
 			$cache = $myRequest->getI("cache");
 		}
+
 		$myPage->display($cache);
+				
 		return $myPage;
 	}
 	public function executePreview()
@@ -845,30 +845,6 @@ class PhenotypeStandard extends PhenotypeBase
 	}
 
 
-	/*
-	function loadLanguageMap($mapfile,$prefix="")
-	{
-	$file = SYSTEMPATH . "languagemaps/".$mapfile;
-	$_xml = simplexml_load_file($file);
-
-	$language = $this->getPref("backend.language");
-
-	foreach ($_xml->phrases->section AS $_xml_section)
-	{
-	$name = utf8_decode((string)$_xml_section["name"]);
-	if ($prefix !=""){$name = $prefix .".".$name;}
-	foreach ($_xml_section->phrase AS $_xml_phrase)
-	{
-	$token = $name .".".utf8_decode((string)$_xml_phrase["name"]);
-	$v = utf8_decode((string)$_xml_phrase->$language);
-	if ($v==""){$v = utf8_decode((string)$_xml_phrase->en);}
-	$this->_phrases[$token]=$v;
-
-	}
-
-	}
-	}
-	*/
 
 	function displayContentXML($con_id,$mode="")
 	{

@@ -30,7 +30,7 @@ class PhenotypeDeployment
 {
 	public $debug = false;
 	
-	public $version = "2.92";
+	public $version = "2.10";
 
 	public $revision = 389;
 

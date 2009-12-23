@@ -352,8 +352,6 @@ class PhenotypeContentStandard extends PhenotypeBase
 						$myDB->query($sql);
 					}
 				}
-				//ALTER TABLE `gallery` ADD `bla` VARCHAR( 12 ) NOT NULL ;
-
 
 			}
 			// check for new fields
@@ -3883,6 +3881,130 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$myDB->query($sql);
 		}
 	}
+	
+	
+	/**
+	 * provides the possibility to mark a coordinate on an imqage
+	 *
+	 * @param string $title
+	 * @param string $property
+	 * @param int $img_id
+	 */
+	public function form_coords($title,$property,$img_id)
+	{
+		$this->form[] = array(
+		"form_method" =>"form_coords",
+		"title" =>$title,
+		"property" => $property,
+		"img_id"=>(int)$img_id
+		);
+	}
+
+	protected function _form_coords_display($_fconfig)
+	{
+		global $myLayout;
+
+		$token = $this->formid."_".$_fconfig["property"];
+
+
+		$myImg = new PhenotypeImage($_fconfig["img_id"]);
+		echo '<div class="form_coords_container">';
+		echo '<div class="form_coords_image" rel="'.$token.'">';
+		$myImg->display_maxX(500);
+
+		$x = $this->getI($_fconfig["property"]."_x");
+		$y = $this->getI($_fconfig["property"]."_y");
+		if ($myImg->x > 500)
+		{
+			$x = $x / ($myImg->x/500);
+			$y = $y / ($myImg->x/500);;
+		}
+
+		echo '<div class="form_coords_marker" style="left:'.$x.'px;top:'.$y.'px"></div></div>';
+		echo '</div>';
+
+
+		$val = $this->get($_fconfig["property"]."_x");
+		echo $myLayout->workarea_form_text("", $token."_x", $val, 35, 0);
+		echo "x";
+		$val = $this->get($_fconfig["property"]."_y");
+		echo $myLayout->workarea_form_text("", $token."_y", $val, 35, 0);
+	}
+
+	protected  function _form_coords_fetch($_fconfig)
+	{
+		global $myRequest;
+		$fname = $this->formid."_".$_fconfig["property"];
+		$val = $myRequest->getI($fname."_x");
+		$this->set($_fconfig["property"]."_x",$val);
+		$val = $myRequest->getI($fname."_y");
+		$this->set($_fconfig["property"]."_y",$val);
+	}
+
+	/**
+	 * provides the possibility to select an integer value with a drag & drop slider within 
+	 * it's given ranges
+	 *
+	 * @param string $title
+	 * @param string $property
+	 * @param int $min
+	 * @param int $max
+	 * @param int $step
+	 * @param int $default
+	 * @param int $width
+	 */
+	public function form_rangeselect($title,$property,$min,$max,$step=1,$default=0,$width=200)
+	{
+		$this->form[] = array(
+		"form_method" =>"form_rangeselect",
+		"title" =>$title,
+		"property" => $property,
+		"min"=>(int)$min,
+		"max"=>(int)$max,
+		"step"=>(int)$step,
+		"default"=>(int)$default,
+		"width"=>(int)$width,
+		
+		);
+	}
+
+	protected function _form_rangeselect_display($_fconfig)
+	{
+		global $myLayout;
+
+		$name = $this->formid."_".$_fconfig["property"];
+		$val = $this->get($_fconfig["property"]);
+		if ($val==""){$val=$_fconfig["default"];}
+		echo $myLayout->workarea_form_hidden($name, $val);
+		?>
+		<div id="slider_<?php echo $name?>_val" style="width:25px;display:inline;float:left"><?php echo $val?></div>
+		<div id="slider_<?php echo $name?>" style="width:<?php echo $_fconfig["width"]?>px;margin-left:25px;margin-top:3px"></div>
+		<script type="text/javascript">
+		$(document).ready(function()
+ 		{
+ 			$("#slider_<?php echo $name?>").slider({
+			value:<?php echo $val?>,
+			min: <?php echo $_fconfig["min"]?>,
+			max: <?php echo $_fconfig["max"]?>,
+			step:<?php echo $_fconfig["step"]?>,
+			slide: function(event, ui) {
+				$("#slider_<?php echo $name?>_val").html(ui.value);
+				$("input[name=<?php echo $name?>]").val(ui.value);
+			}
+			});		
+ 		});
+		</script>
+		<?php
+	}
+
+	protected function _form_rangeselect_fetch($_fconfig)
+	{
+		global $myRequest;
+		$fname = $this->formid."_".$_fconfig["property"];
+		$val = $myRequest->get($fname);
+		$this->set($_fconfig["property"],$val);
+	}
+	
 	function setErrorText($s)
 	{
 		$this->errorText = $s;

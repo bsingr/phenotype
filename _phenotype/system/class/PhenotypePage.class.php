@@ -672,6 +672,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		global $myRequest;
 		global $myTC;
 		global $myPage;
+		global $myLog;
 		$myPage = &$this; // Zugriff fuer Includes und dergleichen
 		if ($this->status==0)
 		{
@@ -776,6 +777,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		$myTC->stop();
 
 
+
 		$mySQL = new SQLBuilder();
 		$mySQL->addfield("pag_lastfetch",time(),DB_NUMBER);
 		if ($info=="Rebuild")
@@ -819,7 +821,9 @@ class PhenotypePageStandard extends PhenotypeBase
 			}
 		}
 
+		
 		echo $this->doDisplayPostProcessing($html,$myTC,$info);
+		//$myLog->log($v);die();
 
 	}
 
@@ -829,9 +833,11 @@ class PhenotypePageStandard extends PhenotypeBase
 		global $myRequest;
 		global $myDB;
 		global $myTC;
+		global $myLog;
+		
 		$myPage = &$this; // Zugriff fuer Includes und dergleichen
 
-
+		
 		$html = str_replace("#!#title#!#",$myPT->codeH($myPage->titel),$html);
 		$html = str_replace("#!#canonical_url#!#",$myPT->codeH($this->getUrl($this->lng_id)),$html);
 		$html = str_replace("#!#alttitle#!#",$myPT->codeH($myPage->alttitel),$html);
@@ -880,6 +886,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		{
 			$html = str_replace("#!#pt_debug#!#","",$html);
 		}
+
 		return $html;
 
 	}
@@ -2052,7 +2059,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		$sql = "SELECT * FROM page WHERE pag_id=".$this->id;
 		$rs = $myDB->query($sql);
 		$row = mysql_fetch_array($rs);
-		$_fields = Array("pag_uid","pag_bez","pag_titel","pag_alttitel","pag_comment","pag_quickfinder","pag_searchtext","pag_id_mimikry","pag_id_top","pag_pos","pag_cache","pag_status","usr_id_creator","pag_creationdate","usr_id","pag_date","pag_url","pag_url1","pag_url2","pag_url3","pag_url4");
+		$_fields = Array("pag_uid","pag_bez","pag_titel","pag_alttitel","pag_comment","pag_quickfinder","pag_searchtext","pag_id_mimikry","pag_id_top","pag_pos","pag_cache","pag_status","usr_id_creator","pag_creationdate","usr_id","pag_contenttype","pag_date","pag_url","pag_url1","pag_url2","pag_url3","pag_url4","pag_url5","pag_url6","pag_url7","pag_url8","pag_url9");
 		foreach ($_fields AS $k)
 		{
 			$xml.= '<'.$k.'>'.$myPT->codeX($row[$k]).'</'.$k.'>'."\n";
@@ -2218,6 +2225,13 @@ class PhenotypePageStandard extends PhenotypeBase
 				$mySQL->addField($k,(int)utf8_decode($_xml->content->$k),DB_NUMBER);
 			}
 
+			// Content-Type (since 2.10)
+			$pag_contenttype = (int)utf8_decode($_xml->content->pag_contenttype);
+			if ($pag_contenttype!=0)
+			{
+				$mySQL->addField("pag_contenttype",$pag_contenttype,DB_NUMBER);
+			}
+			
 			if ($action=="insert")
 			{
 				$mySQL->addField("pag_id",$pag_id,DB_NUMBER);

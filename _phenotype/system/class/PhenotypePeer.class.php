@@ -49,7 +49,7 @@ class PhenotypePeerStandard
 		{
 			$sql .=" ORDER BY " . $order;
 		}
-		if ($limit!="")
+		if ($limit!=="")
 		{
 			$sql .=" LIMIT ".$limit;
 		}
@@ -60,7 +60,7 @@ class PhenotypePeerStandard
 		{
 			$myCO = new $cname;
 			$myCO->init($row);
-			$_objects[$myCO->id]=$myCO;
+			$_objects[]=$myCO;
 		}
 		return ($_objects);
 	}

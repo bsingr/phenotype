@@ -62,7 +62,6 @@ class PhenotypeApplicationManager
 		self::cleanupApplication();
 		self::cleanupHostConfig();
 		self::cleanupBackend();
-		self::cleanupLanguageMaps();
 		self::cleanupWebroot();
 		self::cleanupStorage();
 		self::cleanupTemp();
@@ -679,25 +678,6 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
 		}
 	}
 
-	public function cleanupLanguageMaps()
-	{
-		$directory = APPPATH . "languagemaps/";
-		$fp = @opendir($directory);
-
-
-		if ($fp)
-		{
-			while (false !== ($file = readdir($fp)))
-			{
-				if ($file != "." && $file != ".." && $file != ".svn")
-				{
-					echo locale("Remove language map %1",array($file)) . "<br/>";
-					unlink ($directory . $file);
-				}
-			}
-		}
-
-	}
 
 	public function cleanupDataObjects()
 	{

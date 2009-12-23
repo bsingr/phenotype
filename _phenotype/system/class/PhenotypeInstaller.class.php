@@ -459,6 +459,7 @@ class PhenotypeInstaller
 			else
 			{
 				$_array[]=array("title"=>"short_open_tag","status"=>"wrong setting (active)","class"=>"red","hint"=>"");
+				$this->error_globalfeedback=true;
 			}
 
 			return ($_array);

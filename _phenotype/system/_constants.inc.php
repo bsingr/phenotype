@@ -96,11 +96,6 @@ define ("PT_CON_FORM_AJAX", 38);
 define ("PT_CON_FORM_UPLOAD", 39);
 define ("PT_CON_FORM_PASSWORD", 40);
 
-
-
-
-
-
 // constants for logging levels, facilities and options
 
 // the log levels:

@@ -863,7 +863,7 @@ phpinfo();
 		mkdir ($dir."package/storage/");
 		@chmod ($dir."package/storage/",UMASK);
 
-		$_dirs = Array("actions","backend","components","content","extras","includes","languagemaps","mediabase","page","roles","ticketsubjects");
+		$_dirs = Array("actions","backend","components","content","extras","includes","mediabase","page","roles","ticketsubjects");
 		foreach ($_dirs AS $k)
 		{
 			mkdir ($dir."package/config/".$k);

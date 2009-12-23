@@ -61,8 +61,12 @@ class PhenotypeMediaObjectStandard
 	public $loaded = false;
 
 
-	function getUrl ()
+	function getUrl ($fullurl=false)
 	{
+		if ($fullurl)
+		{
+			return (MEDIABASEFULLURL . $this->physical_folder . "/" . $this->filename);
+		}
 		return (MEDIABASEURL . $this->physical_folder . "/" . $this->filename);
 	}
 
