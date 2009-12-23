@@ -390,7 +390,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		{
 			unset($request[$exclude]);
 		}
-		$init = IDS_Init::init(dirname(__FILE__) . '/../phpids/lib/IDS/Config/Config.ini');
+		$init = IDS_Init::init(dirname(__FILE__) . '/../phpids/lib/IDS/Config/Config.ini.php');
 
 
 		$init->config['General']['base_path'] = dirname(__FILE__) . '/../phpids/lib/IDS/';
