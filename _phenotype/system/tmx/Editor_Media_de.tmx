@@ -477,5 +477,61 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>stark</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="File Types">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>File Types</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Dateitypen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="No fitting assets found.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>No fitting assets found.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Keine passenden Assets gefunden.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Suffix">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Suffix</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Suffix</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Types">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Types</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Typen</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload canceled! Unknown image format / not an image.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Upload canceled! Unknown image format / not an image.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Upload abgebrochen. Unbekanntes Bildformat oder kein Bild.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload canceled! Wrong file type.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Upload canceled! Wrong file type.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Upload abgebrochen. Falscher Dateityp.</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Upload canceled! Wrong image size.">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Upload canceled! Wrong image size.</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Upload abgebrochen. Falsche Bildgröße</tmx:seg>
+      </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="upload failed">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>upload failed</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Upload fehlgeschlagen</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

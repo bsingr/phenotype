@@ -337,6 +337,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Layout</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Lightbox">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Lightbox</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Sammelbox</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Login">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Login</tmx:seg>
@@ -840,13 +847,6 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>Snapshot eingespielt.</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Lightbox">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Lightbox</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Sammelbox</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

@@ -193,6 +193,10 @@
       <tmx:tuv xml:lang="en">
         <tmx:seg>Layout</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="Lightbox">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>Lightbox</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="Login">
       <tmx:tuv xml:lang="en">
         <tmx:seg>Login</tmx:seg>
@@ -480,10 +484,6 @@
 			<tmx:tu tuid="snapshot installed">
       <tmx:tuv xml:lang="en">
         <tmx:seg>snapshot installed</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="Lightbox">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>Lightbox</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

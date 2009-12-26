@@ -233,6 +233,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Config"][]="Records";
 		$_token["Config"][]="Remove Template";
 		$_token["Config"][]="Remove action %1";
+		$_token["Config"][]="Remove backend class %1";
 		$_token["Config"][]="Remove component %1";
 		$_token["Config"][]="Remove component group %1";
 		$_token["Config"][]="Remove contentobject %1";
@@ -429,6 +430,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="Delete objects in mediabase";
 		$_token["Editor_Media"][]="Document upload succesful";
 		$_token["Editor_Media"][]="Drag & Drop - Upload";
+		$_token["Editor_Media"][]="File Types";
 		$_token["Editor_Media"][]="Files";
 		$_token["Editor_Media"][]="First version added";
 		$_token["Editor_Media"][]="Folder";
@@ -445,6 +447,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="Mimetype";
 		$_token["Editor_Media"][]="New Files";
 		$_token["Editor_Media"][]="New version";
+		$_token["Editor_Media"][]="No fitting assets found.";
 		$_token["Editor_Media"][]="Nothing to import.";
 		$_token["Editor_Media"][]="Object %1 edited.";
 		$_token["Editor_Media"][]="Object deleted.";
@@ -460,7 +463,12 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="Shared properties";
 		$_token["Editor_Media"][]="Sharpen";
 		$_token["Editor_Media"][]="Size";
+		$_token["Editor_Media"][]="Suffix";
+		$_token["Editor_Media"][]="Types";
 		$_token["Editor_Media"][]="Upload";
+		$_token["Editor_Media"][]="Upload canceled! Unknown image format / not an image.";
+		$_token["Editor_Media"][]="Upload canceled! Wrong file type.";
+		$_token["Editor_Media"][]="Upload canceled! Wrong image size.";
 		$_token["Editor_Media"][]="Upload failed!";
 		$_token["Editor_Media"][]="Upload files";
 		$_token["Editor_Media"][]="Upload mediaobject";
@@ -487,6 +495,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Editor_Media"][]="strong";
 		$_token["Editor_Media"][]="target frame";
 		$_token["Editor_Media"][]="treat images like documents";
+		$_token["Editor_Media"][]="upload failed";
 		$_token["Editor_Media"][]="very strong";
 
 
@@ -867,7 +876,7 @@ class PhenotypeLocaleManagerStandard
 		$_token["Ticket"][]="today";
 		$_token["Ticket"][]="tomorrow";
 		$_token["Ticket"][]="week";
-		
+
 		$this->_token = $_token;
 
 	}

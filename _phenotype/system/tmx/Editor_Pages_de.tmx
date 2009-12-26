@@ -470,6 +470,13 @@
       <tmx:tuv xml:lang="de">
         <tmx:seg>Seite kopieren</tmx:seg>
       </tmx:tuv></tmx:tu>
+			<tmx:tu tuid="info line">
+      <tmx:tuv xml:lang="en">
+        <tmx:seg>info line</tmx:seg>
+      </tmx:tuv>
+      <tmx:tuv xml:lang="de">
+        <tmx:seg>Infozeile</tmx:seg>
+      </tmx:tuv></tmx:tu>
 			<tmx:tu tuid="marks the average value">
       <tmx:tuv xml:lang="en">
         <tmx:seg>marks the average value</tmx:seg>
@@ -567,13 +574,6 @@
       </tmx:tuv>
       <tmx:tuv xml:lang="de">
         <tmx:seg>sichtbar</tmx:seg>
-      </tmx:tuv></tmx:tu>
-			<tmx:tu tuid="info line">
-      <tmx:tuv xml:lang="en">
-        <tmx:seg>info line</tmx:seg>
-      </tmx:tuv>
-      <tmx:tuv xml:lang="de">
-        <tmx:seg>Infozeile</tmx:seg>
       </tmx:tuv></tmx:tu>
 			  </tmx:body>
 </tmx:tmx>

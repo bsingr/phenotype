@@ -560,18 +560,18 @@ CREATE TABLE IF NOT EXISTS `media` (
 --
 
 INSERT INTO `media` (`med_id`, `grp_id`, `med_bez`, `med_versioncount`, `med_physical_folder`, `med_bez_original`, `med_type`, `med_subtype`, `med_mimetype`, `med_x`, `med_y`, `med_thumb`, `med_alt`, `med_keywords`, `med_comment`, `med_logical_folder1`, `med_logical_folder2`, `med_logical_folder3`, `usr_id_creator`, `med_creationdate`, `med_date`, `usr_id`) VALUES
-(1, 1, 'Nils Hagemann', 0, 'I0610420', 'nils.jpg', 1, 'jpg', '', 60, 75, 1, '', '', '', '_system', '', '', 0, 0, 1093458207, 1),
-(2, 1, 'Peter Sellinger', 0, 'I0610420', 'peter.jpg', 1, 'jpg', '', 60, 71, 1, '', '', '', '_system', '', '', 0, 0, 1093458201, 1),
-(3, 1, 'Paul Sellinger', 0, 'I0610420', 'paul.jpg', 1, 'jpg', '', 60, 77, 1, '', '', '', '_system', '', '', 0, 0, 1093458195, 1),
-(4, 1, 'bild.jpg', 0, 'I0610420', 'bild.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails fÃ¼r Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
-(5, 1, 'event.jpg', 0, 'I0610420', 'event.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails fÃ¼r Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
-(6, 1, 'job.jpg', 0, 'I0610420', 'job.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails fÃ¼r Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
-(7, 1, 'konfiguration.jpg', 0, 'I0610420', 'konfiguration.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails fÃ¼r Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
-(8, 1, 'news.jpg', 0, 'I0610420', 'news.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails fÃ¼r Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
-(9, 1, 'promofeld.gif', 0, 'I0610420', 'promofeld.gif', 1, 'gif', '', 60, 40, 0, '', '', 'Thumbnails fÃ¼r Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
-(10, 1, 'shop.gif', 0, 'I0610420', 'shop.gif', 1, 'gif', '', 60, 40, 0, '', '', 'Thumbnails fÃ¼r Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
-(11, 1, 'Markus Griesbach', 0, 'I0610420', 'maggus.jpg', 1, 'jpg', '', 60, 75, 1, '', '', '', '_system', '', '', 10, 1153063188, 1153063202, 10),
-(13, 1, 'Michel', 0, 'I0610420', 'michel.jpg', 1, 'jpg', '', 60, 76, 1, '', '', '', '_system', '', '', 15, 1161453837, 1161453837, 15);
+(1, 1, 'Nils Hagemann', 0, 'I0912520', 'nils.jpg', 1, 'jpg', '', 60, 75, 1, '', '', '', '_system', '', '', 0, 0, 1093458207, 1),
+(2, 1, 'Peter Sellinger', 0, 'I0912520', 'peter.jpg', 1, 'jpg', '', 60, 71, 1, '', '', '', '_system', '', '', 0, 0, 1093458201, 1),
+(3, 1, 'Paul Sellinger', 0, 'I0912520', 'paul.jpg', 1, 'jpg', '', 60, 77, 1, '', '', '', '_system', '', '', 0, 0, 1093458195, 1),
+(4, 1, 'bild.jpg', 0, 'I0912520', 'bild.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails für Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
+(5, 1, 'event.jpg', 0, 'I0912520', 'event.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails für Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
+(6, 1, 'job.jpg', 0, 'I0912520', 'job.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails für Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
+(7, 1, 'konfiguration.jpg', 0, 'I0912520', 'konfiguration.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails für Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
+(8, 1, 'news.jpg', 0, 'I0912520', 'news.jpg', 1, 'jpg', '', 60, 40, 1, '', '', 'Thumbnails für Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
+(9, 1, 'promofeld.gif', 0, 'I0912520', 'promofeld.gif', 1, 'gif', '', 60, 40, 0, '', '', 'Thumbnails für Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
+(10, 1, 'shop.gif', 0, 'I0912520', 'shop.gif', 1, 'gif', '', 60, 40, 0, '', '', 'Thumbnails für Contentobjekte', '_system', '', '', 0, 0, 1098390582, 1),
+(11, 1, 'Markus Griesbach', 0, 'I0912520', 'maggus.jpg', 1, 'jpg', '', 60, 75, 1, '', '', '', '_system', '', '', 10, 1153063188, 1153063202, 10),
+(13, 1, 'Michel', 0, 'I0912520', 'michel.jpg', 1, 'jpg', '', 60, 76, 1, '', '', '', '_system', '', '', 15, 1161453837, 1161453837, 15);
 
 -- --------------------------------------------------------
 

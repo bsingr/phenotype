@@ -1388,7 +1388,7 @@ return $myPT->stopBuffer();
 		}
 		else
 		{
-			$doctype2="";
+			$doctype2=$doctype;
 		}
 		global $myDB;
 		global $myPT;
