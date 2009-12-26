@@ -4005,7 +4005,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$this->set($_fconfig["property"],$val);
 	}
 	
-	public function form_content_autocomplete($title, $property, $con_id, $size=200,$addzerodots=true, $statuscheck=true,$sql_where="")
+	public function form_content_autocomplete($title, $property, $con_id, $size=200, $statuscheck=true,$sql_where="",$use_fulltext=true)
 	{
 		$this->form[] = array(
 		"form_method" =>"form_content_autocomplete",
@@ -4013,20 +4013,126 @@ class PhenotypeContentStandard extends PhenotypeBase
 		"property" => $property,
 		"con_id" => (int)$con_id,
 		"size" => (int)$size,
-		"addzerodots"=>(boolean)$addzerodots,
-		"statuscheck"=>(boolean)$addzerodots,
-		"sql_where"=>(int)$sql_where
+		"statuscheck"=>(boolean)$statuscheck,
+		"sql_where"=>$sql_where,
+		"use_fulltext"=>(boolean)$use_fulltext
 		);
 	}
 	
 	protected function _form_content_autocomplete_display($_fconfig)
 	{
 		global $myLayout;
-		$name = $this->formid."_".$_fconfig["property"];
-		$val = $this->get($_fconfig["property"]);
-	    echo $myLayout->workarea_form_text("", $name, $val, $_fconfig["size"], 0,array("class"=>"form_content_autcomplete"));
+		$myPH = new PhenotypeSystemDataObject("ParameterHolder",$_fconfig);
+		$myPH->store(3600);
+		
+		$name_autcomplete_field = $this->formid."_".$_fconfig["property"];
+		$name_hidden_hash= $this->formid."_".$_fconfig["property"]."_hash";
+		$name_hidden_dat_id= $this->formid."_".$_fconfig["property"]."_dat_id";
+		
+		$val = (int)$this->get($_fconfig["property"]);
+		$title ="";
+		if ($val!=0)
+		{
+			$cname = "PhenotypeContent_" .(int)$_fconfig["con_id"];
+			$myCO = new $cname($val);
+			if ($myCO->isLoaded())
+			{
+				$title = $myCO->bez;
+			}
+		}
+	    echo $myLayout->workarea_form_text("", $name_autcomplete_field, $title, $_fconfig["size"], 0,array("class"=>"form_content_autocomplete"));
+	    echo $myLayout->workarea_form_hidden($name_hidden_hash,$myPH->get("_daohash"));
+	    echo $myLayout->workarea_form_hidden($name_hidden_dat_id,$val);
 	}
 	
+	protected function _form_content_autocomplete_fetch($_fconfig)
+	{
+		global $myRequest;
+		$fname = $this->formid."_".$_fconfig["property"];
+		$val = $myRequest->getI($fname."_dat_id");
+		$cname = "PhenotypeContent_" .(int)$_fconfig["con_id"];
+		$myCO = new $cname($val);
+		if ($myCO->isLoaded())
+		{
+				if ($myCO->bez != trim($myRequest->get($fname)))
+				{
+					$val=0;
+				}
+		}
+		else 
+		{
+			$val=0;
+		}
+		$this->set($_fconfig["property"],$val);
+	}
+	
+	
+	public function form_colorselect($title,$property,$_colors)
+	{
+		$this->form[] = array(
+		"form_method" =>"form_colorselect",
+		"title" =>$title,
+		"property" => $property,
+		"colors" => $_colors
+		);
+	}
+	
+	protected function _form_colorselect_display($_fconfig)
+	{
+		global $myLayout;
+   		global $myRequest;
+		$fname = $this->formid."_".$_fconfig["property"];
+		$val = $this->get($_fconfig["property"]);
+   		
+   		echo $myLayout->workarea_form_hidden($fname,$val);
+   		
+		$_colors = Array();
+		$index=0;
+		$i=0;
+		foreach ($_fconfig["colors"] AS $color)
+		{
+			if ($color==$val)
+			{
+				$index=$i;
+			}
+			$_colors[]="'".$color."'";
+			$i++;
+		}
+		?>
+		<div id="<?php echo $this->formid?>" class="syronex_colorpicker"></div>
+		<script type="text/javascript">
+		// Activate form_colorselect javascript logic
+	  	$(document).ready(function()
+		{
+			$.getScript("jQuery.syronex-colorpicker.js", function()
+		   	{
+		   		$('#<?php echo $this->formid?>').colorPicker(
+		   		{
+		   			defaultColor: <?php echo $index?>, // index of the default color (optional)
+		  			columns: 20,     // number of columns (optional)  
+		  			color: [<?php echo join(',',$_colors)?>],
+		  			click: function(color){
+		  				$('input:[name="<?php echo $fname?>"]').val(color);
+	
+		  			},
+		
+		   		});
+		   		
+		   	});
+	   	});
+   		</script>
+   		<?php
+
+	}
+	
+	
+	protected function _form_colorselect_fetch($_fconfig)
+	{
+		global $myRequest;
+		$fname = $this->formid."_".$_fconfig["property"];
+		$val = $myRequest->get($fname);
+		$this->set($_fconfig["property"],$val);
+	}
 	
 	function setErrorText($s)
 	{

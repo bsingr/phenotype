@@ -132,7 +132,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         return;
         break;
       case "autocomplete":
-      	$this->displayAutoCompleteMatches($myRequest->get("query"),$_matches);
+      	$this->displayAutoCompleteMatches();
       	return;
       	break;
       default:
@@ -1870,13 +1870,46 @@ if (date("m",$nachmonat)==date("m",$highlight)){$nachmonat =mktime(0,0,0, date("
   }
   
   
-  function displayAutoCompleteMatches($query,$_matches)
+  function displayAutoCompleteMatches()
   {
+  	global $myRequest;
+  	global $myLog;
+  	$myRequest->log();
+  	$myPH = new PhenotypeSystemDataObject("ParameterHolder",array("id"=>$myRequest->get("hash")));
+  	
+  	$con_id = (int)$myPH->get("con_id");
+  	$status = null;
+  	if ($myPH->get("statuscheck")==true)
+  	{
+  		$status = true;
+  	}
+  	$_filter = Array();
+  	if ($myPH->getB("use_fulltext")==true)
+  	{
+  		$_filter[]="(dat_bez LIKE '%".mysql_real_escape_string($myRequest->get("query"))."%' OR dat_fullsearch LIKE '%".mysql_real_escape_string($myRequest->get("query"))."%')";
+  	}
+  	else 
+  	{
+  		$_filter[]="dat_bez LIKE '%".mysql_real_escape_string($myRequest->get("query"))."%'";  		
+  	}
+  	if ($myPH->get("sql_where")!="")
+  	{
+  		$_filter[]=$myPH->get("sql_where");
+  	}
+  	
+  	$_objects = PhenotypePeer::getRecords($con_id,$status,"dat_bez",$_filter,"0,250");
+  	$_suggestions = Array();
+  	$_data = Array();
+  	foreach ($_objects AS $myCO)
+  	{
+  		$_suggestions[] = "'".addslashes($myCO->bez)."'";
+  		$_data[] = $myCO->id;
+  	}
   	?>
 	{
-	 query:'<?php echo codeH($query)?>',
-	 suggestions:['Liberia','Libyan Arab Jamahiriya','Liechtenstein','Lithuania'],
-	 data:['LR','LY','LI','LT']
+	 query:'<?php echo $myRequest->getH("query")?>',
+	 suggestions:[<?php echo join(",",$_suggestions);?>],
+	 data:[<?php echo join(",",$_data);?>]
 	}
   	<?php 
   }

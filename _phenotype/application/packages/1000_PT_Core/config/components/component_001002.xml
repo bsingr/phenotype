@@ -38,8 +38,8 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
 		$html = $this-&#62;get(&#34;html&#34;);
 
 		&#47;&#47; Remove PHP-Tags so nobody can insert code
-		$html = ereg_replace(&#34;&#60;\?[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; matching normal and short opening tags
-		$html = ereg_replace(&#34;&#60;\%[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; matching ASP-style tags
+		$html = mb_ereg_replace(&#34;&#60;\?[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; matching normal and short opening tags
+		$html = mb_ereg_replace(&#34;&#60;\%[^&#62;]*&#62;&#34;,&#34;&#34;,$html); &#47;&#47; matching ASP-style tags
 
 		return $html;
 	}
@@ -48,7 +48,7 @@ class PhenotypeComponent_1002 extends PhenotypeComponent
 	{
 		$s = $this-&#62;get(&#34;html&#34;);
 		&#47;&#47; Remove all tags
-		$s = ereg_replace(&#34;&#60;[^&#62;]*&#62;&#34;,&#34;&#34;,$s);
+		$s = mb_ereg_replace(&#34;&#60;[^&#62;]*&#62;&#34;,&#34;&#34;,$s);
 		return ($s);
 	}	
 	

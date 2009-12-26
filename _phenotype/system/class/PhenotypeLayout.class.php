@@ -655,7 +655,6 @@ class PhenotypeLayoutStandard
 	{
 		$html="";
 		if($bez!=""){$html = $bez.'<br>';}
-		// Hier war eben noch hard
 		$html .= '<textarea name="'.$name .'" rows="'.$r.'"style="width: '.$x.'px" class="input" wrap="physical">'.$val.'</textarea>';
 		if ($br==1){$html.="<br>";}
 		return $html;

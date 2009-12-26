@@ -186,6 +186,18 @@ class PhenotypeSystemDataObjectStandard extends PhenotypeDataObject
 		}
 		
 	}
+	
+	
+	public function buildDataParameterHolder($_params=array())
+	{
+		$this->paramhash = md5($this->paramhash);
+		$this->set("_daohash",$this->paramhash);
+		$this->paramhash = "#id#".$this->paramhash;
+		foreach ($_params AS $k => $v)
+		{
+			$this->set($k,$v);
+		}
+	}
 
 }
 

@@ -16,11 +16,11 @@
 					<cog_id>1</cog_id>
 					<lay_context>1</lay_context>
 				</block>
-			</blocks>				
+			</blocks>
 			<includes>
 			</includes>
 			<templates>
-				<page>&#60;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&#62;
+				<page>{pt_doctype dtd=&#34;XHTML1.0-Transitional&#34; charset=&#34;ISO-8859-1&#34;}
 &#60;!DOCTYPE html PUBLIC &#34;-&#47;&#47;W3C&#47;&#47;DTD XHTML 1.0 Transitional&#47;&#47;EN&#34; &#34;http:&#47;&#47;www.w3.org&#47;TR&#47;xhtml1&#47;DTD&#47;xhtml1-transitional.dtd&#34;&#62; 
 
 &#60;html xmlns=&#34;http:&#47;&#47;www.w3.org&#47;1999&#47;xhtml&#34;&#62;
@@ -33,7 +33,7 @@
 {$pt_block1}
 &#60;&#47;body&#62;
 &#60;&#47;html&#62;</page>
-				<print>&#60;?xml version=&#34;1.0&#34; encoding=&#34;ISO-8859-1&#34;?&#62;
+				<print>{pt_doctype dtd=&#34;XHTML1.0-Transitional&#34; charset=&#34;ISO-8859-1&#34;}
 &#60;!DOCTYPE html PUBLIC &#34;-&#47;&#47;W3C&#47;&#47;DTD XHTML 1.0 Transitional&#47;&#47;EN&#34; &#34;http:&#47;&#47;www.w3.org&#47;TR&#47;xhtml1&#47;DTD&#47;xhtml1-transitional.dtd&#34;&#62; 
 
 &#60;html xmlns=&#34;http:&#47;&#47;www.w3.org&#47;1999&#47;xhtml&#34;&#62;

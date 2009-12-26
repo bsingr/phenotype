@@ -77,8 +77,6 @@ define ("MEDIABASEPATH", SERVERPATH . "media/");
 define ("MEDIABASEURL", SERVERURL . "media/");
 define ("MEDIABASEFULLURL", SERVERFULLURL . "media/");
 
-define ("THIRDPARTYPATH", APPPATH . "3rdparty/");
-
 define ("SYSTEMPATH", BASEPATH . "_phenotype/system/");
 define ("SMARTYPATH", SYSTEMPATH . "smarty/libs/");
 define ("CLASSPATH", SYSTEMPATH . "class/");

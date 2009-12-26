@@ -26,16 +26,36 @@ class PhenotypeSmartyStandard extends Smarty
 {
 
 	/**
-   * Do not allow PHP Code within smarty templates
-   * 
-   * use SMARTY_PHP_PASSTHRU, if you want the PHP code to be executed (right after Phenotype caching)
-   *
-   * @var int
-   */
+	   * Do not allow PHP Code within smarty templates
+	   * 
+	   * use SMARTY_PHP_ALLOW, if you want the PHP code to be executed (right after Phenotype caching)
+	   * 
+	   * Attention!: 
+	   * Caused by Phenotypes file caching mechanism the option SMARTY_PHP_PASSTHRU is 
+	   * identical to SMARTY_PHP_ALLOW
+	   * 
+	   * Side-Effect!:
+	   * Every "<?" will get escaped, also XML headers like <?xml version="1.0" encoding="ISO-8859-1"?>
+	   * Use the smarty function pt_doctype instead, e.g. 
+	   * {pt_doctype dtd="XHTML1.0-Transitional" charset="ISO-8859-1"}
+	   * 
+	   * @see: pt_doctype
+	   * @var int
+	   */
 	var $php_handling    = SMARTY_PHP_QUOTE;
 
 	//var $default_modifiers        = array("phenotype");
 
+	
+	/**
+     * This forces templates to compile every time.
+     * 
+     * If experiment with $php_handling set $force_compile to true. Otherwise you get 'strange' results.
+     *
+     * @var boolean
+     */
+    var $force_compile   =  true;
+    
 	public function __construct()
 	{
 		parent::Smarty();
@@ -50,7 +70,7 @@ class PhenotypeSmartyStandard extends Smarty
 
 		$this->register_function("pt_doctype", array($this,"pt_doctype"));
 
-		// one day we will activate output escaping as default ;) currently it's too big
+		// one day we might activate output escaping as default ;)
 		//$this->register_modifier("phenotype", array($this,"default_modifier"));
 
 		$this->register_modifier("escape", array($this,"smarty_modifier_escape"));

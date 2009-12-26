@@ -246,12 +246,6 @@ class PhenotypeRequestStandard extends PhenotypeBase
 
 
 
-	function printR()
-	{
-		echo "<pre>";
-		print_r ($this->_props);
-		echo "</pre></br>";
-	}
 
 	public function getParamsArray()
 	{
@@ -411,6 +405,30 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		}
 
 		//echo $result;
+	}
+	
+
+	function printR()
+	{
+		echo "<pre>";
+		print_r ($this->_props);
+		echo "</pre></br>";
+	}	
+	/**
+	 * Logs current request values
+	 *
+	 */
+	public function log()
+	{
+		global $myLog;
+		if (is_object($myLog))
+		{
+			$myLog->log("Request values:",PT_LOGFACILITY_APP,PT_LOGLVL_DEBU);
+			foreach($this->_props AS $k=>$v)
+			{
+				$myLog->log($k.": ".print_r($v,true),PT_LOGFACILITY_APP,PT_LOGLVL_DEBUG);
+			}
+		}
 	}
 }
 ?>

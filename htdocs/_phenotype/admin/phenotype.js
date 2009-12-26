@@ -708,17 +708,25 @@ $(document).ready(function()
  {
     // Activate form_content_autocomplete
 
-    if ($('.form_content_autcomplete').length > 0) 
+    if ($('.form_content_autocomplete').length > 0) 
     {
     	$.getScript("jQuery.autocomplete.js", function(){
-	    	$('.form_content_autcomplete').autocomplete({ 
+	    	$('.form_content_autocomplete').each(function(){
+	    		var token = $(this).attr("name");
+	    		var hash = $("input:[name="+token+"_hash]").val();
+	    		$(this).autocomplete({ 
 	    	    serviceUrl:'backend.php?page=Editor,Content,autocomplete',
 	    	    minChars:2, 
 	      	    maxHeight:400,
 	    	    width:300,
+	    	    // aditional parameters:
+	    	    params: { hash: hash }, 
 	    	    // callback function:
-	    	    onSelect: function(value, data){ alert('You selected: ' + value + ', ' + data); }
+	    	    onSelect: function(value, data){
+    	    	$("input:[name="+token+"_dat_id]").val(data);
+	    	    }
 	    	  });
+	    	});
     	});
     };
     
@@ -752,5 +760,8 @@ $(document).ready(function()
         $('.form_coords_marker',this).css({'left':x+'px','top':y+'px'});
 
    });
+   
+  
+   
  });
 

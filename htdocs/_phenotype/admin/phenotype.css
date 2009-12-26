@@ -223,7 +223,7 @@ cursor: crosshair;
 }
 
 
-// Autocomplete
+// form_content_autocomplete
 
 .autocomplete-w1 { background:url(img/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:6px 0 0 6px; /* IE6 fix: */ _background:none; _margin:1px 0 0 0; }
 .autocomplete { border:3px solid #FFF; background:#e9ecee; cursor:default; text-align:left; max-height:350px; overflow:auto; margin: 4px 6px 6px 0px; /* IE6 specific: */ _height:350px;  _margin:0; _overflow-x:hidden; }
@@ -231,3 +231,29 @@ cursor: crosshair;
 .autocomplete div { color:#2C1B08;font-family:sans-serif;font-size:11px;padding:2px 5px; white-space:nowrap; overflow:hidden; }
 .autocomplete strong { font-weight:normal; color:#0056c2; }
 
+
+// form_colorselect
+
+.jColorSelect {
+	overflow:hidden; /* for IE6 */
+	border:1px solid #d9dcdd;
+}
+.jColorSelect div{
+	background:url(img/syronex-colorpicker.gif) no-repeat;
+	float:left;
+	width:13px;
+	height:13px;
+	cursor:pointer;
+	overflow:hidden; /* for IE6 */
+	border:1px solid #666666;
+	margin:1px;
+}
+
+.jColorSelect .checkwht {
+	cursor:default;	
+	background-position:-13px 0;
+}
+.jColorSelect .checkblk {
+	cursor:default;	
+	background-position:-26px 0;
+}

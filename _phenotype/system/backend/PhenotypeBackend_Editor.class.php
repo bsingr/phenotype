@@ -32,7 +32,6 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 		Header("Location: pagegroup_select.php");
 	}
 
-	// ToDo - ungetestet !!
 	function displayGlueTicketsForMediaobject($med_id)
 	{
 		global $mySUser;

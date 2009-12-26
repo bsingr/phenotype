@@ -26,20 +26,33 @@
 class PhenotypePeerStandard
 {
 
+	/**
+	 * Enter description here...
+	 *
+	 * @param unknown_type $con_id
+	 * @param unknown_type $status true, false or null for no check
+	 * @param unknown_type $order
+	 * @param unknown_type $_filter
+	 * @param unknown_type $limit
+	 * @return unknown
+	 */
 	public static function getRecords($con_id,$status=true,$order="dat_bez",$_filter=array(),$limit)
 	{
 		global $myDB;
 		$con_id=(int)$con_id;
 
 		$sql = "SELECT * FROM content_data WHERE con_id=".$con_id;
-		switch ($status)
+		if (!is_null($status))
 		{
-			case true:
-				$sql .=" AND dat_status=1";
-				break;
-			case false:
-				$sql .=" AND dat_status=0";
-				break;
+			switch ($status)
+			{
+				case true:
+					$sql .=" AND dat_status=1";
+					break;
+				case false:
+					$sql .=" AND dat_status=0";
+					break;
+			}
 		}
 		foreach ($_filter AS $filter)
 		{

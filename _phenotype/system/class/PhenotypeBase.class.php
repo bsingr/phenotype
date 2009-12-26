@@ -97,6 +97,11 @@ class PhenotypeBase
 		}
 		return ($int);
 	}
+	
+	public function getB($property,$default=null)
+	{
+		return (boolean) ($this->get($property,$default));
+	}
 
 	public function getD($property, $decimals,$default=null)
 	{

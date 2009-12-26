@@ -115,58 +115,7 @@ class PhenotypePageStandard extends PhenotypeBase
 
 	}
 
-	/*
-	function getI ($bez)
-	{
-	return @(int)($this->props[$bez]);
-	//return @stripslashes($this->props[$bez]);
-	}
 
-	function getD ($bez,$decimals)
-	{
-	return sprintf("%01.".$decimals."f",@($this->props[$bez]));
-	}
-
-	function getQ ($bez)
-	{
-	// veraltet
-	return mb_ereg_replace('"',"&quot;",stripslashes($this->props[$bez]));
-	}
-
-	function getHTML ($bez)
-	{
-	return @htmlentities(stripslashes($this->props[$bez]),null,PT_CHARSET);
-	}
-
-	function getH ($bez)
-	{
-	return $this->getHTML($bez);
-	}
-
-	function getHBR ($bez)
-	{
-	$html = nl2br($this->getHTML($bez));
-	// Falls fehlerhafte Returns/Linefeeds enthalten sind, werden diese eliminiert
-	$html = str_replace (chr(10),"",$html);
-	$html = str_replace (chr(13),"",$html);
-	return ($html);
-	}
-
-
-	function getURL($bez)
-	{
-	return @urlencode($this->props[$bez]);
-	}
-
-	function getU($bez)
-	{
-	return @utf8_encode($this->props[$bez]);
-	}
-
-	function getS($bez)
-	{
-	return @addslashes($this->props[$bez]);
-	}
 
 
 
@@ -821,9 +770,7 @@ class PhenotypePageStandard extends PhenotypeBase
 			}
 		}
 
-		
 		echo $this->doDisplayPostProcessing($html,$myTC,$info);
-		//$myLog->log($v);die();
 
 	}
 
@@ -837,7 +784,6 @@ class PhenotypePageStandard extends PhenotypeBase
 		
 		$myPage = &$this; // Zugriff fuer Includes und dergleichen
 
-		
 		$html = str_replace("#!#title#!#",$myPT->codeH($myPage->titel),$html);
 		$html = str_replace("#!#canonical_url#!#",$myPT->codeH($this->getUrl($this->lng_id)),$html);
 		$html = str_replace("#!#alttitle#!#",$myPT->codeH($myPage->alttitel),$html);
@@ -1328,13 +1274,6 @@ class PhenotypePageStandard extends PhenotypeBase
 		}
 
 		// Titel-Tags und Keywords setzen
-		/*
-		$mySmarty->assign("titel",$this->titel);
-		$mySmarty->assign("title",$this->titel);
-		$mySmarty->assign("alttitel",$this->alttitel);
-		$mySmarty->assign("alttitle",$this->alttitel);
-		$mySmarty->assign("keywords",$this->row["pag_searchtext"]);
-		*/
 
 		$mySmarty->assign("titel","#!#title#!#");
 		$mySmarty->assign("title","#!#title#!#");
