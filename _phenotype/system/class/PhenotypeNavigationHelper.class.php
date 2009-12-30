@@ -153,7 +153,7 @@ class PhenotypeNavigationHelperStandard
 	 * finds recursively all pages below a given page
 	 *
 	 * @param int $pag_id_top	pag_id of start node for the tree
-	 * @param Array $_expand	:TODO: what is this?
+	 * @param Array $_expand	Array of page ids to move on and expand the path
 	 * @param int $maxdepth	maximum depths of the tree, recursion stops at this level
 	 *
 	 * @return Array	flat array. keys are the pag_ids of the pages, associated values show the level of the page
