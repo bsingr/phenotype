@@ -4099,14 +4099,14 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$i++;
 		}
 		?>
-		<div id="<?php echo $this->formid?>" class="syronex_colorpicker"></div>
+		<div id="<?php echo $fname?>" class="syronex_colorpicker"></div>
 		<script type="text/javascript">
 		// Activate form_colorselect javascript logic
 	  	$(document).ready(function()
 		{
 			$.getScript("jQuery.syronex-colorpicker.js", function()
 		   	{
-		   		$('#<?php echo $this->formid?>').colorPicker(
+		   		$('#<?php echo $fname?>').colorPicker(
 		   		{
 		   			defaultColor: <?php echo $index?>, // index of the default color (optional)
 		  			columns: 20,     // number of columns (optional)  
@@ -4114,7 +4114,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		  			click: function(color){
 		  				$('input:[name="<?php echo $fname?>"]').val(color);
 	
-		  			},
+		  			}
 		
 		   		});
 		   		
