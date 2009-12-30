@@ -51,7 +51,7 @@ $mySQL = new SQLBuilder();
 
 $mySQL->addField("grp_bez",$_REQUEST["bez"]);
 $mySQL->addField("grp_description",$_REQUEST["description"]);
-$mySQL->addField("grp_type",$_REQUEST["grp_type"],DB_NUMBER);
+$mySQL->addField("grp_type",(int)$_REQUEST["grp_type"],DB_NUMBER);
 $sql = $mySQL->update("mediagroup","grp_id =" . $id);
 $myDB->query($sql);
 

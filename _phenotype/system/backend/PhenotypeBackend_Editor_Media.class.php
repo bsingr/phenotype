@@ -841,7 +841,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 		$reihe = 5;
 
-		$start = ($p-1)*($_REQUEST["a"]);
+		$start = ($p-1)*((int)$_REQUEST["a"]);
 		$sql .=" LIMIT ". $start . "," . $this->itemcount;
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
@@ -1047,7 +1047,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 		$this->displayJS_Lightbox();
 
-		$myObj = new PhenotypeImage($_REQUEST["id"]);
+		$myObj = new PhenotypeImage((int)$_REQUEST["id"]);
 		if ($myObj->id != 0)
 		{
 			// Bild
@@ -1055,7 +1055,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 		} else
 		{
 			$type = MB_DOCUMENT;
-			$myObj = new PhenotypeDocument($_REQUEST["id"]);
+			$myObj = new PhenotypeDocument((int)$_REQUEST["id"]);
 
 			if ($myObj->id == 0)
 			{
@@ -1140,7 +1140,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 		$this->tab_new();
 
-		$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=0&folder=".urlencode($_REQUEST["folder"])."&type=".$_REQUEST["type"]."&sortorder=".$_REQUEST["sortorder"]."&p=".$_REQUEST["p"]."&a=".$_REQUEST["a"];
+		$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=0&folder=".urlencode($_REQUEST["folder"])."&type=".(int)$_REQUEST["type"]."&sortorder=".(int)$_REQUEST["sortorder"]."&p=".(int)$_REQUEST["p"]."&a=".(int)$_REQUEST["a"];
 		$this->tab_addEntry(locale("Properties"), $url, "b_konfig.gif");
 
 
@@ -1149,7 +1149,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 		if ($blocknr_versionen==1)
 		{
-			$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=1&folder=".urlencode($_REQUEST["folder"])."&type=".$_REQUEST["type"]."&sortorder=".$_REQUEST["sortorder"]."&p=".$_REQUEST["p"]."&a=".$_REQUEST["a"];
+			$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=1&folder=".urlencode($_REQUEST["folder"])."&type=".(int)$_REQUEST["type"]."&sortorder=".(int)$_REQUEST["sortorder"]."&p=".(int)$_REQUEST["p"]."&a=".(int)$_REQUEST["a"];
 			$this->tab_addEntry(locale("Versions"), $url, "b_version.gif");
 			$blocknr_versionen = 1;
 		}
@@ -1159,7 +1159,7 @@ class PhenotypeBackend_Editor_Media_Standard extends PhenotypeBackend_Editor
 
 
 
-			$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=2&folder=".urlencode($_REQUEST["folder"])."&type=".$_REQUEST["type"]."&sortorder=".$_REQUEST["sortorder"]."&p=".$_REQUEST["p"]."&a=".$_REQUEST["a"];
+			$url = "backend.php?page=Editor,Media,edit&id=".$myObj->id."&b=2&folder=".urlencode($_REQUEST["folder"])."&type=".(int)$_REQUEST["type"]."&sortorder=".(int)$_REQUEST["sortorder"]."&p=".(int)$_REQUEST["p"]."&a=".(int)$_REQUEST["a"];
 			$this->tab_addEntry(locale("Edit"), $url, "b_edit.gif");
 
 		}

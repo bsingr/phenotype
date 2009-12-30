@@ -33,7 +33,7 @@ if (!$mySUser->checkRight("elm_admin"))
 $myPT->clearCache();
 ?>
 <?php
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 
 
 $myAdm = new PhenotypeAdmin();

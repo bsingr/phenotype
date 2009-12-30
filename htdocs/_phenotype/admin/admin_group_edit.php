@@ -70,7 +70,7 @@ $row = mysql_fetch_array($rs);
 ?>
     <form action="admin_group_update.php" method="post">
 	<input type="hidden" name="id" value="<?php echo $id ?>">	
-	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
+	<input type="hidden" name="b" value="<?php echo (int)$_REQUEST["b"] ?>">		
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">

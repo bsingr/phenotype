@@ -33,7 +33,7 @@ if (!$mySUser->checkRight("elm_admin"))
 $myPT->clearCache();
 ?>
 <?php
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 $myAdm = new PhenotypeAdmin();
 
 if (isset($_REQUEST["delete"]))
@@ -54,7 +54,7 @@ if ($_REQUEST["b"]==0)
 {
 	$mySQL->addField("lay_bez",$_REQUEST["bez"]);
 	$mySQL->addField("lay_description",$_REQUEST["description"]);
-	$sql = $mySQL->update("layout","lay_id =" . $id);
+	$sql = $mySQL->update("layout","lay_id =" . (int)$id);
 	$myDB->query($sql);
 
 	// BLOECKE
@@ -117,7 +117,7 @@ if ($_REQUEST["b"]==0)
 	{
 		$identifier = $id . "_inc". $row_inc["lay_includenr"] . "_";
 		$mySQL = new SQLBuilder();
-		$mySQL->addField("inc_id",$_REQUEST[$identifier . "include"]);
+		$mySQL->addField("inc_id",$_REQUEST[$identifier . "include"],DB_NUMBER);
 		$mySQL->addField("lay_includecache",$_REQUEST[$identifier . "cache"]);
 		$sql = $mySQL->update("layout_include","lay_id =" . $id . " AND lay_includenr=" . $row_inc["lay_includenr"]);
 		$myDB->query($sql);
@@ -209,6 +209,6 @@ if ($_REQUEST["b"]==1)
 }
 
 
-$url = "layout_edit.php?id=" . $id . "&b=" . $_REQUEST["b"];
+$url = "layout_edit.php?id=" . $id . "&b=" . (int)$_REQUEST["b"];
 Header ("Location:" . $url."&".SID);
 ?>

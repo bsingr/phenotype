@@ -80,7 +80,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 ?> 
  <form action="admin_role_update.php" method="post">
 	<input type="hidden" name="id" value="<?php echo $id ?>">	
-	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
+	<input type="hidden" name="b" value="<?php echo (int)$_REQUEST["b"] ?>">		
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -101,7 +101,7 @@ if ($row["rol_rights"]!=""){$rechte = unserialize($row["rol_rights"]);}
 	$url = "admin_user_edit.php?id=" .$id ."&b=0";
 	$myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
 
-	switch ($_REQUEST["b"])
+	switch ((int)$_REQUEST["b"])
 	{
 		case 0:
 			$myLayout->tab_draw(locale("Config"));

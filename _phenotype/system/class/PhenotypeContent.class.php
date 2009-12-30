@@ -3471,7 +3471,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 					}
 
 					// new component inserted?
-					$new_tool_id = $_REQUEST["newtool_id"];
+					$new_tool_id = (int)$_REQUEST["newtool_id"];
 					if ($new_tool_id !="")
 					{
 						$tname = "PhenotypeComponent_" . $_REQUEST["newtool_type"];

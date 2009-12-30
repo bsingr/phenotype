@@ -60,7 +60,7 @@ body {
 <?php if ($rc){ ?>
 
 <script language="JavaScript">
-top.opener.location ="page_edit.php?id=<?php echo $_REQUEST["id"] ?>";
+top.opener.location ="page_edit.php?id=<?php echo (int)$_REQUEST["id"] ?>";
 self.close();
 </script>
 <?php } ?>

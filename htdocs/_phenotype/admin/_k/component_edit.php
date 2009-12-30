@@ -34,7 +34,7 @@ if (!$mySUser->checkRight("superuser"))
 <?php
 $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 ?>
 <?php
 $myAdm->header(locale("Config"));
@@ -71,8 +71,8 @@ $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
 ?>
     <form action="component_update.php" method="post">
-	<input type="hidden" name="id" value="<?php echo $id ?>">	
-	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
+	<input type="hidden" name="id" value="<?php echo (int)$id ?>">	
+	<input type="hidden" name="b" value="<?php echo (int)$_REQUEST["b"] ?>">		
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -105,7 +105,7 @@ $row = mysql_fetch_array($rs);
 	 $url = "component_edit.php?id=" .$id ."&b=3";	 
 	 $myLayout->tab_addEntry(locale("Usage"),$url,"b_utilisation.gif");	
 	 
-	 switch ($_REQUEST["b"])
+	 switch ((int)$_REQUEST["b"])
 	 {
 	   case 0: 
 	     $myLayout->tab_draw(locale("Config"));

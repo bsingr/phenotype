@@ -795,7 +795,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		  }
 		  if ($myRequest->getI("i")!=0)
 		  {
-		    $sql .= " AND dat_id = ". $_REQUEST["i"];
+		    $sql .= " AND dat_id = ". (int)$_REQUEST["i"];
 		  }
 		  break;
 		  case "abc":

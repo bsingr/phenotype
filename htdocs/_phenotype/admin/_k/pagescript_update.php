@@ -33,14 +33,14 @@ if (!$mySUser->checkRight("superuser"))
 $myPT->clearCache();
 ?>
 <?php
-$id = $_REQUEST["id"];
-$ver_id = $_REQUEST["ver_id"];
-$ver_nr = $_REQUEST["ver_nr"];
+$id = (int)$_REQUEST["id"];
+$ver_id = (int)$_REQUEST["ver_id"];
+$ver_nr = (int)$_REQUEST["ver_nr"];
 
   $myAdm = new PhenotypeAdmin();
   $code = $myAdm->decodeRequest_HTMLArea($myRequest->get("skript"));
   
-	$scriptname = APPPATH . "pagescripts/".sprintf("%04d",$id) ."_" .sprintf("%04d", $_REQUEST["ver_id"]) .".inc.php";
+	$scriptname = APPPATH . "pagescripts/".sprintf("%04d",$id) ."_" .sprintf("%04d", (int)$_REQUEST["ver_id"]) .".inc.php";
 
   $mySQL = new SQLBuilder();
   $delete=0;

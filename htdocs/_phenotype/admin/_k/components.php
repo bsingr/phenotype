@@ -109,7 +109,7 @@ $myPT->startBuffer();
  }
  else
  {
-   $sql = "SELECT * FROM component WHERE com_rubrik='" .$_REQUEST["r"]."' ORDER BY com_bez";
+   $sql = "SELECT * FROM component WHERE com_rubrik='" .mysql_real_esacape($_REQUEST["r"])."' ORDER BY com_bez";
  }
 
  $rs = $myDB->query($sql);

@@ -158,8 +158,8 @@ class PhenotypeBackend_Admin_Users_Standard extends PhenotypeBackend_Admin
 		?>
 		<form action="backend.php" method="post" name="editform">
 		<input type="hidden" name="page" value="Admin,Users,update">
-		<input type="hidden" name="id" value="<?php echo $usr_id ?>">	
-		<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">	
+		<input type="hidden" name="id" value="<?php echo (int)$usr_id ?>">	
+		<input type="hidden" name="b" value="<?php echo (int)$_REQUEST["b"] ?>">	
 		<?php
 
 		$this->displayHeadline($usr_id." ".localeH("User") ." / ". $row["usr_vorname"] . " " . $row["usr_nachname"],"http://www.phenotype-cms.de/docs.php?v=23&t=8");

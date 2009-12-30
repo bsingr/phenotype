@@ -33,14 +33,14 @@ if (!$mySUser->checkRight("superuser"))
 $myPT->clearCache();
 ?>
 <?php
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 
 
 
 $myAdm = new PhenotypeAdmin();
 $myAdm->cfg_removeInclude($id);
   
-  $sql = "SELECT COUNT(*) AS C FROM include WHERE inc_rubrik LIKE '" . $_REQUEST["r"] ."'";
+  $sql = "SELECT COUNT(*) AS C FROM include WHERE inc_rubrik LIKE '" . mysql_real_escape_string($_REQUEST["r"]) ."'";
   $rs_check = $myDB->query($sql);
   
   

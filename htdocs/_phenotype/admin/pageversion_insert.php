@@ -96,6 +96,6 @@ fclose ($fp);
 @chmod ($target,UMASK);
 
 	
-$url = "page_edit.php?id=" . $id . "&ver_id=" . $_REQUEST["ver_id"]. "&b=99";
+$url = "page_edit.php?id=" . $id . "&ver_id=" . (int)$_REQUEST["ver_id"]. "&b=99";
 Header ("Location:" . $url."&".SID);
 ?>

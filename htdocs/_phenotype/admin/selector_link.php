@@ -75,7 +75,7 @@ $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
   $rs = $myDB->query($sql);
   if (isset($_REQUEST["grp_id"]))
   {
-    $grp_id=$_REQUEST["grp_id"];
+    $grp_id=(int)$_REQUEST["grp_id"];
   }
   else
   {

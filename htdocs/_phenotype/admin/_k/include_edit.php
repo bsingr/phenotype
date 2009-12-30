@@ -34,7 +34,7 @@ if (!$mySUser->checkRight("superuser"))
 <?php
 $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 ?>
 <?php
 $myAdm->header(locale("Config"));
@@ -72,9 +72,9 @@ $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
 ?>
     <form action="include_update.php" method="post">
-	<input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">	
-	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
-    <input type="hidden" name="r" value="<?php echo $_REQUEST["r"] ?>">	
+	<input type="hidden" name="id" value="<?php echo (int)$_REQUEST["id"] ?>">	
+	<input type="hidden" name="b" value="<?php echo (int)$_REQUEST["b"] ?>">		
+    <input type="hidden" name="r" value="<?php echo codeH($_REQUEST["r"]) ?>">	
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -92,11 +92,11 @@ $row = mysql_fetch_array($rs);
     </table>	
 	<?php
 	 $myLayout->tab_new();
-	 $url = "include_edit.php?id=" .$id ."&b=0&r=" . $_REQUEST["r"];	 
+	 $url = "include_edit.php?id=" .$id ."&b=0&r=" . urlencode($_REQUEST["r"]);	 
 	 $myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
-	 $url = "include_edit.php?id=" .$id ."&b=1&r=" . $_REQUEST["r"];	  
+	 $url = "include_edit.php?id=" .$id ."&b=1&r=" . urlencode($_REQUEST["r"]);	  
 	 $myLayout->tab_addEntry(locale("Script"),$url,"b_script.gif");
-	 $url = "include_edit.php?id=" .$id ."&b=2&r=" . $_REQUEST["r"];	  
+	 $url = "include_edit.php?id=" .$id ."&b=2&r=" . urlencode($_REQUEST["r"]);	  
 	 $sql = "SELECT * FROM include_template WHERE inc_id = " . $id . " ORDER BY tpl_bez";
 	 $rs = $myDB->query($sql);
 	 $c= mysql_num_rows($rs);
@@ -104,7 +104,7 @@ $row = mysql_fetch_array($rs);
 	 {
 	   $myLayout->tab_addEntry(locale("Templates"),$url,"b_template.gif");
 	 }
-	 $url = "include_edit.php?id=" .$id ."&b=3&r=" . $_REQUEST["r"];	 
+	 $url = "include_edit.php?id=" .$id ."&b=3&r=" . urlencode($_REQUEST["r"]);	 
 	 $myLayout->tab_addEntry(locale("Usage"),$url,"b_utilisation.gif");		
 	 
 	 // switch which tab to draw

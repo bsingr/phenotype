@@ -51,7 +51,7 @@ $myPT->startBuffer();
 ?>
 <?php
 $myAdm->explorer_prepare(locale("Config"),locale("Page scripts"));
-$myAdm->explorer_set("pagescript_nr",$_REQUEST["id"].".".sprintf("%02d",$_REQUEST["ver_nr"]));
+$myAdm->explorer_set("pagescript_nr",(int)$_REQUEST["id"].".".sprintf("%02d",$_REQUEST["ver_nr"]));
 $myAdm->explorer_draw();
 
 $left = $myPT->stopBuffer();
@@ -70,18 +70,18 @@ $left = $myPT->stopBuffer();
 $myPT->startBuffer();
 ?>
 <?php
-$id=$_REQUEST["id"];
-$ver_id=$_REQUEST["ver_id"];
+$id=(int)$_REQUEST["id"];
+$ver_id=(int)$_REQUEST["ver_id"];
 ?>
 <form action="pagescript_update.php" method="post">
-<input type="hidden" name="id" value="<?php echo $id ?>">	
-<input type="hidden" name="ver_id" value="<?php echo $ver_id ?>">		
-<input type="hidden" name="ver_nr" value="<?php echo $_REQUEST["ver_nr"] ?>">		
+<input type="hidden" name="id" value="<?php echo (int)$id ?>">	
+<input type="hidden" name="ver_id" value="<?php echo (int)$ver_id ?>">		
+<input type="hidden" name="ver_nr" value="<?php echo (int)$_REQUEST["ver_nr"] ?>">		
 <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="windowTitle"><?php echo $id ?>.<?php echo sprintf("%02d",$_REQUEST["ver_nr"]) ?> Seitenskript</td>
+            <td class="windowTitle"><?php echo $id ?>.<?php echo sprintf("%02d",(int)$_REQUEST["ver_nr"]) ?> Seitenskript</td>
             <td align="right" class="windowTitle"><a href="http://www.phenotype-cms.de/docs.php?v=23&t=19" target="_blank"><img src="img/b_help.gif" alt="<?php echo localeH("Help");?>" width="22" height="22" border="0"></a></td>
           </tr>
         </table></td>
@@ -94,12 +94,12 @@ $ver_id=$_REQUEST["ver_id"];
     </table>
 	<?php
 	 $myLayout->tab_new();
-	 $url = "pagescript_edit.php?id=" .$id ."&ver_id=" . $_REQUEST["ver_id"] . "&ver_nr=". $_REQUEST["ver_nr"] . "&b=0";	 
+	 $url = "pagescript_edit.php?id=" .$id ."&ver_id=" . (int)$_REQUEST["ver_id"] . "&ver_nr=". (int)$_REQUEST["ver_nr"] . "&b=0";	 
 	 $myLayout->tab_addEntry(locale("Config"),$url,"b_konfig.gif");
 	 $myLayout->tab_draw(locale("Configuration"));
 	 $myLayout->workarea_start_draw();
 	 
-	 $scriptname = "pagescripts/".sprintf("%04d",$id) ."_" .sprintf("%04d", $_REQUEST["ver_id"]) .".inc.php";
+	 $scriptname = "pagescripts/".sprintf("%04d",$id) ."_" .sprintf("%04d", (int)$_REQUEST["ver_id"]) .".inc.php";
 		 ?>
 			 <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>

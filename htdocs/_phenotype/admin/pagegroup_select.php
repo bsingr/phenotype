@@ -47,7 +47,7 @@ if($mySUser->checkRight("elm_mediabase") AND !$mySUser->checkRight("elm_page"))
 <?php
 if ($_SESSION["grp_id"]!="" AND $_SESSION["pag_id"]!="" AND (!isset($_REQUEST["grp_id"])))
 {
-  $url = "page_edit.php?id=" . $_SESSION["pag_id"];
+  $url = "page_edit.php?id=" . (int)$_SESSION["pag_id"];
   Header ("Location: " . $url."&".SID);
   exit();
 }

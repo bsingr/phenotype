@@ -45,8 +45,8 @@ $toolkit = (int)$_REQUEST["t"];
   }	
    
   // Wurde ein neues Tools eingefuegt?   
-  $new_tool_id = $_REQUEST["newtool_id"];
-  if ($new_tool_id !="")
+  $new_tool_id = (int)$_REQUEST["newtool_id"];
+  if ($new_tool_id !=0)
   {
     $tname = "PhenotypeComponent_" . $_REQUEST["newtool_type"];
     $myComponent = new $tname;

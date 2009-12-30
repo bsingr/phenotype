@@ -26,10 +26,10 @@ class PhenotypeBase
 {
 
 
-
-
 	public $_props = Array ();
+
 	protected $changed = false;
+	
 	/**
 	 * flag wether currently in HWSL coding mode
 	 * 
@@ -37,10 +37,16 @@ class PhenotypeBase
 	 *
 	 * @var boolean
 	 */
-	private $HWSL = false;
+	protected $HWSL = false;
 
 
 
+	/**
+	 * check if property is set
+	 *
+	 * @param string name of the property
+	 * @return boolean
+	 */
 	public function check($k)
 	{
 		if(array_key_exists($k,$this->_props)){return true;}
@@ -48,6 +54,12 @@ class PhenotypeBase
 	}
 
 
+	/**
+	 * set property
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $value
+	 */
 	public function set($property, $value)
 	{
 		$this->_props[$property] = $value;
@@ -55,6 +67,11 @@ class PhenotypeBase
 	}
 
 
+	/**
+	 * remove/clear/unset property 
+	 *
+	 * @param unknown_type $property
+	 */
 	public function clear($property)
 	{
 		if ($this->check($property))
@@ -64,8 +81,13 @@ class PhenotypeBase
 	}
 
 
-
-
+	/**
+	 * get raw value of property
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function get($property,$default=null)
 	{
 		if ($this->check($property))
@@ -78,6 +100,15 @@ class PhenotypeBase
 		}
 	}
 
+	/**
+	 * get integer value of property
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @param unknown_type $min
+	 * @param unknown_type $max
+	 * @return unknown
+	 */
 	public function getI($property,$default=null,$min=null,$max=null)
 	{
 		$int = (int) ($this->get($property,$default));
@@ -98,30 +129,77 @@ class PhenotypeBase
 		return ($int);
 	}
 	
+	/**
+	 * get boolean value of property
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getB($property,$default=null)
 	{
 		return (boolean) ($this->get($property,$default));
 	}
 
+	/**
+	 * get property as float, accept , as point operator too
+	 * 
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
+	public function getF($property,$default=null)
+	{
+		return (float) (str_replace(",",".",$this->get($property,$default)));
+	}
+	
+	
+	/**
+	 * get property value formatted as decimal
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $decimals
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getD($property, $decimals,$default=null)
 	{
 		return sprintf("%01.".$decimals."f", ($this->get($property,$default)));
 	}
 
 
-
-
-
+	/**
+	 * get html encoded property value
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getHTML($property,$default=null)
 	{
 		return @ htmlentities(($this->get($property,$default)),null,$this->charset);
 	}
 
+	/**
+	 * get html encoded property value
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getH($property,$default=null)
 	{
 		return $this->getHTML($property,$default);
 	}
 
+	/**
+	 * get html encoded property value, encode returns as <br/>
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getHBR($property,$default=null)
 	{
 		$html = nl2br($this->getHTML($property,$default));
@@ -132,17 +210,38 @@ class PhenotypeBase
 	}
 
 
+	/**
+	 * get url encoded property value
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getURL($property,$default=null)
 	{
 		return @ urlencode($this->get($property,$default));
 	}
 
 
+	/**
+	 * get property encoded for direct usage as string in custom sql query
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getSQL($property,$default=null)
 	{
 		return $this->codeSQL($this->get($property,$default));
 	}
 
+	/**
+	 * get xml encoded property
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getX($property,$default=null)
 	{
 		global $myPT;
@@ -150,25 +249,52 @@ class PhenotypeBase
 	}
 
 
+	/**
+	 * get filtered property value
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $allowedchars
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getA($property,$allowedchars=PT_ALPHANUMERIC,$default=null)
 	{
 		$val = $this->get($property,$default);
 		return $this->codeA($val,$allowedchars);
 	}
 
-
+	/**
+	 * get filtered property value encoded for printing in html
+	 *
+	 * @param unknown_type $property
+	 * @param unknown_type $allowedchars
+	 * @param unknown_type $default
+	 * @return unknown
+	 */
 	public function getAH($property,$allowedchars=PT_ALPHANUMERIC,$default=null)
 	{
 		$val = $this->getA($property,$allowedchars,$default);
 		return codeH($val);
 	}
 
+	/**
+	 * get property value and replace wiki style links with current page/content/media urls
+	 *
+	 * @param unknown_type $property
+	 * @return unknown
+	 */
 	public function getWSL($property)
 	{
 		return $this->codeWSL($this->get($property));
 	}
 
 
+	/**
+	 * get property value and replace wiki style links with current page/content/media urls encoded for printing in html
+	 *
+	 * @param unknown_type $property
+	 * @return unknown
+	 */
 	public function getHWSL($property)
 	{
 		return $this->codeHWSL($this->get($property));
@@ -183,7 +309,6 @@ class PhenotypeBase
 	 */
 	public function getU($property,$default=null)
 	{
-		//return @ utf8_encode($this->_props[$property]);
 		return @ utf8_encode($this->get($property,$default));
 	}
 

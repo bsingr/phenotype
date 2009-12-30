@@ -33,14 +33,14 @@ $myPT->clearCache();
 ?>
 <?php
 $myAdm = new PhenotypeAdmin();
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 
 if (isset($_REQUEST["delete"]))
 {
   $myAdm->cfg_removeInclude($id);
 
   // :TODO: what should this first sql statement do?
-  $sql = "SELECT COUNT (*) AS 'C' FROM include WHERE inc_rubrik = '" . $_REQUEST["r"] ."'";
+  $sql = "SELECT COUNT (*) AS 'C' FROM include WHERE inc_rubrik = '" . mysql_real_escape_string($_REQUEST["r"]) ."'";
   $sql = "SELECT COUNT(*) AS C FROM sequence_data WHERE com_id = " . $id;
   $rs_check = $myDB->query($sql);
   $row = mysql_fetch_array($rs_check);
@@ -50,7 +50,7 @@ if (isset($_REQUEST["delete"]))
   }
   else
   {
-    $url = "includes.php?r=" .$_REQUEST["r"];
+    $url = "includes.php?r=" .urlencode($_REQUEST["r"]);
   }
   Header ("Location:" . $url."&".SID);
   exit();
@@ -158,7 +158,7 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
   }
 }
 
-$b = $_REQUEST["b"];
+$b = (int)$_REQUEST["b"];
 
 if ($b==2)
 {

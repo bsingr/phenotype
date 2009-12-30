@@ -34,7 +34,7 @@ $myPT->clearCache();
 <?php
 
 $myPage = new PhenotypePage();
-$id = $myPage->newPage_FirstInGroup($_REQUEST["grp_id"]);
+$id = $myPage->newPage_FirstInGroup((int)$_REQUEST["grp_id"]);
 
 $url = "page_edit.php?id=" . $id;
 Header ("Location:" . $url."&".SID);

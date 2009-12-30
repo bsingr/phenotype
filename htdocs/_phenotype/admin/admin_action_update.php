@@ -79,7 +79,7 @@ if (isset($_REQUEST["reset"]))
 
 $mySQL->addField("act_bez",$_REQUEST["bez"]);
 $mySQL->addField("act_description",$_REQUEST["description"]);
-$mySQL->addField("act_status",$_REQUEST["status"]);
+$mySQL->addField("act_status",(int)$_REQUEST["status"]);
 $sql = $mySQL->update("action","act_id =" . $id);
 $myDB->query($sql);
 

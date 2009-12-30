@@ -67,8 +67,8 @@ body {
 <?php }else{ ?>
 <form action="selector_page3.php" method="post" name="form1" id="form1" target="_parent">
 <?php } ?>
-<input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
-<input type="hidden" name="id2" value="<?php echo $_REQUEST["id2"] ?>">
+<input type="hidden" name="id" value="<?php echo (int)$_REQUEST["id"] ?>">
+<input type="hidden" name="id2" value="<?php echo (int)$_REQUEST["id2"] ?>">
 <table width="350" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">

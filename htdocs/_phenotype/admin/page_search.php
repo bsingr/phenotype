@@ -68,7 +68,7 @@ $myPT->startBuffer();
 ?>
 <?php
 $myAdm->explorer_prepare(locale("Editor"),locale("Pages"));
-$myAdm->explorer_set("pag_id",$_REQUEST["id"]);
+$myAdm->explorer_set("pag_id",(int)$_REQUEST["id"]);
 $myAdm->explorer_draw();
 ?>
 <?php

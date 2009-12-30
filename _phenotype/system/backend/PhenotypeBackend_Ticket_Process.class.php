@@ -687,7 +687,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 			if (mysql_num_rows($rs)!=0)
 			{
 				$myTicket = new PhenotypeTicket();
-				$myTicket->loadById($_REQUEST["id"]);
+				$myTicket->loadById((int)$_REQUEST["id"]);
 				$act_id =  $myTicket->logAction(6);
 				$sql = "DELETE FROM ticketmarkup WHERE tik_id = " . $id . " AND usr_id = " . $_SESSION["usr_id"];
 				$myDB->query($sql);
@@ -748,7 +748,7 @@ class PhenotypeBackend_Ticket_Process_Standard extends PhenotypeBackend_Ticket
 		$uhrzeit ="";
 		$user = "";
 		$grafik = "";
-		$sql = "SELECT * FROM ticketaction WHERE tik_id = " . $_REQUEST["id"] . " ORDER BY act_date DESC,act_id";
+		$sql = "SELECT * FROM ticketaction WHERE tik_id = " . (int)$_REQUEST["id"] . " ORDER BY act_date DESC,act_id";
 		$rs = $myDB->query($sql);
 
 

@@ -33,7 +33,7 @@ if (!$mySUser->checkRight("superuser"))
 $myPT->clearCache();
 ?>
 <?php
-$id = $_REQUEST["id"];
+$id = $myRequest->getI("id");
 
 $myAdm = new PhenotypeAdmin();
 $myAdm->cfg_removeComponent($id);

@@ -997,7 +997,7 @@ if ($myPT->getPref("backend.rtf_editor") == PT_RTF_EDITOR_TINYMCE)
 			<img src="img/i_offline.gif" alt="Status: offline" width="30" height="22">
 			<?php } ?>
 			</td>
-            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="content_delete.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('<?php echo localeH("Really delete record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
+            <td align="right" nowrap class="tableBody"><?php if ($row["con_bearbeiten"]==1){ ?><a href="content_edit.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="content_delete.php?id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo urlencode($_REQUEST["c"]) ?>" onclick="return confirm('<?php echo localeH("Really delete record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?></td>
             </tr>
           <tr>
             <td colspan="6" class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -2116,7 +2116,7 @@ foreach ($_folder AS $folder)
 	//echo $left.":".$right.";<br>";
 	$nav_id_top = (int)$_navids[$left];
 
-	$url = "mediabase.php?folder=".urlencode($folder)."&type=".$_REQUEST["type"]."&sortorder=" . $_REQUEST["sortorder"] ."&p=1&a=" . $_REQUEST["a"];
+	$url = "mediabase.php?folder=".urlencode($folder)."&type=".(int)$_REQUEST["type"]."&sortorder=" . (int)$_REQUEST["sortorder"] ."&p=1&a=" . (int)$_REQUEST["a"];
 
 	$ebene = mb_substr_count($folder,"/")+1;
 	$takeit=0;
@@ -2233,24 +2233,24 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
               <td class="windowTabTypeOnly"><strong><?php echo localeH("New Files");?>: </strong></td>
               <td class="windowTabTypeOnly">
 			    
-      <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
-      <input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
-      <input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   				   
-      <input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
-      <input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">		  
-	  <input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">	
+      <input type="hidden" name="id" value="<?php echo (int)$_REQUEST["id"] ?>">
+      <input type="hidden" name="folder" value="<?php echo codeH($_REQUEST["folder"]) ?>">
+      <input type="hidden" name="type" value="<?php echo (int)$_REQUEST["type"] ?>">				   				   
+      <input type="hidden" name="sortorder" value="<?php echo(int) $_REQUEST["sortorder"] ?>">
+      <input type="hidden" name="p" value="<?php echo (int)$_REQUEST["p"] ?>">		  
+	  <input type="hidden" name="a" value="<?php echo (int)$_REQUEST["a"] ?>">	
 	  <input name="upload" type="submit" class="buttonWhite" id="upload" style="width:102px" value="<?php echo localeH("Upload");?>"></td>
             </tr>
 			</form>
             <tr>
               <td class="windowTabTypeOnly">&nbsp;</td>
               <td class="windowTabTypeOnly"><form action="mediabase_import.php" method="post">
-      <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
+      <input type="hidden" name="id" value="<?php echo (int)$_REQUEST["id"] ?>">
       <input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
-      <input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   				   
-      <input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
-      <input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">	
-	  <input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">	  
+      <input type="hidden" name="type" value="<?php echo (int)$_REQUEST["type"] ?>">				   				   
+      <input type="hidden" name="sortorder" value="<?php echo(int) $_REQUEST["sortorder"] ?>">
+      <input type="hidden" name="p" value="<?php echo (int)$_REQUEST["p"] ?>">	
+	  <input type="hidden" name="a" value="<?php echo (int)$_REQUEST["a"] ?>">	  
 	  <input name="import" type="submit" class="buttonWhite" id="import2" style="width:102px" value="<?php echo localeH("Import");?>"></form></td>
             </tr>
           </table>
@@ -2273,12 +2273,12 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
                 <td class="padding10"> <?php echo localeH("Name");?> </td>
                 <td>
                 <form action="media_search.php" method="post">
- 	  		    <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
-      			<input type="hidden" name="folder" value="<?php echo $_REQUEST["folder"] ?>">
-      			<input type="hidden" name="type" value="<?php echo $_REQUEST["type"] ?>">				   				   
-      			<input type="hidden" name="sortorder" value="<?php echo $_REQUEST["sortorder"] ?>">
-      			<input type="hidden" name="p" value="<?php echo $_REQUEST["p"] ?>">	
-	  			<input type="hidden" name="a" value="<?php echo $_REQUEST["a"] ?>">
+ 	  		    <input type="hidden" name="id" value="<?php echo (int)$_REQUEST["id"] ?>">
+      			<input type="hidden" name="folder" value="<?php echo codeH($_REQUEST["folder"]) ?>">
+      			<input type="hidden" name="type" value="<?php echo (int)$_REQUEST["type"] ?>">				   				   
+      			<input type="hidden" name="sortorder" value="<?php echo (int)$_REQUEST["sortorder"] ?>">
+      			<input type="hidden" name="p" value="<?php echo (int)$_REQUEST["p"] ?>">	
+	  			<input type="hidden" name="a" value="<?php echo (int)$_REQUEST["a"] ?>">
                 <input type="text" name="s" style="width: 100px" class="input">
                 </td>
               </tr>
@@ -2780,10 +2780,10 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 		$this->tab_draw("Aufgaben",$x=260,1);
 
 		$block_nr = 0;
-		if (isset($_REQUEST["focus"])){$block_nr = $_REQUEST["focus"];}
+		if (isset($_REQUEST["focus"])){$block_nr = (int)$_REQUEST["focus"];}
 
 		$sortorder=1;
-		if (isset($_REQUEST["sortorder"])){$sortorder = $_REQUEST["sortorder"];}
+		if (isset($_REQUEST["sortorder"])){$sortorder = (int)$_REQUEST["sortorder"];}
 
 		$myNav = new PhenotypeTree();
 		$nav_id  = $myNav->addNode("Alle Bereiche","tickets.php?sbj_id=-1&focus=".$block_nr . "&sortorder=".$sortorder,0,"Alle Bereiche");
@@ -3007,7 +3007,6 @@ $this->displayTreeNavi($myNav,$_REQUEST["folder"]);
 		
       </table>
 <?php
-
 if ($scope==1) // Monatsansicht
 {
 	$zeitraum = date("Ym",$datum);
@@ -3026,12 +3025,12 @@ else
 	$subquery = "(SELECT page.pag_id, sta_pageview AS sum FROM page_statistics LEFT JOIN page ON page_statistics.pag_id = page.pag_id WHERE sta_datum =". date ("Ymd",$datum);
 	if ($grp_id!=-1)
 	{
-		$sql.= " AND page.grp_id = " . $grp_id;
+		$subquery.= " AND page.grp_id = " . $grp_id;
 	}
 	$subquery.= ") AS SubQuery";
 }
 
-$rs = $myDB->query($sql);
+
 $sql = "SELECT COUNT(*) AS C FROM " . $subquery;
 
 $rs = $myDB->query($sql);

@@ -63,7 +63,7 @@ $_SESSION["grp_id"]=$myPage->grp_id;
 
 if (isset($_REQUEST["b"]))
 {
-  $block_nr = $_REQUEST["b"];
+  $block_nr = (int)$_REQUEST["b"];
 }
 else
 {
@@ -168,7 +168,7 @@ if ($block_nr>0 AND $block_nr<77)
   if (isset($_REQUEST["preview"]))
   {
     ?>
-    previewPage(<?php echo $_REQUEST["id"] ?>,<?php echo $_REQUEST["ver_id"] ?>,<?php echo $_SESSION["lng_id"] ?>,<?php echo $myPT->getPref("preview_dialog.dialog_width",800) ?>,<?php echo $myPT->getPref("preview_dialog.dialog_height",500) ?>, "<?php echo localeH("Preview");?>");
+    previewPage(<?php echo (int)$_REQUEST["id"] ?>,<?php echo (int)$_REQUEST["ver_id"] ?>,<?php echo (int)$_SESSION["lng_id"] ?>,<?php echo $myPT->getPref("preview_dialog.dialog_width",800) ?>,<?php echo $myPT->getPref("preview_dialog.dialog_height",500) ?>, "<?php echo localeH("Preview");?>");
     <?php
   }
   ?>
@@ -184,7 +184,7 @@ $myPT->startBuffer();
 ?>
 <?php
 $myAdm->explorer_prepare(locale("Editor"),locale("Pages"));
-$myAdm->explorer_set("pag_id",$_REQUEST["id"]);
+$myAdm->explorer_set("pag_id",(int)$_REQUEST["id"]);
 $myAdm->explorer_draw();
 ?>
 <?php
@@ -651,7 +651,7 @@ if ($mySUser->checkRight("elm_task"))
         $datum = mktime( 12 ,00,00,date('m'),date('d')-$i,date('Y'));
         $sqldatum = date('Ymd',$datum);
 
-        $sql = "SELECT sta_pageview FROM page_statistics WHERE pag_id=" .$_REQUEST["id"] . " AND sta_datum=" . $sqldatum;
+        $sql = "SELECT sta_pageview FROM page_statistics WHERE pag_id=" .(int)$_REQUEST["id"] . " AND sta_datum=" . $sqldatum;
         $rs = $myDB->query($sql);
         $row=mysql_fetch_array($rs);
         if (mysql_num_rows($rs)==0)
@@ -1002,7 +1002,7 @@ while ($row = mysql_fetch_array($rs))
             <td class="tableBody"><p class="blue"><strong>
 <?php echo $row["ver_bez"] ?></strong></p></td>
             <td class="tableBody"><img src="img/i_online.gif" width="30" height="22"></td>
-            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo $_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="<?php echo localeH("Add Version Change");?>n" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="bearbeiten" width="22" height="22" border="0" align="absmiddle"></a><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo (int)$_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="<?php echo localeH("Add Version Change");?>n" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
            <tr>
             <td colspan="5" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -1014,7 +1014,7 @@ while ($row = mysql_fetch_array($rs))
             <td class="tableBody"><p><?php echo $row["ver_nr"] ?></p></td>
             <td class="tableBody"><p><?php echo $row["ver_bez"] ?></p></td>
             <td class="tableBody"><img src="img/i_offline.gif" width="30" height="22"></td>
-            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit");?>" width="22" height="22" border="0" align="absmiddle"></a> <a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo $_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="<?php echo localeH("Add Version Change");?>" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_delete.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>&ver_id_editing=<?php echo $_REQUEST["ver_id"] ?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_activate.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_aktivieren.gif" alt="<?php echo localeH("Activate");?>" width="22" height="22" border="0" align="absmiddle"></a></td>
+            <td align="left" nowrap class="tableBody"><a href="page_edit.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit");?>" width="22" height="22" border="0" align="absmiddle"></a> <a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,<?php echo $row["ver_id"] ?>,<?php echo (int)$_REQUEST["ver_id"] ?>);"> <img src="img/b_einstellen.gif" alt="<?php echo localeH("Add Version Change");?>" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_delete.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>&ver_id_editing=<?php echo (int)$_REQUEST["ver_id"] ?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a> <a href="pageversion_activate.php?id=<?php echo $myPage->id ?>&b=0&ver_id=<?php echo $row["ver_id"] ?>"><img src="img/b_aktivieren.gif" alt="<?php echo localeH("Activate");?>" width="22" height="22" border="0" align="absmiddle"></a></td>
             </tr>
            <tr>
             <td colspan="5" nowrap class="tableHline"><img src="img/white_border.gif" width="3" height="3"></td>
@@ -1084,7 +1084,7 @@ while ($row = mysql_fetch_array($rs))
                 <td class="tableBody"><?php echo date("d.m.Y",$row["ver_date"]) ?></td>
                 <td class="tableBody"><?php echo date("H:i",$row["ver_date"]) ?></td>
                 <td class="tableBody"><?php echo $row["ver_bez"] ?></td>
-                <td align="right" class="tableBody"><a href="pageversion_deleteautoactivation.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo $_REQUEST["ver_id"] ?>&auv_id=<?php echo $row["auv_id"] ?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a></td>
+                <td align="right" class="tableBody"><a href="pageversion_deleteautoactivation.php?id=<?php echo $myPage->id ?>&ver_id=<?php echo (int)$_REQUEST["ver_id"] ?>&auv_id=<?php echo $row["auv_id"] ?>"><img src="img/b_delete.gif" alt="l&ouml;schen" width="22" height="22" border="0" align="absmiddle"></a></td>
               </tr>
        <?php
  }
@@ -1095,7 +1095,7 @@ while ($row = mysql_fetch_array($rs))
       </table>
       <table width="680" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td class="windowFooterGrey2"><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,0,<?php echo $_REQUEST["ver_id"] ?>);" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add Version Change");?></a></td>
+          <td class="windowFooterGrey2"><a href="javascript:pageversion_autoactivation(<?php echo $myPage->id ?>,0,<?php echo (int)$_REQUEST["ver_id"] ?>);" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add Version Change");?></a></td>
           <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
         </tr>
         <tr>

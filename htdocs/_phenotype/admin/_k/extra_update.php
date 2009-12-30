@@ -34,7 +34,7 @@ $myPT->clearCache();
 ?>
 <?php
 $myAdm = new PhenotypeAdmin();
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 
 if (isset($_REQUEST["delete"]))
 {
@@ -133,7 +133,7 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
   }
 }
 
-$b = $_REQUEST["b"];
+$b = (int)$_REQUEST["b"];
 
 if ($b==2)
 {

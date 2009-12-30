@@ -33,7 +33,7 @@ if (!$mySUser->checkRight("superuser"))
 <?php
 $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 
 ?>
 <?php
@@ -71,8 +71,8 @@ $rs = $myDB->query($sql);
 $row = mysql_fetch_array($rs);
 ?>
     <form action="extra_update.php" method="post">
-	<input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">	
-	<input type="hidden" name="b" value="<?php echo $_REQUEST["b"] ?>">		
+	<input type="hidden" name="id" value="<?php echo (int)$_REQUEST["id"] ?>">	
+	<input type="hidden" name="b" value="<?php echo (int)$_REQUEST["b"] ?>">		
     <table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">

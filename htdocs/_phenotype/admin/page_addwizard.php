@@ -112,7 +112,7 @@ body {
 		<td colspan="5" valign="top" class="tableBody">
 		<?php
 		$myPage = new PhenotypePage();
-		$myPage->init($_REQUEST["id"]);
+		$myPage->init((int)$_REQUEST["id"]);
 		 // Bestimmen welche Layouts genutzt werden dürfen
 		 $_layout_usable=Array();
 		 $sql = "SELECT * FROM layout_pagegroup WHERE grp_id=" .$myPage->grp_id;

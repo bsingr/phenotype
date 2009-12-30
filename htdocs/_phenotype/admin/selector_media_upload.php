@@ -134,8 +134,8 @@ foreach ($_folder AS $k)
 else
 {
 ?>
-<input type="hidden" name="folder1" value="<?php echo $_REQUEST["folder"] ?>">
-<input type="hidden" name="folder1_new" value="<?php echo $_REQUEST["folder"] ?>">
+<input type="hidden" name="folder1" value="<?php echo codeH($_REQUEST["folder"]) ?>">
+<input type="hidden" name="folder1_new" value="<?php echo codeH($_REQUEST["folder"]) ?>">
 <?php 
 	if ($myRequest->get("folder")!=-1)
 	{

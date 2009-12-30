@@ -250,7 +250,7 @@ class PhenotypeBackend_Editor_Standard extends PhenotypeBackend
 			<?php } ?>
 			</td>
             <td align="right" nowrap class="tableBody">
-            <?php if ($row["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo $_REQUEST["c"] ?>" onclick="return confirm('<?php echo localeH("Really delete record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?>
+            <?php if ($row["con_bearbeiten"]==1){ ?><a href="backend.php?page=Editor,Content,edit&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>"><img src="img/b_edit.gif" alt="<?php echo localeH("Edit record");?>" width="22" height="22" border="0" align="absmiddle"></a> <?php } ?><?php if ($row["con_loeschen"]==1){ ?><a href="backend.php?page=Editor,Content,delete&id=<?php echo $row_data["dat_id"] ?>&uid=<?php echo $row_data["dat_uid"] ?>&c=<?php echo urlencode($_REQUEST["c"])?>" onclick="return confirm('<?php echo localeH("Really delete record?");?>')"><img src="img/b_delete.gif" alt="<?php echo localeH("Delete record");?>" width="22" height="22" border="0" align="absmiddle"></a><?php } ?>
             </td>
             </tr>
           <tr>

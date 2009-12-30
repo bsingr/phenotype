@@ -45,7 +45,7 @@ $scriptname = APPPATH . "pagescripts/" .  sprintf("%04.0f", $id) . "_" . sprintf
 
 if ($_REQUEST["ver_id_editing"]!= $ver_id)
 {
-  $url = "page_edit.php?id=" . $id .  "&b=99&ver_id=" . $_REQUEST["ver_id_editing"];
+  $url = "page_edit.php?id=" . $id .  "&b=99&ver_id=" . (int)$_REQUEST["ver_id_editing"];
 }
 else
 {

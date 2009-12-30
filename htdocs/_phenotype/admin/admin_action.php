@@ -120,7 +120,7 @@ if ($action_id==1)
    if (isset($_REQUEST["grp_id_".$row["grp_id"]]))
    {
      echo "<br><br>" .locale("Pagegroup"). " ". $row["grp_bez"] . ":<br>";
-	 $id = $_REQUEST["pag_id_grp_id_".$row["grp_id"]];
+	 $id = (int)$_REQUEST["pag_id_grp_id_".$row["grp_id"]];
 	 if ($id==0)
 	 {
 	   $sql = "SELECT pag_id FROM page WHERE grp_id=" . $row["grp_id"] . " AND pag_id_top=0";
@@ -149,7 +149,7 @@ if ($action_id==2)
   set_time_limit(0);
   $folder = $_REQUEST["folder"];
   //$sql = "SELECT * FROM media WHERE med_logical_folder ='" . $folder . "'";
-  $sql = "SELECT * FROM media WHERE med_logical_folder1 LIKE'" . $folder . "%'";
+  $sql = "SELECT * FROM media WHERE med_logical_folder1 LIKE'" . mysql_real_escape_string($folder) . "%'";
   $rs = $myDB->query($sql);
   $myMB = new PhenotypeMediabase();
   while ($row=mysql_fetch_array($rs))
@@ -163,9 +163,9 @@ if ($action_id==2)
 if ($action_id==3)
 {
   echo "<strong>".locale("The index of following content object records is regenerated:")."</strong><br><br>";	
-  $sql = "SELECT * FROM content_data WHERE con_id=" . $_REQUEST["con_id"];
+  $sql = "SELECT * FROM content_data WHERE con_id=" . (int)$_REQUEST["con_id"];
   $rs = $myDB->query($sql);
-  $cname =  "PhenotypeContent_" . $_REQUEST["con_id"];
+  $cname =  "PhenotypeContent_" . (int)$_REQUEST["con_id"];
   $myCO = new $cname;
   //echo $cname;
   while ($row=mysql_fetch_array($rs))
@@ -213,9 +213,9 @@ if ($action_id==5)
 if ($action_id==6)
 {
   echo "<strong>".locale("Following content object records are deleted:")."</strong><br><br>";	
-  $sql = "SELECT * FROM content_data WHERE con_id=" . $_REQUEST["con_id"];
+  $sql = "SELECT * FROM content_data WHERE con_id=" . (int)$_REQUEST["con_id"];
   $rs = $myDB->query($sql);
-  $cname =  "PhenotypeContent_" . $_REQUEST["con_id"];
+  $cname =  "PhenotypeContent_" . (int)$_REQUEST["con_id"];
   $myCO = new $cname;
   while ($row=mysql_fetch_array($rs))
   {

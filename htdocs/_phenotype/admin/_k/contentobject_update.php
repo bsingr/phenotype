@@ -34,13 +34,13 @@ $myPT->clearCache();
 ?>
 <?php
 $myAdm = new PhenotypeAdmin();
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 
 if (isset($_REQUEST["delete"]))
 {
 	$myAdm->cfg_removeContent($id);
 
-	$url = "config_content.php?r=" . $myRequest->get("r");
+	$url = "config_content.php?r=" . urlencode($myRequest->get("r"));
 
 	Header ("Location:" . $url."&".SID);
 	exit();
@@ -165,7 +165,7 @@ if ($_REQUEST["b"]==0 OR $_REQUEST["b"]==2)
 	}
 }
 
-$b = $_REQUEST["b"];
+$b = (int)$_REQUEST["b"];
 
 if ($b==2)
 {

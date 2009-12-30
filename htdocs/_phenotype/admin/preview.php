@@ -30,7 +30,7 @@ if (!$mySUser->checkRight("elm_page"))
 }
 ?>
 <?php
-$url = SERVERFULLURL . "preview.php?id=" . $_REQUEST["id"] . "&ver_id=" . $_REQUEST["ver_id"];
+$url = SERVERFULLURL . "preview.php?id=" . (int)$_REQUEST["id"] . "&ver_id=" . (int)$_REQUEST["ver_id"];
 Header ("Location:" . $url."&".SID);
 exit();
 ?>

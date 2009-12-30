@@ -74,7 +74,7 @@ while ($row = mysql_fetch_array($rs))
 }
   if (isset($_REQUEST["grp_id"]))
   {
-  $grp_id = $_REQUEST["grp_id"];
+  $grp_id = (int)$_REQUEST["grp_id"];
   }
   else
   {
@@ -112,7 +112,7 @@ if (mysql_num_rows($rs)!=0)
   }
   if (isset($_REQUEST["con_id"]))
   {
-  $con_id = $_REQUEST["con_id"];
+  $con_id = (int)$_REQUEST["con_id"];
   }
   else
   {
@@ -146,10 +146,10 @@ $myPT->startBuffer();
 ?>
 <form action="statistics.php" method="post" name="form1" id="form1">
 <?php if (isset($_REQUEST["grp_id"])){ ?>
-<input type="hidden" name="grp_id" value="<?php echo $_REQUEST["grp_id"] ?>"?>
+<input type="hidden" name="grp_id" value="<?php echo (int)$_REQUEST["grp_id"] ?>"?>
 <?php } ?>
 <?php if (isset($_REQUEST["con_id"])){ ?>
-<input type="hidden" name="con_id" value="<?php echo $_REQUEST["con_id"] ?>"?>
+<input type="hidden" name="con_id" value="<?php echo (int)$_REQUEST["con_id"] ?>"?>
 <?php } ?>
 <?php
 $nr=1;
@@ -240,7 +240,7 @@ if ($datum > time()){$datum=time();}
 if ($datum < 0){$datum=time();}
 if (isset($_REQUEST["grp_id"]))
 {
-  $grp_id = $_REQUEST["grp_id"];
+  $grp_id = (int)$_REQUEST["grp_id"];
   $myLayout->displayStatsPanel_page("Panel ".$nr,$nr,$mode,$datum,$scope,$anzahl,$grp_id);
 }
 }

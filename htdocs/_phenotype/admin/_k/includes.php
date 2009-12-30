@@ -108,7 +108,7 @@ $myPT->startBuffer();
  }
  else
  {
-   $sql = "SELECT * FROM include WHERE inc_rubrik='" .$_REQUEST["r"]."' ORDER BY inc_bez";
+   $sql = "SELECT * FROM include WHERE inc_rubrik='" .mysql_real_escape_string($_REQUEST["r"])."' ORDER BY inc_bez";
  }
  $rs = $myDB->query($sql);
  $includes = Array();
@@ -133,7 +133,7 @@ $myPT->startBuffer();
         if ($_REQUEST["r"]==-1)
         {echo urlencode("Neue Rubrik");}
 		else
-		{echo $_REQUEST["r"];}
+		{echo urlencode($_REQUEST["r"]);}
 		?>" onclick="javascript:return confirm('<?php echo localeH("Really delete this include?");?>')"> <img src="img/b_delete.gif" alt="<?php echo localeH("Delete");?>" width="22" height="22" border="0" align="absmiddle"></a>
 <?php
        }else
@@ -162,7 +162,7 @@ $myPT->startBuffer();
         if ($_REQUEST["r"]==-1)
         {echo urlencode(locale("New category"));}
 		else
-		{echo $_REQUEST["r"];}
+		{echo urlencode($_REQUEST["r"]);}
 		?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Create new include");?></a></td>
         <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
       </tr>

@@ -68,7 +68,7 @@ $left = $myPT->stopBuffer();
 $myPT->startBuffer();
 
 
-require (PACKAGEPATH.$myRequest->get("id")."/PhenotypePackage.class.php");
+require (PACKAGEPATH.basename($myRequest->get("id"))."/PhenotypePackage.class.php");
 
 $myPak = new PhenotypePackage();
 

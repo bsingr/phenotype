@@ -33,7 +33,7 @@ if (!$mySUser->checkRight("superuser"))
 $myPT->clearCache();
 ?>
 <?php
-$id = $_REQUEST["id"];
+$id = (int)$_REQUEST["id"];
 
 $sql = "DELETE FROM component_componentgroup WHERE cog_id = " . $id;
 $myDB->query($sql);

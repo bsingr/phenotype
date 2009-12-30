@@ -64,7 +64,7 @@ if ($block_nr==0)
 
 
   // fuer alle Versionen
-  $mySQL->addField("pag_cache",$_REQUEST["cache"],DB_NUMBER);
+  $mySQL->addField("pag_cache",(int)$_REQUEST["cache"],DB_NUMBER);
   if ($myPT->getPref("edit_pages.show_quickfinder")==1)
   {
     if (isset($_REQUEST["usequickfinder"]))
@@ -79,7 +79,7 @@ if ($block_nr==0)
 
   if (isset($_REQUEST["pag_id_mimikry"]))
   {
-    $mySQL->addField("pag_id_mimikry",$_REQUEST["pag_id_mimikry"],DB_NUMBER);
+    $mySQL->addField("pag_id_mimikry",(int)$_REQUEST["pag_id_mimikry"],DB_NUMBER);
   }else
   {
     $mySQL->addField("pag_id_mimikry",$id,DB_NUMBER);
@@ -88,7 +88,7 @@ if ($block_nr==0)
   $mySQL->addField("pag_searchtext",$myRequest->get("searchtext"));
 
   // nur fuer die aktuelle Version
-  $mySQL2->addField("lay_id",$_REQUEST["template_id"],DB_NUMBER);
+  $mySQL2->addField("lay_id",(int)$_REQUEST["template_id"],DB_NUMBER);
 
   //$mySQL2->addField("inc_id1",$_REQUEST["inc_id1"],DB_NUMBER);
   //$mySQL2->addField("inc_id2",$_REQUEST["inc_id2"],DB_NUMBER);
@@ -280,7 +280,7 @@ else
   $new_tool_id = $_REQUEST["newtool_id"];
   if ($new_tool_id !="")
   {
-    $tname = "PhenotypeComponent_" . $_REQUEST["newtool_type"];
+    $tname = "PhenotypeComponent_" . (int)$_REQUEST["newtool_type"];
     $myComponent = new $tname;
     $pos = $myComponent->addNew($id,$ver_id,0,$block_nr,$new_tool_id);
   }
@@ -411,8 +411,8 @@ if ((isset($_REQUEST["savescript"]) OR isset($_REQUEST["savescript_preview"])) A
 if ((isset($_REQUEST["savescript"]) OR isset($_REQUEST["savescript_preview"])))
 {
   $mySQL = new SQLBuilder();
-  $mySQL->addField("inc_id1",$_REQUEST["inc_id1"],DB_NUMBER);
-  $mySQL->addField("inc_id2",$_REQUEST["inc_id2"],DB_NUMBER);
+  $mySQL->addField("inc_id1",(int)$_REQUEST["inc_id1"],DB_NUMBER);
+  $mySQL->addField("inc_id2",(int)$_REQUEST["inc_id2"],DB_NUMBER);
 
 
   $sql = $mySQL->update("pageversion","pag_id=".$id . " AND ver_id=".$ver_id);
@@ -445,7 +445,7 @@ if ((isset($_REQUEST["savescript"]) OR isset($_REQUEST["savescript_preview"])))
   */
 
 
-  $mySQL->addField("pag_contenttype",$_REQUEST["contenttype"],DB_NUMBER);
+  $mySQL->addField("pag_contenttype",(int)$_REQUEST["contenttype"],DB_NUMBER);
 
   // Variablen updaten
   $sql = "SELECT pag_id_top FROM page WHERE pag_id = " . $id;
@@ -471,12 +471,12 @@ if ((isset($_REQUEST["savescript"]) OR isset($_REQUEST["savescript_preview"])))
     }
   }
   $_props = Array();
-  for ($i=1;$i<=$_REQUEST["varanzahl"];$i++)
+  for ($i=1;$i<=(int)$_REQUEST["varanzahl"];$i++)
   {
     if ($_REQUEST["var".$i]!="")
     {
-      $var = stripslashes($_REQUEST["var".$i]);
-      $val = stripslashes($_REQUEST["val".$i]);
+      $var = $myRequest->get("var".$i);
+      $val = $myRequest->get("val".$i);
       if (array_key_exists($var,$_props_top))
       {
         // Unveraendert geerbte Variablen solle nicht gespeichert werden

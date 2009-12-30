@@ -32,7 +32,7 @@ if (!$mySUser->checkRight("elm_page"))
 ?>
 <?php
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
-     $sql = "SELECT * FROM pageversion WHERE pag_id =" . $_REQUEST["id"] . " ORDER BY ver_nr";
+     $sql = "SELECT * FROM pageversion WHERE pag_id =" . (int)$_REQUEST["id"] . " ORDER BY ver_nr";
      $rs = $myDB->query($sql);
      $versionen = Array();
      while ($row = mysql_fetch_array($rs))
@@ -74,11 +74,11 @@ body {
     <td class="window"><table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td colspan="2" valign="top" class="tableBody"><?php echo localeH("Version");?>:<br>
-                <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
-      <input type="hidden" name="ver_id" value="<?php echo $_REQUEST["ver_id_editing"] ?>">
+                <input type="hidden" name="id" value="<?php echo (int)$_REQUEST["id"] ?>">
+      <input type="hidden" name="ver_id" value="<?php echo (int)$_REQUEST["ver_id_editing"] ?>">
       <select name="ver_id_2bactivated" class="input" style="width: 170px">
       <?php
-      echo $myAdm->buildOptionsByNamedArray($versionen,$_REQUEST["ver_id"]);
+      echo $myAdm->buildOptionsByNamedArray($versionen,(int)$_REQUEST["ver_id"]);
       ?>
             </select><br></td>
         </tr>

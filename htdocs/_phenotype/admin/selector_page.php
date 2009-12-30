@@ -70,9 +70,9 @@ self.focus();
     </table>
 <?php
 $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
-$url = "selector_page.php?b=0&id=".$_REQUEST["id"];
+$url = "selector_page.php?b=0&id=".(int)$_REQUEST["id"];
 $myLayout->tab_addEntry(locale("Pages"),$url,"b_site.gif");
-$url = "selector_page.php?b=1&id=".$_REQUEST["id"];
+$url = "selector_page.php?b=1&id=".(int)$_REQUEST["id"];
 //$myLayout->tab_addEntry("Content",$url,"b_content.gif");
 //$url = "selector_page.php?b=2";
 //$myLayout->tab_addEntry("WWW",$url,"b_extern.gif");
@@ -85,7 +85,7 @@ $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
   $rs = $myDB->query($sql);
   if (isset($_REQUEST["grp_id"]))
   {
-    $grp_id=$_REQUEST["grp_id"];
+    $grp_id=(int)$_REQUEST["grp_id"];
   }
   else
   {
@@ -113,8 +113,8 @@ $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
             <tr>
               <td class="padding10"><?php echo localeH("Group");?>:</td>
               <td><form action="selector_page.php" method="post" name="formGrp">
-			  <input type="hidden" name="id" value="<?php echo $_REQUEST["id"] ?>">
-			  <input type="hidden" name="cop" value="<?php echo $_REQUEST["cop"] ?>">
+			  <input type="hidden" name="id" value="<?php echo (int)$_REQUEST["id"] ?>">
+			  <input type="hidden" name="cop" value="<?php echo (int)$_REQUEST["cop"] ?>">
 			  <select name="grp_id" onChange="document.forms.formGrp.submit();" class="listmenu">
 
 <?php
@@ -129,7 +129,7 @@ $sql = "SELECT grp_id AS K, grp_bez AS V FROM pagegroup ORDER BY V";
 $top_id = $rechte["pag_id_grp_" . $grp_id];
   if (isset($_REQUEST["pag_id"]))
   {
-    $pag_id=$_REQUEST["pag_id"];
+    $pag_id=(int)$_REQUEST["pag_id"];
   }
   else
   {
@@ -152,7 +152,7 @@ $top_id = $rechte["pag_id_grp_" . $grp_id];
   
   foreach ($_nodes AS $nav_id => $node)
   {
-    $node["url"]=str_replace("page_edit.php?id=","selector_page.php?b=0&id=".$_REQUEST["id"]."&cop=". $_REQUEST["cop"]."&pag_id=",$node["url"]);
+    $node["url"]=str_replace("page_edit.php?id=","selector_page.php?b=0&id=".(int)$_REQUEST["id"]."&cop=". (int)$_REQUEST["cop"]."&pag_id=",$node["url"]);
 	//Bei dieser Anzeige sollte eigentlich verhindert werden, dass eine Seiter unterhalb sich selbst eingeordnet wird. 
 	//if ($node["ext_id"]== $_REQUEST["id"]){$node["url"]="";}
 	$_newnodes[$nav_id]=$node;
@@ -167,7 +167,7 @@ $top_id = $rechte["pag_id_grp_" . $grp_id];
 ?>	  
 <table width="350" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="windowFooterGrey2"><a href="selector_page2.php?id=<?php echo $_REQUEST["id"] ?>&cop=<?php echo $_REQUEST["cop"] ?>&id2=<?php echo $row["pag_id"] ?>"><img src="img/b_teaserlink2.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Select page");?> </a></td>
+    <td class="windowFooterGrey2"><a href="selector_page2.php?id=<?php echo (int)$_REQUEST["id"] ?>&cop=<?php echo (int)$_REQUEST["cop"] ?>&id2=<?php echo $row["pag_id"] ?>"><img src="img/b_teaserlink2.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Select page");?> </a></td>
   </tr>
 </table>
 </form>

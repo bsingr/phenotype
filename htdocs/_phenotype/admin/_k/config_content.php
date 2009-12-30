@@ -110,7 +110,7 @@ if ($_REQUEST["r"]==-1)
 }
 else
 {
-	$sql = "SELECT * FROM content WHERE con_rubrik='" .$_REQUEST["r"]."' ORDER BY con_bez";
+	$sql = "SELECT * FROM content WHERE con_rubrik='" .mysql_real_escape($_REQUEST["r"])."' ORDER BY con_bez";
 }
 $rs= $myDB->query($sql);
 while ($row=mysql_fetch_array($rs))

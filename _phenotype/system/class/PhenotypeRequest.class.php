@@ -32,7 +32,12 @@ class PhenotypeRequestStandard extends PhenotypeBase
 
 	public function __construct()
 	{
-		$this->_REQUEST = $_REQUEST;
+		/**
+		 * make sure only POST AND GET parameters are considered
+		 * just in case the ini_set isn't working
+		 * 
+		 **/	
+		$this->_REQUEST = array_merge($_GET,$_POST);
 		$this->analyzeRequest();
 	}
 
@@ -110,7 +115,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				}
 				else
 				{
-					
+
 					if (mysql_num_rows($rs)>1)
 					{
 						$uniqueURL=false;
@@ -164,7 +169,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 					}
 					else
 					{
-						
+
 						global $myTC;
 						$myTC->stop();
 						if (mysql_num_rows($rs)>1 OR $uniqueURL==false)// no unique hit
@@ -213,7 +218,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				// the layout templates
 				$_excludes[]="template_normal";
 				$_excludes[]="template_print";
-				
+
 				// to be checked ...
 				$_excludes[]="http_referer";
 
@@ -366,7 +371,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 
 	public function phpIDS($_excludes=Array())
 	{
-		
+
 		if (phpversion()<"5.1.6")
 		{
 			throw new Exception("Security Warning. PHPIDS needs at least PHP version 5.1.6.\nYou may deactivate PHPIDS by putting define(\"PT_PHPIDS\",0); into your _config.inc.php file.");
@@ -406,14 +411,39 @@ class PhenotypeRequestStandard extends PhenotypeBase
 
 		//echo $result;
 	}
-	
 
+
+	/**
+	 * Get (valid) client IP, considering proxies
+	 *
+	 * @return string IP
+	 */
+	public function getIP()
+	{
+
+		if (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+		{
+			$key="HTTP_X_FORWARDED_FOR";
+		}
+		else
+		{
+			$key="REMOTE_ADDR";
+		}
+		$_ips = explode(",",$_SERVER[$key]);
+		$valid_ip = long2ip(ip2long(array_pop($_ips)));
+		return $valid_ip;
+	}
+
+	/**
+	 * debug print current request values
+	 *
+	 */
 	function printR()
 	{
 		echo "<pre>";
 		print_r ($this->_props);
 		echo "</pre></br>";
-	}	
+	}
 	/**
 	 * Logs current request values
 	 *

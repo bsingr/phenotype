@@ -204,7 +204,7 @@ $mySQL = new SQLBuilder();
 $mySQL->addField("rol_rights",serialize($_rechte));
 $mySQL->addField("rol_bez",$_REQUEST["bez"]);
 $mySQL->addField("rol_description",$_REQUEST["description"]);
-$sql = $mySQL->update("role","rol_id=" . $_REQUEST["id"]);
+$sql = $mySQL->update("role","rol_id=" . (int)$_REQUEST["id"]);
 $myDB->query($sql);
 
 // Jetzt die Rechte aller User, die diese Rolle haben neu builden

@@ -36,7 +36,6 @@ if (!$mySUser->checkRight("superuser"))
 $mySmarty = new PhenotypeSmarty;
 $myAdm = new PhenotypeAdmin();
 $id =$myRequest->get("id");
-
 $myMgr = new PhenotypePackageManager();
 $myMgr->selectPackage($id);
 

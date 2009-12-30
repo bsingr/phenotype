@@ -32,7 +32,7 @@ if (isset($_REQUEST["close"]))
 
 <body>
 <script language="JavaScript">
-top.opener.seq_<?php echo $_REQUEST["id"] ?>_<?php echo $_REQUEST["b"] ?>.location.reload();
+top.opener.seq_<?php echo (int)$_REQUEST["id"] ?>_<?php echo (int)$_REQUEST["b"] ?>.location.reload();
 self.close();
 </script>
 </body>
@@ -92,7 +92,7 @@ $myAdm = new PhenotypeAdmin(); // Damit implizit auch $myLayout
 	<input type="hidden" name="newtool_id" value="">	
 	<input type="hidden" name="newtool_type" value="">		
 	<input type="hidden" name="t" value="<?php echo $toolkit ?>">	
-	<input type="hidden" name="bez" value="<?php echo $_REQUEST["bez"] ?>">
+	<input type="hidden" name="bez" value="<?php echo codeH($_REQUEST["bez"]) ?>">
 	<table width="680" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td class="windowTab"><table width="100%" border="0" cellpadding="0" cellspacing="0">
