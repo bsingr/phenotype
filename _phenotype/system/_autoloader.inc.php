@@ -26,7 +26,7 @@ function __autoload($class_name) {
 
   // create inheritage of standard classes, if not inherited by application
 
-  $_classes = Array("Phenotype","PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeSystemDataObject","PhenotypeNavigationHelper","PhenotypeSmarty","PhenotypeLocaleManager","PhenotypeSoapServer","PhenotypePeer","PhenotypeDebugger");
+  $_classes = Array("Phenotype","PhenotypeRequest","PhenotypeAdmin","PhenotypeComponent","PhenotypeContent","PhenotypeExtra","PhenotypeInclude","PhenotypePage","PhenotypeAction","PhenotypeTicket","PhenotypeBackend","PhenotypeUser","PhenotypeDataObject","PhenotypeMediabase","PhenotypeMediaObject","PhenotypeImage","PhenotypeDocument","PhenotypeLayout","PhenotypePackage","PhenotypeSystemDataObject","PhenotypeNavigationHelper","PhenotypeSmarty","PhenotypeLocaleManager","PhenotypeSoapServer","PhenotypePeer","PhenotypeDebugger","PhenotypeModule");
 
   if (in_array($class_name,$_classes))
   {
@@ -139,6 +139,20 @@ function __autoload($class_name) {
       }
     }
   }
+  
+  // check for module classes
+  if (mb_substr($class_name,0,16)=="PhenotypeModule_")
+  {
+  	$_split = split("_",$class_name);
+  	$module = $_split[1];
+  	$file =  BASEPATH . "_phenotype/modules/". $module . "/".$class_name.".class.php";
+  	if (file_exists ( $file ))
+    {
+      require_once ($file);
+      return;
+    }
+  }
+  
   
     // Evtl. eine freie Applikations-Klasse?
     $file =  APPPATH . "class/". $class_name . ".class.php";
