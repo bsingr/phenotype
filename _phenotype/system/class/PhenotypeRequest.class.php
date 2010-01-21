@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Kr�mer.
+// Peter Sellinger, Michael Kr?mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -115,7 +115,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				}
 				else
 				{
-
+					
 					if (mysql_num_rows($rs)>1)
 					{
 						$uniqueURL=false;
@@ -169,7 +169,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 					}
 					else
 					{
-
+						
 						global $myTC;
 						$myTC->stop();
 						if (mysql_num_rows($rs)>1 OR $uniqueURL==false)// no unique hit
@@ -218,7 +218,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 				// the layout templates
 				$_excludes[]="template_normal";
 				$_excludes[]="template_print";
-
+				
 				// to be checked ...
 				$_excludes[]="http_referer";
 
@@ -371,11 +371,12 @@ class PhenotypeRequestStandard extends PhenotypeBase
 
 	public function phpIDS($_excludes=Array())
 	{
-
+		
 		if (phpversion()<"5.1.6")
 		{
 			throw new Exception("Security Warning. PHPIDS needs at least PHP version 5.1.6.\nYou may deactivate PHPIDS by putting define(\"PT_PHPIDS\",0); into your _config.inc.php file.");
 		}
+		
 		set_include_path(
 		get_include_path()
 		. PATH_SEPARATOR
@@ -393,11 +394,14 @@ class PhenotypeRequestStandard extends PhenotypeBase
 
 
 		$init->config['General']['base_path'] = dirname(__FILE__) . '/../phpids/lib/IDS/';
-		$init->config['General']['use_base_path'] = true;
-		$init->config['Caching']['caching'] = 'none';
-		// even though there's no logging activated per default, we need a folder
-		$init->config['Logging']['path']=TEMPPATH."phpids/";
-
+		$init->config['General']['use_base_path'] = false;
+		$init->config['General']['filter_path']= dirname(__FILE__) . '/../phpids/lib/IDS/default_filter.xml';
+		$init->config['General']['tmp_path'] = TEMPPATH."phpids";
+		
+		$init->config['Caching']['caching'] = 'file';
+		$init->config['Logging']['path']=TEMPPATH."logs/phpids_log.txt";
+		$init->config['Caching']['path']=TEMPPATH."phpids/default_filter.cache";
+		
 		$ids = new IDS_Monitor($request, $init);
 		$result = $ids->run();
 		if (!$result->isEmpty())
@@ -405,12 +409,22 @@ class PhenotypeRequestStandard extends PhenotypeBase
 			$this->set("smartIDSImpact",$result->getImpact());
 			if ($result->getImpact()>PT_PHPIDS_MAXIMPACT)
 			{
+				if(!file_exists($init->config['Logging']['path']))
+				{
+					touch($init->config['Logging']['path']);
+				}
+				require_once dirname(__FILE__) . '/../phpids/lib/IDS/Log/File.php';
+		        require_once dirname(__FILE__) . '/../phpids/lib/IDS/Log/Composite.php';
+				$compositeLog = new IDS_Log_Composite();
+		        $compositeLog->addLogger(IDS_Log_File::getInstance($init));
+		        $compositeLog->execute($result);
 				throw new Exception("PHP Intrusion Detection\n\n".strip_tags(html_entity_decode($result,null,PT_CHARSET)));
 			}
 		}
 
 		//echo $result;
 	}
+	
 
 
 	/**
@@ -443,7 +457,7 @@ class PhenotypeRequestStandard extends PhenotypeBase
 		echo "<pre>";
 		print_r ($this->_props);
 		echo "</pre></br>";
-	}
+	}	
 	/**
 	 * Logs current request values
 	 *

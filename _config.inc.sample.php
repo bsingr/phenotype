@@ -96,6 +96,7 @@ define ("CACHECOUNT",1);
 
 define ("UMASK",0775);
 
+
 // ------------------------------------------------------
 // session env
 // ------------------------------------------------------
@@ -104,7 +105,8 @@ ini_set("session.use_cookies",1);
 ini_set("session.use_only_cookies",1);
 ini_set("session.auto_start",0);
 ini_set("session.use_trans_sid",0);
-ini_set('session.gc_maxlifetime', 3600);
+ini_set("session.cookie_lifetime",0);
+ini_set("session.gc_maxlifetime", 3600);
 
 
 // ------------------------------------------------------
