@@ -823,7 +823,7 @@ class PhenotypeAdminStandard
 		$dir = TEMPPATH;
 		$this->removeDirComplete($dir,1);
 
-		$_dirs = Array("application","backup","console","contentupload","htmlarea","install","logs","media","package","previewcache","smarty","snapshot");
+		$_dirs = Array("application","backup","console","contentupload","htmlarea","install","logs","media","package","previewcache","smarty","snapshot","phpids");
 		foreach ($_dirs AS $k)
 		{
 			mkdir ($dir.$k);
@@ -900,13 +900,3 @@ class PhenotypePackage extends PhenotypePackageStandard
 
 
 
-
-?>
-<?php
-// Hilfsfunktionen einladen
-require (ADMINPATH . "kses/kses.php");
-if (!defined("UMASK"))
-{
-	define ("UMASK",0775);
-}
-?>

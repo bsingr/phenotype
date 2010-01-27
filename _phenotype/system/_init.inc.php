@@ -148,3 +148,9 @@ if(function_exists("date_default_timezone_set") and function_exists("date_defaul
 {
 @date_default_timezone_set(@date_default_timezone_get());
 }
+
+
+if (!defined("UMASK"))
+{
+	define ("UMASK",0775);
+}

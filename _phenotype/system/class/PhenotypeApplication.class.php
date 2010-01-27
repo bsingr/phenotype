@@ -232,33 +232,38 @@ exit();
    */
   function richtext_strip_tags($text)
   {
-    $text = str_replace(chr(160)," ",$text);
+  	
 
-    // Wir wollen keine Div-Tags
-    $text = str_replace('<div> </div>',"",$text);
-    $text = str_replace('<div',"<p",$text);
-    $text = str_replace('</div',"</p",$text);
-
-
-    $allowed = array(
-    'br' => array(),
-    'p' => Array("style"=>1,"class"=>1),
-    'b' => array(),
-    'strong' => array(),
-    'i' => array(),
-    'em' => array(),
-    'a' => Array("href"=>1,"target"=>1),
-    'ol' => array(),
-    'ul' => array(),
-    'li' => array(),
-    //'span' => array(),
-    'div' => Array("style"=>1),
-    'hr' => array()
-    );
-
-    $text = kses($text, $allowed);
-
-    // Typischer Wordschmutz weg
+  	
+  	// for more infos look here: http://htmlpurifier.org/
+  	
+  	// load HTMLPurifier with kses emulation
+  	require_once SYSTEMPATH .'htmlpurifier/library/HTMLPurifier.kses.php';
+    
+    $config = HTMLPurifier_Config::createDefault();
+    $config->set('Core', 'DefinitionCache', null);
+    $config->set('Core', 'Encoding',PT_CHARSET); 
+    if (PT_CHARSET =='ISO-8859-1')
+    {
+    	// Actually that's not mandatory for ISO-8859-1, but it's closer to the old default filtering behaviour (FKC/kses)
+    	$config->set('Core', 'EscapeNonASCIICharacters',true);
+    }
+    
+    // $config->set('HTML', 'Doctype', 'HTML 4.01 Transitional'); // replace with your doctype if not XHTML
+        
+    $allowed ='br,p[style|class],b,strong,i,em,a[href|target],ol,ul,li,hr';
+    
+    $config->set('HTML','Allowed',$allowed);
+    $purifier = new HTMLPurifier($config);
+    
+    // do basic filtering returning valid (X)HTML code
+    $text = $purifier->purify($text);
+  	
+    // remove typical word insertions
+    if (PT_CHARSET =='ISO-8859-1')
+    {
+    	$text = str_replace(chr(160)," ",$text);    
+    }
     $text = str_replace('<p>&nbsp;</p>',"",$text);
     $text = str_replace('<p>&nbsp; </p>',"",$text);
     $text = str_replace('<p>&nbsp;  </p>',"",$text);
@@ -266,15 +271,7 @@ exit();
     $text = str_replace('<p> </p>',"",$text);
     $text = str_replace('<P><STRONG>&nbsp;</STRONG></P>',"",$text);
     $text = str_replace('<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><font size="3"> <p></p></font></p>',"",$text);
-
-    // Echte Returns im IE
-    $text = str_replace("<p></p>","<br/>",$text);
-    $text = str_replace('<p align="left"></p>',"<br/>",$text);
-    $text = str_replace('<p align="right"></p>',"<br/>",$text);
-
-    $text = str_replace('###GT###',"&gt;",$text);
-    $text = str_replace('###LT###',"&lt;",$text);
-
+ 	
     return $text;
   }
 

@@ -235,6 +235,24 @@ class PhenotypeNavigationHelperStandard
     return $_pages;
   }
 
+  
+  /**
+   * remove page id from array
+   *
+   * basically an unset operation, but if you use this method in your navigation includes it improves the readability
+   * 
+   * @param unknown_type $_pages
+   * @param unknown_type $pag_id
+   */
+  public function removePage($_pages,$pag_id)
+  {
+  	if (false !== ($pag_id = array_search($pag_id,$_pages)))
+  	{
+    	unset($_pages[$pag_id]);
+  	}
+  	return $_pages;
+  }
+  
   private function hasToken($token)
   {
     return $this->myDAO->check($token);
