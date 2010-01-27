@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -32,6 +32,8 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
   public $category;
   public $con_id;
+  public $pagenr =1;
+  public $itemcount = 10;
 
   public $_jsarray = Array(); // This array holds Javscript-Functions when displaying the content edit form
 
@@ -56,6 +58,16 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     $this->con_id = $myRequest->getI("con_id");
     $this->category = $myRequest->get("r");
+
+	if ($myRequest->check("p")){$this->pagenr=$myRequest->getI("p");}
+	if ($this->pagenr<0){$this->pagenr=1;}
+	if ($myRequest->check("a"))
+	{
+		$itemcount = $myRequest->getI("a");
+		$itemcount = (int)($itemcount/5)*5;
+		if ($itemcount<10){$itemcount=10;}
+		$this->itemcount=$itemcount;
+	}
 
     switch ($action)
     {
@@ -106,10 +118,10 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         $this->installSnapshot($myRequest->getI("id"),$myRequest->get("sna_type"));
         break;
 			case "lightbox"; // Wird per Ajax aufgerufen
-			
+
 				$this->displayLightBox(true);
-			
-			return;				
+
+			return;
       case "form_ajax":
         $this->execute_form_ajax();
         break;
@@ -199,7 +211,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $myNav = new PhenotypeTree();
     $nav_id_start = $myNav->addNode(localeH("Overview"),"backend.php?page=Editor,Content",0,"r_");
     $sql = "SELECT * FROM content ORDER BY con_rubrik, con_bez";
-    
+
     if ($myPT->getPref("edit_content.flat_tree")==1)
     {
       $sql = "SELECT * FROM content ORDER BY con_bez";
@@ -287,7 +299,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
       }
     }
 
-		?>		
+		?>
 	 <table width="260" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td class="windowFooterGrey2"><table border="0" cellspacing="0" cellpadding="0">
@@ -412,7 +424,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 						$myCO->store();
 					}
 				}
-				$reload=true;				
+				$reload=true;
 				break;
 				default:
 					// med_id can be one value or a comma separated list
@@ -486,12 +498,12 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
         <tr>
           <td class="windowBottomShadow" width="250"><img src="img/win_sh_bo_le.gif" width="10" height="10"></td>
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="10" height="10"></td>
-        </tr>    	  
+        </tr>
     	</table>
     	<?php
 		}
     	?>
-    	</div>      
+    	</div>
 		<?php
 		$html= $myPT->stopBuffer();
 		if ($displayLightbox==true)
@@ -559,7 +571,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				$('#redirect').each(function()
 				{
 					document.location.href = ($(this).text());
-					return;	
+					return;
 				});
 				$('#btn_lightbox_content').click(function()
 				{
@@ -668,7 +680,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $row["con_id"] ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new record");?></a></td>
 		        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 		      </tr>
-			<?php 
+			<?php
 		 	}
 		 	?>
 		    <tr>
@@ -715,7 +727,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     $order = $myRequest->get("c");
     $category = $myRequest->get("r");
-    
+
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
     	<tr>
@@ -863,38 +875,70 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		  	throw new Exception ("Wrong extratab configuration.");
 		  }
 		  $sql .= " AND " .$extratab[1];
-		  
+
 		}
 
 
-		// count records
-
-		$sql1 = "SELECT COUNT(*) AS C " . $sql;
-		$rs = $myDB->query($sql1);
-		$row = mysql_fetch_array($rs);
-		$anzahl = $row["C"];
-
-		//echo "DEBUG: " . $sql;
-
-		// determine page
-
-		$p = $myRequest->getI("p");
-		if ($p<1){$p=1;}
-		$sql2 = "SELECT * " . $sql;
-		$start = ($p-1)*(10);
-		$sql2 .=" LIMIT ". $start . ",10";
-
+		$sql = "SELECT * " . $sql;
 		$rs = $myDB->query($sql2);
 
-		$this->displayContentRecords($rs,true,false,$_objects);
-		//$this->overview_content_draw($sql2,$this->con_id,2);
+		// Seite und Anzahl bestimmen
+		$anzahl = mysql_num_rows($rs);
 
-		$url = "backend.php?page=Editor,Content,select&con_id=".$this->con_id."&r=".$this->category."&b=0&c=".$order."&p=";
+		$p = $this->pagenr;
+
+		// Wechsel der Anzahlsanzeige ??
+		if ($myRequest->check("a2") AND ($this->itemcount !=$myRequest->getI("a2")))
+		{
+			$n= (($p-1)*$myRequest->getI("a2"))+1;
+			$p= ceil($n/$this->itemcount);
+		}
+
+		// Seite gr��er als es die Anzahl erlaubt?
+		$max=ceil($anzahl/$this->itemcount);
+		if ($max==0){$max=1;}
+		if ($p>$max){$p=$max;}
+
+		$start = ($p-1)*($_REQUEST["a"]);
+		$sql .=" LIMIT ". $start . "," . $this->itemcount;
+		?>
+		<table width="680" border="0" cellpadding="0" cellspacing="0">
+	      <tr>
+	        <td class="windowHeaderGrey2">
+			<table border="0" cellspacing="0" cellpadding="0">
+	            <tr>
+	              <td class="padding10"><form action="backend.php" method="post" name="formsort">
+	              <input type="hidden" name="page" value="Editor,Content,select">
+			      <input type="hidden" name="con_id" value="<?php echo $this->con_id ?>">
+				  <input type="hidden" name="r" value="<?php echo $this->category ?>">
+				  <input type="hidden" name="c" value="<?php echo $order ?>">
+			      <input type="hidden" name="p" value="<?php echo $p ?>">
+				  <input type="hidden" name="a" value="<?php echo $this->itemcount ?>">
+	              <td class="padding10"><select name="a" class="listmenu" onchange="document.forms.formsort.submit();">
+				    <?php for ($i=1;$i<=10;$i++){ ?>
+	                <option value="<?php echo ($i*10) ?>" <?php if ($this->itemcount==($i*10)){echo "selected";} ?>><?php echo ($i*10) ?> <?php echo localeH("objects/page");?></option>
+					<?php } ?>
+					<input type="hidden" name="a2" value="<?php echo $this->itemcount ?>">
+					</select></form></td>
+	            </tr>
+	        </table></td>
+	        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
+	      </tr>
+	    </table>
+	    <?php
+
+		$url = "backend.php?page=Editor,Content,select&con_id=".$this->con_id."&r=".$this->category."&b=0&c=".$order."&a=".$this->itemcount."&p=";
 		$selectallbutton=false;
 	    if ($mySUser->checkRight("elm_lightbox"))
 		{
 			$selectallbutton=true;
 		}
+//		echo $this->renderPageBrowser($p,$anzahl,$url,$this->itemcount,false,$selectallbutton);
+
+		$rs = $myDB->query($sql);
+		$this->displayContentRecords($rs,true,false,$_objects);
+		//$this->overview_content_draw($sql2,$this->con_id,2);
+
 		echo $this->renderPageBrowser($p,$anzahl,$url,10,false,$selectallbutton);
 
 		?>
@@ -910,7 +954,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 	        <td class="windowFooterGrey2"><a href="backend.php?page=Editor,Content,insert&con_id=<?php echo $this->con_id ?>" class="tabmenu"><img src="img/b_add_page.gif" width="22" height="22" border="0" align="absmiddle"> <?php echo localeH("Add new record");?></a></td>
 	        <td width="10" valign="top" class="windowRightShadow">&nbsp;</td>
 	      </tr>
-		<?php 
+		<?php
 	 	}
 	 	?>
 	    <tr>
@@ -1118,19 +1162,19 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
     // Extract User Info to merge with editbuffer, if necessary
 	$row_userinfo = Array("usr_id_creator"=>$row["usr_id_creator"],"usr_id"=>$row["usr_id"],"dat_creationdate"=>$row["dat_creationdate"],"dat_date"=>$row["dat_date"]);
-		
+
 		//preview mode
     if ($myCO->previewmode==true AND $row["dat_altered"]==1)
     {
     	$sql = "SELECT * FROM content_data_editbuffer WHERE dat_id=".$dat_id . " AND usr_id=" . (int)$mySUser->id;
     	$rs = $myDB->query($sql);
-    	
+
     	if (mysql_num_rows($rs)==1)
     	{
     		$row = mysql_fetch_array($rs);
 				$row["dat_altered"]=1;
 			$row = array_merge($row,$row_userinfo);
-    	}   	
+    	}
     }
 
     //publish mode
@@ -1138,13 +1182,13 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     {
     	$sql = "SELECT * FROM content_data_editbuffer WHERE dat_id=".$dat_id . " AND usr_id=0";
     	$rs = $myDB->query($sql);
-    	
+
     	if (mysql_num_rows($rs)==1)
     	{
     		$row = mysql_fetch_array($rs);
 				$row["dat_altered"]=1;
 			$row = array_merge($row,$row_userinfo);
-    	}   	
+    	}
     }
 
     $myCO->init($row,$block_nr);
@@ -1266,7 +1310,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		  if ($myCO->nostatus==0)
 		  {
      		?>
-	 		<input name="status" id="status" type="checkbox" value="1" <?php if ($myCO->row["dat_status"]=="1") echo"checked"; ?>> <label for="status"><?php echo localeH("online");?></label>. 
+	 		<input name="status" id="status" type="checkbox" value="1" <?php if ($myCO->row["dat_status"]=="1") echo"checked"; ?>> <label for="status"><?php echo localeH("online");?></label>.
      		<?php
 		  }
 		  $myAdm->displayCreationStatus($myCO->row["usr_id_creator"],$myCO->row["dat_creationdate"]);
@@ -1289,13 +1333,13 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		}
 		?>
 		<?php
-			if($myCO->previewmode == true AND $myRequest->check("preview")) 
+			if($myCO->previewmode == true AND $myRequest->check("preview"))
 			{
 			?>
 			<script type="text/javascript">
 			$(document).ready(function(){
 				previewContent("backend.php?page=Editor,Content,showPreview&id=<?=$dat_id?>",<? echo $myPT->getPref("preview_dialog.dialog_width",800) ?>,<?php echo $myPT->getPref("preview_dialog.dialog_height",500)?>, "<?php echo localeH("Preview");?>");
-			});	
+			});
 			</script>
 			<?
 			}
@@ -1333,7 +1377,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		 <?php
 		 $this->workarea_stop_draw();
 	 	?>
-		</form>	 
+		</form>
 		<?php
 		return $myPT->stopBuffer();
   }
@@ -1351,16 +1395,16 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $block_nr = $myRequest->getI("b");
 
     $myCO = $this->buildCO($dat_id,$block_nr);
-		
+
 		$sql = "DELETE FROM content_data_editbuffer WHERE dat_id=".$myCO->id. " AND con_id=".$myCO->content_type;
 		$myDB->query($sql);
 		$mySQL = new SqlBuilder();
 		$mySQL->addField("dat_altered",0);
 		$sql = $mySQL->update("content_data", "dat_id=".$myCO->id);
 		$myDB->query($sql);
-		
+
 	}
-	
+
 	/**
   * update method
   *
@@ -1421,7 +1465,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     		$myCO->store();
 				$this->deleteEditbufferTable();
     	}
-    	else 
+    	else
     	{
 				if($myRequest->check("preview")) {
 		    	$myCO->store($mySUser->id);
@@ -1430,7 +1474,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 				}
     	}
     }
-    else 
+    else
     {
 			if($myRequest->check("preview")) {
 				$myCO->store($mySUser->id);
@@ -1459,7 +1503,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
       $myCO->snapshot($mySUser->id);
     }
 
-    
+
 		if($myRequest->check("preview") || ($myRequest->check("save") && $myCO->publishmode==true)) {
 			if($myRequest->check("preview")) {
 					$this->_params["preview"]="1";
@@ -1468,7 +1512,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 		} else {
 			$action = "select";
 		}
-		
+
     $feedback=1;
 
     if (isset($myCO->_blocks) OR ($myCO->getErrorText()!="" OR $myCO->getInfoText() !="" OR $myCO->getAlertText() !=""))
@@ -1611,7 +1655,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
     $myCO = $this->buildCO($dat_id,$block_nr);
 
 	$myCO->preview($block_nr);
-		
+
 	exit();
   }
 
@@ -1796,7 +1840,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
           <td class="tableKalenderTage"><?php echo localeH("day_short_saturday");?></td>
           <td class="tableKalenderTage"><?php echo localeH("day_short_sunday");?></td>
         </tr>
-   	    <?php 
+   	    <?php
    	    $wochentag = date("w",$start);
    	    if ($wochentag==0){$wochentag=7;}
    	    $montag = mktime(0,0,0, date("m",$start),date("d",$start)-$wochentag+1,date("Y",$start));
@@ -1804,9 +1848,9 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
    	    $weiter=1;
    	    $j=0;
    	    while ($weiter==1){
-        ?> 
-        <tr> 
-        <?php 
+        ?>
+        <tr>
+        <?php
         $j++;
         for ($i=1;$i<=7;$i++)
         {
@@ -1818,19 +1862,19 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
           if (date("m",$datum)!=date("m",$highlight)){$tag="&nbsp;";$class="tableKalenderLeer";}
           if ($class!=""){$class='class="'.$class.'"';}
           if ($class2!=""){$class2='class="'.$class2.'"';}
-        ?> 
-        <td <?php echo $class ?>><a href="javascript:setDate_<?php echo $ename ?>('<?php echo date('d.m.Y',$datum) ?>')" <?php echo $class2 ?>><?php echo $tag ?></a></td> 
-        <?php 
+        ?>
+        <td <?php echo $class ?>><a href="javascript:setDate_<?php echo $ename ?>('<?php echo date('d.m.Y',$datum) ?>')" <?php echo $class2 ?>><?php echo $tag ?></a></td>
+        <?php
         $datum = mktime(0,0,0, date("m",$datum),date("j",$datum)+1,date("Y",$datum));
         }
-        ?> 
-        </tr> 
-        <?php 
+        ?>
+        </tr>
+        <?php
         if (date("m",$datum)!=date("m",$highlight)){$weiter=0;}
    	    }
    	    if ($j==4){?><tr><td class="tableKalenderWhite" colspan="7">&nbsp;</td></tr><?php }
    	    if ($j<=5){?><tr><td class="tableKalenderWhite" colspan="7">&nbsp;</td></tr><?php }
-        ?> 
+        ?>
       </table>
     </td>
   </tr>
@@ -1864,19 +1908,19 @@ if (date("m",$nachmonat)==date("m",$highlight)){$nachmonat =mktime(0,0,0, date("
           <td valign="top" class="windowRightShadow"><img src="img/win_sh_bo_ri.gif" width="5" ></td>
         </tr>
       </table>
-		
+
 
 		<?php
   }
-  
-  
+
+
   function displayAutoCompleteMatches()
   {
   	global $myRequest;
   	global $myLog;
   	$myRequest->log();
   	$myPH = new PhenotypeSystemDataObject("ParameterHolder",array("id"=>$myRequest->get("hash")));
-  	
+
   	$con_id = (int)$myPH->get("con_id");
   	$status = null;
   	if ($myPH->get("statuscheck")==true)
@@ -1888,15 +1932,15 @@ if (date("m",$nachmonat)==date("m",$highlight)){$nachmonat =mktime(0,0,0, date("
   	{
   		$_filter[]="(dat_bez LIKE '%".mysql_real_escape_string($myRequest->get("query"))."%' OR dat_fullsearch LIKE '%".mysql_real_escape_string($myRequest->get("query"))."%')";
   	}
-  	else 
+  	else
   	{
-  		$_filter[]="dat_bez LIKE '%".mysql_real_escape_string($myRequest->get("query"))."%'";  		
+  		$_filter[]="dat_bez LIKE '%".mysql_real_escape_string($myRequest->get("query"))."%'";
   	}
   	if ($myPH->get("sql_where")!="")
   	{
   		$_filter[]=$myPH->get("sql_where");
   	}
-  	
+
   	$_objects = PhenotypePeer::getRecords($con_id,$status,"dat_bez",$_filter,"0,250");
   	$_suggestions = Array();
   	$_data = Array();
@@ -1911,7 +1955,7 @@ if (date("m",$nachmonat)==date("m",$highlight)){$nachmonat =mktime(0,0,0, date("
 	 suggestions:[<?php echo join(",",$_suggestions);?>],
 	 data:[<?php echo join(",",$_data);?>]
 	}
-  	<?php 
+  	<?php
   }
 }
 ?>
