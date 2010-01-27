@@ -1205,14 +1205,14 @@ class PhenotypeContentStandard extends PhenotypeBase
 	}
 
 	/**
-	 * 
+	 *
 	 *
 	 * @param $input
 	 * @param $bez
 	 * @param $folder
 	 * @param $changefolder
 	 * @param $infozeile
-	 * @param array allowed suffixes 
+	 * @param array allowed suffixes
 	 */
 	function form_document_selector($input, $bez, $folder, $changefolder = 1, $infozeile = 0, $doctype = "")
 	{
@@ -3295,6 +3295,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 				switch ($a[0])
 				{
 					case PT_CON_FORM_TEXTFIELD : // Textfeld
+					case PT_CON_FORM_PASSWORD : // Password field
 					$fname = $myCO->formid."_".$a[2];
 					$myCO->set($a[2], $myRequest->get($fname));
 					$this->fullsearch .= $myRequest->get($fname)." | ";
@@ -3881,8 +3882,8 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$myDB->query($sql);
 		}
 	}
-	
-	
+
+
 	/**
 	 * provides the possibility to mark a coordinate on an imqage
 	 *
@@ -3942,7 +3943,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 	}
 
 	/**
-	 * provides the possibility to select an integer value with a drag & drop slider within 
+	 * provides the possibility to select an integer value with a drag & drop slider within
 	 * it's given ranges
 	 *
 	 * @param string $title
@@ -3964,7 +3965,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		"step"=>(int)$step,
 		"default"=>(int)$default,
 		"width"=>(int)$width,
-		
+
 		);
 	}
 
@@ -3991,7 +3992,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 				$("#slider_<?php echo $name?>_val").html(ui.value);
 				$("input[name=<?php echo $name?>]").val(ui.value);
 			}
-			});		
+			});
  		});
 		</script>
 		<?php
@@ -4004,7 +4005,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$val = $myRequest->get($fname);
 		$this->set($_fconfig["property"],$val);
 	}
-	
+
 	public function form_content_autocomplete($title, $property, $con_id, $size=200, $statuscheck=true,$sql_where="",$use_fulltext=true)
 	{
 		$this->form[] = array(
@@ -4018,17 +4019,17 @@ class PhenotypeContentStandard extends PhenotypeBase
 		"use_fulltext"=>(boolean)$use_fulltext
 		);
 	}
-	
+
 	protected function _form_content_autocomplete_display($_fconfig)
 	{
 		global $myLayout;
 		$myPH = new PhenotypeSystemDataObject("ParameterHolder",$_fconfig);
 		$myPH->store(3600);
-		
+
 		$name_autcomplete_field = $this->formid."_".$_fconfig["property"];
 		$name_hidden_hash= $this->formid."_".$_fconfig["property"]."_hash";
 		$name_hidden_dat_id= $this->formid."_".$_fconfig["property"]."_dat_id";
-		
+
 		$val = (int)$this->get($_fconfig["property"]);
 		$title ="";
 		if ($val!=0)
@@ -4044,7 +4045,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 	    echo $myLayout->workarea_form_hidden($name_hidden_hash,$myPH->get("_daohash"));
 	    echo $myLayout->workarea_form_hidden($name_hidden_dat_id,$val);
 	}
-	
+
 	protected function _form_content_autocomplete_fetch($_fconfig)
 	{
 		global $myRequest;
@@ -4059,14 +4060,14 @@ class PhenotypeContentStandard extends PhenotypeBase
 					$val=0;
 				}
 		}
-		else 
+		else
 		{
 			$val=0;
 		}
 		$this->set($_fconfig["property"],$val);
 	}
-	
-	
+
+
 	public function form_colorselect($title,$property,$_colors)
 	{
 		$this->form[] = array(
@@ -4076,16 +4077,16 @@ class PhenotypeContentStandard extends PhenotypeBase
 		"colors" => $_colors
 		);
 	}
-	
+
 	protected function _form_colorselect_display($_fconfig)
 	{
 		global $myLayout;
    		global $myRequest;
 		$fname = $this->formid."_".$_fconfig["property"];
 		$val = $this->get($_fconfig["property"]);
-   		
+
    		echo $myLayout->workarea_form_hidden($fname,$val);
-   		
+
 		$_colors = Array();
 		$index=0;
 		$i=0;
@@ -4109,23 +4110,23 @@ class PhenotypeContentStandard extends PhenotypeBase
 		   		$('#<?php echo $fname?>').colorPicker(
 		   		{
 		   			defaultColor: <?php echo $index?>, // index of the default color (optional)
-		  			columns: 20,     // number of columns (optional)  
+		  			columns: 20,     // number of columns (optional)
 		  			color: [<?php echo join(',',$_colors)?>],
 		  			click: function(color){
 		  				$('input:[name="<?php echo $fname?>"]').val(color);
-	
+
 		  			}
-		
+
 		   		});
-		   		
+
 		   	});
 	   	});
    		</script>
    		<?php
 
 	}
-	
-	
+
+
 	protected function _form_colorselect_fetch($_fconfig)
 	{
 		global $myRequest;
@@ -4133,7 +4134,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$val = $myRequest->get($fname);
 		$this->set($_fconfig["property"],$val);
 	}
-	
+
 	function setErrorText($s)
 	{
 		$this->errorText = $s;
