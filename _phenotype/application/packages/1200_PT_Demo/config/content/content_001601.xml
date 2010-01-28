@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>
 		<con_id>1601</con_id>
-		<con_bez>Gallery</con_bez>		
+		<con_bez>Gallery</con_bez>
 		<con_rubrik>Demonstration</con_rubrik>
 		<con_description></con_description>
 		<con_anlegen>1</con_anlegen>
@@ -16,7 +16,7 @@
  * Simple example gallery
  * 
  * This very simple gallery can contain up to 20 images. 
- * This content object class also demonstrates the drag &#38; drop sorting possibilites
+ * This content object class also demonstrates the drag &#38;amp; drop sorting possibilites
  *
  *&#47;
 class PhenotypeContent_1601 extends PhenotypeContent
@@ -174,7 +174,7 @@ class PhenotypeContent_1601 extends PhenotypeContent
 
 
   &#47;**
-   * Display thumbnail of an image drag &#38; drop position i
+   * Display thumbnail of an image drag &#38;amp; drop position i
    *
    * @param integer $i
    *&#47;

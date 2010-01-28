@@ -1000,7 +1000,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		}
 
 		header("Content-Type: application/xml; charset=iso-8859-1");
-		echo '<?xml version="1.0" encoding="ISO-8859-1"?>';
+		echo '<?xml version="1.0" encoding="'.PT_CHARSET.'"?>';
 
   ?>
 	<phenotype>
@@ -1739,7 +1739,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		global $myPT;
 		global $myDB;
 
-		$xml ='<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$xml ='<?xml version="1.0" encoding="'.PT_CHARSET.'" ?>
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
@@ -1822,7 +1822,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		global $myPT;
 		global $myDB;
 
-		$xml ='<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$xml ='<?xml version="1.0" encoding="'.PT_CHARSET.'" ?>
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
@@ -1984,7 +1984,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		global $myDB;
 		global $myPT;
 
-		$xml ='<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$xml ='<?xml version="1.0" encoding="'.PT_CHARSET.'" ?>
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>

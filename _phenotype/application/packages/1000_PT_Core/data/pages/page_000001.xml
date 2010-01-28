@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
@@ -23,6 +23,7 @@
 <usr_id_creator>13</usr_id_creator>
 <pag_creationdate>1206374344</pag_creationdate>
 <usr_id>13</usr_id>
+<pag_contenttype>101</pag_contenttype>
 <pag_date>1247839289</pag_date>
 <pag_url>Phenotype-CMS-Startpage</pag_url>
 <pag_url1>Phenotype-CMS-Startpage</pag_url1>

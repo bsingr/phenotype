@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -529,7 +529,7 @@ class PhenotypeApplication extends PhenotypeApplicationStandard
 		$myPT->writefile($file,$buffer);
 
 
-		$buffer = '<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$buffer = '<?xml version="1.0" encoding="'.PT_CHARSET.'" ?>
 <phenotype>
 	<preferences>
 		<section name="backend">

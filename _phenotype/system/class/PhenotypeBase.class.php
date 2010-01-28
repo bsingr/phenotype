@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Kr‰mer.
+// Peter Sellinger, Michael KrÔøΩmer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -29,7 +29,7 @@ class PhenotypeBase
 	public $_props = Array ();
 
 	protected $changed = false;
-	
+
 	/**
 	 * flag wether currently in HWSL coding mode
 	 * 
@@ -128,7 +128,7 @@ class PhenotypeBase
 		}
 		return ($int);
 	}
-	
+
 	/**
 	 * get boolean value of property
 	 *
@@ -153,8 +153,8 @@ class PhenotypeBase
 	{
 		return (float) (str_replace(",",".",$this->get($property,$default)));
 	}
-	
-	
+
+
 	/**
 	 * get property value formatted as decimal
 	 *
@@ -328,13 +328,14 @@ class PhenotypeBase
 
 
 
-	public function codeX($s,$utf8=false)
+	public function codeX($s)
 	{
-		return ($this->xmlencode($s,$utf8));
+		return ($this->xmlencode($s));
 	}
 
 
-	private function xmlencode($s,$utf8=false)
+
+	private function xmlencode($s)
 	{
 
 		//The following are the valid XML characters and character ranges (hex values) as defined by the W3C XML
@@ -343,45 +344,71 @@ class PhenotypeBase
 		// Eliminiert alle Zeichen zwischen #x01 und #x1F (HEX Schreibweise! in dezimal 01 - 31)
 		// Diese Zeichen sind in XML nicht erlaubt, sind ASCII Steuerzeichen
 		// Ausnahmen: #x9 | #xA | #xD
-		if ($utf8==true)
-		{
-			// :TODO: currently only temporary solution for tmx file generation, must be optimized
-			$pat = "/[\x01-\x08]/";
-			$s =  mb_ereg_replace($pat,"",$s);
-			$pat = "/[\x0B-\x0C]/";
-			$s =  mb_ereg_replace($pat,"",$s);
-			$pat = "/[\x0E-\x1F]/";
-			$s =  mb_ereg_replace($pat,"",$s);
-			$s = mb_ereg_replace("&","&amp;",$s);
-			return $s;
-		}
 
 		$pat = "/[\x01-\x08]/";
-		$s =  preg_replace($pat,"",$s);
+		$s =  mb_ereg_replace($pat,"",$s);
 		$pat = "/[\x0B-\x0C]/";
-		$s =  preg_replace($pat,"",$s);
+		$s =  mb_ereg_replace($pat,"",$s);
 		$pat = "/[\x0E-\x1F]/";
-		$s =  preg_replace($pat,"",$s);
+		$s =  mb_ereg_replace($pat,"",$s);
 
 		// Kodiert alle Zeichen zwischen ASCII 127 und 159 (dezimal)
-		// auﬂerdem werden gematcht: "&'/<> (" -> #x22 in Hex Schreibweise)
+		// au√üerdem werden gematcht: "&'/<> (" -> #x22 in Hex Schreibweise)
 		$pat = "/[\x7F-\x9F&<>\/'\\x22\\x00]/";
 		$s =  preg_replace_callback($pat,"match2Entity",$s);
 
 		return $s;
 	}
 
+	/*
+	private function xmlencode($s,$utf8=false)
+	{
+
+	//The following are the valid XML characters and character ranges (hex values) as defined by the W3C XML
+	//language specifications 1.0: #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+
+	// Eliminiert alle Zeichen zwischen #x01 und #x1F (HEX Schreibweise! in dezimal 01 - 31)
+	// Diese Zeichen sind in XML nicht erlaubt, sind ASCII Steuerzeichen
+	// Ausnahmen: #x9 | #xA | #xD
+	if ($utf8==true)
+	{
+	// :TODO: currently only temporary solution for tmx file generation, must be optimized
+	$pat = "/[\x01-\x08]/";
+	$s =  mb_ereg_replace($pat,"",$s);
+	$pat = "/[\x0B-\x0C]/";
+	$s =  mb_ereg_replace($pat,"",$s);
+	$pat = "/[\x0E-\x1F]/";
+	$s =  mb_ereg_replace($pat,"",$s);
+	$s = mb_ereg_replace("&","&amp;",$s);
+	return $s;
+	}
+
+	$pat = "/[\x01-\x08]/";
+	$s =  preg_replace($pat,"",$s);
+	$pat = "/[\x0B-\x0C]/";
+	$s =  preg_replace($pat,"",$s);
+	$pat = "/[\x0E-\x1F]/";
+	$s =  preg_replace($pat,"",$s);
+
+	// Kodiert alle Zeichen zwischen ASCII 127 und 159 (dezimal)
+	// au√üerdem werden gematcht: "&'/<> (" -> #x22 in Hex Schreibweise)
+	$pat = "/[\x7F-\x9F&<>\/'\\x22\\x00]/";
+	$s =  preg_replace_callback($pat,"match2Entity",$s);
+
+	return $s;
+	}*/
+
 	public function urlencode($url)
 	{
 		$url = str_replace(" ","-",$url);
 		$url = str_replace(array(" ","/","_","&","?","---","--"),"-",$url);
-		$url = str_replace("‰","ae",$url);
-		$url = str_replace("ˆ","oe",$url);
-		$url = str_replace("¸","ue",$url);
-		$url = str_replace("ƒ","Ae",$url);
-		$url = str_replace("÷","Oe",$url);
-		$url = str_replace("‹","Ue",$url);
-		$url = str_replace("ﬂ","ss",$url);
+		$url = str_replace("√§","ae",$url);
+		$url = str_replace("√∂","oe",$url);
+		$url = str_replace("√º","ue",$url);
+		$url = str_replace("√Ñ","Ae",$url);
+		$url = str_replace("√ñ","Oe",$url);
+		$url = str_replace("√ú","Ue",$url);
+		$url = str_replace("√ü","ss",$url);
 
 		// Alle Sonderzeichen, die nicht URL-typisch sind rausfiltern
 		$patterns = "/[^-a-z0-9A-Z_,.\/]*/";
@@ -580,7 +607,7 @@ class PhenotypeBase
 			if ($this->HWSL==true)
 			{
 				return codeH(url_for_page($pag_id));
-}
+			}
 			else
 			{
 				return url_for_page($pag_id);

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
-		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>
 		<pag_id>43</pag_id>
 		<importmethod>overwrite</importmethod>
-		<grp_id>2</grp_id>				
+		<grp_id>2</grp_id>
 	</meta>
 	<content>
 	<pag_uid>81609c16bb5632e80fd7f369d9611597</pag_uid>
@@ -23,12 +23,18 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1162651603</pag_creationdate>
 <usr_id>13</usr_id>
+<pag_contenttype>101</pag_contenttype>
 <pag_date>1232357760</pag_date>
 <pag_url>Imprint.html</pag_url>
 <pag_url1>Imprint.html</pag_url1>
 <pag_url2>Imprint.html</pag_url2>
 <pag_url3>Imprint.html</pag_url3>
 <pag_url4>Imprint.html</pag_url4>
+<pag_url5></pag_url5>
+<pag_url6></pag_url6>
+<pag_url7></pag_url7>
+<pag_url8></pag_url8>
+<pag_url9></pag_url9>
 <pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjEyOiJJbXByaW50Lmh0bWwiO30=</pag_props>
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
@@ -38,7 +44,7 @@
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
 				<pag_fullsearch>Imprint|Imprint|Imprint||||Imprint|&#60;p&#62;Every website needs an imprint.&#60;&#47;p&#62;
-&#60;p&#62;This one is just to demonstrate the possibility to give your page any variational url you want, like &#38;quot;Imprint.html&#38;quot; for example.&#60;br &#47;&#62;
+&#60;p&#62;This one is just to demonstrate the possibility to give your page any variational url you want, like &#38;amp;quot;Imprint.html&#38;amp;quot; for example.&#60;br &#47;&#62;
 &#60;br &#47;&#62;
 You should also take a look on the navigational highlighting on the left. While the imprint itself is not part of the page tree, this page is configured to mimik the navigation of the startpage.&#60;&#47;p&#62;|</pag_fullsearch>
 				<script></script>
@@ -63,7 +69,7 @@ You should also take a look on the navigational highlighting on the left. While 
 				<dat_pos>1</dat_pos>
 				<dat_comdata>YToxMTp7czo5OiJfcmV2aXNpb24iO2k6MTtzOjU6InN0eWxlIjtzOjE6IjAiO3M6ODoiaGVhZGxpbmUiO3M6NzoiSW1wcmludCI7czoxMzoiaW1hZ2UxX2ltZ19pZCI7czoxOiIwIjtzOjEzOiJpbWFnZTFfbWVkX2lkIjtzOjE6IjAiO3M6MTA6ImltYWdlMV9hbHQiO3M6MDoiIjtzOjEyOiJpbWFnZTFfYWxpZ24iO3M6NDoibGVmdCI7czo0OiJ0ZXh0IjtzOjM5NToiPHA+RXZlcnkgd2Vic2l0ZSBuZWVkcyBhbiBpbXByaW50LjwvcD4NCjxwPlRoaXMgb25lIGlzIGp1c3QgdG8gZGVtb25zdHJhdGUgdGhlIHBvc3NpYmlsaXR5IHRvIGdpdmUgeW91ciBwYWdlIGFueSB2YXJpYXRpb25hbCB1cmwgeW91IHdhbnQsIGxpa2UgJnF1b3Q7SW1wcmludC5odG1sJnF1b3Q7IGZvciBleGFtcGxlLjxiciAvPg0KPGJyIC8+DQpZb3Ugc2hvdWxkIGFsc28gdGFrZSBhIGxvb2sgb24gdGhlIG5hdmlnYXRpb25hbCBoaWdobGlnaHRpbmcgb24gdGhlIGxlZnQuIFdoaWxlIHRoZSBpbXByaW50IGl0c2VsZiBpcyBub3QgcGFydCBvZiB0aGUgcGFnZSB0cmVlLCB0aGlzIHBhZ2UgaXMgY29uZmlndXJlZCB0byBtaW1payB0aGUgbmF2aWdhdGlvbiBvZiB0aGUgc3RhcnRwYWdlLjwvcD4iO3M6OToibGlua19uYW1lIjtzOjA6IiI7czo4OiJsaW5rX3VybCI7czowOiIiO3M6MTE6ImxpbmtfdGFyZ2V0IjtzOjU6Il9zZWxmIjt9</dat_comdata>
 				<dat_fullsearch>Imprint|&#60;p&#62;Every website needs an imprint.&#60;&#47;p&#62;
-&#60;p&#62;This one is just to demonstrate the possibility to give your page any variational url you want, like &#38;quot;Imprint.html&#38;quot; for example.&#60;br &#47;&#62;
+&#60;p&#62;This one is just to demonstrate the possibility to give your page any variational url you want, like &#38;amp;quot;Imprint.html&#38;amp;quot; for example.&#60;br &#47;&#62;
 &#60;br &#47;&#62;
 You should also take a look on the navigational highlighting on the left. While the imprint itself is not part of the page tree, this page is configured to mimik the navigation of the startpage.&#60;&#47;p&#62;</dat_fullsearch>
 			</component>

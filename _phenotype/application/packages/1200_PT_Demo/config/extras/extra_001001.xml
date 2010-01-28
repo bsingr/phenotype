@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ext_id>1001</ext_id>
@@ -37,10 +37,10 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
         &#60;br&#47;&#62;
         Example: &#60;br&#47;&#62;
         Home&#60;br&#47;&#62;
-        &#38;nbsp;Page 1&#60;br&#47;&#62;
-        &#38;nbsp;Page 2&#60;br&#47;&#62;
-        &#38;nbsp;&#38;nbsp;Page 2.1&#60;br&#47;&#62;
-        &#38;nbsp;Page 3&#60;br&#47;&#62;
+        &#38;amp;nbsp;Page 1&#60;br&#47;&#62;
+        &#38;amp;nbsp;Page 2&#60;br&#47;&#62;
+        &#38;amp;nbsp;&#38;amp;nbsp;Page 2.1&#60;br&#47;&#62;
+        &#38;amp;nbsp;Page 3&#60;br&#47;&#62;
         &#60;br&#47;&#62;
         &#60;br&#47;&#62;
         You must determine layout and online status for all pages. But you can override your global settings for single pages:&#60;br&#47;&#62;
@@ -124,9 +124,9 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
  ?&#62;
 			 &#60;table width=&#34;100%&#34; border=&#34;0&#34; cellpadding=&#34;0&#34; cellspacing=&#34;0&#34;&#62;
           &#60;tr&#62;
-            &#60;td class=&#34;windowFooterWhite&#34;&#62;&#38;nbsp;&#60;&#47;td&#62;
+            &#60;td class=&#34;windowFooterWhite&#34;&#62;&#38;amp;nbsp;&#60;&#47;td&#62;
             &#60;td align=&#34;right&#34; class=&#34;windowFooterWhite&#34;&#62;
-			&#38;nbsp;&#38;nbsp;&#60;input name=&#34;save&#34; type=&#34;submit&#34; class=&#34;buttonWhite&#34; style=&#34;width:102px&#34;value=&#34;Start&#34;&#62;&#38;nbsp;&#38;nbsp;
+			&#38;amp;nbsp;&#38;amp;nbsp;&#60;input name=&#34;save&#34; type=&#34;submit&#34; class=&#34;buttonWhite&#34; style=&#34;width:102px&#34;value=&#34;Start&#34;&#62;&#38;amp;nbsp;&#38;amp;nbsp;
             &#60;&#47;td&#62;
           &#60;&#47;tr&#62;
         &#60;&#47;table&#62;
@@ -206,7 +206,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			if ($k!=&#34;&#34;)
 			{
 
-				&#47;&#47; Korrigiert unmögliche Baumstrukturen
+				&#47;&#47; Korrigiert unmÃ¶gliche Baumstrukturen
 				if ($level&#62;$lastlevel+1)
 				{
 					$level=$lastlevel+1;
@@ -215,7 +215,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 				{
 					$level=0;
 				}
-				&#47;&#47; -- Unmögliche Baumstrukturen
+				&#47;&#47; -- UnmÃ¶gliche Baumstrukturen
 
 				$_tree[] = Array($level,$k,$lay_id,$status);
 				$lastlevel=$level;

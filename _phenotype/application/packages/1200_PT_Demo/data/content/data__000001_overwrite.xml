@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
@@ -7,7 +7,7 @@
 		<dat_id>1</dat_id>
 		<dat_id_local>1</dat_id_local>
 		<importmethod>overwrite</importmethod>
-		<buildindex>1</buildindex>		
+		<buildindex>1</buildindex>
 	</meta>
 	<content>
 	<dat_uid>73cd99c44324e9319262cabb7f4ae105</dat_uid>

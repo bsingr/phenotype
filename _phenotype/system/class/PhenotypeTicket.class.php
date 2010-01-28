@@ -996,7 +996,7 @@ class PhenotypeTicketStandard
 		global $myPT;
 		global $myDB;
 
-		$xml ='<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$xml ='<?xml version="1.0" encoding="'.PT_CHARSET.'" ?>
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>
@@ -1072,7 +1072,7 @@ class PhenotypeTicketStandard
 		global $myPT;
 		global $myDB;
 
-		$xml ='<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$xml ='<?xml version="1.0" encoding="'.PT_CHARSET.'" ?>
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>

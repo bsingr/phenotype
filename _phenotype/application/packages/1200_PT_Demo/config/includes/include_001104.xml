@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
@@ -65,7 +65,7 @@ class PhenotypeInclude_1104 extends PhenotypeInclude
 
 		function check_email(feld,meldung1,meldung2){  email = document.forms.form1[feld].value;  if (email==&#39;&#39;)  {    alert (meldung1);document.forms.form1[feld].focus();return false;   }  if (email.indexOf(&#39;@&#39;)==-1)  {    alert (meldung2);document.forms.form1[feld].focus();return false;   }   if (email.indexOf(&#39;.&#39;)==-1)  {    alert (meldung2);document.forms.form1[feld].focus();return false;   }      return true;}
 
-		function check_2text(feld1,feld2,meldung){  if ((document.forms.form1[feld1].value==&#39;&#39;) &#38;(document.forms.form1[feld2].value==&#39;&#39;))  {    alert (meldung);document.forms.form1[feld1].focus();return false;  }  return true;}
+		function check_2text(feld1,feld2,meldung){  if ((document.forms.form1[feld1].value==&#39;&#39;) &#38;amp;(document.forms.form1[feld2].value==&#39;&#39;))  {    alert (meldung);document.forms.form1[feld1].focus();return false;  }  return true;}
 
 		function check_selection(feld,meldung){  if (document.forms.form1[feld].selectedIndex==0)  {    alert (meldung);document.forms.form1[feld].focus();return false;   }  return true;}
 

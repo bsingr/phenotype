@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
@@ -11,6 +11,7 @@
 <usr_nachname></usr_nachname>
 <usr_login></usr_login>
 <usr_pass></usr_pass>
+<usr_salt></usr_salt>
 <usr_email></usr_email>
 <usr_createdate>1129560752</usr_createdate>
 <usr_lastlogin>0</usr_lastlogin>

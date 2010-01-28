@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
@@ -8,6 +8,6 @@
 		<subject>
 			<sbj_id>1</sbj_id>
 			<sbj_bez>Bugs</sbj_bez>
-			<sbj_description>Bugtracker während der Entwicklung</sbj_description>
+			<sbj_description>Bugtracker wÃ¤hrend der Entwicklung</sbj_description>
 		 </subject>
 	</ticketsubject></phenotype>

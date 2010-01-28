@@ -316,7 +316,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		{
 			return $xml;
 		}
-		$test = '<?xml version="1.0" encoding="iso-8859-1" ?>'.$xml;
+		$test = '<?xml version="1.0" encoding="'.PT_CHARSET.'" ?>'.$xml;
 		if (@simplexml_load_string($test))
 		{
 			return $xml;
@@ -1285,7 +1285,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 		$buffer = @file_get_contents($file);
 
-		$xml = '<?xml version="1.0" encoding="ISO-8859-1" ?>
+		$xml = '<?xml version="1.0" encoding="'.PT_CHARSET.'" ?>
 <phenotype>
 	<meta>
 		<ptversion>'.$myPT->version.'</ptversion>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<med_id>13</med_id>
@@ -13,7 +13,7 @@
 		<med_bez_original>michel.jpg</med_bez_original>
 		<med_keywords></med_keywords>
 		<med_comment></med_comment>		
-		<med_physical_folder>I0610420</med_physical_folder>   	 
+		<med_physical_folder>I1001040</med_physical_folder>   	 
 		<med_logical_folder1>_system</med_logical_folder1>
 		<med_logical_folder2></med_logical_folder2>
 		<med_logical_folder3></med_logical_folder3>

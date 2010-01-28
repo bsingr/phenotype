@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
-		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>
 		<pag_id>1</pag_id>
 		<importmethod>overwrite</importmethod>
-		<grp_id>1</grp_id>				
+		<grp_id>1</grp_id>
 	</meta>
 	<content>
 	<pag_uid>d3d760aea54607fe836ce16207354cac</pag_uid>
@@ -23,17 +23,23 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153067027</pag_creationdate>
 <usr_id>13</usr_id>
+<pag_contenttype>101</pag_contenttype>
 <pag_date>1247839544</pag_date>
 <pag_url>Startpage</pag_url>
 <pag_url1>Startpage</pag_url1>
 <pag_url2>Startpage</pag_url2>
 <pag_url3>Startpage</pag_url3>
 <pag_url4>Startpage</pag_url4>
+<pag_url5></pag_url5>
+<pag_url6></pag_url6>
+<pag_url7></pag_url7>
+<pag_url8></pag_url8>
+<pag_url9></pag_url9>
 <pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjA6IiI7fQ==</pag_props>
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
 		<pageversions>  			<version>
-				<ver_id>2</ver_id>
+				<ver_id>1</ver_id>
 				<ver_nr>1</ver_nr>
 				<lay_id>1</lay_id>
 				<ver_bez>Version 1</ver_bez>
@@ -60,7 +66,7 @@
 		<sequence_data>
 			<component>
 				<com_id>1001</com_id>
-				<ver_id>1</ver_id>
+				<ver_id>0</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -73,7 +79,7 @@
 			</component>
 			<component>
 				<com_id>1101</com_id>
-				<ver_id>2</ver_id>
+				<ver_id>1</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -83,7 +89,7 @@
 			</component>
 			<component>
 				<com_id>1001</com_id>
-				<ver_id>2</ver_id>
+				<ver_id>1</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -100,7 +106,7 @@
 			</component>
 			<component>
 				<com_id>1105</com_id>
-				<ver_id>2</ver_id>
+				<ver_id>1</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -110,7 +116,7 @@
 			</component>
 			<component>
 				<com_id>1601</com_id>
-				<ver_id>2</ver_id>
+				<ver_id>1</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>
@@ -120,7 +126,7 @@
 			</component>
 			<component>
 				<com_id>1001</com_id>
-				<ver_id>2</ver_id>
+				<ver_id>1</ver_id>
 				<lng_id>1</lng_id>
 				<dat_blocknr>1</dat_blocknr>
 				<dat_visible>1</dat_visible>

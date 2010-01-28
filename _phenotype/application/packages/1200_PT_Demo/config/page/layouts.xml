@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
@@ -16,7 +16,7 @@
 					<cog_id>1</cog_id>
 					<lay_context>1</lay_context>
 				</block>
-			</blocks>				
+			</blocks>
 			<includes>
 				<include>
 					<inc_id>1102</inc_id>
@@ -85,7 +85,7 @@
 
 
 &#60;!--Footer --&#62;
-&#60;div id=&#34;footer&#34;&#62;Copyright 2003-2009. &#38;nbsp; Nils Hagemann, Paul Sellinger, Peter Sellinger, Michael Kr&#38;auml;mer - &#60;a href=&#34;{url_for_page pag_id=43|escape}&#34;&#62;Imprint&#60;&#47;a&#62;&#60;&#47;div&#62;
+&#60;div id=&#34;footer&#34;&#62;Copyright 2003-2009. &#38;amp;nbsp; Nils Hagemann, Paul Sellinger, Peter Sellinger, Michael Kr&#38;amp;auml;mer - &#60;a href=&#34;{url_for_page pag_id=43|escape}&#34;&#62;Imprint&#60;&#47;a&#62;&#60;&#47;div&#62;
 
 &#60;&#47;body&#62;
 &#60;&#47;html&#62;</page>

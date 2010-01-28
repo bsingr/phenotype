@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
 		<ptsubversion>##!BUILD_NO!##</ptsubversion>
 		<con_id>1102</con_id>
-		<con_bez>Form Entry</con_bez>		
+		<con_bez>Form Entry</con_bez>
 		<con_rubrik>Forms</con_rubrik>
 		<con_description></con_description>
 		<con_anlegen>0</con_anlegen>

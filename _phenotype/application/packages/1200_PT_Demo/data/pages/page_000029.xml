@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <phenotype>
 	<meta>
 		<ptversion>##!PT_VERSION!##</ptversion>
-		<ptsubversion>##!BUILD_NO!##</ptsubversion>	
+		<ptsubversion>##!BUILD_NO!##</ptsubversion>
 		<pag_id>29</pag_id>
 		<importmethod>overwrite</importmethod>
-		<grp_id>1</grp_id>				
+		<grp_id>1</grp_id>
 	</meta>
 	<content>
 	<pag_uid>b62c6b038fe86ba50b70edd8dfda3807</pag_uid>
@@ -23,12 +23,18 @@
 <usr_id_creator>10</usr_id_creator>
 <pag_creationdate>1153068378</pag_creationdate>
 <usr_id>13</usr_id>
+<pag_contenttype>101</pag_contenttype>
 <pag_date>1226740944</pag_date>
 <pag_url>Heading-3&#47;Page-2&#47;Subpage-1</pag_url>
 <pag_url1>Heading-3&#47;Page-2&#47;Subpage-1</pag_url1>
 <pag_url2>Heading-3&#47;Page-2&#47;Subpage-1</pag_url2>
 <pag_url3>Heading-3&#47;Page-2&#47;Subpage-1</pag_url3>
 <pag_url4>Heading-3&#47;Page-2&#47;Subpage-1</pag_url4>
+<pag_url5></pag_url5>
+<pag_url6></pag_url6>
+<pag_url7></pag_url7>
+<pag_url8></pag_url8>
+<pag_url9></pag_url9>
 <pag_props>YToxOntzOjg6InBhZ191cmwxIjtzOjA6IiI7fQ==</pag_props>
 <pag_props_locale>YTowOnt9</pag_props_locale>
 
