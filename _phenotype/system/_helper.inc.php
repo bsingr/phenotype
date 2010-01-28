@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -93,7 +93,7 @@ function title_of_page($pag_id,$lng_id=null)
 
 /**
  * page description ("page_bez" in DB page)
- * added 2008/05/19 by Dominique Bös
+ * added 2008/05/19 by Dominique Bï¿½s
  */
 function description_of_page($pag_id,$lng_id=null)
 {
@@ -160,13 +160,13 @@ function urlstrip($s,$lowercase=false)
 {
 	$s = trim($s);
 	$s = str_replace(array(" ","/","_","&","?","---","--"),"-",$s);
-	$s = str_replace("ä","ae",$s);
-	$s = str_replace("ö","oe",$s);
-	$s = str_replace("ü","ue",$s);
-	$s = str_replace("Ä","Ae",$s);
-	$s = str_replace("Ö","Oe",$s);
-	$s = str_replace("Ü","Ue",$s);
-	$s = str_replace("ß","ss",$s);
+	$s = str_replace("Ã¤","ae",$s);
+	$s = str_replace("Ã¶","oe",$s);
+	$s = str_replace("Ã¼","ue",$s);
+	$s = str_replace("Ã„","Ae",$s);
+	$s = str_replace("Ã–","Oe",$s);
+	$s = str_replace("Ãœ","Ue",$s);
+	$s = str_replace("ÃŸ","ss",$s);
 	$s = trim($s);
 
 
@@ -178,4 +178,21 @@ function urlstrip($s,$lowercase=false)
 		$s=mb_strtolower($s);
 	}
 	return $s;
+}
+
+/**
+ * decode xml value during package install depending on current charset
+ *
+ * @param string $s
+ */
+function pt_package_xml_decode($s)
+{
+	switch (PT_CHARSET)
+	{
+		case 'UTF-8':
+			return $s;
+			break;
+		default:
+			return utf8_decode($s);
+	}
 }

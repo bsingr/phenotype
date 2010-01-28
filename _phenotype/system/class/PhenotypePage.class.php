@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -266,7 +266,7 @@ class PhenotypePageStandard extends PhenotypeBase
 
 		global $myDB;
 
-		// Für den Zugriff über UID
+		// Fï¿½r den Zugriff ï¿½ber UID
 		$id = $row["pag_id"];
 		$this->id = $id;
 		$this->pag_id = $id;
@@ -436,7 +436,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		$mySQL->addField("pag_pos",$pos,DB_NUMBER);
 		$mySQL->addField("pag_id_top",$top_id,DB_NUMBER);
 		//$mySQL->addField("pag_cache",24*60*60,DB_NUMBER);
-		//Get the cache default time from the preferences XML-file | added 07/08/23 by Dominique Bös
+		//Get the cache default time from the preferences XML-file | added 07/08/23 by Dominique Bï¿½s
 		$aXML = $myPT->gaGetPreferencesArray();
 		$mySQL->addField("pag_cache",$aXML["preferences"]["section_cache"]["default_cache_seconds"],DB_NUMBER);
 		$mySQL->addField("pag_nextbuild1",time(),DB_NUMBER);
@@ -1644,8 +1644,8 @@ class PhenotypePageStandard extends PhenotypeBase
 		//echo "NEU:" . $pag_id_newtop . "<br>";
 		if ($pag_id_newtop==$this->id){return false;}
 
-		// Zunächst sicherstellen, dass eine Seite nicht aus Versehen unterhalb von sich
-		// selbst einghängt wird
+		// Zunï¿½chst sicherstellen, dass eine Seite nicht aus Versehen unterhalb von sich
+		// selbst einghï¿½ngt wird
 		$_pages = $this->getAllChildrenArray($this->id);
 		//print_r($_pages);
 		if (in_array($pag_id_newtop,$_pages) )
@@ -1654,7 +1654,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		}
 
 		$pos_current = $this->pos;
-		// Seite ins Nirvana hängen ...
+		// Seite ins Nirvana hï¿½ngen ...
 		$mySQL = new SQLBuilder();
 		$mySQL->addField("pag_id_top",-1);
 		$mySQL->addField("grp_id",-1);
@@ -1706,7 +1706,7 @@ class PhenotypePageStandard extends PhenotypeBase
 			break;
 		}
 
-		// Seite an neue Position hängen
+		// Seite an neue Position hï¿½ngen
 		$mySQL = new SQLBuilder();
 		$mySQL->addField("pag_id_top",$newtop);
 		$mySQL->addField("grp_id",$grp_id_anchor);
@@ -1714,7 +1714,7 @@ class PhenotypePageStandard extends PhenotypeBase
 		$sql = $mySQL->update("page","pag_id=" .$this->id);
 		$myDB->query($sql);
 
-		// Bei alle abhängigen Seiten die Seitengruppe nachziehen
+		// Bei alle abhï¿½ngigen Seiten die Seitengruppe nachziehen
 		$this->spreadGroup($this->id,$grp_id_anchor);
 
 		// Seitenvariablen nachziehen
@@ -1863,12 +1863,12 @@ class PhenotypePageStandard extends PhenotypeBase
 		{
 			foreach ($_xml->pagegroups->group AS $_xml_group)
 			{
-				$grp_id = (int)utf8_decode($_xml_group->grp_id);
-				$grp_bez = (string)utf8_decode($_xml_group->grp_bez);
-				$grp_description = (string)utf8_decode($_xml_group->grp_description);
-				$grp_statistic = (int)utf8_decode($_xml_group->grp_statistic);
-				$grp_multilanguage = (int)utf8_decode($_xml_group->grp_multilanguage);
-				$grp_smarturl_schema = (int)utf8_decode($_xml_group->grp_smarturl_schema);
+				$grp_id = (int)pt_package_xml_decode($_xml_group->grp_id);
+				$grp_bez = (string)pt_package_xml_decode($_xml_group->grp_bez);
+				$grp_description = (string)pt_package_xml_decode($_xml_group->grp_description);
+				$grp_statistic = (int)pt_package_xml_decode($_xml_group->grp_statistic);
+				$grp_multilanguage = (int)pt_package_xml_decode($_xml_group->grp_multilanguage);
+				$grp_smarturl_schema = (int)pt_package_xml_decode($_xml_group->grp_smarturl_schema);
 
 				$sql  ="DELETE FROM pagegroup WHERE grp_id=".$grp_id;
 				$myDB->query($sql);
@@ -1898,9 +1898,9 @@ class PhenotypePageStandard extends PhenotypeBase
 		{
 			foreach ($_xml->layouts->layout AS $_xml_layout)
 			{
-				$lay_id = (int)utf8_decode($_xml_layout->lay_id);
-				$lay_bez = (string)utf8_decode($_xml_layout->lay_bez);
-				$lay_description = (string)utf8_decode($_xml_layout->lay_description);
+				$lay_id = (int)pt_package_xml_decode($_xml_layout->lay_id);
+				$lay_bez = (string)pt_package_xml_decode($_xml_layout->lay_bez);
+				$lay_description = (string)pt_package_xml_decode($_xml_layout->lay_description);
 
 				$sql  ="DELETE FROM layout WHERE lay_id=".$lay_id;
 				$myDB->query($sql);
@@ -1925,10 +1925,10 @@ class PhenotypePageStandard extends PhenotypeBase
 				{
 					$mySQL = new SQLBuilder();
 					$mySQL->addField("lay_id",$lay_id,DB_NUMBER);
-					$mySQL->addField("lay_blocknr",(int)utf8_decode($_xml_block->lay_blocknr),DB_NUMBER);
-					$mySQL->addField("lay_blockbez",(string)utf8_decode($_xml_block->lay_blockbez));
-					$mySQL->addField("lay_context",(int)utf8_decode($_xml_block->lay_context),DB_NUMBER);
-					$mySQL->addField("cog_id",(int)utf8_decode($_xml_block->cog_id),DB_NUMBER);
+					$mySQL->addField("lay_blocknr",(int)pt_package_xml_decode($_xml_block->lay_blocknr),DB_NUMBER);
+					$mySQL->addField("lay_blockbez",(string)pt_package_xml_decode($_xml_block->lay_blockbez));
+					$mySQL->addField("lay_context",(int)pt_package_xml_decode($_xml_block->lay_context),DB_NUMBER);
+					$mySQL->addField("cog_id",(int)pt_package_xml_decode($_xml_block->cog_id),DB_NUMBER);
 					$sql = $mySQL->insert("layout_block");
 					$myDB->query($sql);
 				}
@@ -1938,16 +1938,16 @@ class PhenotypePageStandard extends PhenotypeBase
 				{
 					$mySQL = new SQLBuilder();
 					$mySQL->addField("lay_id",$lay_id,DB_NUMBER);
-					$mySQL->addField("inc_id",(int)utf8_decode($_xml_include->inc_id),DB_NUMBER);
-					$mySQL->addField("lay_includenr",(int)utf8_decode($_xml_include->lay_includenr),DB_NUMBER);
-					$mySQL->addField("lay_includecache",(int)utf8_decode($_xml_include->lay_includecache),DB_NUMBER);
+					$mySQL->addField("inc_id",(int)pt_package_xml_decode($_xml_include->inc_id),DB_NUMBER);
+					$mySQL->addField("lay_includenr",(int)pt_package_xml_decode($_xml_include->lay_includenr),DB_NUMBER);
+					$mySQL->addField("lay_includecache",(int)pt_package_xml_decode($_xml_include->lay_includecache),DB_NUMBER);
 					$sql = $mySQL->insert("layout_include");
 					$myDB->query($sql);
 				}
 
 				foreach ($_xml_layout->pagegroup AS $_xml_group)
 				{
-					$grp_id = (int)utf8_decode($_xml_group->grp_id);
+					$grp_id = (int)pt_package_xml_decode($_xml_group->grp_id);
 					if ($grp_id!=0) // behebt Bug, dass manche Pakete leere Pagegroups enthalten
 					{
 						$mySQL = new SQLBuilder();
@@ -1961,14 +1961,14 @@ class PhenotypePageStandard extends PhenotypeBase
 				// Templates
 
 
-				$buffer = (string)utf8_decode($_xml_layout->templates->page);
+				$buffer = (string)pt_package_xml_decode($_xml_layout->templates->page);
 				$dateiname = $myPT->getTemplateFileName(PT_CFG_LAYOUT, $lay_id, "normal");
 				$fp = fopen ($dateiname,"w");
 				fputs ($fp,$buffer);
 				fclose ($fp);
 				@chmod ($file,UMASK);
 
-				$buffer = (string)utf8_decode($_xml_layout->templates->print);
+				$buffer = (string)pt_package_xml_decode($_xml_layout->templates->print);
 				$dateiname = $myPT->getTemplateFileName(PT_CFG_LAYOUT, $lay_id, "print");
 				$fp = fopen ($dateiname,"w");
 				fputs ($fp,$buffer);
@@ -2116,14 +2116,14 @@ class PhenotypePageStandard extends PhenotypeBase
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			$ptversion = (string)utf8_decode($_xml->meta->ptversion);
+			$ptversion = (string)pt_package_xml_decode($_xml->meta->ptversion);
 			if ($ptversion=="##!PT_VERSION!##")
 			{
 				$ptversion = "9.0.0";
 			}
 
-			$pag_id = (int)utf8_decode($_xml->meta->pag_id);
-			$grp_id = (int)utf8_decode($_xml->meta->grp_id);
+			$pag_id = (int)pt_package_xml_decode($_xml->meta->pag_id);
+			$grp_id = (int)pt_package_xml_decode($_xml->meta->grp_id);
 
 			$action = "insert";
 			$sql = "SELECT pag_id FROM page WHERE pag_id=".$pag_id;
@@ -2140,32 +2140,32 @@ class PhenotypePageStandard extends PhenotypeBase
 			$_fields = Array("pag_uid","pag_bez","pag_titel","pag_alttitel","pag_comment","pag_quickfinder","pag_searchtext","pag_url","pag_url1","pag_url2","pag_url3","pag_url4");
 			foreach ($_fields AS $k)
 			{
-				$mySQL->addField($k,(string)utf8_decode($_xml->content->$k));
+				$mySQL->addField($k,(string)pt_package_xml_decode($_xml->content->$k));
 			}
 
-			if ($ptversion<"2.6.0")
+			if ($ptversion<"2.6.0" AND $ptversion != "2.10")
 			{
-				$_props=(string)utf8_decode($_xml->content->pag_props);
+				$_props=(string)pt_package_xml_decode($_xml->content->pag_props);
 				$mySQL->addField("pag_props_locale",base64_decode($_props));
 				$_props = Array();
-				$_props["pag_url1"]=(string)utf8_decode($_xml->content->pag_url);
+				$_props["pag_url1"]=(string)pt_package_xml_decode($_xml->content->pag_url);
 				$mySQL->addField("pag_props",serialize($_props));
 			}
 			else
 			{
-				$_props=(string)utf8_decode($_xml->content->pag_props);
+				$_props=(string)pt_package_xml_decode($_xml->content->pag_props);
 				$mySQL->addField("pag_props",base64_decode($_props));
-				$_props=(string)utf8_decode($_xml->content->pag_props_locale);
+				$_props=(string)pt_package_xml_decode($_xml->content->pag_props_locale);
 				$mySQL->addField("pag_props_locale",base64_decode($_props));
 			}
 			$_fields = Array ("pag_id_mimikry","pag_id_top","pag_pos","pag_cache","pag_status","usr_id_creator","pag_creationdate","usr_id","pag_date");
 			foreach ($_fields AS $k)
 			{
-				$mySQL->addField($k,(int)utf8_decode($_xml->content->$k),DB_NUMBER);
+				$mySQL->addField($k,(int)pt_package_xml_decode($_xml->content->$k),DB_NUMBER);
 			}
 
 			// Content-Type (since 2.10)
-			$pag_contenttype = (int)utf8_decode($_xml->content->pag_contenttype);
+			$pag_contenttype = (int)pt_package_xml_decode($_xml->content->pag_contenttype);
 			if ($pag_contenttype!=0)
 			{
 				$mySQL->addField("pag_contenttype",$pag_contenttype,DB_NUMBER);
@@ -2202,12 +2202,12 @@ class PhenotypePageStandard extends PhenotypeBase
 			{
 				$mySQL = new SqlBuilder();
 				$mySQL->addField("pag_id",$pag_id,DB_NUMBER);
-				$mySQL->addField("ver_nr",(int)utf8_decode($_xml_version->ver_nr),DB_NUMBER);
-				$mySQL->addField("lay_id",(int)utf8_decode($_xml_version->lay_id),DB_NUMBER);
-				$mySQL->addField("ver_bez",(string)utf8_decode($_xml_version->ver_bez));
-				$mySQL->addField("pag_fullsearch",(string)utf8_decode($_xml_version->pag_fullsearch));
-				$mySQL->addField("inc_id1",(int)utf8_decode($_xml_version->inc_id1),DB_NUMBER);
-				$mySQL->addField("inc_id2",(int)utf8_decode($_xml_version->inc_id2),DB_NUMBER);
+				$mySQL->addField("ver_nr",(int)pt_package_xml_decode($_xml_version->ver_nr),DB_NUMBER);
+				$mySQL->addField("lay_id",(int)pt_package_xml_decode($_xml_version->lay_id),DB_NUMBER);
+				$mySQL->addField("ver_bez",(string)pt_package_xml_decode($_xml_version->ver_bez));
+				$mySQL->addField("pag_fullsearch",(string)pt_package_xml_decode($_xml_version->pag_fullsearch));
+				$mySQL->addField("inc_id1",(int)pt_package_xml_decode($_xml_version->inc_id1),DB_NUMBER);
+				$mySQL->addField("inc_id2",(int)pt_package_xml_decode($_xml_version->inc_id2),DB_NUMBER);
 				$sql = $mySQL->insert("pageversion");
 				$myDB->query($sql);
 
@@ -2217,19 +2217,19 @@ class PhenotypePageStandard extends PhenotypeBase
 				// no brutal overwrite so that users can continue working on pages, even if
 				// a few pages are overwritten
 
-				$_versions[(int)utf8_decode($_xml_version->ver_id)] = $ver_id;
+				$_versions[(int)pt_package_xml_decode($_xml_version->ver_id)] = $ver_id;
 
 				if ($ver_id_activate==0)
 				{
 					$ver_id_activate = $ver_id;
 				}
 
-				if ((int)utf8_decode($_xml_version->ver_status)==1)
+				if ((int)pt_package_xml_decode($_xml_version->ver_status)==1)
 				{
 					$ver_id_activate = $ver_id;
 				}
 
-				$script = (string)utf8_decode($_xml_version->script);
+				$script = (string)pt_package_xml_decode($_xml_version->script);
 				if ($script!="")
 				{
 					$file = APPPATH . "pagescripts/".sprintf("%04d",$pag_id) ."_" .sprintf("%04d", $ver_id) .".inc.php";
@@ -2264,8 +2264,8 @@ class PhenotypePageStandard extends PhenotypeBase
 			{
 				$mySQL = new SqlBuilder();
 				$mySQL->addField("pag_id",$pag_id,DB_NUMBER);
-				$mySQL->addField("lng_id",(int)utf8_decode($_xml_language->lng_id),DB_NUMBER);
-				$mySQL->addField("pag_titel",(string)utf8_decode($_xml_language->pag_titel));
+				$mySQL->addField("lng_id",(int)pt_package_xml_decode($_xml_language->lng_id),DB_NUMBER);
+				$mySQL->addField("pag_titel",(string)pt_package_xml_decode($_xml_language->pag_titel));
 				$sql = $mySQL->insert("page_language");
 				$myDB->query($sql);
 			}
@@ -2277,15 +2277,15 @@ class PhenotypePageStandard extends PhenotypeBase
 			{
 				$mySQL = new SQLBuilder();
 				$mySQL->addField("pag_id",$pag_id,DB_NUMBER);
-				$ver_id = $_versions[(int)utf8_decode($_xml_component->ver_id)];
+				$ver_id = $_versions[(int)pt_package_xml_decode($_xml_component->ver_id)];
 				$mySQL->addField("ver_id",$ver_id,DB_NUMBER);
-				$mySQL->addField("lng_id",(int)utf8_decode($_xml_component->lng_id),DB_NUMBER);
-				$mySQL->addField("dat_visible",(int)utf8_decode($_xml_component->dat_visible),DB_NUMBER);
-				$mySQL->addField("dat_blocknr",(int)utf8_decode($_xml_component->dat_blocknr),DB_NUMBER);
-				$mySQL->addField("dat_pos",(int)utf8_decode($_xml_component->dat_pos),DB_NUMBER);
-				$mySQL->addField("com_id",(int)utf8_decode($_xml_component->com_id),DB_NUMBER);
-				$mySQL->addField("dat_comdata",base64_decode((string)utf8_decode($_xml_component->dat_comdata)));
-				$mySQL->addField("dat_fullsearch",(string)utf8_decode($_xml_component->dat_fullsearch));
+				$mySQL->addField("lng_id",(int)pt_package_xml_decode($_xml_component->lng_id),DB_NUMBER);
+				$mySQL->addField("dat_visible",(int)pt_package_xml_decode($_xml_component->dat_visible),DB_NUMBER);
+				$mySQL->addField("dat_blocknr",(int)pt_package_xml_decode($_xml_component->dat_blocknr),DB_NUMBER);
+				$mySQL->addField("dat_pos",(int)pt_package_xml_decode($_xml_component->dat_pos),DB_NUMBER);
+				$mySQL->addField("com_id",(int)pt_package_xml_decode($_xml_component->com_id),DB_NUMBER);
+				$mySQL->addField("dat_comdata",base64_decode((string)pt_package_xml_decode($_xml_component->dat_comdata)));
+				$mySQL->addField("dat_fullsearch",(string)pt_package_xml_decode($_xml_component->dat_fullsearch));
 				$sql= $mySQL->insert("sequence_data");
 				$myDB->query($sql);
 			}
@@ -2296,7 +2296,7 @@ class PhenotypePageStandard extends PhenotypeBase
 
 			$myPage = new PhenotypePage($pag_id);
 			$myPage->activateVersion($ver_id_activate);
-			// Properties für eine Einzelseite nach unten verteilen, reicht beim Vollimport nicht aus!
+			// Properties fï¿½r eine Einzelseite nach unten verteilen, reicht beim Vollimport nicht aus!
 			$_props = Array();
 			$myPage->spreadProps($pag_id,$_props);
 			return $pag_id;
@@ -2518,7 +2518,7 @@ class PhenotypePageStandard extends PhenotypeBase
 	/**
    * Returns the page description field ("page_bez" in DB page)
    *
-	 * added 2008/05/19 by Dominique Bös
+	 * added 2008/05/19 by Dominique Bï¿½s
    * @return string page description
    */
 	public function getPageDescription()

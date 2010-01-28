@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -51,11 +51,11 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 
 
-	public $showstatus = 1; // Anzeige des Statusflags  0 = nicht, 1 = normal, 2 = ohne Bearbeitungsmöglichkeit
+	public $showstatus = 1; // Anzeige des Statusflags  0 = nicht, 1 = normal, 2 = ohne Bearbeitungsmï¿½glichkeit
 	public $nostatus = 0; // Status immer online ?
 
 	// Konfiguration der Reiter in der Editmaske
-	// über:
+	// ï¿½ber:
 	//  var $_blocks = Array("");
 	//  var $_icons = Array("");
 	//	var $_showblocks = Array(1,1,1 ....)
@@ -708,7 +708,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 	return $code;
 	}
 
-	// Diese Funktion ist für das Vorberechnen der Skins
+	// Diese Funktion ist fï¿½r das Vorberechnen der Skins
 	function preRender($skin = "")
 	{
 		global $myPT;
@@ -773,8 +773,8 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 			if ($tobuild)
 			{
-				// Cache erzeugen durch externes Contentobjekt, damit evtl. vorher ausgeführte
-				// Set-Methoden ohne Store nicht die Variablen verfälschen
+				// Cache erzeugen durch externes Contentobjekt, damit evtl. vorher ausgefï¿½hrte
+				// Set-Methoden ohne Store nicht die Variablen verfï¿½lschen
 				$cname = "PhenotypeContent_".$this->content_type;
 				$myCO = new $cname ($this->id);
 				$myCO->store();
@@ -1479,7 +1479,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			</td>
             <td align="right" class="windowFooterWhite" tabindex="99">
             <input type="image" src="transparentpixel.gif" width="1" height="1" onclick="return false;"/>
-            <input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Löschen" onclick="javascript:return confirm('Diesen Datensatz wirklich l&ouml;schen?')"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" tabindex="1" accesskey="s">&nbsp;&nbsp;</td>
+            <input name="delete" type="submit" class="buttonWhite" style="width:102px" value="Lï¿½schen" onclick="javascript:return confirm('Diesen Datensatz wirklich l&ouml;schen?')"><input name="save" type="submit" class="buttonWhite" style="width:102px"value="Speichern" tabindex="1" accesskey="s">&nbsp;&nbsp;</td>
           </tr>
         </table>
 
@@ -1820,7 +1820,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		<?php
 		break;
 
-		// ######## Selectbox auf Contentdatensätze
+		// ######## Selectbox auf Contentdatensï¿½tze
 				case PT_CON_FORM_CONTENTSELECTBOX :
 		?>
 		<tr>
@@ -1952,7 +1952,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 		<?php
 		break;
 
-		// ######## Multiple Selectbox auf Basis von Contentdatensätzen
+		// ######## Multiple Selectbox auf Basis von Contentdatensï¿½tzen
 				case PT_CON_FORM_CONTENTMULTISELECTBOX :
 		?>
 		<tr>
@@ -1996,7 +1996,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 		break;
 
-		// ######## Multiple Checkbox auf Basis von Contentdatensätzen
+		// ######## Multiple Checkbox auf Basis von Contentdatensï¿½tzen
 				case PT_CON_FORM_CONTENTMULTICHECKBOX :
 		?>
 		<tr>
@@ -2141,7 +2141,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 				$myComponent = new $tname;
 				$myComponent->init($row);
 
-				// ND-Erweiterung, Info über den Context
+				// ND-Erweiterung, Info ï¿½ber den Context
 				$myComponent->set("content_type",$this->content_type);
 				$myComponent->set("dat_id_content",$this->id);
 
@@ -2692,7 +2692,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			 	}
 			 	else
 			 	{
-			 		alert ("AJAX-Fehler, OK für Wiederholung ("+ step+")");
+			 		alert ("AJAX-Fehler, OK fï¿½r Wiederholung ("+ step+")");
 			 		ajax_<?php echo $a[2] ?>_doit(step);
 			 	}
 			 }
@@ -3130,7 +3130,7 @@ class PhenotypeContentStandard extends PhenotypeBase
   		}
   		if (currentpos>1)
   		{
-  			// Item an der übergeordneten Position bestimmen
+  			// Item an der ï¿½bergeordneten Position bestimmen
   			changepos = currentpos-1;
   			changeitem = order[changepos-1];
 
@@ -3162,7 +3162,7 @@ class PhenotypeContentStandard extends PhenotypeBase
   		}
   		if (currentpos<<?php echo $anzahl ?>)
   		{
-  			// Item an der übergeordneten Position bestimmen
+  			// Item an der ï¿½bergeordneten Position bestimmen
   			changepos = currentpos+1;
   			changeitem = order[changepos-1];
 
@@ -4202,11 +4202,11 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			$con_id = (int)utf8_decode($_xml->meta->con_id);
-			$importmethod = (string)utf8_decode($_xml->meta->importmethod);
-			$keepid = (int)utf8_decode($_xml->meta->keepid);
+			$con_id = (int)pt_package_xml_decode($_xml->meta->con_id);
+			$importmethod = (string)pt_package_xml_decode($_xml->meta->importmethod);
+			$keepid = (int)pt_package_xml_decode($_xml->meta->keepid);
 
-			$dat_id = (int)utf8_decode($_xml->meta->dat_id);
+			$dat_id = (int)pt_package_xml_decode($_xml->meta->dat_id);
 
 			$sql ="SELECT dat_id, con_id FROM content_data WHERE dat_id=".$dat_id;
 			$rs = $myDB->query($sql);
@@ -4226,18 +4226,18 @@ class PhenotypeContentStandard extends PhenotypeBase
 				$action ="insert";
 			}
 
-			$buildindex = (int)utf8_decode($_xml->meta->buildindex);
+			$buildindex = (int)pt_package_xml_decode($_xml->meta->buildindex);
 
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("con_id",$con_id,DB_NUMBER);
 
-			$dat_uid = (string)utf8_decode($_xml->content->dat_uid);
+			$dat_uid = (string)pt_package_xml_decode($_xml->content->dat_uid);
 			$mySQL->addField("dat_uid",$dat_uid);
-			$dat_bez = (string)utf8_decode($_xml->content->dat_bez);
+			$dat_bez = (string)pt_package_xml_decode($_xml->content->dat_bez);
 			$mySQL->addField("dat_bez",$dat_bez);
-			$dat_props = (string)utf8_decode($_xml->content->dat_props);
+			$dat_props = (string)pt_package_xml_decode($_xml->content->dat_props);
 			$mySQL->addField("dat_props",base64_decode($dat_props));
-			$dat_fullsearch = (string)utf8_decode($_xml->content->dat_fullsearch);
+			$dat_fullsearch = (string)pt_package_xml_decode($_xml->content->dat_fullsearch);
 			$mySQL->addField("dat_fullsearch",$dat_fullsearch);
 
 			// Default-Properties
@@ -4254,7 +4254,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 			foreach ($_default AS $k => $v)
 			{
-				$p = (string)utf8_decode($_xml->content->$k);
+				$p = (string)pt_package_xml_decode($_xml->content->$k);
 				if ($p!="")
 				{
 					$v = (int)$p;
@@ -4287,12 +4287,12 @@ class PhenotypeContentStandard extends PhenotypeBase
 			{
 				$mySQL = new SQLBuilder();
 				$mySQL->addField("dat_id_content",$dat_id,DB_NUMBER);
-				$mySQL->addField("dat_visible",(int)utf8_decode($_xml_component->dat_visible),DB_NUMBER);
-				$mySQL->addField("dat_blocknr",(int)utf8_decode($_xml_component->dat_blocknr),DB_NUMBER);
-				$mySQL->addField("dat_pos",(int)utf8_decode($_xml_component->dat_pos),DB_NUMBER);
-				$mySQL->addField("com_id",(int)utf8_decode($_xml_component->com_id),DB_NUMBER);
-				$mySQL->addField("dat_comdata",base64_decode((string)utf8_decode($_xml_component->dat_comdata)));
-				$mySQL->addField("dat_fullsearch",(string)utf8_decode($_xml_component->dat_fullsearch));
+				$mySQL->addField("dat_visible",(int)pt_package_xml_decode($_xml_component->dat_visible),DB_NUMBER);
+				$mySQL->addField("dat_blocknr",(int)pt_package_xml_decode($_xml_component->dat_blocknr),DB_NUMBER);
+				$mySQL->addField("dat_pos",(int)pt_package_xml_decode($_xml_component->dat_pos),DB_NUMBER);
+				$mySQL->addField("com_id",(int)pt_package_xml_decode($_xml_component->com_id),DB_NUMBER);
+				$mySQL->addField("dat_comdata",base64_decode((string)pt_package_xml_decode($_xml_component->dat_comdata)));
+				$mySQL->addField("dat_fullsearch",(string)pt_package_xml_decode($_xml_component->dat_fullsearch));
 				$sql= $mySQL->insert("sequence_data");
 				$myDB->query($sql);
 			}
@@ -4429,9 +4429,9 @@ class PhenotypeContentStandard extends PhenotypeBase
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			$con_id = (int)utf8_decode($_xml->meta->con_id);
+			$con_id = (int)pt_package_xml_decode($_xml->meta->con_id);
 
-			// Zunächst evtl. vorhanden alte Templates löschen
+			// Zunï¿½chst evtl. vorhanden alte Templates lï¿½schen
 
 			$sql = "SELECT * FROM content_template WHERE con_id = " . $con_id . " ORDER BY tpl_id";
 			$rs = $myDB->query($sql);
@@ -4454,20 +4454,20 @@ class PhenotypeContentStandard extends PhenotypeBase
 
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("con_id",$con_id,DB_NUMBER);
-			$con_bez = (string)utf8_decode($_xml->meta->con_bez);
+			$con_bez = (string)pt_package_xml_decode($_xml->meta->con_bez);
 			$mySQL->addField("con_bez",$con_bez);
-			$con_description = (string)utf8_decode($_xml->meta->con_description);
+			$con_description = (string)pt_package_xml_decode($_xml->meta->con_description);
 			$mySQL->addField("con_description",$con_description);
-			$con_rubrik = (string)utf8_decode($_xml->meta->con_rubrik);
+			$con_rubrik = (string)pt_package_xml_decode($_xml->meta->con_rubrik);
 			$mySQL->addField("con_rubrik",$con_rubrik);
 
-			$con_usage = (int)utf8_decode($_xml->meta->con_anlegen);
+			$con_usage = (int)pt_package_xml_decode($_xml->meta->con_anlegen);
 			$mySQL->addField("con_anlegen",$con_usage);
 
-			$con_usage = (int)utf8_decode($_xml->meta->con_bearbeiten);
+			$con_usage = (int)pt_package_xml_decode($_xml->meta->con_bearbeiten);
 			$mySQL->addField("con_bearbeiten",$con_usage);
 
-			$con_usage = (int)utf8_decode($_xml->meta->con_loeschen);
+			$con_usage = (int)pt_package_xml_decode($_xml->meta->con_loeschen);
 			$mySQL->addField("con_loeschen",$con_usage);
 
 
@@ -4475,7 +4475,7 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$myDB->query($sql);
 
 
-			$script = (string)utf8_decode($_xml->script);
+			$script = (string)pt_package_xml_decode($_xml->script);
 
 			$file = APPPATH . "content/PhenotypeContent_"  .$con_id . ".class.php";
 
@@ -4489,14 +4489,14 @@ class PhenotypeContentStandard extends PhenotypeBase
 			$tpl_id = 1;
 			foreach ($_xml->templates->template AS $_xml_template)
 			{
-				$access = (string)utf8_decode($_xml_template["access"]);
+				$access = (string)pt_package_xml_decode($_xml_template["access"]);
 				$mySQL = new SQLBuilder();
 				$mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
 				$mySQL->addField("con_id",$con_id,DB_NUMBER);
 				$mySQL->addField("tpl_bez",$access);
 				$sql = $mySQL->insert("content_template");
 				$myDB->query($sql);
-				$html = (string)utf8_decode($_xml_template);
+				$html = (string)pt_package_xml_decode($_xml_template);
 				$file = $myPT->getTemplateFileName(PT_CFG_CONTENTCLASS, $con_id, $tpl_id);
 				$fp = fopen ($file,"w");
 				fputs ($fp,$html);

@@ -43,7 +43,7 @@ set_exception_handler(array("Phenotype","handleException"));
 
 if (!defined('PT_CHARSET'))
 {
-	define ("PT_CHARSET","UTF-8"); // or iso-8859-1
+	define ("PT_CHARSET","UTF-8"); // or ISO-8859-1
 }
 if (mb_strtoupper(PT_CHARSET)!=PT_CHARSET)
 {

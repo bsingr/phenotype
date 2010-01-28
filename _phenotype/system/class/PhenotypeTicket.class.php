@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -108,7 +108,7 @@ class PhenotypeTicketStandard
 		$tage = ceil($tage/(60*60*24));
 		if ($tage<=1){$color="orange";}
 		if ($this->row["tik_complexity"]!=6)
-		{ // Daueraufgaben können keinen Status Rot erhalten
+		{ // Daueraufgaben kï¿½nnen keinen Status Rot erhalten
 			if ($this->row["tik_enddate"]<time()){$color="red";}
 		}
 
@@ -318,7 +318,7 @@ class PhenotypeTicketStandard
 			$comment = "";
 		}
 
-		// Nachgelagert die Rückstellung
+		// Nachgelagert die Rï¿½ckstellung
 		if ($this->row["tik_sleepdate"]!=$date3)
 		{
 			if ($date3<time())
@@ -621,14 +621,14 @@ class PhenotypeTicketStandard
 		$x = $this->row["tik_complexity"];
 		$p = $this->row["tik_prio"];
 
-		// Tickets, die keine Schätzung haben wie WenigeTage-Tickets handhaben
+		// Tickets, die keine Schï¿½tzung haben wie WenigeTage-Tickets handhaben
 		if ($x==0){$x=3;}
 
 		$resttage1 = ($this->row["tik_enddate"] - time())/(24*3600);
 
 		if ($this->row["tik_targetdate"]!=0)
 		{
-			// Ziel und Maximum werden gleichermassen berücksichtigt
+			// Ziel und Maximum werden gleichermassen berï¿½cksichtigt
 			$resttage2 = ($this->row["tik_targetdate"] - time())/(24*3600);
 			if ($resttage2 < $resttage1) // geplant frueher fertig zu sein
 			{
@@ -811,7 +811,7 @@ class PhenotypeTicketStandard
 				$this->actionset($key,$val);
 			}
 			break;
-			case 10: // Notizen geändert
+			case 10: // Notizen geï¿½ndert
 
 			break;
 			case 11: // Bereich gewechselt
@@ -952,7 +952,7 @@ class PhenotypeTicketStandard
 
 		if ($myPT->getIPref("tickets.active_request_removal")==0)
 		{
-			// Für den Fall, dass auf eine Frage mit einer Gegenfrage oder einem Gegenhinweis reagiert wurde
+			// Fï¿½r den Fall, dass auf eine Frage mit einer Gegenfrage oder einem Gegenhinweis reagiert wurde
 			// Check, ob ein Markup vorliegt, wenn nein Fragezeichen loeschen
 
 			$sql = "SELECT * FROM ticketmarkup WHERE tik_id = " . $this->id . " AND usr_id = " . $_SESSION["usr_id"];
@@ -1109,7 +1109,7 @@ class PhenotypeTicketStandard
 		{
 			foreach ($_xml->ticketsubject->subject AS $_xml_subject)
 			{
-				$sbj_id = (int)utf8_decode($_xml_subject->sbj_id);
+				$sbj_id = (int)pt_package_xml_decode($_xml_subject->sbj_id);
 				$sql = "DELETE FROM ticketsubject WHERE sbj_id=".$sbj_id;
 				$rs = $myDB->query($sql);
 				$mySQL = new SQLBuilder();
@@ -1117,7 +1117,7 @@ class PhenotypeTicketStandard
 				$_felder = Array ("sbj_bez","sbj_description");
 				foreach ($_felder AS $k)
 				{
-					$mySQL->addField($k,(string)utf8_decode($_xml_subject->$k));
+					$mySQL->addField($k,(string)pt_package_xml_decode($_xml_subject->$k));
 				}
 				$sql = $mySQL->insert("ticketsubject");
 				$myDB->query($sql);
@@ -1136,9 +1136,9 @@ class PhenotypeTicketStandard
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			//$importmethod = (string)utf8_decode($_xml->meta->importmethod);
+			//$importmethod = (string)pt_package_xml_decode($_xml->meta->importmethod);
 
-			$tik_id = (int)utf8_decode($_xml->content->tik_id);
+			$tik_id = (int)pt_package_xml_decode($_xml->content->tik_id);
 
 			$sql  ="DELETE FROM ticketmarkup WHERE tik_id=".$tik_id;
 			$myDB->query($sql);
@@ -1159,10 +1159,10 @@ class PhenotypeTicketStandard
 			$_felder = Array("tik_id","tik_bez","sbj_id","dat_id_2ndorder","tik_eisenhower","pag_id","ver_id","med_id","dat_id_content","usr_id_creator","usr_id_owner","tik_accepted","tik_status","tik_startdate","tik_enddate","tik_creationdate","tik_closingdate","tik_targetdate","tik_sleepdate","tik_percentage","tik_duration","tik_prio","tik_complexity","tik_tendency","tik_lastaction","tik_fulltext","tik_notice");
 			foreach ($_felder AS $k)
 			{
-				$mySQL->addField($k,(string)utf8_decode($_xml->content->$k));
+				$mySQL->addField($k,(string)pt_package_xml_decode($_xml->content->$k));
 			}
 
-			$tik_props = (string)utf8_decode($_xml->content->tik_props);
+			$tik_props = (string)pt_package_xml_decode($_xml->content->tik_props);
 
 			$mySQL->addField("tik_props",base64_decode($tik_props));
 			
@@ -1177,10 +1177,10 @@ class PhenotypeTicketStandard
 				$mySQL = new SQLBuilder();
 				foreach ($_felder AS $k)
 				{
-					$mySQL->addField($k,(string)utf8_decode($_xml_action->$k));
+					$mySQL->addField($k,(string)pt_package_xml_decode($_xml_action->$k));
 				}
 				$mySQL->addField("tik_id",$tik_id,DB_NUMBER);
-				$act_details = (string)utf8_decode($_xml_action->act_details);
+				$act_details = (string)pt_package_xml_decode($_xml_action->act_details);
 
 				$mySQL->addField("act_details",base64_decode($act_details));
 				$sql = $mySQL->insert("ticketaction");
@@ -1190,7 +1190,7 @@ class PhenotypeTicketStandard
 			foreach ($_xml->content->ticketmarkup->user AS $_xml_user)
 			{
 				$mySQL = new SQLBuilder();
-				$mySQL->addField("usr_id",(int)utf8_decode($_xml_user["usr_id"]));
+				$mySQL->addField("usr_id",(int)pt_package_xml_decode($_xml_user["usr_id"]));
 				$mySQL->addField("tik_id",$tik_id,DB_NUMBER);
 				$sql = $mySQL->insert("ticketmarkup");
 				$myDB->query($sql);
@@ -1199,7 +1199,7 @@ class PhenotypeTicketStandard
 			foreach ($_xml->content->ticketrequest->user AS $_xml_user)
 			{
 				$mySQL = new SQLBuilder();
-				$mySQL->addField("usr_id",(int)utf8_decode($_xml_user["usr_id"]));
+				$mySQL->addField("usr_id",(int)pt_package_xml_decode($_xml_user["usr_id"]));
 				$mySQL->addField("tik_id",$tik_id,DB_NUMBER);
 				$sql = $mySQL->insert("ticketrequest");
 				$myDB->query($sql);
@@ -1208,7 +1208,7 @@ class PhenotypeTicketStandard
 			foreach ($_xml->content->ticketpin->user AS $_xml_user)
 			{
 				$mySQL = new SQLBuilder();
-				$mySQL->addField("usr_id",(int)utf8_decode($_xml_user["usr_id"]));
+				$mySQL->addField("usr_id",(int)pt_package_xml_decode($_xml_user["usr_id"]));
 				$mySQL->addField("tik_id",$tik_id,DB_NUMBER);
 				$sql = $mySQL->insert("ticketpin");
 				$myDB->query($sql);

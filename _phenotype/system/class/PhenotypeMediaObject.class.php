@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -218,14 +218,14 @@ class PhenotypeMediaObjectStandard
 		if ($_xml)
 		{
 	
-			$med_id = (int)utf8_decode($_xml->meta->med_id);
-			$med_type = (int)utf8_decode($_xml->meta->med_type);
-			$importmethod = (string)utf8_decode($_xml->meta->importmethod);
-			$keepid = (int)utf8_decode($_xml->meta->keepid);
-			$physical_folder = (string)utf8_decode($_xml->content->med_physical_folder);
+			$med_id = (int)pt_package_xml_decode($_xml->meta->med_id);
+			$med_type = (int)pt_package_xml_decode($_xml->meta->med_type);
+			$importmethod = (string)pt_package_xml_decode($_xml->meta->importmethod);
+			$keepid = (int)pt_package_xml_decode($_xml->meta->keepid);
+			$physical_folder = (string)pt_package_xml_decode($_xml->content->med_physical_folder);
 
 
-			$grp_id = (int)utf8_decode($_xml->meta->grp_id);
+			$grp_id = (int)pt_package_xml_decode($_xml->meta->grp_id);
 
 			if ($importmethod=="append")
 			{
@@ -236,7 +236,7 @@ class PhenotypeMediaObjectStandard
 			$myMB = new PhenotypeMediabase();
 			$myMB->setMediaGroup($grp_id);
 
-			$file = (string)utf8_decode($_xml->content->med_bez_original);
+			$file = (string)pt_package_xml_decode($_xml->content->med_bez_original);
 
 			$path = TEMPPATH . "media/";
 
@@ -246,7 +246,7 @@ class PhenotypeMediaObjectStandard
 				umask($path,UMASK);
 			}
 
-			$buffer = (string)utf8_decode($_xml->content->binary);
+			$buffer = (string)pt_package_xml_decode($_xml->content->binary);
 			$buffer = base64_decode($buffer);
 
 			$dateiname = $path .$file;
@@ -275,7 +275,7 @@ class PhenotypeMediaObjectStandard
 				$_fields = Array("med_bez","med_keywords","med_comment","med_logical_folder1","med_logical_folder2","med_logical_folder3","usr_id_creator","med_creationdate","usr_id","med_date");
 				foreach ($_fields AS $k)
 				{
-					$data = (string)utf8_decode($_xml->content->$k);
+					$data = (string)pt_package_xml_decode($_xml->content->$k);
 					$mySQL->addField($k,$data);
 				}
 				$sql = $mySQL->update("media","med_id=".$med_id);
@@ -283,7 +283,7 @@ class PhenotypeMediaObjectStandard
 
 
 
-				// Alte Versionen löschen
+				// Alte Versionen lï¿½schen
 
 				$sql = "SELECT * FROM mediaversion WHERE med_id = ".$med_id;
 				$rs = $myDB->query($sql);
@@ -297,17 +297,17 @@ class PhenotypeMediaObjectStandard
 				// Neue Versionen importieren
 				foreach ($_xml->content->versions->version AS $_xml_version)
 				{
-					$buffer = (string)utf8_decode($_xml_version->binary);
+					$buffer = (string)pt_package_xml_decode($_xml_version->binary);
 					$buffer = base64_decode($buffer);
 
-					$ver_subtype =(string)utf8_decode($_xml_version->ver_subtype);
+					$ver_subtype =(string)pt_package_xml_decode($_xml_version->ver_subtype);
 					$dateiname = $path ."versionbinary." .$ver_subtype;
 					$fp = fopen ($dateiname,"w");
 					fputs ($fp,$buffer);
 					fclose ($fp);
 					@chmod ($dateiname,UMASK);
 
-					$bez = (string)utf8_decode($_xml_version->ver_bez);
+					$bez = (string)pt_package_xml_decode($_xml_version->ver_bez);
 					if ($med_type == MB_IMAGE)
 					{
 						$ver_id = $myMB->importImageVersionFromUrl($dateiname,$bez,$med_id);
@@ -322,7 +322,7 @@ class PhenotypeMediaObjectStandard
 					if ($ver_id)
 					{
 						$mySQL = new SqlBuilder();
-						$ver_mimetype =(string)utf8_decode($_xml_version->ver_mimetype);
+						$ver_mimetype =(string)pt_package_xml_decode($_xml_version->ver_mimetype);
 						$mySQL->addField("ver_mimetype",$ver_mimetype);
 						$sql = $mySQL->update("mediaversion","ver_id=".$ver_id);
 						$myDB->query($sql);

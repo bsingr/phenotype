@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -312,7 +312,7 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$myPT->startBuffer();
 		$noxmlcheck = $this->displayXML();
 		$xml = $myPT->stopBuffer();
-		if ($noxmlcheck) // Rückgabe soll ungeprüft als "richtig" betrachtet
+		if ($noxmlcheck) // Rï¿½ckgabe soll ungeprï¿½ft als "richtig" betrachtet
 		{
 			return $xml;
 		}
@@ -1338,9 +1338,9 @@ class PhenotypeComponentStandard extends PhenotypeBase
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			$com_id = (int)utf8_decode($_xml->meta->com_id);
+			$com_id = (int)pt_package_xml_decode($_xml->meta->com_id);
 
-			// Zunächst den evtl. vorhandenen alten Baustein löschen
+			// Zunï¿½chst den evtl. vorhandenen alten Baustein lï¿½schen
 
 			$sql = "SELECT * FROM component_template WHERE com_id = " . $com_id . " ORDER BY tpl_id";
 			$rs = $myDB->query($sql);
@@ -1363,18 +1363,18 @@ class PhenotypeComponentStandard extends PhenotypeBase
 
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("com_id",$com_id,DB_NUMBER);
-			$com_bez = (string)utf8_decode($_xml->meta->com_bez);
+			$com_bez = (string)pt_package_xml_decode($_xml->meta->com_bez);
 			$mySQL->addField("com_bez",$com_bez);
-			$com_description = (string)utf8_decode($_xml->meta->com_description);
+			$com_description = (string)pt_package_xml_decode($_xml->meta->com_description);
 			$mySQL->addField("com_description",$com_description);
-			$com_rubrik = (string)utf8_decode($_xml->meta->com_rubrik);
+			$com_rubrik = (string)pt_package_xml_decode($_xml->meta->com_rubrik);
 			$mySQL->addField("com_rubrik",$com_rubrik);
 
 			$sql = $mySQL->insert("component");
 			$myDB->query($sql);
 
 
-			$script = (string)utf8_decode($_xml->script);
+			$script = (string)pt_package_xml_decode($_xml->script);
 
 			$file = APPPATH . "components/PhenotypeComponent_"  .$com_id . ".class.php";
 
@@ -1388,14 +1388,14 @@ class PhenotypeComponentStandard extends PhenotypeBase
 			$tpl_id = 1;
 			foreach ($_xml->templates->template AS $_xml_template)
 			{
-				$access = (string)utf8_decode($_xml_template["access"]);
+				$access = (string)pt_package_xml_decode($_xml_template["access"]);
 				$mySQL = new SQLBuilder();
 				$mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
 				$mySQL->addField("com_id",$com_id,DB_NUMBER);
 				$mySQL->addField("tpl_bez",$access);
 				$sql = $mySQL->insert("component_template");
 				$myDB->query($sql);
-				$html = (string)utf8_decode($_xml_template);
+				$html = (string)pt_package_xml_decode($_xml_template);
 				$file = $myPT->getTemplateFileName(PT_CFG_COMPONENT, $com_id, $tpl_id);
 				$fp = fopen ($file,"w");
 				fputs ($fp,$html);
@@ -1407,10 +1407,10 @@ class PhenotypeComponentStandard extends PhenotypeBase
 			// Bausteingruppen anlegen
 			foreach ($_xml->componentgroups->group AS $_xml_group)
 			{
-				$cog_id = (int)utf8_decode($_xml_group->cog_id);
-				$cog_bez = (string)utf8_decode($_xml_group->cog_bez);
-				$cog_description = (string)utf8_decode($_xml_group->cog_description);
-				$cog_pos = (int)utf8_decode($_xml_group->cog_pos);
+				$cog_id = (int)pt_package_xml_decode($_xml_group->cog_id);
+				$cog_bez = (string)pt_package_xml_decode($_xml_group->cog_bez);
+				$cog_description = (string)pt_package_xml_decode($_xml_group->cog_description);
+				$cog_pos = (int)pt_package_xml_decode($_xml_group->cog_pos);
 
 				$sql = "DELETE FROM componentgroup WHERE cog_id=".$cog_id;
 				$myDB->query($sql);

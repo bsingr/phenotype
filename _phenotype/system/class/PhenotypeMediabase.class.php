@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -119,7 +119,7 @@ class PhenotypeMediabaseStandard
 		return ($_folder);
 	}
 
-	// Diese Methode fügt in den Folderbaum auch leere Folder ein, um den
+	// Diese Methode fï¿½gt in den Folderbaum auch leere Folder ein, um den
 	// Baum logisch zu komplettieren
 	function getFullLogicalFolder($grp_id=0)
 	{
@@ -728,7 +728,7 @@ class PhenotypeMediabaseStandard
 			mkdir($med_group_folder,UMASK);
 		}
 
-		/* Das doch an der Stelle Blödsinn, oder?
+		/* Das doch an der Stelle Blï¿½dsinn, oder?
 		// Check auf den zweiten Ordner (nur bei Dokumenten)
 		$p = mb_strpos($folder,"/");
 		if ($p!==false)
@@ -1132,7 +1132,7 @@ class PhenotypeMediabaseStandard
 
 		if ($row["med_type"] == MB_DOCUMENT)
 		{
-			// Zunächst die Versionen
+			// Zunï¿½chst die Versionen
 			$sql = "SELECT * FROM mediaversion WHERE med_id=".$id;
 			$rs = $myDB->query($sql);
 			while ($row_version = mysql_fetch_array($rs))
@@ -1149,7 +1149,7 @@ class PhenotypeMediabaseStandard
 			@ rmdir($dateiname);
 		} else
 		{
-			// Zunächst die Versionen
+			// Zunï¿½chst die Versionen
 			$sql = "SELECT * FROM mediaversion WHERE med_id=".$id;
 			$rs = $myDB->query($sql);
 			while ($row_version = mysql_fetch_array($rs))
@@ -1277,10 +1277,10 @@ class PhenotypeMediabaseStandard
 		{
 			foreach ($_xml->mediagroups->group AS $_xml_group)
 			{
-				$grp_id = (int)utf8_decode($_xml_group->grp_id);
-				$grp_bez = (string)utf8_decode($_xml_group->grp_bez);
-				$grp_description = (string)utf8_decode($_xml_group->description);
-				$grp_type = (int)utf8_decode($_xml_group->grp_type);
+				$grp_id = (int)pt_package_xml_decode($_xml_group->grp_id);
+				$grp_bez = (string)pt_package_xml_decode($_xml_group->grp_bez);
+				$grp_description = (string)pt_package_xml_decode($_xml_group->description);
+				$grp_type = (int)pt_package_xml_decode($_xml_group->grp_type);
 
 				$sql  ="DELETE FROM mediagroup WHERE grp_id=".$grp_id;
 				$myDB->query($sql);
@@ -1307,7 +1307,7 @@ class PhenotypeMediabaseStandard
 		////
 		////                  Unsharp Mask for PHP - version 2.0
 		////
-		////    Unsharp mask algorithm by Torstein Hønsi 2003-06.
+		////    Unsharp mask algorithm by Torstein Hï¿½nsi 2003-06.
 		////             thoensi_at_netcom_dot_no.
 		////               Please leave this notice.
 		////

@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -144,9 +144,9 @@ class PhenotypeActionStandard extends Phenotype
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			$act_id = (int)utf8_decode($_xml->meta->act_id);
+			$act_id = (int)pt_package_xml_decode($_xml->meta->act_id);
 
-			// Die alte Klassendatei löschen
+			// Die alte Klassendatei lï¿½schen
 			$dateiname = APPPATH . "actions/PhenotypeAction_"  .$act_id . ".class.php";
 			@unlink($dateiname);
 
@@ -157,18 +157,18 @@ class PhenotypeActionStandard extends Phenotype
 
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("act_id",$act_id,DB_NUMBER);
-			$act_bez = (string)utf8_decode($_xml->meta->act_bez);
+			$act_bez = (string)pt_package_xml_decode($_xml->meta->act_bez);
 			$mySQL->addField("act_bez",$act_bez);
-			$act_description = (string)utf8_decode($_xml->meta->act_description);
+			$act_description = (string)pt_package_xml_decode($_xml->meta->act_description);
 			$mySQL->addField("act_description",$act_description);
-			$act_status = (int)utf8_decode($_xml->meta->act_status);
+			$act_status = (int)pt_package_xml_decode($_xml->meta->act_status);
 			$mySQL->addField("act_status",$act_status,DB_NUMBER);			
 		
 			$sql = $mySQL->insert("action");
 			$myDB->query($sql);
 
 
-			$script = (string)utf8_decode($_xml->script);
+			$script = (string)pt_package_xml_decode($_xml->script);
 
 			$file = APPPATH . "actions/PhenotypeAction_"  .$act_id . ".class.php";
 

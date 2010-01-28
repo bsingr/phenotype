@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -223,7 +223,7 @@ class PhenotypeUserStandard
 					{
 						$_allerechte[$key]=$val;
 					}
-					// Überschreiben von allen Userrechten, die in der Rolle auf true stehen
+					// ï¿½berschreiben von allen Userrechten, die in der Rolle auf true stehen
 					// Ignorieren der Start-IDs von Seitenbereichen
 					if ($_allerechte[$key]==0 AND $val !=0 AND !mb_strstr($key,"pag_id_grp"))
 					{
@@ -338,10 +338,10 @@ class PhenotypeUserStandard
 		{
 			foreach ($_xml->roles->role AS $_xml_role)
 			{
-				$rol_id = (int)utf8_decode($_xml_role->rol_id);
-				$rol_bez = (string)utf8_decode($_xml_role->rol_bez);
-				$rol_description = (string)utf8_decode($_xml_role->rol_description);
-				$rol_rights = (string)utf8_decode($_xml_role->rol_rights);
+				$rol_id = (int)pt_package_xml_decode($_xml_role->rol_id);
+				$rol_bez = (string)pt_package_xml_decode($_xml_role->rol_bez);
+				$rol_description = (string)pt_package_xml_decode($_xml_role->rol_description);
+				$rol_rights = (string)pt_package_xml_decode($_xml_role->rol_rights);
 
 				$sql  ="DELETE FROM role WHERE rol_id=".$rol_id;
 				$myDB->query($sql);
@@ -408,7 +408,7 @@ class PhenotypeUserStandard
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			$usr_id = (int)utf8_decode($_xml->meta->usr_id);
+			$usr_id = (int)pt_package_xml_decode($_xml->meta->usr_id);
 			$sql  ="DELETE FROM user WHERE usr_id=".$usr_id;
 			$myDB->query($sql);
 			$sql  ="DELETE FROM user_ticketsubject WHERE usr_id=".$usr_id;
@@ -419,20 +419,20 @@ class PhenotypeUserStandard
 			$_felder = Array("usr_vorname","usr_nachname","usr_login","usr_pass","usr_salt","usr_email","usr_createdate","usr_lastlogin","usr_su","usr_status","med_id_thumb");
 			foreach ($_felder AS $k)
 			{
-				$mySQL->addField($k,(string)utf8_decode($_xml->content->$k));
+				$mySQL->addField($k,(string)pt_package_xml_decode($_xml->content->$k));
 			}
 
-			$_usr_rights = unserialize(base64_decode((string)utf8_decode($_xml->content->usr_rights)));
+			$_usr_rights = unserialize(base64_decode((string)pt_package_xml_decode($_xml->content->usr_rights)));
 			
 			if (!is_array($_usr_rights)){$_usr_rights = Array();}
 			foreach ($_xml->content->ticketsubject AS $_xml_ticketsubject)
 			{
-				$sbj_id= (int)utf8_decode($_xml_ticketsubject["sbj_id"]);
+				$sbj_id= (int)pt_package_xml_decode($_xml_ticketsubject["sbj_id"]);
 				$_usr_rights["sbj_".$sbj_id]=1;
 			}
 			
 			$mySQL->addField("usr_rights",serialize($_usr_rights));
-			$mySQL->addField("usr_preferences",base64_decode((string)utf8_decode($_xml->content->usr_preferences)));
+			$mySQL->addField("usr_preferences",base64_decode((string)pt_package_xml_decode($_xml->content->usr_preferences)));
 
 			$sql = $mySQL->insert("user");
 			$myDB->query($sql);

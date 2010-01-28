@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -90,18 +90,18 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 		global $myDebug;
 		if (get_class ($this)=="PhenotypeInclude")
 		{
-			// Abwärtskompatibel PT 2.1
+			// Abwï¿½rtskompatibel PT 2.1
 			$p1 = (int)$p1;
 			$this->id = $p1;
 			$this->params = $p2;
-			// Abwärtskompatibel PT 2.0
+			// Abwï¿½rtskompatibel PT 2.0
 			$this->html = $p2;
 		}
 		else // ab PT 2.2
 		{
 			// Wir sind in einer abgeleiteten Klassen
 			$this->params = $p1;
-			// Abwärtskompatibel PT 2.0
+			// Abwï¿½rtskompatibel PT 2.0
 			$this->html = $p1;
 		}
 		$myDebug->notifyIncludeUsage($this->id);
@@ -151,7 +151,7 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 
 		if (get_class ($this)=="PhenotypeInclude")
 		{
-			// Abwärtskomaptibel zu PT 2.0 - 2.1
+			// Abwï¿½rtskomaptibel zu PT 2.0 - 2.1
 			$cname = "PhenotypeInclude_".$this->id;
 			$myInc = new $cname($this->params);
 			$html = $myInc->execute();
@@ -280,9 +280,9 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			$inc_id = (int)utf8_decode($_xml->meta->inc_id);
+			$inc_id = (int)pt_package_xml_decode($_xml->meta->inc_id);
 
-			// Zunächst evtl. vorhanden alte Templates löschen
+			// Zunï¿½chst evtl. vorhanden alte Templates lï¿½schen
 
 			$sql = "SELECT * FROM include_template WHERE inc_id = " . $inc_id . " ORDER BY tpl_id";
 			$rs = $myDB->query($sql);
@@ -305,27 +305,27 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("inc_id",$inc_id,DB_NUMBER);
-			$inc_bez = (string)utf8_decode($_xml->meta->inc_bez);
+			$inc_bez = (string)pt_package_xml_decode($_xml->meta->inc_bez);
 			$mySQL->addField("inc_bez",$inc_bez);
-			$inc_description = (string)utf8_decode($_xml->meta->inc_description);
+			$inc_description = (string)pt_package_xml_decode($_xml->meta->inc_description);
 			$mySQL->addField("inc_description",$inc_description);
-			$inc_rubrik = (string)utf8_decode($_xml->meta->inc_rubrik);
+			$inc_rubrik = (string)pt_package_xml_decode($_xml->meta->inc_rubrik);
 			$mySQL->addField("inc_rubrik",$inc_rubrik);
 
-			$inc_usage = (int)utf8_decode($_xml->meta->inc_usage_layout);
+			$inc_usage = (int)pt_package_xml_decode($_xml->meta->inc_usage_layout);
 			$mySQL->addField("inc_usage_layout",$inc_usage);
 
-			$inc_usage = (int)utf8_decode($_xml->meta->inc_usage_includecomponent);
+			$inc_usage = (int)pt_package_xml_decode($_xml->meta->inc_usage_includecomponent);
 			$mySQL->addField("inc_usage_includecomponent",$inc_usage);
 
-			$inc_usage = (int)utf8_decode($_xml->meta->inc_usage_page);
+			$inc_usage = (int)pt_package_xml_decode($_xml->meta->inc_usage_page);
 			$mySQL->addField("inc_usage_page",$inc_usage);
 
 			$sql = $mySQL->insert("include");
 			$myDB->query($sql);
 
 
-			$script = (string)utf8_decode($_xml->script);
+			$script = (string)pt_package_xml_decode($_xml->script);
 
 			$file = APPPATH . "includes/PhenotypeInclude_"  .$inc_id . ".class.php";
 
@@ -339,14 +339,14 @@ class PhenotypeIncludeStandard extends PhenotypeBase
 			$tpl_id = 1;
 			foreach ($_xml->templates->template AS $_xml_template)
 			{
-				$access = (string)utf8_decode($_xml_template["access"]);
+				$access = (string)pt_package_xml_decode($_xml_template["access"]);
 				$mySQL = new SQLBuilder();
 				$mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
 				$mySQL->addField("inc_id",$inc_id,DB_NUMBER);
 				$mySQL->addField("tpl_bez",$access);
 				$sql = $mySQL->insert("include_template");
 				$myDB->query($sql);
-				$html = (string)utf8_decode($_xml_template);
+				$html = (string)pt_package_xml_decode($_xml_template);
 				$file = $myPT->getTemplateFileName(PT_CFG_INCLUDE, $inc_id, $tpl_id);
 				$fp = fopen ($file,"w");
 				fputs ($fp,$html);

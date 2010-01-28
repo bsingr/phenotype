@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -235,7 +235,7 @@ class PhenotypeExtraStandard
 				$this->set($pkey, $myRequest->get($k));
 			}
 		}
-		// Zweite Schleife für Checkboxen, um die deaktivierten zu ermitteln
+		// Zweite Schleife fï¿½r Checkboxen, um die deaktivierten zu ermitteln
 		foreach ($_REQUEST AS $k => $v)
 		{
 			if (mb_strpos($k, "extcb_") === 0)
@@ -328,9 +328,9 @@ class PhenotypeExtraStandard
 		$_xml = @simplexml_load_string($buffer);
 		if ($_xml)
 		{
-			$ext_id = (int)utf8_decode($_xml->meta->ext_id);
+			$ext_id = (int)pt_package_xml_decode($_xml->meta->ext_id);
 
-			// Zunächst evtl. vorhanden alte Templates löschen
+			// Zunï¿½chst evtl. vorhanden alte Templates lï¿½schen
 
 			$sql = "SELECT * FROM extra_template WHERE ext_id = " . $ext_id . " ORDER BY tpl_id";
 			$rs = $myDB->query($sql);
@@ -353,13 +353,13 @@ class PhenotypeExtraStandard
 
 			$mySQL = new SQLBuilder();
 			$mySQL->addField("ext_id",$ext_id,DB_NUMBER);
-			$ext_bez = (string)utf8_decode($_xml->meta->ext_bez);
+			$ext_bez = (string)pt_package_xml_decode($_xml->meta->ext_bez);
 			$mySQL->addField("ext_bez",$ext_bez);
-			$ext_description = (string)utf8_decode($_xml->meta->ext_description);
+			$ext_description = (string)pt_package_xml_decode($_xml->meta->ext_description);
 			$mySQL->addField("ext_description",$ext_description);
-			$ext_rubrik = (string)utf8_decode($_xml->meta->ext_rubrik);
+			$ext_rubrik = (string)pt_package_xml_decode($_xml->meta->ext_rubrik);
 			$mySQL->addField("ext_rubrik",$ext_rubrik);
-			$ext_props = (string)utf8_decode($_xml->ext_props);
+			$ext_props = (string)pt_package_xml_decode($_xml->ext_props);
 			$mySQL->addField("ext_props",base64_decode($ext_props));
 
 
@@ -367,7 +367,7 @@ class PhenotypeExtraStandard
 			$myDB->query($sql);
 
 
-			$script = (string)utf8_decode($_xml->script);
+			$script = (string)pt_package_xml_decode($_xml->script);
 
 			$file = APPPATH . "extras/PhenotypeExtra_"  .$ext_id . ".class.php";
 
@@ -381,14 +381,14 @@ class PhenotypeExtraStandard
 			$tpl_id = 1;
 			foreach ($_xml->templates->template AS $_xml_template)
 			{
-				$access = (string)utf8_decode($_xml_template["access"]);
+				$access = (string)pt_package_xml_decode($_xml_template["access"]);
 				$mySQL = new SQLBuilder();
 		        $mySQL->addField("tpl_id",$tpl_id,DB_NUMBER);
 				$mySQL->addField("ext_id",$ext_id,DB_NUMBER);
 				$mySQL->addField("tpl_bez",$access);
 				$sql = $mySQL->insert("extra_template");
 				$myDB->query($sql);
-				$html = (string)utf8_decode($_xml_template);
+				$html = (string)pt_package_xml_decode($_xml_template);
 				$file = $myPT->getTemplateFileName(PT_CFG_EXTRA, $ext_id, $tpl_id);
 				$fp = fopen ($file,"w");
 				fputs ($fp,$html);
