@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -43,9 +43,12 @@ set_exception_handler(array("Phenotype","handleException"));
 
 if (!defined('PT_CHARSET'))
 {
-	define ("PT_CHARSET","UTF-8"); // or ISO-8859-1
+	define ("PT_CHARSET","UTF-8"); // or iso-8859-1
 }
-
+if (mb_strtoupper(PT_CHARSET)!=PT_CHARSET)
+{
+	throw new Exception('PT_CHARSET definition in _config.inc.php must be uppercase to be compatible with the htmlentities php function.');
+}
 mb_internal_encoding(PT_CHARSET);
 mb_regex_encoding(PT_CHARSET);
 
@@ -64,7 +67,7 @@ switch (PT_LOCALE)
 {
 	case "de":
 		define ("PT_ALPHAINT","ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-		define ("PT_ALPHA","ABCDEFGHIJKLMNOPQRSTUVWXYZÖÄÜßabcdefghijklmnopqrstuvwxyzöäü");
+		define ("PT_ALPHA","ABCDEFGHIJKLMNOPQRSTUVWXYZÃ–Ã„ÃœÃŸabcdefghijklmnopqrstuvwxyzÃ¶Ã¤Ã¼");
 		break;
 	default:
 		define ("PT_ALPHAINT","ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -73,7 +76,7 @@ switch (PT_LOCALE)
 }
 define ("PT_ALPHANUMERIC",PT_ALPHA."0123456789");
 define ("PT_ALPHANUMERICINT",PT_ALPHAINT."0123456789");
-define ("PT_ALPHAPLUS",PT_ALPHANUMERIC.".,:;-_*+!§$%&()[]=?^#~?@");
+define ("PT_ALPHAPLUS",PT_ALPHANUMERIC.".,:;-_*+!Â§$%&()[]=?^#~?@");
 define ("PT_ALPHAPLUSQUOTES",PT_ALPHAPLUS."'\"'");
 
 if (!function_exists('json_encode'))

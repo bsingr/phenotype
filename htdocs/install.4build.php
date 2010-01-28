@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -19,7 +19,7 @@
 
 set_time_limit(0);
 
-define ("PT_CHARSET","ISO-8859-1");
+define ("PT_CHARSET","utf-8");
 define ('PT_PHPIDS',0);
 
 if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get"))

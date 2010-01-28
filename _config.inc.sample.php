@@ -39,7 +39,7 @@ define ("DATABASE_NAME",		"phenotype");
 // ------------------------------------------------------
 
 define ("PT_LOCALE","en");
-$PTC_LANGUAGES = Array(1=>"Deutsch",2=>"Englisch",3=>"Spanisch",4=>"Französisch");
+$PTC_LANGUAGES = Array(1=>"Deutsch",2=>"Englisch",3=>"Spanisch",4=>"Franzï¿½sisch");
 
 // ------------------------------------------------------
 // default start page
@@ -107,14 +107,6 @@ ini_set("session.auto_start",0);
 ini_set("session.use_trans_sid",0);
 ini_set("session.cookie_lifetime",0);
 ini_set("session.gc_maxlifetime", 3600);
-
-
-// ------------------------------------------------------
-// currently ISO-8859-1 only, everything else 
-// (e.g. UTF-8) experimental
-// ------------------------------------------------------
-
-define ("PT_CHARSET","ISO-8859-1");
 
 // ------------------------------------------------------
 // initalize system, require all core classes

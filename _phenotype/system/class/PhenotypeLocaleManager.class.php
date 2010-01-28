@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -906,16 +906,15 @@ class PhenotypeLocaleManagerStandard
 
 			foreach ($_xml->body->tu AS $_xml_tu)
 			{
-				//echo "tu";
 				$key= (string)$_xml_tu["tuid"];
 				$val ="";
 				foreach ($_xml_tu->tuv AS $_xml_tuv)
 				{
-					//echo(string)$_xml_tuv["lang"];
+
 					if ((string)$_xml_tuv["lang"]==$locale)
 					{
 						$val = (string)$_xml_tuv->seg;
-						//echo "TEST".$val;
+						
 						break;
 					}
 				}
@@ -935,7 +934,7 @@ class PhenotypeLocaleManagerStandard
 		echo "</pre>";
 		*/
 
-		$xml ='<?xml version="1.0" encoding="UTF-8"?>
+		$xml ='<?xml version="1.0" encoding="utf-8"?>
 <tmx:tmx version="2.0" xmlns:tmx="http://www.lisa.org/tmx20">
   <tmx:header adminlang="en" creationtool="Phenotype" creationtoolversion="2.9" o-tmf="unknown" segtype="block" srclang="*all*"/>
   <tmx:body>';

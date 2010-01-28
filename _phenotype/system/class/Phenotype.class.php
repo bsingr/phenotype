@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -48,7 +48,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 	/**
 	 * @var array $aPreferences This array implements the Preferences XML-file
-	 * added 07/08/23 by Dominique Bös
+	 * added 07/08/23 by Dominique Bï¿½s
 	 */
 	private $aPreferences = false;
 
@@ -871,7 +871,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 	/**
 	 * Build Preferences Array
-	 * added 07/08/23 by Dominique Bös
+	 * added 07/08/23 by Dominique Bï¿½s
 	 *
 	 * @return null
 	 */
@@ -884,7 +884,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 	/**
 	 * Get Preferences Array
-	 * added 07/08/23 by Dominique Bös
+	 * added 07/08/23 by Dominique Bï¿½s
 	 *
 	 * @param string $sSearchKey String width array keys, separator is "." Example: "preferences.section_cache"
 	 * @return null
@@ -920,7 +920,7 @@ class PhenotypeStandard extends PhenotypeBase
 
 	/**
 	 * Write XML childs into an array
-	 * added 07/08/23 by Dominique Bös
+	 * added 07/08/23 by Dominique Bï¿½s
 	 *
 	 * @param string $sXML XML-file
 	 * @return null
@@ -1761,7 +1761,7 @@ for ($i=$stop;$i>=$start;$i--){
  * This function is also used from the helper functions for page title retrieval. It it a vital function for url management,
  * if you create/build urls you should always use this function in any (inherited) way.
  *
- * added 2008/05/19 by Dominique Bös
+ * added 2008/05/19 by Dominique Bï¿½s
  *
  * @param integer $pag_id
  * @param array[mixed] $_params
@@ -1920,8 +1920,12 @@ for ($i=$stop;$i>=$start;$i--){
 			$_params = Array($_params);
 		}
 
-		// :TODO: check when migration to UTF8
-		$s = utf8_decode($this->TMXHelper->get($token));
+
+		$s = $this->TMXHelper->get($token);
+		if (mb_strtolower(PT_CHARSET) != 'utf-8')
+		{
+			$s = utf8_decode($s);
+		}
 		$s = str_replace("%r","\n",$s);
 		$s = str_replace("%l","\n",$s);
 		$s = str_replace("%n","\n",$s);
@@ -1936,7 +1940,7 @@ for ($i=$stop;$i>=$start;$i--){
 		{
 			$s="#".$token."#";
 			$myLog->log("Unknown i8ln token ".$s." for section \"" . $this->tmxsection."\"",PT_LOGFACILITY_SYS,PT_LOGLVL_INFO);
-			// Nur während der Entwicklung
+			// Nur wï¿½hrend der Entwicklung
 			global $myDB;
 			$sql = "DELETE FROM tokens WHERE token='".$token."' AND section='".$this->tmxsection."'";
 			$myDB->query($sql);

@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -748,9 +748,9 @@ class PhenotypeInstaller
 		// force Phenotype to be verbose for one week
 		$exps[] = '/^define \("PT_VERBOSE_UNTIL",.+\);/';
 		$subs[] = 'define ("PT_VERBOSE_UNTIL",'.( time() + 3600*24*7).');';
-		
-		
-		
+
+
+
 		// frontend session
 		$exps[] = '/^define \("PT_FRONTENDSESSION",.+\);/';
 		$subs[] = 'define ("PT_FRONTENDSESSION",'.(int)$this->app_frontend_session.');';
@@ -974,14 +974,17 @@ class PhenotypeInstaller
 
 	function setCharsetAndCollation($charset = PT_CHARSET)
 	{
+		$charset = mb_strtolower($charset);
 		switch ($charset)
 		{
-			case "UTF-8":
+			case "utf-8":
 				$sql_charset = "DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
+				$sql_convert = "CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci";
 				break;
-			case "ISO-8859-1":
+			case "iso-8859-1":
 			default:
 				$sql_charset = "DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci";
+				$sql_convert = "CONVERT TO CHARACTER SET latin1 COLLATE latin1_general_ci";
 				break;
 		}
 
@@ -1000,6 +1003,14 @@ class PhenotypeInstaller
 					$this->error_globalfeedback=true;
 					return;
 				}
+				$sql = "ALTER TABLE `".$row[0]."` ".$sql_convert;
+				$rs2 = @mysql_query($sql);
+				if (!$rs2)
+				{
+					$this->installation_status = "Could not adjust charset and collations of the database.";
+					$this->error_globalfeedback=true;
+					return;
+				}				
 			}
 		}
 		else
@@ -1008,7 +1019,7 @@ class PhenotypeInstaller
 			$this->error_globalfeedback=true;
 		}
 		// Finalize. If it's not working, don't mind, as long as all tables are correct
-		
+
 		$sql = "ALTER DATABASE `".mysql_real_escape_string($this->database_name)."` ".$sql_charset;
 		@mysql_query($sql);
 	}

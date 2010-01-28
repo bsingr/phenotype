@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -132,8 +132,8 @@ class PhenotypeBackendStandard extends PhenotypeLayout
 <html>
 <head>
 <title>phenotype <?php echo $myPT->version ?></title>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo PT_CHARSET?>">
-<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo mb_strtolower(PT_CHARSET)?>">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
 <link href="phenotype.css" rel="stylesheet" type="text/css">
 <link href="navigation.css" rel="stylesheet" type="text/css">
 <link href="content.css" rel="stylesheet" type="text/css">
@@ -588,7 +588,7 @@ exit();
 	function displayFeedback($text)
 	{
 		global $myPT;
-		if ($text==""){$text="Änderungen gespeichert.";}
+		if ($text==""){$text="ï¿½nderungen gespeichert.";}
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0" id="feedback">
 	      <tr>
@@ -611,7 +611,7 @@ exit();
 
 
 
-	// Neue Layoutfunktionen - müssen nach Migration runterkopiert werden
+	// Neue Layoutfunktionen - mï¿½ssen nach Migration runterkopiert werden
 
 
 	function displayHeadline($title,$url_help="")
