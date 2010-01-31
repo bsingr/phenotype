@@ -110,7 +110,7 @@ class PhenotypeExtra_1002 extends PhenotypeExtra
 			return;
 		}
 
-		// Das Konsolenskript soll ausgeführt werden
+		// Das Konsolenskript soll ausgef�hrt werden
 		global $myLayout;
 		$myLayout->workarea_start_draw();
 

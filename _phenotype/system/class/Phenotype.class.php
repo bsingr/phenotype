@@ -1093,7 +1093,10 @@ class PhenotypeStandard extends PhenotypeBase
 		{
 			$message .="\n\n".$sql;
 		}
-		$myLog->log($message,PT_LOGFACILITY_SYS,PT_LOGLVL_ERROR);
+		if (is_object($myLog))
+		{
+			$myLog->log($message,PT_LOGFACILITY_SYS,PT_LOGLVL_ERROR);
+		}
 
 		// first get the current output
 		$html = $this->stopBuffer();

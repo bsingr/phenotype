@@ -198,7 +198,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 			if ($k!="")
 			{
 
-				// Korrigiert unmögliche Baumstrukturen
+				// Korrigiert unm�gliche Baumstrukturen
 				if ($level>$lastlevel+1)
 				{
 					$level=$lastlevel+1;
@@ -207,7 +207,7 @@ class PhenotypeExtra_1001 extends PhenotypeExtra
 				{
 					$level=0;
 				}
-				// -- Unmögliche Baumstrukturen
+				// -- Unm�gliche Baumstrukturen
 
 				$_tree[] = Array($level,$k,$lay_id,$status);
 				$lastlevel=$level;
