@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -27,4 +27,16 @@
 class PhenotypeModuleStandard
 {
 	protected $_mandatory_php_modules = Array();
+	
+	
+	public function installComponent($token,$title="")
+	{
+		if($title=="")
+		{
+			$title=$token;
+		}
+		$id = PhenotypeComponentManager::createComponentClass($title);
+		
+	}
+	
 }
