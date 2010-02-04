@@ -7,7 +7,7 @@
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
-// Thanks for your support: 
+// Thanks for your support:
 // Markus Griesbach, Alexander Wehrum, Sebastian Heise,
 // Dominique Boes, Florian Gehringer, Jens Bissinger
 // -------------------------------------------------------
@@ -27,20 +27,20 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 {
 	/**
 	 * object type
-	 * 
+	 *
 	 * currently MB_IMAGE or MB_DOCUMENT
 	 *
 	 * @var integer
 	 */
 	public $type = MB_IMAGE;
-	
+
 	/**
 	 * width
 	 *
 	 * @var integer
 	 */
 	public $x;
-	
+
 	/**
 	 * height
 	 *
@@ -58,14 +58,14 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 	 * @var string
 	 */
 	public $bez;
-	
+
 	/**
 	 * original file name (before importing/uploading into the mediabase)
 	 *
 	 * @var string
 	 */
 	public $bez_original;
-	
+
 	function __construct($img_id)
 	{
 		global $myDB;
@@ -111,7 +111,7 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 			$this->url = MEDIABASEURL.$this->physical_folder."/".$this->filename;
 			$this->thumburl = MEDIABASEURL.$this->physical_folder."/".$this->filename_thumb;
 			$this->file = MEDIABASEPATH . $this->physical_folder . "/" . $this->filename;
-			
+
 			$this->loaded=1;
 		}
 	}
@@ -130,17 +130,17 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 	{
 		$this->align = $align;
 	}
-	
+
 	function setName ($name)
 	{
 		$this->name = $name;
-	}	
+	}
 
 	function setId ($id)
 	{
 		$this->id = $id;
-	}	
-	
+	}
+
 	function render($alt = Null, $version = NULL)
 	{
 		global $myPT;
@@ -364,10 +364,10 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 		$myMB->createThumbnailFromJpeg($dateiname_complete, $dateiname_thumb, $kante , $y,$quality);
 		$myMB->importImageVersionFromUrl($dateiname_thumb, $bez, $this->id);
 		@unlink ($dateiname_thumb);
-	}				
-	
+	}
+
 	/**
-	 * Select version of an image or create it (if not existing) 
+	 * Select version of an image or create it (if not existing)
 	 *
 	 * @param string name of the version to be selected/created
 	 * @param integer width $x
@@ -379,7 +379,7 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 	 */
 	function selectVersionOrCreate($name,$x,$y,$method = 5, $quality = 85,$sharpening = 1)
 	{
-		
+
 		$rc = parent::selectVersion($name);
 		if (!$rc)
 		{
@@ -405,12 +405,12 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 				}
 
 			}
-			else 
+			else
 			{
 				return false;
 			}
-			
-			
+
+
 			$myMB = new PhenotypeMediabase();
 			$sx = 0;
 			$sy = 0;
@@ -472,7 +472,7 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 
 			$targetImage = imagecreatetruecolor($tw, $th);
 
-			if (function_exists(imagecopyresampled))
+			if (function_exists('imagecopyresampled'))
 			{
 				imagecopyresampled($targetImage, $sourceImage, $tx, $ty, $sx, $sy, $tw, $th, $sw, $sh);
 			} else
@@ -513,8 +513,8 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 			return parent::selectVersion($name);
 		}
 		return false;
-	}	
-	
+	}
+
 	/**
 	 * Get recording date and time of the image, if exif data is present
 	 *
@@ -535,9 +535,9 @@ class PhenotypeImageStandard extends PhenotypeMediaObject
 			return $t;
 
 		}
-		else 
+		else
 		{
-			return false;		
+			return false;
 		}
 	}
 }
