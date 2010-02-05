@@ -880,7 +880,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 
 		$sql = "SELECT * " . $sql;
-		$rs = $myDB->query($sql2);
+		$rs = $myDB->query($sql);
 
 		// Seite und Anzahl bestimmen
 		$anzahl = mysql_num_rows($rs);
@@ -901,6 +901,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 
 		$start = ($p-1)*($_REQUEST["a"]);
 		$sql .=" LIMIT ". $start . "," . $this->itemcount;
+		/*
 		?>
 		<table width="680" border="0" cellpadding="0" cellspacing="0">
 	      <tr>
@@ -926,6 +927,7 @@ class PhenotypeBackend_Editor_Content_Standard extends PhenotypeBackend_Editor
 	      </tr>
 	    </table>
 	    <?php
+	    */
 
 		$url = "backend.php?page=Editor,Content,select&con_id=".$this->con_id."&r=".$this->category."&b=0&c=".$order."&a=".$this->itemcount."&p=";
 		$selectallbutton=false;
