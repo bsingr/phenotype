@@ -11,6 +11,7 @@ define ("PT_INCLUDECACHE",1);
 define ("PT_URL_STYLE", "smartURL");
 define ("PT_PHPIDS",0);
 define ('PT_PHPIDS_MAXIMPACT',10);
+define ('PT_REGISTERGLOBALS_FORBIDDEN',1);
 
 // force Phenotype to be as verbose as in debug mode until .. 
 //(timestamp or 0 to deactivate)

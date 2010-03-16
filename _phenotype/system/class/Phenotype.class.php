@@ -89,7 +89,7 @@ class PhenotypeStandard extends PhenotypeBase
 	{
 		global $myDB;
 
-		if (ini_get("register_globals")==1)
+		if ( (PT_REGISTERGLOBALS_FORBIDDEN==1) && (ini_get("register_globals")==1) )
 		{
 			die("Please turn off register globals. For security reasons Phenotype does not allow this setting.");
 		}
