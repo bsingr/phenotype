@@ -3,7 +3,7 @@
 // Phenotype Content Application Framework
 // -------------------------------------------------------
 // Copyright (c) 2003-##!BUILD_YEAR!## Nils Hagemann, Paul Sellinger,
-// Peter Sellinger, Michael Krämer.
+// Peter Sellinger, Michael Krï¿½mer.
 //
 // Open Source since 11/2006, I8ln since 11/2008
 // -------------------------------------------------------
@@ -27,18 +27,18 @@ class PhenotypeSmartyStandard extends Smarty
 
 	/**
 	   * Do not allow PHP Code within smarty templates
-	   * 
+	   *
 	   * use SMARTY_PHP_ALLOW, if you want the PHP code to be executed (right after Phenotype caching)
-	   * 
-	   * Attention!: 
-	   * Caused by Phenotypes file caching mechanism the option SMARTY_PHP_PASSTHRU is 
+	   *
+	   * Attention!:
+	   * Caused by Phenotypes file caching mechanism the option SMARTY_PHP_PASSTHRU is
 	   * identical to SMARTY_PHP_ALLOW
-	   * 
+	   *
 	   * Side-Effect!:
 	   * Every "<?" will get escaped, also XML headers like <?xml version="1.0" encoding="ISO-8859-1"?>
-	   * Use the smarty function pt_doctype instead, e.g. 
+	   * Use the smarty function pt_doctype instead, e.g.
 	   * {pt_doctype dtd="XHTML1.0-Transitional" charset="ISO-8859-1"}
-	   * 
+	   *
 	   * @see: pt_doctype
 	   * @var int
 	   */
@@ -46,22 +46,22 @@ class PhenotypeSmartyStandard extends Smarty
 
 	//var $default_modifiers        = array("phenotype");
 
-	
+
 	/**
      * This forces templates to compile every time.
-     * 
+     *
      * If experiment with $php_handling set $force_compile to true. Otherwise you get 'strange' results.
      *
      * @var boolean
      */
     var $force_compile   =  true;
-    
+
 	public function __construct()
 	{
 		parent::Smarty();
 		$this->register_function("url_for_page", array($this,"url_for_page"));
 		$this->register_function("title_of_page", array($this,"title_of_page"));
-		$this->register_function("description_of_page", array($this,"description_of_page")); // added 2008/05/19 by Dominique Bös
+		$this->register_function("description_of_page", array($this,"description_of_page")); // added 2008/05/19 by Dominique Bï¿½s
 
 		$this->register_function("pt_constant",array($this,"pt_constant"));
 		$this->register_function("url_for_content", array($this,"url_for_content"));
@@ -97,6 +97,7 @@ class PhenotypeSmartyStandard extends Smarty
 		{
 			$pag_id = $_params["pag_id"];
 			if (isset($_params["fullUrl"])){$fullUrl = $_params["fullUrl"];}else{$fullUrl=false;}
+			$lng_id = isset($_params["lng_id"])? $_params["lng_id"] : null;
 			return url_for_page($pag_id, null, null, "", $fullUrl);
 		}
 		else
@@ -116,16 +117,15 @@ class PhenotypeSmartyStandard extends Smarty
 		}
 		else
 		{
-			trigger_error("Missing mandatory parameter pag_id in smarty function
-title_of_page",E_USER_ERROR);
+			trigger_error("Missing mandatory parameter pag_id in smarty function title_of_page",E_USER_ERROR);
 		}
 	}
 
 
 	/**
    * Returns the page description field ("page_bez" in DB page)
-   * 
-	 * added 2008/05/19 by Dominique Bös
+   *
+	 * added 2008/05/19 by Dominique Bï¿½s
    * @return string page description
    */
 	public function description_of_page($_params)
@@ -230,7 +230,7 @@ title_of_page",E_USER_ERROR);
 	}
 
 	/**
-	* PT CHARSET aware escape modifier	
+	* PT CHARSET aware escape modifier
 	*/
 	function smarty_modifier_escape($string, $esc_type = 'html', $char_set = PT_CHARSET)
 	{
